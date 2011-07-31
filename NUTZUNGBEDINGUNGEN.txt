@@ -1,0 +1,35 @@
+§ 1 
+
+Das Spiel Skrupel - Tribute Compilation ist freie Software. Man kann es unter den Bedingungen der GNU General Public License, wie von der Free Software Foundation herausgegeben, weitergeben und/oder modifizieren, entweder unter Version 2 der Lizenz oder (wenn man es wünscht) jeder späteren Version. Eine Version der GNU General Public License sowie eine deutsche Übersetzung liegt dem Komplettdownload bei. 
+
+§ 2 
+
+Die Veröffentlichung von Skrupel - Tribute Compilation erfolgt in der Hoffnung, dass es von Nutzen sein wird, aber OHNE JEDE GEWÄHRLEISTUNG - sogar ohne die implizite Gewährleistung der MARKTREIFE oder der EIGNUNG FÜR EINEN BESTIMMTEN ZWECK. Details finden sich in der GNU General Public License. 
+
+§ 3 
+
+Sämtliche Scripte, Bilder und Texte, die nicht im Komplett-Download von Skrupel - Tribute Compilation enthalten sind, sondern als zusätzliche Downloads (z.B. Rassen, Meta) angeboten werden, sind nicht automatisch unter der GNU General Public License veröffentlicht. Dank offener Schnittstellen stammen diese Produkte von dritten Parteien und werden von diesen nach ihren eigenen Wünschen vertrieben. Diese Downloads sind nicht als fester Bestandteil von Skrupel -Tribute Compilation zu betrachten. Sollte eine Partei Rechte an einem dieser Produkte haben und nicht mit der Veröffentlichung auf diesen Seiten einverstanden sein, so fühle ich, Bernd Kantoks, mich selbstverständlich verpflichtet, sämtliche Hinweise auf das Produkt auf den Portalseiten, sowie in Skrupel - Tribute Compilation, zu entfernen. 
+
+§ 4 
+
+Im Quellcode von Skrupel - Tribute Compilation dürfen sämtliche Angaben innerhalb der title-Tags, sowie alle auskommentierten Hinweise nicht modifiziert werden. 
+
+§ 5 
+
+Es ist erlaubt, dem Spiel Skrupel - Tribute Compilation einen eigenen Namen mit eigenem Logo etc zu geben. Es muß allerdings für einen Außenstehenden möglich sein, ohne daß dieser sich irgendwo einloggt oder registriert, bei Bedarf an folgende Informationen zu gelangen: (1) Das Spiel heißt in seiner ursprünglichen Form Skrupel - Tribute Compilation. (2) Das Spiel wird unter der GNU General Public License veröffentlicht. (3) Das offizielle Portal zu Skrupel - Tribute Compilation findet sich unter http://www.skrupel.de . 
+
+§ 6 
+
+Setzt man einen Skrupel - Tribute Compilation - Server auf und bietet diesen im Internet an, so muss es für jeden möglich sein, unter Angabe eines Phantasienamens (Nick) und einer E-Mail-Adresse Zugang zu bekommen. Es ist nicht erlaubt, die Spielmöglichkeit mit einer Registrierung in einem anderen System zu koppeln, bei dem mehr als Phantasiename (Nick) und E-Mail-Adresse zwingend abgefragt werden. Derjenige, der die Installation betreibt, kann frei wählen, wer mitspielen darf und wer nicht. Er verfügt über eine Art Hausrecht. Dieses Hausrecht darf nicht ausgenutzt werden, um entsprechend zusätzliche Informationen über die Spieler zu erzwingen. 
+
+§ 7 
+
+Es ist nicht gestattet, das Mitspielen bei Skrupel -Tribute Compilation kostenpflichtig anzubieten oder den Zugang abhängig von einiger kostenpflichtigen Mitgliedschaft in einem anderen System zu machen. Verfügt man über eine kostenpflichtige Community, will dieser Skrupel -Tribute Compilation anbieten und garantieren, daß keine Außenstehenden mitspielen, so muß man eine zweite Skrupel -Tribute Compilation - Installation aufsetzen, diese der Öffentlichkeit zur Verfügung stellen und diese auch genauso nach außen kommunizieren wie die geschlossene Communityversion. 
+
+§ 8 
+
+Es ist gestattet, das Hosting sowie die Betreuung von Skrupel -Tribute Compilation kostenpflichtig anzubieten. 
+
+§ 9 
+
+Es ist nicht gestattet, dass Logo von Skrupel -Tribute Compilation anders zu verwenden, als zur Gestaltung von Internetseiten, welche im direkten Zusammenhang mit dem Spiel Skrupel - Tribute Compilation stehen. Ausnahmen können auf Anfrage von Bernd Kantoks bis auf Widerruf genehmigt werden. Als Logo gilt die Spiralform in allen Farben und Größen, der Schriftzug fällt nicht darunter. 

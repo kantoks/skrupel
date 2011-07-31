@@ -1,0 +1,72 @@
+<?php
+$lang['metarassen']['planetenklasse']='Categorie de planete preferee';
+$lang['metarassen']['temperatur']='Temperature preferee';
+$lang['metarassen']['minenproduktion']='Production des mines';
+$lang['metarassen']['bodenkampfangriff']='Attaque terrestre';
+$lang['metarassen']['assimilation']='Assimilation';
+$lang['metarassen']['steuereinahmen']='Imposition';
+$lang['metarassen']['fabrikproduktion']='Production des usines';
+$lang['metarassen']['bodenkampfverteidigung']='Defense terrestre';
+$lang['metarassen']['aeffizienz']='A-Rendement';
+$lang['metarassen']['crew']='Equipage';
+$lang['metarassen']['antriebe']='Moteur';
+$lang['metarassen']['cantox']='Cantox';
+$lang['metarassen']['masse']='Masse';
+$lang['metarassen']['energetik']='Canons';
+$lang['metarassen']['baxterium']='Baxterium';
+$lang['metarassen']['tank']='Reservoir';
+$lang['metarassen']['projektile']='Projectile';
+$lang['metarassen']['rennurbin']='Rennurbin';
+$lang['metarassen']['fracht']='Soute';
+$lang['metarassen']['hangar']='Hangar';
+$lang['metarassen']['vomisaan']='Vomisaan';
+$lang['metarassen']['alle']='alle';
+$lang['metarassen']['keine']='keine';
+
+$lang['metarassen']['art'][1]='Humanoid';
+$lang['metarassen']['art'][2]='Energieform';
+$lang['metarassen']['art'][3]='Formlos';
+$lang['metarassen']['art'][4]='Plasmanoid';
+$lang['metarassen']['art'][5]='Amphibisch';
+$lang['metarassen']['art'][6]="Parasit&auml;r";
+$lang['metarassen']['art'][7]="K&uuml;nstlich";
+
+$lang['metarassen']['grad']="{1} Grad";
+$lang['metarassen']['kt']="{1} KT";
+$lang['metarassen']['vh']="{1} %";
+$lang['metarassen']['tl']='(Techlevel {1})';
+
+$lang['metarassen']['orbs'][0]="Folgende spezielle Orbitalsysteme kann diese Rasse <b>zus&auml;tzlich</b> bauen.";
+$lang['metarassen']['orbs'][1]="Folgende allgemeine Orbitalsysteme kann diese Rasse <b>nicht</b> bauen.";
+
+$lang['metarassen']['cybernrittnikk']='<b>Cybergenetique</b><br>Cette technologie unique est en mesure de produire par mois {1} colons. 220 KT de stocks sont necessaires et sont utilises pour cela.';
+$lang['metarassen']['destabilisator']='<b>Destabilisateur</b><br>Ce vaisseau dispose d`un superlaser avec lequel on peux a {1}% destabiliser voire effondrer une planete.';
+$lang['metarassen']['erweitertertransporter']='<b>Systeme de transport etendu</b><br>Avec cette technologie il est possible de faire des transports vers des planetes eloignees de {1} annees lumiere.';
+$lang['metarassen']['lloydsfluchtmanoever'][0]='<b>Manoeuvre d`evasion</b><br>Le vaisseau peut effectuer un saut au travers des courants spatiaux sans aucun dommage vers son lieu de depart.';
+$lang['metarassen']['lloydsfluchtmanoever'][1]='<b>Manoeuvre d`evasion</b><br>Le vaisseau peut effectuer un saut au travers des courants spatiaux vers son lieu de depart avec des dommages de 1-{1}%.';
+$lang['metarassen']['luckyshot']='<b>Tir chanceux</b><br>Un vaisseau ennemi peut etre detruit immediatement avec une chance de {1}% + 1% par niveau d`experience.';
+$lang['metarassen']['overdrive']='<b>Overdrive</b><br>L`activation fait beneficier au vaisseau d`une acceleration de {1} - {2}% de sa vitesse, et les moteurs avec une meme puissance tombent en panne.';
+$lang['metarassen']['quarkreorganisator']='<b>Reorganisation atomique</b><br>Ce vaisseau est en mesure de r�organiser la structure des atomes et de gagner ainsi par mois {1} KT de materiel, {2} KT de Baxterium, {3} KT de Rennurbin, {4} KT de Vomisaan et 113 KT de Lemin.';
+$lang['metarassen']['reperaturunterstuetzung']='<b>Droide de reparation</b><br>La presence de ce droide sur le vaisseau permet de reparer {1}% des dommages recus par mois.';
+$lang['metarassen']['scanner'][0]='<b>Sensorenphalanx etendue</b><br>Avec les Sensorenphalanx etendues, il est possible d`etendre la portee de sonde de 47 a 85 annees lumiere.';
+$lang['metarassen']['scanner'][1]='<b>Labo d`astrophysique</b><br>Le laboratoire d`astrophysique traite toutes les donnees qu`envoient les sondes et augmente ainsi la portee maximale effective a 116 annees lumiere.';
+$lang['metarassen']['signaturmaskierung']='<b>Masquage de signature</b><br>Grace au masquage de signature, il est possible d`apparaitre sur les sondes longue distance des ennemis comme un vaisseau d`un autre peuple.';
+$lang['metarassen']['sprungtorbau']='<b>Barrage de saut</b><br>Avec {1} KT de Baxterium, {2} KT de Rennurbin, {3} KT de Vomisaan et {4} KT de Lemin ce vaisseau est en mesure de creer un barrage de saut spatial.';
+$lang['metarassen']['sprungtriebwerk']='<b>Moteur de saut</b><br>Avec le moteur de saut active, le vaisseau avec une consomation inferieure a {1} KT Lemin fera un saut d`hyperespace de {2} a {3} annees lumiere dans la direction du trajet.';
+$lang['metarassen']['strukturtaster']='<b>Analyse de structure</b><br>Lors d`un contact ennemi direct, les structures etrangeres sont analysees immediatement et envoyees a la base pour pouvoir etre reproduites.';
+$lang['metarassen']['subpartikelcluster']='<b>Decomposition atomique</b><br>Cet element permet de decomposer le materiel afin de produire des mineraux. Avec {1} KT de materiel, {2} KT de Baxterium {3} KT de Rennurbin et {4} KT Vomisaan sont produits. Ce processus peut etre mis en marche au maximum 287 fois par mois.';
+$lang['metarassen']['subraumverzerrer']='<b>Vagues du neant (niveau {1})</b><br>Une vague de choc est generee par une distorsion de l`espace temps sur un secteur de 83 annees lumiere. Toute vie est detruite ainsi que le vaisseau.';
+$lang['metarassen']['tarnfeldgenerator1']='<b>Camouflage</b><br>Le generateur de champ de camouflage permet au vaisseau de ne pas apparaitre sur les scanners longue distance de l`ennemi. Le champ necessite 1 KT de Rennurbin pour 100 masses par mois et est fiable a 90%.';
+$lang['metarassen']['tarnfeldgenerator2']='<b>Camouflage</b><br>Le generateur de champ de camouflage permet au vaisseau de ne pas apparaitre sur les scanners longue distance de l`ennemi. Le champ necessite 1 KT de Rennurbin pour 100 masses par mois et est fiable a 100%.';
+$lang['metarassen']['tarnfeldgenerator3']='<b>Camouflage</b><br>Le generateur de champ de camouflage permet au vaisseau de ne pas apparaitre sur les scanners longue distance de l`ennemi. Le champ necessite 1 KT de Rennurbin pour 100 masses par mois et est fiable a 80% moins 5% pour chaque scan longue distance de l`ennemi.';
+$lang['metarassen']['terraformer'][0]='<b>Terraformation</b><br>Ce vaisseau dispose de technologies permettant d`augmenter la temperature d`une planete d`un degre par mois.';
+$lang['metarassen']['terraformer'][1]='<b>Terraformation</b><br>Ce vaisseau dispose de technologies permettant de diminuer la temperature d`une planete d`un degre par mois.';
+$lang['metarassen']['viralerangriff']='<b>Invasion virale</b><br>Afin d`eviter un bombardement planetaire, ce vaisseau est en mesure de repandre dans l`atmosphere un virus (issu de la biologie/nanotechnologie) concu pour cibler une population specifique. Entre {1}% et {2}% de la population ciblee disparaitra.';
+$lang['metarassen']['orbitalschild']='<b>Bouclier orbital</b><br>Le bouclier orbital permet au vaisseau de se positionner avant les systemes de defense planetaire en cas d`attaque.';
+$lang['metarassen']['infanterie']='<b>Transport d`infanterie</b><br>L`infanterie legere peut etre transportee comme si il s`agissait de materiel sans que cela ne represente de charge supplementaire.';
+$lang['metarassen']['hmatrix']='<b>Effondrement de tunnel</b><br>Le vaisseau est en mesure de decomposer un tunnel en suivant le vaisseau qui l`a cree.';
+$lang['metarassen']['fuehrung']='<b>Central de communication</b><br>La coordination parfaite de ces navires permet de rendre un soutien plus performant.';
+$lang['metarassen']['wellengenerator']='<b>Generateur de champ gravitationnel</b><br>Un champ gravitationnel est genere sur une peripherie de 65 annees lumiere. Il permet de bloquer les manoeuvres d`evasion, les moteurs de saut et tout mouvement est ralenti a Warp 7. Ce champ necessite {1} KT de Vomisaan par mois pour fonctionner.';
+$lang['metarassen']['daempfer']='<b>Affaiblissement de bouclier</b><br>Permet d`affaiblir les boucliers des ennemis dans le secteur proche. {1} KT de Rennurbin par mois sont necessaires pour 100 masses de vaisseaux adverses.';
+$lang['metarassen']['kamikaze']='<b>Attaque kamikaze</b><br>Lance une attaque devastatrice sur l`ennemi en detruisant le vaisseau. L`attaque reussit avec une probabilitee de {1}% et cause a l`ennemi {2} de dommages.';
+?>

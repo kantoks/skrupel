@@ -1,0 +1,15 @@
+1:Subfunk abh&ouml;ren:Der Spion bricht in die Kommunikationswege des Zielschiffs oder Zielplaneten ein und l&auml;dt Subfunknachrichten herunter.:0:50:0:0:Planet oder Schiff
+2:Taktische Analyse:Durch lange Beobachtung eines feindlichen Schiffes ist es dem Spion m&ouml;glich die St&auml;rke eines Imperiums zu bestimmen.:0:30:0:0:Schiff
+3:Wirtschaftliche Analyse:Durch monatelange Analyse der Infrastruktur eines Planeten kann der Spion Daten &uuml;ber die Wirtschaftsentwicklung des Imperiums gewinnen.:0:25:0:0:Planet
+4:Sternenkarte stehlen:Der Spion bricht in die Sensorpharlanx einer Sternenbasis ein und erh&auml;lt somit die Chance durch die Augen des Feindes zu sehen.:3:20:0:0:Planet mit Sternenbasis
+5:Cantox stehlen:Der Spion begibt sich auf den Zielplaneten und erleichtert die dortige Bev&ouml;lkerung von ihren schweren Geldbeuteln. Der Ertrag wird per Raumfalte zum heimischen Spionagezentrum geschickt.:1:45:5:15:Planet
+6:Gegenspionage:Die gezielte Verbreitung von Falschinformationen beinflusst die Erfolgswarscheinlichkeit feindlicher Spione im Umkreis von 150 Lichtjahren.:1:50:0:0:Keines erforderlich
+7:Erweiterte taktische Analyse:Gegen&uuml;ber der normalen taktischen Analyse ist die Erweiterte viel genauer was die Sch&auml;tzung der St&auml;rke eines Imperiums betrifft.:2:50:0:0:Schiff
+8:Erweiterte wirtschafliche Analyse:Gegen&uuml;ber der normalen wirtschaftlichen Analyse ist die Erweiterte viel genauer was die Sch&auml;tzung der Wirtschaftsentwicklung eines Imperiums betrifft.:2:40:0:0:Planet
+9:Feindliche Spione jagen:Ihr Spion begibt sicht auf die Jagd nach feindlichen Spionageschiffen im Umkreis von 150 Lichtjahren und versucht diese zu enttarnen.:2:50:0:0:Keines erforderlich
+10:Zielinfo ermitteln:Der Spion bricht in die Datenbank einer Sternenbasis ein und l&auml;dt Informationen &uuml;ber das Ziel eines Imperiums herunter.:4:65:0:0:Planet mit Sternenbasis
+11:Planet sabotieren:Der Spion begibt sich auf den Zielplaneten und versucht Industrielle Anlagen mit Hilfe von Sprengs&auml;tzen zu zerst&ouml;ren.:3:50:15:30:Planet
+12:Sternenbasis sabotieren:Mit Hilfe von Sprengladungen kann ein Spion die Produktionsst&auml;tten und Abwehranlagen einer Sternenbasis zerst&ouml;ren.:4:35:5:10:Planet mit Sternenbasis
+13:Schiff sabotieren:Ihr Spion dockt an ein feindliches Schiff an und sabotiert dessen Prim&auml;rsysteme.:4:20:0:0:Schiff
+14:Revolte Anzetteln:Duch gezielte Manipulation der Bev&ouml;lkerung eines Planeten kann der Spion einen blutigen B&uuml;rgerkrieg ausl&ouml;sen.<br>Aufgrund der Sicherheitskontrollen scheitert der Versuch bei Planeten mit einer Sternenbasis.:5:30:0:10:Planet ohne Sternenbasis
+15:Schiff &uuml;bernehmen:Die Infiltration eines feindlichen Schiffes erm&ouml;glicht es dessen Besatzung zum &Uuml;berlaufen zu bewegen.:5:5:0:0:Schiff

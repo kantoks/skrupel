@@ -1,0 +1,1 @@
+Spion:1:2:1.jpg:1_klein.jpg:2500:100:150:90:0:0:0:0:35:1:1:10:0000000000000000000000000000000000000080000000000000:<b>Lloyds Fluchtmanöver</b><br>Das Schiff kann mittels Slipstream zu seinen Urkoordinaten springen (1-80% Schaden).<br><br>Der Spion ist nur in Spionagezentren produzierbar.

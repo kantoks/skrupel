@@ -1,0 +1,400 @@
+Acamar
+Adelphous
+Agamar
+Alawanir
+Alshan
+Aldea
+Aldebaran III
+Aldebaron
+Alderaan
+Alfa
+Almania
+AlphaCarinae
+AlphaMajoris
+AlphaCentauri
+Altair
+Alzoc III
+Andevian
+Angosia
+Anobis
+Antares
+Antica
+Antos
+Aolian
+Apas
+Aralon
+Archanis
+Archer
+Archetz
+Arcybite
+Ardana
+Argelius
+Argolis
+Argos
+Ariannus
+Arkaria
+Arkon
+Arkta
+Armus
+Arneb
+Arvada
+Asporc
+Atlec
+Attalan
+Auroch-Maxo-55
+Axanar
+Babel
+Bajor
+Bakura
+Balosnee
+Barzan
+Bastion
+Barab I
+Belkadan
+Beltane
+Benecia
+Benzar
+Berengaria
+Bersallis
+Bespin
+BetaAurigae
+BetaNiobe
+BetaPortolan
+Beta V
+Betazed
+Bilana
+Bilbringi
+Bimmsari
+Bolarus
+Boreal
+Boreth
+Borgolis
+Borka
+Bothawul
+Bracas
+Breel
+Brental
+Bringloid
+Browder
+Bynaus
+C-111
+Camelot
+Camus
+Canops
+Capella
+Cardassia
+Carema
+Carillon
+Carraya
+Castal
+Catullan
+Celkar
+Celtis
+Cerebus
+Cestus
+CetiAlpha V
+Chalna
+ChamraVortex
+Chandrila
+Chandra
+Cheron
+Cirrus
+Clarus
+ClokDor III
+Clurmertakh
+Coltar
+Commenor
+Cor Caroli
+Curayo
+Corellia
+Coridan
+Corinth IV
+Corulag
+Coruscant
+Corvan
+Cygnet
+Cygnia
+Dagobah
+Daled
+Dantooine
+Danula
+Daran
+Dathomir
+Deinonychus
+Delb
+Delinia
+Delta Vega
+Delta Rana
+Delos
+Deneb
+Deneva
+Denkiri
+Dephi Ardu
+Deriben
+Devidia
+Dimorus
+Donatu
+Doraf
+Draken
+Drema
+Dubrillion
+Duro
+Earth2
+Eden
+Ekos
+Elas
+Eminiar
+Endor
+Epsal
+Epsilo Indi
+Erladu
+Ertrus
+Esseles
+Ethernia
+Exalbia
+Exo
+Fabrina
+Fendaus
+Ferrol
+Flusswelt
+Fondor
+Forlat
+Fzop
+Gäa
+Gagarin
+Galen
+Galor
+Galvin
+Gamelan
+Gamma II
+Gammor
+Gamoray
+Gargi
+Gartenwelt
+Garon
+Garth
+Gaspar
+Gatas
+Gideon
+Ginnick
+Gortavor
+Gothos
+Gyndine
+Halee
+Halut
+Hanolin
+Harod
+Harrakis
+Haven
+Helska
+Helter Baaken
+Hoek
+Holberg 917-G
+Honoghr
+Hoth
+100-Sonnenwelt
+Hurada
+Kurkos
+Iconia
+Icor
+Idran
+Indri
+Ingraham B
+Iota
+Ithor
+Janus VI
+Jaros II
+Jeraddo
+Jouret
+Kaelon
+Kaldra
+Kashyyyk
+Kataan
+Kavis
+Kea IV
+Kelrabi
+Kenda II
+Kessel
+Khitomer
+Klaestron
+Klavdia III
+Kora II
+Koris
+Kostolain
+Kraus IV
+KrePain
+Krios
+Kobol
+Kuat
+Kurl
+L370
+Lambdo Paz
+Lamuu
+Landris
+Lantar
+Lapolis
+Largo V
+Lavinius
+Legara
+Lemma II
+Lepso
+Ligon II
+Ligos VII
+Lixos
+Lok
+Lokvorth
+Loren III
+Luna V
+Lurya
+M-113
+M24-Alpha
+Mab-Bu VI
+Makus
+Manark
+Manu
+Mariah
+Marlonia
+Mars
+Melina
+Melnos
+Melona
+MemoryAlpha
+Mempa
+Merak II
+Metaline
+Midos
+Milika
+Mimas
+Minara
+Minos
+Mintaka
+Miridian
+Mizar
+Moab IV
+Moha
+Mon Calamari
+Mordan
+Morikin
+Morska
+Mudor V
+Murasaki
+Muunullst
+Myrkr
+Myrmidon
+Mystery
+Naboo
+NaCall
+Nacht-Acht
+Nahmi
+Nal Hutta
+Nar Shaddaa
+Narenda
+Nasreldine
+Nel Bato
+Nelvana
+Nemptox
+Nequencia
+Nervala
+New Paris
+Nimbus III
+Norpin
+Obroa Skal
+Ogus
+Ohniaka
+Olymp
+Omicron Ceti
+Ophicus
+Ord Mantell
+Organia
+Omara
+Orllyndie
+Osarian
+Otar II
+Oxtorne
+Pacifica
+Paradeen
+Parliament
+Pegos
+Peliar Zel
+Pelleus
+Pentarus
+Pheben
+Phelan
+Phönix
+Platonius
+Plophos
+Pollux
+Prakat
+Psi2000
+Pspopta
+Pyris
+QuadraSigma
+Qualor
+Quazulu
+Quinto-Center
+Raaltiir
+Rachelis
+Reese
+Regulus
+Remus
+Rhinnal
+Rigel
+Rhommanool
+Rodia
+Roon
+Rori
+Rumal
+Ryloth
+Sahndara
+Scalos
+Sempidal
+Siga
+SigmaDracon
+Sirius
+Sluis Van
+Sphinx
+Stiftermann
+Sullust
+Talos
+Tanuga
+Tarsus
+Tatooine
+Talus
+Tau Ceti
+Taurus
+Tellun
+Thagarum
+Thalotin
+Thasus
+Theta Cygni
+Tiburon
+Thorrtimer
+Topsid
+Torrox
+Trakarat
+Tramp
+Traversan
+Triadus
+Trillion
+Triskelion
+Trokan
+Troyius
+Tycho
+Tynna
+Umgal
+Unith
+Vargnat
+Vendikar
+Vortex
+Wayland
+Westland
+YagDul
+Yaga Minor
+Yavin 4
+Ylesia
+Zentrifaal
+Zetar
+Zhar
+Zophengorn
+Zorkum
+Zyan

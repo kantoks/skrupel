@@ -1,0 +1,7 @@
+1:Humanoid
+2:Energieform
+3:Formlos
+4:Plasmanoid
+5:Amphibisch
+6:Parasitär
+7:Künstlich

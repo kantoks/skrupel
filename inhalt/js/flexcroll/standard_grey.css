@@ -1,0 +1,82 @@
+#bodybody { 
+	position:relative;
+	overflow:auto;
+	width:100%;
+	height:100%;
+    /* height: expression(document.body.offsetHeight - (2)  + "px"); */
+    /* width: expression(document.body.offsetWidth - (2) + "px"); */
+}
+
+.scrollgeneric {line-height: 1px;font-size: 1px;position: absolute;top: 0; left: 0;}
+
+.vscrollerbase {
+width: 15px;
+/* background: #D7EBDF url(/js/helpers/flexscroll/standard_blue.png) 0px 0px repeat-y; */
+}
+.vscrollerbar {
+width: 15px;
+background: url(standard_grey.png) -15px 0px repeat-y;
+background-color: red;
+}
+.hscrollerbase {
+height: 15px;
+/* background: #D7EBDF url(standard_blue_corner.png) 0px -15px repeat-x; */
+}
+.hscrollerbar {
+height: 15px;
+background: url(standard_grey_corner.png) 0px -30px repeat-x;
+}
+.vscrollerbar, .hscrollerbar {
+padding: 10px;
+z-index: 2;
+}
+.vscrollerbarbeg {
+background: url(standard_grey.png) -45px -30px no-repeat;
+width: 15px;
+height: 15px !important;
+}
+.vscrollerbarend {
+background: url(standard_grey.png) -45px 0px no-repeat;
+width: 15px;
+height: 15px;
+}
+.hscrollerbarbeg {
+background: url(standard_grey.png) -60px -15px no-repeat;
+height: 15px;
+width: 15px !important;
+}
+.hscrollerbarend {
+background: url(standard_grey.png) -30px -15px no-repeat;
+height: 15px;
+width: 15px;
+}
+.scrollerjogbox {
+width: 15px;
+height: 15px;
+top: auto; left: auto;
+bottom: 0px; right: 0px;
+/* background: #4E727C url(standard_blue_corner.png) 0px 0px; */ 
+}
+.vscrollerbasebeg {
+/* background: url(standard_blue.png) -30px -30px no-repeat; */
+width: 15px;
+height: 10px !important;
+}
+.vscrollerbaseend {
+/* background: url(standard_blue.png) -60px -30px no-repeat; */
+height: 10px;
+width: 15px;
+}
+.hscrollerbasebeg {
+/* background: url(standard_blue.png) -60px 0px no-repeat; */
+height: 15px;
+width: 15px !important;
+}
+.hscrollerbaseend {
+height: 15px;
+width: 15px;
+/* background: url(standard_blue.png) -30px 0px no-repeat; */
+}
+.scrollerjogbox:hover {
+/* background: #5E828C url(standard_blue.png) -45px -15px; */
+}

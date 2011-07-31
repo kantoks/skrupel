@@ -1,0 +1,10 @@
+Laser:1
+Phaser:1
+Plasma Blaster:2
+Disruptor:3
+Tachionenstrahler:4
+Disintegrator:5
+Gravitraktor:6
+Potentialverdichter:7
+Tryxoker:8
+Partikel-Vortex:10
