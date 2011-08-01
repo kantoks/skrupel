@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>SkrupelRW</title>
+<title>Skrupel</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--
@@ -26,6 +26,7 @@ padding:15px;
 	<?php
 
 	$version = "0.974_nightly";
+  
   function rmr($file){
     if(!file_exists ($file)) return false;
 	  if (is_dir($file)) {
@@ -39,7 +40,8 @@ padding:15px;
 	  }else{
 		  return unlink($file);
     }
-  } 
+  }
+   
 	require_once ("../inc.conf.php");
 	// empfehle das ueberhaupt als array einzufuehren
 	$skrupel_db = array(
@@ -68,15 +70,11 @@ padding:15px;
 	
 	require_once ('../inhalt/inc.hilfsfunktionen.php');
 	$installed = false;
-	$conn = @mysql_connect($server.':'.$port,"$login","$password");
+	$conn = mysql_connect($server.':'.$port,"$login","$password");
 	if ($conn) {
-		$db = @mysql_select_db("$database",$conn);
+		$db = mysql_select_db("$database",$conn);
 		if ($db) {
-			$zeiger = @mysql_query("SELECT version FROM {$skrupel_db['info']}");
-			$array = @mysql_fetch_array($zeiger);
-			if ($array["version"] == $version) {
-				$installed = true;
-				}
+			if($zeiger = mysql_query("SELECT version FROM {$skrupel_db['info']}") && $array = mysql_fetch_array($zeiger) && $array["version"] == $version){$installed = true;}
 		}
 	}
 	?>
@@ -137,13 +135,11 @@ padding:15px;
 			 echo 'Install.sql nicht gefunden';
       }
 
-			$zeiger = @mysql_query("SELECT version FROM {$skrupel_db['info']}");
-	  $array = @mysql_fetch_array($zeiger);
-	  if ($array["version"] == $version) {
-	  	$installed = true;
-	  } else {
-	  	$installed = false;
-	  }
+			if($zeiger = mysql_query("SELECT version FROM {$skrupel_db['info']}") && $array = mysql_fetch_array($zeiger) && $array["version"] == $version){
+        $installed = true;
+      }else {
+        $installed = false;
+      }
 	  if ($installed) {
 	  	rmr('../install');
 	  	?>
@@ -159,7 +155,7 @@ padding:15px;
 	  }
 		}
 
-		@mysql_close();
+		mysql_close();
 		?>
 	</div>
 </body>

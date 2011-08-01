@@ -70,7 +70,7 @@ function rzufallstring() {
 define('ONLY_LETTERS',0);
 define('WITH_NUMBERS', 1);
 define('WITH_SPECIAL_CHARACTERS', 2);
-function rzufallstring($size = 20, $url = ONLY_LETTERS){
+function zufallstring($size = 20, $url = ONLY_LETTERS){
   mt_srand();
   $pool = 'abcdefghijklmnopqrstuvwxyz';
   $pool .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -86,5 +86,4 @@ function rzufallstring($size = 20, $url = ONLY_LETTERS){
     $salt .= $pool[mt_rand(0, $pool_size - 1)];
   }
   return $salt; 
-} 
-
+}    
