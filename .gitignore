@@ -1,4 +1,6 @@
 .project
+.buildpath
 .settings/
 inc.conf.php
-.buildpath
+*~
+*.bak
