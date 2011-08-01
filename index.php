@@ -123,7 +123,7 @@ if ($db) {
 					}
 				}
 
-				$uid = rzufallstring();
+				$uid = zufallstring();
 
 				@mysql_query("UPDATE $skrupel_user SET uid='$uid' WHERE id=$spieler_id;");
 			} else {
