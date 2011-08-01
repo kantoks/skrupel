@@ -962,28 +962,47 @@ if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 
 srand((double)microtime()*1000000);
 
-function rannum(){
-mt_srand((double)microtime()*1000000);
-$num = mt_rand(46,122);
-return $num;
+/*function rannum() {
+    mt_srand((double)microtime()*1000000);
+    $num = mt_rand(48,122);
+    return $num;
 }
+function genchr() {
+    do {
+        $num = rrannum();
+    } while ( ( $num > 57 && $num < 65 ) || ( $num > 90 && $num < 97 ) );
+    return chr($num);
+}
+function zufallstring() {
+    $a = rgenchr();$e = rgenchr();$i = rgenchr();$m = rgenchr();$q = rgenchr();
+    $b = rgenchr();$f = rgenchr();$j = rgenchr();$n = rgenchr();$r = rgenchr();
+    $c = rgenchr();$g = rgenchr();$k = rgenchr();$o = rgenchr();$s = rgenchr();
+    $d = rgenchr();$h = rgenchr();$l = rgenchr();$p = rgenchr();$t = rgenchr();
+    $salt = "$a$b$c$d$e$f$g$h$i$j$k$l$m$n$o$p$q$r$s$t";
+    return $salt;
+}
+*/
+define('ONLY_LETTERS',0);
+define('WITH_NUMBERS', 1);
+define('WITH_SPECIAL_CHARACTERS', 2);
+function zufallstring($size = 20, $url = ONLY_LETTERS){
+  mt_srand();
+  $pool = 'abcdefghijklmnopqrstuvwxyz';
+  $pool .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  if($url & WITH_SPECIAL_CHARACTERS){
+    $pool .= ',.-;:_#+*~!§$%&/()=?';
+  }
+  if($url & WITH_NUMBERS){
+    $pool .='0123456789';
+  }
+  $pool_size = strlen($pool);
+  $salt ='';
+  for($i = 0;$i<$size; $i++){
+    $salt .= $pool[mt_rand(0, $pool_size - 1)];
+  }
+  return $salt; 
+} 
 
-function genchr(){
-do{
-$num = rannum();
-} while ( ( $num > 57 && $num < 65 ) || ( $num > 90 && $num < 97 ) );
-$char = chr($num);
-return $char;
-}
-
-function zufallstring(){
-$a = genchr();$e = genchr();$i = genchr();$m = genchr();$q = genchr();
-$b = genchr();$f = genchr();$j = genchr();$n = genchr();$r = genchr();
-$c = genchr();$g = genchr();$k = genchr();$o = genchr();$s = genchr();
-$d = genchr();$h = genchr();$l = genchr();$p = genchr();$t = genchr();
-$salt = "$a$b$c$d$e$f$g$h$i$j$k$l$m$n$o$p$q$r$s$t";
-return $salt;
-}
 
 //////////////////////////////////////
 
