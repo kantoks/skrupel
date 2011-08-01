@@ -1,4 +1,5 @@
-<?php 
+<?php
+    if(empty($_GET['fu']))$_GET['fu'] = 1;   
     if ($_GET["fu"]==1) {
     include ("../inc.conf.php");
 

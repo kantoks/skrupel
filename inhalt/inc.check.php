@@ -6,8 +6,8 @@
 //$_POST  = @array_map('mysql_real_escape_string', $_POST);
 //$_GET = @array_map('mysql_real_escape_string', $_GET);
 
-$sid = $_GET['sid'];
-$uid = $_GET['uid'];
+$sid = (isset($_GET['sid'])?$_GET['sid']:0);
+$uid = (isset($_GET['uid'])?$_GET['uid']:0);
 
 
 $zeiger = @mysql_query("SELECT * FROM $skrupel_user where uid='$uid'");

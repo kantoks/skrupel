@@ -2,7 +2,7 @@
 if ($_GET["fu"]>=1) {
     include ("../inc.conf.php");
     include ("inc.header.php");
-    if(!$_GET["sprache"]){$_GET["sprache"]=$language;}
+    if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
     $file="../lang/".$_GET["sprache"]."/lang.hilfe_native.php";
     include ($file);
     
