@@ -3813,10 +3813,7 @@ if ($planetenanzahl>=1) {
             if (($kolonisten/100)<=100) { $max_col=floor($kolonisten/100)+$metro_fabriken_plus; } else { $max_col=100+floor(sqrt($kolonisten/100))+$metro_fabriken_plus; }
 
             $max_fabriken=$fabriken+$max_bau;
-            if ($max_fabriken>$max_col) {
-                $max_fabriken = $max_col;
-                $max_bau = max(0, $max_col-$fabriken);
-            }
+            if ($max_fabriken>$max_col) { $max_fabriken=$max_col;$max_bau=$max_col-$fabriken;}
 
             if ($max_fabriken>200+$metro_fabriken_plus) {
                 $max_fabriken=200+$metro_fabriken_plus;
@@ -3852,10 +3849,7 @@ if ($planetenanzahl>=1) {
             if (($kolonisten/100)<=200) { $max_col=floor($kolonisten/100)+$metro_minen_plus; } else { $max_col=200+floor(sqrt($kolonisten/100))+$metro_minen_plus; }
 
             $max_minen=$minen+$max_bau;
-            if ($max_minen>$max_col) {
-                $max_minen = $max_col;
-                $max_bau = max(0, $max_col-$minen);
-            }
+            if ($max_minen>$max_col) { $max_minen=$max_col;$max_bau=$max_col-$minen;}
 
             if ($max_minen>400+$metro_minen_plus) {
                 $max_minen=400+$metro_minen_plus;
@@ -3893,10 +3887,7 @@ if ($planetenanzahl>=1) {
             if (in_array(11,$osys)) { $max_col=floor($max_col*1.5); }
 
             $max_abwehr=$abwehr+$max_bau;
-            if ($max_abwehr>$max_col) {
-                $max_abwehr = $max_col;
-                $max_bau = max(0, $max_col-$abwehr);
-            }
+            if ($max_abwehr>$max_col) { $max_abwehr=$max_col;$max_bau=$max_col-$abwehr;}
 
             if ($max_abwehr>300) {
                 $max_abwehr=300;
@@ -4513,7 +4504,7 @@ $zeiger_temp = mysql_query("UPDATE $skrupel_spiele set spieleranzahl=$spieleranz
 ///////////////////////////////////////////////////////////////////////////////////////////////HASH ANFANG
 for ($m=1;$m<11;$m++) {
 
-    $hash=zufallstring();
+    $hash=rzufallstring();
     $zeiger_temp = mysql_query("UPDATE $skrupel_spiele set spieler_".$m."_hash = '$hash' where id=$spiel");
     $spieler_hash[$m]=$hash;
 }
