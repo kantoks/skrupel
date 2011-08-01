@@ -1,7 +1,7 @@
 <?php
 include ('../inc.conf.php');
 //todo das hier ist ne directory traversal lücke und muss weg !!!
-if(!$_GET["sprache"]){$_GET["sprache"]=$language;}
+if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.galaxie.php";
 include ($file);
 

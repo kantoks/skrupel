@@ -1,6 +1,6 @@
 <?php
 include ("../inc.conf.php");
-if(!$_GET["sprache"]){$_GET["sprache"]=$language;}
+if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.kommunikation_politik.php";
 include ($file);
 include_once ('inc.hilfsfunktionen.php');
