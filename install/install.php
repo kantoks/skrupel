@@ -74,7 +74,10 @@ padding:15px;
 	if ($conn) {
 		$db = mysql_select_db("$database",$conn);
 		if ($db) {
-			if($zeiger = mysql_query("SELECT version FROM {$skrupel_db['info']}") && $array = mysql_fetch_array($zeiger) && $array["version"] == $version){$installed = true;}
+			$zeiger = mysql_query("SELECT version FROM {$skrupel_db['info']}");
+			echo mysql_error();
+       $array = mysql_fetch_array($zeiger);
+       if( $array["version"] == $version){$installed = true;}
 		}
 	}
 	?>
@@ -124,9 +127,10 @@ padding:15px;
              $query = str_replace($v, $tmp, $query);
            }
           }
-					//echo 'Query:'.$query."<br>\n";
+					//echo "<p>query:$query</p>\n";
 					//absenden des Querys
-					mysql_query($query);
+					mysql_query($query, $conn);
+					echo mysql_error();
 					$puffer = substr($puffer, $pos + 1);
 				}
 			}
@@ -135,7 +139,10 @@ padding:15px;
 			 echo 'Install.sql nicht gefunden';
       }
 
-			if($zeiger = mysql_query("SELECT version FROM {$skrupel_db['info']}") && $array = mysql_fetch_array($zeiger) && $array["version"] == $version){
+			$zeiger = mysql_query("SELECT version FROM {$skrupel_db['info']}");
+			echo mysql_error();
+      $array = mysql_fetch_array($zeiger);
+       if($array["version"] == $version){
         $installed = true;
       }else {
         $installed = false;
@@ -151,6 +158,7 @@ padding:15px;
 		wenn das naoch nciht automatich geschafen ist.
 		<?php
 	  } else {
+	   echo mysql_error();
 	  	echo "Installation aus unbekannten Gr&uuml;nden fehlgeschlagen.<br>Bitte versuche es erneut (inc.conf.php &uuml;berpr&uuml;fen und Seite neuladen).<br>Sollte es weiterhin nicht gehen, melde dich bitte im Forum.";
 	  }
 		}
