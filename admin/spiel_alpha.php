@@ -1,5 +1,6 @@
 <?php
-include ("../inc.conf.php");
+include_once ("../inc.conf.php");
+
 $lang = array();
 include ("../lang/".$language."/lang.admin.spiel_alpha.php");
 $prozentarray=array(0,1,2,3,4,5,6,7,8,9,10,15,20,30,40,50,60,70,80,90,100);
@@ -847,34 +848,20 @@ include ("inc.header.php");
 <script type="text/javascript">
 
 function auswahl(xx, yy) {
-    if(typeof(parent.document.formular.active.length) !== 'undefined') {
-        for (n=0;n<parent.document.formular.active.length;n++) {
-            if (parent.document.formular.active[n].checked) { 
-                feldnamex = 'user_' + parent.document.formular.active[n].value + '_xx';
-                feldnamey = 'user_' + parent.document.formular.active[n].value + '_yy';
-    
-                parent.document.getElementById(feldnamex).value = xx;
-                parent.document.getElementById(feldnamey).value = yy;
-                
-                elementname = 'start_' + parent.document.formular.active[n].value;
-                element = document.getElementById(elementname);
-                element.style.top = (yy*2.5)-3.5;
-                element.style.left = (xx*2.5)-3.5;
-            }
+    for (n=0;n<parent.document.formular.active.length;n++) {
+        if (parent.document.formular.active[n].checked) {
+            feldnamex = 'user_' + parent.document.formular.active[n].value + '_xx';
+            feldnamey = 'user_' + parent.document.formular.active[n].value + '_yy';
+
+            parent.document.getElementById(feldnamex).value = xx;
+            parent.document.getElementById(feldnamey).value = yy;
+
+            elementname = 'start_' + parent.document.formular.active[n].value;
+            element = document.getElementById(elementname);
+            element.style.top = (yy*2.5)-3.5;
+            element.style.left = (xx*2.5)-3.5;
         }
-    } else {
-        feldnamex = 'user_' + parent.document.formular.active.value + '_xx';
-        feldnamey = 'user_' + parent.document.formular.active.value + '_yy';
-
-        parent.document.getElementById(feldnamex).value = xx;
-        parent.document.getElementById(feldnamey).value = yy;
-        
-        elementname = 'start_' + parent.document.formular.active.value;
-        element = document.getElementById(elementname);
-        element.style.top = (yy*2.5)-3.5;
-        element.style.left = (xx*2.5)-3.5;
     }
-
 }
 
 var IE = document.all?true:false;
@@ -960,31 +947,6 @@ if ($_GET["fu"]==9) {
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 
-srand((double)microtime()*1000000);
-
-function rannum(){
-mt_srand((double)microtime()*1000000);
-$num = mt_rand(46,122);
-return $num;
-}
-
-function genchr(){
-do{
-$num = rannum();
-} while ( ( $num > 57 && $num < 65 ) || ( $num > 90 && $num < 97 ) );
-$char = chr($num);
-return $char;
-}
-
-function zufallstring(){
-$a = genchr();$e = genchr();$i = genchr();$m = genchr();$q = genchr();
-$b = genchr();$f = genchr();$j = genchr();$n = genchr();$r = genchr();
-$c = genchr();$g = genchr();$k = genchr();$o = genchr();$s = genchr();
-$d = genchr();$h = genchr();$l = genchr();$p = genchr();$t = genchr();
-$salt = "$a$b$c$d$e$f$g$h$i$j$k$l$m$n$o$p$q$r$s$t";
-return $salt;
-}
-
 //////////////////////////////////////
 
   $zeiger = @mysql_query("SELECT extend,serial FROM $skrupel_info");
@@ -994,7 +956,7 @@ return $salt;
 
 //////////////////////////////////////
 
-$sid=zufallstring();
+$sid=rzufallstring();
 $spielname=$_POST["spiel_name"];
    $spielname=str_replace("'"," ",$spielname);
    $spielname=str_replace('"'," ",$spielname);
@@ -1287,6 +1249,156 @@ if ($_POST["spezien"]>=1) {
 }
 ///////////////////////////////////////////////PLANETEN GENRERIEREN ENDE
 
+///////////////////////////////////////////////INSTABLIE WURMLOECHER ANFANG
+
+if ($_POST["instabil"]>=1) {
+for ($i=0;$i<$_POST["instabil"];$i++) {
+
+  $ok=1;
+  while ($ok==1) {
+
+  $x=rand(50,$umfang-100);
+  $y=rand(50,$umfang-100);
+
+  $oben=$y-30;
+  $unten=$y+30;
+  $links=$x-30;
+  $rechts=$x+30;
+
+    $ok=2;
+    $nachbarn=0;
+    $zeiger2 = @mysql_query("SELECT count(*) as total from $skrupel_planeten where x_pos>$links and x_pos<$rechts and y_pos>$oben and y_pos<$unten and spiel=$spiel");
+    $array = @mysql_fetch_array($zeiger2);
+    $nachbarn=$array["total"];
+    if ($nachbarn>=1) {$ok=1;}
+    $nachbarn=0;
+    $zeiger2 = @mysql_query("SELECT count(*) as total from $skrupel_anomalien where x_pos>$links and x_pos<$rechts and y_pos>$oben and y_pos<$unten and spiel=$spiel");
+    $array = @mysql_fetch_array($zeiger2);
+    $nachbarn=$array["total"];
+    if ($nachbarn>=1) {$ok=1;}
+  }
+
+  $zeiger2 = @mysql_query("INSERT INTO $skrupel_anomalien (art,x_pos,y_pos,spiel) values (1,$x,$y,$spiel);");
+
+}
+}
+
+///////////////////////////////////////////////INSTABLIE WURMLOECHER ENDE
+
+///////////////////////////////////////////////STABILE WURMLOECHER ANFANG
+
+if ($_POST["stabil"]>=1) {
+
+  if ($_POST["stabil"]<=5) {$anzahl=$_POST["stabil"];}
+  if ($_POST["stabil"]==6) {$anzahl=1;}
+  if ($_POST["stabil"]==7) {$anzahl=2;}
+  if ($_POST["stabil"]==8) {$anzahl=1;}
+  if ($_POST["stabil"]==9) {$anzahl=2;}
+  if ($_POST["stabil"]==10) {$anzahl=2;}
+  if ($_POST["stabil"]==11) {$anzahl=1;}
+  if ($_POST["stabil"]==12) {$anzahl=1;}
+  if ($_POST["stabil"]==13) {$anzahl=2;}
+
+   for ($i=0;$i<$anzahl;$i++) {
+
+  $ok=1;
+  while ($ok==1) {
+
+  if ($_POST["stabil"]<=5) { $x=rand(50,$umfang-100);$y=rand(50,$umfang-100); }
+
+  if ($_POST["stabil"]==6) { $x=rand(50,$umfang-100);$y=rand(50,($umfang/2)-50); }
+  if ($_POST["stabil"]==7) { $x=rand(50,$umfang-100);$y=rand(50,($umfang/2)-50); }
+
+  if ($_POST["stabil"]==8) { $x=rand(50,($umfang/2)-50);$y=rand(50,$umfang-100); }
+  if ($_POST["stabil"]==9) { $x=rand(50,($umfang/2)-50);$y=rand(50,$umfang-100); }
+
+  if (($_POST["stabil"]==10) and ($i==0)) { $x=rand(50,$umfang-100);$y=rand(50,($umfang/2)-50); }
+  if (($_POST["stabil"]==10) and ($i==1)) { $x=rand(50,($umfang/2)-50);$y=rand(50,$umfang-100); }
+
+  if ($_POST["stabil"]==11) { $x=rand(50,($umfang/2)-50);$y=rand(50,($umfang/2)-50); }
+  if ($_POST["stabil"]==12) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,($umfang/2)-50); }
+
+  if (($_POST["stabil"]==13) and ($i==0)) { $x=rand(50,($umfang/2)-50);$y=rand(50,($umfang/2)-50); }
+  if (($_POST["stabil"]==13) and ($i==1)) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,($umfang/2)-50); }
+
+  $oben=$y-30;
+  $unten=$y+30;
+  $links=$x-30;
+  $rechts=$x+30;
+    $ok=2;
+    $nachbarn=0;
+    $zeiger2 = @mysql_query("SELECT count(*) as total from $skrupel_planeten where x_pos>$links and x_pos<$rechts and y_pos>$oben and y_pos<$unten and spiel=$spiel");
+    $array = @mysql_fetch_array($zeiger2);
+    $nachbarn=$array["total"];
+    if ($nachbarn>=1) {$ok=1;}
+    $nachbarn=0;
+    $zeiger2 = @mysql_query("SELECT count(*) as total from $skrupel_anomalien where x_pos>$links and x_pos<$rechts and y_pos>$oben and y_pos<$unten and spiel=$spiel");
+    $array = @mysql_fetch_array($zeiger2);
+    $nachbarn=$array["total"];
+    if ($nachbarn>=1) {$ok=1;}
+  }
+  $zeiger2 = @mysql_query("INSERT INTO $skrupel_anomalien (art,x_pos,y_pos,spiel) values (1,$x,$y,$spiel);");
+
+  $zeiger = @mysql_query("SELECT * FROM $skrupel_anomalien where x_pos=$x and y_pos=$y and spiel=$spiel");
+      $array = @mysql_fetch_array($zeiger);
+      $aid_eins=$array["id"];
+      $x_pos_eins=$array["x_pos"];
+      $y_pos_eins=$array["y_pos"];
+
+  $ok=1;
+  while ($ok==1) {
+
+  if ($_POST["stabil"]<=5) { $x=rand(50,$umfang-100);$y=rand(50,$umfang-100); }
+
+  if ($_POST["stabil"]==6) { $x=rand(50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
+  if ($_POST["stabil"]==7) { $x=rand(50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
+
+  if ($_POST["stabil"]==8) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,$umfang-100); }
+  if ($_POST["stabil"]==9) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,$umfang-100); }
+
+  if (($_POST["stabil"]==10) and ($i==0)) { $x=rand(50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
+  if (($_POST["stabil"]==10) and ($i==1)) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,$umfang-100); }
+
+  if ($_POST["stabil"]==11) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
+  if ($_POST["stabil"]==12) { $x=rand(50,($umfang/2)-50);$y=rand(($umfang/2)+50,$umfang-100); }
+
+  if (($_POST["stabil"]==13) and ($i==0)) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
+  if (($_POST["stabil"]==13) and ($i==1)) { $x=rand(50,($umfang/2)-50);$y=rand(($umfang/2)+50,$umfang-100); }
+
+  $oben=$y-30;
+  $unten=$y+30;
+  $links=$x-30;
+  $rechts=$x+30;
+    $ok=2;
+    $nachbarn=0;
+    $zeiger2 = @mysql_query("SELECT count(*) as total from $skrupel_planeten where x_pos>$links and x_pos<$rechts and y_pos>$oben and y_pos<$unten and spiel=$spiel");
+    $array = @mysql_fetch_array($zeiger2);
+    $nachbarn=$array["total"];
+    if ($nachbarn>=1) {$ok=1;}
+    $nachbarn=0;
+    $zeiger2 = @mysql_query("SELECT count(*) as total from $skrupel_anomalien where x_pos>$links and x_pos<$rechts and y_pos>$oben and y_pos<$unten and spiel=$spiel");
+    $array = @mysql_fetch_array($zeiger2);
+    $nachbarn=$array["total"];
+    if ($nachbarn>=1) {$ok=1;}
+  }
+  $extra=$aid_eins.":".$x_pos_eins.":".$y_pos_eins;
+  $zeiger2 = @mysql_query("INSERT INTO $skrupel_anomalien (art,x_pos,y_pos,extra,spiel) values (1,$x,$y,'$extra',$spiel);");
+
+  $zeiger = @mysql_query("SELECT * FROM $skrupel_anomalien where x_pos=$x and y_pos=$y and spiel=$spiel");
+      $array = @mysql_fetch_array($zeiger);
+      $aid_zwei=$array["id"];
+      $x_pos_zwei=$array["x_pos"];
+      $y_pos_zwei=$array["y_pos"];
+
+  $extra=$aid_zwei.":".$x_pos_zwei.":".$y_pos_zwei;
+  $zeiger2 = @mysql_query("UPDATE $skrupel_anomalien set extra='$extra' where id=$aid_eins;");
+
+     }
+
+}
+
+///////////////////////////////////////////////STABILE WURMLOECHER ENDE
+
 ////////////////////////////////////////////////WER SPIELT MIT
 
 $spieleranzahl=0;
@@ -1500,157 +1612,6 @@ if ($_POST["imperiumgroesse"]==1) {
 }
 
 //////////////////////////////////////////////SPIELER AUFBAUEN ENDE
-
-///////////////////////////////////////////////INSTABLIE WURMLOECHER ANFANG
-
-if ($_POST["instabil"]>=1) {
-for ($i=0;$i<$_POST["instabil"];$i++) {
-
-  $ok=1;
-  while ($ok==1) {
-
-  $x=rand(50,$umfang-100);
-  $y=rand(50,$umfang-100);
-
-  $oben=$y-30;
-  $unten=$y+30;
-  $links=$x-30;
-  $rechts=$x+30;
-
-    $ok=2;
-    $nachbarn=0;
-    $zeiger2 = @mysql_query("SELECT count(*) as total from $skrupel_planeten where x_pos>$links and x_pos<$rechts and y_pos>$oben and y_pos<$unten and spiel=$spiel");
-    $array = @mysql_fetch_array($zeiger2);
-    $nachbarn=$array["total"];
-    if ($nachbarn>=1) {$ok=1;}
-    $nachbarn=0;
-    $zeiger2 = @mysql_query("SELECT count(*) as total from $skrupel_anomalien where x_pos>$links and x_pos<$rechts and y_pos>$oben and y_pos<$unten and spiel=$spiel");
-    $array = @mysql_fetch_array($zeiger2);
-    $nachbarn=$array["total"];
-    if ($nachbarn>=1) {$ok=1;}
-  }
-
-  $zeiger2 = @mysql_query("INSERT INTO $skrupel_anomalien (art,x_pos,y_pos,spiel) values (1,$x,$y,$spiel);");
-
-}
-}
-
-///////////////////////////////////////////////INSTABLIE WURMLOECHER ENDE
-
-///////////////////////////////////////////////STABILE WURMLOECHER ANFANG
-
-if ($_POST["stabil"]>=1) {
-
-  if ($_POST["stabil"]<=5) {$anzahl=$_POST["stabil"];}
-  if ($_POST["stabil"]==6) {$anzahl=1;}
-  if ($_POST["stabil"]==7) {$anzahl=2;}
-  if ($_POST["stabil"]==8) {$anzahl=1;}
-  if ($_POST["stabil"]==9) {$anzahl=2;}
-  if ($_POST["stabil"]==10) {$anzahl=2;}
-  if ($_POST["stabil"]==11) {$anzahl=1;}
-  if ($_POST["stabil"]==12) {$anzahl=1;}
-  if ($_POST["stabil"]==13) {$anzahl=2;}
-
-   for ($i=0;$i<$anzahl;$i++) {
-
-  $ok=1;
-  while ($ok==1) {
-
-  if ($_POST["stabil"]<=5) { $x=rand(50,$umfang-100);$y=rand(50,$umfang-100); }
-
-  if ($_POST["stabil"]==6) { $x=rand(50,$umfang-100);$y=rand(50,($umfang/2)-50); }
-  if ($_POST["stabil"]==7) { $x=rand(50,$umfang-100);$y=rand(50,($umfang/2)-50); }
-
-  if ($_POST["stabil"]==8) { $x=rand(50,($umfang/2)-50);$y=rand(50,$umfang-100); }
-  if ($_POST["stabil"]==9) { $x=rand(50,($umfang/2)-50);$y=rand(50,$umfang-100); }
-
-  if (($_POST["stabil"]==10) and ($i==0)) { $x=rand(50,$umfang-100);$y=rand(50,($umfang/2)-50); }
-  if (($_POST["stabil"]==10) and ($i==1)) { $x=rand(50,($umfang/2)-50);$y=rand(50,$umfang-100); }
-
-  if ($_POST["stabil"]==11) { $x=rand(50,($umfang/2)-50);$y=rand(50,($umfang/2)-50); }
-  if ($_POST["stabil"]==12) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,($umfang/2)-50); }
-
-  if (($_POST["stabil"]==13) and ($i==0)) { $x=rand(50,($umfang/2)-50);$y=rand(50,($umfang/2)-50); }
-  if (($_POST["stabil"]==13) and ($i==1)) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,($umfang/2)-50); }
-
-  $oben=$y-30;
-  $unten=$y+30;
-  $links=$x-30;
-  $rechts=$x+30;
-    $ok=2;
-    $nachbarn=0;
-    $zeiger2 = @mysql_query("SELECT count(*) as total from $skrupel_planeten where x_pos>$links and x_pos<$rechts and y_pos>$oben and y_pos<$unten and spiel=$spiel");
-    $array = @mysql_fetch_array($zeiger2);
-    $nachbarn=$array["total"];
-    if ($nachbarn>=1) {$ok=1;}
-    $nachbarn=0;
-    $zeiger2 = @mysql_query("SELECT count(*) as total from $skrupel_anomalien where x_pos>$links and x_pos<$rechts and y_pos>$oben and y_pos<$unten and spiel=$spiel");
-    $array = @mysql_fetch_array($zeiger2);
-    $nachbarn=$array["total"];
-    if ($nachbarn>=1) {$ok=1;}
-  }
-  $zeiger2 = @mysql_query("INSERT INTO $skrupel_anomalien (art,x_pos,y_pos,spiel) values (1,$x,$y,$spiel);");
-
-  $zeiger = @mysql_query("SELECT * FROM $skrupel_anomalien where x_pos=$x and y_pos=$y and spiel=$spiel");
-      $array = @mysql_fetch_array($zeiger);
-      $aid_eins=$array["id"];
-      $x_pos_eins=$array["x_pos"];
-      $y_pos_eins=$array["y_pos"];
-
-  $ok=1;
-  while ($ok==1) {
-
-  if ($_POST["stabil"]<=5) { $x=rand(50,$umfang-100);$y=rand(50,$umfang-100); }
-
-  if ($_POST["stabil"]==6) { $x=rand(50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
-  if ($_POST["stabil"]==7) { $x=rand(50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
-
-  if ($_POST["stabil"]==8) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,$umfang-100); }
-  if ($_POST["stabil"]==9) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,$umfang-100); }
-
-  if (($_POST["stabil"]==10) and ($i==0)) { $x=rand(50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
-  if (($_POST["stabil"]==10) and ($i==1)) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,$umfang-100); }
-
-  if ($_POST["stabil"]==11) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
-  if ($_POST["stabil"]==12) { $x=rand(50,($umfang/2)-50);$y=rand(($umfang/2)+50,$umfang-100); }
-
-  if (($_POST["stabil"]==13) and ($i==0)) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
-  if (($_POST["stabil"]==13) and ($i==1)) { $x=rand(50,($umfang/2)-50);$y=rand(($umfang/2)+50,$umfang-100); }
-
-  $oben=$y-30;
-  $unten=$y+30;
-  $links=$x-30;
-  $rechts=$x+30;
-    $ok=2;
-    $nachbarn=0;
-    $zeiger2 = @mysql_query("SELECT count(*) as total from $skrupel_planeten where x_pos>$links and x_pos<$rechts and y_pos>$oben and y_pos<$unten and spiel=$spiel");
-    $array = @mysql_fetch_array($zeiger2);
-    $nachbarn=$array["total"];
-    if ($nachbarn>=1) {$ok=1;}
-    $nachbarn=0;
-    $zeiger2 = @mysql_query("SELECT count(*) as total from $skrupel_anomalien where x_pos>$links and x_pos<$rechts and y_pos>$oben and y_pos<$unten and spiel=$spiel");
-    $array = @mysql_fetch_array($zeiger2);
-    $nachbarn=$array["total"];
-    if ($nachbarn>=1) {$ok=1;}
-  }
-  $extra=$aid_eins.":".$x_pos_eins.":".$y_pos_eins;
-  $zeiger2 = @mysql_query("INSERT INTO $skrupel_anomalien (art,x_pos,y_pos,extra,spiel) values (1,$x,$y,'$extra',$spiel);");
-
-  $zeiger = @mysql_query("SELECT * FROM $skrupel_anomalien where x_pos=$x and y_pos=$y and spiel=$spiel");
-      $array = @mysql_fetch_array($zeiger);
-      $aid_zwei=$array["id"];
-      $x_pos_zwei=$array["x_pos"];
-      $y_pos_zwei=$array["y_pos"];
-
-  $extra=$aid_zwei.":".$x_pos_zwei.":".$y_pos_zwei;
-  $zeiger2 = @mysql_query("UPDATE $skrupel_anomalien set extra='$extra' where id=$aid_eins;");
-
-     }
-
-}
-
-///////////////////////////////////////////////STABILE WURMLOECHER ENDE
-
 //////////////////////////////////////////////SCHIFFSORDNER ANFANG
 
       for  ($k=1; $k<11;$k++) {
@@ -2001,5 +1962,3 @@ if ((@file_exists($moviegif_verzeichnis)) and (@intval(substr($spiel_extend,0,1)
 <center><?php echo $lang['admin']['spiel']['alpha']['fertig']?></center><?php
  } include ("inc.footer.php");
  }
-
-?>
