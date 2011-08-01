@@ -74,9 +74,8 @@ padding:15px;
 	if ($conn) {
 		$db = mysql_select_db("$database",$conn);
 		if ($db) {
-			$zeiger = mysql_query("SELECT version FROM {$skrupel_db['info']}");
-			echo mysql_error();
-       $array = mysql_fetch_array($zeiger);
+			$zeiger = @mysql_query("SELECT version FROM {$skrupel_db['info']}");
+       $array = @mysql_fetch_array($zeiger);
        if( $array["version"] == $version){$installed = true;}
 		}
 	}
@@ -155,7 +154,7 @@ padding:15px;
 		Adminnamen und Passwort einloggen, einen User erstellen und dein
 		erstes Spiel starten.<br> <br> Viel Spass, und danke, dass du Skrupel
 		installiert hast!<br> <br> Bitte l&ouml;sche den install Ordner jetzt,
-		wenn das naoch nciht automatich geschafen ist.
+		wenn das naoch nicht automatich geschehen ist.
 		<?php
 	  } else {
 	   echo mysql_error();
