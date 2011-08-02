@@ -3,7 +3,7 @@
 :noTabs=false:indentSize=4:tabSize=4:folding=explicit:collapseFolds=1:
 */
 include ('../inc.conf.php');
-if(!$_GET["sprache"]){$_GET["sprache"]=$language;}
+if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 include ("../lang/".$_GET["sprache"]."/lang.uebersicht_neuigkeiten.php");
 include_once ('inc.hilfsfunktionen.php');
 

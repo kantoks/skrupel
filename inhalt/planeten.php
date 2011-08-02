@@ -1,6 +1,6 @@
 <?php
 include ("../inc.conf.php");
-if(!$_GET["sprache"]){$_GET["sprache"]=$language;}
+if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.planeten.php";
 include ($file);
 
@@ -508,4 +508,3 @@ if ($_GET["fu"]==7) {
         }
     include ("inc.footer.php");
 }
-?>

@@ -5,7 +5,7 @@
 include ('inc.conf.php');
 include_once ('inhalt/inc.hilfsfunktionen.php');
 
-if(array_key_exists('sprache', $_GET) && preg_match('/[abc]+/', $_GET['sprache']) && is_dir("lang/".$_GET['sprache'])) {
+if(isset($_GET['sprache']) && preg_match('/[a-z]{2}/', $_GET['sprache']) && is_dir("lang/".$_GET['sprache'])) {
 	include ("lang/".$_GET['sprache']."/lang.index.php");
 } else {
 	include ("lang/".$language."/lang.index.php");
@@ -581,4 +581,3 @@ if ($db) {
 	</html>
 	<?php
 }
-?>

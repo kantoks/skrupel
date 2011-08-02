@@ -1,7 +1,7 @@
 <?php
 if ($_GET["fu"]==1) {
     include ("../inc.conf.php");
-    if(!$_GET["sprache"]){$_GET["sprache"]=$language;}
+    if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
     include ("../lang/".$_GET["sprache"]."/lang.meta.php");
     include ("inc.header.php");
         ?>

@@ -1,7 +1,7 @@
 <?php
 if ($_GET["fu"]>=1) {
     include ("../inc.conf.php");
-    if(!$_GET["sprache"]){$_GET["sprache"]=$language;}
+    if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
     $file="../lang/".$_GET["sprache"]."/lang.hilfe_spionage.php";
     include ($file);
     $file="../lang/".$_GET["sprache"]."/lang.spionagen.php";
