@@ -8,6 +8,9 @@
 body{
 color:#000;
 background: transparent url(../bilder/hintergrund.gif) repeat;
+font-family: Verdana;
+font-size: 11px;
+color: #ffffff;
 }
 .mainWindow{
 background: transparent url(../bilder/login.gif) no-repeat;
@@ -154,7 +157,7 @@ padding:15px;
 		Adminnamen und Passwort einloggen, einen User erstellen und dein
 		erstes Spiel starten.<br> <br> Viel Spass, und danke, dass du Skrupel
 		installiert hast!<br> <br> Bitte l&ouml;sche den install Ordner jetzt,
-		wenn das naoch nicht automatich geschehen ist.
+		wenn das noch nicht automatich geschehen ist.
 		<?php
 	  } else {
 	   echo mysql_error();

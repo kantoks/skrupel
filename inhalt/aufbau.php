@@ -1,4 +1,6 @@
 <?php
+include ("../inc.conf.php");
+
 if(empty($_GET["bildpfad"])) {$_GET["bildpfad"]='../bilder';}
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 
@@ -14,8 +16,6 @@ if ($_GET["fu"]==0) { ?>
 <?php }
 if (($_GET["fu"]>=1) and ($_GET["fu"]<=99)) {
     if ($_GET["fu"]==8) {
-
-        include ("../inc.conf.php");
         
         $url="http://".$_SERVER['SERVER_NAME'];
         $folders = explode('/', $_SERVER['SCRIPT_NAME']);
@@ -48,7 +48,6 @@ if (($_GET["fu"]>=1) and ($_GET["fu"]<=99)) {
     <?php } ?>
 <?php }
 if ($_GET["fu"]==100) {
-    include ("../inc.conf.php");
     include ("inc.header.php");
     ?>
     <frameset framespacing="0" border="false" frameborder="0" rows="50,18,*,16,50">

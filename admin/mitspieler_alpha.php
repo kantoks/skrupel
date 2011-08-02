@@ -34,7 +34,7 @@ $nick=$_POST["nick"];
 $email=$_POST["email"];
 $passwort=$_POST["passwort"];
 
-$zeiger = @mysql_query("INSERT INTO $skrupel_user (nick,passwort,email,optionen) values ('$nick','$passwort','$email','00111111111000')");
+$zeiger = @mysql_query("INSERT INTO $skrupel_user (nick,passwort,email,optionen,sprache) values ('$nick','$passwort','$email','00111111111000', '$language')");
 
 ?>
 <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
