@@ -76,6 +76,7 @@ if ($_GET["fu"]==1) {
                     </tr>
                 <?php } ?>
             </table>
+            <p>Diese Addons, und wietere finden Sie auf der <a target="_blank" href="http://www.skrupel.de/www/index.php/Download_der_Metas">Skrpel Hompage</a></p>
             <?php
     }
     include ("inc.footer.php");
