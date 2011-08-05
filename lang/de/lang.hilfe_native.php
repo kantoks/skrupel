@@ -18,7 +18,7 @@ $lang['hilfe_native'][1]['effekt']="";
 
 $lang['hilfe_native'][2]['name']="Andorianer";
 $lang['hilfe_native'][2]['beschreibung']="Sie sind ein missmutiges und misstrauerisches Volk. &uuml;berall sehen sie Intrigen, &uuml;berall vermuten sie den Feind. Die Andorianer streuen Konflikte und Feindseligkeiten.";
-$lang['hilfe_native'][2]['effekt']="Der Bev&ouml;lkerungswachstum sinkt um 77%.";
+$lang['hilfe_native'][2]['effekt']="Das Bev&ouml;lkerungswachstum sinkt um 77%.";
 
 $lang['hilfe_native'][3]['name']="Asgard";
 $lang['hilfe_native'][3]['beschreibung']="Als eine der &auml;ltesten Rassen der Galaxie versuchen die Asgard friedlich mit ihrem Umfeld auszukommen. Zwar geben sie niemals Geheimnisse ihrer &uuml;berlegenen Technologie preis, gehen aber dann doch gerne beim Bau einer Sternenbasis im Orbit zur Hand.";
@@ -26,7 +26,7 @@ $lang['hilfe_native'][3]['effekt']="Die Sternenbasis erh&auml;lt von Werk alle T
 
 $lang['hilfe_native'][4]['name']="Balianer";
 $lang['hilfe_native'][4]['beschreibung']="Sie verbreiten gute Laune, kennen den neusten Klatsch und Tratsch, feiern n&auml;chtelange Feste und bringen die talentiertesten Friseure der bekannten Galaxies hervor.";
-$lang['hilfe_native'][4]['effekt']="Der Bev&ouml;lkerungswachstum erh&ouml;ht sich um 20%.";
+$lang['hilfe_native'][4]['effekt']="Das Bev&ouml;lkerungswachstum erh&ouml;ht sich um 20%.";
 
 $lang['hilfe_native'][5]['name']="Ellora";
 $lang['hilfe_native'][5]['beschreibung']="Sie geben sich immer dem&uuml;tig und unterw&uuml;rfig ihren Eroberern gegen&uuml;ber, dienen mit Abgaben und ihrem Leben. Doch wenn ein Krieg entbrennt, erkennen sie ihre Chance und fallen dem ehemaligen Herrn gnadenlos in die Flanken.";
@@ -45,7 +45,7 @@ $lang['hilfe_native'][8]['beschreibung']="Einfach eine Seuche, zu Lande und zu W
 $lang['hilfe_native'][8]['effekt']="Jeden Monat erfolgt ein Angriff mit einer St&auml;rke von 32%.";
 
 $lang['hilfe_native'][9]['name']="Markalianer";
-$lang['hilfe_native'][9]['beschreibung']="Als ein ehrvolles und kriegerischen Volk verstehen sie sich, die Markalianer. Doch sind sie einmal niedergerungen, so stehen sie demjenigen, der sich ihnen bewiesen hat, als treue Gef&auml;hrten im Kampf zu Seite.";
+$lang['hilfe_native'][9]['beschreibung']="Als ein ehrvolles und kriegerisches Volk verstehen sie sich, die Markalianer. Doch sind sie einmal niedergerungen, so stehen sie demjenigen, der sich ihnen bewiesen hat, als treue Gef&auml;hrten im Kampf zu Seite.";
 $lang['hilfe_native'][9]['effekt']="Die Verteidigungsst&auml;rke im Bodenkampf erh&ouml;ht sich um 71%.";
 
 $lang['hilfe_native'][10]['name']="Menschen";
@@ -69,7 +69,7 @@ $lang['hilfe_native'][14]['beschreibung']="Sie kennen sich wahrlich aus, jede Pf
 $lang['hilfe_native'][14]['effekt']="10000 Quaridan produzieren pro Monat 2KT Vorr&auml;te.";
 
 $lang['hilfe_native'][15]['name']="Samsluor";
-$lang['hilfe_native'][15]['beschreibung']="Hinterlistig und hartn&auml;ckig versuchen sich die Samsluor jeden Monat aufs neue, sich aus den Zw&auml;ngen ihrer Eroberer zu winden. So schwach sie auch sind, lassen sie doch niemals nach und werden auch f&uuml;r den M&auml;chtigsten durch ihre enorme Anzahl zur Bedrohung.";
+$lang['hilfe_native'][15]['beschreibung']="Hinterlistig und hartn&auml;ckig versuchen sich die Samsluor jeden Monat aufs Neue, sich aus den Zw&auml;ngen ihrer Eroberer zu winden. So schwach sie auch sind, lassen sie doch niemals nach und werden auch f&uuml;r den M&auml;chtigsten durch ihre enorme Anzahl zur Bedrohung.";
 $lang['hilfe_native'][15]['effekt']="Jeden Monat erfolgt ein Angriff mit einer St&auml;rke von 19%.";
 
 $lang['hilfe_native'][16]['name']="Saurian";
@@ -85,19 +85,19 @@ $lang['hilfe_native'][18]['beschreibung']="Die Religion der Tamarianer basiert a
 $lang['hilfe_native'][18]['effekt']="Die Bodenkampfverteidigung steigt um 21%.";
 
 $lang['hilfe_native'][19]['name']="Tarlac";
-$lang['hilfe_native'][19]['beschreibung']="Sie sind H&auml;ndler, Diebe, M&ouml;rder, Haldsabschneider. Doch auf eines kann man sich verlassen, sie sind K&ouml;nige der Finanzen und achten die Obrigkeit.";
+$lang['hilfe_native'][19]['beschreibung']="Sie sind H&auml;ndler, Diebe, M&ouml;rder, Halsabschneider. Doch auf eines kann man sich verlassen, sie sind K&ouml;nige der Finanzen und achten die Obrigkeit.";
 $lang['hilfe_native'][19]['effekt']="";
 
 $lang['hilfe_native'][20]['name']="Xixroniq";
-$lang['hilfe_native'][20]['beschreibung']="Begr&uuml;ndung durch ihre eigene Lebensart und Form, verf&uuml;gen die Xixroniq &uuml;ber ein unglaubliches Gesp&uuml;r f&uuml;r die Prinzipien der Translichtbewegung. Sie geben immer gern ihre Wissen weiter und stehen so Pate bei Erbauung einer neuen Sternenbasis.";
+$lang['hilfe_native'][20]['beschreibung']="Begr&uuml;ndung durch ihre eigene Lebensart und Form, verf&uuml;gen die Xixroniq &uuml;ber ein unglaubliches Gesp&uuml;r f&uuml;r die Prinzipien der Translichtbewegung. Sie geben immer gern ihr Wissen weiter und stehen so Pate bei Erbauung einer neuen Sternenbasis.";
 $lang['hilfe_native'][20]['effekt']="Die Sternenbasis erh&auml;lt von Werk Techlevel Antriebe 9.";
 
 $lang['hilfe_native'][21]['name']="Yridianer";
-$lang['hilfe_native'][21]['beschreibung']="Einst waren sie einstolzes Volk und herrschten &uuml;ber ganze Systeme, doch ihre eigener Gr&ouml;&szlig;enwahn brachte sie schnell zu Fall. heut leben sie in H&ouml;hlen unter der Erde und sch&auml;men sich f&uuml;r ihre Schmach.";
+$lang['hilfe_native'][21]['beschreibung']="Einst waren sie ein stolzes Volk und herrschten &uuml;ber ganze Systeme, doch ihr eigener Gr&ouml;&szlig;enwahn brachte sie schnell zu Fall. Heute leben sie in H&ouml;hlen unter der Erde und sch&auml;men sich f&uuml;r ihre Schmach.";
 $lang['hilfe_native'][21]['effekt']="";
 
 $lang['hilfe_native'][22]['name']="Arcona";
-$lang['hilfe_native'][22]['beschreibung']="Die Arcona k&ouml;nnen durch den Genu&szlig; von normalen Salz s&uuml;chtig werden und sind daher auf ihr Hauptnahrungsmittel Dactyl angewiesen. Aus&szlig;enwelter machen sich diese leichte herbeizuf&uuml;hrende Sucht zunutze, um dieses Volk gef&uuml;gig zu machen.";
+$lang['hilfe_native'][22]['beschreibung']="Die Arcona k&ouml;nnen durch den Genuss von normalen Salz s&uuml;chtig werden und sind daher auf ihr Hauptnahrungsmittel Dactyl angewiesen. Aus&szlig;enwelter machen sich diese leichte herbeizuf&uuml;hrende Sucht zunutze, um dieses Volk gef&uuml;gig zu machen.";
 $lang['hilfe_native'][22]['effekt']="Die Effektivit&auml;t der Minen und Fabriken steigert sich um 30%.";
 
 $lang['hilfe_native'][23]['name']="Dianogas";
@@ -129,19 +129,19 @@ $lang['hilfe_native'][29]['beschreibung']="Die Yuzzum geh&ouml;ren zu den au&szl
 $lang['hilfe_native'][29]['effekt']="S&auml;mtliche Welten mit Yuzzum sind sichtbar.";
 
 $lang['hilfe_native'][30]['name']="Worrts";
-$lang['hilfe_native'][30]['beschreibung']="Worrts sieht man mehr als &auml;rgernis denn als Bedrohung an. Obwohl sie alles angreifen, was genie&szlig;bar ausssieht, sind sie leicht zu erschrecken und fl&uuml;chten wenn man sie bedroht.";
+$lang['hilfe_native'][30]['beschreibung']="Worrts sieht man mehr als &auml;rgernis denn als Bedrohung an. Obwohl sie alles angreifen, was genie&szlig;bar aussieht, sind sie leicht zu erschrecken und fl&uuml;chten wenn man sie bedroht.";
 $lang['hilfe_native'][30]['effekt']="Die Effektivit&auml;t der Minen sinkt um 19%.";
 
 $lang['hilfe_native'][31]['name']="Whipide";
-$lang['hilfe_native'][31]['beschreibung']="Die Spezies der Whipiden besteht aus zweieinhalb Meter gro&szlig;en, feldbedeckten Zweibeinern, die extrem jagd- und raublustig veranlagt sind.";
+$lang['hilfe_native'][31]['beschreibung']="Die Spezies der Whipiden besteht aus zweieinhalb Meter gro&szlig;en, fellbedeckten Zweibeinern, die extrem jagd- und raublustig veranlagt sind.";
 $lang['hilfe_native'][31]['effekt']="Jeden Monat erfolgt ein Angriff mit einer St&auml;rke von 8%.";
 
 $lang['hilfe_native'][32]['name']="Mon Calamari";
-$lang['hilfe_native'][32]['beschreibung']="Die Mon Calamari mu&szlig;ten sich oft gegen andere Rassen wehren und haben daher eine perfekte Antriebstechnologie entwickelt.";
+$lang['hilfe_native'][32]['beschreibung']="Die Mon Calamari mussten sich oft gegen andere Rassen wehren und haben daher eine perfekte Antriebstechnologie entwickelt.";
 $lang['hilfe_native'][32]['effekt']="Die Sternenbasis erh&auml;lt von Werk Techlevel Antrieb 8.";
 
 $lang['hilfe_native'][33]['name']="Jawa";
-$lang['hilfe_native'][33]['beschreibung']="Die Jawa sind in der Lage aus technischem Schrott etwas wertvolles zu schrauben. Dank ihnen boomt der Handel und mittels ihres F&auml;higkeiten l&auml;&szlig;t sich bei technischen Komponenten die Leistung um einiges steigern.";
+$lang['hilfe_native'][33]['beschreibung']="Die Jawa sind in der Lage aus technischem Schrott etwas Wertvolles zu schrauben. Dank ihnen boomt der Handel und mittels ihrer F&auml;higkeiten l&auml;sst sich bei technischen Komponenten die Leistung um einiges steigern.";
 $lang['hilfe_native'][33]['effekt']="Die Sternenbasis erh&auml;lt von Werk alle Techlevel 2.";
 
 $lang['hilfe_native'][34]['name']="Wookiee";
@@ -149,7 +149,7 @@ $lang['hilfe_native'][34]['beschreibung']="Die Wookiee sind ein stolzes und star
 $lang['hilfe_native'][34]['effekt']="Die Verteidigungsst&auml;rke im Bodenkampf senkt sich um 81%.";
 
 $lang['hilfe_native'][35]['name']="Aarus";
-$lang['hilfe_native'][35]['beschreibung']="Im Aussehen erinnern die Aarus durch ihren fischartigen K&ouml;rperbau und den balkenf&ouml;rmigen Kopf an aufrechtgehende terranische Hammerhaie. Arme und Beine sind aus Flossen hervorgegegangen und k&ouml;nnen im Wasser auch als solche benutzt werden, denn die Aarus leben amphibisch. Der &quot;Balken&quot; verf&uuml;gt &uuml;ber zwei starre Augen an den Seiten mit zusammen 340� Sichtfeld, sowie eine Balkennase. Mit diesem Sinnesorgan k&ouml;nnen Aarus elektromagnetische Felder exakt ersp&uuml;ren.";
+$lang['hilfe_native'][35]['beschreibung']="Im Aussehen erinnern die Aarus durch ihren fischartigen K&ouml;rperbau und den balkenf&ouml;rmigen Kopf an aufrechtgehende terranische Hammerhaie. Arme und Beine sind aus Flossen hervorgegegangen und k&ouml;nnen im Wasser auch als solche benutzt werden, denn die Aarus leben amphibisch. Der &quot;Balken&quot; verf&uuml;gt &uuml;ber zwei starre Augen an den Seiten mit zusammen 340&deg; Sichtfeld, sowie eine Balkennase. Mit diesem Sinnesorgan k&ouml;nnen Aarus elektromagnetische Felder exakt ersp&uuml;ren.";
 $lang['hilfe_native'][35]['effekt']="Die Effektivit&auml;t beim Sch&uuml;rfen erh&ouml;ht sich auf das Maximum.";
 
 $lang['hilfe_native'][36]['name']='Adlaten';
@@ -169,7 +169,7 @@ $lang['hilfe_native'][39]['beschreibung']="Bei den Mooffs handelt es sich um ein
 $lang['hilfe_native'][39]['effekt']="Die Effektivit&auml;t der Minen und Fabriken sinkt um 68%.";
 
 $lang['hilfe_native'][40]['name']="Perlians";
-$lang['hilfe_native'][40]['beschreibung']="Perlians sind bis zu 2 m gro&szlig;e, schlanke Wesen mit silbriger, feinschuppiger Haut, fast transparenten K&ouml;rpern un sie bevorzugen das Leben im Wasser. Jeder Perlian der Gro&szlig;en Magellanschen Wolke tr&auml;gt im Inneren des Kopfes ein Zeitauge, welches im Einblick in die Zeit gew&auml;hrt.";
+$lang['hilfe_native'][40]['beschreibung']="Perlians sind bis zu 2 m gro&szlig;e, schlanke Wesen mit silbriger, feinschuppiger Haut, fast transparenten K&ouml;rpern und sie bevorzugen das Leben im Wasser. Jeder Perlian der Gro&szlig;en Magellanschen Wolke tr&auml;gt im Inneren des Kopfes ein Zeitauge, welches im Einblick in die Zeit gew&auml;hrt.";
 $lang['hilfe_native'][40]['effekt']="Nimmt ein Feindschiff Kurs auf die Kolonie, warnen sie.";
 
 $lang['hilfe_native'][41]['name']="Kelosker";

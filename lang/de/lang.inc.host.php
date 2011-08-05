@@ -9,9 +9,9 @@ $lang['host']['de']['wellengenerator'][3]='Unser Schiff <b>{1}</b> hat mit seine
 $lang['host']['de']['wellengenerator'][4]='Unser Schiff <b>{1}</b> hat mit seinem GravitationswellenGenerator ein feindliches Schiff im Sprung gestoppt.';
 
 $lang['host']['de']['sprungtriebwerk'][0]='Unser Schiff <b>{1}</b> unternahm erfolgreich einen Hypersprung von {2} Lichtjahren.';
-$lang['host']['de']['sprungtriebwerk'][1]='Unser Schiff <b>{1}</b> verscholl bei einem Hybersprung im tiefen Raum.';
-$lang['host']['de']['sprungtriebwerk'][2]='Unser Schiff <b>{1}</b> konnte aufgrund Leminmangels keinen Hybersprung durchf&uuml;hren.';
-$lang['host']['de']['sprungtriebwerk'][3]='Unser Schiff <b>{1}</b> unternahm erfolgreich einen Hybersprung. Allerdings wurde es durch eine Gravitationswelle bereits nach {2} Lichtjahren gestoppt.';
+$lang['host']['de']['sprungtriebwerk'][1]='Unser Schiff <b>{1}</b> verscholl bei einem Hypersprung im tiefen Raum.';
+$lang['host']['de']['sprungtriebwerk'][2]='Unser Schiff <b>{1}</b> konnte aufgrund Leminmangels keinen Hypersprung durchf&uuml;hren.';
+$lang['host']['de']['sprungtriebwerk'][3]='Unser Schiff <b>{1}</b> unternahm erfolgreich einen Hypersprung. Allerdings wurde es durch eine Gravitationswelle bereits nach {2} Lichtjahren gestoppt.';
 
 $lang['host']['de']['subraumverzerrer'][0]='Unser Schiff {1} nahm durch eine Subraumverzerrungsschockwelle einen Schaden von {2}%.';
 $lang['host']['de']['subraumverzerrer'][1]='Unser Schiff {1} erlag einer Subraumverzerrungsschockwelle.';
@@ -30,7 +30,7 @@ $lang['host']['de']['flug'][5]='Das Schiff {1} hat seinen Zielplaneten erreicht.
 $lang['host']['de']['flug'][6]='Unser Schiff {1} konnte wegen Treibstoffmangel seinen Aufgaben nicht nachkommen.';
 $lang['host']['de']['flug'][7]='Unserem Schiff <b><font color={1}>{2}</font></b> ist in Sektor {3} das Feindschiff <b><font color={4}>{5}</font></b> durch Tarnung entkommen.';
 $lang['host']['de']['flug'][8]='Unser Schiff <b><font color={1}>{2}</font></b> konnte in Sektor {3} dem Feindschiff <b><font color={4}>{5}</font></b> durch Tarnung entkommen.';
-$lang['host']['de']['flug'][9]='Das Schiff {1} hat die Route aufgrund eines Dispositonsfehlers abgebrochen.';
+$lang['host']['de']['flug'][9]='Das Schiff {1} hat die Route aufgrund eines Dispositionsfehlers abgebrochen.';
 
 $lang['host']['de']['wurmloch'][0]='Unser Schiff {1} wurde von einem Wurmloch durch den Subraum geschleudert. Das Wurmloch erwies sich als stabil.';
 $lang['host']['de']['wurmloch'][1]='Unser Schiff {1} durchflog erfolgreich ein Sprungtor und erschien unbeschadet am anderen Ende des k&uuml;nstlichen Wurmlochs.';
@@ -57,8 +57,8 @@ $lang['host']['de']['minenfelder'][2]='Ein Minenfeld wurde vom Schiff <b>{1}</b>
 $lang['host']['de']['minenfelder'][3]='Eines unserer Minenfelder wurde von einem feindlichen Aggressor ger&auml;umt.';
 $lang['host']['de']['minenfelder'][4]='Unsere Raumj&auml;ger des Schiffes <b>{1}</b> konnten <b>{2}</b> Minen aus einem Minenfeld vorzeitig abfangen.';
 $lang['host']['de']['minenfelder'][5]='Unser Schiff <b>{1}</b> konnte ein Minenfeld mit <b>{2}</b> Minen legen.';
-$lang['host']['de']['minenfelder'][6]='Unser Schiff <b>{1}</b> konnte aus Sichherheitsg&uuml;nden seinem Auftrag, ein Minenfeld zu legen,<br> nicht nachkommen, da es sich in einem Planetenorbit befindet.';
-$lang['host']['de']['minenfelder'][7]='Unser Schiff <b>{1}</b> konnte aus Sichherheitsg&uuml;nden seinem Auftrag, ein Minenfeld zu r&auml;umen,<br> nicht nachkommen, da es sich in einem Planetenorbit befindet.';
+$lang['host']['de']['minenfelder'][6]='Unser Schiff <b>{1}</b> konnte aus Sicherheitsg&uuml;nden seinem Auftrag, ein Minenfeld zu legen,<br> nicht nachkommen, da es sich in einem Planetenorbit befindet.';
+$lang['host']['de']['minenfelder'][7]='Unser Schiff <b>{1}</b> konnte aus Sicherheitsg&uuml;nden seinem Auftrag, ein Minenfeld zu r&auml;umen,<br> nicht nachkommen, da es sich in einem Planetenorbit befindet.';
 
 $lang['host']['de']['basenbauen'][0]='Die Konstruktion der Sternenbasis {1} wurde erfolgreich vollendet.';
 
@@ -67,7 +67,7 @@ $lang['host']['de']['ausweichen'][1]='Unser Schiff {1} mu&szlig;te leider dem Sc
 
 $lang['host']['de']['destabilisator'][0]='Der Planet <b>{1}</b> in Sektor <b>{2}</b> fiel einer schrecklichen Katastrophe zum Opfer.';
 $lang['host']['de']['destabilisator'][1]='Unsere Kolonie <b>{1}</b> in Sektor <b>{2}</b> fiel einer schrecklichen Katastrophe zum Opfer.';
-$lang['host']['de']['destabilisator'][2]='Der Planet <b>{1}</b> in Sektor <b>{2}</b> konnte nicht bezwungen werden, wir vemuten einen planetaren Schild.';
+$lang['host']['de']['destabilisator'][2]='Der Planet <b>{1}</b> in Sektor <b>{2}</b> konnte nicht bezwungen werden, wir vermuten einen planetaren Schild.';
 
 $lang['host']['de']['recycle'][0]='Wir konnten unser Schiff {1} erfolgreich zerlegen. Wir konnten {2} KT Baxterium,{3} KT Rennurbin und {4} KT Vomisaan gewinnen.';
 
@@ -80,12 +80,12 @@ $lang['host']['de']['bombardement'][0]='Unser Schiff {1} hat den feindlichen Pla
 $lang['host']['de']['bombardement'][1]='Unsere Kolonie auf {1} wurde bombardiert. Dabei wurden {2}({3}%) Mine(n), {4}({5}%) Fabrike(n) und {6}({7}%) Abwehranlage(n) vernichtet. {8}({9}%) Kolonist(en) starben in der Schlacht.';
 
 $lang['host']['de']['viral'][0]='Unser Schiff {1} hat mittels Viralen Angriff auf der feindlichen Kolonie {2} {3}({4}%) Kolonist(en) get&ouml;tet.';
-$lang['host']['de']['viral'][1]='Auf unserer Kolonie {1} brach eine Epedemie aus. Dabei kamen {2}({3}%) Kolonist(en) ums Leben.';
+$lang['host']['de']['viral'][1]='Auf unserer Kolonie {1} brach eine Epidemie aus. Dabei kamen {2}({3}%) Kolonist(en) ums Leben.';
 $lang['host']['de']['viral'][2]='Unser Schiff {1} hat mittels Viralen Angriff auf dem Planeten {2} {3}({4}%) der Ureinwohner get&ouml;tet.';
-$lang['host']['de']['viral'][3]='Auf unserer Kolonie {1} brach eine Epedemie unter den Ureinwohnern aus. Dabei kamen {2}({3}%) der Ureinwohner ums Leben.';
+$lang['host']['de']['viral'][3]='Auf unserer Kolonie {1} brach eine Epidemie unter den Ureinwohnern aus. Dabei kamen {2}({3}%) der Ureinwohner ums Leben.';
 $lang['host']['de']['viral'][4]='Ein medizinisches Zentrum auf der feindlichen Kolonie {2} hat den Viralen Angriff unseres Schiffes {1} verhindert.';
-$lang['host']['de']['viral'][5]='Auf unserer Kolonie {1} konnte eine Epedemie unter den Kolonisten durch unser medizinisches Zentrum verhindert werden.';
-$lang['host']['de']['viral'][6]='Auf unserer Kolonie {1} konnte eine Epedemie unter den Ureinwohnern durch unser medizinisches Zentrum verhindert werden.';
+$lang['host']['de']['viral'][5]='Auf unserer Kolonie {1} konnte eine Epidemie unter den Kolonisten durch unser medizinisches Zentrum verhindert werden.';
+$lang['host']['de']['viral'][6]='Auf unserer Kolonie {1} konnte eine Epidemie unter den Ureinwohnern durch unser medizinisches Zentrum verhindert werden.';
 
 $lang['host']['de']['terraforming'][0]='Wir haben die Temperatur des Planeten {1} erfolgreich um {2} Grad auf {3} Grad erh&ouml;ht.';
 $lang['host']['de']['terraforming'][1]='Wir haben die Temperatur des Planeten {1} erfolgreich um {2} Grad auf {3} Grad gesenkt.';
