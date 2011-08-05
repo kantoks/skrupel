@@ -25,14 +25,14 @@ $lang['orbitalesysteme']['lang'][6]='';
 
 $lang['orbitalesysteme']['name'][7]='Bunker';
 $lang['orbitalesysteme']['kurz'][7]='Der Bunker hilft nicht gegen Virale Invasion, Destabilisator oder fremde Bodentruppen und Kolonisten.';
-$lang['orbitalesysteme']['lang'][7]='Mindestens 1000 Kolonisten &uuml;berleben das Bombardement. Es k&ouml;nnen von anderen Mitspielern die ersten 500 Catox sowie jeweils 100 Vorr&auml;te, Lemin, Baxterium, Rennurbin und Vormissan nicht mehr hinaufgebeamt werden.';
+$lang['orbitalesysteme']['lang'][7]='Mindestens 1000 Kolonisten &uuml;berleben das Bombardement. Es k&ouml;nnen von anderen Mitspielern die ersten 500 Cantox sowie jeweils 100 Vorr&auml;te, Lemin, Baxterium, Rennurbin und Vomisaan nicht mehr hinaufgebeamt werden.';
 
 $lang['orbitalesysteme']['name'][8]='Echo-Zentrale';
 $lang['orbitalesysteme']['kurz'][8]='Schiffe in Reichweite der planetaren sensoren k&ouml;nnen aktiv gescannt werden.';
 $lang['orbitalesysteme']['lang'][8]='';
 
 $lang['orbitalesysteme']['name'][9]='Metropole';
-$lang['orbitalesysteme']['kurz'][9]='In dem urbanen Zentrum enteht Platz f&uuml;r 24 weitere Minen und 12 weitere Fabriken.';
+$lang['orbitalesysteme']['kurz'][9]='In dem urbanen Zentrum entsteht Platz f&uuml;r 24 weitere Minen und 12 weitere Fabriken.';
 $lang['orbitalesysteme']['lang'][9]='';
 
 $lang['orbitalesysteme']['name'][10]='Milit&auml;rst&uuml;tzpunkt';
@@ -49,7 +49,7 @@ $lang['orbitalesysteme']['lang'][12]='';
 
 $lang['orbitalesysteme']['name'][13]='PSI Corps';
 $lang['orbitalesysteme']['kurz'][13]='Scanreichweite von 90 Lichtjahren.';
-$lang['orbitalesysteme']['lang'][13]='Die PSI-Begabten sp&uuml;ren die Anwesendheit fremder V&ouml;lker. Getarnte Schiffe im Umkreis von 90 Lichtjahren werden ohne Schwierigkeiten entdeckt.';
+$lang['orbitalesysteme']['lang'][13]='Die PSI-Begabten sp&uuml;ren die Anwesenheit fremder V&ouml;lker. Getarnte Schiffe im Umkreis von 90 Lichtjahren werden ohne Schwierigkeiten entdeckt.';
 
 $lang['orbitalesysteme']['name'][14]='Wetterkontrollsystem';
 $lang['orbitalesysteme']['kurz'][14]='Erlaubt die Anpassung des Wetters';
