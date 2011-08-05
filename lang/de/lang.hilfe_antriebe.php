@@ -5,11 +5,11 @@ $lang['hilfe_antriebe'][1][2]="<ul><li>Kein Leminverbrauch<br>Da Sonnensegel sic
 
 $lang['hilfe_antriebe'][2][0]="Antigrav-Triebwerk";
 $lang['hilfe_antriebe'][2][1]="Warp 2";
-$lang['hilfe_antriebe'][2][2]="<ul><li>Tarnung<br>Da sich diese Antriebsart die Gravitationswellen der Umgebung zunutze macht, werden Langstreckensensoren gest&ouml;rt. Das Schiff ist f&uuml;r die Langstreckensensoren der anderen V&ouml;lker quasi unsichtbar (wie Tarnung).<li>Gravitationsschleuder<br>Mit diesem Antrieb ist man in der Lage, beim Starten aus einem Orbit (mit Warp 1-3), sich die Gravitaion wie eine Schleuder zu nutze zu machen. Das Schiff katapultiert sich dann mit Warp 4 aus der Umlaufbahn.<li>Fehlender Traktorstrahl<br>Aufgrund der verwendeten Technologie ist es nicht m&ouml;glich mit diesem Antrieb einen Traktorstrahl zu nutzen.</ul>";
+$lang['hilfe_antriebe'][2][2]="<ul><li>Tarnung<br>Da sich diese Antriebsart die Gravitationswellen der Umgebung zunutze macht, werden Langstreckensensoren gest&ouml;rt. Das Schiff ist f&uuml;r die Langstreckensensoren der anderen V&ouml;lker quasi unsichtbar (wie Tarnung).<li>Gravitationsschleuder<br>Mit diesem Antrieb ist man in der Lage, beim Starten aus einem Orbit (mit Warp 1-3), sich die Gravitation wie eine Schleuder zu nutze zu machen. Das Schiff katapultiert sich dann mit Warp 4 aus der Umlaufbahn.<li>Fehlender Traktorstrahl<br>Aufgrund der verwendeten Technologie ist es nicht m&ouml;glich mit diesem Antrieb einen Traktorstrahl zu nutzen.</ul>";
 
 $lang['hilfe_antriebe'][3][0]="Drugun-Umsetzer";
 $lang['hilfe_antriebe'][3][1]="Warp 3";
-$lang['hilfe_antriebe'][3][2]="<ul><li>DrugunEmissionen<br>Jeden Monat kommt es pro Antrieb mit einer Wahrscheinlichkeit von 2% zu einer DrugunEmission, welche s&auml;mtliche Tarnfeldgeneratoren (auch die eigenen) im Umkreis von 117 Lichjahren deaktiviert.<li>Gravitationsschleuder<br>Mit diesem Antrieb ist man in der Lage, beim Starten aus einem Orbit (mit Warp 1-3), sich die Gravitaion wie eine Schleuder zu nutze zu machen. Das Schiff katapultiert sich dann mit Warp 4 aus der Umlaufbahn.</ul>";
+$lang['hilfe_antriebe'][3][2]="<ul><li>DrugunEmissionen<br>Jeden Monat kommt es pro Antrieb mit einer Wahrscheinlichkeit von 2% zu einer DrugunEmission, welche s&auml;mtliche Tarnfeldgeneratoren (auch die eigenen) im Umkreis von 117 Lichtjahren deaktiviert.<li>Gravitationsschleuder<br>Mit diesem Antrieb ist man in der Lage, beim Starten aus einem Orbit (mit Warp 1-3), sich die Gravitation wie eine Schleuder zu nutze zu machen. Das Schiff katapultiert sich dann mit Warp 4 aus der Umlaufbahn.</ul>";
 
 $lang['hilfe_antriebe'][4][0]="Lineartriebwerk";
 $lang['hilfe_antriebe'][4][1]="Warp 4";

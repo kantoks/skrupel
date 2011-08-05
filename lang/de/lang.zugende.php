@@ -11,5 +11,5 @@ $lang['zugende']['wirdberechnet']='Einen Moment Geduld bitte.<br><br>Der Zug wir
 
 $lang['zugende']['sprungwohin']='In welche Galaxie sollen wir springen?';
 $lang['zugende']['sprungdurchfuehren']='Sprung durchf&uuml;hren';
-$lang['zugende']['spunginitialisiert']='Einen Moment Geduld bitte.<br><br>Der Spung wurde initialisiert.';
+$lang['zugende']['spunginitialisiert']='Einen Moment Geduld bitte.<br><br>Der Sprung wurde initialisiert.';
 ?>
