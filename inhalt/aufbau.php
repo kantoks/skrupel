@@ -4,7 +4,6 @@ include ("../inc.conf.php");
 if(empty($_GET["bildpfad"])) {$_GET["bildpfad"]='../bilder';}
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 
-
 if ($_GET["fu"]==0) { ?>
     <html>
         <head>
@@ -15,8 +14,7 @@ if ($_GET["fu"]==0) { ?>
     </html>
 <?php }
 if (($_GET["fu"]>=1) and ($_GET["fu"]<=99)) {
-    if ($_GET["fu"]==8) {
-        
+    if ($_GET["fu"]==8) {    
         $url="http://".$_SERVER['SERVER_NAME'];
         $folders = explode('/', $_SERVER['SCRIPT_NAME']);
         $count = 0;
@@ -27,8 +25,6 @@ if (($_GET["fu"]>=1) and ($_GET["fu"]<=99)) {
             }
             $count++;
         }
-        
-        
         ?>
         <html>
             <head>
@@ -52,7 +48,6 @@ if ($_GET["fu"]==100) {
     ?>
     <frameset framespacing="0" border="false" frameborder="0" rows="50,18,*,16,50">
         <frame name="rahmenk" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
-
         <frameset framespacing="0" border="false" frameborder="0" cols="60,114,*,114,60">
             <frame name="rahmen0" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
             <frame name="rahmen1" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=19&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
@@ -60,27 +55,21 @@ if ($_GET["fu"]==100) {
             <frame name="rahmen3" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=21&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
             <frame name="rahmen4" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
         </frameset>
-
         <frameset framespacing="0" border="false" frameborder="0" cols="60,18,*,18,60">
             <frame name="rahmen10" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
-            
             <frameset framespacing="0" border="false" frameborder="0" rows="80,*,92">
                 <frame name="rahmen15" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=25&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
                 <frame name="rahmen16" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=26&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
                 <frame name="rahmen17" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=27&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
             </frameset>
-
           <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="<?php echo substr($_SERVER['QUERY_STRING'],13,strlen($_SERVER['QUERY_STRING'])-13); ?>" target="_self">
-
             <frameset framespacing="0" border="false" frameborder="0" rows="80,*,92">
                 <frame name="rahmen18" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=28&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
                 <frame name="rahmen19" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=29&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
                 <frame name="rahmen20" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=30&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
             </frameset>
-
             <frame name="rahmen14" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
         </frameset>
-
         <frameset framespacing="0" border="false" frameborder="0" cols="60,114,*,114,60">
             <frame name="rahmen5" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
             <frame name="rahmen6" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=22&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
@@ -88,11 +77,10 @@ if ($_GET["fu"]==100) {
             <frame name="rahmen8" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=24&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
             <frame name="rahmen9" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
         </frameset>
-
         <frame name="rahmenk" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
     </frameset>
-
     <noframes>
     <body>
     </body>
-<?php } ?>
+<?php
+}
