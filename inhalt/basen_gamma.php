@@ -145,11 +145,15 @@ if ($_GET["fu"]==2) {
     $ok=1;
      
     //natives liefern baumaterial anfang
-     
-    $zeiger2 = @mysql_query("SELECT native_fert FROM $skrupel_planeten where besitzer=$spieler and id=$planetid");
+    $zeiger2 = @mysql_query("SELECT native_fert,native_kol FROM $skrupel_planeten where besitzer=$spieler and id=$planetid");
     $array2 = @mysql_fetch_array($zeiger2);
     $native_fert=$array2["native_fert"];
-    $native_fert_material=@intval(substr($native_fert,28,1));
+    $native_kol=$array2["native_kol"];
+    if ($native_kol>0){
+      $native_fert_material=@intval(substr($native_fert,28,1));
+    }else{
+      $native_fert_material=0;
+    }
      
     switch($native_fert_material) {
     case 1:
@@ -418,10 +422,15 @@ if ($_GET["fu"]==3) {
     $art=$array["art"];
  
     //natives liefern baumaterial anfang   
-    $zeiger2 = @mysql_query("SELECT native_fert FROM $skrupel_planeten where besitzer=$spieler and id=$planetid");
+    $zeiger2 = @mysql_query("SELECT native_fert,native_kol FROM $skrupel_planeten where besitzer=$spieler and id=$planetid");
     $array2 = @mysql_fetch_array($zeiger2);
     $native_fert=$array2["native_fert"];
-    $native_fert_material=@intval(substr($native_fert,28,1));
+    $native_kol=$array2["native_kol"];
+    if ($native_kol>0){
+      $native_fert_material=@intval(substr($native_fert,28,1));
+    }else{
+      $native_fert_material=0;
+    }
     //natives liefern baumaterial ende
 
     $antriebestufe=$_POST['antriebe'];
@@ -472,33 +481,33 @@ if ($_GET["fu"]==3) {
 
     //natives liefern baumaterial anfang
     switch($native_fert_material) {
-    case 1:
-        $noetig_antriebe=0;
-        break;
-    case 2:
-        $noetig_energetik=0;
-        break;
-    case 3:
-        $noetig_projektile=0;
-        break;
-    case 4:
-        $noetig_antriebe=0;
-        break;
-    case 5:
-        $noetig_energetik=0;
-        break;
-    case 6:
-        $noetig_projektile=0;
-        break;
-    case 7:
-        $noetig_antriebe=0;
-        break;
-    case 8:
-        $noetig_energetik=0;
-        break;
-    case 9:
-        $noetig_projektile=0;
-        break;
+      case 1:
+        if ($antriebestufe==1) {$noetig_antriebe=0;}
+      break;
+      case 2:
+        if ($energetikstufe==1) {$noetig_energetik=0;}
+      break;
+      case 3:
+        if ($projektilstufe==1) {$noetig_projektile=0;}
+      break;
+      case 4:
+        if ($antriebestufe==2) {$noetig_antriebe=0;}
+      break;
+      case 5:
+        if ($energetikstufe==2) {$noetig_energetik=0;}
+      break;
+      case 6:
+        if ($projektilstufe==2) {$noetig_projektile=0;}
+      break;
+      case 7:
+        if ($antriebestufe==3) {$noetig_antriebe=0;}
+      break;
+      case 8:
+        if ($energetikstufe==3) {$noetig_energetik=0;}
+      break;
+      case 9:
+        if ($projektilstufe==3) {$noetig_projektile=0;}
+      break;
     }
     //natives liefern baumaterial ende
 
@@ -618,4 +627,3 @@ if ($_GET["fu"]==6) {
         <?php
     include ("inc.footer.php");
 }
-?>

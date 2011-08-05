@@ -76,12 +76,10 @@ if ($_GET["fu"]==1) {
                     </tr>
                 <?php } ?>
             </table>
-            <p>Diese Addons, und wietere finden Sie auf der <a target="_blank" href="http://www.skrupel.de/www/index.php/Download_der_Metas">Skrpel Hompage</a></p>
             <?php
     }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==2) {
     include ("inc.header.php");
     if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
@@ -90,13 +88,10 @@ if ($_GET["fu"]==2) {
         $zeiger = @mysql_query("SELECT extend FROM $skrupel_info");
         $array = @mysql_fetch_array($zeiger);
         $spiel_extend=$array["extend"];
-          
         $extend='';
-          
         for ($n=0;$n<50;$n++) {
             
             if ($pos==$n) {
-        
                 if ($value=='1') {
                     $extend.='1';
                 } else {
@@ -111,10 +106,8 @@ if ($_GET["fu"]==2) {
                 }
             }
         }
-
         $zeiger = @mysql_query("update $skrupel_info set extend='$extend'");
         ?>
-
         <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
             <center>
                 <table border="0" height="100%" cellspacing="0" cellpadding="0">
@@ -137,4 +130,3 @@ if ($_GET["fu"]==2) {
             </center>
     <?php } include ("inc.footer.php");
 }
-?>
