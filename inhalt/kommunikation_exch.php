@@ -665,7 +665,7 @@ if ($_GET["fu"]==6) {
                                 $user_id=$array["id"];
                                 $spielerchatfarbe=$array["chatfarbe"];
                                 ?>
-                                <option value="<?php echo $user_id; ?>" style="background-color:#<?php echo $spielerchatfarbe?>;color:#000000" <?if($_POST["an"]==$user_id) echo "selected";?> ><?php echo $nick?></option>
+                                <option value="<?php echo $user_id; ?>" style="background-color:#<?php echo $spielerchatfarbe?>;color:#000000" <?php if($_POST["an"]==$user_id) echo "selected";?> ><?php echo $nick?></option>
                                 <?php
                             }
                             ?>

@@ -1,6 +1,6 @@
 <?php
 include ("../inc.conf.php");
-if(empty(["sprache"])){$_GET["sprache"]=$language;}
+if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.uebersicht_imperien.php";
 include ($file);
 
