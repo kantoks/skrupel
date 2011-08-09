@@ -13,9 +13,7 @@ $lang['kommunikationpolitik']['icon'][5][0]='Allianz';
 $lang['kommunikationpolitik']['icon'][5][1]='Allianz endet n&auml;chsten Monat.';
 $lang['kommunikationpolitik']['icon'][5][2]='Allianz endet in {1} Monaten.';
 $lang['kommunikationpolitik']['slot_n']="Slot nicht belegt";
-
 $lang['kommunikationpolitik']['politik']='Politik';
-
 $lang['kommunikationpolitik']['handlung'][0]='Krieg erkl&auml;ren';
 $lang['kommunikationpolitik']['handlung'][1]='Kriegsende erbitten';
 $lang['kommunikationpolitik']['handlung'][2]='Handelsabkommen anbieten';
@@ -23,11 +21,9 @@ $lang['kommunikationpolitik']['handlung'][3]='Nichtangriffspakt anbieten';
 $lang['kommunikationpolitik']['handlung'][4]='V&ouml;lkerb&uuml;ndnis anbieten';
 $lang['kommunikationpolitik']['handlung'][5]='Allianz anbieten';
 $lang['kommunikationpolitik']['handlung'][6]='Abkommen beenden';
-
 $lang['kommunikationpolitik']['empfwaehlen']='Bitte Empf&auml;ngervolk w&auml;hlen';
 $lang['kommunikationpolitik']['erklaerunguebermitteln']='Erkl&auml;rung &uuml;bermitteln';
 $lang['kommunikationpolitik']['allein']='Uns begegnete leider noch kein Volk';
-
 $lang['kommunikationpolitik']['keinebotschaft']='Es wurde keine Botschaft ausgew&auml;hlt.';
 $lang['kommunikationpolitik']['keinvolk']='Es wurde kein Empf&auml;ngervolk ausgew&auml;hlt.';
 $lang['kommunikationpolitik']['bereitskrieg']='Es herrscht bereits Krieg mit dem Empf&auml;ngervolk.';
@@ -52,4 +48,3 @@ $lang['kommunikationpolitik']['nichtbrechen']='Bei TeamTodfeind kann diese<br>Al
 $lang['kommunikationpolitik']['allianzendet']="Die Allianz wurde erfolgreich gebrochen<br>und endet in <b>12</b> Monaten.";
 $lang['kommunikationpolitik']['ingespraechen']="Wir befinden uns bereits mit dem Empf&auml;ngervolk in Gespr&auml;chen.";
 $lang['kommunikationpolitik']['zurueck']='Zur&uuml;ck';
-?>

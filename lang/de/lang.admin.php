@@ -82,4 +82,3 @@ $lang['admin']['forsch']='Forschung';
 $lang['admin']['held']='Helden';
 
 $lang['admin']['elementueber']='Die Element-Einstellungen wurden &uuml;bernommen.';
-?>

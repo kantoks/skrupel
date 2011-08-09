@@ -2650,4 +2650,3 @@ if ($_GET["fu"]==3) {
         <?php
     include ("inc.footer.php");
 }
-?>

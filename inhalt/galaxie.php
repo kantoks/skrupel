@@ -1460,4 +1460,3 @@ if ($fuid==2) {
     <?php
 }
 @mysql_close();
-?>

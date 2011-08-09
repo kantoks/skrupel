@@ -1889,7 +1889,3 @@ class CJP_StandardConnector
 		return $buffer;
 	}
 }
-
-
-
-?>

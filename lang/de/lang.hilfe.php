@@ -2,32 +2,24 @@
 $lang['hilfe']['stufe']='Stufe {1}';
 $lang['hilfe']['cx']='{1} Cx';
 $lang['hilfe']['kt']='{1} KT';
-
 $lang['hilfe']['ueberschrift'][1]='Techlevel Rumpf';
 $lang['hilfe']['text'][1]="Der Technologielevel Rumpf einer Sternenbasis legt fest, welche Schiffsh&uuml;llen auf der Sternenbasis konstruiert werden k&ouml;nnen. Eine Sternenbasis mit Techlevel Rumpf 5 kann zB. s&auml;mtliche Schiffe der Techlevel 1-5 produzieren.<br><br> Ein Upgrade eines Techlevels nimmt keinen Zug in Anspruch.<br><br>";
-
 $lang['hilfe']['ueberschrift'][2]='Techlevel Antrieb';
 $lang['hilfe']['text'][2]="Der Technologielevel Antrieb einer Sternenbasis legt fest, welche Antriebe auf der Sternenbasis konstruiert werden k&ouml;nnen. Eine Sternenbasis mit Techlevel Antrieb 5 kann zB. s&auml;mtliche Antriebe der Techlevel 1-5 produzieren.<br><br> Ein Upgrade eines Techlevels nimmt keinen Zug in Anspruch.<br><br>";
-
 $lang['hilfe']['ueberschrift'][3]='Techlevel Antrieb';
 $lang['hilfe']['text'][3]="Der Technologielevel Energetik einer Sternenbasis legt fest, welche energetischen Waffensysteme auf der Sternenbasis konstruiert werden k&ouml;nnen. Eine Sternenbasis mit Techlevel Energetik 5 kann zB. s&auml;mtliche energetischen Waffensysteme der Techlevel 1-5 produzieren.<br><br> Ein Upgrade eines Techlevels nimmt keinen Zug in Anspruch.<br><br>";
-
 $lang['hilfe']['ueberschrift'][4]='Techlevel Projektile';
 $lang['hilfe']['text'][4]="Der Technologielevel Projektile einer Sternenbasis legt fest, welche auf Projektile basierenden Waffensysteme auf der Sternenbasis konstruiert werden k&ouml;nnen. Eine Sternenbasis mit Techlevel Projektile 5 kann zB. s&auml;mtliche auf Projektile basierenden Waffensysteme der Techlevel 1-5 produzieren.<br><br> Ein Upgrade eines Techlevels nimmt keinen Zug in Anspruch.<br><br>";
-
 $lang['hilfe']['ueberschrift'][5]='Abwehr-Anlagen';
 $lang['hilfe']['text'][5]="Die Abwehr-Anlagen des Planeten bilden zusammen mit dem eventuell vorhandenen Abwehr-Anlagen einer Sternenbasis das planetare Verteidigungssystem. Die Anzahl der Abwehr-Anlagen auf einem Planeten bestimmt den Techlevel der energetischen Waffen, sowie die Anzahl der J&auml;gerstartrampen. Beide Abwehr-Anlagen (Planet und Sternenbasis) bestimmen durch ihre gemeinsame Anzahl die Anzahl der energetischen Waffen im Verteidigungssystem. Eine vorhandene Sternenbasis tr&auml;gt 5 zus&auml;tztzliche J&auml;gerrampen hinzu.<br><br>Die maximale Anzahl der Abwehr-Anlagen auf Planeten wird von der Gr&ouml;sse der Bev&ouml;lkerung bestimmt.<br><br>";
 $lang['hilfe'][5][0]='Kosten pro Anlage auf Planeten';
 $lang['hilfe'][5][1]="<br>Wird der Bau automatisiert, so versucht die Bev&ouml;lkerung jede Runde ressourcenabh&auml;ngig das Maximum an Abwehr-Anlagen zu produzieren.";
-
 $lang['hilfe']['ueberschrift'][6]='Fabriken';
 $lang['hilfe']['text'][6]="Jede Fabrik produziert eine Kilotonne Vorr&auml;te pro Monat.<br><br>Die maximale Anzahl der Fabriken wird von der Gr&ouml;&szlig;e der Bev&ouml;lkerung bestimmt.<br><br>";
 $lang['hilfe'][6][0]='Kosten pro Fabrik';
 $lang['hilfe'][6][1]="<br>Wird der Bau automatisiert, so versucht die Bev&ouml;lkerung jede Runde ressourcenabh&auml;ngig das Maximum an Fabriken zu bauen.";
-
 $lang['hilfe']['ueberschrift'][7]='Vorr&auml;te';
 $lang['hilfe']['text'][7]="Vorr&auml;te werden zum Bau von zB. Fabriken, Minen oder auch Abwehr-Anlagen ben&ouml;tigt. Sie k&ouml;nnen auch zum Preis von 1 Cantox pro 1 Kilotonne verkauft werden.<br><br>Jede Fabrik produziert eine Kilotonne Vorr&auml;te pro Monat.<br><br>Wird der Verkauf automatisiert, so werden s&auml;mtliche Vorr&auml;te, die am Ende eines Monats &uuml;brig bleiben von der Bev&ouml;lkerung verkauft.";
-
 $lang['hilfe']['ueberschrift'][8]='Minen';
 $lang['hilfe']['text'][8]="Minen sch&uuml;rfen nach den 4 Rohstoffen Lemin, Baxterium, Rennurbin und Vomisaan im Planetenkern. Baxterium, Rennurbin und Vomisaan werden zum Bau von Schiffen, Sternenbasen und Schiffskomponenten ben&ouml;tigt. Bei Lemin hingegen handelt es sich um einen fl&uuml;chtigen Treibstoff.<br><br>Die Konzentration gibt an, wieviele Minen ben&ouml;tigt werden, um eine Kilotonne des Rohstoffes pro Monat zu f&ouml;rdern.<br><br>";
 $lang['hilfe'][8][0]='hochkonzentriert';
@@ -40,17 +32,13 @@ $lang['hilfe'][8][6]='{1} Minen';
 $lang['hilfe'][8][7]="<br>Die maximale Anzahl der Minen wird von der Gr&ouml;sse der Bev&ouml;lkerung bestimmt.<br><br>";
 $lang['hilfe'][8][8]='Kosten pro Mine';
 $lang['hilfe'][8][9]="<br>Wird der Bau automatisiert, so versucht die Bev&ouml;lkerung jede Runde ressourcenabh&auml;ngig das Maximum an Minen zu bauen.";
-
 $lang['hilfe']['ueberschrift'][9]='H&uuml;llenproduktion';
 $lang['hilfe']['text'][9]="Ein fertiges Schiff setzt sich aus der Schiffsh&uuml;lle sowie den Komponenten Antriebe, energetische Waffensysteme und projektibasierende Waffensysteme zusammen. Die Schiffsh&uuml;lle bestimmt dabei die Anzahl der einzelnen Komponenten, sowie die speziellen Fertigkeiten des Schiffes.<br><br>Um eine Schiffsh&uuml;lle produzieren zu k&ouml;nnen, muss man den entsprechenden Techlevel Rumpf in der Raumbasis erreicht haben. Der ben&ouml;tigte Techlevel ist in der zweiten Spalte zu sehen, wobei die Namen der Schiffe, die aus diesem Grunde nicht produziert werden k&ouml;nnen, in grau gehalten sind. Schiffsh&uuml;llen, die aus Mangel an Rohstoffen bzw. Cantox nicht produziert werden k&ouml;nnen, erscheinen zwar ganz normal, aber der entsprechende Button zum produzieren erscheint auch hier nicht.<br><br>Die letzte Spalte \"Lager\" zeigt an, wieviel H&uuml;llen des entsprechenden Types bereits in den Lagern der Sternenbasis liegen.";
-
 $lang['hilfe']['ueberschrift'][10]='Abwehr-Anlagen';
 $lang['hilfe']['text'][10]="Die Abwehr-Anlagen des Planeten bilden zusammen mit dem eventuell vorhandenen Abwehr-Anlagen einer Sternenbasis das planetare Verteidigungssystem. Die Anzahl der Abwehr-Anlagen auf einem Planeten bestimmt den Techlevel der energetischen Waffen, sowie die Anzahl der J&auml;gerstartrampen. Beide Abwehr-Anlagen (Planet und Sternenbasis) bestimmen durch ihre gemeinsame Anzahl die Anzahl der energetischen Waffen im Verteidigungssystem. Eine vorhandene Sternenbasis tr&auml;gt 5 zus&auml;tzliche J&auml;gerrampen hinzu.<br><br>Die maximale Anzahl der Abwehr-Anlagen auf Sternenbasen betr&auml;gt 50.<br><br>";
 $lang['hilfe'][10][0]='Kosten pro Anlage auf Sternenbasis';
-
 $lang['hilfe']['ueberschrift'][11]='Antriebssysteme';
 $lang['hilfe']['text'][11]="Die Antriebsart bestimmt den maximalen sicheren Warpfaktor, den ein Schiffe ohne Schaden zu nehmen erreichen kann. Die Anzahl der Triebwerke ist hierbei unerheblich.<br><br>Jedes Schiff kann ohne weiteres schneller fliegen, als der eigene maximale sichere Warpfaktor. &Uuml;berschreitet man diesen, so wirkt sich das enorm auf den Leminverbrauch aus.<br><br>So kann zB. ein Schiff mit einem Sonnensegel (Warp 1) ohne weiteres Warp 9 fliegen, nur reicht das Lemin sehr wahrscheinlich nicht mehr f&uuml;r den Heimflug.";
-
 $lang['hilfe']['ueberschrift'][12]='Waffensysteme';
 $lang['hilfe']['text'][12]="Die einzelnen Waffensysteme verf&uuml;gen &uuml;ber unterschiedliche Durchschlagskraft. Die Anzahl der Systeme bestimmt die Sch&uuml;sse des Systems pro Kampfphase. Raumj&auml;ger machen immer einen Schaden von 4%, wobei die Anzahl der Hanger angeben, wieviele J&auml;ger pro Kampfrunde starten k&uuml;nnen.<br><br>";
 $lang['hilfe'][12][0]='energetische Waffen';
@@ -63,16 +51,12 @@ $lang['hilfe'][12][6]=array('Fusionsraketen','Photonentorpedos','Transformkanone
 $lang['hilfe'][12][7]='Normalmodus';
 $lang['hilfe'][12][8]='Kapermodus';
 $lang['hilfe'][12][9]='<br>RS-Rumpfschaden<br>CS-Crewschaden';
-
 $lang['hilfe']['ueberschrift'][13]='Spezialmissionen';
 $lang['hilfe']['text'][13]="Ein Schiff kann immer nur eine Spezialmission gleichzeitig ausf&uuml;hren. Eine Spezialmission ist nicht einmalig, sondern eher eine Richtlinie an das Schiff, diese Mission auszuf&uuml;hren, solange es nicht zu einem Widerruf kommt.<br><br>Welche Spezialmissionen zur Verf&uuml;gung stehen h&auml;ngt ganz allein vom Schiffstyp ab.<br><br>Spezialmissionen, die in der momentanen Situation nicht ausgef&uuml;hrt werden k&ouml;nnen, werden einfach nicht beachtet, bis sie wieder durchf&uuml;hrbar sind.<br><br>Die Spezialmission \"Planetenbombardement\" wirkt z.B. nur, wenn sich das entsprechende Schiff in einer feindlichen Umlaufbahn befindet. Im All bringt diese Mission nichts, wird aber sofort wieder durchgef&uuml;hrt, sobald man sich erneut in einem fremden Planetenorbit befindet.";
-
 $lang['hilfe']['ueberschrift'][14]='Scanning';
 $lang['hilfe']['text'][14]="Planeten und fremde Schiffe im Scanbereich (innerhalb des blauen Kreises um das eigene Schiff) k&ouml;nnen gescannt werden. Man erh&auml;lt einige grobe Angaben &uuml;ber die Ziele.<br><br>Insbesondere beim Erobern von fremden Kolonien ist es wichtig zu wissen, ob die eigenen Kolonisten zahlreich genug sind, um sich gegen die Fremden behaupten zu k&ouml;nnen.";
-
 $lang['hilfe']['ueberschrift'][15]='Transporterraum';
 $lang['hilfe']['text'][15]="Im Transporterraum kann man aufs Einfachste Waren hinab auf den Planeten bzw. vom Planeten hinauf in die Lagerr&auml;ume des Schiffes beamen.<br><br>Links stehen die Waren der Lagerr&auml;ume des Schiffes und rechts die vorhandenen Waren auf der Planetenoberfl&auml;che. 	&uuml;ber die Schieberegler l&auml;sst sich schnell einstellen, wo welche Waren hingeh&ouml;ren. Mit dem Button \"Transport durchf&uuml;hren\" werden entsprechende Befehle von einem Crewman durchgef&uuml;hrt.<br><br>Sind die Schieberegler zu grob, weil insgesamt eine zu grosse Menge einer Ware vorhanden ist, so kann man den Schieberegler auch einfach anklicken und mit den Cursortasten bedienen.<br><br>Zu beachten sind die maximalen Kapazit&auml;ten der Lagerr&auml;ume und der Tanks des Schiffes.<br><br>1 KT Baxterium, Rennurbin, Vomisaan sowie Vorr&auml;te nehmen jeweils eine KT Lagerraum ein.<br><br>1 KT Lemin f&auml;llt eine KT Platz der Tanks. Lemin l&auml;sst sich nicht in den normalen Lagerr&auml;umen unterbringen.<br><br>100 Kolonisten mitsamt ihren Habseligkeiten ben&ouml;tigen 1 KT Platz der normalen Lagerr&auml;ume.<br><br>Cantox ben&ouml;tigen keinen nennenswerten Platz.";
-
 $lang['hilfe']['ueberschrift'][16]='Flugkontrolle';
 $lang['hilfe']['text'][16]="Es ist recht einfach, den Kurs eines Schiffes festzulegen.<br><br>Als erstes aktiviert man den Kursmodus durch Klick der entsprechenden Checkbox. Ist der Kursmodus aktiviert, ist man nicht in der Lage einen anderen Men&uuml;punkt auszuw&auml;hlen oder irgendwas anderes zu tun. Der Kursmodus deaktiviert sich erst wenn man einen Kurs best&auml;tigt oder den Kursmodus h&auml;ndisch &uuml;ber die Checkbox widerruft.<br><br>Ist der Kursmodus aktiv und klickt man auf die Karte, so wird eine entsprechende Kursroute des aktiven Schiffes zum markierten Punkt gezeigt und entsprechende Werte berechnet. Man sollte auch unter Geschwindigkeit die gew&uuml;nschte Warpgeschwindigkeit einstellen. Sofort wird berechnet, wie lange der Flug dauert und wie hoch der Treibstoffverbrauch ist.<br><br>";
 $lang['hilfe'][16][0][0]='Zielkoordinaten';
@@ -88,98 +72,66 @@ $lang['hilfe'][16][1][3]='Hier kann man die gew&uuml;nschte Warpgeschwindigkeit 
 $lang['hilfe'][16][1][4]='Die Monate, die das Schiff bei der ausgw&auml;hlten Geschwindigkeit zum Zielpunkt ben&ouml;tigt. Ein Monat entspricht einem Spielzug.';
 $lang['hilfe'][16][1][5]='Wieviel Treibstoff wird verbraucht, um an das Ziel zu gelangen.';
 $lang['hilfe'][16][2]='Wenn man den Flugplan best&auml;tigt, f&auml;rben sich die Markierungen in der eigenen Spielerfarbe ein. Geschieht dies nicht, so konnte die Route nicht festgelegt werden und die entsprechende Meldung erscheint. Routen, deren erste Etappe schon mehr Lemin verbraucht als das Schiff in Ihren Tank hat werden nicht &uuml;bernommen. Au&szlig;erdem werden alle Flugdaten gel&ouml;scht, wenn eine Geschwindigkeit von 0 Warp angegeben wird.';
-
 $lang['hilfe']['ueberschrift'][17]='Logbuch';
 $lang['hilfe']['text'][17]="Das Logbuch eines Schiffes dient als M&ouml;glichkeit sich zu einzelnen Schiffen Notizen zu machen. Sie erscheinen als Tooltipp in der Galaxieansicht.";
-
 $lang['hilfe']['ueberschrift'][18]='Autorefuel';
 $lang['hilfe']['text'][18]="Erreicht das Schiff einen Planeten, so versucht es eigenst&auml;ndig seinen Tank zu f&uuml;llen.";
-
 $lang['hilfe']['ueberschrift'][19]='Terraforming';
 $lang['hilfe']['text'][19]="Befindet sich das Schiff in einem Orbit so erh&ouml;ht bzw. senkt es die Planetentemperatur um einen Grad pro Monat. Was es nun genau tut, ist der Schiffsbeschreibung zu entnehmen.";
-
 $lang['hilfe']['ueberschrift'][20]='Schiff-Recycling';
 $lang['hilfe']['text'][20]="Befindet sich das Schiff in einem Orbit eines Planeten mit einer Sternenbasis so wird es vernichtet. Die Mineralien in den Lagerr&auml;umen und im Tank werden auf den Planeten transportiert. Es werden aus dem alten Frack 80% der Baukosten der H&uuml;lle an Mineralien wiedergewonnen.";
-
 $lang['hilfe']['ueberschrift'][21]='Sprungtriebwerk';
 $lang['hilfe']['text'][21]="Befindet sich genug Lemin im Tank so f&uuml;hrt das Schiff einen Raumsprung durch. Welche Entfernungen erreicht werden und wieviel Lemin ben&ouml;tigt wird ist der Schiffsbeschreibung zu entnehmen.";
-
 $lang['hilfe']['ueberschrift'][22]='Tarnfeldgenerator';
 $lang['hilfe']['text'][22]="Ist der Tarnfeldgenerator aktiv so ist das Schiff nicht von den Langstreckensensoren des Feindes nicht zu entdecken. Es ist nicht auf der Galaxiekarte zu entdecken, solange es nicht in den Sensorbereich der feindliche Schiffe oder Planeten ger&auml;t.";
-
 $lang['hilfe']['ueberschrift'][23]='Quarkreorganisator';
 $lang['hilfe']['text'][23]="Der Quarkreorganisator reorganisiert Quark auf subatomarer Ebene und ist in der Lage aus Vorr&auml;ten und einem Mineral Lemin zu gewinnen. Wieviel Vorr&auml;te und welche Mineralien ben&ouml;tigt werden ist der Schiffsbeschreibung zu entnehmen.";
-
 $lang['hilfe']['ueberschrift'][24]='SubpartikelCluster';
 $lang['hilfe']['text'][24]="Der Subpartikelcluster ist in der Lage aus Vorr&auml;ten Mineralien zu gewinnen. Wieviele Vorr&auml;te ben&ouml;tigt und welche Mineralien gewonnen werden ist der Schiffsbeschreibung zu entnehmen.";
-
 $lang['hilfe']['ueberschrift'][25]='Sprungtor konstruieren';
 $lang['hilfe']['text'][25]="Das Schiff muss die erforderlichen Mineralien in seinen Lagerr&auml;umen haben und mindestens 30 Lichtjahre von Planeten und anderen Anomalien entfernt sein. Wird die Spezialmission aktiviert und ist auch kein Flugkurs eingegeben, so baut das Schiff in der n&auml;chsten Runde ein Sprungtor. Dieses Sprungtor ist der Anfang eines Transwarpkanals, welcher sich hinter dem Schiff herzieht.<br><br>Fliegt nun ein anderes Schiff in das Sprungtor, so wird es quer durchs All geschleudert und tritt irgendwo wieder in den Normalraum ein. Erst wenn das bauende Schiff ein zweites Tor vollendet, ist der Transwarpkanal stabil und verbindet die beiden Tore.<br><br>Die ben&ouml;tigten Mineralien sind den Schiffsbeschreibungen zu entnehmen.";
-
 $lang['hilfe']['ueberschrift'][26]='Astrophysisches Labor';
 $lang['hilfe']['text'][26]="Das Astrophysische Labor erh&ouml;ht bei Aktivierung die Scanreichweite des Schiffes von den normalen 47 Lichtjahren auf 116 Lichtjahre.";
-
 $lang['hilfe']['ueberschrift'][27]='Planetenbombardement';
 $lang['hilfe']['text'][27]="Befindet sich das Schiff in einem feindlichen Orbit so bombardiert es mit seinen Waffen die Planetenoberfl&auml;che.<br><br>Die St&auml;rke des Angriffes errechnet sich wie folgt<br><br><center>((St&auml;rke energetische Waffen) * (Anzahl energetische Waffen) + (St&auml;rke projektilbasierende Waffen) * (Anzahl projektilbasierende Waffen) + (Anzahl Hangar) * 35) / 4</center><br>Die resultierende St&auml;rke wird zuf&auml;llig auf die Bereiche Bev&ouml;lkerung, Minen, Fabriken und Abwehranlagen verteilt und stellt die entsprechende Vernichtung in Prozent da.";
-
 $lang['hilfe']['ueberschrift'][28]='Erweiterte Sensorenphalanx';
 $lang['hilfe']['text'][28]="Das Erweiterte Sensorenphalanx erh&ouml;ht bei Aktivierung die Scanreichweite des Schiffen von den normalen 47 Lichtjahren auf 85 Lichtjahre.";
-
 $lang['hilfe']['ueberschrift'][29]='Subraumverzerrer';
 $lang['hilfe']['text'][29]="Ein Subraumverzerrer erzeugt einen Riss im Subraum, welcher sofort wieder ins sich kollabiert und eine gewaltige Schockwelle im Subraum hinterl&auml;sst, welche sich &uuml;ber einen Radius von 83 Lichtjahren ausdehnt.<br><br>Er hat 2 Modi. Diese beziehen sich auf den Zeitpunkt der Aktivierung. Im Normalmodus aktiviert er sich vor der normalen Flugphase, im Betamodus danach.<br><br>Schiffe die den Subraumverzerrer einsetzen werden dabei vernichtet. Welchen Schaden die umliegenden Schiffe zu erwarten haben findet sich entsprechend in der Schiffsbeschreibung.";
-
 $lang['hilfe']['ueberschrift'][30]='Routing';
 $lang['hilfe']['text'][30]="Mittels Routing ist es m&ouml;glich einem Schiff eine feste Route einzugeben, welche es abfliegt bis die Route ge&auml;ndert/gel&ouml;scht wird oder der Treibstoff zur Neige geht. Als einzelne Wegpunkte dienen eigene Kolonien, wobei f&uuml;r jeden Wegpunkt definiert werden kann, welche Rohstoffe an Bord und welche auf den Planeten gebeamt werden sollen.<br><br>Als erstes w&auml;hlt man den anzulaufenden Wegpunkt es wird angezeigt welcher Wegpunkt aktuell bearbeitet wir.<br>Dann definiert man das Verhalten des Schiffes im Orbit des Wegpunktes. Es kann f&uuml;r Cantox, Vorr&auml;te sowie die 4 Mineralien einzeln festgelegt werden, ob diese hinauf oder hinabgebeamt werden sollen. Man kann sie auch einfach lassen wie sie sind.<br>Nun kann man sich noch &uuml;berlegen ob das Schiff im Orbit dieser Kolonie warten soll bis es vollbeladen ist oder nicht.<br>Unter \"<b>Passagiere</b>\" kann man zum Passagierraum wechseln, hier kann man entschieden ob Kolonisten, leichte Bodentruppen oder schwere Bodentruppen einsteigen oder aussteigen sollen, oder aber auch vielleicht m&ouml;chte man hier die Einstellung relativ w&auml;hle, bei der z.B. Kolonisten Einsteigen sollten mehr als die angegebene Grenze den Planeten bewohnen, oder aussteigen sollten es andersherum weniger sein.<br>Mit \"<b>Frachtraum</b>\" kann man wieder zur Mineralienansicht wechseln.<br><br>Danach geht es weiter zum 2 Wegpunkt. Hierzu muss man unter umst&auml;nden erst ein neuer Wegpunkt \"<b>einf&uuml;gen</b>\". Sind mindestens zwei Wegpunkte vorhanden, so kann man auch einzelne Wegpunkte wieder \"<b>l&ouml;schen</b>\". Mit\"<b><</b>\" und \"<b>></b>\" wechselt man zwischen den Wegpunkten hin und her. Es k&ouml;nnen maximal 10 Wegpunkte definiert werden. Die Handhabung der Wegpunkte ist identisch mit der Handhabung der Startkolonie.<br><br>Hat man seinen letzten Wegpunkt ausgesucht (Es m&uuml;ssen mindestens zwei Kolonien gew&auml;hlt sein.) schliesst man die Route ab, dies geschieht vom Frachtraum aus per \"<b>&uuml;bernehmen</b>\". Von diesem letzten Planeten wird das Schiff wieder die Startkolonie anfliegen.<br><br>Zu guter letzt m&uuml;ssen noch einige grunds&auml;tzliche Optionen f&uuml;r die Route festgelegt werden:<br><br><b>Geschwindigkeit</b><br>Mit welcher Geschwindigkeit soll die Route abgeflogen werden?<br><br><b>Mindesttankf&uuml;llung</b><br>Egal was die Einstellungen der Wegpunkte sagen, das Schiff versucht diese Tankf&uuml;llung durch die Vorr&auml;te der Planeten zu erreichen. Auch wenn es an einem Wegpunkt Lemin liefern soll, so beh&auml;lt es diese Tankf&uuml;llung, damit es nicht unterwegs aus Treibstoffmangel liegenbleibt.<br><br><b>prim&auml;rer Rohstoff</b><br>Der Lagerraum ist begrenzt. Als erstes wird versucht ihn mit diesem Rohstoff zu f&uuml;llen.<br><br>Nachdem die Route erfolgreich eingepflegt wurde, erscheint als Auftrag des Schiffe <b>Route</b> und nach dem n&auml;chsten Zug wird man feststellen, dass die Route mit Linien auf der Karte markiert ist und das Schiff bereits losgeflogen ist.";
-
 $lang['hilfe']['ueberschrift'][31]='Logbuch';
 $lang['hilfe']['text'][31]="Das Logbuch eines Planeten dient als M&ouml;glichkeit sich zu einzelnen Kolonie Notizen zu machen. Sie erscheinen als Tooltipp in der Galaxieansicht.";
-
 $lang['hilfe']['ueberschrift'][32]='Logbuch';
 $lang['hilfe']['text'][32]="Das Logbuch einer Sternenbasis dient als M&ouml;glichkeit sich zu einzelnen Sternenbasen Notizen zu machen. Sie erscheinen als Tooltipp in der Galaxieansicht.";
-
 $lang['hilfe']['ueberschrift'][33]='Raumfalten-Technologie';
 $lang['hilfe']['text'][33]="Mit Raumfalten ist es einer Sternenbasis m&ouml;glich, Mineralien, Lemin und Cantox an bekannte Planeten, sowie an die eigene Flotte zu versenden.<br><br>Raumfalten bewegen sich mit Warp 12.67 durch den Subraum und legen daher pro Monat 160,53 Lichtjahre zur&uuml;ck. Schiffe mit Warp 9 schaffen eine Strecke von maximal 81 Lichtjahren. Die Initialisierung einer Raumfalte verursacht Kosten, welche sich an der zu transportierenden Masse orientieren. Die Kosten werden wie folgt ermittelt<br><br>";
 $lang['hilfe'][33][0]="<br>Die Initialisierung einer Raumspalte kostet immer mindestens 75 Cantox.";
-
 $lang['hilfe']['ueberschrift'][34]='Schiff-Reparatur';
 $lang['hilfe']['text'][34]="Die Schiffscrew ist in der Lage das eigene Schiff zu reparieren. Hierbei muss sich das Schiff in einem Planetenorbit befinden und ben&ouml;tigt Unterst&uuml;tzung.<br><br>Als Unterst&uuml;tzung kann entweder eine eigene Sternenbasis oder ein eigenes Schiff dienen. Bei Unterst&uuml;tzung durch eine Sternenbasis ist die Crew in der Lage den Schaden am Schiff pro Monat um 11% zu veringern. Bei Unterst&uuml;tzung durch ein daf&uuml;r konstruiertes Schiff muss dieser Wert der entsprechenden Schiffsbeschreibung entnommen werden.";
-
 $lang['hilfe']['ueberschrift'][35]='Projektile';
 $lang['hilfe']['text'][35]="Munition f&uuml;r die projektilbasierenden Waffensysteme m&uuml;ssen auf den Schiffen selbst konstruiert werden. Unabh&auml;ngig vom System kostet ein Projektil 35 Cantox, 2KT Baxterium und 1KT Rennurbin. Die maximale Anzahl, die auf einem Schiff gelagert werden kann betr&auml;gt Abschussrampen*5.<br><br>Projektile werden nicht nur beim Raumkampf, sondern auch beim Orbitalkampf verbraucht. Sind keine Projektile mehr vorhanden, schiesst das entsprechende Waffensystem einfach nicht mehr.<br><br>Der automatische Projektilbau konstruiert bei der Zugberechnung die neuen Projektile vor den Kampfhandlungen.";
-
 $lang['hilfe']['ueberschrift'][36]='Plasmast&uuml;rme';
 $lang['hilfe']['text'][36]="Plasmast&uuml;rme beeinflussen Schiffe, die sich in ihnen befinden auf folgende Weise:<br><br>-die Fluggeschwindigkeit senkt sich immer auf Warp 5<br>-Spungtore k&ouml;nnen nicht gebaut werden<br>-Tarnungen werden deaktiviert<br>-zus&auml;tzliche Sensoren werden behindert<br>-das astrophysische Labor funktioniert nicht<br>-Sprungtiebwerke fallen aus<br>-Subraumverzerrer fallen aus<br><br>Der Admin eines Spiels kann einstellen mit welcher Wahrscheinlichkeit jede Runde ein Plasmasturm entsteht, wie lange dieser maximal anh&auml;lt und wieviele davon sich maximal gleichzeitig im Spiel tummeln.";
-
 $lang['hilfe']['ueberschrift'][37]='Optionen';
 $lang['hilfe']['text'][37]="Jederzeit kann man den Namen und den Flottenordner eines Schiffes nachtr&auml;glich editieren.";
-
 $lang['hilfe']['ueberschrift'][38]='Aggressivit&auml;t';
 $lang['hilfe']['text'][38]="Die Aggressivit&auml;t eines Schiffes kann einen Wert von 1-10 erhalten. Je h&ouml;her der Wert, desto fr&uuml;her wird gek&auml;mpft. Befinden sich also ein Frachter und ein Schlachtschiff an der gleichen Position und ist der Wert des Schlachtschiffes h&ouml;her, so verteidigt es den Frachter bei einem Angriff.";
-
 $lang['hilfe']['ueberschrift'][39]='Self-Destruct';
 $lang['hilfe']['text'][39]="";
-
 $lang['hilfe']['ueberschrift'][40]='Traktorstrahl';
 $lang['hilfe']['text'][40]="Der Traktorstrahl erm&ouml;glicht es Schiffen, welche &uuml;ber die Antriebsarten Tech3 bis Tech7 verf&uuml;gen, ein weiteres eigenes Schiff abzuschleppen, welches sich wiederum auf identischen Koordinaten befindet.<br><br>Welches Schiff nun genau abgeschleppt werden darf ergibt sich aus den Antrieben des Abschleppers. Die maximale Masse, welche vom Traktorstrahl gezogen werden kann betr&auml;gt <b>Anzahl der Antriebe * Techlevel der Antriebe * 20</b>.<br><br>Desweiteren k&ouml;nnen keine Schiffe, welche selber einen Kurs gesetzt oder eine Spezialmission aktiviert haben, abgeschleppt werden. Solche Man&ouml;ver st&ouml;ren den Traktorstrahl und unterbrechen diesen.<br><br>Schiffe, welche den Traktorstrahl aktiviert haben, fliegen automatisch mit einer Maximalgeschwindigkeit von Warp 7 (oder weniger), da h&ouml;here Geschwindigkeiten bei diesem Man&ouml;ver zu riskant erscheinen.<br><br>Da eine gr&ouml;ssere Masse bewegt werden muss, erh&ouml;ht sich logischerweise der Leminverbrauch des abschleppenden Schiffes. Die halbe Masse des abgeschleppten Schiffes wird zur Berechnung des neuen Leminverbrauchs hinzugezogen.";
-
 $lang['hilfe']['ueberschrift'][41]='Krieg erkl&auml;ren';
 $lang['hilfe']['text'][41]="Das offizielle Erkl&auml;ren eines Kriegszustandes ist ein rein symbolischer Akt. Sich im Krieg befindliche V&ouml;lker k&ouml;nnen kein weiteres Abkommen eingehen.";
-
 $lang['hilfe']['ueberschrift'][42]='Kriegsende erbitten';
 $lang['hilfe']['text'][42]="Um den Krieg zu beenden, muss der Frieden erbeten und vom Gegner akzeptiert werden.";
-
 $lang['hilfe']['ueberschrift'][43]='Handelsabkommen';
 $lang['hilfe']['text'][43]="Ein Handelsabkommen steigert die Einnahmen beider V&ouml;lker. Je mehr Kolonien der andere besitzt, desto gr&ouml;sser ist der eigene Profit. Haben beide Parteien gleichviel Kolonien, erh&ouml;hten sich die Einnahmen auf beiden Seiten um 18%.<br><br>Das Brechen eines Handelsabkommens dauert 3 Monate.";
-
 $lang['hilfe']['ueberschrift'][44]='Nichtangriffspakt';
 $lang['hilfe']['text'][44]="Ein Nichtangriffspakt verhindert jeglichen Kampf zwischen beiden Parteien. Schiffe weichen voreinander aus und Schiffe k&ouml;nnen nicht in den Orbit der Kolonien des Partners eindringen.<br><br>Das Brechen einen Nichtangriffspaktes dauert 6 Monate.";
-
 $lang['hilfe']['ueberschrift'][45]='V&ouml;lkerb&uuml;ndnis';
 $lang['hilfe']['text'][45]="Ein V&ouml;lkerb&uuml;ndnis verhindert wie der Nichtangriffspakt den gegenseitigen Angriff. Zus&auml;tzlich teilen beide Parteien ihre Galaxieansicht.<br><br>Das Brechen eines V&ouml;lkerb&uuml;ndnisses dauert 9 Monate.";
-
 $lang['hilfe']['ueberschrift'][46]='Allianz';
 $lang['hilfe']['text'][46]="Eine Allianz stellt die perfekte Zusammenarbeit zweier V&ouml;lker dar. Wie das V&ouml;lkerb&uuml;ndnis verhindert die Allianz den gegenseitigen Angriff. Beide Parteien teilen ihre Galaxieansicht. Zus&auml;tzlich ist es einem Volk m&ouml;glich in den Orbit der befreundeten Kolonien zu fliegen und &uuml;ber den Transporter Waren zu tauschen. Beide Parteien k&ouml;nnen sich gegenseitig Teile ihrer Flotte &uuml;berlassen.<br><br>Das Brechen einer Allianz dauert 12 Monate.";
-
 $lang['hilfe']['ueberschrift'][47]='Abkommen brechen';
 $lang['hilfe']['text'][47]="Beim Brechen eines Abkommens wird die andere Partei entsprechend in Kenntnis gesetzt. Wie lange das Abkommen noch h&auml;lt, bevor es endg&uuml;ltig seine Wirkung verliert, h&auml;ngt von der Art des Abkommens ab.";
-?>

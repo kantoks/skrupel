@@ -996,4 +996,3 @@ if ($schiffanzahl>=1) {
     }
 }
 $zeiger_temp = mysql_query("UPDATE $skrupel_schiffe set schild=100 where spiel=$spiel;");
-?>

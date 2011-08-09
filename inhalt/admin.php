@@ -3,249 +3,255 @@ include ("../inc.conf.php");
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 include ("../lang/".$_GET["sprache"]."/lang.admin.php");
 include_once ('inc.hilfsfunktionen.php');
-
 if ($_GET["fu"]==1) {
-    include ("inc.header.php");
-    if ($spieler==$spieler_admin) {
-        ?>
-        <body text="#ffffff" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#ffffff" vlink="#ffffff" alink="#ffffff" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-            <center>
-                <table border="0" cellspacing="0" cellpadding="3">
-                    <tr>
-                        <td><img src="../bilder/empty.gif" border="0" width="1" height="3"></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <table border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td><form name="formular"  method="post" action="admin.php?fu=11&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
-                                    <td><input type="submit" name="bla" value="<?php echo $lang['admin']['zug']?>" style="width:120px;"></td>
-                                    <td></form></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td><form name="formular"  method="post" action="admin.php?fu=7&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
-                                    <td><input type="submit" name="bla" value="<?php echo $lang['admin']['autozug']?>" style="width:120px;"></td>
-                                    <td></form></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <?php if ($ziel_id==0) { ?>
-                            <td>
-                                <table border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                        <td><form name="formular"  method="post" action="admin.php?fu=3&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
-                                        <td><input type="submit" name="bla" value="<?php echo $lang['admin']['neuerspieler']?>" style="width:120px;"></td>
-                                        <td></form></td>
-                                    </tr>
-                                </table>
-                            </td>
-                        <?php } else { ?>
-                            <td><input type="button" class="nofunc" name="bla" value="<?php echo $lang['admin']['neuerspieler']?>" style="width:120px;"></td>
-                        <?php } ?>
-                    </tr>
-                    <tr>
-                        <td>
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
-                                    <td><input type="submit" name="bla" value="" style="width:120px;"></td>
-                                    <td></form></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td><form name="formular"  method="post" action="admin.php?fu=9&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
-                                    <td><input type="submit" name="bla" value="<?php echo $lang['admin']['plasmasturm']?>" style="width:120px;"></td>
-                                    <td></form></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <?php if ($ziel_id==0) { ?>
-                            <td>
-                                <table border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                        <td><form name="formular"  method="post" action="admin.php?fu=5&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
-                                        <td><input type="submit" name="bla" value="<?php echo $lang['admin']['entfernespieler']?>" style="width:120px;"></td>
-                                        <td></form></td>
-                                    </tr>
-                                </table>
-                            </td>
-                        <?php } else { ?>
-                            <td><input type="button" class="nofunc" name="bla" value="<?php echo $lang['admin']['entfernespieler']?>" style="width:120px;"></td>
-                        <?php } ?>
-                    </tr>
-                    <tr>
-                        <td>
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
-                                    <td><input type="submit" name="bla" value="" style="width:120px;"></td>
-                                    <td></form></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td><form name="formular"  method="post" action="admin.php?fu=12&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
-                                    <td><input type="submit" name="bla" value="<?php echo $lang['admin']['piraten']?>" style="width:120px;"></td>
-                                    <td></form></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
-                                    <td><input type="submit" name="bla" value="" style="width:120px;"></td>
-                                    <td></form></td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
-                                    <td><input type="submit" name="bla" value="" style="width:120px;"></td>
-                                    <td></form></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td><form name="formular"  method="post" action="admin.php?fu=14&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
-                                    <td><input type="submit" name="bla" value="<?php echo $lang['admin']['otional']?>" style="width:120px;"></td>
-                                    <td></form></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
-                                    <td><input type="submit" name="bla" value="" style="width:120px;"></td>
-                                    <td></form></td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </center>
-            <?php
-        include ("inc.footer.php");
+  include ("inc.header.php");
+  if ($spieler==$spieler_admin) {
+    ?>
+<body text="#ffffff" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#ffffff" vlink="#ffffff" alink="#ffffff" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+  <center>
+    <table border="0" cellspacing="0" cellpadding="3">
+      <tr><td><img src="../bilder/empty.gif" border="0" width="1" height="3"></td></tr>
+      <tr>
+        <td>
+          <table border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td><form name="formular"  method="post" action="admin.php?fu=11&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+              <td><input type="submit" name="bla" value="<?php echo $lang['admin']['zug']?>" style="width:120px;"></td>
+              <td></form></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td><form name="formular"  method="post" action="admin.php?fu=7&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+              <td><input type="submit" name="bla" value="<?php echo $lang['admin']['autozug']?>" style="width:120px;"></td>
+              <td></form></td>
+            </tr>
+          </table>
+        </td>
+    <?php
+    if($ziel_id==0){
+      ?>
+        <td>
+          <table border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td><form name="formular"  method="post" action="admin.php?fu=3&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+              <td><input type="submit" name="bla" value="<?php echo $lang['admin']['neuerspieler']?>" style="width:120px;"></td>
+              <td></form></td>
+            </tr>
+          </table>
+        </td>
+      <?php
+    }else{
+      ?>
+        <td><input type="button" class="nofunc" name="bla" value="<?php echo $lang['admin']['neuerspieler']?>" style="width:120px;"></td>
+      <?php
     }
+    ?>
+      </tr>
+      <tr>
+        <td>
+          <table border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+              <td><input type="submit" name="bla" value="" style="width:120px;"></td>
+              <td></form></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td><form name="formular"  method="post" action="admin.php?fu=9&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+              <td><input type="submit" name="bla" value="<?php echo $lang['admin']['plasmasturm']?>" style="width:120px;"></td>
+              <td></form></td>
+            </tr>
+          </table>
+        </td>
+    <?php
+    if($ziel_id==0){
+      ?>
+        <td>
+          <table border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td><form name="formular"  method="post" action="admin.php?fu=5&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+              <td><input type="submit" name="bla" value="<?php echo $lang['admin']['entfernespieler']?>" style="width:120px;"></td>
+              <td></form></td>
+            </tr>
+          </table>
+        </td>
+      <?php
+    }else{
+      ?>
+        <td><input type="button" class="nofunc" name="bla" value="<?php echo $lang['admin']['entfernespieler']?>" style="width:120px;"></td>
+      <?php
+    }
+    ?>
+        </tr>
+        <tr>
+          <td>
+            <table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                <td><input type="submit" name="bla" value="" style="width:120px;"></td>
+                <td></form></td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td><form name="formular"  method="post" action="admin.php?fu=12&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                <td><input type="submit" name="bla" value="<?php echo $lang['admin']['piraten']?>" style="width:120px;"></td>
+                <td></form></td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                <td><input type="submit" name="bla" value="" style="width:120px;"></td>
+                <td></form></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                <td><input type="submit" name="bla" value="" style="width:120px;"></td>
+                <td></form></td>
+              </tr>
+            </table>
+        </td>
+        <td>
+          <table border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td><form name="formular"  method="post" action="admin.php?fu=14&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+              <td><input type="submit" name="bla" value="<?php echo $lang['admin']['otional']?>" style="width:120px;"></td>
+              <td></form></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+              <td><input type="submit" name="bla" value="" style="width:120px;"></td>
+              <td></form></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </center>
+    <?php
+    include ("inc.footer.php");
+  }
 }
-
-if ($_GET["fu"]==2) {
-    include ("inc.header.php");
-    if ($spieler==$spieler_admin) {
-        $main_verzeichnis="../";
-        include ("inc.host.php");
-        $lasttick=time();
-        $zeiger = mysql_query("UPDATE $skrupel_spiele set lasttick='$lasttick',spieler_1_zug=0,spieler_2_zug=0,spieler_3_zug=0,spieler_4_zug=0,spieler_5_zug=0,spieler_6_zug=0,spieler_7_zug=0,spieler_8_zug=0,spieler_9_zug=0,spieler_10_zug=0 where sid='$sid';");
-        ?>
-        <script language=JavaScript>
-            function link(url) {
-                if (parent.mittelinksoben.document.globals.map.value==1) {
-                    parent.mittelinksoben.document.globals.map.value=0;
-                    parent.mittemitte.window.location='aufbau.php?fu=100&query='+url+'&sprache=<?php echo $_GET["sprache"]?>';
-                }  else  {
-                    parent.mittemitte.rahmen12.window.location=url;
-                }
-            }
-        </script>
-        <body onLoad="window.location='uebersicht.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>';" text="#ffffff" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#ffffff" vlink="#ffffff" alink="#ffffff" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-            <br><br><br><br>
-            <center><?php echo $lang['admin']['zugberechnet']?></center><?php
-            $fuu=1;
-            include ("inc.host_messenger.php");
-            ?>
-            <script language=JavaScript>
-                link('uebersicht_uebersicht.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');
-                window.location='uebersicht.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');
-            </script>
-            <?php
-        include ("inc.footer.php");
+if($_GET["fu"]==2){
+  include ("inc.header.php");
+  if($spieler==$spieler_admin){
+    $main_verzeichnis="../";
+    include ("inc.host.php");
+    $lasttick=time();
+    $zeiger = mysql_query("UPDATE $skrupel_spiele set lasttick='$lasttick',spieler_1_zug=0,spieler_2_zug=0,spieler_3_zug=0,spieler_4_zug=0,spieler_5_zug=0,spieler_6_zug=0,spieler_7_zug=0,spieler_8_zug=0,spieler_9_zug=0,spieler_10_zug=0 where sid='$sid';");
+    ?>
+<script language=JavaScript>
+  function link(url) {
+    if (parent.mittelinksoben.document.globals.map.value==1) {
+      parent.mittelinksoben.document.globals.map.value=0;
+      parent.mittemitte.window.location='aufbau.php?fu=100&query='+url+'&sprache=<?php echo $_GET["sprache"]?>';
+    }else{
+      parent.mittemitte.rahmen12.window.location=url;
     }
+  }
+</script>
+<body onLoad="window.location='uebersicht.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>';" text="#ffffff" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#ffffff" vlink="#ffffff" alink="#ffffff" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+  <br><br><br><br>
+  <center>
+    <?php
+    echo $lang['admin']['zugberechnet'];
+    ?>
+  </center>
+    <?php
+    $fuu=1;
+    include ("inc.host_messenger.php");
+    ?>
+  <script language=JavaScript>
+    link('uebersicht_uebersicht.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');
+    window.location='uebersicht.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');
+  </script>
+    <?php
+    include ("inc.footer.php");
+  }
 }
 
 if ($_GET["fu"]==3) {
-    include ("inc.header.php");
-    if ($spieler==$spieler_admin) {
-        if ($spieleranzahl==10) {
-            ?>
-            <body text="#ffffff" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#ffffff" vlink="#ffffff" alink="#ffffff" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-                <br><br><br><br>
-                <center><?php echo $lang['admin']['alleslots']?></center>
-                <?php
-        } else {
-            $verzeichnis="../daten/";
-            $handle=opendir("$verzeichnis");
-            
-            $zaehler=0;
-            while ($file=readdir($handle)) {
-                if ((substr($file,0,1)<>'.') and (substr($file,0,7)<>'bilder_') and (substr($file,strlen($file)-4,4)<>'.txt')) {
-                    /*/ neuer code /*/ if($file == "unknown") { continue; }
-                    $datei='../daten/'.$file.'/daten.txt';
-                    $fp = @fopen("$datei","r");
-                    if ($fp) {
-                        $zaehler2=0;
-                        while (!feof ($fp)) {
-                            $buffer = @fgets($fp, 4096);
-                            $daten[$zaehler][$zaehler2]=$buffer;
-                            $zaehler2++;
-                        }
-                        @fclose($fp);
-                    }
-                    $filename[$zaehler]=$file;
-                    $zaehler++;
-                }
+  include ("inc.header.php");
+  if($spieler==$spieler_admin){
+    if ($spieleranzahl==10) {
+      ?>
+  <body text="#ffffff" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#ffffff" vlink="#ffffff" alink="#ffffff" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+  <br><br><br><br>
+  <center>
+      <?php
+      echo $lang['admin']['alleslots'];
+      ?>
+  </center>
+      <?php
+    }else{
+      $verzeichnis="../daten/";
+      $handle=opendir("$verzeichnis");
+      $zaehler=0;
+      while ($file=readdir($handle)) {
+        if((substr($file,0,1)<>'.') and (substr($file,0,7)<>'bilder_') and (substr($file,strlen($file)-4,4)<>'.txt')){
+          /*/ neuer code /*/ if($file == "unknown") { continue; }
+          $datei='../daten/'.$file.'/daten.txt';
+          $fp = @fopen("$datei","r");
+          if ($fp) {
+            $zaehler2=0;
+            while (!feof ($fp)) {
+              $buffer = @fgets($fp, 4096);
+              $daten[$zaehler][$zaehler2]=$buffer;
+              $zaehler2++;
             }
-            closedir($handle);
-
-            $zaehler4=0;
-            for ($x=1;$x<=round($umfang/250);$x++) {
-                for ($y=1;$y<=round($umfang/250);$y++) {
-
-                    $kox=$x*250-125;
-                    $koy=$y*250-125;
-                    $xname=chr($x+64);
-                    $reichweite=122;
-
-                    $rand_x_a=$kox-$reichweite;
-                    $rand_x_b=$kox+$reichweite;
-                    $rand_y_a=$koy-$reichweite;
-                    $rand_y_b=$koy+$reichweite;
-
-                    $total=0;
-                    $zeiger_temp = @mysql_query("SELECT count(*) as total FROM $skrupel_planeten where x_pos>=$rand_x_a and x_pos<=$rand_x_b and y_pos>=$rand_y_a and y_pos<=$rand_y_b and besitzer=0 and spiel=$spiel");
-
-                    $array_temp = @mysql_fetch_array($zeiger_temp);
-                    $total=$array_temp["total"];
-
-
-                    if ($total>=1) {
-
-                        $sektor[$zaehler4][0]=$x;
-                        $sektor[$zaehler4][1]=$y;
-                        $zaehler4++;
-                    }
-                }
-            }
-
-            $zeiger = @mysql_query("SELECT * FROM $skrupel_user order by nick");
-            $useranzahl = @mysql_num_rows($zeiger);
-            ?>
-            
+            @fclose($fp);
+          }
+          $filename[$zaehler]=$file;
+          $zaehler++;
+        }
+      }
+      closedir($handle);
+      $zaehler4=0;
+      for ($x=1;$x<=round($umfang/250);$x++) {
+        for ($y=1;$y<=round($umfang/250);$y++) {
+          $kox=$x*250-125;
+          $koy=$y*250-125;
+          $xname=chr($x+64);
+          $reichweite=122;
+          $rand_x_a=$kox-$reichweite;
+          $rand_x_b=$kox+$reichweite;
+          $rand_y_a=$koy-$reichweite;
+          $rand_y_b=$koy+$reichweite;
+          $total=0;
+          $zeiger_temp = @mysql_query("SELECT count(*) as total FROM $skrupel_planeten where x_pos>=$rand_x_a and x_pos<=$rand_x_b and y_pos>=$rand_y_a and y_pos<=$rand_y_b and besitzer=0 and spiel=$spiel");
+          $array_temp = @mysql_fetch_array($zeiger_temp);
+          $total=$array_temp["total"];
+          if ($total>=1) {
+            $sektor[$zaehler4][0]=$x;
+            $sektor[$zaehler4][1]=$y;
+            $zaehler4++;
+          }
+        }
+      }
+      $zeiger = @mysql_query("SELECT * FROM $skrupel_user order by nick");
+      $useranzahl = @mysql_num_rows($zeiger);
+      ?>
             <body text="#ffffff" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#ffffff" vlink="#ffffff" alink="#ffffff" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
                 <img src="../bilder/empty.gif" width="1" height="3"><br>
                 <center>
@@ -268,7 +274,7 @@ if ($_GET["fu"]==3) {
                                         <option value="<?php echo $uid; ?>"><?php echo $nick; ?></option>
                                         <?php
                                         }
-                                    } 
+                                    }
                                     ?>
                                 </select>
                             </td>
@@ -388,15 +394,13 @@ if ($_GET["fu"]==4) {
                         }
                         @fclose($fp);
                     }
-
                     $attribute=explode(":",$daten[3]);
-                    
                     $rassenname=$daten[0];
                     $r_eigenschaften[$rasse]['temperatur']=$attribute[0];
                     $r_eigenschaften[$rasse]['planet']=$attribute[1];
                 }
             }
-///////////////////////////////////////////////////////////////////////////////////////////////RASSENEIGENSCHAFTEN ENDE
+/////////////////////RASSENEIGENSCHAFTEN ENDE
 
             $kox=$kord[0]*250-125;
             $koy=$kord[1]*250-125;
@@ -1242,4 +1246,3 @@ if ($_GET["fu"]==15) {
         include ("inc.footer.php");
     }
 }
-?>

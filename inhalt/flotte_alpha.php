@@ -2592,4 +2592,3 @@ if ($_GET["fu"]==8) {
         <?php
     include ("inc.footer.php");
 }
-?>

@@ -359,4 +359,3 @@ if ($_GET["fu"]==4) {
         echo '</div>';
     include ("inc.footer.php");
 }
-?>

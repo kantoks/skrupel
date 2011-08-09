@@ -229,4 +229,3 @@ if ($_GET["fu"]==5) {
         <?
     include ("inc.footer.php");
 }
-?>

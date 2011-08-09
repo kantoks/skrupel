@@ -10,7 +10,6 @@ $lang['hilfe_spionage']['mission']['uber']='Die Missionen';
 $lang['hilfe_spionage']['mission']['text']="<br>Ein Spion kann je nach Erfahrungslevel immer bessere Spezialmissionen ausf&uuml;hren. Dazu muss er im Zielgebiet, sprich im Imperium des Feindes operieren,	denn nur dort hat er Zugriff auf relevante Informationen, bzw Objekte.<br><br>Jede Mission hat einen gewissen Grad an Erfolgswahrscheinlichkeit. Hat der Spion schon einen hohen Erfahrungswert erreicht, so kann er einfache Missionen mit viel h&ouml;herer Chance auf Erfolg ausf&uuml;hren.<br><br>";
 $lang['hilfe_spionage']['opfer']['uber']='Das Opfer';
 $lang['hilfe_spionage']['opfer']['text']="<br>Die meisten Missionen ben&ouml;tigen entweder einen Planeten oder ein Schiff das angesteuert werden muss damit die Mission durchgef&uuml;hrt werden kann.<br>Imperien mit denen ein Waffenstillstand oder h&ouml;her vereinbart wurde k&ouml;nnen nicht ausspioniert werden.<br><br>Das Opfer einer Spionageaktion bekommt in jedem Fall eine Meldung	wenn ihm etwas passiert ist, jene beinhaltet aber nicht den Namen des Auftragsgebers.";
-
 $lang['hilfe_spionage']['spioschiffe']='Spionage Schiffe';
 $lang['hilfe_spionage']['erfahrungslevel']="Erfahrungslevel {1}";
 $lang['hilfe_spionage']['stufe']="Spion (Stufe {1})";
@@ -32,7 +31,6 @@ $lang['hilfe_spionage']['ausweichen']="Nach Ausf&uuml;hrung einer Mission und ei
 $lang['hilfe_spionage']['politik']="Imperien mit denen ein Waffenstillstand oder h&ouml;her vereinbart wurde k&ouml;nnen nicht ausspioniert werden.";
 $lang['hilfe_spionage']['loyds']="In kritischen Situationen ist es m&ouml;glich ein riskantes Fluchtman&ouml;ver durchzuf&uuml;hren welches aber gro&szlig;en Schaden am Schiff anrichtet.";
 $lang['hilfe_spionage']['abfrage']="Der Tarnstatus sowie die gesammelte Erfahungsmenge kann jederzeit &uuml;ber den Klassennamen der Schiffskonsole abgefragt werden.";
-
 $lang['hilfe_spionage']['spiomiss']='Spionage Missionen';
 $lang['hilfe_spionage']['beziel']='Ben&ouml;tigtes Ziel:';
 $lang['hilfe_spionage']['bestufe']='Ben&ouml;tigte Stufe:';
@@ -40,7 +38,6 @@ $lang['hilfe_spionage']['chance']='Erfolgschance:';
 $lang['hilfe_spionage']['vh']='{1}%';
 $lang['hilfe_spionage']['vb_vh']="{1}-{2}%";
 $lang['hilfe_spionage']['wirkungsgrad']='Wirkungsgrad:';
-
 $lang['hilfe_spionage']['stufe_b']='Stufe:';
 $lang['hilfe_spionage']['erfahrung_b']='Erfahrung:';
 $lang['hilfe_spionage']['hoechststufe']="<i>H&ouml;chststufe</i>";
@@ -51,4 +48,3 @@ $lang['hilfe_spionage']['wertung'][70]="Ausreichend ({1}%)";
 $lang['hilfe_spionage']['wertung'][40]="Bedenklich ({1}%)";
 $lang['hilfe_spionage']['wertung'][10]="Kritisch ({1}%)";
 $lang['hilfe_spionage']['wertung'][0]="Ausgefallen (0%)";
-?>

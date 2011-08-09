@@ -966,4 +966,3 @@ if ($_GET["fu"]==3) {
     }
     @mysql_close();
 }
-?>

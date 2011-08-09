@@ -771,4 +771,3 @@ function spionstufe($xp) {
     }
     return 10;
 }
-?>

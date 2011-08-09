@@ -13,16 +13,13 @@ $lang['flotte']['versuchterfeindkontakt']='Versuchter<br>Feindkontakt';
 $lang['flotte']['begleitschutz']='Begleitschutz';
 $lang['flotte']['keineflotte']='Du verf&uuml;gst leider &uuml;ber keine Flotte.';
 $lang['flotte']['ordnerleer']='Es befindet sich kein Schiff in diesem Ordner.';
-
 $lang['flotte']['nochkursmodus']='Du befindest Dich noch im Kursmodus!';
-
 $lang['flotte']['crew']='Crew ({1}/{2})';
 $lang['flotte']['lemin']='Lemin ({1}/{2})';
 $lang['flotte']['schaden']='Schaden {1} %';
 $lang['flotte']['fracht']='Fracht ({1}/{2})';
 $lang['flotte']['erfahrungslevel']='Erfahrungslevel';
 $lang['flotte']['ordneruebersicht']='Ordner&uuml;bersicht';
-
 $lang['flotte']['kurs']='Kurs';
 $lang['flotte']['spezialmission']='Spezialmission';
 $lang['flotte']['scanning']='Scanning';
@@ -35,4 +32,3 @@ $lang['flotte']['lagerraeume']='Lagerr&auml;ume';
 $lang['flotte']['projektillager']='Projektillager';
 $lang['flotte']['antriebssysteme']='Antriebssysteme';
 $lang['flotte']['optionen']='Optionen';
-?>

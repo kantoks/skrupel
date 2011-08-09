@@ -9,7 +9,6 @@ $lang['flottebeta']['detailscan']='Detailscan';
 $lang['flottebeta']['klasse']='Klasse';
 $lang['flottebeta']['maxwarp']='max Warp';
 $lang['flottebeta']['noscan']='Es befinden sich weder Planeten<br><br>noch Raumschiffe in Scanreichweite.';
-
 $lang['flottebeta']['kolonisten']='Kolonisten';
 $lang['flottebeta']['leichtebt']='leichte Bodentruppen';
 $lang['flottebeta']['schwerebt']='schwere Bodentruppen';
@@ -22,7 +21,6 @@ $lang['flottebeta']['rennurbin']='Rennurbin';
 $lang['flottebeta']['vomisaan']='Vomisaan';
 $lang['flottebeta']['cantox']='Cantox';
 $lang['flottebeta']['vorraete']='Vorr&auml;te';
-
 $lang['flottebeta']['antriebe'][0]='Sonnensegel';
 $lang['flottebeta']['antriebe'][1]='Antigrav-Triebwerk';
 $lang['flottebeta']['antriebe'][2]='Drugun-Umsetzer';
@@ -32,9 +30,7 @@ $lang['flottebeta']['antriebe'][5]='Mikro-Grav';
 $lang['flottebeta']['antriebe'][6]='Solarisplasmotan';
 $lang['flottebeta']['antriebe'][7]='Psiongleitnetz';
 $lang['flottebeta']['antriebe'][8]='Transwarp';
-
 $lang['flottebeta']['nichtvorhanden']='nicht vorhanden';
-
 $lang['flottebeta']['waffen'][0]='Laser';
 $lang['flottebeta']['waffen'][1]='Phaser';
 $lang['flottebeta']['waffen'][2]='Plasma Blaster';
@@ -55,7 +51,6 @@ $lang['flottebeta']['waffen'][16]='Quantentorpedos';
 $lang['flottebeta']['waffen'][17]='Micromitgesch&uuml;tz';
 $lang['flottebeta']['waffen'][18]='Singularit&auml;tswerfer';
 $lang['flottebeta']['waffen'][19]='Novabomben';
-
 $lang['flottebeta']['schaden']='Schaden';
 $lang['flottebeta']['crew']='Crew';
 $lang['flottebeta']['masse']='Masse';
@@ -65,7 +60,6 @@ $lang['flottebeta']['antrieb']='Antrieb';
 $lang['flottebeta']['energetik']='Energetik';
 $lang['flottebeta']['projektil']='Projektil';
 $lang['flottebeta']['hangar']='Hangar';
-
 $lang['flottebeta']['leminueberladen'][0]='Der Tank von {1} KT wird um ';
 $lang['flottebeta']['leminueberladen'][1]=' KT &uuml;bertankt';
 $lang['flottebeta']['frachtueberladen'][0]='Der Frachtraum von {1} KT wird um ';
@@ -74,11 +68,8 @@ $lang['flottebeta']['transporterraum']='Transporterraum';
 $lang['flottebeta']['frachtraumgroesse']='Frachtraumgr&ouml;sse';
 $lang['flottebeta']['durchfuehren']='Transport durchf&uuml;hren';
 $lang['flottebeta']['keineobjekte']='Leider keine Objekte<br><br>in Transportereichweite.';
-
 $lang['flottebeta']['betrug']='Cheater!!!';
 $lang['flottebeta']['transporterfolgreich']='Der Transport war erfolgreich.';
-
 $lang['flottebeta']['logbuch']='Logbuch';
 $lang['flottebeta']['eintragsichern']='Eintrag sichern';
 $lang['flottebeta']['logbuchaktualisiert']='Das Logbuch wurde erfolgreich aktualisiert.';
-?>

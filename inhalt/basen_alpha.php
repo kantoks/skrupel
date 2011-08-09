@@ -4,7 +4,6 @@ if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.basen_alpha.php";
 include ($file);
 
-
 $baid=$_GET["baid"];
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
@@ -1163,4 +1162,3 @@ if ($_GET["fu"]==6) {
     }
     include ("inc.footer.php");
 }
-?>

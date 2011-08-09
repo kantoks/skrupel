@@ -1051,4 +1051,3 @@ if ($_GET["fu"]==12) {
         <?php 
     include ("inc.footer.php");
 }
-?>

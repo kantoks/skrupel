@@ -745,4 +745,3 @@ if ($_GET["fu"]==6) {
         <?php
     include ("inc.footer.php");
 }
-?>

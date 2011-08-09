@@ -40,5 +40,3 @@ $lang['basenbeta']['waffen'][18]='Singularit&auml;tswerfer';
 $lang['basenbeta']['waffen'][19]='Novabomben';
 
 $lang['basenbeta']['projektilerfolgreichproduziert']="Das projektilbasierende Waffensystem {1}<br><br>wurde {2}x erfolgreich produziert.";
-
-?>

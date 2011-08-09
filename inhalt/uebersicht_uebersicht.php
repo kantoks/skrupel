@@ -570,4 +570,3 @@ if ($_GET["fu"]==4) {
 
     @mysql_close($conn);
 }
-?>

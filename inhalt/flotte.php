@@ -1164,4 +1164,3 @@ if ($_GET["fu"]==8) {
         }
     include ("inc.footer.php");
 }
-?>

@@ -297,4 +297,3 @@ if ($schiffanzahl>=1) {
         }
     }
 }
-?>

@@ -86,12 +86,12 @@ if ($_GET["fu"]==2) {
             $bbcode=str_replace("&","&amp;",$bbcode);
             $bbcode=str_replace("<","&lt;",$bbcode);
             $bbcode=str_replace(">","&gt;",$bbcode);
-            $bbcode=str_replace("ä","&auml;",$bbcode);
-            $bbcode=str_replace("ö","&ouml;",$bbcode);
-            $bbcode=str_replace("ü","&uuml;",$bbcode);
-            $bbcode=str_replace("Ä","&Auml;",$bbcode);
-            $bbcode=str_replace("Ö","&Ouml;",$bbcode);
-            $bbcode=str_replace("Ü","&Uuml;",$bbcode);
+            $bbcode=str_replace("Ã¤","&auml;",$bbcode);
+            $bbcode=str_replace("Ã¶","&ouml;",$bbcode);
+            $bbcode=str_replace("Ã¼","&uuml;",$bbcode);
+            $bbcode=str_replace("Ã„","&Auml;",$bbcode);
+            $bbcode=str_replace("Ã–","&Ouml;",$bbcode);
+            $bbcode=str_replace("Ãœ","&Uuml;",$bbcode);
                 
             $bbcode=nl2br($bbcode);
     
@@ -390,4 +390,3 @@ if ($_GET["fu"]==3) {
         <?php
     include ("inc.footer.php");
 }
-?>

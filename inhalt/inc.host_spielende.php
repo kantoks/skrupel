@@ -185,4 +185,3 @@ if ($ziel_id==6) {
     }
     $zeiger_temp = mysql_query("UPDATE $skrupel_spiele set phase=1, gewinner='$gewinner', siegeranzahl=$siegeranzahl where id=$spiel;");
 }
-?>

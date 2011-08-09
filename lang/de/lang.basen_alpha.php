@@ -29,4 +29,3 @@ $lang['basenalpha']['planeten']='-----Planeten-----';
 $lang['basenalpha']['raumfalteinitialisieren']='Raumfalte initialisieren';
 $lang['basenalpha']['raumfaltefehler']='Um die Raumfalten-Technologie nutzen zu k&ouml;nnen,<br><br>werden Techlevel Rumpf 7 und Techlevel Antrieb 8 ben&ouml;tigt.';
 $lang['basenalpha']['raumfalteerfolgreich']='Die Raumfalte wurde erfolgreich initialisiert.';
-?>

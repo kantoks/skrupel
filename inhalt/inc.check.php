@@ -146,4 +146,3 @@ if ($datensaetze==1) {
         header("Location: ../index.php?sprache=".$_GET['sprache']); exit;
     }
 }
-?>

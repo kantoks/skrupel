@@ -107,4 +107,3 @@ if ($fuid==1) {
         <?php
 }
 include ('inc.footer.php');
-?>

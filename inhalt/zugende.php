@@ -329,4 +329,3 @@ if ($fuid==9) {
     header ("Location: $backlink");
 }
 //}}}
-?>

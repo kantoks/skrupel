@@ -4,7 +4,6 @@ $erweiterung[1]['beschreibung']='Dieses Erweiterung liefert einen RSS-Feed f&uum
 $erweiterung[2]['beschreibung']='Durch die KI-Erweiterung ist es m&ouml;glich, gegen Computer-Gegner anzutreten. Dabei k&ouml;nnen weitere KIs installiert werden, sodass es eine gr&ouml;&szlig;ere Auswahl an verschiedenen KI-Typen gibt. Es kann pro KI-Typ nur ein Computer-Spieler ausgew&auml;hlt werden.';
 $erweiterung[3]['beschreibung']='Skrupel XStats ist eine aufwendige Statistikerweiterung, die den Verlauf der Spiele im Detail &uuml;ber viele Graphen darstellt.';
 
-
 $lang['admin']['allgemein']['gamma']['erweiterung']='Erweiterungen';
 $lang['admin']['allgemein']['gamma']['name']='Name';
 $lang['admin']['allgemein']['gamma']['ordner']='Ordner';
@@ -18,4 +17,3 @@ $lang['admin']['allgemein']['gamma']['vorhanden']='vorhanden';
 $lang['admin']['allgemein']['gamma']['n_vorhanden']='nicht vorhanden';
 $lang['admin']['allgemein']['gamma']['aktualisiert']='Die Erweiterungseinstellungen wurden erfolgreich aktualisiert.';
 $lang['admin']['allgemein']['gamma']['zurueck']='Zur&uuml;ck';
-?>

@@ -955,4 +955,3 @@ if ($_GET["fu"]==5) {
     header ("Location: $backlink");
 
 }
-?>

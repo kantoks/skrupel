@@ -488,4 +488,3 @@ if ($_GET["fu"]==1) {
         <?
     include ("inc.footer.php");
 }
-?>

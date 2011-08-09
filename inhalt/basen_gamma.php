@@ -4,7 +4,6 @@ if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.basen_gamma.php";
 include ($file);
 
-
 $baid=$_GET["baid"];
 if ($_GET["fu"]==1) {
     include ("inc.header.php");

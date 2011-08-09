@@ -745,4 +745,5 @@ textarea {
 </script>
 </body>
 </html>
-<?php } ?>
+<?php
+}

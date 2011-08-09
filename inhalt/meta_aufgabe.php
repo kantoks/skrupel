@@ -301,4 +301,3 @@ if ($_GET["fu"]==3) {
     $backlink="../index.php?pic_path=$bildpfad&sprache=".$_GET["sprache"];
     header ("Location: $backlink");
 }
-?>

@@ -354,4 +354,3 @@ if ($_GET["fu"]==7) {
         <?php
     include ("inc.footer.php");
 }
-?>

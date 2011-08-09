@@ -1527,4 +1527,3 @@ if ($_GET["fu"]==13) {
         }
     include ("inc.footer.php");
 }
-?>

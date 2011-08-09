@@ -65,4 +65,3 @@ if ($_GET["fu"]==2) {
 
     $jabber->SendMessage($jabber->to, "normal", NULL, array("body" => $msg));
 }
-?>

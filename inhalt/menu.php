@@ -114,4 +114,4 @@ if ($_GET["fu"]==2) {
             </tr>
         </table>
     <?php include ("inc.footer.php");
-} ?>
+}

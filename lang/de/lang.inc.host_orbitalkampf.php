@@ -3,4 +3,3 @@ $lang['host']['de']['orbitalkampf'][0]="Unser Schiff {1} wurde beim Versuch die 
 $lang['host']['de']['orbitalkampf'][1]="Unser Kolonie auf dem Planeten {1} hat sich erfolgreich gegen einen Angriff des Schiffes {2} verteidigt.";
 $lang['host']['de']['orbitalkampf'][2]="Unser Schiff {1} ist erfolgreich durch das planetare Verteidigungssystem der feindlichen Kolonie {2} gebrochen. Wir sollten mit Bodentruppen landen.";
 $lang['host']['de']['orbitalkampf'][3]="Das feindliche Schiff {1} ist durch das planetare Verteidigungssystem unserer Kolonie {2} gebrochen. Wir sollten uns auf eine Invasion vorbereiten.";
-?>

@@ -994,4 +994,3 @@ if ($_GET["fu"]==9) {
         <?php
     include ("inc.footer.php");
 }
-?>

@@ -17,7 +17,6 @@ $lang['flottealpha']['geschwindigkeit']='Geschwindigkeit';
 $lang['flottealpha']['warp']='Warp {1}';
 $lang['flottealpha']['auftragsichern']='Auftrag sichern';
 $lang['flottealpha']['dauer']='Dauer';
-
 $lang['flottealpha']['warpo']='<center>Warpfaktor 0<br><br>Kursdaten wurden<br><br>erfolgreich gel&ouml;scht</center>';
 $lang['flottealpha']['auftraggesichert']='<center>Auftrag<br><br>erfolgreich<br><br>gesichert</center>';
 $lang['flottealpha']['verbrauchzuhoch']='<center>Leminverbrauch zu hoch!<br><br>Kursdaten wurden<br><br>gel&ouml;scht</center>';
@@ -25,7 +24,6 @@ $lang['flottealpha']['kursgesichert']='<br><br><center>Kursdaten erfolgreich ges
 $lang['flottealpha']['keinauftrag']='kein Auftrag';
 $lang['flottealpha']['unterwegsnach']='Unterwegs nach {1}';
 $lang['flottealpha']['versuchterfeindkontakt']='Versuchter Feindkontakt';
-
 $lang['flottealpha']['spezialmissionen']='Spezialmissionen';
 $lang['flottealpha']['keine']='keine';
 $lang['flottealpha']['autorefuel']='Autorefuel';
@@ -71,7 +69,6 @@ $lang['flottealpha']['wellengenerator']='GravitationswellenGenerator';
 $lang['flottealpha']['schilddaempfer']='Schildd&auml;mpfer';
 $lang['flottealpha']['ausbildung']='Ausbildungsakademie';
 $lang['flottealpha']['spezmissakt']='Spezialmission aktivieren';
-
 $lang['flottealpha']['speznachricht'][0]='Die Spezialmissionen wurden deaktiviert.';
 $lang['flottealpha']['speznachricht'][1]='Autorefuel wurde aktiviert.';
 $lang['flottealpha']['speznachricht'][2]='Das Schiff wird bei n&auml;chster Gelegenheit wiederverwertet.';
@@ -113,9 +110,7 @@ $lang['flottealpha']['speznachricht'][71]='Durch unser D&auml;mpfungsfeld werden
 $lang['flottealpha']['speznachricht'][72]='Das Schiff wird ausgebildet und bald an Erfahrung hinzugewinnen.<br>Noch einen Monat.';
 $lang['flottealpha']['speznachricht'][73]='Das Schiff wird ausgebildet und bald an Erfahrung hinzugewinnen.<br>Noch {1} Monate.';
 $lang['flottealpha']['speznachricht'][74]='Dieses Schiff kann nicht ausgebildet werden.<br>&Uuml;berpr&uuml;fen Sie die Einhaltung der Parametetr.';
-
 $lang['flottealpha']['begleitschutzaktiviert']='<br><br>Begleitschutz <b>{1}</b> aktiviert.';
-
 $lang['flottealpha']['keineroute']='Es wurde noch kein keine Route angelegt.';
 $lang['flottealpha']['aufbauroute']='Es befindet sich bereits eine neue Route im Aufbau.';
 $lang['flottealpha']['routevorhanden']='Das Schiff verf&uuml;gt bereits &uuml;ber eine feste Route.';
@@ -127,7 +122,6 @@ $lang['flottealpha']['loeschen']='l&ouml;schen';
 $lang['flottealpha']['fracht']='Frachtraum';
 $lang['flottealpha']['passagiere']='Passagiere';
 $lang['flottealpha']['uebernehmen']='&uuml;bernehmen';
-
 $lang['flottealpha']['startplanet']='Startplanet';
 $lang['flottealpha']['vollLaden']='Voll laden?';
 $lang['flottealpha']['vollLadenja']='Ja';
@@ -145,7 +139,6 @@ $lang['flottealpha']['rennurbin']='Rennurbin';
 $lang['flottealpha']['vorrat']='Vorrat';
 $lang['flottealpha']['baxterium']='Baxterium';
 $lang['flottealpha']['vomisaan']='Vomisaan';
-
 $lang['flottealpha']['flugoptionen']='Flugoptionen';
 $lang['flottealpha']['mindesttank']='Mindesttankf&uuml;llung';
 $lang['flottealpha']['primaererrohstoff']='prim&auml;rer Rohstoff';
@@ -154,7 +147,5 @@ $lang['flottealpha']['wegpunkt']='Wegpunkt';
 $lang['flottealpha']['von']=' von ';
 $lang['flottealpha']['routeabschliessen']='Route abschliessen';
 $lang['flottealpha']['weiterzuwegpunkt']='Weiter zu Wegpunkt';
-
 $lang['flottealpha']['routeerfolgreich']='Die Flugroute wurde erfolgreich initialisiert.<br><br>Der Flug beginnt in einem Monat.';
 $lang['flottealpha']['route']='Route';
-?>

@@ -36,4 +36,3 @@ $lang['metaoptionen']['zurueck']='Zur&uuml;ck';
 $lang['metaoptionen']['animationen']='Keine Animation auf der Galaxiekarte';
 $lang['metaoptionen']['png']='Keine transparenten PNGs';
 $lang['metaoptionen']['scroll']='Keine gestalteten Scrollbalken';
-?>

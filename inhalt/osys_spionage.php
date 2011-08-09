@@ -389,4 +389,3 @@ if($_GET["fu"] == 3) {
         }
 }
 include("inc.footer.php");
-?>

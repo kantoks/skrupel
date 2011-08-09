@@ -2628,4 +2628,3 @@ if ($_GET["fu"]==10) {
         mineral(3,$planet_min3,$konz_min3);
     include ("inc.footer.php");
 }
-?>
