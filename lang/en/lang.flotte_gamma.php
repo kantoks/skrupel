@@ -1,6 +1,5 @@
 <?php
 $lang['flottegamma']['nichtvorhanden']='not available ';
-
 $lang['flottegamma']['waffen'][0]='Laser';
 $lang['flottegamma']['waffen'][1]='Phaser';
 $lang['flottegamma']['waffen'][2]='Plasma Blaster';
@@ -21,14 +20,12 @@ $lang['flottegamma']['waffen'][16]='Quantentorpedos';
 $lang['flottegamma']['waffen'][17]='Micromitgeschütz';
 $lang['flottegamma']['waffen'][18]='Singularitylauncher';
 $lang['flottegamma']['waffen'][19]='Novabombs';
-
 $lang['flottegamma']['waffensysteme']='Waffensysteme';
 $lang['flottegamma']['nameesystem']='Name des energetischen Waffensystems';
 $lang['flottegamma']['anzahlesystem']='Anzahl der energetischen Waffen';
 $lang['flottegamma']['namepsystem']='Name des projektilbasierenden Waffensystems';
 $lang['flottegamma']['anzahlpsystem']='Anzahl der projektilbasierenden Waffen';
 $lang['flottegamma']['anzahlhangar']='Anzahl der Hangar für Raumjäger';
-
 $lang['flottegamma']['aggressivitaet']='Aggressivität';
 $lang['flottegamma']['taktik']='Taktik';
 $lang['flottegamma']['aggressiv']='Aggressiv';
@@ -36,9 +33,7 @@ $lang['flottegamma']['ueberlegt']='Überlegt';
 $lang['flottegamma']['defensiv']='Defensiv';
 $lang['flottegamma']['einstellunguebernehmen']='Einstellung übernehmen';
 $lang['flottegamma']['uebernehmen']='Übernehmen';
-
 $lang['flottegamma']['aggressivitaetuebernommen']='Die Einstellung wurde entsprechend übernommen.';
-
 $lang['flottegamma']['lagerraeume']='Lagerräume';
 $lang['flottegamma']['lagergefuellt']='{1} KT von {2} KT gefüllt';
 $lang['flottegamma']['kolonisten']='Kolonisten';

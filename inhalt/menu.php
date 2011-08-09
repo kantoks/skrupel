@@ -3,12 +3,9 @@ include ("../inc.conf.php");
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file='../lang/'.$_GET["sprache"].'/lang.menu.php';
 include ($file);
-
-
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ?>
-    
     <script language=JavaScript>
         function link_fenster_beide(url,url2) {
             if (document.globals.kursmodus.value==1) {
@@ -23,7 +20,6 @@ if ($_GET["fu"]==1) {
                 }
             }
         }
-
         function link_all(url) {
             if (document.globals.kursmodus.value==1) {
                 alert('<?php echo $lang['menu']['kursmodus']?>');
@@ -37,7 +33,6 @@ if ($_GET["fu"]==1) {
                 }
             }
         }
-
         function link_unten(url) {
             if (document.globals.kursmodus.value==1) {
                 alert('<?php echo $lang['menu']['kursmodus']?>');
@@ -46,7 +41,6 @@ if ($_GET["fu"]==1) {
             }
         }
     </script>
-
     <body text="#000000" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <table border="0" cellspacing="0" cellpadding="0">
             <?php if ($spieler==$spieler_admin) { ?>
@@ -92,7 +86,6 @@ if ($_GET["fu"]==1) {
     <?php include ("inc.footer.php"); 
 }
 if ($_GET["fu"]==2) {
-
     include ("inc.header.php");
     ?>
     <script language=JavaScript>
@@ -114,4 +107,4 @@ if ($_GET["fu"]==2) {
             </tr>
         </table>
     <?php include ("inc.footer.php");
-} ?>
+}

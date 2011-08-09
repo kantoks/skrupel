@@ -5,8 +5,6 @@ $file="../lang/".$_GET["sprache"]."/lang.meta_rassen.php";
 include ($file);
 $file="../lang/".$_GET["sprache"]."/lang.orbitale_systeme.php";
 include ($file);
-
-
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ?>
@@ -52,7 +50,6 @@ if ($_GET["fu"]==1) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==2) {
     include ("inc.header.php");
     $rasse=$_GET["rasse"];
@@ -73,7 +70,6 @@ if ($_GET["fu"]==2) {
             }
             @fclose($fp);
         }
-
         $file='../daten/'.$rasse.'/daten.txt';
         $fp = @fopen("$file","r");
         if ($fp) {
@@ -85,21 +81,16 @@ if ($_GET["fu"]==2) {
             }
             @fclose($fp);
         }
-
         $copyright=$daten[1];
         $attribute=explode(":",$daten[2]);
         $attribute2=explode(":",$daten[4]);
         $verbieten=explode(":",trim($daten[6]));
         $erlauben=explode(":",trim($daten[7]));    
-
         if (0 < (intval($verbieten[0]))) {} else { $verbieten = array(); }
         if (0 < (intval($erlauben[0]))) {} else { $erlauben = array(); }
-
         $beschreibung="";
         $file='../daten/'.$rasse.'/beschreibung_'.$language.'.txt';
-
         if (!file_exists($file)) { $file='../daten/'.$rasse.'/beschreibung.txt'; }
-
         $fp = @fopen("$file","r");
         if ($fp) {
             while (!feof ($fp)) {
@@ -108,7 +99,6 @@ if ($_GET["fu"]==2) {
             }
             @fclose($fp);
         }
-    
         if ($attribute2[0]>=1) {
             $assrasse=$lang['metarassen']['art'][(int)$attribute2[1]];
             if ($attribute2[1]==0) {
@@ -130,7 +120,6 @@ if ($_GET["fu"]==2) {
                             <td><center><img src="../daten/<?php echo $rasse?>/bilder_allgemein/<?php
                                 if (@file_exists("../daten/$rasse/bilder_allgemein/topic.png")) { echo "topic.png"; 
                                 }elseif (@file_exists("../daten/$rasse/bilder_allgemein/topic.gif")) { echo "topic.gif"; }
-                    
                                 ?>" border="0" height="135"></center>
                             </td>
                         </tr>
@@ -202,7 +191,6 @@ if ($_GET["fu"]==2) {
         </table>
         <?php
         if ($attribute[6]>=1) {
-
             if ($attribute[6]==1) { $klassename="M"; }
             if ($attribute[6]==2) { $klassename="N"; }
             if ($attribute[6]==3) { $klassename="J"; }
@@ -212,7 +200,6 @@ if ($_GET["fu"]==2) {
             if ($attribute[6]==7) { $klassename="C"; }
             if ($attribute[6]==8) { $klassename="K"; }
             if ($attribute[6]==9) { $klassename="F"; }
-
             ?>
             <center>
                 <table border="0" cellspacing="0" cellpadding="3">
@@ -284,7 +271,6 @@ if ($_GET["fu"]==2) {
                 $schiffwert=explode(':',$schiff[$i]);
                 $fertigkeiten=trim($schiffwert[17]);
                 $spezial='';
-            
                 $cybern=@intval(substr($fertigkeiten,48,2));
                 $subpartikel=@intval(substr($fertigkeiten,0,2));
                 $terra_warm=@intval(substr($fertigkeiten,5,1));
@@ -315,26 +301,21 @@ if ($_GET["fu"]==2) {
                 $daempfer=@intval(substr($fertigkeiten,61,1));
                 $kamikaze_erfolg=@intval(substr($fertigkeiten,62,1))*10;
                 $kamikaze_schaden=@intval(substr($fertigkeiten,63,1))*100;
-                
                 $fert_quark_vorrat=@intval(substr($fertigkeiten,7,1))*113;
                 $fert_quark_min1=@intval(substr($fertigkeiten,8,1))*113;
                 $fert_quark_min2=@intval(substr($fertigkeiten,9,1))*113;
                 $fert_quark_min3=@intval(substr($fertigkeiten,10,1))*113;
-                
                 $fert_sub_vorrat=@intval(substr($fertigkeiten,0,2));
                 $fert_sub_min1=@intval(substr($fertigkeiten,2,1));
                 $fert_sub_min2=@intval(substr($fertigkeiten,3,1));
                 $fert_sub_min3=@intval(substr($fertigkeiten,4,1));
-                
                 $fert_sprungtorbau_min1=@intval(substr($fertigkeiten,25,3));
                 $fert_sprungtorbau_min2=@intval(substr($fertigkeiten,28,3));
                 $fert_sprungtorbau_min3=@intval(substr($fertigkeiten,31,3));
                 $fert_sprungtorbau_lemin=@intval(substr($fertigkeiten,34,3));
-                
                 $fert_sprung_kosten=@intval(substr($fertigkeiten,11,3));
                 $fert_sprung_min=@intval(substr($fertigkeiten,14,4));
                 $fert_sprung_max=@intval(substr($fertigkeiten,18,4));
-            
                 if ($cybern>=1) {
                     if (strlen($spezial)>=1) { $spezial.='<br>'; }
                     $wert=$cybern*220;
@@ -474,7 +455,6 @@ if ($_GET["fu"]==2) {
                     $textneu=str_replace(array('{1}','{2}'),array($kamikaze_erfolg, $kamikaze_schaden),$lang['metarassen']['kamikaze']);
                     $spezial.=$textneu;
                 }
-    
                 ?>
                 <tr>
                     <td colspan="20">

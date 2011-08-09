@@ -4,7 +4,6 @@ if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.kommunikation_politik.php";
 include ($file);
 include_once ('inc.hilfsfunktionen.php');
-
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ?>
@@ -16,13 +15,11 @@ if ($_GET["fu"]==1) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==2) {
     include ("inc.header.php");
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
-    
         $zeiger = @mysql_query("SELECT spiel,partei_a,partei_b,status,optionen FROM $skrupel_politik where spiel=$spiel");
         $polanzahl = @mysql_num_rows($zeiger);
         if ($polanzahl>=1) {
@@ -33,7 +30,6 @@ if ($_GET["fu"]==2) {
                 $partei_a=$array["partei_a"];
                 $partei_b=$array["partei_b"];
                 $optionen=$array["optionen"];
-        
                 $beziehung[$partei_a][$partei_b]['status']=$status;
                 $beziehung[$partei_b][$partei_a]['status']=$status;
                 $beziehung[$partei_a][$partei_b]['optionen']=$optionen;
@@ -41,15 +37,11 @@ if ($_GET["fu"]==2) {
             }
         }
         $icon_bilder=array("","krieg","handel","nichtangriff","bund","allianz");
-    
         function icon($partei_a,$partei_b) {
-    
             global $beziehung,$bildpfad,$lang;
-    
             $statuss=$beziehung[$partei_a][$partei_b]['status'];
             $optionenn=$beziehung[$partei_a][$partei_b]['optionen'];
             $icon_bilder=array("","krieg","handel","nichtangriff","bund","allianz");
-    
             $icon='<img src="../bilder/empty.gif" width="25" height="25">';
             if ($statuss==1) { $icon='<img src="'.$bildpfad.'/icons/'.$icon_bilder[$statuss].'.gif" width="25" height="25" title="'.$lang['kommunikationpolitik']['icon'][$statuss][0].'">';
             }elseif ($statuss>1) {
@@ -63,9 +55,7 @@ if ($_GET["fu"]==2) {
             }
             return $icon;
         }
-    
         $zeiger2 = @mysql_query("SELECT * FROM $skrupel_spiele where id=$spiel");
-    
         $array2 = @mysql_fetch_array($zeiger2);
         $spiel=$array2["id"];
         for($i=1;$i<11;$i++){
@@ -177,12 +167,10 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==3) {
     include ("inc.header.php");
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-
         <form name="formular" method="post" action="kommunikation_politik.php?fu=4&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>">
         <center>
             <table border="0" cellspacing="0" cellpadding="0" height="100%">
@@ -192,10 +180,8 @@ if ($_GET["fu"]==3) {
                             <img src="../lang/<?php echo $_GET["sprache"]; ?>/topics/politik.gif" width="105" height="32" title="<?php echo $lang['kommunikationpolitik']['politik']?>">
                             <br><br>
                             <?php
-                            
                             $verhandlung = false;
                             $begegnung = array();
-                            
                             if ($module[4]==1) {
                                 $zeiger = @mysql_query("SELECT partei_b FROM $skrupel_begegnung where spiel=$spiel and partei_a=$spieler");
                                 $polanzahl = @mysql_num_rows($zeiger);
@@ -204,13 +190,11 @@ if ($_GET["fu"]==3) {
                                         $ok = @mysql_data_seek($zeiger,$i);
                                         $array = @mysql_fetch_array($zeiger);
                                         $partei_b=$array["partei_b"];
-                                
                                         $begegnung[$partei_b]=1;
                                         $verhandlung = true;
                                     }
                                 }
                             }
-    
                             if (($verhandlung == true) or ($module[4]==0)) {
                                 ?>
                                 <table border="0" cellspacing="0" cellpadding="0">
@@ -285,10 +269,8 @@ if ($_GET["fu"]==3) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==4) {
     include ("inc.header.php");
-
     $art=$_POST["art"];
     $spielernummer=$_POST["spielernummer"];
     $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$_GET["sid"]."'");
@@ -299,10 +281,8 @@ if ($_GET["fu"]==4) {
     $ok = @mysql_data_seek($zeiger,0);
     $sprachtemp_2 = @mysql_fetch_array($zeiger);
     $spieler2sprache=($sprachtemp_2["sprache"]=='')?$language:$sprachtemp_2["sprache"];
-
     $file="../lang/".$spieler2sprache."/lang.kommunikation_politik_b.php";
     include($file);
-    
     $zeiger = @mysql_query("SELECT spiel,partei_a,partei_b,status,optionen FROM $skrupel_politik where spiel=$spiel");
     $polanzahl = @mysql_num_rows($zeiger);
     if ($polanzahl>=1) {
@@ -313,31 +293,21 @@ if ($_GET["fu"]==4) {
             $partei_a=$array["partei_a"];
             $partei_b=$array["partei_b"];
             $optionen=$array["optionen"];
-    
             $beziehung[$partei_a][$partei_b]['status']=$status;
             $beziehung[$partei_a][$partei_b]['optionen']=$optionen;
             }
     }
-
     $volk_a=$spieler;
     $volk_b=$spielernummer;
-
     $partei_a=$volk_a;
     $partei_b=$volk_b;
-
-
     if ($volk_a>$volk_b) { $temp=$volk_b;$volk_b=$volk_a;$volk_a=$temp; }
-
         //$partei_a=$volk_a;
         //$partei_b=$volk_b;
-
         if (!$beziehung[$volk_a][$volk_b]['status']) {
-
             $beziehung[$volk_a][$volk_b]['status']=0;
             $beziehung[$volk_a][$volk_b]['optionen']=0;
-
         }
-
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <center>
@@ -352,11 +322,9 @@ if ($_GET["fu"]==4) {
                             if (!$art) {
                                 $meldung=$lang['kommunikationpolitik']['keinebotschaft'];
                             } else {
-                                
                                 if ($spielernummer==0) {
                                     $meldung=$lang['kommunikationpolitik']['keinvolk'];
                                 } else {
-                            
                                     if ($art==1) {
                                         if ($beziehung[$volk_a][$volk_b]['status']==1) {
                                             $meldung=$lang['kommunikationpolitik']['bereitskrieg'];
@@ -376,7 +344,6 @@ if ($_GET["fu"]==4) {
                                             }
                                         }
                                     }
-                                
                                     if ($art==2) {
                                         if ($beziehung[$volk_a][$volk_b]['status']==2) {
                                             $meldung=$lang['kommunikationpolitik']['bereitshandelsabkommen'];
@@ -401,7 +368,6 @@ if ($_GET["fu"]==4) {
                                             }
                                         }
                                     }
-                                
                                     if ($art==3) {
                                         if ($beziehung[$volk_a][$volk_b]['status']==3) {
                                             $meldung=$lang['kommunikationpolitik']['bereitsnichtangriff'];
@@ -426,7 +392,6 @@ if ($_GET["fu"]==4) {
                                             }
                                         }
                                     }
-                                
                                     if ($art==4) {
                                         if ($beziehung[$volk_a][$volk_b]['status']==4) {
                                             $meldung=$lang['kommunikationpolitik']['bereitsvoelker'];
@@ -451,7 +416,6 @@ if ($_GET["fu"]==4) {
                                             }
                                         }
                                     }
-                                
                                     if ($art==5) {
                                         if ($ziel_id==6) {
                                             $meldung=$lang['kommunikationpolitik']['keineweitereallianz'];
@@ -476,8 +440,6 @@ if ($_GET["fu"]==4) {
                                             }
                                         }
                                     }
-                                
-                                
                                     if ($art==6) {
                                         if ($beziehung[$volk_a][$volk_b]['status']!=1) {
                                             $meldung=$lang['kommunikationpolitik']['keinkrieg'];
@@ -492,7 +454,6 @@ if ($_GET["fu"]==4) {
                                             }
                                         }
                                     }
-                                
                                     if ($art==7) {
                                         if (($beziehung[$volk_a][$volk_b]['status']==0) or ($beziehung[$volk_a][$volk_b]['status']==1)) {
                                             $meldung=$lang['kommunikationpolitik']['keinabkommen'];
@@ -532,9 +493,7 @@ if ($_GET["fu"]==4) {
                                                         parent.politik1.window.location='kommunikation_politik.php?fu=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>';
                                                     </script>
                                                     <?php
-                                    
                                                     $zeigertemp = @mysql_query("UPDATE $skrupel_politik set optionen=$zeitraum where spiel=$spiel and partei_a=$volk_a and partei_b=$volk_b");
-                                    
                                                 } else {
                                                     $meldung=$lang['kommunikationpolitik']['ingespraechen'];
                                                 }
@@ -564,10 +523,8 @@ if ($_GET["fu"]==4) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==5) {
     include ("inc.header.php");
-    
     $art=$_POST["art"];
     $spielernummer=$_POST["spieler2"];
     $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$_GET["sid"]."'");
@@ -578,24 +535,18 @@ if ($_GET["fu"]==5) {
     $ok = @mysql_data_seek($zeiger,0);
     $sprachtemp_2 = @mysql_fetch_array($zeiger);
     $spieler2sprache=($sprachtemp_2["sprache"]=='')?$language:$sprachtemp_2["sprache"];
-
     $file="../lang/".$spieler2sprache."/lang.kommunikation_politik_b.php";
     include($file);
-
     $anfrage_id=$_GET["anf"];
     $zeiger = @mysql_query("SELECT * FROM $skrupel_politik_anfrage where partei_a=$spieler and spiel=$spiel and id=$anfrage_id");
     $anzahl = @mysql_num_rows($zeiger);
-
     if ($anzahl==1) {
         $array = @mysql_fetch_array($zeiger);
         $partei_b=$array["partei_b"];
         $art=$array["art"];
-    
         $volk_a=$spieler;
         $volk_b=$partei_b;
-
         if ($volk_a>$volk_b) { $temp=$volk_b;$volk_b=$volk_a;$volk_a=$temp; }
-
         if ($art==1) {
             $zeigertemp = @mysql_query("DELETE FROM $skrupel_politik where partei_a=$volk_a and spiel=$spiel and partei_b=$volk_b ");
             $text=str_replace(array('{1}','{2}'),array($spielerfarbe[$spieler],$spieler_name),$lang['kommunikationpolitik_b']['jafrieden']);
@@ -648,7 +599,6 @@ if ($_GET["fu"]==5) {
                     $drinn=1;
                     for($j=0;$j<$schiffanzahl2;$j++){
                         if(($array_temp_t["rasse"]===$array_temp[$j]["rasse"])and($array_temp_t["klasse_id"]===$array_temp[$j]["klasse_id"])){
-    
                             $drinn=0;
                         }
                     }
@@ -676,7 +626,6 @@ if ($_GET["fu"]==5) {
         }
         $zeigertemp = @mysql_query("DELETE FROM $skrupel_politik_anfrage where partei_a=$spieler and spiel=$spiel and id=$anfrage_id");
     }
-
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <script language="JavaScript">
@@ -685,10 +634,8 @@ if ($_GET["fu"]==5) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==6) {
     include ("inc.header.php");
-
     $art=$_POST["art"];
     $spielernummer=$_POST["spieler2"];
     $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$_GET["sid"]."'");
@@ -699,20 +646,15 @@ if ($_GET["fu"]==6) {
     $ok = @mysql_data_seek($zeiger,0);
     $sprachtemp_2 = @mysql_fetch_array($zeiger);
     $spieler2sprache=($sprachtemp_2["sprache"]=='')?$language:$sprachtemp_2["sprache"];
-
     $file="../lang/".$spieler2sprache."/lang.kommunikation_politik_b.php";
     include($file);
-
     $anfrage_id=$_GET["anf"];
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_politik_anfrage where partei_a=$spieler and spiel=$spiel and id=$anfrage_id");
     $anzahl = @mysql_num_rows($zeiger);
-
     if ($anzahl==1) {
         $array = @mysql_fetch_array($zeiger);
         $partei_b=$array["partei_b"];
         $art=$array["art"];
-
         if ($art==1) {
             $text=str_replace(array('{1}','{2}'),array($spielerfarbe[$spieler],$spieler_name),$lang['kommunikationpolitik_b']['neinfrieden']);
             neuigkeit(4,"../bilder/news/politik.jpg",$partei_b,"$text");
@@ -733,10 +675,8 @@ if ($_GET["fu"]==6) {
             $text=str_replace(array('{1}','{2}'),array($spielerfarbe[$spieler],$spieler_name),$lang['kommunikationpolitik_b']['neinallianz']);
             neuigkeit(4,"../bilder/news/politik.jpg",$partei_b,"$text");
         }
-
         $zeigertemp = @mysql_query("DELETE FROM $skrupel_politik_anfrage where partei_a=$spieler and spiel=$spiel and id=$anfrage_id");
     }
-
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <script language="JavaScript">
@@ -745,4 +685,3 @@ if ($_GET["fu"]==6) {
         <?php
     include ("inc.footer.php");
 }
-?>

@@ -2,12 +2,9 @@
 $lang['planetenbeta']['population']='population';
 $lang['planetenbeta']['abgaben']='dues';
 $lang['planetenbeta']['alleine']='We are the only dominant species<br><br>on this planet';
-
 $lang['planetenbeta']['logbuch']='logbook';
 $lang['planetenbeta']['sichern']='save entry';
-
 $lang['planetenbeta']['erfolgreichaktualisiert']='The loogbook was updated successfully.';
-
 $lang['planetenbeta']['kol']='col';
 $lang['planetenbeta']['cx']='cx';
 $lang['planetenbeta']['vor']='inv';

@@ -1,12 +1,11 @@
 <?php
-    if(empty($_GET['fu']))$_GET['fu'] = 1;   
+    if(empty($_GET['fu']))$_GET['fu'] = 1;
     if ($_GET["fu"]==1) {
     include ("../inc.conf.php");
 
     $breite=$_GET["width"];
     $hoehe=$_GET["height"];
     $spiel=$_GET["spiel"];
-
 
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);

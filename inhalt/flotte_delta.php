@@ -3,12 +3,9 @@ include ("../inc.conf.php");
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.flotte_delta.php";
 include ($file);
-
-
 $shid=$_GET["shid"];
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
     $array = @mysql_fetch_array($zeiger);
     $projektile=$array["projektile"];
@@ -19,17 +16,14 @@ if ($_GET["fu"]==1) {
     $fracht_min1=$array["fracht_min1"];
     $fracht_min2=$array["fracht_min2"];
     $zusatzmodul=$array["zusatzmodul"];
-
     $max=$projektile_anzahl*5;
     if ($zusatzmodul==3) { $max=round($max*1.5); }
-
     $max_bau=$max-$projektile;
     $max_cantox=floor($fracht_cantox/35);
     if ($max_cantox<$max_bau) {$max_bau=$max_cantox;}
     $max_min1=floor($fracht_min1/2);
     if ($max_min1<$max_bau) {$max_bau=$max_min1;}
     if ($fracht_min2<$max_bau) {$max_bau=$fracht_min2;}
-
     ?>
     <body text="#000000" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <center>
@@ -120,10 +114,8 @@ if ($_GET["fu"]==1) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==2) {
     include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
     $array = @mysql_fetch_array($zeiger);
     $projektile=$array["projektile"];
@@ -134,27 +126,21 @@ if ($_GET["fu"]==2) {
     $fracht_cantox=$array["fracht_cantox"];
     $fracht_min1=$array["fracht_min1"];
     $fracht_min2=$array["fracht_min2"];
-
     $max=$projektile_anzahl*5;
     if ($zusatzmodul==3) { $max=round($max*1.5); }
-
     $max_bau=$max-$projektile;
     $max_cantox=floor($fracht_cantox/35);
     if ($max_cantox<$max_bau) {$max_bau=$max_cantox;}
     $max_min1=floor($fracht_min1/2);
     if ($max_min1<$max_bau) {$max_bau=$max_min1;}
     if ($fracht_min2<$max_bau) {$max_bau=$fracht_min2;}
-
     $bau=$_POST["bau_auftrag"];
     if ($max_bau<$bau) {$bau=$max_bau;}
-
     $projektile=$projektile+$bau;
     $fracht_cantox=$fracht_cantox-($bau*35);
     $fracht_min1=$fracht_min1-($bau*2);
     $fracht_min2=$fracht_min2-$bau;
-
     $zeiger_temp = @mysql_query("UPDATE $skrupel_schiffe set projektile=$projektile,fracht_cantox=$fracht_cantox,fracht_min1=$fracht_min1,fracht_min2=$fracht_min2 where id=$shid");
-
     ?>
     <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <script language=JavaScript>
@@ -165,38 +151,31 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==3) {
     include ("inc.header.php");
     ?>
     <body text="#000000" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" scroll="no" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
-
         if ($_POST["auto"]==1) { 
             $auto_projektile=1;$message="<center>".$lang['flottedelta']['autoaktiviert']."</center>";
         } else {
             $auto_projektile=0;$message="<center>".$lang['flottedelta']['autodeaktiviert']."</center>";
         }
-
         $zeiger = @mysql_query("update $skrupel_schiffe set projektile_auto=$auto_projektile where id=$shid and besitzer=$spieler");
-
         ?>
         <br><br><br><br>
         <?php 
         echo $message;
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==4) {
     include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
     $array = @mysql_fetch_array($zeiger);
     $antrieb=$array["antrieb"];
     $antrieb_anzahl=$array["antrieb_anzahl"];
     $zusatzmodul=$array["zusatzmodul"];
     $antrieb_name=$lang['flottedelta']['antriebe'][$antrieb-1];
-
     ?>
     <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <center>
@@ -243,15 +222,12 @@ if ($_GET["fu"]==4) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==5) {
     include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT id,name,ordner FROM $skrupel_schiffe where id=$shid");
     $array = @mysql_fetch_array($zeiger);
     $name=$array["name"];
     $ordner=$array["ordner"];
-
     ?>
     <body text="#000000" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <center>
@@ -294,12 +270,9 @@ if ($_GET["fu"]==5) {
                             <?php
                             $zeiger2 = @mysql_query("SELECT * FROM $skrupel_ordner where besitzer=$spieler and spiel=$spiel order by name");
                             $ordneranzahl = @mysql_num_rows($zeiger2);
-
                             if ($ordneranzahl>=1) {
-
                                 for  ($i2=0; $i2<$ordneranzahl;$i2++) {
                                     $ok2 = @mysql_data_seek($zeiger2,$i2);
-
                                     $array2 = @mysql_fetch_array($zeiger2);
                                     $ooid=$array2["id"];
                                     $oname=$array2["name"];
@@ -320,12 +293,9 @@ if ($_GET["fu"]==5) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==6) {
     include ("inc.header.php");
-
     $zeiger = @mysql_query("UPDATE $skrupel_schiffe set name=\"".$_POST["schiffname"]."\" where id=$shid and besitzer=$spieler");
-
     ?>
     <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <br><br><br><br>
@@ -336,12 +306,9 @@ if ($_GET["fu"]==6) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==7) {
     include ("inc.header.php");
-
     $zeiger = @mysql_query("UPDATE $skrupel_schiffe set ordner=\"".$_POST["oid"]."\" where ((id=$shid) or ((zielid=$shid) and (flug=4))) and besitzer=$spieler");
-
     ?>
     <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <br><br><br><br>
@@ -354,4 +321,3 @@ if ($_GET["fu"]==7) {
         <?php
     include ("inc.footer.php");
 }
-?>

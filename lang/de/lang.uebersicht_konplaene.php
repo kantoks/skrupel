@@ -13,4 +13,3 @@ $lang['uebersicht']['konplaene']['baxterium']='Baxterium';
 $lang['uebersicht']['konplaene']['rennurbin']='Rennurbin';
 $lang['uebersicht']['konplaene']['vormissan']='Vormissan';
 $lang['uebersicht']['konplaene']['kt']='{1} KT';
-?>

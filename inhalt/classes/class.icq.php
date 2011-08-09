@@ -75,4 +75,3 @@ class ICQPagerSend {
         return false; 
     } 
 } 
-?>

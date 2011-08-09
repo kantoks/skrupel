@@ -14,7 +14,6 @@ $lang['uebersichtneuigkeiten']['buendnisablehnen']='B&uuml;ndnis ablehnen';
 $lang['uebersichtneuigkeiten']['art5']='will unsere gemeinsamen Ziele offiziell machen und eine Allianz mit uns eingehen.';
 $lang['uebersichtneuigkeiten']['gemeinsamenzielenzustimmen']='gemeinsamen Zielen zustimmen';
 $lang['uebersichtneuigkeiten']['allianzablehnen']='Allianz ablehnen';
-
 $lang['uebersichtneuigkeiten']['geburtstag']='<br><br>Doch wer hat heut Geburtstag? Na der Bernd. Du kennst den Bernd nicht? Der wird heut {1} und ist derjenige, der sich das Spiel hier ausgedacht hat. Also los, schick ihm eine <a href="mailto:bernd@kantoks.de">Mail</a> und gratulier endlich :-)';
 $lang['uebersichtneuigkeiten']['happy']='Happy Birthday!';
 $lang['uebersichtneuigkeiten']['nichtloeschtbar']='Nachricht kann nicht gel&ouml;scht werden.';
@@ -25,9 +24,7 @@ $lang['uebersichtneuigkeiten']['annehmen']='Annehmen';
 $lang['uebersichtneuigkeiten']['ablehnen']='Ablehnen';
 $lang['uebersichtneuigkeiten']['antworten']='Antworten';
 $lang['uebersichtneuigkeiten']['kommentieren']='Kommentieren';
-
 $lang['uebersichtneuigkeiten']['betfrieden']='Wir leben mit {1} wieder in Frieden.';
 $lang['uebersichtneuigkeiten']['abfrieden']='{1} hat unser Friedensangebot abgelehnt.';
 $lang['uebersichtneuigkeiten']['getallianz']='Wir haben mit {1} eine Allianz geschlossen.';
 $lang['uebersichtneuigkeiten']['noallianz']='{1} hat eine Allianz mit uns abgelehnt.';
-?>

@@ -14,7 +14,6 @@ $lang['uebersichtneuigkeiten']['buendnisablehnen']='decline confederation';
 $lang['uebersichtneuigkeiten']['art5']='wants to popularise our common aims and found an alliance with us.';
 $lang['uebersichtneuigkeiten']['gemeinsamenzielenzustimmen']='accept common aims';
 $lang['uebersichtneuigkeiten']['allianzablehnen']='decline alliance';
-
 $lang['uebersichtneuigkeiten']['geburtstag']='<br><br>Whose birthday is today? Of course! It is Bernd`s birthday! You don`t know Bernd? He ist going to be {1} today and is the guy, who invented this game. Make it happen, send him a <a href="mailto:bernd@kantoks.de">Mail</a> and say Happy Birthday :-)';
 $lang['uebersichtneuigkeiten']['happy']='Happy Birthday!';
 $lang['uebersichtneuigkeiten']['nichtloeschtbar']='Nachricht kann nicht gelöscht werden.';
@@ -25,7 +24,6 @@ $lang['uebersichtneuigkeiten']['annehmen']='accept';
 $lang['uebersichtneuigkeiten']['ablehnen']='decline';
 $lang['uebersichtneuigkeiten']['antworten']='answer';
 $lang['uebersichtneuigkeiten']['kommentieren']='Kommentieren';
-
 $lang['uebersichtneuigkeiten']['betfrieden']='We are living again in peace with {1}.';
 $lang['uebersichtneuigkeiten']['abfrieden']='{1} has accepted our peace-offering.';
 $lang['uebersichtneuigkeiten']['getallianz']='We founded an alliance with {1}.';

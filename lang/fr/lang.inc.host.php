@@ -12,7 +12,6 @@ $lang['host']['fr']['sprungtriebwerk'][0]='Notre vaisseau <b>{1}</b> a effectue 
 $lang['host']['fr']['sprungtriebwerk'][1]='Notre vaisseau <b>{1}</b> a disparu pendant un saut dans les profondeurs de l`espace.';
 $lang['host']['fr']['sprungtriebwerk'][2]='Notre vaisseau <b>{1}</b> n`a pas pu effectuer son saut a cause d`un manque de Lemin.';
 $lang['host']['fr']['sprungtriebwerk'][3]='Notre vaisseau <b>{1}</b> a effectue son saut avec succes mais a ete arrete par un champ gravitationnel apres un trajet de {2} annees lumiere.';
-
 $lang['host']['fr']['drugunverzerrer'][0]='Unser Schiff {1} wurde aufgrund einer DrugunPhasenVerzerrung enttarnt.';
 $lang['host']['fr']['drugunverzerrer'][1]='Unser Schiff {1} initiierte eine DrugungPhasenVerzerrung und ging dabei unter.';
 

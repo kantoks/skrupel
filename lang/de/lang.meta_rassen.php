@@ -22,7 +22,6 @@ $lang['metarassen']['hangar']='Hangar';
 $lang['metarassen']['vomisaan']='Vomisaan';
 $lang['metarassen']['alle']='alle';
 $lang['metarassen']['keine']='keine';
-
 $lang['metarassen']['art'][1]='Humanoid';
 $lang['metarassen']['art'][2]='Energieform';
 $lang['metarassen']['art'][3]='Formlos';
@@ -30,15 +29,12 @@ $lang['metarassen']['art'][4]='Plasmanoid';
 $lang['metarassen']['art'][5]='Amphibisch';
 $lang['metarassen']['art'][6]="Parasit&auml;r";
 $lang['metarassen']['art'][7]="K&uuml;nstlich";
-
 $lang['metarassen']['grad']="{1} Grad";
 $lang['metarassen']['kt']="{1} KT";
 $lang['metarassen']['vh']="{1} %";
 $lang['metarassen']['tl']='(Techlevel {1})';
-
 $lang['metarassen']['orbs'][0]="Folgende spezielle Orbitalsysteme kann diese Rasse <b>zus&auml;tzlich</b> bauen.";
 $lang['metarassen']['orbs'][1]="Folgende allgemeine Orbitalsysteme kann diese Rasse <b>nicht</b> bauen.";
-
 $lang['metarassen']['cybernrittnikk']='<b>Cybernrittnikk</b><br>Diese einzigartige Technologie ist in der Lage pro Monat {1} Kolonisten zu produzieren. Es werden 220 KT Vorr&auml;te hierf&uuml;r ben&ouml;tigt und verbraucht.';
 $lang['metarassen']['destabilisator']='<b>Destabilisator</b><br>Dieses Schiff verf&uuml;gt &uuml;ber einen Superlaser, mit welchem es mit einer Effektivit&auml;t von {1}% einen Planeten destabilisieren und zum kollabieren bringen kann.';
 $lang['metarassen']['erweitertertransporter']='<b>Erweitertes Transportersystem</b><br>Mittels dieser Technologie ist es m&ouml;glich &uuml;ber den Transporterraum auf Planeten zuzugreifen, welche {1} Lichtjahre entfernt sind.';
@@ -69,4 +65,3 @@ $lang['metarassen']['fuehrung']='<b>Kommunikationszentrale</b><br>Durch perfekte
 $lang['metarassen']['wellengenerator']='<b>Gravitationswellen Generator</b><br>Generiert ein Abfangfeld, dass im Umkreis von 65 Lichtjahren Sprungtriebwerke und Fluchtman&ouml;ver feindlicher Schiffe unterbindet sowie s&auml;mtliche Schiffsbewegungen auf Warp 7 verlangsamt. Pro Monat ben&ouml;tigt das Feld {1} KT Vomisaan.';
 $lang['metarassen']['daempfer']='<b>Schildd&auml;mpfer</b><br>Mit aktiviertem D&auml;mpfer werden gegnerische Schilde im Raumkampf umgangen. Pro 100 Masse des jeweiligen Gegners werden {1} KT Rennurbin verbraucht.';
 $lang['metarassen']['kamikaze']='<b>Kamikaze Angriff</b><br>Ein verheerender Angriff bei dem das eigene Schiff zerst&ouml;rt wird. Mit einer Wahrscheinlichkeit von {1}% pro Kampfrunde gelingt der Angriff und verursacht dabei {2} Schaden.';
-?>

@@ -7,4 +7,3 @@ $lang['kommunikationch']['sek60']='60-Sekunden-Automatik';
 $lang['kommunikationch']['fluestert']='fl&uumlstert';
 $lang['kommunikationch']['an']='an: {1}';
 $lang['kommunikationch']['alle']='alle';
-?>

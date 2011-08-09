@@ -3,7 +3,6 @@ if($module[0]) {
     if(count($sprachen) == 0) {
         include(LANGUAGEDIR.$language.'/lang.inc.host_spionage.php');
         include(LANGUAGEDIR.$language.'/lang.spionagen.php');
-
         foreach($lang['spionagen'] as $key => $val) {
             $spionage_daten[$key][$language]['name'] = $lang['spionagen'][$key]['name'];
         }
@@ -11,13 +10,11 @@ if($module[0]) {
         foreach($sprachen as $sprache) {
             include(LANGUAGEDIR.$sprache.'/lang.inc.host_spionage.php');
             include(LANGUAGEDIR.$sprache.'/lang.spionagen.php');
-
             foreach($lang['spionagen'] as $key => $val) {
                 $spionage_daten[$key][$sprache]['name'] = $lang['spionagen'][$key]['name'];
             }
         }
     }
-
     //INIT
     $zeiger_spione = mysql_query("SELECT id,name,besitzer,erfahrung,extra,s_x,s_y,strecke FROM $skrupel_schiffe where volk='unknown' and klasseid=1 and spiel=$spiel");
     while($spion = mysql_fetch_array($zeiger_spione)) {
@@ -51,7 +48,6 @@ if($module[0]) {
             neuigkeiten(2,"../bilder/news/verschollen.jpg", $spion['besitzer'],$lang['host'][$spielersprache[$spion['besitzer']]]['spionage'][0],array($spion['name'],$heimat['name']));
         }
     }
-
     //spionagen aus datei laden
     $spiodatei = false;
     $file = $main_verzeichnis."daten/unknown/spionagen.txt";
@@ -74,7 +70,6 @@ if($module[0]) {
         }
         fclose($fp);
     }
-
     //arrays f�llen
     $id_array = array();
     $zeiger_spione = mysql_query("SELECT * FROM $skrupel_schiffe WHERE volk='unknown' AND klasseid=1 AND spiel=$spiel ORDER BY erfahrung DESC, id ASC;");
@@ -83,15 +78,12 @@ if($module[0]) {
         $id_array[] = $spion['id'];
         $extra_array[$id] = explode(":", $spion['extra']);
         $extra_spio_array[$id] = explode("-", $extra_array[$id][0]);
-
         $spiomission_array[$id] = $extra_spio_array[$id][3];
         $stufe_array[$id] = $extra_spio_array[$id][1];
-
         $spionname_array[$id] = $spion['name'];
         $spionbesitzer_array[$id] = $spion['besitzer'];
         $spionvolk_array[$id] = $spion['volk'];
         $spionbild_array[$id] = $spion['bild_gross'];
-
         $kox_array[$id] = $spion['kox'];
         $koy_array[$id] = $spion['koy'];
         $spion_sx_array[$id] = $spion['s_x'];
@@ -100,11 +92,9 @@ if($module[0]) {
         $tarnfeld_array[$id] = $spion['tarnfeld'];
         $spezialmission_array[$id] = $spion['spezialmission'];
         $spionerfahrung_array[$id] = $spion['erfahrung'];
-
         $zielplanetbesitzer_array[$id] = 0;
         $zielschiffbesitzer_array[$id] = 0;
         $zielsternenbasis_array[$id] = 0;
-
         //spion am ziel?
         if($spiomission_array[$id] != 9  && $spiomission_array[$id] != 6) {
             $zeiger_target = mysql_query("SELECT id, besitzer, sternenbasis_id FROM $skrupel_planeten WHERE besitzer<>0 AND besitzer<>".$spionbesitzer_array[$id]." AND x_pos=".$kox_array[$id]." AND y_pos=".$koy_array[$id]." AND spiel=$spiel;");
@@ -127,7 +117,6 @@ if($module[0]) {
                 $zielschiffbesitzer_array[$id] = $ergebnis_target['besitzer'];
             }
         }
-
         if($zielplanetbesitzer_array[$id]) $spionageziel_array[$id] = $zielplanetbesitzer_array[$id];
         else if($zielschiffbesitzer_array[$id]) $spionageziel_array[$id] = $zielschiffbesitzer_array[$id];
         else if($temp_zielid) {
@@ -137,14 +126,12 @@ if($module[0]) {
             $zielsternenbasis_array[$id] = $temp_zielsternenbasis;
             $spionageziel_array[$id] = $zielplanetbesitzer_array[$id];
         } else $spionageziel_array[$id] = 0;
-
         $politik_erlaubt_array[$id] = true;
         //wenn sie ein buendniss haben, dann spionage aktion unterdruecken
         if ($spionageziel_array[$id] && (($beziehung[$spionbesitzer_array[$id]][$spionageziel_array[$id]]['status']==3) || ($beziehung[$spionbesitzer_array[$id]][$spionageziel_array[$id]]['status']==4) || ($beziehung[$spionbesitzer_array[$id]][$spionageziel_array[$id]]['status']==5))) {
             $politik_erlaubt_array[$id] = false;
         }
     }
-
     //abarbeiten gegenspionage
     if(count($id_array) > 0) {
         foreach($id_array as $id) {
@@ -207,11 +194,9 @@ if($module[0]) {
             }
         }
     }
-
     //abarbeiten rest
     if(count($id_array) > 0) {
         foreach($id_array as $id) {
-
             $extra = $extra_array[$id];
             $extra_spio = $extra_spio_array[$id];
             $spiomission = $spiomission_array[$id];
@@ -233,7 +218,6 @@ if($module[0]) {
             $zielsternenbasis = $zielsternenbasis_array[$id];
             $spionageziel = $spionageziel_array[$id];
             $politik_erlaubt = $politik_erlaubt_array[$id];
-
             $success = false;
             //wenn er am spionieren ist und seine tarnung noch funktioniert und er es aufgrund der politik auch darf
             if($spezialmission==51 && $tarnfeld>1 && $politik_erlaubt) {
@@ -302,22 +286,18 @@ if($module[0]) {
                         $a_max = $spionage_daten[14]['ausbeute_max'] + $stufe * 5;
                         $prozent = mt_rand($a_min, $a_max);
                         if($prozent>100) $prozent = 100;
-
                         //heimatplani des spions
                         $zeiger_mission = mysql_query("SELECT id FROM $skrupel_planeten WHERE x_pos=$spion_sx AND y_pos=$spion_sy AND spiel=$spiel;");
                         $ergebnis_mission = mysql_fetch_array($zeiger_mission);
                         $heimatplani = $ergebnis_mission['id'];
-
                         $zeiger_mission = mysql_query("SELECT name, cantox FROM $skrupel_planeten WHERE id=$zielid AND spiel=$spiel;");
                         $ergebnis_mission = mysql_fetch_array($zeiger_mission);
                         $name = $ergebnis_mission['name'];
                         $anzahl_can = $ergebnis_mission['cantox'];
                         $cantox_erbeutet = round($anzahl_can/100*$prozent);
-
                         mysql_query("UPDATE $skrupel_planeten SET cantox=cantox-$cantox_erbeutet WHERE id=$zielid AND spiel=$spiel;");
                         $text1 = str_replace(array('{1}', '{2}', '{3}', '{4}'), array($spionname, $cantox_erbeutet, $prozent, $name),$lang['host'][$spielersprache[$spionbesitzer]]['spionage'][13]);
                         $text2 = str_replace(array('{1}', '{2}', '{3}', '{4}'), array($spionname, $cantox_erbeutet, $prozent, $name),$lang['host'][$spielersprache[$spionageziel]]['spionage'][14]);
-
                         if($heimatplani) { //zur sicherheit
                             $ziel_x = $spion_sx;
                             $ziel_y = $spion_sy;
@@ -335,9 +315,7 @@ if($module[0]) {
                         $success = true;
                         $text1 = str_replace('{1}',$spionname,$lang['host'][$spielersprache[$spionbesitzer]]['spionage'][15]);
                         $text2 = str_replace('{1}',$spionname,$lang['host'][$spielersprache[$spionageziel]]['spionage'][16]);
-
                         $reichweite = 500; //reichweite ca 3.14 sektoren in der flaeche
-
                         $zeiger_mission = mysql_query("SELECT name,klasse,kox,koy,antrieb,schaden,energetik_stufe,projektile_stufe,energetik_anzahl,projektile_anzahl,hanger_anzahl,erfahrung FROM $skrupel_schiffe WHERE besitzer=$zielschiffbesitzer AND (sqrt(((kox-$kox)*(kox-$kox))+((koy-$koy)*(koy-$koy)))<=$reichweite) AND spiel=$spiel ORDER BY rand() LIMIT 0,15;");
                         if(mysql_num_rows($zeiger_mission)) {
                             $text1 .= "<br><br><table cellpadding=\"0\" cellspacing=\"5\" border=\"0\">";
@@ -379,9 +357,7 @@ if($module[0]) {
                         $success = true;
                         $text1 = str_replace('{1}',$spionname,$lang['host'][$spielersprache[$spionbesitzer]]['spionage'][19]);
                         $text2 = str_replace('{1}',$spionname,$lang['host'][$spielersprache[$spionageziel]]['spionage'][20]);
-
                         $reichweite = 500; //reichweite ca 3.14 sektoren in der flaeche
-
                         $zeiger_mission = mysql_query("SELECT name,kolonisten,cantox,vorrat,lemin,min1,min2,min3,fabriken,minen,x_pos,y_pos FROM $skrupel_planeten WHERE (sqrt(((x_pos-$kox)*(x_pos-$kox))+((y_pos-$koy)*(y_pos-$koy)))<=$reichweite) AND besitzer=$zielplanetbesitzer AND spiel=$spiel ORDER BY rand() LIMIT 0,15;");
                         if(mysql_num_rows($zeiger_mission)) {
                             $text1 .= "<br><br><table cellpadding=\"0\" cellspacing=\"5\" border=\"0\">";
@@ -491,7 +467,6 @@ if($module[0]) {
                     if(spionerfolg($spionage_daten[11]['wahrscheinlichkeit'], $stufe)) {
                         $a_min = $spionage_daten[11]['ausbeute_min'] + $stufe * 5;
                         $a_max = $spionage_daten[11]['ausbeute_max'] + $stufe * 5;
-
                         $zeiger_mission = mysql_query("SELECT * FROM $skrupel_planeten WHERE id=$zielid AND spiel=$spiel;");
                         if($datensatz = mysql_fetch_array($zeiger_mission)) {
                             $success = true;
@@ -500,26 +475,19 @@ if($module[0]) {
                             $p_fabriken=$datensatz["fabriken"];
                             $p_abwehr=$datensatz["abwehr"];
                             $p_name=$datensatz["name"];
-
                             $staerke_angriff = mt_rand($a_min, $a_max);
-
                             $prozent = round($staerke_angriff/3);
                             $prozente[0] = mt_rand(0,$prozent);
                             $prozente[1] = mt_rand(0,($prozent-$prozente[0]));
                             $prozente[2] = mt_rand(0,($prozent-$prozente[0]-$prozente[1]));
-
                             shuffle($prozente);
-
                             $prozent_minen = $prozente[0]; if ($prozent_minen>100) { $prozent_minen=100; }
                             $prozent_fabriken = $prozente[1]; if ($prozent_fabriken>100) { $prozent_fabriken=100; }
                             $prozent_abwehr = $prozente[2]; if ($prozent_abwehr>100) { $prozent_abwehr=100; }
-
                             $vernichtet_minen=round($p_minen/100*$prozent_minen);
                             $vernichtet_fabriken=round($p_fabriken/100*$prozent_fabriken);
                             $vernichtet_abwehr=round($p_abwehr/100*$prozent_abwehr);
-
                             mysql_query("UPDATE $skrupel_planeten SET minen=minen-$vernichtet_minen,fabriken=fabriken-$vernichtet_fabriken,abwehr=abwehr-$vernichtet_abwehr WHERE id=$p_id;");
-
                             $text1 = str_replace(array('{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}'), array($spionname, $p_name, $vernichtet_minen, $prozent_minen, $vernichtet_fabriken, $prozent_fabriken, $vernichtet_abwehr, $prozent_abwehr),$lang['host'][$spielersprache[$spionbesitzer]]['spionage'][40]);
                             $text2 = str_replace(array('{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}'), array($p_name, $spionname, $vernichtet_minen, $prozent_minen, $vernichtet_fabriken, $prozent_fabriken, $vernichtet_abwehr, $prozent_abwehr),$lang['host'][$spielersprache[$spionageziel]]['spionage'][41]);
                         }
@@ -532,21 +500,17 @@ if($module[0]) {
                         if(mysql_num_rows($zeiger_mission)) {
                             $success = true;
                             $datensatz = mysql_fetch_array($zeiger_mission);
-
                             $ziel_name = $datensatz['name'];
                             $ziel_defense = $datensatz['defense'];
                             $t_huelle = $datensatz['t_huelle'];
                             $t_antrieb = $datensatz['t_antrieb'];
                             $t_energie = $datensatz['t_energie'];
                             $t_explosiv = $datensatz['t_explosiv'];
-
                             $a_min = $spionage_daten[12]['ausbeute_min'] + $stufe * 5;
                             $a_max = $spionage_daten[12]['ausbeute_max'] + $stufe * 5;
                             $prozent = mt_rand($a_min, $a_max);
                             if($prozent>100) $prozent = 100;
-
                             $vernichtet_defense = round($ziel_defense/100*$prozent);
-
                             $t_stufe = 0;
                             if(spionerfolg(10, $stufe)) {
                                 $vernichtet_techlevel = mt_rand(1, 4);
@@ -562,7 +526,6 @@ if($module[0]) {
                                 $text1 = str_replace(array('{1}', '{2}', '{3}', '{4}', '{5}', '{6}'), array($spionname, $ziel_name, $vernichtet_defense, $prozent, $t_stufe, $techlevelname),$lang['host'][$spielersprache[$spionbesitzer]]['spionage'][42]);
                                 $text2 = str_replace(array('{1}', '{2}', '{3}', '{4}', '{5}', '{6}'), array($spionname, $ziel_name, $vernichtet_defense, $prozent, $t_stufe, $techlevelname),$lang['host'][$spielersprache[$spionageziel]]['spionage'][43]);
                             }else {
-
                                 $text1 = str_replace(array('{1}', '{2}', '{3}', '{4}'), array($spionname, $ziel_name, $vernichtet_defense, $prozent),$lang['host'][$spielersprache[$spionbesitzer]]['spionage'][44]);
                                 $text2 = str_replace(array('{1}', '{2}', '{3}', '{4}'), array($spionname, $ziel_name, $vernichtet_defense, $prozent),$lang['host'][$spielersprache[$spionageziel]]['spionage'][45]);
                             }
@@ -577,19 +540,15 @@ if($module[0]) {
                             $success = true;
                             $schiff_tot = false;
                             $datensatz = mysql_fetch_array($zeiger_mission);
-
                             $schiff_name = $datensatz['name'];
                             $schiff_lemin = $datensatz['lemin'];
                             $schiff_schaden = $datensatz['schaden'];
                             $schiff_crew = $datensatz['crew'];
-
                             $prozent_lemin = mt_rand(10, 25);
                             $prozent_schaden = mt_rand(5, 15);
                             $prozent_crew = mt_rand(5, 20);
-
                             //prozentpunkte, erschien mir sinnvoller
                             $schiff_schaden += $prozent_schaden; if($schiff_schaden > 100) { $schiff_tot = true; }
-
                             $crew_vernichtet = round($schiff_crew/100*$prozent_crew);
                             $lemin_vernichtet = round($schiff_lemin/100*$prozent_lemin);
                             if($schiff_tot) {
@@ -598,7 +557,6 @@ if($module[0]) {
                                 mysql_query("UPDATE $skrupel_schiffe set flug=0,warp=0,zielx=0,ziely=0,zielid=0 where (flug=3 or flug=4) and zielid=$zielid;");
                                 $text1 = str_replace(array('{1}', '{2}'), array($spionname, $schiff_name),$lang['host'][$spielersprache[$spionbesitzer]]['spionage'][46]);
                                 $text2 = str_replace(array('{1}', '{2}'), array($spionname, $schiff_name),$lang['host'][$spielersprache[$spionageziel]]['spionage'][47]);
-
                                 $schiffevernichtet++;
                             } else {
                                 mysql_query("UPDATE $skrupel_schiffe SET schaden=$schiff_schaden, crew=crew-$crew_vernichtet, lemin=lemin-$lemin_vernichtet WHERE id=$zielid AND spiel=$spiel;");
@@ -615,7 +573,6 @@ if($module[0]) {
                         $a_max = $spionage_daten[14]['ausbeute_max'] + $stufe * 5;
                         $prozent = mt_rand($a_min, $a_max);
                         if($prozent>100) $prozent = 100;
-
                         $zeiger_mission = mysql_query("SELECT name, kolonisten FROM $skrupel_planeten WHERE id=$zielid AND spiel=$spiel;");
                         $ergebnis_mission = mysql_fetch_array($zeiger_mission);
                         $name = $ergebnis_mission['name'];
@@ -662,7 +619,6 @@ if($module[0]) {
                     }
                 }
             }
-
             //nachricht und schiff-update
             //wenn er an einem zielpunkt ist
             if($spionageziel) {
@@ -694,7 +650,6 @@ if($module[0]) {
                     $zeiger_spiontemp = mysql_query("UPDATE $skrupel_schiffe SET extra='$extra_neu', WHERE id=$id;");
                 }
             }
-
             //LVLUP
             $stufe_neu = spionstufe($extra_spio[0]);
             if($stufe_neu > $stufe) {
@@ -710,18 +665,14 @@ if($module[0]) {
             }
         }
     }
-
     //tarnung wird dekrementiert / incrementiert
-
     if(count($id_array) > 0) {
         foreach($id_array as $id) {
-
         $spionbesitzer = $spionbesitzer_array[$id];
         $kox = $kox_array[$id];
         $koy = $koy_array[$id];
         $tarnfeld = $tarnfeld_array[$id];
         $scanned = 0;
-
         $zeiger = mysql_query("SELECT besitzer FROM $skrupel_schiffe WHERE
                                     (    ((sqrt(((kox-$kox)*(kox-$kox))+((koy-$koy)*(koy-$koy)))<=47) AND scanner=0)
                                         OR ((sqrt(((kox-$kox)*(kox-$kox))+((koy-$koy)*(koy-$koy)))<=85) AND scanner=1)
@@ -729,28 +680,24 @@ if($module[0]) {
                                     ) AND !(volk='unknown' and klasseid=1) AND besitzer<>$spionbesitzer AND spiel=$spiel;");
         while(($datensatz = mysql_fetch_array($zeiger)) && $scanned==0) {
             if($beziehung[$spionbesitzer][$datensatz['besitzer']]['status']>=3 && $beziehung[$spionbesitzer][$datensatz['besitzer']]['status']<=5){
-	    } else { $scanned=1;}
+      } else { $scanned=1;}
         }
-
         if($scanned==0) {
             $zeiger = mysql_query("SELECT besitzer FROM $skrupel_planeten WHERE (((sqrt(((x_pos-$kox)*(x_pos-$kox))+((y_pos-$koy)*(y_pos-$koy)))<=53) AND sternenbasis_art<>3) OR ((sqrt(((x_pos-$kox)*(x_pos-$kox))+((y_pos-$koy)*(y_pos-$koy)))<=116) AND sternenbasis_art=3)) AND besitzer<>$spionbesitzer AND besitzer>0 AND spiel=$spiel;");
             while(($datensatz = mysql_fetch_array($zeiger)) && $scanned==0) {
                 $ziel_besitzer = $datensatz['besitzer'];
                 if ($beziehung[$spionbesitzer][$datensatz['besitzer']]['status']>=3 && $beziehung[$spionbesitzer][$datensatz['besitzer']]['status']<=5){
-		} else { $scanned=1;}
+    } else { $scanned=1;}
             }
         }
         if($scanned==1) $tarnfeld--;
         else $tarnfeld++;
-
         if($tarnfeld > 10) $tarnfeld = 10;
         if($tarnfeld < 0) $tarnfeld = 0;
         mysql_query("UPDATE $skrupel_schiffe SET tarnfeld=$tarnfeld WHERE id=$id AND spiel=$spiel;");
-
         }
     }
 }
-
 //kleine funktionen fuer wahrscheinlichkeitsberechung
 function spionerfolg($wahrscheinlichkeit, $stufe) {
   $erg = mt_rand(0,100) + $stufe * 5;
@@ -771,4 +718,3 @@ function spionstufe($xp) {
     }
     return 10;
 }
-?>

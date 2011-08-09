@@ -73,12 +73,12 @@ if ($_GET["fu"]==1) {
                                         $schaden=$array["schaden"];
                                         $logbuch=$array["logbuch"];
                                         $art=$array["art"];
-    
+
                                         if ($art==1) { $basisbild='2.jpg'; $icon='erf_1.gif'; $artname=$lang['basen']['raumwerft']; 
                                         }elseif ($art==2) { $basisbild='3.jpg'; $icon='erf_2.gif'; $artname=$lang['basen']['kampfstation']; 
                                         }elseif ($art==0) { $basisbild='1.jpg'; $icon='erf_3.gif'; $artname=$lang['basen']['sternenbasis']; 
                                         }elseif ($art==3) { $basisbild='4.jpg'; $icon='erf_5.gif'; $artname=$lang['basen']['kriegsbasis']; }
-    
+
                                         $tip=$artname." [$name]";
                                         if (strlen($logbuch)>=1) {
                                             $tip=$tip."$logbuch";
@@ -618,4 +618,3 @@ if ($_GET["fu"]==8) {
         }
     include ("inc.footer.php");
 }
-?>

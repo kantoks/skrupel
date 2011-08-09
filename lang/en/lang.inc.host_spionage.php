@@ -3,14 +3,11 @@ $lang['host']['eng']['spionage']['energetik'] = array("","Laser","Phaser","Plasm
 $lang['host']['eng']['spionage']['projektile'] = array ("","Fusionsraketen","Photonentorpedos","Transformkanone","Gammabomben","Fissionstorpedos","Mun-Katapult","Quantentorpedos","Micromitgesch&uuml;tz","Singularit&auml;tswerfer","Novabomben");
 $lang['host']['eng']['spionage']['antriebsnamen'] = array("","Sonnensegel","Antigrav-Triebwerk","Drugun-Umsetzer","Lineartriebwerk","Tachion-Flux","Mikro-Grav","Solarisplasmotan","Psiongleitnetz","Transwarp");
 $lang['host']['eng']['spionage']['keine'] = 'keine';
-
 $lang['host']['eng']['spionage'][0] = "Der Kontakt zu unserem Spion {1} ging aufgrund des Verlustes seiner Heimatbasis {2} verloren.<br>Er gilt als in den Weiten des Universums verschollen.";
 $lang['host']['eng']['spionage'][1] = "Unser Spion {1} konnte den feindlichen Spion {2} gezielt t&auml;uschen und seinen aktuellen Auftrag ({3}) verhindern.";
 $lang['host']['eng']['spionage'][2] = "Der feindliche Spion {1} hat unseren Spion {2} in die Irre gef&uuml;hrt und seinen Auftrag ({3}) vereitelt, wir vermuten ihn in Sektor {4}."; 
 $lang['host']['eng']['spionage'][3] = "Unser Spion {1} hat vergeblich versucht den feindlichen Spion {2} zu t&auml;uschen.";
-
 $lang['host']['eng']['spionage'][99] = "Der feindliche Spion {1} war nicht in der Lage unseren Spion {2} zu t&auml;uschen, wir vermuten ihn in Sektor {3}.";
-
 $lang['host']['eng']['spionage'][4] = "Unser Spion {1} war erfolgreich, konnte aber leider keine feindliche Subraumnachrichten finden";
 $lang['host']['eng']['spionage'][5] = "Unser Spion {1} war erfolgreich, und konnte folgende feindliche Subraumnachrichten abfangen:";
 $lang['host']['eng']['spionage'][6] = "Der feindliche Spion {1} hat unsere geheimen Subraumnachrichten abgeh&ouml;rt";
