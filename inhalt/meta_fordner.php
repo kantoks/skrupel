@@ -2,7 +2,6 @@
 include ("../inc.conf.php");
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 include ("../lang/".$_GET["sprache"]."/lang.meta_fordner.php");
-
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ?>
@@ -63,24 +62,18 @@ if ($_GET["fu"]==1) {
                     <?php
                     $zeiger2 = @mysql_query("SELECT * FROM $skrupel_ordner where besitzer=$spieler and spiel=$spiel order by name");
                     $ordneranzahl = @mysql_num_rows($zeiger2);
-                    
                     if ($ordneranzahl>=1) {
-                    
-                    
                         for ($i2=0; $i2<$ordneranzahl;$i2++) {
                             $ok2 = @mysql_data_seek($zeiger2,$i2);
-                    
                             $array2 = @mysql_fetch_array($zeiger2);
                             $ooid=$array2["id"];
                             $name=$array2["name"];
                             $name=stripslashes($name);
                             $icon=$array2["icon"];
-                    
                             $total=0;
                             $zeiger5 = @mysql_query("SELECT count(*) as total FROM $skrupel_schiffe where besitzer=$spieler and spiel=$spiel and ordner=$ooid");
                             $array5 = @mysql_fetch_array($zeiger5);
                             $total=$array5["total"];
-        
                             ?>
                             <tr>
                                 <td>
@@ -160,7 +153,6 @@ if ($_GET["fu"]==1) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==2) {
     include ("inc.header.php");
     ?>
@@ -168,7 +160,6 @@ if ($_GET["fu"]==2) {
         <?php
         $ordnerneu=$_POST["ordnerneu"];
         $ordnerneu=addslashes($ordnerneu);
-        
         $zeiger_temp = @mysql_query("INSERT INTO $skrupel_ordner (name,besitzer,spiel) values ('$ordnerneu',$spieler,$spiel)");
         ?>
         <script language=JavaScript>
@@ -177,7 +168,6 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==3) {
     include ("inc.header.php");
     ?>
@@ -186,7 +176,6 @@ if ($_GET["fu"]==3) {
         $ooid=$_GET["ooid"];
         $ordnerneu=$_POST["ordnerneu"];
         $ordnerneu=addslashes($ordnerneu);
-        
         $zeiger_temp = @mysql_query("UPDATE $skrupel_ordner set name='$ordnerneu' where id =$ooid");
         ?>
         <script language=JavaScript>
@@ -195,14 +184,12 @@ if ($_GET["fu"]==3) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==4) {
     include ("inc.header.php");
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
         $ooid=$_GET["ooid"];
-        
         $zeiger_temp = @mysql_query("DELETE FROM $skrupel_ordner where id =$ooid");
         $zeiger_temp = @mysql_query("UPDATE $skrupel_schiffe set ordner=0 where ordner=$ooid");
         ?>
@@ -212,7 +199,6 @@ if ($_GET["fu"]==4) {
         <?
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==5) {
     include ("inc.header.php");
     ?>
@@ -220,7 +206,6 @@ if ($_GET["fu"]==5) {
         <?php
         $ooid=$_GET["ooid"];
         $icon=$_POST["icon"];
-        
         $zeiger_temp = @mysql_query("UPDATE $skrupel_ordner set icon='$icon' where id =$ooid");
         ?>
         <script language=JavaScript>

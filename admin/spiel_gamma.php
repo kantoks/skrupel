@@ -4,7 +4,6 @@
 */
 include ("../inc.conf.php");
 include ("../lang/".$language."/lang.spiel_gamma.php");
-
 if ($_GET["fu"]==1) {
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
@@ -12,14 +11,10 @@ if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <center><table border="0" cellspacing="0" cellpadding="4"><tr><td style="font-size:20px; font-weight:bold; filter:DropShadow(color=black, offx=2, offy=2)"><?php echo $lang['spielgamma']['ueberschrift']; ?></td></tr></table></center>
 <?php
-
 $daten_verzeichnis = '../daten/';
-
 $handle = opendir($daten_verzeichnis);
-
 while ($rasses=readdir($handle)) {
     if ((substr($rasses,0,1)<>'.') and (substr($rasses,0,7)<>'bilder_') and (substr($rasses,strlen($rasses)-4,4)<>'.txt')) {
-
         $daten = '';
         $file = $daten_verzeichnis.$rasses.'/daten.txt';
         $fp = @fopen($file,"r");
@@ -35,7 +30,6 @@ while ($rasses=readdir($handle)) {
         $r_eigenschaften[$rasses]['name'] = trim($daten[0]);
     }
 }
-
 $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele ORDER BY name");
 $spielanzahl = @mysql_num_rows($zeiger);
 if ($spielanzahl>=1) {
@@ -58,14 +52,12 @@ if ($spielanzahl>=1) {
         $lasttick = $array['lasttick'];
         $autotick = $array['autozug'];
         $spieler_admin = $array['spieler_admin'];
-
         for ($j=1; $j<=10; $j++) {
             $tmpstr = 'spieler_'.$j;
-            $spieler_id_c[$j]	 = $array[$tmpstr];
+            $spieler_id_c[$j]   = $array[$tmpstr];
             $spieler_rasse_c[$j] = $array[$tmpstr.'_rasse'];
-            $spieler_raus_c[$j]	 = $array[$tmpstr.'_raus'];
+            $spieler_raus_c[$j]   = $array[$tmpstr.'_raus'];
         }
-
         if ($lasttick>=1) {
             $datum = date('d.m.y G:i',$lasttick);
         } else {
@@ -83,7 +75,6 @@ if ($spielanzahl>=1) {
           <td valign="top" style="color:#c9c9c9;"><center><nobr><?php echo $datum; ?></nobr></center></td>
           <td valign="top" style="color:#c9c9c9;"><center><nobr><?php echo $autot; ?></nobr></center></td>
           <td valign="top" style="color:#c9c9c9;"><center><?php
-
         for ($j=1; $j<=10; $j++) {
             if ($spieler_id_c[$j] > 0) {
                 $zeiger_temp= @mysql_query("SELECT * FROM $skrupel_user WHERE id={$spieler_id_c[$j]};");
@@ -99,11 +90,10 @@ if ($spielanzahl>=1) {
         }
           ?></center></td>
           <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
-         <tr><td><form name="formular"	method="post" action="spiel_gamma.php?fu=2&slot_id=<?php echo $slot_id?>" onsubmit="return confirm('Das Spiel \'<?php echo $name; ?>\' wirklich l�schen?');"></td>
+         <tr><td><form name="formular"  method="post" action="spiel_gamma.php?fu=2&slot_id=<?php echo $slot_id?>" onsubmit="return confirm('Das Spiel \'<?php echo $name; ?>\' wirklich l�schen?');"></td>
          <td><input type="submit" name="bla" value="L�schen" style="width:120px;"></td>
          <td></form></td></tr>
        </table></td>
-
         </tr>
     <?php } ?>
 </table></center>
@@ -118,15 +108,13 @@ if ($spielanzahl>=1) {
 }
 include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==2) {
 include ("../inc.conf.php");
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
-
     $spiel = $_GET["slot_id"];
     if (@intval(substr($spiel_extend,1,1))==1){
-	    include("../extend/ki/ki_basis/spielLoeschenKI.php");
+      include("../extend/ki/ki_basis/spielLoeschenKI.php");
     }
     if (@intval(substr($spiel_extend,2,1))==1){
         include("../extend/xstats/xstatsDeleteGame.php");
@@ -145,7 +133,6 @@ if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
     $zeiger = @mysql_query("DELETE FROM $skrupel_konplaene WHERE spiel=$spiel");
     $zeiger = @mysql_query("DELETE FROM $skrupel_scan WHERE spiel=$spiel");
     $zeiger = @mysql_query("DELETE FROM $skrupel_begegnung WHERE spiel=$spiel");
-
     ?>
     <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
     <center><table border="0" height="100%" cellspacing="0" cellpadding="0">

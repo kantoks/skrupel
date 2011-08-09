@@ -3,7 +3,6 @@ include ("../inc.conf.php");
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.uebersicht.php";
 include ($file);
-
 if ($_GET["fu"]==1) {
 include ("inc.header.php");
     ?>
@@ -19,7 +18,6 @@ include ("inc.header.php");
                     <?php }
                     /* 
                     <td><center><a href="uebersicht_konplaene.php?fu=1&uid=<?=$uid?>&sid=<?=$sid?>" target="rahmen12" onclick="self.focus();"><img src="<?=$bildpfad?>/empty.gif" width="75" height="75" border="0"><br><nobr>KonPl�ne</nobr></a></center></td>
-                
                     <td><center><a href="neuigkeiten.php?fu=3&art=2&uid=<?=$uid?>&sid=<?=$sid?>" target="rahmen12" onclick="self.focus();"><img src="<?=$bildpfad?>/menu/flotte.gif" width="75" height="75" border="0"><br><nobr>Raumflotte</nobr></a></center></td>
                     <td><center><a href="neuigkeiten.php?fu=3&art=3&uid=<?=$uid?>&sid=<?=$sid?>" target="rahmen12" onclick="self.focus();"><img src="<?=$bildpfad?>/menu/basen.gif" width="75" height="75" border="0"><br><nobr>Sternenbasen</nobr></a></center></td>
                     */ ?>

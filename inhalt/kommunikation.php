@@ -6,9 +6,7 @@ include ('../inc.conf.php');
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 include ("../lang/".$_GET["sprache"]."/lang.kommunikation.php");
 include ('inc.header.php');
-
 $fuid = int_get('fu');
-
 if ($fuid==1) {
     ?>
     <script language=javascript>

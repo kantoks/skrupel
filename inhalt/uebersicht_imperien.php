@@ -3,11 +3,9 @@ include ("../inc.conf.php");
 if(empty(["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.uebersicht_imperien.php";
 include ($file);
-
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
         $farbe="5f4444";
-        
         ?>
         <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
             <div id="bodybody" class="flexcroll" onfocus="this.blur()">
@@ -35,7 +33,6 @@ if ($_GET["fu"]==1) {
                                                         </center>
                                                     <?php } 
                                                     if ($ziel_id==1) {
-    
                                                         $text=str_replace(array('{1}','{2}'),array($ziel_info,$spieleranzahl),$lang['uebersichtimperien']['ueberleben']);
                                                         ?>
                                                         <center>
@@ -47,13 +44,11 @@ if ($_GET["fu"]==1) {
                                                         </center>
                                                     <?php } 
                                                     if ($ziel_id==2) {
-    
                                                         $feind=intval($spieler_ziel);
                                                         $feind_id=$spieler_id_c[$feind];
                                                         $zeiger_temp= @mysql_query("SELECT * FROM $skrupel_user where id=$feind_id");
                                                         $array_temp = @mysql_fetch_array($zeiger_temp);
                                                         $username=$array_temp["nick"];
-    
                                                         $todfeind="<font color='".$spielerfarbe[$feind]."'>".$username."</font>";
                                                         $text=str_replace(array('{1}'),array($todfeind),$lang['uebersichtimperien']['todfeind']);
                                                         ?>
@@ -66,7 +61,6 @@ if ($_GET["fu"]==1) {
                                                         </center>
                                                     <?php } 
                                                     if ($ziel_id==5) {
-    
                                                         $text=str_replace(array('{1}','{2}'),array($ziel_info,$spieler_ziel),$lang['uebersichtimperien']['spice']);
                                                         ?>
                                                         <center>
@@ -78,23 +72,19 @@ if ($_GET["fu"]==1) {
                                                         </center>
                                                     <?php } 
                                                     if ($ziel_id==6) {
-    
                                                         $zieldaten=explode(':',$spieler_ziel);
                                                         $feinda=intval($zieldaten[1]);
                                                         $feinda_id=$spieler_id_c[$feinda];
                                                         $feindb=intval($zieldaten[2]);
                                                         $feindb_id=$spieler_id_c[$feindb];
-    
                                                         $zeiger_temp= @mysql_query("SELECT * FROM $skrupel_user where id=$feinda_id");
                                                         $array_temp = @mysql_fetch_array($zeiger_temp);
                                                         $username=$array_temp["nick"];
                                                         $todfeinda="<font color='".$spielerfarbe[$feinda]."'>".$username."</font>";
-    
                                                         $zeiger_temp= @mysql_query("SELECT * FROM $skrupel_user where id=$feindb_id");
                                                         $array_temp = @mysql_fetch_array($zeiger_temp);
                                                         $username=$array_temp["nick"];
                                                         $todfeindb="<font color='".$spielerfarbe[$feindb]."'>".$username."</font>";
-    
                                                         $text=str_replace(array('{1}','{2}'),array($todfeinda,$todfeindb),$lang['uebersichtimperien']['teamtodfeind']);
                                                         ?>
                                                         <center>
@@ -105,12 +95,10 @@ if ($_GET["fu"]==1) {
                                                             </table>
                                                         </center>
                                                     <?php } ?>
-    
                                                 </td>
                                             </tr>
                                         </table>
                                     </center><br>
-    
                                     <center>
                                         <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                             <tr>
@@ -121,15 +109,12 @@ if ($_GET["fu"]==1) {
                                                 <td><center><img src="<?php echo $bildpfad?>/aufbau/rang_4.gif" border="0" width="113" height="41"></center></td>
                                             </tr>
                                             <?php
-    
                                             for ($k=1;$k<11;$k++) {
                                                 if ($spieler_id_c[$k]>=1) {
                                                     $zeiger_temp= @mysql_query("SELECT * FROM $skrupel_user where id=$spieler_id_c[$k]");
                                                     $array_temp = @mysql_fetch_array($zeiger_temp);
                                                     $username=$array_temp["nick"];
-    
                                                     if ($spieler_raus_c[$k]==1) { $username="<s>".$username."</s>"; }
-    
                                                     if ($spieler_raus_c[$k]==0) {
                                                         if ($spieler_zug_c[$k]==1) {
                                                             echo '<tr>';
@@ -162,13 +147,10 @@ if ($_GET["fu"]==1) {
             <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==2) {
     include ("inc.header.php");
-
         if ($spieler==$_GET["spid"]) {
             $rassenname=$spieler_rassename_c[$spieler];
-
             ?>
             <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
                 <table border="0" cellspacing="0" cellpadding="0" height="100%" width="100%">
@@ -197,13 +179,10 @@ if ($_GET["fu"]==2) {
         }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==3) {
     include ("inc.header.php");
-
         if ($spieler==$_GET["spid"]) {
             $spalte="spieler_".$spieler."_rassename";
-
             $zeiger_temp= @mysql_query("UPDATE $skrupel_spiele set $spalte='".$_POST['neu_name']."' where id=$spiel");
             ?>
             <script language=JavaScript>
@@ -213,7 +192,6 @@ if ($_GET["fu"]==3) {
         }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==4) {
     include ("inc.header.php");
         $spid=$_GET["spid"];
@@ -230,7 +208,6 @@ if ($_GET["fu"]==4) {
         $stat_kol_erobert=$array_temp["stat_kol_erobert"];
         $stat_lichtjahre=$array_temp["stat_lichtjahre"];
         $stat_monate=$array_temp["stat_monate"];
-
         ?>
         <body text="#ffffff" bgcolor="#444444"  link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
             <center><img src="../lang/<?php echo $_GET["sprache"]?>/topics/kolonien.gif" border="0" width="162" height="52"></center>

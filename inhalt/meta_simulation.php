@@ -3,23 +3,17 @@ include ("../inc.conf.php");
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.meta_simulation.php";
 include ($file);
-
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
-
     ///////////////////////////////////////////////////////////////////////////////////////////////RASSENEIGENSCHAFTEN ANFANG
     $daten_verzeichnis=$main_verzeichnis."../daten/";
-
     $handle=opendir("$daten_verzeichnis");
-
     $zaehler=0;
     while ($rasse=readdir($handle)) {
         if ((substr($rasse,0,1)<>'.') and (substr($rasse,0,7)<>'bilder_') and (substr($rasse,strlen($rasse)-4,4)<>'.txt')) {
             if($rasse == "unknown" or $rasse == "CVS") { continue; }
-
             $daten="";
             $attribute="";
-
             $file=$daten_verzeichnis.$rasse.'/daten.txt';
             $fp = @fopen("$file","r");
             if ($fp) {
@@ -31,26 +25,20 @@ if ($_GET["fu"]==1) {
                 }
                 @fclose($fp);
             }
-
             $attribute=explode(":",$daten[2]);
-
             $name_rasse[$zaehler]=$daten[0];
             $r_eigenschaften[$zaehler]['bodenangriff']=$attribute[3];
             $r_eigenschaften[$zaehler]['bodenverteidigung']=$attribute[4];
-
             $zaehler++;
         }
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////RASSENEIGENSCHAFTEN ENDE
-
     ?>
     <script language=JavaScript>
-        
         function test(opj){
             opj=(!opj)?0:(isNaN(opj)?0:opj);
             return opj;
         }
-
         function kampf(i1,i2){
             if(a[i1] && v[i2]){
                 z=a[i1]*aa[i1]-v[i2]*vv[i2];
@@ -63,7 +51,6 @@ if ($_GET["fu"]==1) {
                 }
             }
         }
-        
         function rechnen(e) {
             a = new Array(0,0,0);
             v = new Array(0,0,0);
@@ -73,29 +60,24 @@ if ($_GET["fu"]==1) {
             a_s=formular.angreifer_kraft.value;
             formular.verteidiger_kraft.value=test(eval(formular.verteidiger_kraft.value));
             v_s=test(formular.verteidiger_kraft.value);
-
             formular.angreifer_anzahl.value=test(eval(formular.angreifer_anzahl.value));
             a[0]=formular.angreifer_anzahl.value;
             formular.verteidiger_anzahl.value=test(eval(formular.verteidiger_anzahl.value));
             v[0]=test(formular.verteidiger_anzahl.value);
-            
             formular.angreifer_leichtebt.value=test(eval(formular.angreifer_leichtebt.value));
             a[1]=test(formular.angreifer_leichtebt.value);
             formular.verteidiger_leichtebt.value=test(eval(formular.verteidiger_leichtebt.value));
             v[1]=test(formular.verteidiger_leichtebt.value);
-        
             formular.angreifer_schwerebt.value=test(eval(formular.angreifer_schwerebt.value));
             formular.verteidiger_schwerebt.value=test(eval(formular.verteidiger_schwerebt.value));
             a[2]=test(formular.angreifer_schwerebt.value);
             v[2]=test(formular.verteidiger_schwerebt.value);
-            
             aa[0]=a_s;
             aa[1]=16*a_s;
             aa[2]=100*a_s;
             vv[0]=v_s;
             vv[1]=16*v_s;
             vv[2]=80*v_s;
-            
             kampf(2,2);
             kampf(1,1);
             kampf(2,1);
@@ -105,7 +87,6 @@ if ($_GET["fu"]==1) {
             kampf(1,0);
             kampf(0,1);
             kampf(0,0);
-
             a_k_text.innerHTML=a[0];
             v_k_text.innerHTML=v[0];
             a_l_text.innerHTML=a[1];
@@ -119,7 +100,6 @@ if ($_GET["fu"]==1) {
             }else{
                 end_text.innerHTML='<?php echo $lang['metasimulation']['keinergewinntbk']?>';
             }
-
         }
     </script>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -249,7 +229,6 @@ if ($_GET["fu"]==1) {
                                     <td><img src="../bilder/empty.gif" width="1" height="5" border="0"></td>
                                     <td><img src="../bilder/empty.gif" width="1" height="1" border="0"></td>
                                 </tr>
-                                
                                 <tr>
                                     <td><img src="../bilder/empty.gif" width="1" height="1" border="0"></td>
                                     <td><input type="button" value="<?php echo $lang['metasimulation']['simulationstarten']?>" onclick="rechnen();" name="subbutton" style="width:170px;"></td>
@@ -323,16 +302,13 @@ if ($_GET["fu"]==2) {
     include ("inc.header.php");
     ///////////////////////////////////////////////////////////////////////////////////////////////SCHIFFE ANFANG
     $daten_verzeichnis=$main_verzeichnis."../daten/";
-    
     $handle=opendir("$daten_verzeichnis");
-
     $zaehler=0;
     $schiffe="";
     while ($rasse=readdir($handle)) {
         if ((substr($rasse,0,1)<>'.') and (substr($rasse,0,7)<>'bilder_') and (substr($rasse,strlen($rasse)-4,4)<>'.txt')) {
             if($rasse == "unknown" or $rasse == "CVS") { continue; }
             $daten="";
-
             $file=$daten_verzeichnis.$rasse.'/daten.txt';
             $fp = @fopen("$file","r");
             if ($fp) {
@@ -345,7 +321,6 @@ if ($_GET["fu"]==2) {
                 @fclose($fp);
             }
             $name_rasse[$zaehler]=$daten[0];
-
             $file=$daten_verzeichnis.$rasse.'/schiffe.txt';
             $fp = @fopen("$file","r");
             if ($fp) {
@@ -356,7 +331,6 @@ if ($_GET["fu"]==2) {
                     $daten[$zaehler][$zaehler2]=$buffer;
                     $temp=explode(":",$buffer);
                     $schiffe[$zaehler][$zaehler2][0]=$temp[0];
-                
                     $masse=$temp[16];
                     $anzahl_energie=$temp[9];
                     $anzahl_projektil=$temp[10];
@@ -364,14 +338,11 @@ if ($_GET["fu"]==2) {
                     $crewmax=$temp[15];
                     $frachtraum=$temp[12];
                     $fertigkeiten=$temp[17];
-                    
                     $luckyshot=@intval(substr($fertigkeiten,55,1));
                     $daempfer_fert=@intval(substr($fertigkeiten,61,1));
                     $kamikaze_erfolg=@intval(substr($fertigkeiten,62,1))*10;
                     $kamikaze_schaden=@intval(substr($fertigkeiten,63,1))*100;
-                            
                     $schiffe[$zaehler][$zaehler2][1]=$masse.":".$anzahl_energie.":".$anzahl_projektil.":".$anzahl_hangar.":".$crewmax.":".$luckyshot.":".$daempfer_fert.":".$kamikaze_erfolg.":".$kamikaze_schaden.":".$frachtraum;
-                
                     $zaehler3[$zaehler]++;
                     $zaehler2++;
                 }
@@ -381,12 +352,10 @@ if ($_GET["fu"]==2) {
         }
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////RASSENEIGENSCHAFTEN ENDE
-
     ?>
     <script language=JavaScript>
         strahlenschaden = new Array(3,7,10,15,12,29,35,37,18,45);
         strahlenschadencrew = new Array(1,2,2,4,16,7,8,9,35,11);
-
         torpedoschaden = new Array(5,8,10,6,15,30,35,12,48,55);
         torpedoschadencrew = new Array(1,2,2,13,6,7,8,36,12,14);
         schiff_masse=new Array();
@@ -399,7 +368,6 @@ if ($_GET["fu"]==2) {
         schiff_kk_e=new Array();
         schiff_kk_s=new Array();
         schiff_fracht=new Array();
-
         kampf_schild1=new Array();
         kampf_schild2=new Array();
         kampf_schaden1=new Array();
@@ -410,7 +378,6 @@ if ($_GET["fu"]==2) {
         kampf_sonstiges2=new Array();
         kampf_ausweichen1=new Array();
         kampf_ausweichen2=new Array();
-        
         angreifer_erfahrung=0;
         verteidiger_erfahrung=0;
         crew_shid1=0;
@@ -418,7 +385,6 @@ if ($_GET["fu"]==2) {
         crew_shid2=0;
         crew_bol_max2=1;
         superzeit=0;
-
         <?php
         for($i1=0;$i1<$zaehler;$i1++){
             echo "schiff_masse[$i1]=new Array();\n";
@@ -432,7 +398,6 @@ if ($_GET["fu"]==2) {
             echo "schiff_kk_s[$i1]=new Array();\n";
             echo "schiff_fracht[$i1]=new Array();\n";
         }
-        
         for($i1=0;$i1<$zaehler;$i1++){
             for($i2=0;$i2<$zaehler3[$i1];$i2++){
                 $temp=explode(":",$schiffe[$i1][$i2][1]);
@@ -449,7 +414,6 @@ if ($_GET["fu"]==2) {
             }
         }
         ?>
-        
         function schalter1(a) {
             angreifer_erfahrung=a;
             if(a==1){
@@ -472,7 +436,6 @@ if ($_GET["fu"]==2) {
                 erf10.style.visibility="visible";
             }
         }
-        
         function schalter2(a) {
             verteidiger_erfahrung=a;
             if(a==1){
@@ -495,7 +458,6 @@ if ($_GET["fu"]==2) {
                 erf20.style.visibility="visible";
             }
         };
-
         function anz_r1() {
             i=formular.angreifer_schiff.value;
             faktor=(formular.angreifer_zusatzmodul.value==3)?1.19:1;
@@ -514,7 +476,6 @@ if ($_GET["fu"]==2) {
             }
             return true;
         };
-        
         function anz_r2() {
             i=formular.verteidiger_schiff.value;
             faktor=(formular.verteidiger_zusatzmodul.value==3)?1.19:1;
@@ -533,7 +494,6 @@ if ($_GET["fu"]==2) {
             }
             return true;
         };
-
         function anz_p1() {
             i=formular.angreifer_schiff.value;
             faktor=(formular.angreifer_zusatzmodul.value==2)?1.5:1;
@@ -552,7 +512,6 @@ if ($_GET["fu"]==2) {
             }
             return true;
         };
-
         function anz_p2() {
             i=formular.verteidiger_schiff.value;
             faktor=(formular.verteidiger_zusatzmodul.value==2)?1.5:1;
@@ -571,7 +530,6 @@ if ($_GET["fu"]==2) {
             }
             return true;
         };
-
         function anz_c1() {
             i=formular.angreifer_schiff.value;
             maxcrew1.innerHTML=' ';
@@ -608,7 +566,6 @@ if ($_GET["fu"]==2) {
             crew_shid1=i;
             return true;
         };
-
         function anz_c2() {
             i=formular.verteidiger_schiff.value;
             maxcrew2.innerHTML=' ';
@@ -645,7 +602,6 @@ if ($_GET["fu"]==2) {
             crew_shid2=i;
             return true;
         };
-
         function schiff1(){
             i=formular.angreifer_schiff.value;
             j=formular.verteidiger_schiff.value;
@@ -681,7 +637,6 @@ if ($_GET["fu"]==2) {
             t_1_11_2.style.visibility="hidden";
             t_1_12_1.style.visibility="hidden";
             t_1_13_1.style.visibility="hidden";
-
             if(i>0){
                 formular.angreifer_zusatzmodul.style.visibility="visible";
                 formular.angreifer_aggro.style.visibility="visible";
@@ -727,7 +682,6 @@ if ($_GET["fu"]==2) {
                 }
             }
         }
-
         function schiff2(){
             i=formular.verteidiger_schiff.value;
             j=formular.angreifer_schiff.value;
@@ -763,8 +717,6 @@ if ($_GET["fu"]==2) {
             t_2_11_2.style.visibility="hidden";
             t_2_12_2.style.visibility="hidden";
             t_2_13_2.style.visibility="hidden";
-
-
             if(i>0){
                 formular.verteidiger_zusatzmodul.style.visibility="visible";
                 formular.verteidiger_aggro.style.visibility="visible";
@@ -821,7 +773,6 @@ if ($_GET["fu"]==2) {
             z=a+(z*(b-a+1)/4294967296);
             return z;
         }
-
         function verstecke(){
             formular.subbutton.style.visibility="hidden";
             schiffauswahl.style.visibility="hidden";
@@ -889,7 +840,6 @@ if ($_GET["fu"]==2) {
             t_1_12_1.style.visibility="hidden";
             t_1_13_1.style.visibility="hidden";
         }
-
         function zeige(){
             Kampftabelle.style.visibility="hidden";
             k_1_1.style.visibility="hidden";
@@ -902,7 +852,6 @@ if ($_GET["fu"]==2) {
             schiff1();
             schiff2();
         }
-
         function ausgabe1(a,b){
             sonstiges1.innerHTML=a;
             setTimeout("sonstiges1.innerHTML='&nbsp;';", b)
@@ -923,7 +872,6 @@ if ($_GET["fu"]==2) {
                 setTimeout("blink2('"+a+"',"+b+')', 500);
             }
         }
-
         function kampfausgabe2(j,i){
             sonstiges2.innerHTML='<center><?php echo str_replace('{1}',"'+((i-1-((i-1)%60))/60+1)+'",$lang['metasimulation']['vorbereitung']['runde']);?></center>';
             sonstiges4.innerHTML='<center><?php echo str_replace('{1}',"'+(((i-1-((i-1)%6))/6)%10+1)+'",$lang['metasimulation']['vorbereitung']['phase']);?></center>';
@@ -969,7 +917,6 @@ if ($_GET["fu"]==2) {
                 }
             }
         }
-
         function kampfausgabe1(j){
             k_1_1.style.visibility="visible";
             k_1_2.style.visibility="visible";
@@ -987,7 +934,6 @@ if ($_GET["fu"]==2) {
             crew2.innerHTML='<font color=#ffffff>'+kampf_crew2[0]+'&nbsp;</font>';
             setTimeout("kampfausgabe2("+j+",1)",1000);
         }
-
         function vorbereitung(){
             Kampftabelle.style.visibility="visible";
             zeit=0;
@@ -1000,49 +946,34 @@ if ($_GET["fu"]==2) {
             a1=(a-a2-1)/1000;
             v2=v%1000-1;
             v1=(v-v2-1)/1000;
-
             s1_anz_e=schiff_anz_e[a1][a2];
             s2_anz_e=schiff_anz_e[v1][v2];
-
             s1_anz_p=schiff_anz_p[a1][a2];
             s2_anz_p=schiff_anz_p[v1][v2];
-
             s1_anz_t=formular.angreifer_anz_torpedo.value;
             s2_anz_t=formular.verteidiger_anz_torpedo.value;
-
             s1_anz_h=schiff_anz_h[a1][a2];
             s2_anz_h=schiff_anz_h[v1][v2];
-
             s1_masse=schiff_masse[a1][a2];
             s2_masse=schiff_masse[v1][v2];
-
             s1_crewmax=schiff_crew[a1][a2];
             s2_crewmax=schiff_crew[v1][v2];
-
             s1_lucky=schiff_lucky[a1][a2];
             s2_lucky=schiff_lucky[v1][v2];
-
             s1_daempfer=schiff_daempfer[a1][a2];
             s2_daempfer=schiff_daempfer[v1][v2];
-
             s1_kk_e=schiff_kk_e[a1][a2];
             s2_kk_e=schiff_kk_e[v1][v2];
-
             s1_kk_s=schiff_kk_s[a1][a2];
             s2_kk_s=schiff_kk_s[v1][v2];
-
             s1_schaden=eval(formular.angreifer_schaden.value);
             s2_schaden=eval(formular.verteidiger_schaden.value);
-            
             s1_schild=eval(formular.angreifer_schild.value);
             s2_schild=eval(formular.verteidiger_schild.value);
-
             s1_crew=formular.angreifer_crew.value;
             s2_crew=formular.verteidiger_crew.value;
-
             s1_erfahrung=angreifer_erfahrung;
             s2_erfahrung=verteidiger_erfahrung;
-            
             if (s1_schaden>50) {
                 prozent = (s1_schaden-50)*2;
                 test=Math.floor(zufall(1,3));
@@ -1063,7 +994,6 @@ if ($_GET["fu"]==2) {
                 }
                 zeit=5000;
             }
-            
             if (s2_schaden>50) {
                 prozent = (s2_schaden-50)*2;
                 test=Math.floor(zufall(1,3));
@@ -1497,7 +1427,6 @@ if ($_GET["fu"]==2) {
                                 kampf_sonstiges2[feld]='<?php echo $lang['metasimulation']['vorbereitung']['ausweichen']?>';
                                 weiter=0;
                             }
-
                         }
                         setTimeout("kampfausgabe1(feld)",zeit);
                     }
@@ -1520,12 +1449,10 @@ if ($_GET["fu"]==2) {
                 }else{
                     ticks=zeit/500;
                     blink2("<center><?php echo $lang['metasimulation']['vorbereitung']['vorbereitung']?></center>", ticks);
-
                 }
             }
             setTimeout("zeige()",superzeit+zeit);
         }
-
     </script>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="schiff1();schiff2();">
         <div id="bodybody" class="flexcroll" onfocus="this.blur()">
@@ -1940,7 +1867,6 @@ if ($_GET["fu"]==2) {
                                 <tr>
                                     <td id="t_2_11_1" style="visibility:hidden"><center><?php echo $lang['metasimulation']['aggro']?></center></td>
                                     <td id="t_2_11_2" style="visibility:hidden"><center><?php echo $lang['metasimulation']['daempfer']?></center></td>
-
                                 </tr>
                                 <tr>
                                     <td>
@@ -2025,23 +1951,17 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==3) {
     include ("inc.header.php");
-
     ///////////////////////////////////////////////////////////////////////////////////////////////SCHIFFE ANFANG
     $daten_verzeichnis=$main_verzeichnis."../daten/";
-    
     $handle=opendir("$daten_verzeichnis");
-    
     $zaehler=0;
     $schiffe="";
     while ($rasse=readdir($handle)) {
         if ((substr($rasse,0,1)<>'.') and (substr($rasse,0,7)<>'bilder_') and (substr($rasse,strlen($rasse)-4,4)<>'.txt')) {
             if($rasse == "unknown") { continue; }
-    
             $daten="";
-    
             $file=$daten_verzeichnis.$rasse.'/daten.txt';
             $fp = @fopen("$file","r");
             if ($fp) {
@@ -2054,7 +1974,6 @@ if ($_GET["fu"]==3) {
                 @fclose($fp);
             }
             $name_rasse[$zaehler]=$daten[0];
-
             $file=$daten_verzeichnis.$rasse.'/schiffe.txt';
             $fp = @fopen("$file","r");
             if ($fp) {
@@ -2065,17 +1984,13 @@ if ($_GET["fu"]==3) {
                     $daten[$zaehler][$zaehler2]=$buffer;
                     $temp=explode(":",$buffer);
                     $schiffe[$zaehler][$zaehler2][0]=$temp[0];
-                
                     $masse=$temp[16];
                     $anzahl_energie=$temp[9];
                     $anzahl_projektil=$temp[10];
                     $anzahl_hangar=$temp[11];
                     $fertigkeiten=$temp[17];
-                    
                     $orbitalschild=@intval(substr($fertigkeiten,56,1));
-                            
                     $schiffe[$zaehler][$zaehler2][1]=$masse.":".$anzahl_energie.":".$anzahl_projektil.":".$anzahl_hangar.":".$orbitalschild;
-                
                     $zaehler3[$zaehler]++;
                     $zaehler2++;
                 }
@@ -2100,21 +2015,16 @@ if ($_GET["fu"]==3) {
         }
         @fclose($fp);
     }
-
-
     ///////////////////////////////////////////////////////////////////////////////////////////////RASSENEIGENSCHAFTEN ENDE
-
     ?>
     <script language=JavaScript>
         strahlenschaden = new Array(3,7,10,15,12,29,35,37,18,45);
         torpedoschaden = new Array(5,8,10,6,15,30,35,12,48,55);
-
         schiff_masse=new Array();
         schiff_anz_e=new Array();
         schiff_anz_p=new Array();
         schiff_anz_h=new Array();
         schiff_oschild=new Array();
-
         kampf_schild1=new Array();
         kampf_schild2=new Array();
         kampf_schaden1=new Array();
@@ -2125,8 +2035,6 @@ if ($_GET["fu"]==3) {
         kampf_sonstiges2=new Array();
         kampf_ausweichen1=new Array();
         kampf_ausweichen2=new Array();
-        
-
         <?php
         for($i1=0;$i1<$zaehler;$i1++){
             echo "schiff_masse[$i1]=new Array();\n";
@@ -2135,7 +2043,6 @@ if ($_GET["fu"]==3) {
             echo "schiff_anz_h[$i1]=new Array();\n";
             echo "schiff_oschild[$i1]=new Array();\n";
         }
-        
         for($i1=0;$i1<$zaehler;$i1++){
             for($i2=0;$i2<$zaehler3[$i1];$i2++){
                 $temp=explode(":",$schiffe[$i1][$i2][1]);
@@ -2147,7 +2054,6 @@ if ($_GET["fu"]==3) {
             }
         }
         ?>
-
         function anz_s() {
             maxschild.innerHTML='';
             faktor=eval(formular.verteidiger_stark.value)+eval(formular.verteidiger_stark2.value)+100;
@@ -2158,7 +2064,6 @@ if ($_GET["fu"]==3) {
             formular.verteidiger_schild.value=eval(shld+'+0');
             return true;
         }
-
         function anz_p() {
             i=formular.angreifer_schiff.value;
             faktor=(formular.angreifer_zusatzmodul.value==2)?1.5:1;
@@ -2177,9 +2082,6 @@ if ($_GET["fu"]==3) {
             }
             return true;
         };
-
-
-
         function anz_v2() {
             i=formular.verteidiger_basis.value;
             maxstark2.innerHTML='';
@@ -2192,7 +2094,6 @@ if ($_GET["fu"]==3) {
             anz_s();
             return true;
         }
-
         function zufall(a,b){
             i=0;
             e=1;
@@ -2204,7 +2105,6 @@ if ($_GET["fu"]==3) {
             z=a+(z*(b-a+1)/e);
             return z;
         }
-
         function rechnen(e) {
             i=formular.angreifer_schiff.value;
             i2=i%1000-1;
@@ -2219,7 +2119,6 @@ if ($_GET["fu"]==3) {
             s_erfahrung=eval(formular.angreifer_erfahrung.value);
             s_e_schaden=eval(strahlenschaden[(s_anz_e==0)?1:formular.angreifer_energetik.value]);
             s_p_schaden=eval(torpedoschaden[formular.angreifer_projektile.value]);
-
             /////////beschaedigung der waffensysteme anfang   
             if((formular.angreifer_zusatzmodul.value==1)&&(0==s_anz_e)){
                 s_e_schaden=strahlenschaden[0];
@@ -2239,21 +2138,18 @@ if ($_GET["fu"]==3) {
                 }
             }
             /////////beschaedigung der waffensysteme ende 
-
             if((formular.angreifer_zusatzmodul.value==1)&&(10>s_anz_e)){
                 s_anz_e++;
             }
             if((formular.angreifer_zusatzmodul.value==3)&&(5>s_erfahrung)){
                 s_erfahrung++;
             }
-
             p_p_pds=eval(formular.verteidiger_stark.value);
             if(!(formular.verteidiger_ds.value==100)){
                 p_p_pds=Math.round((p_p_pds*formular.verteidiger_ds.value/100)+0.5);
             }
             p_s_pds=eval(formular.verteidiger_stark2.value);
             p_schaden=eval(formular.verteidiger_schild.value);
-
             p_anz_e=Math.min(10,Math.round(Math.sqrt((p_p_pds+p_s_pds)/3)));
             p_anz_h=Math.min(10,Math.round(Math.sqrt(p_p_pds)));
             if (formular.verteidiger_basis.value>0) {p_anz_h=Math.min(10,p_anz_h+5);}
@@ -2302,7 +2198,6 @@ if ($_GET["fu"]==3) {
                 ausgabe.innerHTML="<?php echo str_replace(array('{1}','{2}'),array('"+s_schild+"','"+s_schaden+"'),$lang['metasimulation']['angreifergewinntpk']);?>";
             }
         }
-        
         function schiff(){
             i=formular.angreifer_schiff.value;
             formular.subbutton.style.visibility="hidden";
@@ -2334,7 +2229,6 @@ if ($_GET["fu"]==3) {
                         formular.angreifer_projektile.style.visibility="visible";
                         anz_torpedo.style.visibility="visible";
                         anz_p();
-
                     }
                     formular.subbutton.style.visibility="visible";
                 }else{
@@ -2578,7 +2472,6 @@ if ($_GET["fu"]==3) {
                                         </table> 
                                     </td>
                                 </tr>
-                                
                                 <tr>
                                     <td><img src="../bilder/empty.gif" width="1" height="1" border="0"></td>
                                     <td><img src="../bilder/empty.gif" width="1" height="10" border="0"></td>

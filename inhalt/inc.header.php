@@ -45,7 +45,6 @@ $linux = preg_match("=linux=i", $useragent);
 
 $plus=0;
 if ($linux) { $plus=1; }
-
 ?>
 <html>
 <head>

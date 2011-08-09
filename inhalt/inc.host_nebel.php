@@ -57,12 +57,9 @@ $zeiger_temp = mysql_query("update $skrupel_schiffe set
                                 sicht_9_beta=0,
                                 sicht_10_beta=0
                                 where spiel=$spiel");
-
 $scans = array();
 $scanhash = array();
-
 $zeiger = mysql_query("SELECT id,spiel,y_pos,x_pos,besitzer,sternenbasis_art,sternenbasis,osys_1,osys_2,osys_3,osys_4,osys_5,osys_6 FROM $skrupel_planeten where spiel=$spiel");
-
 while ($array = mysql_fetch_array($zeiger)) {
     $p_id = $array['id'];
     $x_pos = $array['x_pos'];
@@ -77,10 +74,8 @@ while ($array = mysql_fetch_array($zeiger)) {
     $sternenbasis_art = $array['sternenbasis_art'];
     $sternenbasis = $array['sternenbasis'];
     $scanner_r = 53;
-
     if ($osys_1==13 or $osys_2==13 or $osys_3==13 or $osys_4==13 or $osys_5==13 or $osys_6==13){ $scanner_r=90;}
     if (($sternenbasis_art==3) and ($sternenbasis==2)) { $scanner_r=116;}
-
     if ($besitzer>=1) {
         mysql_query("INSERT INTO $skrupel_scan (spiel,besitzer,x,y) values ($spiel,$besitzer,$x_pos,$y_pos)");
         $scans[] = array(
@@ -102,9 +97,7 @@ while ($array = mysql_fetch_array($zeiger)) {
         }
     }
 }
-
 $zeiger = mysql_query("SELECT id,spiel,kox,koy,besitzer,scanner FROM $skrupel_schiffe where spiel=$spiel");
-
 while ($array = mysql_fetch_array($zeiger)) {
     $s_id = $array['id'];
     $kox = $array['kox'];
@@ -112,10 +105,8 @@ while ($array = mysql_fetch_array($zeiger)) {
     $scanner = $array['scanner'];
     $besitzer = $array['besitzer'];
     $scanner_r = 47;
-
     if ($scanner==1) { $scanner_r=85;}
     if ($scanner==2) { $scanner_r=116;}
-
     if ($besitzer>=1) {
         $scanhashindex = $besitzer.'_'.$kox.'_'.$koy;
         if (!array_key_exists($scanhashindex, $scanhash) or $scanner_r>$scanhash[$scanhashindex]) {
@@ -151,48 +142,39 @@ foreach ($scans as $scantupel) {
     $chef = $scantupel['besitzer'];
     $scanhashindex = $chef.'_'.$xx.'_'.$yy;
     $scanreichweite = $scanhash[$scanhashindex];
-
     //kleiner hack, da in $scans für jedes schiff einer flotte ein eintrag ist
     if($scanreichweite > 0) {
         $scanhash[$scanhashindex] = 0;
-
         $zeiger_temp = mysql_query("update $skrupel_planeten set $spalte_beta=1
                                         where (
                                             (sqrt((x_pos-$xx)*(x_pos-$xx)+(y_pos-$yy)*(y_pos-$yy)))<=225
                                             ) and spiel=$spiel and $spalte_beta=0");
-
         $zeiger_temp = mysql_query("update $skrupel_planeten set $spalte=1
                                         where (
                                             (sqrt((x_pos-$xx)*(x_pos-$xx)+(y_pos-$yy)*(y_pos-$yy)))<=125
                                             ) and spiel=$spiel and $spalte=0");
-
         $zeiger_temp = mysql_query("update $skrupel_schiffe set $spalte=1
                                         where (
                                             (sqrt((kox-$xx)*(kox-$xx)+(koy-$yy)*(koy-$yy)))<=125
                                             ) and spiel=$spiel and $spalte=0");
-
         $zeiger_temp = mysql_query("update $skrupel_schiffe set $spalte_beta=1
                                         where (
                                             (sqrt((kox-$xx)*(kox-$xx)+(koy-$yy)*(koy-$yy)))<=$scanreichweite
                                             ) and spiel=$spiel");
-
         $zeiger_temp = mysql_query("update $skrupel_anomalien set $spalte=1
                                         where (
                                             (sqrt((x_pos-$xx)*(x_pos-$xx)+(y_pos-$yy)*(y_pos-$yy)))<=125
                                             ) and spiel=$spiel and $spalte=0 and (art!=5) ");
-
         $zeiger_temp = mysql_query("update $skrupel_anomalien set $spalte=1
                                         where (
                                             (sqrt((x_pos-$xx)*(x_pos-$xx)+(y_pos-$yy)*(y_pos-$yy)))<=100
                                             ) and spiel=$spiel and $spalte=0 and (art=5) ");
-
         $zeiger_temp = mysql_query("update $skrupel_sternenbasen set $spalte=1
                                         where (
                                             (sqrt((x_pos-$xx)*(x_pos-$xx)+(y_pos-$yy)*(y_pos-$yy)))<=125
                                             ) and spiel=$spiel and $spalte=0");
     }
 }
-
 //neue tarnungsarten:
 for($i=1;$i<11;$i++){
     $spalte="sicht_".$i;
@@ -229,9 +211,7 @@ for($i=1;$i<11;$i++){
 }
 //begegnungen fuer modul wysiwyg
 if ($module[4]==1) {
-
     $test = array();
-
     for($n=1;$n<11;$n++){
         if ($spieler_id_c[$n]>=1) {
             for ($m=1;$m<11;$m++){
@@ -239,17 +219,14 @@ if ($module[4]==1) {
                     if ((!$begegnung[$n][$m]) and (!$test[$n][$m])) {
                         $test[$n][$m] = 1;
                         $spalte='sicht_'.$n;
-
                         $totals=0;
                         $zeiger = mysql_query("SELECT count(id) as total FROM $skrupel_schiffe where spiel=$spiel and $spalte=1 and besitzer=$m");
                         $array = mysql_fetch_array($zeiger);
                         $totals=$array["total"];
-
                         $totalp=0;
                         $zeiger = mysql_query("SELECT count(id) as total FROM $skrupel_planeten where spiel=$spiel and $spalte=1 and besitzer=$m");
                         $array = mysql_fetch_array($zeiger);
                         $totalp=$array["total"];
-
                         if (($totals>=1) or ($totalp>=1)) {
                             $begegnung[$n][$m]=1;
                             $begegnung[$m][$n]=1;

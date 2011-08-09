@@ -5,11 +5,8 @@ $file="../lang/".$_GET["sprache"]."/lang.uebersicht_kolonien.php";
 include ($file);
 $file="../lang/".$_GET["sprache"]."/lang.orbitale_systeme.php";
 include ($file);
-
-
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
-
     ?>
     <body text="#ffffff" bgcolor="#444444"  link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <script language=JavaScript>
@@ -24,17 +21,13 @@ if ($_GET["fu"]==1) {
         <?php 
         $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and spiel=$spiel order by name");
         $planetenanzahl = @mysql_num_rows($zeiger);
-
         if ($planetenanzahl>=1) {
-
             ?>
             <center>
                 <table border="0" cellspacing="0" cellpadding="0">
                     <?php 
-
                     for  ($i=0; $i<$planetenanzahl;$i++) {
                         $ok = @mysql_data_seek($zeiger,$i);
-                    
                         $array = @mysql_fetch_array($zeiger);
                         $pid=$array["id"];
                         $name=$array["name"];
@@ -61,7 +54,6 @@ if ($_GET["fu"]==1) {
                         $sternenbasis=$array["sternenbasis"];
                         $sternenbasis_id=$array["sternenbasis_id"];
                         $sternenbasis_art=$array["sternenbasis_art"];
-                    
                         $native_id=$array["native_id"];
                         $native_name=$array["native_name"];
                         $native_art_name=$array["native_art_name"];
@@ -69,7 +61,6 @@ if ($_GET["fu"]==1) {
                         $native_bild=$array["native_bild"];
                         $native_text=$array["native_text"];
                         $native_kol=$array["native_kol"];
-                    
                         $osys_anzahl=$array["osys_anzahl"];
                         $osys[1]=$array["osys_1"];
                         $osys[2]=$array["osys_2"];
@@ -77,9 +68,7 @@ if ($_GET["fu"]==1) {
                         $osys[4]=$array["osys_4"];
                         $osys[5]=$array["osys_5"];
                         $osys[6]=$array["osys_6"];
-                    
                         for($i2=1; $i2<=$osys_anzahl; $i2++) {
-                    
                             if ($osys[$i2]>=1) {
                                 $osys[$i2] = "<img src=\"../bilder/osysteme/".$osys[$i2].".gif\" border=\"0\" width=\"32\" height=\"30\" title=\"".$lang[orbitalesysteme][name][$osys[$i2]]."\">";
                             } else {
@@ -89,10 +78,8 @@ if ($_GET["fu"]==1) {
                         for($i2=6; $i2>$osys_anzahl; $i2--) {
                             $osys[$i2] = "<img src=\"../bilder/empty.gif\" border=\"0\" width=\"32\" height=\"30\">";
                         }
-                    
                         $temp=$array["temp"];
                         $klasse=$array["klasse"];
-                    
                         if ($klasse==1) {
                             $klassename="M";
                         }elseif ($klasse==2) {
@@ -112,17 +99,14 @@ if ($_GET["fu"]==1) {
                         }elseif ($klasse==9) {
                             $klassename="F";
                         }
-                        
                         $planet_lemin=$array["planet_lemin"];
                         $planet_min1=$array["planet_min1"];
                         $planet_min2=$array["planet_min2"];
                         $planet_min3=$array["planet_min3"];
-                    
                         $konz_lemin=$array["konz_lemin"];
                         $konz_min1=$array["konz_min1"];
                         $konz_min2=$array["konz_min2"];
                         $konz_min3=$array["konz_min3"];
-                    
                         if ($konz_lemin==1) {
                             $konz_lemin="fl�chtig";
                         }elseif ($konz_lemin==2) {
@@ -134,7 +118,6 @@ if ($_GET["fu"]==1) {
                         }elseif ($konz_lemin==5) {
                             $konz_lemin="hochkonz.";
                         }
-                    
                         if ($konz_min1==1) {
                             $konz_min1="fl�chtig";
                         }elseif ($konz_min1==2) {
@@ -146,7 +129,6 @@ if ($_GET["fu"]==1) {
                         }elseif ($konz_min1==5) {
                             $konz_min1="hochkonz.";
                         }
-                        
                         if ($konz_min2==1) {
                             $konz_min2="fl�chtig";
                         }elseif ($konz_min2==2) {
@@ -158,7 +140,6 @@ if ($_GET["fu"]==1) {
                         }elseif ($konz_min2==5) {
                             $konz_min2="hochkonz.";
                         }
-
                         if ($konz_min3==1) {
                             $konz_min3="fl�chtig";
                         }elseif ($konz_min3==2) {
@@ -170,7 +151,6 @@ if ($_GET["fu"]==1) {
                         }elseif ($konz_min3==5) {
                             $konz_min3="hochkonz.";
                         }
-
                         ?>
                         <tr>
                             <td>

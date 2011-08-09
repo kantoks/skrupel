@@ -3,7 +3,6 @@ include ("../inc.conf.php");
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.basen_alpha.php";
 include ($file);
-
 $baid=$_GET["baid"];
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
@@ -27,7 +26,6 @@ if ($_GET["fu"]==1) {
     $defense=$array["defense"];
     $jaeger=$array["jaeger"];
     $art=$array["art"];
-    
     if (($art==0) or ($art==3)) {
         $zeiger = @mysql_query("SELECT id,cantox,besitzer FROM $skrupel_planeten where besitzer=$spieler and id=$planetid");
         $array = @mysql_fetch_array($zeiger);
@@ -205,7 +203,6 @@ if ($_GET["fu"]==1) {
     }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==2) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
@@ -235,7 +232,6 @@ if ($_GET["fu"]==2) {
         $array = @mysql_fetch_array($zeiger);
         $pid=$array["id"];
         $cantox=$array["cantox"];
-        
         $schalter=0;
         if($t_huelle<10){
             for($li=$t_huelle+1;$li<=$_POST["huelletl"];$li++){
@@ -305,7 +301,6 @@ if ($_GET["fu"]==2) {
         <body text="#000000" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" scroll="auto" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
             <br><br><br>
             <?php echo $message; ?>
-            
             <script language=JavaScript>
                 var ant=parent.planeten.document.getElementById('cantox');
                 ant.innerHTML='<?php echo $cantox; ?>';
@@ -322,11 +317,9 @@ if ($_GET["fu"]==2) {
     }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==3) {
     include ("inc.header.php");    
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
-
     $array = @mysql_fetch_array($zeiger);
     $baid=$array["id"];
     $name=$array["name"];
@@ -342,29 +335,22 @@ if ($_GET["fu"]==3) {
     $defense=$array["defense"];
     $jaeger=$array["jaeger"];
     $art=$array["art"];
-
     if (($art==0) or ($art==2) or ($art==3)) {
-
         if ($art==0) { $maxx=50; 
         }elseif ($art==2) { $maxx=110; 
         }elseif ($art==3) { $maxx=130; }
-
         $zeiger2 = @mysql_query("SELECT id,cantox,besitzer,min1,min2,min3 FROM $skrupel_planeten where besitzer=$spieler and id=$planetid");
-
         $array2 = @mysql_fetch_array($zeiger2);
         $pid=$array2["id"];
         $cantox=$array2["cantox"];
         $min1=$array2["min1"];
         $min2=$array2["min2"];
         $min3=$array2["min3"];
-
         $max_cantox=floor($cantox/10);
         $max_min2=$min2;
         $max_bau=$maxx-$defense;
-
         if ($max_cantox<$max_bau) {$max_bau=$max_cantox;}
         if ($max_min2<$max_bau) {$max_bau=$max_min2;}
-
         ?>
         <body text="#000000" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" scroll="auto" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
             <table border="0" cellspacing="0" cellpadding="0">
@@ -431,14 +417,10 @@ if ($_GET["fu"]==3) {
     }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==4) {
     include ("inc.header.php");
-
     $abwehrauftrag=$_POST["abwehrauftrag"];
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen WHERE besitzer=$spieler AND status=1 AND id=$baid");
-
     $array = @mysql_fetch_array($zeiger);
     $baid=$array["id"];
     $name=$array["name"];
@@ -454,27 +436,20 @@ if ($_GET["fu"]==4) {
     $defense=$array["defense"];
     $jaeger=$array["jaeger"];
     $art=$array["art"];
-
     if ($art==0 || $art==2 || $art==3) {
-
         $zeiger2 = @mysql_query("SELECT id,cantox,besitzer,min1,min2,min3 FROM $skrupel_planeten where besitzer=$spieler and id=$planetid");
-        
         $array2 = @mysql_fetch_array($zeiger2);
         $pid=$array2['id'];
         $cantox=$array2['cantox'];
         $min1=$array2['min1'];
         $min2=$array2['min2'];
         $min3=$array2['min3'];
-        
         $cantox=$cantox-($abwehrauftrag*10);
         $min2=$min2-$abwehrauftrag;
         $defense=$defense+$abwehrauftrag;
-        
         $zeiger = @mysql_query("update $skrupel_planeten set cantox=$cantox,min2=$min2 where id=$pid and besitzer=$spieler");
         $zeiger = @mysql_query("update $skrupel_sternenbasen set defense=$defense where id=$baid and besitzer=$spieler");
-        
         $message="<center>".$abwehrauftrag." ".$lang['basenalpha']['anlagengebaut']."</center>";
-
         ?>
         <body text="#000000" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" scroll="auto" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
             <br><br>
@@ -491,12 +466,9 @@ if ($_GET["fu"]==4) {
         }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==5) {
     include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
-
     $array = @mysql_fetch_array($zeiger);
     $baid=$array["id"];
     $name=$array["name"];
@@ -512,14 +484,10 @@ if ($_GET["fu"]==5) {
     $defense=$array["defense"];
     $jaeger=$array["jaeger"];
     $art=$array["art"];
-
     if (($art==0) or ($art==3)) {
-
         if ($art==0) { $basisbild='3.jpg'; }
         if ($art==3) { $basisbild='4.jpg'; }
-
         $zeiger = @mysql_query("SELECT id,cantox,besitzer,min1,min2,min3,lemin,vorrat FROM $skrupel_planeten where besitzer=$spieler and id=$planetid");
-
         $array = @mysql_fetch_array($zeiger);
         $pid=$array["id"];
         $planet_cantox=$array["cantox"];
@@ -535,11 +503,9 @@ if ($_GET["fu"]==5) {
                 padding:      1px;
                 margin-right:        15px;
             }
-
             input, select, button {
                 vertical-align:        middle;
             }
-
             #slider-1 {
                 margin: 0px;
                 width:  230px;
@@ -598,18 +564,14 @@ if ($_GET["fu"]==5) {
                         <?php if ($planet_min3>=1) { ?>
                             document.formular.planet_min3.value=(s4.getValue()-<?php echo $planet_min3; ?>)*-1;document.formular.falte_min3.value=s4.getValue();
                         <?php } else { ?>document.formular.falte_min3.value=0;document.formular.planet_min3.value=0;<?php } ?>
-                        
                         var vorrat = eval(document.formular.falte_vorrat.value+'+0');
                         var lemin= eval(document.formular.falte_lemin.value+'+0');
                         var min1= eval(document.formular.falte_min1.value+'+0');
                         var min2= eval(document.formular.falte_min2.value+'+0');
                         var min3= eval(document.formular.falte_min3.value+'+0');
-                    
                         var cantoxnot = Math.round(vorrat+min1+min2+min3+lemin)*8;
                         var cantoxhab = eval(document.formular.planet_cantox.value+'+0');
-                    
                         if (cantoxnot<75) {cantoxnot=75;}
-                    
                         if(cantoxnot > cantoxhab) {
                             alert("<?php echo $lang['basenalpha']['raumfaltenichta']; ?> "+cantoxnot+" <?php echo $lang['basenalpha']['raumfaltenichtb']; ?>");
                             return false;
@@ -618,7 +580,6 @@ if ($_GET["fu"]==5) {
                             alert("<?php echo $lang['basenalpha']['zielobjekt']; ?>");
                             return false;
                         }
-                    
                         return true;
                     }
                 </script>
@@ -668,10 +629,8 @@ if ($_GET["fu"]==5) {
                                                 <select name="zielid" style="font-family:Verdana;font-size:9px;width:170px;">
                                                     <option value="0" selected style="background-color:#000000;"><?php echo $lang['basenalpha']['zielwaehlen']; ?></option>
                                                     <?php
-
                                                     $zeiger = @mysql_query("SELECT id,name,besitzer,spiel,status FROM $skrupel_schiffe where besitzer=$spieler and status>0 and spiel=$spiel order by name");
                                                     $schiffanzahl = @mysql_num_rows($zeiger);
-
                                                     if ($schiffanzahl>=1) {
                                                         ?>
                                                         <option value="0" style="background-color:#000000;"><?php echo $lang['basenalpha']['schiffe']; ?></option>
@@ -686,21 +645,18 @@ if ($_GET["fu"]==5) {
                                                             <?php
                                                         }
                                                     }
-
                                                     if ($nebel>=1) {
                                                         $zeiger = @mysql_query("SELECT sicht_beta,spiel,id,name,x_pos,y_pos,besitzer FROM $skrupel_planeten where sicht_".$spieler."=1 and spiel=$spiel and id<>$pid order by name");
                                                     } else {
                                                         $zeiger = @mysql_query("SELECT spiel,id,name,x_pos,y_pos,besitzer FROM $skrupel_planeten where spiel=$spiel and id<>$pid order by name");
                                                     }
                                                     $datensaetze = @mysql_num_rows($zeiger);
-
                                                     if ($datensaetze>=1) {
                                                         ?>
                                                         <option value="0" style="background-color:#000000;"><?php echo $lang['basenalpha']['planeten']; ?></option>
                                                         <?php
                                                         for  ($i=0; $i<$datensaetze;$i++) {
                                                             $ok = @mysql_data_seek($zeiger,$i);
-
                                                             $array = @mysql_fetch_array($zeiger);
                                                             $planetid=$array["id"];
                                                             $name=$array["name"];
@@ -797,7 +753,6 @@ if ($_GET["fu"]==5) {
                     <td><img src="../bilder/empty.gif" border="0" width="230" height="1"></td>
                     <td><img src="../bilder/empty.gif" border="0" width="60" height="1"></td>
                 </tr>
-
                 <tr>
                     <td>
                         <center>
@@ -1072,39 +1027,31 @@ if ($_GET["fu"]==5) {
         }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==6) {
     include ("inc.header.php");
-
     $falte_cantox=($_POST["falte_cantox"]<0)?0:$_POST["falte_cantox"];
     $falte_lemin=($_POST["falte_lemin"]<0)?0:$_POST["falte_lemin"];
     $falte_min1=($_POST["falte_min1"]<0)?0:$_POST["falte_min1"];
     $falte_min2=($_POST["falte_min2"]<0)?0:$_POST["falte_min2"];
     $falte_min3=($_POST["falte_min3"]<0)?0:$_POST["falte_min3"];
     $falte_vorrat=($_POST["falte_vorrat"]<0)?0:$_POST["falte_vorrat"];
-
     $planet_cantox=($_POST["planet_cantox"]<0)?0:$_POST["planet_cantox"];
     $planet_lemin=($_POST["planet_lemin"]<0)?0:$_POST["planet_lemin"];
     $planet_min1=($_POST["planet_min1"]<0)?0:$_POST["planet_min1"];
     $planet_min2=($_POST["planet_min2"]<0)?0:$_POST["planet_min2"];
     $planet_min3=($_POST["planet_min3"]<0)?0:$_POST["planet_min3"];
     $planet_vorrat=($_POST["planet_vorrat"]<0)?0:$_POST["planet_vorrat"];
-
     $zielid=$_POST["zielid"];
     $zielart=substr($zielid,0,1);
     $zielid=substr($zielid,1,strlen($zielid)-1);
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
-
     $array = @mysql_fetch_array($zeiger);
     $baid=$array["id"];
     $name=$array["name"];
     $x_pos=$array["x_pos"];
     $y_pos=$array["y_pos"];
     $planetid=$array["planetid"];
-
     $zeiger = @mysql_query("SELECT id,cantox,besitzer,min1,min2,min3,lemin,vorrat FROM $skrupel_planeten where besitzer=$spieler and id=$planetid");
-
     $array = @mysql_fetch_array($zeiger);
     $pid=$array["id"];
     $plane_cantox=$array["cantox"];
@@ -1113,8 +1060,6 @@ if ($_GET["fu"]==6) {
     $plane_min3=$array["min3"];
     $plane_lemin=$array["lemin"];
     $plane_vorrat=$array["vorrat"];
-
-
     if (
         ($planet_cantox+$falte_cantox==$plane_cantox)
         and ($planet_min1+$falte_min1==$plane_min1)
@@ -1126,12 +1071,9 @@ if ($_GET["fu"]==6) {
         and (strlen($zielid)>=1)
         and ($planet_cantox>=75)
     ){
-
         $kosten=($falte_min1+$falte_min2+$falte_min3+$falte_lemin+$falte_vorrat)*8; if ($kosten<75) {$kosten=75;}
         $planet_cantox=$planet_cantox-$kosten;
-
         $zeiger = @mysql_query("UPDATE $skrupel_planeten set cantox=$planet_cantox,min1=$planet_min1,min2=$planet_min2,min3=$planet_min3,lemin=$planet_lemin,vorrat=$planet_vorrat where besitzer=$spieler and id=$planetid");
-
         if ($zielart=='p') {
             $zeiger = @mysql_query("SELECT id,x_pos,y_pos FROM $skrupel_planeten where id=$zielid");
             $array = @mysql_fetch_array($zeiger);
@@ -1141,9 +1083,7 @@ if ($_GET["fu"]==6) {
         } else {
             $optionen="s:$zielid:0:0:$falte_cantox:$falte_vorrat:$falte_lemin:$falte_min1:$falte_min2:$falte_min3";
         }
-
         $zeiger = @mysql_query("insert into $skrupel_anomalien (art,x_pos,y_pos,extra,spiel) values (3,$x_pos,$y_pos,'$optionen',$spiel)");
-
         ?>
         <body text="#000000" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" scroll="auto" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
             <br><br><br><br>

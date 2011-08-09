@@ -6,29 +6,24 @@ $erweiterung[0]['ordner']='moviegif';
 $erweiterung[0]['autor']='Skrupel.de';
 $erweiterung[0]['activate']=1;
 $erweiterung[0]['activatepos']=0;
-
 $erweiterung[1]['name']='RSS';
 $erweiterung[1]['ordner']='rss';
 $erweiterung[1]['autor']='JANNiS und bansa.de';
 $erweiterung[1]['activate']=0;
 $erweiterung[1]['activatepos']=0;
-
 $erweiterung[2]['name']='KI';
 $erweiterung[2]['ordner']='ki';
 $erweiterung[2]['autor']='Wasserleiche';
 $erweiterung[2]['activate']=1;
 $erweiterung[2]['activatepos']=1;
-
 $erweiterung[3]['name']='XStats';
 $erweiterung[3]['ordner']='xstats';
 $erweiterung[3]['autor']='Stefan Heller';
 $erweiterung[3]['activate']=1;
 $erweiterung[3]['activatepos']=2;
-
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
-
         $zeiger = @mysql_query("SELECT extend FROM $skrupel_info");
         $array = @mysql_fetch_array($zeiger);
         $spiel_extend=$array["extend"];
@@ -90,7 +85,6 @@ if ($_GET["fu"]==2) {
         $spiel_extend=$array["extend"];
         $extend='';
         for ($n=0;$n<50;$n++) {
-
             if ($pos==$n) {
                 if ($value=='1') {
                     $extend.='1';
@@ -98,7 +92,6 @@ if ($_GET["fu"]==2) {
                     $extend.='0';
                 }
             } else {
-
                 if (@intval(substr($spiel_extend,$n,1))==1) {
                     $extend.='1';
                 } else {

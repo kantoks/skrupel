@@ -3,17 +3,13 @@ include ("../inc.conf.php");
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.basen_gamma.php";
 include ($file);
-
 $baid=$_GET["baid"];
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
-
     $array = @mysql_fetch_array($zeiger);
     $schiffbau_status=$array["schiffbau_status"];
     $art=$array["art"];
-
     ?>
     <body text="#000000" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" scroll="auto" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <center>
@@ -22,12 +18,9 @@ if ($_GET["fu"]==1) {
                     <td>
                         <?php
                         if ($schiffbau_status==0) {
-
                             $zeiger = @mysql_query("SELECT * FROM $skrupel_huellen where baid=$baid order by klasse_name");
                             $huellenanzahl = @mysql_num_rows($zeiger);
-
                             if ($huellenanzahl>=1) {
-
                                 ?>
                                 <center>
                                     <form name="formular" method="post" action="basen_gamma.php?fu=<?php if ($art==3) { echo '6'; } else { echo '2'; } ?>&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>">
@@ -45,11 +38,9 @@ if ($_GET["fu"]==1) {
                                             <?php
                                             for  ($i=0; $i<$huellenanzahl;$i++) {
                                                 $ok = @mysql_data_seek($zeiger,$i);
-
                                                 $array = @mysql_fetch_array($zeiger);
                                                 $id=$array["id"];
                                                 $klasse_name=$array["klasse_name"];
-
                                                 echo "<option value='$id'>$klasse_name</option>";
                                             }
                                             ?>
@@ -74,12 +65,9 @@ if ($_GET["fu"]==1) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==2) {
     include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
-
     $array = @mysql_fetch_array($zeiger);
     $baid=$array["id"];
     $name=$array["name"];
@@ -96,9 +84,7 @@ if ($_GET["fu"]==2) {
     $jaeger=$array["jaeger"];
     $art=$array["art"];
     $zusatz=$_POST['zusatz'];
-
     if ($art!=3) { $zusatz=0; }
-
     $vorrat_projektile_1=$array["vorrat_projektile_1"];
     $vorrat_projektile_2=$array["vorrat_projektile_2"];
     $vorrat_projektile_3=$array["vorrat_projektile_3"];
@@ -109,7 +95,6 @@ if ($_GET["fu"]==2) {
     $vorrat_projektile_8=$array["vorrat_projektile_8"];
     $vorrat_projektile_9=$array["vorrat_projektile_9"];
     $vorrat_projektile_10=$array["vorrat_projektile_10"];
-
     $vorrat_energetik_1=$array["vorrat_energetik_1"];
     $vorrat_energetik_2=$array["vorrat_energetik_2"];
     $vorrat_energetik_3=$array["vorrat_energetik_3"];
@@ -120,7 +105,6 @@ if ($_GET["fu"]==2) {
     $vorrat_energetik_8=$array["vorrat_energetik_8"];
     $vorrat_energetik_9=$array["vorrat_energetik_9"];
     $vorrat_energetik_10=$array["vorrat_energetik_10"];
-
     $vorrat_antrieb_1=$array["vorrat_antrieb_1"];
     $vorrat_antrieb_2=$array["vorrat_antrieb_2"];
     $vorrat_antrieb_3=$array["vorrat_antrieb_3"];
@@ -130,19 +114,14 @@ if ($_GET["fu"]==2) {
     $vorrat_antrieb_7=$array["vorrat_antrieb_7"];
     $vorrat_antrieb_8=$array["vorrat_antrieb_8"];
     $vorrat_antrieb_9=$array["vorrat_antrieb_9"];
-
     $huellenid=$_POST['rumpf'];
     $zeiger2 = @mysql_query("SELECT * FROM $skrupel_huellen where id=$huellenid");
-
     $array2 = @mysql_fetch_array($zeiger2);
     $hid=$array2["id"];
-
     $noetig_antriebe=$array2["antriebe"];
     $noetig_energetik=$array2["energetik"];
     $noetig_projektile=$array2["projektile"];
-
     $ok=1;
-     
     //natives liefern baumaterial anfang
     $zeiger2 = @mysql_query("SELECT native_fert,native_kol FROM $skrupel_planeten where besitzer=$spieler and id=$planetid");
     $array2 = @mysql_fetch_array($zeiger2);
@@ -153,7 +132,6 @@ if ($_GET["fu"]==2) {
     }else{
       $native_fert_material=0;
     }
-     
     switch($native_fert_material) {
     case 1:
         $vorrat_antrieb_1=10;
@@ -183,9 +161,7 @@ if ($_GET["fu"]==2) {
         $vorrat_projektile_3=10;
         break;
     }
-    
     //natives liefern baumaterial ende
-     
     ?>
     <body text="#000000" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" scroll="auto" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <script language="JavaScript">
@@ -398,12 +374,9 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==3) {
     include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
-
     $array = @mysql_fetch_array($zeiger);
     $baid=$array["id"];
     $name=$array["name"];
@@ -419,7 +392,6 @@ if ($_GET["fu"]==3) {
     $defense=$array["defense"];
     $jaeger=$array["jaeger"];
     $art=$array["art"];
- 
     //natives liefern baumaterial anfang   
     $zeiger2 = @mysql_query("SELECT native_fert,native_kol FROM $skrupel_planeten where besitzer=$spieler and id=$planetid");
     $array2 = @mysql_fetch_array($zeiger2);
@@ -431,7 +403,6 @@ if ($_GET["fu"]==3) {
       $native_fert_material=0;
     }
     //natives liefern baumaterial ende
-
     $antriebestufe=$_POST['antriebe'];
     $projektilestufe=$_POST['projektile'];
     $energetikstufe=$_POST['energetik'];
@@ -439,23 +410,17 @@ if ($_GET["fu"]==3) {
     $zusatz=$_POST['zusatz'];
     $schiffsname=str_replace("'"," ",$schiffsname);
     $schiffsname=str_replace('"'," ",$schiffsname);
-
     if ($art!=3) { $zusatz=0; }
-
     if ($projektilestufe>=1) {} else {$projektilestufe=0;}
     if ($energetikstufe>=1) {} else {$energetikstufe=0;}
     if ($antriebestufe>=1) {} else {$antriebestufe=0;}
-
     $huellenid=$_POST['rumpf'];
     $zeiger2 = @mysql_query("SELECT * FROM $skrupel_huellen where id=$huellenid");
-
     $array2 = @mysql_fetch_array($zeiger2);
     $hid=$array2["id"];
-
     $noetig_antriebe=$array2["antriebe"];
     $noetig_energetik=$array2["energetik"];
     $noetig_projektile=$array2["projektile"];
-
     $klasse=$array2["klasse"];
     $bild_gross=$array2["bild_gross"];
     $bild_klein=$array2["bild_klein"];
@@ -468,16 +433,12 @@ if ($_GET["fu"]==3) {
     $rasse=$array2["rasse"];
     $fertigkeiten=$array2["fertigkeiten"];
     $techlevel=$array2["techlevel"];
-
     if ($antriebestufe==9) {$fracht=floor($fracht/2);}
     if ($zusatz==4) {$fracht=floor($fracht*1.19);}
-
     $zeiger_temp = @mysql_query("Update $skrupel_sternenbasen set schiffbau_zusatz=$zusatz,schiffbau_status=1,schiffbau_klasse=$klasse,schiffbau_bild_gross='$bild_gross',schiffbau_bild_klein='$bild_klein',schiffbau_crew=$crew,schiffbau_masse=$masse,schiffbau_tank=$tank, schiffbau_fracht=$fracht,schiffbau_antriebe=$noetig_antriebe,schiffbau_energetik=$noetig_energetik,schiffbau_projektile=$noetig_projektile,schiffbau_hangar=$hangar,schiffbau_klasse_name='$klasse_name',schiffbau_rasse='$rasse',schiffbau_fertigkeiten='$fertigkeiten',schiffbau_energetik_stufe=$energetikstufe,schiffbau_projektile_stufe=$projektilestufe,schiffbau_techlevel=$techlevel,schiffbau_antriebe_stufe=$antriebestufe,schiffbau_name='$schiffsname' where besitzer=$spieler and status=1 and id=$baid");
-
     if ($projektilestufe>=1) {} else {$projektilestufe=1;}
     if ($energetikstufe>=1) {} else {$energetikstufe=1;}
     if ($antriebestufe>=1) {} else {$antriebestufe=1;}
-
     //natives liefern baumaterial anfang
     switch($native_fert_material) {
       case 1:
@@ -509,32 +470,24 @@ if ($_GET["fu"]==3) {
       break;
     }
     //natives liefern baumaterial ende
-
     $spalte1="vorrat_antrieb_".$antriebestufe;
     $spalte2="vorrat_projektile_".$projektilestufe;
     $spalte3="vorrat_energetik_".$energetikstufe;
     $zeiger_temp = mysql_query("Update $skrupel_sternenbasen set $spalte1=$spalte1-$noetig_antriebe,$spalte2=$spalte2-$noetig_projektile,$spalte3=$spalte3-$noetig_energetik where besitzer=$spieler and status=1 and id=$baid");
-
     $zeiger_temp = mysql_query("DELETE FROM $skrupel_huellen where id=$huellenid");
-
     $message="<center>".$lang['basengamma']['auftragerflogreich']."</center>";
-
-
     ?>
     <body text="#000000" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" scroll="auto" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <br><br><br>
         <?php echo $message;
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==4) {
     include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT id,logbuch FROM $skrupel_sternenbasen where id=$baid");
     $array = @mysql_fetch_array($zeiger);
     $logbuch=$array["logbuch"];
     $logbuch=str_replace("\\", "",$logbuch);
-
     ?>
     <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0"">
         <center>
@@ -566,16 +519,12 @@ if ($_GET["fu"]==4) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==5) {
     include ("inc.header.php");
-
     $eintrag=$_POST["logbuchdaten"];
     $eintrag=str_replace("\"", "\'",$eintrag);
     $eintrag=str_replace("\\", "",$eintrag);
-
     $zeiger = @mysql_query("UPDATE $skrupel_sternenbasen set logbuch=\"$eintrag\" where id=$baid");
-
     ?>
     <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0"">
         <br><br><br><br>
@@ -583,17 +532,12 @@ if ($_GET["fu"]==5) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==6) {
     include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
-
     $array = @mysql_fetch_array($zeiger);
     $art=$array["art"];
-
     $huellenid=$_POST['rumpf'];
-
     ?>
     <body text="#000000" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" scroll="auto" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <center>

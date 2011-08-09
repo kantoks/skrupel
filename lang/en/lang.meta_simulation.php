@@ -2,7 +2,6 @@
 $lang['metasimulation']['vh']=' ({1} %)';
 $lang['metasimulation']['vh_ok']='{1} %';
 $lang['metasimulation']['ueberlebende']='&Uuml;berlebende';
-
 $lang['metasimulation']['verteidiger']='defender';
 $lang['metasimulation']['volk']='people';
 $lang['metasimulation']['kolonisten']='colonists';
@@ -12,7 +11,6 @@ $lang['metasimulation']['simulationstarten']='start simulation';
 $lang['metasimulation']['verteidigergewinntbk']='<center>The <b>defender</b> wins the battle.</center>';
 $lang['metasimulation']['angreifergewinntbk']='<center>The <b>aggressor</b> wins the battle.</center>';
 $lang['metasimulation']['keinergewinntbk']='<center>Both armies defeat each other.</center>';
-
 $lang['metasimulation']['waehleschiffe']='Both parties need ships.';
 $lang['metasimulation']['angreifer']='aggressor';
 $lang['metasimulation']['schiff']='ship';
@@ -58,7 +56,6 @@ $lang['metasimulation']['daempfer']='Schildd&auml;mpfer';
 $lang['metasimulation']['defensiv']='defensiv';
 $lang['metasimulation']['ueberlegt']='&uuml;berlegt';
 $lang['metasimulation']['aggressiv']='aggresiv';
-
 $lang['metasimulation']['vorbereitung']['vorbereitung']='Vorbereitung';
 $lang['metasimulation']['vorbereitung']['keinschaden']='Alle Waffensysteme funktionsf&auml;hig';
 $lang['metasimulation']['vorbereitung']['energetikschaden']='{1} Strahlenwaffe(n) fiel(en) aus.';
@@ -83,7 +80,6 @@ $lang['metasimulation']['vorbereitung']['runde']='Runde {1}';
 $lang['metasimulation']['vorbereitung']['phase']='Phase {1}';
 $lang['metasimulation']['vorbereitung']['kamikaze']='<font color=\"#ff0000\">Kamikaze</font>';
 $lang['metasimulation']['vorbereitung']['selbstzerstoerung']='Selbstzerst&ouml;rung aktiviert';
-
 $lang['metasimulation']['oschild']='Orbitalschild';
 $lang['metasimulation']['planet']='Planet';
 $lang['metasimulation']['pds_planet']='planetare P.D.S.';

@@ -4,7 +4,6 @@ if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.meta_optionen.php";
 include ("../lang/sprachen.php");
 include ($file);
-
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT sprache, optionen, email, icq, jabber, avatar, chatfarbe From $skrupel_user where uid='$uid'");
@@ -275,7 +274,6 @@ if ($_GET["fu"]==2) {
     <body text="#000000" bgcolor="#444444"  link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <div id="bodybody" class="flexcroll" onfocus="this.blur()">
         <?php
-    
         $email=$_POST["email"];
         $icq=$_POST["icq"];
         $jabber=$_POST["jabber"];
@@ -284,7 +282,6 @@ if ($_GET["fu"]==2) {
         $passwortneu="";
         $passwortneu=$_POST["passwortneu"];
         $optionen="";
-    
         if ($_POST["email_nach"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
         if ($_POST["icq_nach"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
         if ($_POST["tool_kol"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
@@ -303,15 +300,10 @@ if ($_GET["fu"]==2) {
         if ($_POST["feature_iiii"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
         if ($_POST["feature_iiiii"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
         if ($_POST["feature_iiiiii"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        
         $zeiger_temp = @mysql_query("UPDATE $skrupel_user set jabber='$jabber', email='$email', icq='$icq', optionen='$optionen', chatfarbe='$chatfarbe', avatar='$avatar', sprache='".$_POST["sprache"]."' where uid='$uid'");
-    
         if (strlen($passwortneu)>=1) {
-    
             $zeiger_temp = @mysql_query("UPDATE $skrupel_user set passwort='$passwortneu' where uid='$uid'");
-    
         }
-    
         ?>
             <center>
                 <table border="0" cellspacing="0" cellpadding="0" height="100%">

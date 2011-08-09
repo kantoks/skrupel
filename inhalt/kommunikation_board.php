@@ -3,8 +3,6 @@ include ("../inc.conf.php");
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.kommunikation_board.php";
 include ($file);
-
-
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ?>
@@ -61,7 +59,6 @@ if ($_GET["fu"]==1) {
             <tr>
                 <td class="forummittel"><img src="../bilder/empty.gif" border="0" width="25" height="20"></td>
                 <td class="forumhell" width="100%">
-    
                     <table border="0" cellspacing="0" cellpadding="0">
                         <tr>
                             <td><img src="../bilder/empty.gif" border="0" width="5" height="5"></td>
@@ -396,9 +393,7 @@ if ($_GET["fu"]==1) {
 }
 if ($_GET["fu"]==2) {
     include ("inc.header.php");
-
     $forum=$_GET["fo"];
-
     ?>
     <style type="text/css">
         td.forumdunkel {
@@ -422,12 +417,9 @@ if ($_GET["fu"]==2) {
     </style>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <script language=JavaScript>
-
             function checkeingabe(e) {
-
                 if (document.formular.thema.value=="") { alert('<?php echo $lang['kommunikationboard']['themaeingeben']; ?>'); return false;}
                 if (document.formular.beitrag.value=="") { alert('<?php echo $lang['kommunikationboard']['beitrageingeben']; ?>'); return false;}
-
                 return true;
             }
         </script>
@@ -468,12 +460,9 @@ if ($_GET["fu"]==2) {
             <?php
             $zeiger = @mysql_query("SELECT * FROM $skrupel_forum_thema where forum=$forum order by letzter desc limit 0,20");
             $themaanzahl = @mysql_num_rows($zeiger);
-
             if ($themaanzahl>=1) {
-
                 for ($i=0; $i<$themaanzahl;$i++) {
                     $ok = @mysql_data_seek($zeiger,$i);
-                
                     $array = @mysql_fetch_array($zeiger);
                     $id=$array["id"];
                     $icon=$array["icon"];
@@ -481,9 +470,7 @@ if ($_GET["fu"]==2) {
                     $beginner=$array["beginner"];
                     $antworten=$array["antworten"];
                     $letzter=$array["letzter"];
-                
                     $letzter=date('d.m.y G:i',$letzter);
-
                     ?>
                     <tr>
                         <td class="forummittel"><center><img src="../bilder/forum_icons/<?php echo $icon; ?>.gif" border="0" width="15" height="15"></center></td>
@@ -665,63 +652,43 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==4) {
-
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
-
     $forum=$_GET["forum"];
     $icon=$_POST["icon"];
-
     include ("inc.check.php");
-
     $beginner=$spieler_name;
-
     $letzter=time();
-
     $thema=$_POST["thema"];
     $beitrag=$_POST["beitrag"];
-
     $beitrag=nl2br(stripslashes($beitrag));
     $beitrag=str_replace("'", "",$beitrag);
     $beitrag=str_replace("\"", "",$beitrag);
     $beitrag=str_replace("\\", "",$beitrag);
-
     $thema=nl2br(stripslashes($thema));
     $thema=str_replace("'", "",$thema);
     $thema=str_replace("\"", "",$thema);
     $thema=str_replace("\\", "",$thema);
-
     $zeiger = @mysql_query("INSERT INTO $skrupel_forum_thema (forum,icon,thema,beginner,antworten,letzter) values ($forum,$icon,'$thema','$beginner',0,'$letzter');");
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_forum_thema where forum=$forum and icon=$icon and beginner='$beginner' and thema='$thema' and letzter='$letzter' and antworten=0;");
     $array = @mysql_fetch_array($zeiger);
     $idthema=$array["id"];
-
     $zeiger = mysql_query("INSERT INTO $skrupel_forum_beitrag (thema,forum,datum,beitrag,verfasser,spielerid) values ($idthema,$forum,'$letzter','$beitrag','$beginner',$spieler);");
-
     @mysql_close();
-
     $backlink="kommunikation_board.php?fu=2&uid=$uid&sid=$sid&fo=$forum&sprache=".$_GET["sprache"];
-
     header ("Location: $backlink");
-
 }
-
 if ($_GET["fu"]==3) {
     include ("inc.header.php");
-
     $forum=$_GET["fo"];
     $thema=$_GET["thema"];
-
     if ($forum==1) { $formname=$lang['kommunikationboard']['offenbarungen'];}
     if ($forum==2) { $formname=$lang['kommunikationboard']['smalltalk'];}
     if ($forum==3) { $formname=$lang['kommunikationboard']['handel'];}
     if ($forum==4) { $formname=$lang['kommunikationboard']['strategie'];}
     if ($forum==5) { $formname=$lang['kommunikationboard']['howtos'];}
     if ($forum==6) { $formname=$lang['kommunikationboard']['zahlentechnisches'];}
-
     ?>
     <style type="text/css">
         td.forumdunkel {
@@ -797,26 +764,19 @@ if ($_GET["fu"]==3) {
             </tr>
             <?php
             $klasse="forumhell";
-
             $zeiger = @mysql_query("SELECT * FROM $skrupel_forum_beitrag where thema=$thema order by datum");
             $beitraganzahl = @mysql_num_rows($zeiger);
-
             if ($beitraganzahl>=1) {
-
                 for ($i=0; $i<$beitraganzahl;$i++) {
                     $ok = @mysql_data_seek($zeiger,$i);
-                
                     $array = @mysql_fetch_array($zeiger);
                     $id=$array["id"];
                     $beitrag=$array["beitrag"];
                     $verfasser=$array["verfasser"];
                     $spielerid=$array["spielerid"];
                     $datum=$array["datum"];
-                
                     $datum=date('d.m.y G:i',$datum);
-    
                     if ($klasse=='forumhell') { $klasse="forummittel"; } else { $klasse="forumhell"; }
-    
                     ?>
                     <tr>
                         <td class="<?php echo $klasse; ?>" valign="top">
@@ -924,34 +884,22 @@ if ($_GET["fu"]==3) {
     include ("inc.footer.php");
 }
 if ($_GET["fu"]==5) {
-
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
-    
     $forum=$_GET["forum"];
     $thema=$_GET["thema"];
     $icon=$_POST["icon"];
-    
     include ("inc.check.php");
-    
     $beginner=$spieler_name;
-    
     $letzter=time();
-    
     $beitrag=$_POST["beitrag"];
-    
     $beitrag=nl2br(stripslashes($beitrag));
     $beitrag=str_replace("'", "",$beitrag);
     $beitrag=str_replace("\"", "",$beitrag);
     $beitrag=str_replace("\\", "",$beitrag);
-    
     $zeiger = mysql_query("INSERT INTO $skrupel_forum_beitrag (thema,forum,datum,beitrag,verfasser,spielerid) values ($thema,$forum,'$letzter','$beitrag','$beginner',$spieler);");
     $zeiger = mysql_query("UPDATE $skrupel_forum_thema set antworten=antworten+1,letzter='$letzter' where id=$thema;");
-    
     @mysql_close();
-    
     $backlink="kommunikation_board.php?fu=3&uid=$uid&sid=$sid&fo=$forum&thema=$thema&sprache=".$_GET["sprache"];
-    
     header ("Location: $backlink");
-
 }

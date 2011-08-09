@@ -4,25 +4,19 @@ include ('../inc.conf.php');
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.galaxie.php";
 include ($file);
-
 $conn = mysql_connect($server.':'.$port, $login, $password);
 $db = mysql_select_db($database, $conn);
-
 include ('inc.check.php');
 include_once ('inc.hilfsfunktionen.php');
-
 $fuid = int_get('fu');
-
 $noani='';
 if (@intval(substr($spieler_optionen,15,1))==1) {
     $noani='_noani';
 }
-
 if ($fuid==1) {
     $gox = intval($_GET['gox']);
     $goy = intval($_GET['goy']);
     $sprung='';
-
     if (($gox >= 1) and ($goy >= 1)) {
         $gox = round($gox*$umfang/250);
         $goy = round($goy*$umfang/250);
@@ -59,28 +53,22 @@ if ($fuid==1) {
     <?php
 }
 if ($fuid==2) {
-
     $useragent = getEnv("HTTP_USER_AGENT");
     $linux=preg_match("=linux=i", $useragent);
     $plus=0;
     if ($linux) { $plus=1; }
-
     srand((double)microtime()*1000000);
-
     //politik
     //tabelle initialisieren
     $beziehung = array_fill(1, 10, array_fill(1, 10, array('status'=>0, 'optionen'=>0)));
-
     $zeiger = mysql_query("SELECT partei_a,partei_b,status,optionen FROM $skrupel_politik WHERE spiel=$spiel AND (partei_a=$spieler OR partei_b=$spieler)");
     while($array = mysql_fetch_array($zeiger)) {
         list($partei_a, $partei_b, $status, $optionen) = $array;
-
         $beziehung[$partei_a][$partei_b]['status']   = $status;
         $beziehung[$partei_b][$partei_a]['status']   = $status;
         $beziehung[$partei_a][$partei_b]['optionen'] = $optionen;
         $beziehung[$partei_b][$partei_a]['optionen'] = $optionen;
     }
-
     if($module[0]) {
         $file="../daten/unknown/spionagen.txt";
         $fp = @fopen("$file","r");
@@ -130,7 +118,6 @@ if ($fuid==2) {
                 info.sprache = '<?php echo $_GET['sprache']; ?>';
                 info.bildpfad = '<?php echo $bildpfad; ?>';
                 info.umfang = <?php echo $umfang; ?>;
-
                 <?php
                 if(intval(substr($spieler_optionen,12,1)) == 0) echo "settings.enabletooltips = true;\n";
                 if(intval(substr($spieler_optionen, 2,1)) == 1) echo "settings.tooltip_planetkolonisten = true;\n";
@@ -144,7 +131,6 @@ if ($fuid==2) {
                 if(intval(substr($spieler_optionen,10,1)) == 1) echo "settings.tooltip_schifflogbuch = true;\n";
                 if(intval(substr($spieler_optionen, 7,1)) == 1) echo "settings.tooltip_schiffbasiswerte = true;\n";
                 if(intval(substr($spieler_optionen,17,1)) != 1) echo "settings.scrollbars = true;\n";
-
                 ?>
             </script>
             <?php if (@intval(substr($spieler_optionen,17,1))!=1) { ?>
@@ -154,7 +140,6 @@ if ($fuid==2) {
         </head>
         <body style="background-color: #111111; border: 0;" onLoad="move_sticky();<?php if (@intval(substr($spieler_optionen,17,1))!=1) { ?>CSBfleXcroll('complete');<?php } ?>" scroll="auto"  TEXT="#ffffff" LINK="#000000" VLINK="#000000" ALINK="#000000" topmargin="0" leftmargin=0 marginwidth="0" marginheight="0">
         <div id="complete" class='flexcrollafter' style="position:relative;height:100%;width:100%px;overflow:auto;">
-        
             <div style="overflow:hidden;height:<?php echo $umfang; ?>px;width:<?php echo $umfang; ?>px;max-width:<?php echo $umfang; ?>px; max-height:<?php echo $umfang; ?>px;">
                 <?php
                 $spalte='sicht_'.$spieler;
@@ -166,7 +151,6 @@ if ($fuid==2) {
                     ie = (document.styleSheets&& document.all)? true:false;
                     ns6 = (document.getElementById&& !document.all)? true:false;
                     opera= (document.all&& !document.styleSheets)? true:false;
-
                     top_position = 10;
                     right_position = 85;
                     rechts_overflowhidden_korrektur=0;
@@ -180,10 +164,9 @@ if ($fuid==2) {
                     } else {
                         if(window.innerHeight<<?php echo $umfang?>)right_position=105;
                     }
-
                     function move_sticky(e) {
                         if (ie) {
-			    document.all.sticky.style.position='absolute';
+          document.all.sticky.style.position='absolute';
                             document.all.sticky.style.top=document.body.scrollTop+top_position;
                             document.all.sticky.style.left=document.body.scrollLeft-right_position-rechts_overflowhidden_korrektur+document.body.offsetWidth;
                             setTimeout("move_sticky()",200);
@@ -192,25 +175,21 @@ if ($fuid==2) {
                             document.getElementById("sticky").style.left=window.innerWidth-right_position-rechts_overflowhidden_korrektur;
                         }
                     }
-
                     function hide_sticky() {
                         if (ns6||opera) document.getElementById("sticky").style.visibility = "hidden";
                         if (ns4) document.sticky.visibility = "hidden";
                         if (ie) document.all.sticky.style.visibility = "hidden";
                     }
-
                     function jump(e) {
-			if (ie) {
+      if (ie) {
                             posx = event.clientX - document.body.offsetWidth + right_position + rechts_overflowhidden_korrektur;
                             posy = event.clientY - top_position;
                         } else {
                             posx = e.pageX-window.pageXOffset-window.innerWidth+right_position+rechts_overflowhidden_korrektur;
                             posy = e.pageY-window.pageYOffset-top_position;
                         }
-
                         posx = Math.round(posx * <?php echo $umfang; ?>/75);
                         posy = Math.round(posy * <?php echo $umfang; ?>/75);
-
                         movemap(posx,posy);
                         self.focus();
                     }
@@ -235,7 +214,6 @@ if ($fuid==2) {
                             $x_pos=$array["x_pos"];
                             $y_pos=$array["y_pos"];
                             $besitzer=$array["besitzer"];
-
                             $x_position=$x_pos*75/$umfang;
                             $y_position=$y_pos*75/$umfang;
                             $farbe='#aaaaaa';
@@ -259,7 +237,6 @@ if ($fuid==2) {
                                 $id=$array["id"];
                                 $x_pos=$array["x_pos"];
                                 $y_pos=$array["y_pos"];
-
                                 $x_position=$x_pos*75/$umfang;
                                 $y_position=$y_pos*75/$umfang;
                                 ?>
@@ -553,9 +530,7 @@ if ($fuid==2) {
                     </div>
                     <?php
                 }
-
                 //////////////////////////////////////////////////////////////////////////////////raum
-
                 $zeiger = @mysql_query("SELECT * FROM $skrupel_scan where spiel=$spiel and besitzer=$spieler");
                 $datensaetze = @mysql_num_rows($zeiger);
                 if ($datensaetze>=1) {
@@ -573,9 +548,7 @@ if ($fuid==2) {
                         <?php
                     }
                 }
-
                 //////////////////////////////////////////////////////////////////////////////////minenfeld
-
                 if ($module[2]) {
                     $zeiger = @mysql_query("SELECT * FROM $skrupel_anomalien where spiel=$spiel and ($spalte=1 or extra like '$spieler:%') and art=5 order by id");
                     $datensaetze = @mysql_num_rows($zeiger);
@@ -587,13 +560,10 @@ if ($fuid==2) {
                             $x_pos=$array["x_pos"];
                             $y_pos=$array["y_pos"];
                             $extra=$array["extra"];
-
                             $extrab=explode(":",$extra);
-
                             $oben=$y_pos-87;
                             $links=$x_pos-87;
                             $bild='fremd';
-
                             if (($extrab[0]==$spieler) or
                                 ($beziehung[$spieler][$extrab[0]]['status']==3) or
                                 ($beziehung[$spieler][$extrab[0]]['status']==4) or
@@ -607,9 +577,7 @@ if ($fuid==2) {
                         }
                     }
                 }
-
                 //////////////////////////////////////////////////////////////////////////////////nebel
-
                 $zeiger = @mysql_query("SELECT * FROM $skrupel_anomalien where spiel=$spiel and art=4 order by id");
                 $datensaetze = @mysql_num_rows($zeiger);
                 if ($datensaetze>=1) {
@@ -626,9 +594,7 @@ if ($fuid==2) {
                         <?php
                     }
                 }
-
                 //////////////////////////////////////////////////////////////////////////////////sektorbezeichnung
-
                 for  ($y=1; $y<=$umfang/250;$y++) {
                     for  ($x=1; $x<=$umfang/250;$x++) {
                         $xpos=$x*250-125-5;
@@ -641,9 +607,7 @@ if ($fuid==2) {
                         <?php
                     }
                 }
-
                 //////////////////////////////////////////////////////////////////////////////////sprungtor wurmloch raumfalte
-
                 if ($nebel>=1) {
                     $zeiger = @mysql_query("SELECT * FROM $skrupel_anomalien where $spalte=1 and spiel=$spiel order by id");
                 } else {
@@ -659,7 +623,6 @@ if ($fuid==2) {
                         $x_pos=$array["x_pos"];
                         $y_pos=$array["y_pos"];
                         $extra=$array["extra"];
-
                         if ($art==1) {
                             $xpos=$x_pos-20;
                             $ypos=$y_pos-20;
@@ -689,9 +652,7 @@ if ($fuid==2) {
                         }
                     }
                 }
-
                 //////////////////////////////////////////////////////////////////////////////////schiffe scanfelder
-
                 if ($nebel>=1) {
                     $zeiger = @mysql_query("SELECT id,kox,koy,status,besitzer,spezialmission,tarnfeld,scanner FROM $skrupel_schiffe where (status=1 or status=2) and (tarnfeld=0 or besitzer=$spieler) and spiel=$spiel and $spalte=1");
                 } else {
@@ -707,7 +668,6 @@ if ($fuid==2) {
                         $x_pos=$array["kox"];
                         $y_pos=$array["koy"];
                         $scanner=$array["scanner"];
-
                         if ($scanner==0) {
                             $x_position=$x_pos-48;
                             $y_position=$y_pos-48;
@@ -746,12 +706,9 @@ if ($fuid==2) {
                         }
                     }
                 }
-
                 //////////////////////////////////////////////////////////////////////////////////erste sternenbasis und bildaufbau
-
                 $gox = intval($_GET['gox']);
                 $goy = intval($_GET['goy']);
-
                 if (($gox>=1) and ($goy>=1)) {
                     $start_map_x = $gox;
                     $start_map_y = $goy;
@@ -776,9 +733,7 @@ if ($fuid==2) {
                 </div>
                 <script language=JavaScript>movemapfirst(<?php echo $start_map_x.','.$start_map_y; ?>);</script>
                 <?php
-
                 //////////////////////////////////////////////////////////////////////////////////sternenbasen
-
                 if ($nebel>=1) {
                     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where status=1 and $spalte=1 and spiel=$spiel order by id");
                 } else {
@@ -800,7 +755,6 @@ if ($fuid==2) {
                         $x_position=$x_pos-13;
                         $y_position=$y_pos-13;
                         $nametip="[$name]";
-
                         if ($besitzer==$spieler) {
                             if (strlen($logbuch)==0) { $logbuch="<i>no logdata</i>"; }
                             $logbuch = preg_replace("(\r\n|\n|\r)", "<br>", $logbuch);
@@ -825,11 +779,8 @@ if ($fuid==2) {
                         }
                     }
                 }
-
                 //////////////////////////////////////////////////////////////////////////////////schiffe
-
                 $checkstring="";
-
                 if ($nebel>=1) {
                     $zeiger = @mysql_query("SELECT volk,bild_klein,masse,kox_old,koy_old,klasse,schaden,antrieb,frachtraum,fracht_leute,fracht_cantox,fracht_vorrat,fracht_min1,fracht_min2,fracht_min3,lemin,leminmax,logbuch,routing_status,routing_id,routing_koord,besitzer,id,name,kox,koy,flug,zielx,ziely,zielid,techlevel,masse_gesamt,status,spezialmission,tarnfeld,extra,sicht,ordner,erfahrung FROM $skrupel_schiffe where status>0 and spiel=$spiel and (($spalte=1 and tarnfeld=0) or ($spalte_beta=1 and (((tarnfeld<2) and (volk!='unknown')) or tarnfeld=0)) or besitzer=$spieler) order by masse desc");
                 } else {
@@ -859,17 +810,13 @@ if ($fuid==2) {
                         $masse=$array["masse"];
                         $bild_klein=$array["bild_klein"];
                         $volk=$array["volk"];
-
                         $kox=$x_pos; $flottex=0;
                         $koy=$y_pos; $flottey=0;
                         $code=":::".$id.":::";
-
                         $status=$array["status"];
                         $spezialmission=$array["spezialmission"];
                         $tarnfeld=$array["tarnfeld"];
-
                         $extra = $array['extra'];
-
                         $routing_status=$array["routing_status"];
                         $routing_id=$array["routing_id"];
                         $routing_koord=$array["routing_koord"];
@@ -885,7 +832,6 @@ if ($fuid==2) {
                         $fracht_min3=$array["fracht_min3"];
                         $ordner=$array["ordner"];
                         $erfahrung=$array["erfahrung"];
-
                         if ($besitzer==$spieler) {
                             if ($ordner==0) {
                                 $icon=0;
@@ -922,7 +868,6 @@ if ($fuid==2) {
                                         $name3=$array3["name"];
                                         $klasse3=$array3["klasse"];
                                         $ordner3=$array3["ordner"];
-
                                         $flotte.="[".$name3."] ".$klasse3."<br>";
                                         $checkstring.=":::".$iddrunter.":::";
                                         $flottengroesse++;
@@ -972,7 +917,6 @@ if ($fuid==2) {
                                 if ($spezialmission==70) { $spez_tip=$lang['galaxie']['speztip'][30]; }
                                 if ($spezialmission==71) { $spez_tip=$lang['galaxie']['speztip'][31]; }
                                 if ($spezialmission>71 and $spezialmission<77) { $spez_tip=$lang['galaxie']['speztip'][32]; }
-
                                 if($module[0] && $spezialmission==51) {
                                     $extra1 = @explode(":", $extra);
                                     $extra_spio = @explode("-", $extra1[0]);
@@ -1219,9 +1163,7 @@ if ($fuid==2) {
                         }
                     }
                 }
-
                 //////////////////////////////////////////////////////////////////////////////////aufbau karte
-
                 $farbe="#ffffff";
                 for ($k=1;$k<=20;$k++) {
                     if ($farbe=="#ffffff") {$farbe="#0000ff";} else {$farbe="#ffffff";}
@@ -1236,7 +1178,6 @@ if ($fuid==2) {
                 <div id="auswahlrand" style="z-index:5;position: absolute; left:0px; top:0px; width:16px; height:16px;visibility:hidden;">
                     <img src="<?php echo $bildpfad; ?>/karte/planetenrand_auswahl.gif" width=16 height=16>
                 </div>
-
                 <div id="x_0_1" style="z-index:1;position: absolute; left:4px; top:4px;visibility:visible;color:#a0a0a0;">0</div>
                 <div id="x_0_2" style="z-index:1;position: absolute; left:4px; top:<?php echo $umfang-16; ?>px;visibility:visible;color:#a0a0a0;">0</div>
                 <div id="x_500_1" style="z-index:1;position: absolute; left:489px; top:4px;visibility:visible;color:#a0a0a0;">500</div>
@@ -1286,14 +1227,12 @@ if ($fuid==2) {
                 }
                 if ($umfang>3500) {
                     ?>
-
                     <div id="x_3500_1" style="z-index:1;position: absolute; left:3485px; top:4px;visibility:visible;color:#a0a0a0;">3500</div>
                     <div id="x_3500_2" style="z-index:1;position: absolute; left:3485px; top:<?php echo $umfang-16; ?>px;visibility:visible;color:#a0a0a0;">3500</div>
                     <div id="y_3500_1" style="z-index:1;position: absolute; left:4px; top:3502px;visibility:visible;color:#a0a0a0;">3500</div>
                     <div id="y_3500_2" style="z-index:1;position: absolute; left:<?php echo $umfang-33; ?>px; top:3502px;visibility:visible;color:#a0a0a0;">3500</div>
                     <?php
                 }
-
                 if ($nebel>=1) {
                     $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where $spalte=1 and spiel=$spiel order by id");
                 } else {
@@ -1326,10 +1265,8 @@ if ($fuid==2) {
                         $osys_6=$array["osys_6"];
                         $sternenbasis_art=$array["sternenbasis_art"];
                         $sternenbasis=$array["sternenbasis"];
-
                         if ($auto_minen==1) {$minen=$minen." <i>".$lang['galaxie']['auto']."</i>";}
                         if ($auto_fabriken==1) {$fabriken=$fabriken." <i>".$lang['galaxie']['auto']."</i>";}
-
                         $planet_lemin=$array["planet_lemin"];
                         $planet_min1=$array["planet_min1"];
                         $planet_min2=$array["planet_min2"];
@@ -1338,10 +1275,8 @@ if ($fuid==2) {
                         $min1=$array["min1"];
                         $min2=$array["min2"];
                         $min3=$array["min3"];
-
                         if (strlen($logbuch)==0) { $logbuch="<i>".$lang['galaxie']['nologdata']."</i>"; }
                         $logbuch = preg_replace("(\r\n|\n|\r)", "<br>", $logbuch);
-
                         if ((($osys_1==5) or ($osys_2==5) or ($osys_3==5) or ($osys_4==5) or ($osys_5==5) or ($osys_6==5)) and ($besitzer!=$spieler)) {
                             $klasse=3;
                         }
@@ -1354,11 +1289,9 @@ if ($fuid==2) {
                         if ($klasse==7) { $klassename="C"; }
                         if ($klasse==8) { $klassename="K"; }
                         if ($klasse==9) { $klassename="F"; }
-
                         if ($besitzer==$spieler) { $eigentum=1;}
                         if ($besitzer==0) { $eigentum=0;}
                         if (($besitzer>=1) and ($besitzer!=$spieler)) { $eigentum=0;}
-
                         $x_position=$x_pos-5;
                         $y_position=$y_pos-5;
                         $nametip="[$name] ".$lang['galaxie']['klasse']." $klassename";
@@ -1421,11 +1354,9 @@ if ($fuid==2) {
                             $osys_4=$array["osys_4"];
                             $osys_5=$array["osys_5"];
                             $osys_6=$array["osys_6"];
-
                             if ((($osys_1==5) or ($osys_2==5) or ($osys_3==5) or ($osys_4==5) or ($osys_5==5) or ($osys_6==5)) and ($besitzer!=$spieler)) {
                                 $klasse=3;
                             }
-
                             if ($klasse==1) { $klassename="M"; }
                             if ($klasse==2) { $klassename="N"; }
                             if ($klasse==3) { $klassename="J"; }
@@ -1435,11 +1366,9 @@ if ($fuid==2) {
                             if ($klasse==7) { $klassename="C"; }
                             if ($klasse==8) { $klassename="K"; }
                             if ($klasse==9) { $klassename="F"; }
-
                             if ($besitzer==$spieler) { $eigentum=1;}
                             if ($besitzer==0) { $eigentum=0;}
                             if (($besitzer>=1) and ($besitzer!=$spieler)) { $eigentum=0;}
-
                             $x_position=$x_pos-5;
                             $y_position=$y_pos-5;
                             $nametip="[$name] ".$lang['galaxie']['klasse']." $klassename";

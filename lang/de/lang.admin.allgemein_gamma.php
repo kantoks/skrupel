@@ -3,7 +3,6 @@ $erweiterung[0]['beschreibung']='Bei jeder Zugauswertung wird vom aktuellen Stan
 $erweiterung[1]['beschreibung']='Dieses Erweiterung liefert einen RSS-Feed f&uuml;r einen RSS-Reader, welcher einen &uuml;ber den aktuellen Stand der eigenen Spiele informiert. So ist es m&ouml;glich, schnell seine eigenen Z&uuml;ge abzugeben, sobald man an der Reihe ist. Das Script muss im RSS-Reader samt Benutzernamen aufgerufen werden. Also z.B. beim Benutzernamen <b>Jannis</b> mit der URL Skrupelserver/extend/rss/runden.xml.php?name=<b>Jannis</b>';
 $erweiterung[2]['beschreibung']='Durch die KI-Erweiterung ist es m&ouml;glich, gegen Computer-Gegner anzutreten. Dabei k&ouml;nnen weitere KIs installiert werden, sodass es eine gr&ouml;&szlig;ere Auswahl an verschiedenen KI-Typen gibt. Es kann pro KI-Typ nur ein Computer-Spieler ausgew&auml;hlt werden.';
 $erweiterung[3]['beschreibung']='Skrupel XStats ist eine aufwendige Statistikerweiterung, die den Verlauf der Spiele im Detail &uuml;ber viele Graphen darstellt.';
-
 $lang['admin']['allgemein']['gamma']['erweiterung']='Erweiterungen';
 $lang['admin']['allgemein']['gamma']['name']='Name';
 $lang['admin']['allgemein']['gamma']['ordner']='Ordner';

@@ -1,7 +1,6 @@
 <?php
 $conn = @mysql_connect($server.':'.$port,"$login","$password");
 $db = @mysql_select_db("$database",$conn);
-
 $zeiger = @mysql_query("SELECT * FROM $skrupel_info");
 $array = @mysql_fetch_array($zeiger);
 $spiel_chat      = $array['chat'];
@@ -11,26 +10,21 @@ $spiel_forum_url = $array['forum_url'];
 $spiel_version   = $array['version'];
 $spiel_extend    = $array['extend'];
 $spiel_serial    = $array['serial'];
-
 function compressed_output(){
 $encoding = getEnv("HTTP_ACCEPT_ENCODING");
 $useragent = getEnv("HTTP_USER_AGENT");
 $method = trim(getEnv("REQUEST_METHOD"));
 $msie = preg_match("=msie=i", $useragent);
 $gzip = preg_match("=gzip=i", $encoding);
-
 if ($gzip && ($method != "POST" or !$msie)){
 ob_start("ob_gzhandler");
 }else{
 ob_start();
 }
 }
-
 compressed_output();
-
 $ftploginname=$_COOKIE["ftploginname"];
 $ftploginpass=$_COOKIE["ftploginpass"];
-
 ?>
 <html>
 <head>
@@ -64,13 +58,11 @@ A{
     font-weight:                normal;
     text-decoration:        none;
 }
-
 A:Hover{
     font-weight:                normal;
     text-decoration:        underline;
     color:                        #ffffff;
 }
-
 INPUT,SELECT{
     background-color:#555555;
     color:#ffffff;
@@ -83,7 +75,6 @@ INPUT,SELECT{
     font-family: Verdana;
     font-size: 10px;
 }
-
 INPUT.nofunc{
     background-color: #555555;
     color: #777777;
@@ -96,7 +87,6 @@ INPUT.nofunc{
     font-family: Verdana;
     font-size: 10px;
 }
-
 INPUT.eingabe{
     background-color: #555555;
     color: #ffffff;
@@ -109,13 +99,11 @@ INPUT.eingabe{
     font-family: Verdana;
     font-size: 10px;
 }
-
 INPUT.bild{
     background-color:#444444;
     Border-Style: solid;
     Border-Width: 0px;
 }
-
 TEXTAREA{
     background-color:#555555;
     color:#ffffff;

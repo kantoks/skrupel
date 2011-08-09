@@ -24,7 +24,7 @@ if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
    <?php
    for  ($i=0; $i<$spieleranzahl;$i++) {
    $ok = @mysql_data_seek($zeiger,$i);
-	 $array = @mysql_fetch_array($zeiger);
+   $array = @mysql_fetch_array($zeiger);
    $id=$array["id"];
    $nick=$array["nick"];
    $email=$array["email"];
@@ -35,7 +35,6 @@ if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
       <td valign="top" style="color:#c9c9c9;"><center><?php echo $email; ?></center></td>
       <td valign="top" style="color:#c9c9c9;"><center><?php echo $icq; ?></center></td>
       <td valign="top" style="color:#c9c9c9;"><center><?php
-
   $spielanzahl=0;
   $zeiger2 = @mysql_query("SELECT name,spieler_1,spieler_2,spieler_3,spieler_4,spieler_5,spieler_6,spieler_7,spieler_8,spieler_9,spieler_10 FROM $skrupel_spiele where spieler_1=$id or spieler_2=$id or spieler_3=$id or spieler_4=$id or spieler_5=$id or spieler_6=$id or spieler_7=$id or spieler_8=$id or spieler_9=$id or spieler_10=$id order by name");
   $spielanzahl = @mysql_num_rows($zeiger2);
@@ -44,10 +43,8 @@ if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
    $ok2 = @mysql_data_seek($zeiger2,$i2);
    $array2 = @mysql_fetch_array($zeiger2);
    $name=$array2["name"];
-
    echo "$name";
    if ($i2<$spielanzahl-1) { echo " - "; }
-
 }}
       ?></center></td>
       <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
@@ -69,11 +66,8 @@ if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 if ($_GET["fu"]==2) {
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
-
 $id=$_GET["spieler_id"];
-
 $zeiger = @mysql_query("DELETE from $skrupel_user where id=$id");
-
 ?>
 <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <center><table border="0" height="100%" cellspacing="0" cellpadding="0">

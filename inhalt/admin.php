@@ -190,7 +190,6 @@ if($_GET["fu"]==2){
     include ("inc.footer.php");
   }
 }
-
 if ($_GET["fu"]==3) {
   include ("inc.header.php");
   if($spieler==$spieler_admin){
@@ -362,7 +361,6 @@ if ($_GET["fu"]==3) {
         }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==4) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
@@ -372,17 +370,13 @@ if ($_GET["fu"]==4) {
             $i=$_POST["slot"];
             $ausstattung=$_POST["ausstattung"];
             $rasse=$_POST["rasse"];
-
 ///////////////////////////////////////////////////////////////////////////////////////////////RASSENEIGENSCHAFTEN ANFANG
             $daten_verzeichnis="../daten/";
             $handle=opendir("$daten_verzeichnis");
-
             while ($rasses=readdir($handle)) {
                 if ((substr($rasses,0,1)<>'.') and (substr($rasses,0,7)<>'bilder_') and (substr($rasses,strlen($rasses)-4,4)<>'.txt')) {
-
                     $daten="";
                     $attribute="";
-
                     $file=$daten_verzeichnis.$rasse.'/daten.txt';
                     $fp = @fopen("$file","r");
                     if ($fp) {
@@ -401,32 +395,25 @@ if ($_GET["fu"]==4) {
                 }
             }
 /////////////////////RASSENEIGENSCHAFTEN ENDE
-
             $kox=$kord[0]*250-125;
             $koy=$kord[1]*250-125;
             $xname=chr($x+64);
-
             $reichweite=122;
-
             $rand_x_a=$kox-$reichweite;
             $rand_x_b=$kox+$reichweite;
             $rand_y_a=$koy-$reichweite;
             $rand_y_b=$koy+$reichweite;
-
             $zeiger_temp = @mysql_query("SELECT * FROM $skrupel_planeten where x_pos>=$rand_x_a and x_pos<=$rand_x_b and y_pos>=$rand_y_a and y_pos<=$rand_y_b and besitzer=0 and spiel=$spiel");
-
             $array = @mysql_fetch_array($zeiger_temp);
             $pid=$array["id"];
             $x_pos=$array["x_pos"];
             $y_pos=$array["y_pos"];
-
             $kolonisten=rand(1,1000)+(rand(1,1000)*5)+50000;
             $vorrat=5;
             $minen=5;
             $abwehr=5;
             $fabriken=5;
             $cantox=$_POST["geldmittel"];
-
             if ($_POST["mineralienhome"]==1) { 
                 $minrand=50;$maxrand=70;
             }elseif ($_POST["mineralienhome"]==2) {
@@ -438,19 +425,15 @@ if ($_GET["fu"]==4) {
             }elseif ($_POST["mineralienhome"]==5) {
                 $minrand=1500;$maxrand=2000;
             }
-
             $lemin=rand($minrand,$maxrand);
             $min1=rand($minrand,$maxrand);
             $min2=rand($minrand,$maxrand);
             $min3=rand($minrand,$maxrand);
-
             $minrand=1250;$maxrand=2250;
-
             $planet_lemin=rand($minrand,$maxrand);
             $planet_min1=rand($minrand,$maxrand);
             $planet_min2=rand($minrand,$maxrand);
             $planet_min3=rand($minrand,$maxrand);
-
             $klasse=$r_eigenschaften[$rasse]['planet'];
             if ($klasse==0) { $klasse=rand(1,9); }
             if ($klasse==1) { $bild=rand(1,9);  //Klasse M wie Erde
@@ -462,9 +445,7 @@ if ($_GET["fu"]==4) {
             }elseif ($klasse==7) { $bild=rand(1,13);   //Klasse C Heiss wie Venus
             }elseif ($klasse==8) { $bild=rand(1,33);  //Klasse K wie Mars
             }elseif ($klasse==9) { $bild=rand(1,9);}    //Klasse F jung zerkl�ftet
-
             $temp=$r_eigenschaften[$rasse]['temperatur'];
-
             if ($temp==0) {
                 if ($klasse==1) { $temp=rand(40,60);
                 }elseif ($klasse==2) { $temp=rand(30,50);
@@ -476,9 +457,7 @@ if ($_GET["fu"]==4) {
                 }elseif ($klasse==8) { $temp=rand(20,35);
                 }elseif ($klasse==9) { $temp=rand(25,45);}
             }
-
             $zeiger = @mysql_query("UPDATE $skrupel_planeten set besitzer=$i,vorrat=$vorrat,cantox=$cantox,minen=$minen,abwehr=$abwehr,fabriken=$fabriken,kolonisten=$kolonisten,lemin=$lemin,min1=$min1,min2=$min2,min3=$min3,klasse=$klasse,bild=$bild,temp=$temp,planet_lemin=$planet_lemin,planet_min1=$planet_min1,planet_min2=$planet_min2,planet_min3=$planet_min3 where id=$pid");
-
             if ($ausstattung>=2) {
                 $techlevel=0;
                 if ($ausstattung==3) {$techlevel=1;
@@ -486,29 +465,23 @@ if ($_GET["fu"]==4) {
                 }elseif ($ausstattung==5) {$techlevel=5;
                 }elseif ($ausstattung==6) {$techlevel=7;
                 }elseif ($ausstattung==7) {$techlevel=9;}
-                
                 $namesb='Starbase I';
                 $zeiger = @mysql_query("INSERT INTO $skrupel_sternenbasen (name,x_pos,y_pos,rasse,planetid,besitzer,status,t_huelle,t_antrieb,t_energie,t_explosiv,spiel) values ('$namesb',$x_pos,$y_pos,'$rasse',$pid,$i,1,$techlevel,$techlevel,$techlevel,$techlevel,$spiel)");
-
                 $zeiger_temp = @mysql_query("SELECT * FROM $skrupel_sternenbasen where planetid=$pid");
                 $array_temp = @mysql_fetch_array($zeiger_temp);
                 $baid=$array_temp["id"];
-
                 $zeiger_temp = @mysql_query("UPDATE $skrupel_planeten set sternenbasis=2,sternenbasis_name='$namesb',sternenbasis_id=$baid,sternenbasis_rasse='$rasse' where id=$pid");
             }
-
             $spalte_spieler="spieler_".$i;
             $spalte_spieler_rasse="spieler_".$i."_rasse";
             $spalte_spieler_planeten="spieler_".$i."_planeten";
             $spalte_spieler_basen="spieler_".$i."_basen";
             $spalte_spieler_schiffe="spieler_".$i."_schiffe";
             $spalte_spieler_rassenname="spieler_".$i."_rassename";
-
             $planetenwert=5;
             if ($ausstattung>=2) { $basenwert=10; } else { $basenwert=0; }
             $spielerid = $_POST["spielerid"];
             $zeiger_temp = @mysql_query("UPDATE $skrupel_spiele set $spalte_spieler=$spielerid,$spalte_spieler_rasse='$rasse',$spalte_spieler_planeten=$planetenwert,$spalte_spieler_basen=$basenwert,$spalte_spieler_schiffe=0,$spalte_spieler_rassenname='$rassenname',spieleranzahl=spieleranzahl+1 where id=$spiel");
-
             function allifinden($partei_a,$partei_b) {
                 global $conn,$db,$skrupel_politik,$spiel;
                 $total=0;
@@ -517,11 +490,8 @@ if ($_GET["fu"]==4) {
                 $total=$array2["total"];
                 if ($total>=1) { return true; } else { return false;}
             }
-
 ///////////////////////////////////////////////////////////////////////////////////////////////NEBELSEKTOREN ANFANG
-
     if ($nebel>=1) {
-    
         $besitzer_recht[1]='1000000000';
         $besitzer_recht[2]='0100000000';
         $besitzer_recht[3]='0010000000';
@@ -532,14 +502,10 @@ if ($_GET["fu"]==4) {
         $besitzer_recht[8]='0000000100';
         $besitzer_recht[9]='0000000010';
         $besitzer_recht[10]='0000000001';
-    
     $dateiinclude="inc.host_nebel.php";
     include ($dateiinclude);
-    
     }
-
 ///////////////////////////////////////////////////////////////////////////////////////////////NEBELSEKTOREN ENDE
-
             ?>
             <body text="#ffffff" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#ffffff" vlink="#ffffff" alink="#ffffff" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
                 <br><br><br><br>
@@ -555,7 +521,6 @@ if ($_GET["fu"]==4) {
         include ("inc.footer.php");
     }
 }
-
 if ($_GET["fu"]==5) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
@@ -691,7 +656,6 @@ if ($_GET["fu"]==5) {
         include ("inc.footer.php");
     }
 }
-
 if ($_GET["fu"]==6) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
@@ -699,18 +663,14 @@ if ($_GET["fu"]==6) {
         $zeiger = @mysql_query("SELECT besitzer,id,spiel FROM $skrupel_sternenbasen where besitzer=$raus and spiel=$spiel order by id");
         $basenanzahl = @mysql_num_rows($zeiger);
         if ($basenanzahl>=1) {
-
             for  ($i=0; $i<$basenanzahl;$i++) {
                 $ok = @mysql_data_seek($zeiger,$i);
-    
                 $array = @mysql_fetch_array($zeiger);
                 $baid=$array["id"];
-    
                 $zeiger_temp = @mysql_query("DELETE FROM $skrupel_huellen where baid=$baid;");
             }
         }
         $zeiger = @mysql_query("DELETE FROM $skrupel_sternenbasen where besitzer=$raus and spiel=$spiel");
-    
         $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where besitzer=$raus and spiel=$spiel");
         $schiffanzahl = @mysql_num_rows($zeiger);
         if ($schiffanzahl>=1) {
@@ -718,18 +678,14 @@ if ($_GET["fu"]==6) {
                 $ok = @mysql_data_seek($zeiger,$i);
                 $array = @mysql_fetch_array($zeiger);
                 $shid=$array["id"];
-    
                 $zeiger_temp = @mysql_query("DELETE FROM $skrupel_anomalien where art=3 and extra like 's:$shid:%'");
                 $zeiger_temp = @mysql_query("UPDATE $skrupel_schiffe set flug=0,warp=0,zielx=0,ziely=0,zielid=0 where flug=3 and zielid=$shid");
             }
         }
-    
         $zeiger = @mysql_query("DELETE FROM $skrupel_schiffe where besitzer=$raus and spiel=$spiel");
         $zeiger = @mysql_query("DELETE FROM $skrupel_politik where spiel=$spiel and (partei_a=$raus or partei_b=$raus)");
         $zeiger = @mysql_query("UPDATE $skrupel_planeten set besitzer=0,kolonisten=0,lemin=0,min1=0,min2=0,min3=0,minen=0,vorrat=0,cantox=0,auto_minen=0,fabriken=0,auto_fabriken=0,abwehr=0,auto_abwehr=0,auto_vorrat=0,sternenbasis=0,sternenbasis_id=0,logbuch='' where besitzer=$raus and spiel=$spiel");
         $zeiger = @mysql_query("DELETE FROM $skrupel_neuigkeiten where spieler_id=$raus and spiel_id=$spiel");
-    
-    
         if ($raus==1) { $zeiger = @mysql_query("UPDATE $skrupel_spiele set spieler_1=0,spieleranzahl=spieleranzahl-1 where id=$spiel"); 
         }elseif ($raus==2) { $zeiger = @mysql_query("UPDATE $skrupel_spiele set spieler_2=0,spieleranzahl=spieleranzahl-1 where id=$spiel");
         }elseif ($raus==3) { $zeiger = @mysql_query("UPDATE $skrupel_spiele set spieler_3=0,spieleranzahl=spieleranzahl-1 where id=$spiel");
@@ -748,16 +704,12 @@ if ($_GET["fu"]==6) {
         include ("inc.footer.php");
     }
 }
-
 if ($_GET["fu"]==7) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
-
         $zeiger_temp = @mysql_query("SELECT id,autozug FROM $skrupel_spiele where id=$spiel");
-
         $array = @mysql_fetch_array($zeiger_temp);
         $autozug=$array["autozug"];
-
         ?>
         <body text="#ffffff" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#ffffff" vlink="#ffffff" alink="#ffffff" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
             <center>
@@ -823,7 +775,6 @@ if ($_GET["fu"]==8) {
         include ("inc.footer.php");
     }
 }
-
 if ($_GET["fu"]==9) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
@@ -925,17 +876,13 @@ if ($_GET["fu"]==9) {
         include ("inc.footer.php");
     }
 }
-
 if ($_GET["fu"]==10) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
-
         $plasma_max=$_POST["max"];
         $plasma_wahr=$_POST["wahr"];
         $plasma_lang=$_POST["lang"];
-
         $zeiger_temp = @mysql_query("UPDATE $skrupel_spiele set plasma_max=$plasma_max,plasma_wahr=$plasma_wahr,plasma_lang=$plasma_lang where id=$spiel");
-
         ?>
         <body text="#ffffff" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#444444" link="#ffffff" vlink="#ffffff" alink="#ffffff" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
             <br><br><br><br>
@@ -947,7 +894,6 @@ if ($_GET["fu"]==10) {
         include ("inc.footer.php");
     }
 }
-
 if ($_GET["fu"]==11) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
@@ -969,7 +915,6 @@ if ($_GET["fu"]==11) {
         include ("inc.footer.php");
     }
 }
-
 if ($_GET["fu"]==12) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
@@ -1152,16 +1097,13 @@ if ($_GET["fu"]==12) {
         include ("inc.footer.php");
     }
 }
-
 if ($_GET["fu"]==13) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
-
         $piraten_aussen2=$_POST["piraten_aussen"];
         $piraten_mitte2=$_POST["piraten_mitte"];
         $piraten_max2=$_POST["piraten_max"];
         $piraten_min2=$_POST["piraten_min"];
-
         $zeiger_temp = @mysql_query("UPDATE $skrupel_spiele set piraten_mitte=$piraten_mitte2,piraten_aussen=$piraten_aussen2,piraten_max=$piraten_max2,piraten_min=$piraten_min2 where id=$spiel");
         ?>
         <body text="#ffffff" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#444444" link="#ffffff" vlink="#ffffff" alink="#ffffff" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -1174,7 +1116,6 @@ if ($_GET["fu"]==13) {
         include ("inc.footer.php");
     }
 }
-
 if ($_GET["fu"]==14) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
@@ -1225,7 +1166,6 @@ if ($_GET["fu"]==14) {
         include ("inc.footer.php");
     }
 }
-
 if ($_GET["fu"]==15) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {

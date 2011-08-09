@@ -5,13 +5,9 @@ $file="../lang/".$_GET["sprache"]."/lang.planeten_alpha.php";
 include ($file);
 $file="../lang/".$_GET["sprache"]."/lang.orbitale_systeme.php";
 include ($file);
-
-
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
-
     $array = @mysql_fetch_array($zeiger);
     $pid=$array["id"];
     $name=$array["name"];
@@ -20,7 +16,6 @@ if ($_GET["fu"]==1) {
     $bild=$array["bild"];
     $temp=$array["temp"];
     $klasse=$array["klasse"];
-
     if ($klasse==1) { 
         $klassename="M";
     }elseif ($klasse==2) {
@@ -40,7 +35,6 @@ if ($_GET["fu"]==1) {
     }elseif ($klasse==9) {
         $klassename="F";
     }
-
     ?>
     <body text="#000000" background="<?php echo $bildpfad?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <center>
@@ -123,7 +117,6 @@ if ($_GET["fu"]==1) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==2) {
     include ("inc.header.php");
     ?>
@@ -143,15 +136,12 @@ if ($_GET["fu"]==2) {
         $sternenbasis_id=$array["sternenbasis_id"];
         $sternenbasis_rasse=$array["sternenbasis_rasse"];
         $sternenbasis_art=$array["sternenbasis_art"];
-
         $kosten_werft=array(328,20,21,78,210,107);
         $kosten_station=array(522,51,83,99,250,210);
         $kosten_sbasis=array(855,35,70,123,418,370);
         $kosten_kbasis=array(3250,270,327,520,830,920);
-
         if ($sternenbasis==0) {
             ?>
-
             <table border="0" cellspacing="0" cellpadding="1">
                 <tr>
                     <td colspan="11"><img src="../bilder/empty.gif" border="0" width="1" height="7"></td>
@@ -276,17 +266,13 @@ if ($_GET["fu"]==2) {
         }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==3) {
     include ("inc.header.php");
-
     $art=$_GET["art"];
-
     ?>
     <body text="#000000" scroll="no" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
         $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
-
         $array = @mysql_fetch_array($zeiger);
         $pid=$array["id"];
         $x_pos=$array["x_pos"];
@@ -298,24 +284,20 @@ if ($_GET["fu"]==3) {
         $min3=$array["min3"];
         $lemin=$array["lemin"];
         $sternenbasis=$array["sternenbasis"];
-
         $native_id=$array["native_id"];
         $native_abgabe=$array["native_abgabe"];
         $native_fert=$array["native_fert"];
         $native_kol=$array["native_kol"];
-
         $native_fert_tech_1=0;
         $native_fert_tech_2=0;
         $native_fert_tech_3=0;
         $native_fert_tech_4=0;
         $native_fert_tech_5=0;
-
          if (($native_id>=1) and ($native_kol>1)) {
             $native_fert_tech_1=@intval(substr($native_fert,12,1));
             $native_fert_tech_2=@intval(substr($native_fert,13,1));
             $native_fert_tech_3=@intval(substr($native_fert,14,1));
             $native_fert_tech_4=@intval(substr($native_fert,15,1));
-    
             if (@intval(substr($native_fert,30,1))==1) {
                 $zufall=rand(1,4);
                 switch($zufall) {
@@ -334,10 +316,8 @@ if ($_GET["fu"]==3) {
                 }
             }
          }
-
         if($zug_abgeschlossen==0 && $sternenbasis==0) {
             $vorhanden=1;
-
             if ($art==1) { 
                 $kosten=array(328,20,21,78,210,107);
             }elseif ($art==2) {
@@ -347,17 +327,14 @@ if ($_GET["fu"]==3) {
             }elseif ($art==3) {
                 $kosten=array(3250,270,327,520,830,920);
             }
-
             if($cantox<$kosten[0]) { $vorhanden=0; }
             if($vorrat<$kosten[1]) { $vorhanden=0; }
             if($lemin<$kosten[2]) { $vorhanden=0; }
             if($min1<$kosten[3]) { $vorhanden=0; }
             if($min2<$kosten[4]) { $vorhanden=0; }
             if($min3<$kosten[5]) { $vorhanden=0; }
-
             //echo $kosten[0].':'.$kosten[1].':'.$kosten[2].':'.$kosten[3].':'.$kosten[4].':'.$kosten[5].'<br>';
             //echo $cantox.':'.$vorrat.':'.$lemin.':'.$min1.':'.$min2.':'.$min3.'<br>';
-            
             if ($vorhanden==1) {
                 $cantox=$cantox-$kosten[0];
                 $vorrat=$vorrat-$kosten[1];
@@ -365,19 +342,14 @@ if ($_GET["fu"]==3) {
                 $min1=$min1-$kosten[3];
                 $min2=$min2-$kosten[4];
                 $min3=$min3-$kosten[5];
-
                 $stationsname=$_POST['stationsname'];
                 $stationsname=str_replace("'"," ",$stationsname);
                 $stationsname=str_replace('"'," ",$stationsname);
-
                 $zeiger_temp = @mysql_query("INSERT INTO $skrupel_sternenbasen (art,status,name,x_pos,y_pos,rasse,planetid,besitzer,spiel,t_huelle,t_antrieb,t_energie,t_explosiv) values ($art,0,'$stationsname',$x_pos,$y_pos,'$spieler_rasse',$pid,$spieler,$spiel,$native_fert_tech_1,$native_fert_tech_2,$native_fert_tech_3,$native_fert_tech_4);");
                 $zeiger_temp = @mysql_query("SELECT id,planetid FROM $skrupel_sternenbasen where planetid=$pid");
-
                 $array_temp = @mysql_fetch_array($zeiger_temp);
                 $sbid=$array_temp["id"];
-
                 $zeiger_temp = @mysql_query("UPDATE $skrupel_planeten set cantox=$cantox,vorrat=$vorrat,lemin=$lemin,min1=$min1,min2=$min2,min3=$min3,sternenbasis_id=$sbid,sternenbasis_art=$art,sternenbasis=1,sternenbasis_name='$stationsname',sternenbasis_rasse='$spieler_rasse' where id=$pid");
-
                 $message="<center>".$lang['planetenalpha']['auftragerfolgreich']."</center>";
                 ?>
                 <br><br>
@@ -401,10 +373,8 @@ if ($_GET["fu"]==3) {
         }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==4) {
     include ("inc.header.php");
-
     $file='../daten/orbitale_systeme.txt';
     $fp = @fopen("$file","r");
     if ($fp) {
@@ -419,9 +389,7 @@ if ($_GET["fu"]==4) {
         }
         @fclose($fp);
     }
-
     $zeiger = @mysql_query("SELECT id,besitzer,osys_anzahl,osys_1,osys_2,osys_3,osys_4,osys_5,osys_6 FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
-
     $array = @mysql_fetch_array($zeiger);
     $pid=$array["id"];
     $osys_anzahl=$array["osys_anzahl"];
@@ -431,7 +399,6 @@ if ($_GET["fu"]==4) {
     $osys[4]=$array["osys_4"];
     $osys[5]=$array["osys_5"];
     $osys[6]=$array["osys_6"];
-
     ?>
     <body text="#000000" scroll="no" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <center>
@@ -487,10 +454,8 @@ if ($_GET["fu"]==4) {
         </center>
     <?php include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==5) {
     include ("inc.header.php");
-
     ?>
     <body text="#000000" scroll="no" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <center>
@@ -520,13 +485,9 @@ if ($_GET["fu"]==5) {
         </center>
     <?php include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==6) {
     include ("inc.header.php");
-
     $zeiger2 = @mysql_query("SELECT id,spiel,cantox,besitzer,min1,min2,min3,vorrat,lemin,osys_anzahl,osys_1,osys_2,osys_3,osys_4,osys_5,osys_6 FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
-
-
     $array2 = @mysql_fetch_array($zeiger2);
     $spiel=$array2["spiel"];
     $cantox=$array2["cantox"];
@@ -542,7 +503,6 @@ if ($_GET["fu"]==6) {
     $osys_4=$array2["osys_4"];
     $osys_5=$array2["osys_5"];
     $osys_6=$array2["osys_6"];
-
     $file='../daten/'.$spieler_rasse_c[$spieler].'/daten.txt';
     $fp = @fopen("$file","r");
     if ($fp) {
@@ -554,10 +514,8 @@ if ($_GET["fu"]==6) {
         }
         @fclose($fp);
     }
-
     $verbieten=explode(":",trim($daten[6]));
     $erlauben=explode(":",trim($daten[7]));
-    
     $file='../daten/orbitale_systeme.txt';
     $fp = @fopen("$file","r");
     if ($fp) {
@@ -591,11 +549,9 @@ if ($_GET["fu"]==6) {
         }
         @fclose($fp);
     }
-
     if($module[0]) {
         $zeiger_spio = @mysql_query("SELECT id FROM $skrupel_planeten WHERE (osys_1=4 OR osys_2=4 OR osys_3=4 OR osys_4=4 OR osys_5=4 OR osys_6=4) AND besitzer=$spieler AND spiel=$spiel;");
         $num_spio_osys = @mysql_num_rows($zeiger_spio);
-
         if($num_spio_osys > 10) $num_spio_osys = 10;
         $osys_daten[4][1]=floor(pow(1700,($num_spio_osys*0.04)+1)); //ctx
         $osys_daten[4][2]=floor(pow(130,($num_spio_osys*0.08)+1)); //vor
@@ -603,10 +559,8 @@ if ($_GET["fu"]==6) {
         $osys_daten[4][4]=floor(pow(122,($num_spio_osys*0.08)+1)); //bax
         $osys_daten[4][5]=floor(pow(114,($num_spio_osys*0.08)+1)); //ren
         $osys_daten[4][6]=floor(pow(96,($num_spio_osys*0.08)+1)); //vom
-        
         $reihenfolge[]=4;
     }
-
     ?>
     <body text="#000000" scroll="auto" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <script language=JavaScript>
@@ -678,14 +632,10 @@ if ($_GET["fu"]==6) {
         </center>
     <?php include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==7) {
     include ("inc.header.php");
-
     $zeiger2 = @mysql_query("SELECT id,spiel,cantox,besitzer,min1,min2,min3,vorrat,lemin,osys_anzahl,osys_1,osys_2,osys_3,osys_4,osys_5,osys_6 FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
-
     $array2 = @mysql_fetch_array($zeiger2);
-
     $spiel=$array2["spiel"];
     $cantox=$array2["cantox"];
     $min1=$array2["min1"];
@@ -700,7 +650,6 @@ if ($_GET["fu"]==7) {
     $osys_4=$array2["osys_4"];
     $osys_5=$array2["osys_5"];
     $osys_6=$array2["osys_6"];
-
     $file='../daten/'.$spieler_rasse_c[$spieler].'/daten.txt';
     $fp = @fopen("$file","r");
     if ($fp) {
@@ -712,10 +661,8 @@ if ($_GET["fu"]==7) {
         }
         @fclose($fp);
     }
-
     $verbieten=explode(":",$daten[6]);
     $erlauben=explode(":",$daten[7]);
-
     $file='../daten/orbitale_systeme.txt';
     $fp = @fopen("$file","r");
     if ($fp) {
@@ -749,12 +696,9 @@ if ($_GET["fu"]==7) {
         }
         @fclose($fp);
     }
-
     if($module[0]) {
-
         $zeiger_spio = @mysql_query("SELECT id FROM $skrupel_planeten WHERE (osys_1=4 OR osys_2=4 OR osys_3=4 OR osys_4=4 OR osys_5=4 OR osys_6=4) AND besitzer=$spieler AND spiel=$spiel;");
         $num_spio_osys = @mysql_num_rows($zeiger_spio);
-        
         if($num_spio_osys > 10) $num_spio_osys = 10;
         $osys_daten[4][1]=floor(pow(1700,($num_spio_osys*0.04)+1)); //ctx
         $osys_daten[4][2]=floor(pow(130,($num_spio_osys*0.08)+1)); //vor
@@ -762,10 +706,8 @@ if ($_GET["fu"]==7) {
         $osys_daten[4][4]=floor(pow(122,($num_spio_osys*0.08)+1)); //bax
         $osys_daten[4][5]=floor(pow(114,($num_spio_osys*0.08)+1)); //ren
         $osys_daten[4][6]=floor(pow(96,($num_spio_osys*0.08)+1)); //vom
-
         $reihenfolge[]=4;
     }
-
     $osys_benoetigt[0]=$lang['orbitalesysteme']['name'][$_POST["bau"]];
     $osys_benoetigt[1]=$osys_daten[$_POST["bau"]][1];
     $osys_benoetigt[2]=$osys_daten[$_POST["bau"]][2];
@@ -773,10 +715,8 @@ if ($_GET["fu"]==7) {
     $osys_benoetigt[4]=$osys_daten[$_POST["bau"]][4];
     $osys_benoetigt[5]=$osys_daten[$_POST["bau"]][5];
     $osys_benoetigt[6]=$osys_daten[$_POST["bau"]][6];
-
     if (($osys_1==$_POST["bau"]) or ($osys_2==$_POST["bau"]) or ($osys_3==$_POST["bau"]) or ($osys_4==$_POST["bau"]) or ($osys_5==$_POST["bau"]) or ($osys_6==$_POST["bau"]) or (!$lang['orbitalesysteme']['name'][$_POST["bau"]]>=1)) {
     } else {
-
         if (($vorrat>=$osys_benoetigt[2]) and ($cantox>=$osys_benoetigt[1]) and ($min1>=$osys_benoetigt[4]) and ($min2>=$osys_benoetigt[5]) and ($min3>=$osys_benoetigt[6]) and ($lemin>=$osys_benoetigt[3])) {
             if($zug_abgeschlossen==0 && $_POST["position"]<=$osys_anzahl) {
                 $vorrat=$vorrat-$osys_benoetigt[2];
@@ -785,7 +725,6 @@ if ($_GET["fu"]==7) {
                 $min2=$min2-$osys_benoetigt[5];
                 $min3=$min3-$osys_benoetigt[6];
                 $lemin=$lemin-$osys_benoetigt[3];
-
                 if ($_POST["position"]==1) {
                     $spalte="osys_1";
                 }elseif ($_POST["position"]==2) {
@@ -799,7 +738,6 @@ if ($_GET["fu"]==7) {
                 }elseif ($_POST["position"]==6) {
                     $spalte="osys_6";
                 }
-
                 $art=$_POST["bau"];
                 if($art==24){
                     $osys_anzahl=min($osys_anzahl+2,6);
@@ -812,7 +750,6 @@ if ($_GET["fu"]==7) {
             }
         }
     }
-
     ?>
     <body text="#000000" scroll="no" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <br><br>
@@ -834,11 +771,9 @@ if ($_GET["fu"]==7) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==8) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
-
     $array = @mysql_fetch_array($zeiger);
     $pid=$array["id"];
     $leichtebt=$array["leichtebt"];
@@ -871,7 +806,6 @@ if ($_GET["fu"]==8) {
     if (($vorrat<$moeglich) and $rohstoffschalter) { $moeglich=$vorrat; }
     if (($min1<$moeglich)and $rohstoffschalter) { $moeglich=$min1; }
     if (($min2<$moeglich) and $rohstoffschalter) { $moeglich=$min2; }
-
     ?>
     <body text="#000000" scroll="no" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <center>
@@ -1009,12 +943,10 @@ if ($_GET["fu"]==8) {
         </td></center>
     <?php include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==9) {
     include ("inc.header.php");
     $zeiger2 = @mysql_query("SELECT id,leichtebt,leichtebt_bau,kolonisten,spiel,cantox,besitzer,min1,min2,min3,vorrat,lemin,osys_1,osys_2,osys_3,osys_4,osys_5,osys_6 FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
     $array2 = @mysql_fetch_array($zeiger2);
-
     $spiel=$array2["spiel"];
     $cantox=$array2["cantox"];
     $min1=$array2["min1"];
@@ -1050,7 +982,6 @@ if ($_GET["fu"]==9) {
         if (($vorrat<$moeglich) and $rohstoffschalter) { $moeglich=$vorrat; }
         if (($min1<$moeglich)and $rohstoffschalter) { $moeglich=$min1; }
         if (($min2<$moeglich) and $rohstoffschalter) { $moeglich=$min2; }
-
         if ($bauen>$moeglich) {
             $bauen=$moeglich;
         }
@@ -1085,7 +1016,6 @@ if ($_GET["fu"]==9) {
         </script>
     <?php include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==10) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
@@ -1122,7 +1052,6 @@ if ($_GET["fu"]==10) {
     if (((floor($min1/4))<$moeglich) and $rohstoffschalter) { $moeglich=floor($min1/4); }
     if (((floor($min2/5))<$moeglich) and $rohstoffschalter) { $moeglich=floor($min2/5); }
     if (($min3<$moeglich) and $rohstoffschalter) { $moeglich=$min3; }
-
     ?>
     <body text="#000000" scroll="no" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <center>
@@ -1264,7 +1193,6 @@ if ($_GET["fu"]==10) {
         </center>
     <?php include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==11) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT id,schwerebt,schwerebt_bau,kolonisten,cantox,min1,min2,min3,lemin,osys_1,osys_2,osys_3,osys_4,osys_5,osys_6 FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
@@ -1293,10 +1221,7 @@ if ($_GET["fu"]==11) {
     if(($osys_1==22) or ($osys_2==22) or ($osys_3==22) or ($osys_4==22) or ($osys_5==22) or ($osys_6==22)){
         $rohstoffschalter=0;
     }
-
-
     if (($osys_1==12) or ($osys_2==12) or ($osys_3==12) or ($osys_4==12) or ($osys_5==12) or ($osys_6==12)) {
-
         $moeglich=50;
         if ((50-$schwerebt_bau)<$moeglich) { $moeglich=$moeglich-$schwerebt_bau; }
         if ((1500-$schwerebt)<$moeglich) { $moeglich=1500-$schwerebt; }
@@ -1306,7 +1231,6 @@ if ($_GET["fu"]==11) {
         if (((floor($min1/4))<$moeglich) and $rohstoffschalter) { $moeglich=floor($min1/4); }
         if (((floor($min2/5))<$moeglich) and $rohstoffschalter) { $moeglich=floor($min2/5); }
         if (($min3<$moeglich) and $rohstoffschalter) { $moeglich=$min3; }
-
         if ($bauen>$moeglich) {
             $bauen=$moeglich;
         }
@@ -1348,12 +1272,9 @@ if ($_GET["fu"]==11) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==12) {
     include ("inc.header.php");
-
     $art=$_GET["art"];
-
     ?>
     <body text="#000000" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" scroll="auto" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <br>
@@ -1405,7 +1326,6 @@ if ($_GET["fu"]==12) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==13) {
     include ("inc.header.php");
     $pid=$_GET["pid"];
@@ -1430,7 +1350,6 @@ if ($_GET["fu"]==13) {
         //wenn das schiff absolute tarnung hat, dann ignorieren -> spione k�nnen nicht durch diese scanner erfasst werden
         $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where sqrt(((kox-$x_pos)*(kox-$x_pos))+((koy-$y_pos)*(koy-$y_pos)))<=$reichweite and besitzer<>$spieler and tarnfeld<2 and spiel=$spiel order by id");
         $schiffanzahl = @mysql_num_rows($zeiger);
-        
         if ($schiffanzahl>=1) {
             $raumschiffe=$schiffanzahl;
             for ($i=0; $i<$schiffanzahl;$i++) {
@@ -1443,7 +1362,6 @@ if ($_GET["fu"]==13) {
                 $y_pos=$array["koy"];
                 $antrieb=$array["antrieb"];
                 $klasse=$array["klasse"];
-    
                 $schiff_scan[$s_zahl][0]=$shid;
                 $schiff_scan[$s_zahl][1]=$x_pos;
                 $schiff_scan[$s_zahl][2]=$y_pos;
@@ -1454,7 +1372,6 @@ if ($_GET["fu"]==13) {
                 $s_zahl++;
             }
         }
-        
         ?>
         <body text="#000000" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
             <br>

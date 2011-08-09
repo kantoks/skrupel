@@ -1,17 +1,14 @@
 <?php
 include ("../inc.conf.php");
 include ("../lang/".$language."/lang.admin.menu.php");
-
 if ($_GET["fu"]==1) { ?>
 <?php
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 ?>
 <body text="#ffffff" style="background-image:url('../bilder/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#444444" scroll="no" link="#ffffff" vlink="#ffffff" alink="#ffffff" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-
 <center><table border="0" cellspacing="0" cellpadding="3">
   <tr><td><img src="../bilder/empty.gif" border="0" width="1" height="3"></td></tr>
-
 <tr>
     <td><center><?php echo $lang['admin']['menu']['allgemeines']?></center></td>
     <td><center><?php echo $lang['admin']['menu']['spiele']?></center></td>
@@ -146,11 +143,11 @@ if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
   </tr>
   <tr>
    <td><table border="0" cellspacing="0" cellpadding="0">
-	<tr>
+  <tr>
     <td><form method=post action='index.php' target="_top"><input type="hidden" name="loginname" value="-"><input type="hidden" name="loginpass" value="-"></td>
     <td><input type="image" class="bild" name="Logout" src="../bilder/aufbau/knopp.gif" title="<?php echo $lang['admin']['menu']['logout']?>"></td>
-		<td></form></td>
-	</tr>
+    <td></form></td>
+  </tr>
 </table></td>
   </tr>
 </table>

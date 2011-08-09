@@ -3,7 +3,6 @@ include ("../inc.conf.php");
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.flotte.php";
 include ($file);
-
 $shid=$_GET["shid"];
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
@@ -22,15 +21,11 @@ if ($_GET["fu"]==1) {
                 else if (parent.parent.mittemitte.document.body && parent.parent.mittemitte.document.body.offsetHeight) return parent.parent.mittemitte.document.body.offsetHeight;
                 else return 0;
             }
-    
             function movemap(wertx,werty) {
-    
                 breite=fensterbreit();
                 hoch=fensterhoch();
-    
                 aktuellx=wertx-15;
                 aktuelly=werty-15;
-    
                 wertx=wertx-(breite/2);
                 werty=werty-(hoch/2);
                 <?php if (@intval(substr($spieler_optionen,17,1))!=1) { ?>
@@ -40,26 +35,20 @@ if ($_GET["fu"]==1) {
                     parent.parent.mittemitte.document.getElementById("complete").scrollLeft = wertx;
                     parent.parent.mittemitte.document.getElementById("complete").scrollTop = werty; 
                 <?php } ?>
-    
                 parent.parent.mittemitte.document.getElementById("aktuell").style.visibility='visible';
                 parent.parent.mittemitte.document.getElementById("aktuell").style.left=aktuellx;
                 parent.parent.mittemitte.document.getElementById("aktuell").style.top=aktuelly;
             }
         </script>
         <?php
-    
         $oid=$_GET["oid"];
         if (!$oid) { $oid=0; }
-    
         $total=0;
         $zeiger5 = @mysql_query("SELECT count(*) as total FROM $skrupel_schiffe where besitzer=$spieler and spiel=$spiel");
         $array5 = @mysql_fetch_array($zeiger5);
         $total=$array5["total"];
-    
-    
         $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where besitzer=$spieler and status>0 and spiel=$spiel and ordner=$oid order by name");
         $schiffanzahl = @mysql_num_rows($zeiger);
-    
         if (($schiffanzahl>=1) or (($total>=1) and ($oid==0))) {
             ?>
             <center>
@@ -72,27 +61,20 @@ if ($_GET["fu"]==1) {
                             <table border="0" cellspacing="0" cellpadding="0">
                                 <tr>
                                     <?php
-        
                                     if ($oid==0) {
-        
                                         $zeiger2 = @mysql_query("SELECT * FROM $skrupel_ordner where besitzer=$spieler and spiel=$spiel order by name");
                                         $ordneranzahl = @mysql_num_rows($zeiger2);
-        
                                         if ($ordneranzahl>=1) {
-        
                                             for ($i2=0; $i2<$ordneranzahl;$i2++) {
                                                 $ok2 = @mysql_data_seek($zeiger2,$i2);
-        
                                                 $array2 = @mysql_fetch_array($zeiger2);
                                                 $ooid=$array2["id"];
                                                 $name=$array2["name"];
                                                 $name=stripslashes($name);
-        
                                                 $total=0;
                                                 $zeiger5 = @mysql_query("SELECT count(*) as total FROM $skrupel_schiffe where besitzer=$spieler and spiel=$spiel and ordner=$ooid");
                                                 $array5 = @mysql_fetch_array($zeiger5);
                                                 $total=$array5["total"];
-        
                                                 ?>
                                                 <td>
                                                     <table border="0" cellspacing="0" cellpadding="0" background="<?php echo $bildpfad; ?>/menu/flotte_ordner.gif">
@@ -115,10 +97,8 @@ if ($_GET["fu"]==1) {
                                             <?php
                                         }
                                     }
-        
                                     for  ($i=0; $i<$schiffanzahl;$i++) {
                                         $ok = @mysql_data_seek($zeiger,$i);
-        
                                         $array = @mysql_fetch_array($zeiger);
                                         $shid=$array["id"];
                                         $name=$array["name"];
@@ -134,7 +114,6 @@ if ($_GET["fu"]==1) {
                                         $volk=$array["volk"];
                                         $bild=$array["bild_gross"];
                                         $erfahrung=$array["erfahrung"];
-                                    
                                         $crew=$array["crew"];
                                         $crewmax=$array["crewmax"];
                                         $crewmax_d=max(1,$array["crewmax"]);
@@ -145,7 +124,6 @@ if ($_GET["fu"]==1) {
                                         $routing_status=$array["routing_status"];
                                         $logbuch=$array["logbuch"];
                                         $tarnfeld=$array["tarnfeld"];
-                                    
                                         $frachtraum=$array["frachtraum"];
                                         $frachtraum_d=max(1,$array["frachtraum"]);
                                         $fracht_leute=$array["fracht_leute"];
@@ -157,39 +135,31 @@ if ($_GET["fu"]==1) {
                                         $fracht_min2=$array["fracht_min2"];
                                         $fracht_min3=$array["fracht_min3"];
                                         $fracht=round(($fracht_leute/100)+($leichtebt*0.3)+($schwerebt*1.5))+$fracht_vorrat+$fracht_min1+$fracht_min2+$fracht_min3;
-                                    
                                         $routing_koord=$array["routing_koord"];
                                         $routing_status=$array["routing_status"];
                                         $routing_schritt=$array["routing_schritt"];
-        
                                         $route_tip='';
                                         if ($routing_status>=1) {
                                             $routing_points_temp=explode("::",$routing_koord);
                                             $schritte=count($routing_points_temp);
                                             for ($n=0;$n<$schritte-1;$n++) {
-        
                                                 $routing_points=explode(":",$routing_points_temp[($n+$routing_schritt)%($schritte-1)]);
                                                 $zielx=$routing_points[0];
                                                 $ziely=$routing_points[1];
-        
                                                 $zeiger_temp = @mysql_query("SELECT name FROM $skrupel_planeten where x_pos=$zielx and y_pos=$ziely and spiel=$spiel");
                                                 $array_temp = @mysql_fetch_array($zeiger_temp);
                                                 $pname=$array_temp["name"];
-        
                                                 $route_tip=$route_tip.'-> '.$pname.' ';
                                             }
                                         }
-        
                                         $tip="[$name]";
                                         $tip=$tip."\n";
                                         $tip=$tip."\n".$lang['flotte']['kol'].": ".$fracht_leute." ".$lang['flotte']['cx'].": ".$fracht_cantox." ".$lang['flotte']['vor'].": ".$fracht_vorrat;
                                         $tip=$tip."\n".$lang['flotte']['bax'].": ".$fracht_min1." ".$lang['flotte']['ren'].": ".$fracht_min2." ".$lang['flotte']['vom'].": ".$fracht_min3;
-        
                                         if (strlen($logbuch)>=1) {
                                             $tip=$tip."\n";
                                             $tip=$tip."\n$logbuch";
                                         }
-        
                                         if ($tarnfeld>=1) {
                                             ?>
                                             <td>
@@ -241,7 +211,6 @@ if ($_GET["fu"]==1) {
                                                     <td><img src="../bilder/empty.gif" border="0" width="1" height="82"></td>
                                                     <td bgcolor="#990000" valign="bottom"><img src="<?php echo $bildpfad; ?>/skalen/grau_1.gif" border="0" width="10" height="<?php echo 82*$fracht/$frachtraum_d; ?>" title="<?php echo str_replace('{2}',$frachtraum,str_replace('{1}',$fracht,$lang['flotte']['fracht']))?>"></td>
                                                     <td><img src="../bilder/empty.gif" border="0" width="6" height="82"></td>
-
                                                     <td>
                                                         <table border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
@@ -345,19 +314,15 @@ if ($_GET["fu"]==1) {
         }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==2) {
     include ("inc.header.php");
-
     $oid=$_GET["oid"];
-
     if (!$oid) {
         $zeiger = @mysql_query("SELECT id,ordner,besitzer FROM $skrupel_schiffe where besitzer=$spieler and id=$shid");
         $array = @mysql_fetch_array($zeiger);
         $oid=$array["ordner"];
     }
     ?>
-
     <frameset framespacing="0" border="false" frameborder="0" cols="*,26,230,239,400,26,*">
         <frame name="randlinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
         <frame name="pfeillinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="flotte.php?fu=7&oid=<?php echo $oid; ?>&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
@@ -377,16 +342,12 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==3) {
     include ("../inc.conf.php");
     include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where besitzer=$spieler and id=$shid");
     $schiffanzahl = @mysql_num_rows($zeiger);
-
     $ok = @mysql_data_seek($zeiger,$schritt);
-
     $array = @mysql_fetch_array($zeiger);
     $shid=$array["id"];
     $name=$array["name"];
@@ -424,28 +385,22 @@ if ($_GET["fu"]==3) {
     $routing_koord=$array["routing_koord"];
     $routing_status=$array["routing_status"];
     $routing_schritt=$array["routing_schritt"];
-
     $route_tip='';
     if ($routing_status>=1) {
         $routing_points_temp=explode("::",$routing_koord);
         $schritte=count($routing_points_temp);
         for ($n=0;$n<$schritte-1;$n++) {
-
             $routing_points=explode(":",$routing_points_temp[($n+$routing_schritt)%($schritte-1)]);
             $zielx=$routing_points[0];
             $ziely=$routing_points[1];
-
             $zeiger_temp = @mysql_query("SELECT name FROM $skrupel_planeten where x_pos=$zielx and y_pos=$ziely and spiel=$spiel");
             $array_temp = @mysql_fetch_array($zeiger_temp);
             $pname=$array_temp["name"];
-
             $route_tip=$route_tip.'-> '.$pname.' ';
         }
     }
-
     ?>
     <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="movemap(<?php echo $kox.",".$koy;  ?>);">
-
         <script language=JavaScript>
             function fensterbreit(){
                 if (parent.parent.mittemitte.window.innerWidth) return parent.parent.mittemitte.window.innerWidth;
@@ -457,14 +412,11 @@ if ($_GET["fu"]==3) {
                 else if (parent.parent.mittemitte.document.body && parent.parent.mittemitte.document.body.offsetHeight) return parent.parent.mittemitte.document.body.offsetHeight;
                 else return 0;
             }
-
             function movemap(wertx,werty) {
                 breite=fensterbreit();
                 hoch=fensterhoch();
-
                 aktuellx=wertx-15;
                 aktuelly=werty-15;
-
                 wertx=wertx-(breite/2);
                 werty=werty-(hoch/2);
                 <?php if (@intval(substr($spieler_optionen,17,1))!=1) { ?>
@@ -474,12 +426,10 @@ if ($_GET["fu"]==3) {
                     parent.parent.mittemitte.document.getElementById("complete").scrollLeft = wertx;
                     parent.parent.mittemitte.document.getElementById("complete").scrollTop = werty; 
                 <?php } ?>
-
                 parent.parent.mittemitte.document.getElementById("aktuell").style.visibility='visible';
                 parent.parent.mittemitte.document.getElementById("aktuell").style.left=aktuellx;
                 parent.parent.mittemitte.document.getElementById("aktuell").style.top=aktuelly;
             }
-
             function linksub(url) {
                 if (parent.parent.mittelinksoben.document.globals.kursmodus.value==1) {
                     alert('<?php echo $lang['flotte']['nochkursmodus']?>');
@@ -487,7 +437,6 @@ if ($_GET["fu"]==3) {
                     parent.shipsdetails.window.location=url;
                 }
             }
-            
             function linktop(url) {
                 if (parent.parent.mittelinksoben.document.globals.kursmodus.value==1) {
                     alert('<?php echo $lang['flotte']['nochkursmodus']?>');
@@ -495,19 +444,16 @@ if ($_GET["fu"]==3) {
                     parent.window.location=url;
                 }
             }
-
             function schiffdetail(shid,volk) {
                 oben=100;
                 links=Math.ceil((screen.width-580)/2);
                 window.open('hilfe_schiff.php?fu2='+shid+'&volk='+volk+'&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>','Hilfe','resizable=yes,scrollbars=no,width=580,height=180,top='+oben+',left='+links);
             }
-
             function hilfe_spionage_schiff(shid) {
                 oben=100;
                 links=Math.ceil((screen.width-480)/2);
                 window.open('hilfe_spionage.php?fu2=4&spid='+shid+'&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>','Hilfe','resizable=yes,scrollbars=no,width=480,height=200,top='+oben+',left='+links);
             }
-
         </script>
         <table  border="0" cellspacing="0" cellpadding="0">
             <tr>
@@ -671,7 +617,6 @@ if ($_GET["fu"]==3) {
                                         <tr>
                                             <td bgcolor="#990000"><img src="../bilder/empty.gif" border="0" width="130" height="11"></td>
                                         </tr>
-
                                     </table>
                                 </center>
                             </td>
@@ -685,7 +630,6 @@ if ($_GET["fu"]==3) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==4) {
     include ("inc.header.php");
     ?>
@@ -711,7 +655,6 @@ if ($_GET["fu"]==4) {
             <area shape=rect coords="26,16,53,36" href="javascript:linksub('flotte_alpha.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['kurs']; ?>">
             <area shape=rect coords="72,11,99,40" href="javascript:linksub('flotte_alpha.php?fu=3&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['spezialmission']; ?>">
             <area shape=rect coords="118,12,148,40" href="javascript:linksub('flotte_alpha.php?fu=5&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['routing']; ?>">
-
             <area shape=rect coords="25,59,52,83" href="javascript:linksub('flotte_beta.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['scanning']; ?>">
             <?php if(@intval(substr($spieler_optionen,13,1))==1) { ?>
                 <area shape=rect coords="72,57,100,85" href="javascript:linksub('flotte_beta.php?fu=6&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['transporterraum']; ?>">
@@ -719,7 +662,6 @@ if ($_GET["fu"]==4) {
                 <area shape=rect coords="72,57,100,85" href="javascript:linksub('flotte_beta.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['transporterraum']; ?>">
             <?php } ?>
             <area shape=rect coords="116,61,146,84" href="javascript:linksub('flotte_beta.php?fu=8&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['logbuch']; ?>">
-
             <area shape=rect coords="163,15,182,29" href="javascript:linksub('flotte_gamma.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['waffensysteme']; ?>">
             <?php if(@intval(substr($spieler_optionen,13,1))==1) { ?>
                 <area shape=rect coords="163,40,182,56" href="javascript:linksub('flotte_gamma.php?fu=5&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['aggressivitaet']; ?>">
@@ -727,7 +669,6 @@ if ($_GET["fu"]==4) {
                 <area shape=rect coords="163,40,182,56" href="javascript:linksub('flotte_gamma.php?fu=2&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['aggressivitaet']; ?>">
             <?php } ?>
             <area shape=rect coords="163,65,182,86" href="javascript:linksub('flotte_gamma.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['lagerraeume']; ?>">
-
             <area shape=rect coords="194,15,213,29" href="javascript:linksub('flotte_delta.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['projektillager']; ?>">
             <area shape=rect coords="194,40,213,56" href="javascript:linksub('flotte_delta.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['antriebssysteme']; ?>">
             <area shape=rect coords="194,65,213,86" href="javascript:linksub('flotte_delta.php?fu=5&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['optionen']; ?>">
@@ -735,7 +676,6 @@ if ($_GET["fu"]==4) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==5) {
     include ("inc.header.php");
     ?>
@@ -760,17 +700,14 @@ if ($_GET["fu"]==5) {
         <map name="konsole">
             <area shape=rect coords="25,59,52,83" href="javascript:linksub('flotte_beta.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['scanning']; ?>">
             <area shape=rect coords="116,61,146,84" href="javascript:linksub('flotte_beta.php?fu=8&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['logbuch']; ?>">
-            
             <area shape=rect coords="163,15,182,29" href="javascript:linksub('flotte_gamma.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['waffensysteme']; ?>">
             <area shape=rect coords="163,65,182,86" href="javascript:linksub('flotte_gamma.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['lagerraeume']; ?>">
-            
             <area shape=rect coords="194,40,213,56" href="javascript:linksub('flotte_delta.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['antriebssysteme']; ?>">
             <area shape=rect coords="194,65,213,86" href="javascript:linksub('flotte_delta.php?fu=5&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['optionen']; ?>">
         </map>
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==6) {
     include ("inc.header.php");
     ?>
@@ -786,14 +723,11 @@ if ($_GET["fu"]==6) {
                 else if (parent.parent.mittemitte.document.body && parent.parent.mittemitte.document.body.offsetHeight) return parent.parent.mittemitte.document.body.offsetHeight;
                 else return 0;
             }
-
             function movemap(wertx,werty) {
                 breite=fensterbreit();
                 hoch=fensterhoch();
-
                 aktuellx=wertx-15;
                 aktuelly=werty-15;
-
                 wertx=wertx-(breite/2);
                 werty=werty-(hoch/2);
                 <?php if (@intval(substr($spieler_optionen,17,1))!=1) { ?>
@@ -803,20 +737,16 @@ if ($_GET["fu"]==6) {
                     parent.parent.mittemitte.document.getElementById("complete").scrollLeft = wertx;
                     parent.parent.mittemitte.document.getElementById("complete").scrollTop = werty; 
                 <?php } ?>
-
                 parent.parent.mittemitte.document.getElementById("aktuell").style.visibility='visible';
                 parent.parent.mittemitte.document.getElementById("aktuell").style.left=aktuellx;
                 parent.parent.mittemitte.document.getElementById("aktuell").style.top=aktuelly;
             }
         </script>
         <?php
-
         $flottex=$_GET["flottex"];
         $flottey=$_GET["flottey"];
-
         $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where besitzer=$spieler and status>0 and spiel=$spiel and kox=$flottex and koy=$flottey order by name");
         $schiffanzahl = @mysql_num_rows($zeiger);
-
         if ($schiffanzahl>=1) {
             ?>
             <center>
@@ -831,7 +761,6 @@ if ($_GET["fu"]==6) {
                                     <?php
                                     for  ($i=0; $i<$schiffanzahl;$i++) {
                                         $ok = @mysql_data_seek($zeiger,$i);
-
                                         $array = @mysql_fetch_array($zeiger);
                                         $shid=$array["id"];
                                         $name=$array["name"];
@@ -847,7 +776,6 @@ if ($_GET["fu"]==6) {
                                         $volk=$array["volk"];
                                         $bild=$array["bild_gross"];
                                         $erfahrung=$array["erfahrung"];
-
                                         $crew=$array["crew"];
                                         $crewmax=$array["crewmax"];
                                         $crewmax_d=max(1,$array["crewmax"]);
@@ -859,7 +787,6 @@ if ($_GET["fu"]==6) {
                                         $logbuch=$array["logbuch"];
                                         $tarnfeld=$array["tarnfeld"];
                                         $ordner=$array["ordner"];
-
                                         $frachtraum=$array["frachtraum"];
                                         $frachtraum_d=max(1,$array["frachtraum"]);
                                         $fracht_leute=$array["fracht_leute"];
@@ -871,39 +798,31 @@ if ($_GET["fu"]==6) {
                                         $fracht_min2=$array["fracht_min2"];
                                         $fracht_min3=$array["fracht_min3"];
                                         $fracht=round(($fracht_leute/100)+($leichtebt*0.3)+($schwerebt*1.5))+$fracht_vorrat+$fracht_min1+$fracht_min2+$fracht_min3;
-
                                         $routing_koord=$array["routing_koord"];
                                         $routing_status=$array["routing_status"];
                                         $routing_schritt=$array["routing_schritt"];
-        
                                         $route_tip='';
                                         if ($routing_status>=1) {
                                             $routing_points_temp=explode("::",$routing_koord);
                                             $schritte=count($routing_points_temp);
                                             for ($n=0;$n<$schritte-1;$n++) {
-        
                                                 $routing_points=explode(":",$routing_points_temp[($n+$routing_schritt)%($schritte-1)]);
                                                 $zielx=$routing_points[0];
                                                 $ziely=$routing_points[1];
-        
                                                 $zeiger_temp = @mysql_query("SELECT name FROM $skrupel_planeten where x_pos=$zielx and y_pos=$ziely and spiel=$spiel");
                                                 $array_temp = @mysql_fetch_array($zeiger_temp);
                                                 $pname=$array_temp["name"];
-        
                                                 $route_tip=$route_tip.'-> '.$pname.' ';
                                             }
                                         }
-
                                         $tip="[$name]";
                                         $tip=$tip."\n";
                                         $tip=$tip."\n".$lang['flotte']['kol'].": ".$fracht_leute." ".$lang['flotte']['cx'].": ".$fracht_cantox." ".$lang['flotte']['vor'].": ".$fracht_vorrat;
                                         $tip=$tip."\n".$lang['flotte']['bax'].": ".$fracht_min1." ".$lang['flotte']['ren'].": ".$fracht_min2." ".$lang['flotte']['vom'].": ".$fracht_min3;
-
                                         if (strlen($logbuch)>=1) {
                                             $tip=$tip."\n";
                                             $tip=$tip."\n$logbuch";
                                         }
-
                                         if ($tarnfeld>=1) {
                                             ?>
                                             <td>
@@ -1073,7 +992,6 @@ if ($_GET["fu"]==6) {
         }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==7) {
     include ("inc.header.php");
     $oid=$_GET["oid"];
@@ -1091,13 +1009,11 @@ if ($_GET["fu"]==7) {
         <?php
         $zeiger = @mysql_query("SELECT id,name,besitzer,status,spiel,flug FROM $skrupel_schiffe where besitzer=$spieler and ordner=$oid and status>0 and spiel=$spiel order by name");
         $schiffanzahl = @mysql_num_rows($zeiger);
-
         if ($schiffanzahl>=1) {
             for  ($i=0; $i<$schiffanzahl;$i++) {
                 $ok = @mysql_data_seek($zeiger,$i);
                 $array = @mysql_fetch_array($zeiger);
                 $shid_t=$array["id"];
-
                 if (($shid==$shid_t) and ($i>=1)) { ?>
                     <table border="0" cellspacing="0" cellpadding="0">
                         <tr>
@@ -1118,7 +1034,6 @@ if ($_GET["fu"]==7) {
         }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==8) {
     include ("inc.header.php");
     $oid=$_GET["oid"];
@@ -1136,13 +1051,11 @@ if ($_GET["fu"]==8) {
         <?php
         $zeiger = @mysql_query("SELECT id,name,besitzer,status,spiel,flug FROM $skrupel_schiffe where besitzer=$spieler and ordner=$oid and status>0 and spiel=$spiel order by name");
         $schiffanzahl = @mysql_num_rows($zeiger);
-    
         if ($schiffanzahl>=1) {
             for  ($i=0; $i<$schiffanzahl;$i++) {
                 $ok = @mysql_data_seek($zeiger,$i);
                 $array = @mysql_fetch_array($zeiger);
                 $shid_t=$array["id"];
-    
                 if ($shid==$shid_old) {
                     ?>
                     <table border="0" cellspacing="0" cellpadding="0">

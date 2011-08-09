@@ -1,9 +1,7 @@
 <?php
 include ("../inc.conf.php");
-
 if(empty($_GET["bildpfad"])) {$_GET["bildpfad"]='../bilder';}
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-
 if ($_GET["fu"]==0) { ?>
     <html>
         <head>

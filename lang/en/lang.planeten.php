@@ -11,7 +11,6 @@ $lang['planeten']['rennurbin']='rennurbin';
 $lang['planeten']['vorraete']='supplies';
 $lang['planeten']['pds']='defence';
 $lang['planeten']['vomisaan']='vomisaan';
-
 $lang['planeten']['details']='details';
 $lang['planeten']['globalesysteme']='global systems';
 $lang['planeten']['sternenbasis']='starbase';

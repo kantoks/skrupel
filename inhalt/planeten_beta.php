@@ -3,12 +3,9 @@ include ("../inc.conf.php");
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.planeten_beta.php";
 include ($file);
-
 if ($_GET["fu"]==1) {
 include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT besitzer,id,native_id,native_name,native_art_name,native_abgabe,native_bild,native_text,native_kol FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
-
     $array = @mysql_fetch_array($zeiger);
     $native_id=$array["native_id"];
     $native_name=$array["native_name"];
@@ -107,10 +104,8 @@ include ("inc.header.php");
         }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==2) {
     include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT id,logbuch FROM $skrupel_planeten where id=".$_GET["pid"]);
     $array = @mysql_fetch_array($zeiger);
     $logbuch=$array["logbuch"];
@@ -146,15 +141,12 @@ if ($_GET["fu"]==2) {
         <?php 
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==3) {
     include ("inc.header.php");
-
     $eintrag=$_POST["logbuchdaten"];
     $eintrag=str_replace("\"", "\'",$eintrag);
     $eintrag=str_replace("\\", "",$eintrag);
     $zeiger = @mysql_query("UPDATE $skrupel_planeten set logbuch=\"$eintrag\" where id=".$_GET["pid"]);
-
     ?>
     <body text="#000000" background="<?php echo $bildpfad?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <br><br><br><br>
@@ -162,26 +154,19 @@ if ($_GET["fu"]==3) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==4) {
     include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT id,x_pos,y_pos FROM $skrupel_planeten where id=".$_GET["pid"]);
     $array = @mysql_fetch_array($zeiger);
     $xpos=$array["x_pos"];
     $ypos=$array["y_pos"];
     $s_zahl=0;
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where kox=$xpos and koy=$ypos and besitzer=$spieler and spiel=$spiel order by name");
     $schiffanzahl = @mysql_num_rows($zeiger);
-
     if ($schiffanzahl>=1) {
-
         $raumschiffe=$schiffanzahl;
-
         for ($i=0; $i<$schiffanzahl;$i++) {
             $ok = @mysql_data_seek($zeiger,$i);
-
             $array = @mysql_fetch_array($zeiger);
             $shid=$array["id"];
             $bild_klein=$array["bild_klein"];
@@ -197,16 +182,13 @@ if ($_GET["fu"]==4) {
             $zielx=$array["zielx"];
             $zielid=$array["zielid"];
             $ordner=$array["ordner"];
-
             $fracht_leute=$array["fracht_leute"];
             $fracht_cantox=$array["fracht_cantox"];
             $fracht_vorrat=$array["fracht_vorrat"];
             $fracht_min1=$array["fracht_min1"];
             $fracht_min2=$array["fracht_min2"];
             $fracht_min3=$array["fracht_min3"];
-
             $routing_koord=$array["routing_koord"];
-
             $route_tip='';
             if ($routing_status>=1) {
                 $routing_points_temp=explode("::",$routing_koord);
@@ -215,19 +197,15 @@ if ($_GET["fu"]==4) {
                     $routing_points=explode(":",$routing_points_temp[$n]);
                     $zielx=$routing_points[0];
                     $ziely=$routing_points[1];
-
                     $zeiger_temp = @mysql_query("SELECT name FROM $skrupel_planeten where x_pos=$zielx and y_pos=$ziely and spiel=$spiel");
                     $array_temp = @mysql_fetch_array($zeiger_temp);
                     $name=$array_temp["name"];
-
                     $route_tip=$route_tip.'-> '.$name.' ';
                 }
             }
-
             $tip='';
             $tip=$tip.$lang['planetenbeta']['kol'].": ".$fracht_leute." ".$lang['planetenbeta']['cx'].": ".$fracht_cantox." ".$lang['planetenbeta']['vor'].": ".$fracht_vorrat;
             $tip=$tip."\n".$lang['planetenbeta']['bax'].": ".$fracht_min1." ".$lang['planetenbeta']['ren'].": ".$fracht_min2." ".$lang['planetenbeta']['vom'].": ".$fracht_min3;
-
             if ($flug==0) {
                 if (($routing_status==2) or ($routing_status==1)) {
                     $schiff_scan[$s_zahl][1]='<td style="color:#009900;"><nobr>'.$lang['planetenbeta']['route'];
@@ -242,7 +220,6 @@ if ($_GET["fu"]==4) {
                 $zeiger_temp = @mysql_query("SELECT id,name FROM $skrupel_planeten where id=$zielid");
                 $array_temp = @mysql_fetch_array($zeiger_temp);
                 $planeten_name=$array_temp["name"];
-
                 $schiff_scan[$s_zahl][1]='<td style="color:#009900;"><nobr>'.$lang['planetenbeta']['unterwegsnach'].' '.$planeten_name;
                 if (($routing_status==2) or ($routing_status==1)) {
                     $schiff_scan[$s_zahl][1]=$schiff_scan[$s_zahl][1].' <a href="#" title="'.$route_tip.'">'.$lang['planetenbeta']['r'].'</a>';
@@ -253,7 +230,6 @@ if ($_GET["fu"]==4) {
             }elseif ($flug==4) {
                 $schiff_scan[$s_zahl][1]='<td style="color:#009900;">'.$lang['planetenbeta']['begleitschutz'].'</td>';
             }
-
             $schiff_scan[$s_zahl][0]=$shid;
             $schiff_scan[$s_zahl][3]=$volk;
             $schiff_scan[$s_zahl][4]=$bild_klein;
@@ -271,7 +247,7 @@ if ($_GET["fu"]==4) {
             if (parent.parent.mittelinksoben.document.globals.map.value==0) {
                 parent.parent.mittelinksoben.document.globals.map.value=1;
                 parent.parent.mittemitte.window.location='galaxie.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>';
-	    }
+      }
 //            else {
 //                parent.parent.mittemitte.aktuell.style.visibility='hidden';
 //            }
