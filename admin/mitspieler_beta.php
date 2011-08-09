@@ -24,7 +24,7 @@ if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
    <?php
    for  ($i=0; $i<$spieleranzahl;$i++) {
    $ok = @mysql_data_seek($zeiger,$i);
-	 $array = @mysql_fetch_array($zeiger);
+    $array = @mysql_fetch_array($zeiger);
    $id=$array["id"];
    $nick=$array["nick"];
    $email=$array["email"];
@@ -59,5 +59,3 @@ if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 </table></center>
 <?php } include ("inc.footer.php");
  }
-
-?>

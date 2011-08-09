@@ -173,12 +173,7 @@ if ($zahl==2) {
 }
 } ?>
 
-
-
-
-
 </table></center>
-
 
 <br><br>
 <center><table border="0" cellspacing="0" cellpadding="0"><tr>
@@ -191,7 +186,6 @@ if ($_GET["fu"]==3) {
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 
-
 $file='../daten/gala_strukturen.txt';
 $fp = @fopen("$file","r");
 if ($fp) {
@@ -203,8 +197,6 @@ while (!feof ($fp)) {
     }
 }
 @fclose($fp); }
-
-
 ?>
 <script language="JavaScript" type="text/javascript">
 
@@ -275,9 +267,6 @@ function check() {
   }
 <?php } ?>
 
-
-
-
 <?php } ?>
   return true;
 }
@@ -296,7 +285,6 @@ foreach ($_POST as $key => $value) {
 ?>
 
 <center><table border="0" cellspacing="0" cellpadding="2">
-
 
 <?php
 
@@ -411,8 +399,6 @@ closedir($handle);
    <td><table border="0" cellspacing="0" cellpadding="0"><tr><td><input type="radio" name="spieler_admin" value="0" checked></td><td>&nbsp;</td><td style="color:#aaaaaa;"><?php echo $lang['admin']['spiel']['alpha']['niemand']?></td></tr></table></td>
    </tr>
 
-
-
 </table></center>
            <br>
 <center><table border="0" cellspacing="0" cellpadding="0"><tr>
@@ -504,60 +490,62 @@ foreach ($_POST as $key => $value) {
     echo '<input type="hidden" name="'.$key.'" value="'.$value.'">';
 }
 ?>
-    <center><table border="0" cellspacing="0" cellpadding="2">
-   <tr><td><?php echo $lang['admin']['spiel']['alpha']['wo_startposition']?></td><td><img src="../bilder/empty.gif" width="220" height="1"></td></tr>
-   <tr><td>&nbsp;</td><td></td></tr>
-        <tr>
-            <td valign="top">
-                <table border="0" cellspacing="0" cellpadding="0">
-				    <tr>
-                        <td colspan="3"><img src="../bilder/aufbau/galaoben.gif" border="0" width="258" height="4"></td>
-				    </tr>
-				    <tr>
-                        <td><img src="../bilder/aufbau/galalinks.gif" border="0" width="4" height="250"></td>
-                        <td><iframe src="spiel_alpha.php?fu=12&struktur=<?php echo $_POST["struktur"]; ?>" width="250" height="250" name="map" scrolling="no" marginheight="0" marginwidth="0" frameborder="0"></iframe></td>
-                        <td><img src="../bilder/aufbau/galarechts.gif" border="0" width="4" height="250"></td>
-                    </tr>
-				    <tr>
-                        <td colspan="3"><img src="../bilder/aufbau/galaunten.gif" border="0" width="258" height="4"></td>
-				    </tr>
-			    </table>
-            </td>
-            <td valign="top">
-                <table border="0" cellspacing="0" cellpadding="2">
-                <?php
-                $first = 0;
-                for ($n=1;$n<=10;$n++) {
-                    if (intval($_POST['user_'.$n]) >= 1) {
-                        $zeiger_temp = @mysql_query("SELECT * FROM $skrupel_user where id = ".intval($_POST['user_'.$n]));
-                        $array_temp = @mysql_fetch_array($zeiger_temp);
-                        echo '<tr><td><input type="radio" name="active" id="active" value="'.$n.'" ';
-                        if ($first == 0) {
-                            $first = 1;
-                            echo 'checked';
-                        }
-                        echo '></td><td>&nbsp;</td><td style="color:'.$spielerfarbe[$n].';">';
-                        echo $array_temp["nick"].'</td><td><input type="hidden" name="user_'.$n.'_x" id="user_'.$n.'_xx" value=""><input type="hidden" name="user_'.$n.'_y" id="user_'.$n.'_yy" value=""></td></tr>';
-                    }
+  <center>
+    <table border="0" cellspacing="0" cellpadding="2">
+      <tr><td><?php echo $lang['admin']['spiel']['alpha']['wo_startposition']?></td><td><img src="../bilder/empty.gif" width="220" height="1"></td></tr>
+      <tr><td>&nbsp;</td><td></td></tr>
+      <tr>
+        <td valign="top">
+          <table border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td colspan="3"><img src="../bilder/aufbau/galaoben.gif" border="0" width="258" height="4"></td>
+            </tr>
+            <tr>
+              <td><img src="../bilder/aufbau/galalinks.gif" border="0" width="4" height="250"></td>
+              <td><iframe src="spiel_alpha.php?fu=12&struktur=<?php echo $_POST["struktur"]; ?>" width="250" height="250" name="map" scrolling="no" marginheight="0" marginwidth="0" frameborder="0"></iframe></td>
+              <td><img src="../bilder/aufbau/galarechts.gif" border="0" width="4" height="250"></td>
+            </tr>
+            <tr>
+              <td colspan="3"><img src="../bilder/aufbau/galaunten.gif" border="0" width="258" height="4"></td>
+            </tr>
+          </table>
+        </td>
+        <td valign="top">
+          <table border="0" cellspacing="0" cellpadding="2">
+            <?php
+              $first = 0;
+              for ($n=1;$n<=10;$n++) {
+                if (intval($_POST['user_'.$n]) >= 1) {
+                   $zeiger_temp = @mysql_query("SELECT * FROM $skrupel_user where id = ".intval($_POST['user_'.$n]));
+                   $array_temp = @mysql_fetch_array($zeiger_temp);
+                   echo '<tr><td><input type="radio" name="active" id="active" value="'.$n.'" ';
+                   if ($first == 0) {
+                     $first = 1;
+                      echo 'checked';
+                   }
+                   echo '></td><td>&nbsp;</td><td style="color:'.$spielerfarbe[$n].';">';
+                   echo $array_temp["nick"].'</td><td><input type="hidden" name="user_'.$n.'_x" id="user_'.$n.'_xx" value=""><input type="hidden" name="user_'.$n.'_y" id="user_'.$n.'_yy" value=""></td></tr>';
                 }
-                ?>
-                </table>
-            </td>
-        </tr>
-    </table></center>
-    <br/>
-    <center><table border="0" cellspacing="0" cellpadding="0">
-        <tr>
-            <td><input type="submit" name="bla" value="Weiter"></td><td></form></td>
-        </tr>
-    </table></center>
+              }
+            ?>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </center>
+  <br/>
+  <center>
+    <table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><input type="submit" name="bla" value="Weiter"></td><td></form></td>
+      </tr>
+    </table>
+  </center>
 <?php
 } else {
 ?>
 <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-
 <center><table border="0" cellspacing="0" cellpadding="4"><tr><td style="font-size:20px; font-weight:bold; filter:DropShadow(color=black, offx=2, offy=2)"><?php echo $lang['admin']['spiel']['alpha']['neues_spiel']?></td></tr></table></center>
-
 <form name="formular" method="post" action="spiel_alpha.php?fu=5">
 <?php
 foreach ($_POST as $key => $value) {
@@ -811,24 +799,24 @@ foreach ($_POST as $key => $value) {
    <tr><td>&nbsp;</td></tr>
    <tr><td><table border="0" cellspacing="0" cellpadding="0">
       <tr><td style="color:#aaaaaa;"><?php echo $lang['admin']['spiel']['alpha']['raumpiratenfrage']['2']?></td><td>&nbsp;</td><td><select name="piraten_mitte" style="width:60px;">
-	<?php for($p=0;$p<21;$p++){ ?>
-		<option value="<?php echo $prozentarray[$p]?>"><?php echo str_replace('{1}',$prozentarray[$p],$lang['admin']['spiel']['alpha']['vh']);?></option>
-	<?php } ?>
+  <?php for($p=0;$p<21;$p++){ ?>
+    <option value="<?php echo $prozentarray[$p]?>"><?php echo str_replace('{1}',$prozentarray[$p],$lang['admin']['spiel']['alpha']['vh']);?></option>
+  <?php } ?>
     </select></td></tr>
       <tr><td style="color:#aaaaaa;"><?php echo $lang['admin']['spiel']['alpha']['raumpiratenfrage']['3']?></td><td>&nbsp;</td><td><select name="piraten_aussen" style="width:60px;">
-	<?php for($p=0;$p<21;$p++){ ?>
-		<option value="<?php echo $prozentarray[$p]?>"><?php echo str_replace('{1}',$prozentarray[$p],$lang['admin']['spiel']['alpha']['vh']);?></option>
-	<?php } ?>
+  <?php for($p=0;$p<21;$p++){ ?>
+    <option value="<?php echo $prozentarray[$p]?>"><?php echo str_replace('{1}',$prozentarray[$p],$lang['admin']['spiel']['alpha']['vh']);?></option>
+  <?php } ?>
     </select></td></tr>
       <tr><td style="color:#aaaaaa;"><?php echo $lang['admin']['spiel']['alpha']['raumpiratenfrage']['4']?></td><td>&nbsp;</td><td><select name="piraten_min" style="width:60px;">
-	<?php for($p=1;$p<21;$p++){ ?>
-		<option value="<?php echo $prozentarray[$p]?>"><?php echo str_replace('{1}',$prozentarray[$p],$lang['admin']['spiel']['alpha']['vh']);?></option>
-	<?php } ?>
+  <?php for($p=1;$p<21;$p++){ ?>
+    <option value="<?php echo $prozentarray[$p]?>"><?php echo str_replace('{1}',$prozentarray[$p],$lang['admin']['spiel']['alpha']['vh']);?></option>
+  <?php } ?>
     </select></td></tr>
       <tr><td style="color:#aaaaaa;"><?php echo $lang['admin']['spiel']['alpha']['raumpiratenfrage']['5']?></td><td>&nbsp;</td><td><select name="piraten_max" style="width:60px;">
-	<?php for($p=1;$p<21;$p++){ ?>
-		<option value="<?php echo $prozentarray[$p]?>"><?php echo str_replace('{1}',$prozentarray[$p],$lang['admin']['spiel']['alpha']['vh']);?></option>
-	<?php } ?>
+  <?php for($p=1;$p<21;$p++){ ?>
+    <option value="<?php echo $prozentarray[$p]?>"><?php echo str_replace('{1}',$prozentarray[$p],$lang['admin']['spiel']['alpha']['vh']);?></option>
+  <?php } ?>
     </select></td></tr>
 
       </table></td></tr>
@@ -1084,9 +1072,7 @@ while (!feof ($fp)) {
 $namerassen[$rasse]=trim($daten[0]);
 $nameplanet[$rasse]=trim($daten[5]);
 
-
 }}
-
 
 ///////////////////////////////////////////////////SPEZIEN
 $speziena=0;
@@ -1157,7 +1143,6 @@ while (!feof ($fp)) {
 }
 @fclose($fp); }
 
-
 ///////////////////////////////////////////////PLANETEN GENRERIEREN ANFANG
 
 $planetenname=@file('../daten/planetennamen.txt');
@@ -1165,9 +1150,6 @@ shuffle($planetenname);
 
 $sternendichte=$_POST["sternendichte"];
 $startposition=$_POST["startposition"];
-
-
-
 
 for ($i=0;$i<$sternendichte;$i++) {
 //for ($i=0;$i<50;$i++) {
@@ -1321,10 +1303,7 @@ if ($_POST["user_8"]>=1) { $spieleranzahl++;$spieler[8][0]=$_POST["user_8"];$spi
 if ($_POST["user_9"]>=1) { $spieleranzahl++;$spieler[9][0]=$_POST["user_9"];$spieler[9][1]=$_POST["rasse_9"]; } else { $spieler[9][0]=0;$spieler[9][1]=''; }
 if ($_POST["user_10"]>=1) { $spieleranzahl++;$spieler[10][0]=$_POST["user_10"];$spieler[10][1]=$_POST["rasse_10"]; } else { $spieler[10][0]=0;$spieler[10][1]=''; }
 
-
-
 ///////////////////////////////////////////////SPIELER AUFBAUEN ANFANG
-
 
 ///////////////////////////////////////////////STARTPOSITIONEN
 
@@ -1370,11 +1349,9 @@ if (3 == $startposition) {
     }
 }
 
-
 if (($_POST["imperiumgroesse"]==1) or ($_POST["imperiumgroesse"]==2) or ($_POST["imperiumgroesse"]==3) or ($_POST["imperiumgroesse"]==4)) {
 
 if ($_POST["imperiumgroesse"]==1) {
-
 
 }
 
@@ -1500,12 +1477,8 @@ if ($_POST["imperiumgroesse"]==1) {
     $schiffbau_projektile_stufe=0;
     $schiffbau_techlevel=3;
 
-
-
-
     $schiffbau_antriebe_stufe=3;
     $schiffbau_name='Frachter I';
-
 
     $zeiger_temp = @mysql_query("INSERT INTO $skrupel_schiffe
 
@@ -1513,8 +1486,8 @@ if ($_POST["imperiumgroesse"]==1) {
  values ($i,2,'$schiffbau_name','$schiffbau_klasse_name',$schiffbau_klasse,'$schiffbau_rasse',$schiffbau_techlevel,$schiffbau_antriebe_stufe, $schiffbau_antriebe,$x_pos,$y_pos,$schiffbau_crew,$schiffbau_crew,0,$schiffbau_tank,$schiffbau_fracht,$schiffbau_masse,$schiffbau_masse,'$schiffbau_bild_gross','$schiffbau_bild_klein',$schiffbau_energetik_stufe,$schiffbau_energetik,$schiffbau_projektile_stufe,$schiffbau_projektile,$schiffbau_hangar,100,'$schiffbau_fertigkeiten',$spiel)");
 
 }
-}}
-
+}
+}
 
 }
 
@@ -1665,7 +1638,6 @@ if ($_POST["stabil"]>=1) {
   $zeiger2 = @mysql_query("UPDATE $skrupel_anomalien set extra='$extra' where id=$aid_eins;");
 
      }
-
 }
 
 ///////////////////////////////////////////////STABILE WURMLOECHER ENDE
@@ -1780,11 +1752,7 @@ if ($ziel_id==6) {
        }
      }
   }
-
-
 }
-
-
 
 if ($ziel_id==5) {
    $ziel_info=$_POST["zielinfo_5"];
@@ -1836,16 +1804,13 @@ function sichtaddieren($sicht_alt,$sicht_neu) {
   return $sicht;
 }
 
-
   $dateiinclude="../inhalt/inc.host_nebel.php";
   include ($dateiinclude);
 
 }
 
-
 ///////////////////////////////////////////////NEBEL ERSTELLEN ENDE
 ///////////////////////////////////////////////SPIELBLOCK ERSTELLEN ANFANG
-
 
 $letztermonat="Es fand leider noch kein Zug statt.";
 for ($sp=1; $sp<=10; $sp++) {
@@ -1986,8 +1951,6 @@ $zeiger = @mysql_query("UPDATE $skrupel_spiele set
                         piraten_max=$piraten_max
                         where id=$spiel");
 
-
-
 if ($spieler_1>=1) {$zeiger = @mysql_query("UPDATE $skrupel_user set stat_teilnahme=stat_teilnahme+1 where id=$spieler_1"); }
 if ($spieler_2>=1) {$zeiger = @mysql_query("UPDATE $skrupel_user set stat_teilnahme=stat_teilnahme+1 where id=$spieler_2"); }
 if ($spieler_3>=1) {$zeiger = @mysql_query("UPDATE $skrupel_user set stat_teilnahme=stat_teilnahme+1 where id=$spieler_3"); }
@@ -2020,5 +1983,3 @@ if ((@file_exists($moviegif_verzeichnis)) and (@intval(substr($spiel_extend,0,1)
 <center><?php echo $lang['admin']['spiel']['alpha']['fertig']?></center><?php
  } include ("inc.footer.php");
  }
-
-?>

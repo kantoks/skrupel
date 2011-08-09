@@ -28,7 +28,7 @@ $erweiterung[3]['activatepos']=2;
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
-          
+
         $zeiger = @mysql_query("SELECT extend FROM $skrupel_info");
         $array = @mysql_fetch_array($zeiger);
         $spiel_extend=$array["extend"];
@@ -90,7 +90,7 @@ if ($_GET["fu"]==2) {
         $spiel_extend=$array["extend"];
         $extend='';
         for ($n=0;$n<50;$n++) {
-            
+
             if ($pos==$n) {
                 if ($value=='1') {
                     $extend.='1';

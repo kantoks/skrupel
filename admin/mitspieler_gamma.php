@@ -82,6 +82,4 @@ $zeiger = @mysql_query("DELETE from $skrupel_user where id=$id");
   </tr>
 </table></center><?php
  } include ("inc.footer.php");
- }
-
-?>
+}

@@ -2,4 +2,3 @@
 </html>
 <?php
 @mysql_close();
-?>

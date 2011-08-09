@@ -154,5 +154,5 @@ if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 </table></td>
   </tr>
 </table>
-<?php } include ("inc.footer.php"); ?>
-<?php } ?>
+<?php } include ("inc.footer.php");
+}>

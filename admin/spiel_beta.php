@@ -4,9 +4,9 @@ include ("../lang/".$language."/lang.admin.spiel_beta.php");
 $prozentarray=array(0,1,2,3,4,5,6,7,8,9,10,15,20,30,40,50,60,70,80,90,100);
 
 if ($_GET["fu"]==1) {
-include_once ('../inhalt/inc.hilfsfunktionen.php');
-include ("inc.header.php");
-if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
+  include_once ('../inhalt/inc.hilfsfunktionen.php');
+  include ("inc.header.php");
+  if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 ?>
 <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <center><table border="0" cellspacing="0" cellpadding="4"><tr><td style="font-size:20px; font-weight:bold; filter:DropShadow(color=black, offx=2, offy=2)"><?php echo $lang['admin']['spiel']['beta']['spiel_bearbeiten']?></td></tr></table></center>
@@ -69,7 +69,7 @@ $r_eigenschaften[$rasses]['name']=trim($daten[0]);
    $spieler_10=$array["spieler_10"];
    $spieler_admin=$array["spieler_admin"];
 
-      $spieler_1_rasse=$array["spieler_1_rasse"];
+    $spieler_1_rasse=$array["spieler_1_rasse"];
       $spieler_2_rasse=$array["spieler_2_rasse"];
       $spieler_3_rasse=$array["spieler_3_rasse"];
       $spieler_4_rasse=$array["spieler_4_rasse"];
@@ -496,12 +496,14 @@ if ($spieler_id_c[$k]>=1) {
     </select></td></tr>
       <tr><td style="color:#aaaaaa;"><?php echo $lang['admin']['spiel']['beta']['plasmasturm_frage']['3']?></td><td>&nbsp;</td><td><select name="wahr" style="width:100px;">
 	<?php for($p=1;$p<21;$p++){ ?>
-		<option value="<?php echo $prozentarray[$p]?>"><?php echo str_replace('{1}',$prozentarray[$p],$lang['admin']['spiel']['beta']['vh']);?></option>
+		<option value="<?php echo $prozentarray[$p]?>"><?php echo str_replace('{1}',$prozentarray[$p],$lang['admin']['spiel']['beta']['vh']);?></option>
+
 	<?php } ?>
     </select></td></tr>
       <tr><td style="color:#aaaaaa;"><?php echo $lang['admin']['spiel']['beta']['plasmasturm_frage']['4']?></td><td>&nbsp;</td><td><select name="llang" style="width:100px;">
 	<?php for($p=3;$p<13;$p++){ ?>
-		<option value="<?php echo $prozentarray[$p]?>"><?php echo str_replace('{1}',$prozentarray[$p],$lang['admin']['spiel']['beta']['runden']);?></option>
+		<option value="<?php echo $prozentarray[$p]?>"><?php echo str_replace('{1}',$prozentarray[$p],$lang['admin']['spiel']['beta']['runden']);?></option>
+
 	<?php } ?>
     </select></td></tr>
       </table></td></tr>
@@ -931,7 +933,6 @@ include ("../inhalt/inc.host.php");
   $lasttick=time();
   $zeiger = mysql_query("UPDATE $skrupel_spiele set lasttick='$lasttick',spieler_1_zug=0,spieler_2_zug=0,spieler_3_zug=0,spieler_4_zug=0,spieler_5_zug=0,spieler_6_zug=0,spieler_7_zug=0,spieler_8_zug=0,spieler_9_zug=0,spieler_10_zug=0 where sid='$sid';");
 
-
 ?>
 <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <center><table border="0" height="100%" cellspacing="0" cellpadding="0">
@@ -947,4 +948,3 @@ include ("../inhalt/inc.host.php");
 <?php
 } include ("inc.footer.php");
  }
-?>

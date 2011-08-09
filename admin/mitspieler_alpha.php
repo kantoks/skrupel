@@ -44,5 +44,4 @@ $zeiger = @mysql_query("INSERT INTO $skrupel_user (nick,passwort,email,optionen,
   </tr>
 </table></center><?php
 } include ("inc.footer.php");
- }
-?>
+}

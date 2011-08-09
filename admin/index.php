@@ -1,43 +1,34 @@
 <?php
-  include ("../inc.conf.php");
+include ("../inc.conf.php");
 include ("../lang/".$language."/lang.admin.index.php");
 
-  $conn = @mysql_connect($server.':'.$port,"$login","$password");
-  $db = @mysql_select_db("$database",$conn);
+$conn = @mysql_connect($server.':'.$port,"$login","$password");
+$db = @mysql_select_db("$database",$conn);
 
-  if ($db) {
+if($db){
+  function compressed_output(){
+    $encoding = getEnv("HTTP_ACCEPT_ENCODING");
+    $useragent = getEnv("HTTP_USER_AGENT");
+    $method = trim(getEnv("REQUEST_METHOD"));
+    $msie = preg_match("=msie=i", $useragent);
+    $gzip = preg_match("=gzip=i", $encoding);
+    if ($gzip && ($method != "POST" or !$msie)){
+      ob_start("ob_gzhandler");
+    }else{
+      ob_start();
+    }
+  }
+  compressed_output();
+  if ((strlen($_POST["loginname"])) and (strlen($_POST["loginpass"]))) {
+    setcookie("ftploginname",$_POST["loginname"],time()+31536000,'/');$ftploginname=$_POST["loginname"];
+    setcookie("ftploginpass",$_POST["loginpass"],time()+31536000,'/');$ftploginpass=$_POST["loginpass"];
+  }else{ $ftploginname=$_COOKIE["ftploginname"];$ftploginpass=$_COOKIE["ftploginpass"]; }
 
-function compressed_output()
-{
-$encoding = getEnv("HTTP_ACCEPT_ENCODING");
-$useragent = getEnv("HTTP_USER_AGENT");
-$method = trim(getEnv("REQUEST_METHOD"));
-$msie = preg_match("=msie=i", $useragent);
-$gzip = preg_match("=gzip=i", $encoding);
+  $zugang=0;
+  if(($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) { $zugang=1; }
 
-if ($gzip && ($method != "POST" or !$msie))
-{
-ob_start("ob_gzhandler");
-}
-else
-{
-ob_start();
-}
-}
-
-compressed_output();
-
-if ((strlen($_POST["loginname"])) and (strlen($_POST["loginpass"]))) {
-setcookie("ftploginname",$_POST["loginname"],time()+31536000,'/');$ftploginname=$_POST["loginname"];
-setcookie("ftploginpass",$_POST["loginpass"],time()+31536000,'/');$ftploginpass=$_POST["loginpass"];
-} else { $ftploginname=$_COOKIE["ftploginname"];$ftploginpass=$_COOKIE["ftploginpass"]; }
-
-
-$zugang=0;
-if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) { $zugang=1; }
-
-if ($zugang==1) {
-?>
+  if ($zugang==1) {
+    ?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -120,79 +111,68 @@ if ($zugang==1) {
 <meta name="keywords" content=" ">
 <META HTTP-EQUIV="imagetoolbar" CONTENT="no">
 <style type="text/css">
-BODY,P,TD
-{
-        font-family:                Verdana;
-        font-size:                10px;
-         color:                    #ffffff;
-
-  scrollbar-DarkShadow-Color:#444444;
-  scrollbar-3dLight-Color:#444444;
-
-  scrollbar-Track-Color:#444444;
-  scrollbar-Face-Color:#555555;
-
-  scrollbar-Shadow-Color:#222222;
-  scrollbar-Highlight-Color:#888888;
-
-  scrollbar-Arrow-Color:#555555;
-
+BODY,P,TD{
+    font-family: Verdana;
+    font-size: 10px;
+    color: #ffffff;
+    scrollbar-DarkShadow-Color:#444444;
+    scrollbar-3dLight-Color:#444444;
+    scrollbar-Track-Color:#444444;
+    scrollbar-Face-Color:#555555;
+    scrollbar-Shadow-Color:#222222;
+    scrollbar-Highlight-Color:#888888;
+    scrollbar-Arrow-Color:#555555;
 }
 
-A
-{
-         color:                        #aaaaaa;
-       font-weight:                bold;
-        text-decoration:        underline;
-        }
-
-A:Hover
-{
-        font-weight:                bold;
-        text-decoration:        underline;
-        color:                        #ffffff;
+A{
+    color: #aaaaaa;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
-INPUT,SELECT
-{
-
-        background-color:       #555555;
-        color:       #ffffff;
-        BORDER-BOTTOM-COLOR: #222222;
-        BORDER-LEFT-COLOR: #888888;
-        BORDER-RIGHT-COLOR: #222222;
-        BORDER-TOP-COLOR: #888888;
-        Border-Style: solid;
-        Border-Width: 1px;
-        font-family:                Verdana;
-        font-size:                10px;
+A:Hover{
+    font-weight: bold;
+    text-decoration: underline;
+    color: #ffffff;
 }
-INPUT.eingabe
-{
 
-        background-color:       #555555;
-        color:       #ffffff;
-        BORDER-BOTTOM-COLOR: #888888;
-        BORDER-LEFT-COLOR: #222222;
-        BORDER-RIGHT-COLOR: #888888;
-        BORDER-TOP-COLOR: #222222;
-        Border-Style: solid;
-        Border-Width: 1px;
-        font-family:                Verdana;
-        font-size:                10px;
+INPUT,SELECT{
+    background-color: #555555;
+    color: #ffffff;
+    BORDER-BOTTOM-COLOR: #222222;
+    BORDER-LEFT-COLOR: #888888;
+    BORDER-RIGHT-COLOR: #222222;
+    BORDER-TOP-COLOR: #888888;
+    Border-Style: solid;
+    Border-Width: 1px;
+    font-family: Verdana;
+    font-size: 10px;
 }
-TEXTAREA
-{
-        background-color:       #555555;
-        color:       #ffffff;
-        BORDER-BOTTOM-COLOR: #888888;
-        BORDER-LEFT-COLOR: #222222;
-        BORDER-RIGHT-COLOR: #888888;
-        BORDER-TOP-COLOR: #222222;
-        Border-Style: solid;
-        Border-Width: 1px;
-        font-family:                Verdana;
-        font-size:                10px;
+
+INPUT.eingabe{
+    background-color: #555555;
+    color: #ffffff;
+    BORDER-BOTTOM-COLOR: #888888;
+    BORDER-LEFT-COLOR: #222222;
+    BORDER-RIGHT-COLOR: #888888;
+    BORDER-TOP-COLOR: #222222;
+    Border-Style: solid;
+    Border-Width: 1px;
+    font-family: Verdana;
+    font-size: 10px;
+}
+
+TEXTAREA{
+    background-color: #555555;
+    color: #ffffff;
+    BORDER-BOTTOM-COLOR: #888888;
+    BORDER-LEFT-COLOR: #222222;
+    BORDER-RIGHT-COLOR: #888888;
+    BORDER-TOP-COLOR: #222222;
+    Border-Style: solid;
+    Border-Width: 1px;
+    font-family: Verdana;
+    font-size: 10px;
 }
 </style>
 </head>
@@ -289,4 +269,5 @@ function check() {
 </table></center>
 </body>
 </html>
-<?php } ?>
+<?php
+} 

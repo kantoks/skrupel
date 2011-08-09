@@ -4,7 +4,7 @@ include ("../lang/".$language."/lang.admin.allgemein_beta.php");
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
-          
+
         $zeiger = @mysql_query("SELECT * FROM $skrupel_info");
         $array = @mysql_fetch_array($zeiger);
         $spiel_chat=$array["chat"];
@@ -130,12 +130,12 @@ if ($_GET["fu"]==1) {
 if ($_GET["fu"]==2) {
     include ("inc.header.php");
     if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
-        
+
         $chat=$_POST["chat"];
         $anleitung=$_POST["anleitung"];
         $forum=$_POST["forum"];
         $forum_url=$_POST["forum_url"];
-        
+
         $zeiger = @mysql_query("update $skrupel_info set chat=$chat, anleitung=$anleitung, forum=$forum, forum_url='$forum_url'");
 
         ?>
@@ -161,4 +161,3 @@ if ($_GET["fu"]==2) {
         </center>
     <?php } include ("inc.footer.php");
 }
-?>

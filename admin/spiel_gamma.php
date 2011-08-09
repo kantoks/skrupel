@@ -21,7 +21,6 @@ while ($rasses=readdir($handle)) {
     if ((substr($rasses,0,1)<>'.') and (substr($rasses,0,7)<>'bilder_') and (substr($rasses,strlen($rasses)-4,4)<>'.txt')) {
 
         $daten = '';
-
         $file = $daten_verzeichnis.$rasses.'/daten.txt';
         $fp = @fopen($file,"r");
         if ($fp) {
@@ -33,7 +32,6 @@ while ($rasses=readdir($handle)) {
             }
             @fclose($fp);
         }
-
         $r_eigenschaften[$rasses]['name'] = trim($daten[0]);
     }
 }
@@ -67,7 +65,6 @@ if ($spielanzahl>=1) {
             $spieler_rasse_c[$j] = $array[$tmpstr.'_rasse'];
             $spieler_raus_c[$j]	 = $array[$tmpstr.'_raus'];
         }
-
 
         if ($lasttick>=1) {
             $datum = date('d.m.y G:i',$lasttick);
@@ -159,5 +156,3 @@ if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 }
 include ("inc.footer.php");
 }
-
-?>
