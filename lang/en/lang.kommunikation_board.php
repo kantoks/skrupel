@@ -17,7 +17,6 @@ $lang['kommunikationboard']['howtos']='HowTos';
 $lang['kommunikationboard']['howtostext']='Where do I have to click to found a colony? How do I get my fleets flying?';
 $lang['kommunikationboard']['zahlentechnisches']='1 x 1';
 $lang['kommunikationboard']['zahlentext']='How much are the engines and what are the differences. How do I recognize the perfect plant?';
-
 $lang['kommunikationboard']['themaeingeben']='enter topic, please';
 $lang['kommunikationboard']['beitrageingeben']='enter post, please';
 $lang['kommunikationboard']['uebersicht']='overview';

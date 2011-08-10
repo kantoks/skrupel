@@ -9,4 +9,3 @@ $lang['admin']['galaxiestrukturen'][6]='Kreisf&ouml;rmige Galaxie mit Schwarzem 
 $lang['admin']['galaxiestrukturen'][7]='Zweikreisgalaxie mit zentriertem Sternenhaufen';
 $lang['admin']['galaxiestrukturen'][8]='Kreisgalaxie mit zentriertem Sternenhaufen';
 $lang['admin']['galaxiestrukturen'][9]='Diamant';
-?>

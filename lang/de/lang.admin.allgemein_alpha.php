@@ -4,4 +4,3 @@ $lang['admin']['allgemein']['alpha']['offenbarung_text']='Eine Offenbarung ist e
 $lang['admin']['allgemein']['alpha']['gott']='Gott';
 $lang['admin']['allgemein']['alpha']['lauschegott']="::::::Lausche der Offenbarung Gottes<br><br>";
 $lang['admin']['allgemein']['alpha']['verkuendung']='Die Offenbarung wurde erfolgreich verk&uuml;ndet.';
-?>

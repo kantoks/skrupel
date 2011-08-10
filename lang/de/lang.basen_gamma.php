@@ -4,9 +4,7 @@ $lang['basengamma']['weiterzurkomponentenauswahl']='Weiter zur Komponentenauswah
 $lang['basengamma']['weiterzurzusatzmodulauswahl']='Weiter zur Zusatzmodulauswahl';
 $lang['basengamma']['keineruempfe']='In den Lagern der<br><br>Sternenbasis befinden<br><br>sich leider keine Schiffsr&uuml;mpfe.';
 $lang['basengamma']['schiffinwerft']='Es befindet sich bereits<br><br>ein Schiff in der Werft.';
-
 $lang['basengamma']['zusatzmodule']='Zusatzmodule';
-
 $lang['basengamma']['zusatzm'][0]='keins';
 $lang['basengamma']['zusatzm'][1]='Taktische KI';
 $lang['basengamma']['zusatzm'][2]='Antriebsverbesserung';
@@ -17,11 +15,9 @@ $lang['basengamma']['zusatzm'][6]='DrugunPhasenverzerrer';
 $lang['basengamma']['zusatzm'][7]='Destructautomatik';
 $lang['basengamma']['zusatzm'][8]='Aktives Defensesystem';
 $lang['basengamma']['zusatzm'][9]='Mimotische Schilde';
-
 $lang['basengamma']['nameneingeben']='Bitte Schiffsnamen angeben';
 $lang['basengamma']['komponentenfestlegen']='Schiffskomponenten festlegen';
 $lang['basengamma']['schiffsname']='Schiffsname';
-
 $lang['basengamma']['waffen'][0]='Laser';
 $lang['basengamma']['waffen'][1]='Phaser';
 $lang['basengamma']['waffen'][2]='Plasma Blaster';
@@ -44,7 +40,6 @@ $lang['basengamma']['waffen'][18]='Singularit&auml;tswerfer';
 $lang['basengamma']['waffen'][19]='Novabomben';
 $lang['basengamma']['werdenbenoetigt']='werden ben&ouml;tigt';
 $lang['basengamma']['wirdnichtbenoetigt']='wird nicht ben&ouml;tigt';
-
 $lang['basengamma']['antriebe'][0]='Sonnensegel';
 $lang['basengamma']['antriebe'][1]='Antigrav-Triebwerk';
 $lang['basengamma']['antriebe'][2]='Drugun-Umsetzer';
@@ -54,12 +49,9 @@ $lang['basengamma']['antriebe'][5]='Mikro-Grav';
 $lang['basengamma']['antriebe'][6]='Solarisplasmotan';
 $lang['basengamma']['antriebe'][7]='Psiongleitnetz';
 $lang['basengamma']['antriebe'][8]='Transwarp';
-
 $lang['basengamma']['schiffbauen']='Schiff bauen';
 $lang['basengamma']['baunichtmoeglich']='Bau nicht m&ouml;glich';
 $lang['basengamma']['auftragerflogreich']='Das Schiff wurde<br><br>erfolgreich in Auftrag gegeben';
-
 $lang['basengamma']['logbuch']='Logbuch';
 $lang['basengamma']['eintragsichern']='Eintrag sichern';
 $lang['basengamma']['logbucherfolgreich']='Das Logbuch wurde erfolgreich aktualisiert.';
-?>

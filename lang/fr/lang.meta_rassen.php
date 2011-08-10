@@ -35,7 +35,6 @@ $lang['metarassen']['grad']="{1} Grad";
 $lang['metarassen']['kt']="{1} KT";
 $lang['metarassen']['vh']="{1} %";
 $lang['metarassen']['tl']='(Techlevel {1})';
-
 $lang['metarassen']['orbs'][0]="Folgende spezielle Orbitalsysteme kann diese Rasse <b>zus&auml;tzlich</b> bauen.";
 $lang['metarassen']['orbs'][1]="Folgende allgemeine Orbitalsysteme kann diese Rasse <b>nicht</b> bauen.";
 

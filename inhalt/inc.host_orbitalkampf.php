@@ -6,11 +6,9 @@ if(count($sprachen) == 0) {
         include(LANGUAGEDIR.$sprache.'/lang.inc.host_orbitalkampf.php');
     }
 }
-
 $zeiger_temp = mysql_query("UPDATE $skrupel_planeten set sternenbasis_defense=0 where spiel=$spiel");
 $zeiger = mysql_query("SELECT * FROM $skrupel_sternenbasen where status=1 and spiel=$spiel order by id");
 $basenanzahl = mysql_num_rows($zeiger);
-
 if ($basenanzahl>=1) {
     for  ($i=0; $i<$basenanzahl;$i++) {
         $ok = mysql_data_seek($zeiger,$i);
@@ -21,16 +19,13 @@ if ($basenanzahl>=1) {
         $zeiger_temp = mysql_query("UPDATE $skrupel_planeten set sternenbasis_defense=$defense where id=$planetid");
     }
 }
-
 $zeiger_temp = mysql_query("UPDATE $skrupel_planeten set p_defense_gesamt=sternenbasis_defense+abwehr+100 where spiel=$spiel");
 $zeiger = mysql_query("SELECT * FROM $skrupel_schiffe where spiel=$spiel order by aggro desc");
 $schiffanzahl = mysql_num_rows($zeiger);
-
 if ($schiffanzahl>=1) {
     for  ($i=0; $i<$schiffanzahl;$i++) {
         $ok = mysql_data_seek($zeiger,$i);
         $array = mysql_fetch_array($zeiger);
-
         $shid=$array["id"];
         $besitzer=$array["besitzer"];
         $name=$array["name"];
@@ -63,9 +58,7 @@ if ($schiffanzahl>=1) {
         $techlevel=$array["techlevel"];
         $fertigkeiten=$array["fertigkeiten"];
         $zusatzmodul=$array["zusatzmodul"];
-
         if (($energetik_anzahl==0) and ($zusatzmodul==5)) { $energetik_stufe=1; }
-
         /////////beschaedigung der waffensysteme anfang
         if ($schaden>50) {
             $prozent = ($schaden-50)*2;
@@ -88,7 +81,6 @@ if ($schiffanzahl>=1) {
             }
         }
         /////////beschaedigung der waffensysteme ende
-
         if (($energetik_anzahl<10) and ($zusatzmodul==5)) { $energetik_anzahl++; }
         if(($zusatzmodul==1)and($erfahrung<5)){$erfahrung++;}
         $orbitalschild=intval(substr($fertigkeiten,56,1));
@@ -96,9 +88,7 @@ if ($schiffanzahl>=1) {
         $zeiger_temp = mysql_query("SELECT count(*) as gemeinsam FROM $skrupel_planeten where x_pos=$kox and y_pos=$koy and besitzer<>$besitzer and besitzer>=1 and spiel=$spiel");
         $array_temp = mysql_fetch_array($zeiger_temp);
         $gemeinsam=$array_temp["gemeinsam"];
-
         if ($orbitalschild==1) { $gemeinsam=0; }
-
         if ($gemeinsam>=1) {
             $zeiger2 = mysql_query("SELECT * FROM $skrupel_planeten where x_pos=$kox and y_pos=$koy and spiel=$spiel");
             $array2 = mysql_fetch_array($zeiger2);
@@ -120,7 +110,6 @@ if ($schiffanzahl>=1) {
             $osys_4=$array2["osys_4"];
             $osys_5=$array2["osys_5"];
             $osys_6=$array2["osys_6"];
-
             if (($beziehung[$besitzer][$p_besitzer]['status']!=3) and ($beziehung[$besitzer][$p_besitzer]['status']!=4) and ($beziehung[$besitzer][$p_besitzer]['status']!=5)) {
                 //Signaturscannerphalanx
                 if(($osys_1==18) or ($osys_2==18) or ($osys_3==18) or ($osys_4==18) or ($osys_5==18)or ($osys_6==18)){
@@ -181,7 +170,6 @@ if ($schiffanzahl>=1) {
                 $energetik_schaden=$strahlenschaden["$energetik_stufe"];
                 $projektile_schaden=$torpedoschaden["$projektile_stufe"];
                 $energetik_schaden_2=$strahlenschaden["$energetik_stufe_2"];
-
                 $aufzeichnung_energetik_1="";
                 $aufzeichnung_energetik_2="";
                 $aufzeichnung_projektile_1="";
@@ -192,20 +180,15 @@ if ($schiffanzahl>=1) {
                 $aufzeichnung_schild_2="";
                 $aufzeichnung_schaden_1="";
                 $aufzeichnung_schaden_2="";
-
                 $schaden_2=0;
-
                 while (($schaden<100) and ($schaden_2<$p_defense_gesamt) and (($p_abwehr>=1)||($p_sternenbasis==2))) {
-
                     for  ($r=1; $r<=10;$r++) {
                         //echo "<br><br>Phase $r<br><br>";
                         if  (($schaden<100) and ($schaden_2<$p_defense_gesamt)) {
-
                             if ($energetik_anzahl>=$r) {
                                 $aufzeichnung_energetik_1_zusatz=1;
                                 $schaden_2=$schaden_2+$energetik_schaden;
                             } else { $aufzeichnung_energetik_1_zusatz=0; }
-
                             if ($energetik_anzahl_2>=$r) {
                                 $aufzeichnung_energetik_2_zusatz=1;
                                 if ($schild>0) {
@@ -216,7 +199,6 @@ if ($schiffanzahl>=1) {
                                     //echo "Laser 2 trifft Rumpf 1, Rumpf 1 = $schaden<br>";
                                 }
                             } else { $aufzeichnung_energetik_2_zusatz=0; }
-
                             if (($projektile_anzahl>=$r) and ($projektile>=1)) {
                                 $projektile=$projektile-1;
                                 $zuzahl=mt_rand(1,100);
@@ -228,14 +210,11 @@ if ($schiffanzahl>=1) {
                                     $aufzeichnung_projektile_1_zusatz=2;
                                 }
                             }  else { $aufzeichnung_projektile_1_zusatz=0; }
-
                             $aufzeichnung_projektile_2_zusatz=0;
-
                             if ($hangar_anzahl>=$r) {
                                 $aufzeichnung_hangar_1_zusatz=1;
                                 $schaden_2=$schaden_2+4;
                             }  else { $aufzeichnung_hangar_1_zusatz=0; }
-
                             if ($hangar_anzahl_2>=$r) {
                                 $aufzeichnung_hangar_2_zusatz=1;
                                 if ($schild>0) {
@@ -250,21 +229,16 @@ if ($schiffanzahl>=1) {
                                 ($aufzeichnung_projektile_1_zusatz>=1) or ($aufzeichnung_projektile_2_zusatz>=1) or
                                 ($aufzeichnung_hangar_1_zusatz>=1) or ($aufzeichnung_hangar_2_zusatz>=1))
                             {
-
                                 $aufzeichnung_energetik_1=$aufzeichnung_energetik_1.$aufzeichnung_energetik_1_zusatz.":";
                                 $aufzeichnung_energetik_2=$aufzeichnung_energetik_2.$aufzeichnung_energetik_2_zusatz.":";
-
                                 $aufzeichnung_projektile_1=$aufzeichnung_projektile_1.$aufzeichnung_projektile_1_zusatz.":";
                                 $aufzeichnung_projektile_2=$aufzeichnung_projektile_2.$aufzeichnung_projektile_2_zusatz.":";
-
                                 $aufzeichnung_hangar_1=$aufzeichnung_hangar_1.$aufzeichnung_hangar_1_zusatz.":";
                                 $aufzeichnung_hangar_2=$aufzeichnung_hangar_2.$aufzeichnung_hangar_2_zusatz.":";
-
                                 if ($schild<0) { $schild=0; }
                                 $schild_2=0;
                                 if ($schaden>100) { $schaden=100; }
                                 if ($schaden_2>$p_defense_gesamt) { $schaden_2=$p_defense_gesamt; }
-
                                 $aufzeichnung_schild_1=$aufzeichnung_schild_1.round($schild).":";
                                 $aufzeichnung_schild_2=$aufzeichnung_schild_2.round($schild_2).":";
                                 $aufzeichnung_schaden_1=$aufzeichnung_schaden_1.round(100-$schaden).":";
@@ -282,10 +256,8 @@ if ($schiffanzahl>=1) {
                     $zeiger_temp = mysql_query("UPDATE $skrupel_schiffe set flug=0,warp=0,zielx=0,ziely=0,zielid=0 where (flug=3 or flug=4) and zielid=$shid");
                     $zeiger_temp = mysql_query("UPDATE $skrupel_planeten set p_defense_gesamt=p_defense_gesamt-$schaden_2 where id=$p_id and besitzer=$p_besitzer;");
                     $schiffevernichtet++;
-
                     neuigkeiten(2,"../daten/$volk/bilder_schiffe/$bild_gross",$besitzer,$lang['host'][$spielersprache[$besitzer]]['orbitalkampf'][0],array($name,$p_name));
                     neuigkeiten(1,"../bilder/planeten/$p_klasse"."_"."$p_bild.jpg",$p_besitzer,$lang['host'][$spielersprache[$p_besitzer]]['orbitalkampf'][1],array($p_name,$name));
-
                 }
                 if ((($schaden<100) and ($schaden_2>=$p_defense_gesamt)) or ($p_abwehr==0)) {
                     $zeiger_temp = mysql_query("UPDATE $skrupel_planeten set p_defense_gesamt=p_defense_gesamt-$schaden_2 where id=$p_id and besitzer=$p_besitzer;");
@@ -297,4 +269,3 @@ if ($schiffanzahl>=1) {
         }
     }
 }
-?>

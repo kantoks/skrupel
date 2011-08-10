@@ -4,7 +4,6 @@ if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.osys_spionage.php";
 include ($file);
 include("inc.header.php");
-
 $schiffdatei = false;
 $file='../daten/unknown/schiffe.txt';
 $fp = @fopen("$file","r");
@@ -30,7 +29,6 @@ if ($module[0] && $fp) {
         }
     }
 }
-
 if(!$schiffdatei) {
     ?>
     <body text="#000000" scroll="auto" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -49,7 +47,6 @@ if(!$schiffdatei) {
     include("inc.footer.php");
     die();
 }
-
 //spion bzw auswahl an spionen anzeigen
 if($_GET["fu"] == 1) {
     ?>
@@ -71,7 +68,6 @@ if($_GET["fu"] == 1) {
         $planet = @mysql_fetch_array($zeiger_planet);
         $zeiger_schiff = @mysql_query("SELECT id,name,klasse,volk,tarnfeld,bild_gross,ordner FROM $skrupel_schiffe where spiel=$spiel and besitzer=$spieler and volk='unknown' and klasseid=1 and s_x=".$planet['x_pos']." and s_y=".$planet['y_pos']);
         if(@mysql_num_rows($zeiger_schiff) == 0) {
-    
             $werft_frei=false;
             $werft_bau=false;
             $zeiger_starbase = @mysql_query("SELECT schiffbau_status,schiffbau_extra FROM $skrupel_sternenbasen where spiel=$spiel and besitzer=$spieler and status=1");
@@ -218,7 +214,6 @@ if($_GET["fu"] == 1) {
             <?php
         }
 }
-
 if($_GET["fu"] == 2) {
     ?>
     <body text="#000000" scroll="auto" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -232,7 +227,6 @@ if($_GET["fu"] == 2) {
                 return true;
             }
         </script>
-
         <center>
             <br>
             <table border="0" cellspacing="0" cellpadding="0">
@@ -270,17 +264,14 @@ if($_GET["fu"] == 2) {
         </script>
         <?php
 }
-
 if($_GET["fu"] == 3) {
     ?>
     <body text="#000000" scroll="auto" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
         $zeiger_planet = @mysql_query("SELECT id,cantox,besitzer,min1,min2,min3,x_pos,y_pos,sternenbasis,sternenbasis_id FROM $skrupel_planeten where besitzer=$spieler and id=".@intval($_GET['pid']));
         $planet = @mysql_fetch_array($zeiger_planet);
-
         $zeiger_schiff = @mysql_query("SELECT id FROM $skrupel_schiffe where spiel=$spiel and besitzer=$spieler and volk='unknown' and klasseid=1 and s_x=".$planet['x_pos']." and s_y=".$planet['y_pos']);
         if($zug_abgeschlossen==0 && @mysql_num_rows($zeiger_schiff) == 0) {
-
             $werft_frei=false;
             $werft_bau=false;
             $zeiger_starbase = @mysql_query("SELECT schiffbau_status,schiffbau_extra FROM $skrupel_sternenbasen where spiel=$spiel and besitzer=$spieler and status=1");
@@ -330,7 +321,6 @@ if($_GET["fu"] == 3) {
                     $min2 = $planet['min2'] - $spion_daten[$si]['min2'];
                     $min3 = $planet['min3'] - $spion_daten[$si]['min3'];
                     $zeiger_temp = @mysql_query("UPDATE $skrupel_planeten set cantox=$cantox,min1=$min1,min2=$min2,min3=$min3 where besitzer=$spieler and id=".$planet['id']);
-    
                     $zeiger_starbase = @mysql_query("SELECT id,x_pos,y_pos FROM $skrupel_sternenbasen where spiel=$spiel and besitzer=$spieler and status=1 and schiffbau_status=0");
                     $starbase_nearest = @mysql_fetch_array($zeiger_starbase);
                     $lichtjahre1 = (($planet['x_pos'] - $starbase_nearest['x_pos']) * ($planet['x_pos'] - $starbase_nearest['x_pos']) + ($planet['y_pos'] - $starbase_nearest['y_pos']) * ($planet['y_pos'] - $starbase_nearest['y_pos']));
@@ -341,7 +331,6 @@ if($_GET["fu"] == 3) {
                             $lichtjahre1 = $lichtjahre2;
                         }
                     }
-    
                     $schiffsname=$_POST['schiffsname'];
                     $schiffsname=str_replace("'"," ",$schiffsname);
                     $schiffsname=str_replace('"'," ",$schiffsname);
@@ -389,4 +378,3 @@ if($_GET["fu"] == 3) {
         }
 }
 include("inc.footer.php");
-?>

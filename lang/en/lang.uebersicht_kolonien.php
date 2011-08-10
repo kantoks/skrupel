@@ -17,7 +17,6 @@ $lang['uebersichtkolonien']['baxterium']='baxterium';
 $lang['uebersichtkolonien']['rennurbin']='rennurbin';
 $lang['uebersichtkolonien']['vomisaan']='vomisaan';
 $lang['uebersichtkolonien']['kt']='{1} KT';
-
 $lang['uebersichtkolonien']['raumwerft']='spaceyard';
 $lang['uebersichtkolonien']['kampfstation']='battlestation';
 $lang['uebersichtkolonien']['sternenbasis']='starbase';

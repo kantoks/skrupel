@@ -22,7 +22,6 @@ $lang['metarassen']['hangar']='Hangar';
 $lang['metarassen']['vomisaan']='Vomisaan';
 $lang['metarassen']['alle']='alle';
 $lang['metarassen']['keine']='keine';
-
 $lang['metarassen']['art'][1]='Humanoid';
 $lang['metarassen']['art'][2]='Energieform';
 $lang['metarassen']['art'][3]='Formlos';
@@ -30,15 +29,12 @@ $lang['metarassen']['art'][4]='Plasmanoid';
 $lang['metarassen']['art'][5]='Amphibisch';
 $lang['metarassen']['art'][6]="Parasit&auml;r";
 $lang['metarassen']['art'][7]="K&uuml;nstlich";
-
 $lang['metarassen']['grad']="{1} Grad";
 $lang['metarassen']['kt']="{1} KT";
 $lang['metarassen']['vh']="{1} %";
 $lang['metarassen']['tl']='(Techlevel {1})';
-
 $lang['metarassen']['orbs'][0]="Folgende spezielle Orbitalsysteme kann diese Rasse <b>zus&auml;tzlich</b> bauen.";
 $lang['metarassen']['orbs'][1]="Folgende allgemeine Orbitalsysteme kann diese Rasse <b>nicht</b> bauen.";
-
 $lang['metarassen']['cybernrittnikk']='<b>Cybernrittnikk</b><br>Diese einzigartige Technologie ist in der Lage pro Monat {1} Kolonisten zu produzieren. Es werden 220 KT Vorr�te hierf�r ben�tigt und verbraucht.';
 $lang['metarassen']['destabilisator']='<b>Destabilisator</b><br>Dieses Schiff verf�gt �ber einen Superlaser, mit welchem es mit einer Effektivit�t von {1}% einen Planeten destabilisieren und zum kollabieren bringen kann.';
 $lang['metarassen']['erweitertertransporter']='<b>Erweitertes Transportersystem</b><br>Mittels dieser Technologie ist es m�glich �ber den Transporterraum auf Planeten zuzugreifen, welche {1} Lichtjahre entfernt sind.';

@@ -9,4 +9,3 @@ $lang['meta']['voelker']='V&ouml;lker';
 $lang['meta']['dspezien']='d.Spezien';
 $lang['meta']['pklassen']='P-Klassen';
 $lang['meta']['anleitung']='Anleitung';
-?>

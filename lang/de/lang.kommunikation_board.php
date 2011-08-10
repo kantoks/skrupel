@@ -17,7 +17,6 @@ $lang['kommunikationboard']['howtos']='HowTos';
 $lang['kommunikationboard']['howtostext']='Wo klicken um eine Kolonie zu gr&uuml;nden? Wie krieg ich die Flotte zum fliegen?';
 $lang['kommunikationboard']['zahlentechnisches']='Zahlentechnisches';
 $lang['kommunikationboard']['zahlentext']='Was kosten die Antriebe und wo sind die Unterschiede. Wie erkenne ich den perfekten Planeten?';
-
 $lang['kommunikationboard']['themaeingeben']='Bitte ein Thema eingeben';
 $lang['kommunikationboard']['beitrageingeben']='Bitte einen Beitrag eingeben';
 $lang['kommunikationboard']['uebersicht']='&Uuml;bersicht';
@@ -30,5 +29,3 @@ $lang['kommunikationboard']['icon']='Icon';
 $lang['kommunikationboard']['beitrag']='Beitrag';
 $lang['kommunikationboard']['abschicken']='Abschicken';
 $lang['kommunikationboard']['verfasser']='Verfasser';
-
-?>

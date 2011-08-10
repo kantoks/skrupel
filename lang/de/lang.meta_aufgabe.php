@@ -6,4 +6,3 @@ $lang['metaaufgabe']['trittein']='Bei Best&auml;tigung tritt Folgendes sofort ei
 $lang['metaaufgabe']['folgen']='- eigene Fabriken, Minen(vor Runde 50) und Abwehranlagen verschwinden<br>- Sternenbasen verschwinden(vor Runde 50)<br>- Schiffe verschwinden<br>- eigene Planeten werden herrenlos<br>- eigenes Volk verschwindet vollst&auml;ndig';
 $lang['metaaufgabe']['loggtaus']='Danach loggt das System automatisch aus und bei einem erneuten<br>Einloggen in diese Runde ist die Beeinflussung nicht mehr m&ouml;glich, nur noch das Beobachten.';
 $lang['metaaufgabe']['reorganisiert']='Einen Moment Geduld bitte.<br><br>Die Galaxie reorganisiert sich.';
-?>

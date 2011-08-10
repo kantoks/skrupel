@@ -4,6 +4,5 @@ $lang['uebersichtimperien']['ueberleben']='<center><b>Survive</b></center><br>Tr
 $lang['uebersichtimperien']['todfeind']='<center><b>Deadly Enemy</b></center><br>Jeder Spieler hat einen anderen als Todfeind, diesen gilt es zu vernichten.<br><br>Dein Todfeind ist {1}';
 $lang['uebersichtimperien']['spice']='<center><b>Spice</b></center><br>Vomisaan ist zum wichtigsten aller Elemente geworden. Dieses gilt es ausserhalb der Umlaufbahnen in Schiffen zu sichern. <b>{1}</b> KT müssen erfolgreichg gelagert werden. <br><br>Zur Zeit lagert dein Imperium <b>{2}</b> KT Vomisaan.';
 $lang['uebersichtimperien']['teamtodfeind']='<center><b>TeamTodfeind</b></center><br>Jeder Spieler befindet sich mit einem weiteren in einer festen Allianz. Dieses Team hat 2 Todfeinde, welche nicht notwendigerweise auch in einem Team sein müssen. Einen dieser Todfeinde gilt es zu vernichten.<br><br>Die Todfeinde deines Teams sind {1} und {2}.';
-
 $lang['uebersichtimperien']['umbenennen']='rename';
 $lang['uebersichtimperien']['edit']='edit';

@@ -2,12 +2,9 @@
 $lang['planetenbeta']['population']='Population';
 $lang['planetenbeta']['abgaben']='Abgaben';
 $lang['planetenbeta']['alleine']='Wir sind die einzige dominante Spezies<br><br>auf diesem Planeten';
-
 $lang['planetenbeta']['logbuch']='Logbuch';
 $lang['planetenbeta']['sichern']='Eintrag sichern';
-
 $lang['planetenbeta']['erfolgreichaktualisiert']='Das Logbuch wurde erfolgreich aktualisiert.';
-
 $lang['planetenbeta']['kol']='Kol';
 $lang['planetenbeta']['cx']='Cx';
 $lang['planetenbeta']['vor']='Vor';
@@ -25,4 +22,3 @@ $lang['planetenbeta']['klasse']='Klasse';
 $lang['planetenbeta']['mission']='Mission';
 $lang['planetenbeta']['maxwarp']='max Warp';
 $lang['planetenbeta']['keineschiffe']='Es befinden sich keine<br><br>eigenen Raumschiffe im Orbit.';
-?>

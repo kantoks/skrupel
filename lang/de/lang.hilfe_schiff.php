@@ -11,9 +11,7 @@ $lang['hilfe_schiff']['ren']='Rennurbin';
 $lang['hilfe_schiff']['fracht']='Fracht';
 $lang['hilfe_schiff']['hangar']='Hanger';
 $lang['hilfe_schiff']['vorm']='Vomisaan';
-
 $lang['hilfe_schiff']['kt']='{1} KT';
-
 $lang['hilfe_schiff']['cybernrittnikk']='<b>Cybernrittnikk</b><br>Diese einzigartige Technologie ist in der Lage pro Monat {1} Kolonisten zu produzieren. Es werden 220 KT Vorr&auml;te hierf&uuml;r ben&ouml;tigt und verbraucht.';
 $lang['hilfe_schiff']['destabilisator']='<b>Destabilisator</b><br>Dieses Schiff verf&uuml;gt &uuml;ber einen Superlaser, mit welchem es mit einer Effektivit&auml;t von {1}% einen Planeten destabilisieren und zum kollabieren bringen kann.';
 $lang['hilfe_schiff']['erweitertertransporter']='<b>Erweitertes Transportersystem</b><br>Mittels dieser Technologie ist es m&ouml;glich &uuml;ber den Transporterraum auf Planeten zuzugreifen, welche {1} Lichtjahre entfernt sind.';
@@ -44,4 +42,3 @@ $lang['hilfe_schiff']['fuehrung']='<b>Kommunikationszentrale</b><br>Durch perfek
 $lang['hilfe_schiff']['wellengenerator']='<b>Gravitationswellen Generator</b><br>Generiert ein Abfangfeld, dass im Umkreis von 65 Lichtjahren Sprungtriebwerke und Fluchtman&ouml;ver feindlicher Schiffe unterbindet sowie s&auml;mtliche Schiffsbewegungen auf Warp 7 verlangsamt. Pro Monat ben&ouml;tigt das Feld {1} KT Vomisaan.';
 $lang['hilfe_schiff']['daempfer']='<b>Schildd&auml;mpfer</b><br>Mit aktiviertem D&auml;mpfer werden gegnerische Schilde im Raumkampf umgangen. Pro 100 Masse des jeweiligen Gegners werden {1} KT Rennurbin verbraucht.';
 $lang['hilfe_schiff']['kamikaze']='<b>Kamikaze Angriff</b><br>Ein verheerender Angriff bei dem das eigene Schiff zerst&ouml;rt wird. Mit einer Wahrscheinlichkeit von {1}% pro Kampfrunde gelingt der Angriff und verursacht dabei {2} Schaden.';
-?>

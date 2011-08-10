@@ -11,11 +11,9 @@ $lang['planeten']['rennurbin']='Rennurbin';
 $lang['planeten']['vorraete']='Vorr&auml;te';
 $lang['planeten']['pds']='Milit&auml;r';
 $lang['planeten']['vomisaan']='Vomisaan';
-
 $lang['planeten']['details']='Details';
 $lang['planeten']['globalesysteme']='Globale Systeme';
 $lang['planeten']['sternenbasis']='Sternenbasis';
 $lang['planeten']['logbuch']='Logbuch';
 $lang['planeten']['dominantespezies']='dominante Spezies';
 $lang['planeten']['schiffe']='Schiffe im Orbit';
-?>

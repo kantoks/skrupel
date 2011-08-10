@@ -21,4 +21,3 @@ $lang['metapklassen']['stickstoffsauerstoffargon']='Stickstoff, Sauerstoff, Argo
 $lang['metapklassen']['stickstoffsauerstoff']='Stickstoff, Sauerstoff';
 $lang['metapklassen']['vollstaendigwasserbedeckt']='vollst&auml;ndig wasserbedeckt';
 $lang['metapklassen']['unbekannt']='unbekannt';
-?>
