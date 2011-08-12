@@ -228,7 +228,7 @@ if ($_GET["fu"]==2) {
                                             $user_id=$array["id"];
                                             $spielerchatfarbe=$array["chatfarbe"];
                                             ?>
-                                            <option value="<?php echo $user_id; ?>" style="color:#<?php echo $spielerchatfarbe?>;" <?if($_POST["an"]==$user_id) echo "selected";?> ><?php echo str_replace('{1}',$nick,$lang['kommunikationch']['an'])?></option>
+                                            <option value="<?php echo $user_id; ?>" style="color:#<?php echo $spielerchatfarbe?>;" <?php if($_POST["an"]==$user_id) echo "selected";?> ><?php echo str_replace('{1}',$nick,$lang['kommunikationch']['an'])?></option>
                                             <?php
                                         }
                                         ?>

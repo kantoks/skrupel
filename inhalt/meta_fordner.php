@@ -196,7 +196,7 @@ if ($_GET["fu"]==4) {
         <script language=JavaScript>
             window.location='meta_fordner.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>';
         </script>
-        <?
+        <?php
     include ("inc.footer.php");
 }
 if ($_GET["fu"]==5) {
@@ -211,6 +211,6 @@ if ($_GET["fu"]==5) {
         <script language=JavaScript>
             window.location='meta_fordner.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>';
         </script>
-        <?
+        <?php
     include ("inc.footer.php");
 }

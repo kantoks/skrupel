@@ -483,6 +483,6 @@ if ($_GET["fu"]==1) {
             </table>
         </center>
         </div>
-        <?
+        <?php
     include ("inc.footer.php");
 }
