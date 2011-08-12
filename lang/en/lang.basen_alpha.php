@@ -7,18 +7,15 @@ $lang['basenalpha']['tl']='Tl';
 $lang['basenalpha']['cantox']='Cantox';
 $lang['basenalpha']['stufe']='level'; 
 $lang['basenalpha']['upgraden']='upgrade';
-
 $lang['basenalpha']['rumpferhoeht']='<center>The techlevel hulls<br><br>was upgraded successfully</center>'; 
 $lang['basenalpha']['antrieberhoeht']='<center>The techlevel engine<br><br>was upgraded successfully</center>';
 $lang['basenalpha']['energetikerhoeht']='<center>The techlevel energetics<br><br>was upgraded successfully</center>';
 $lang['basenalpha']['projektileerhoeht']='<center>The techlevel missiles<br><br>was upgraded successfully</center>';
-
 $lang['basenalpha']['abwehranlagen']='Defence systems';
 $lang['basenalpha']['inbetrieb']='in use';
 $lang['basenalpha']['maximal']='maximal';
 $lang['basenalpha']['anlagenbauen']='Build defence system(s)';
 $lang['basenalpha']['anlagengebaut']='defence system(s)<br><br>were constructed successfully';
-
 $lang['basenalpha']['raumfaltenichta']='Unfortunately, you cannot afford this spacial rift.'; 
 $lang['basenalpha']['raumfaltenichtb']='Cantox are required.';
 $lang['basenalpha']['zielobjekt']='Please select a destination.';

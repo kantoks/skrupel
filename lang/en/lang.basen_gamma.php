@@ -4,9 +4,7 @@ $lang['basengamma']['weiterzurkomponentenauswahl']='Weiter zur Komponentenauswah
 $lang['basengamma']['weiterzurzusatzmodulauswahl']='Weiter zur Zusatzmodulauswahl';
 $lang['basengamma']['keineruempfe']='There are no hulls<br><br>in the stock<br><br>of the starbase.';
 $lang['basengamma']['schiffinwerft']='There ist already a<br><br>ship in the spaceyard.';
-
 $lang['basengamma']['zusatzmodule']='extensions';
-
 $lang['basengamma']['zusatzm'][0]='no improvement';
 $lang['basengamma']['zusatzm'][1]='tactical AI';
 $lang['basengamma']['zusatzm'][2]='improved engines';
@@ -17,11 +15,9 @@ $lang['basengamma']['zusatzm'][6]='drugun phase distorter';
 $lang['basengamma']['zusatzm'][7]='Destructautomatik'; //was stand denn da im original bzw. was macht es? wenns eine selbstzerstörung ist, dann ist "self-destruct system" besser
 $lang['basengamma']['zusatzm'][8]='active defence system'; //vorschläge von Experten für mil. Ausdrücke? Sorcerer?
 $lang['basengamma']['zusatzm'][9]='mimotic shields';
-
 $lang['basengamma']['nameneingeben']='Please enter the name of the ship';
 $lang['basengamma']['komponentenfestlegen']='specify ship components';
 $lang['basengamma']['schiffsname']='name of ship';
-
 $lang['basengamma']['waffen'][0]='Laser';
 $lang['basengamma']['waffen'][1]='Phaser';
 $lang['basengamma']['waffen'][2]='Plasma Blaster';
@@ -44,7 +40,6 @@ $lang['basengamma']['waffen'][18]='singularity launcher';
 $lang['basengamma']['waffen'][19]='nova bombs';
 $lang['basengamma']['werdenbenoetigt']='are required';
 $lang['basengamma']['wirdnichtbenoetigt']='not required';
-
 $lang['basengamma']['antriebe'][0]='solar sail';
 $lang['basengamma']['antriebe'][1]='antigrav engine';
 $lang['basengamma']['antriebe'][2]='drugun converter';
@@ -54,11 +49,9 @@ $lang['basengamma']['antriebe'][5]='micrograv';
 $lang['basengamma']['antriebe'][6]='solarisplasmotan';
 $lang['basengamma']['antriebe'][7]='psion glide net';
 $lang['basengamma']['antriebe'][8]='transwarp';
-
 $lang['basengamma']['schiffbauen']='construct ship';
 $lang['basengamma']['baunichtmoeglich']='construction not possible';
 $lang['basengamma']['auftragerflogreich']='The ship was<br><br>successfully commissioned';
-
 $lang['basengamma']['logbuch']='logbook';
 $lang['basengamma']['eintragsichern']='save entry';
 $lang['basengamma']['logbucherfolgreich']='The logbook was updated successfully.';

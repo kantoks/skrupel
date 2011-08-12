@@ -3,7 +3,6 @@ include ("../inc.conf.php");
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.kommunikation_subfunk.php";
 include ($file);
-
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ?>
@@ -20,10 +19,8 @@ if ($_GET["fu"]==1) {
                 <td></td>
             </tr>
             <?php 
-
             $verhandlung = false;
             $begegnung = array();
-            
             if ($module[4]==1) {
                 $zeiger = @mysql_query("SELECT partei_b FROM $skrupel_begegnung where spiel=$spiel and partei_a=$spieler");
                 $polanzahl = @mysql_num_rows($zeiger);
@@ -32,16 +29,13 @@ if ($_GET["fu"]==1) {
                         $ok = @mysql_data_seek($zeiger,$i);
                         $array = @mysql_fetch_array($zeiger);
                         $partei_b=$array["partei_b"];
-                
                         $begegnung[$partei_b]=1;
                         $verhandlung = true;
                     }
                 }
             }
-
             if (($verhandlung == true) or ($module[4]==0)) {
                 ?> 
- 
                 <tr>
                     <td><form name="formular" method="post" action="kommunikation_subfunk.php?fu=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
                     <td>
@@ -120,9 +114,7 @@ if ($_GET["fu"]==1) {
     include ("inc.footer.php");
     @mysql_close();
 }
-
 if ($_GET["fu"]==2) {
-    
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
     $spielernummer=$_POST["empfang"];
@@ -134,7 +126,6 @@ if ($_GET["fu"]==2) {
     $ok = @mysql_data_seek($zeiger,0);
     $sprachtemp_2 = @mysql_fetch_array($zeiger);
     $spieler2sprache=($sprachtemp_2["sprache"]=='')?$language:$sprachtemp_2["sprache"];
-
     $file="../lang/".$spieler2sprache."/lang.kommunikation_subfunk_b.php";
     include($file);
     include ("inc.header.php");
@@ -142,7 +133,6 @@ if ($_GET["fu"]==2) {
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
     <?php
     $nachricht=$_POST["nachricht"];
-
     function iif ($expression,$returntrue,$returnfalse) {
         if ($expression==0) {
             return $returnfalse;
@@ -150,19 +140,16 @@ if ($_GET["fu"]==2) {
             return $returntrue;
         }
     }
-
     function checkurl($url, $hyperlink="") {
         $righturl = $url;
         if(!preg_match("![a-z]://!si", $url)) {
             $righturl = "http://$righturl";
         }
-        
         $righturl = preg_replace("/javascript:/si", "java script:", $righturl);
         $righturl = preg_replace("/about:/si", "about :", $righturl);
         $hyperlink = iif(trim($hyperlink)=="" or $hyperlink==$url, iif(strlen($url)>50,substr($url,0,35)."...".substr($url,-15),$url) ,$hyperlink);
         return "<a href=\"$righturl\" target=\"_blank\">$hyperlink</a>";
     }
-
     function checkmail($url, $hyperlink="") {
         $righturl = $url;
         if(!preg_match("!mailto:!si", $url)) {
@@ -172,24 +159,19 @@ if ($_GET["fu"]==2) {
         // remove threat of users including javascript in url
         return "<a href=\"$righturl\">$hyperlink</a>";
     }
-
     function checkfont($url, $hyperlink="") {
         $righturl = $url;
         return "<font face=\"$righturl\">$hyperlink</font>";
     }
-
     function checkcolor($url, $hyperlink="") {
         $righturl = $url;
         return "<font color=\"$righturl\">$hyperlink</font>";
     }
-
     function checksize($url, $hyperlink="") {
         $righturl = $url;
         return "<font size=\"$righturl\">$hyperlink</font>";
     }
-
     function parsetext($bbcode) {
-
         // kill any rogue html code
         $bbcode=str_replace("&","&amp;",$bbcode);
         $bbcode=str_replace("<","&lt;",$bbcode);
@@ -200,16 +182,13 @@ if ($_GET["fu"]==2) {
         $bbcode=str_replace("�","&Auml;",$bbcode);
         $bbcode=str_replace("�","&Ouml;",$bbcode);
         $bbcode=str_replace("�","&Uuml;",$bbcode);
-
         $bbcode=nl2br($bbcode);
-        
         $bbcode=eregi_replace(quotemeta("[b]"),quotemeta("<b>"),$bbcode);
         $bbcode=eregi_replace(quotemeta("[/b]"),quotemeta("</b>"),$bbcode);
         $bbcode=eregi_replace(quotemeta("[i]"),quotemeta("<i>"),$bbcode);
         $bbcode=eregi_replace(quotemeta("[/i]"),quotemeta("</i>"),$bbcode);
         $bbcode=eregi_replace(quotemeta("[u]"),quotemeta("<u>"),$bbcode);
         $bbcode=eregi_replace(quotemeta("[/u]"),quotemeta("</u>"),$bbcode);
-        
         $searcharray = array(
             "/(\[)(url)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/url\])/esiU",
             "/(\[)(url)(])(.*)(\[\/url\])/esiU",
@@ -222,50 +201,39 @@ if ($_GET["fu"]==2) {
             "checkmail('\\5', '\\7')",
             "checkmail('\\4')"
         );
-        
         $bbcode=preg_replace($searcharray, $replacearray, $bbcode);
-        
         $searcharray = array(
             "/(\[)(font)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/font\])/esiU",
             "/(\[)(font)(])(.*)(\[\/font\])/esiU",
             "/(\[)(color)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/color\])/esiU",
             "/(\[)(color)(])(.*)(\[\/color\])/esiU"
         );
-        
         $replacearray = array(
             "checkfont('\\5', '\\7')",
             "checkfont('\\4')",
             "checkcolor('\\5', '\\7')",
             "checkcolor('\\4')"
         );
-        
         $bbcode=preg_replace($searcharray, $replacearray, $bbcode);
-        
         $searcharray = array(
             "/(\[)(size)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/size\])/esiU",
             "/(\[)(size)(])(.*)(\[\/size\])/esiU" );
-        
         $replacearray = array(
             "checksize('\\5', '\\7')",
             "checksize('\\4')"
         );
-        
         $bbcode=preg_replace($searcharray, $replacearray, $bbcode);
-        
         $bbcode=eregi_replace("\\[img\\]([^\\[]*)\\[/img\\]","<img src=\"\\1\" border=0>",$bbcode);
         $bbcode2=$bbcode;
         return $bbcode2;
     }
-
     $nachricht=str_replace("'", "",$nachricht);
     $nachricht=str_replace("\\", "",$nachricht);
     $nachricht=str_replace("::::::", ":::::",$nachricht);
     $nachricht=parsetext($nachricht);
     $nachricht_org=$nachricht;
-        
     if ($_POST["empfang"]>=1) {
         $nachricht=str_replace(array('{1}','{2}','{3}'),array($spielerfarbe[$spieler], $spieler_name, $nachricht),$spieler."::::::".$lang['kommunikationsubfunk_b']['nachricht']);
-        
         $datum=time();
         $zeiger_temp = @mysql_query("insert into $skrupel_neuigkeiten (datum,art,icon,inhalt,spieler_id,spiel_id,sicher) values ('$datum',7,'../bilder/news/subfunk.jpg','$nachricht',".$_POST["empfang"].",$spiel,1);");
         ?>
@@ -321,45 +289,35 @@ if ($_GET["fu"]==3) {
     include ("inc.header.php");
     ?>
     <frameset framespacing="0" border="false" frameborder="0" rows="18,*,16">
-
         <frameset framespacing="0" border="false" frameborder="0" cols="114,*,114">
             <frame name="rahmen1" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=34&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
             <frame name="rahmen2" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=20&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
             <frame name="rahmen3" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=35&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
         </frameset>
-
         <frameset framespacing="0" border="false" frameborder="0" cols="18,*,18">
-
             <frameset framespacing="0" border="false" frameborder="0" rows="80,*,92">
                 <frame name="rahmen15" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=25&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
                 <frame name="rahmen16" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=26&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
                 <frame name="rahmen17" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=27&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
             </frameset>
-
             <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="kommunikation_subfunk.php?fu=4&emp=<?php echo $_GET["emp"]; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-
             <frameset framespacing="0" border="false" frameborder="0" rows="80,*,92">
                 <frame name="rahmen18" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=28&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
                 <frame name="rahmen19" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=29&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
                 <frame name="rahmen20" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=30&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
             </frameset>
-
         </frameset>
-
         <frameset framespacing="0" border="false" frameborder="0" cols="114,*,114">
             <frame name="rahmen6" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=36&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
             <frame name="rahmen7" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=23&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
             <frame name="rahmen8" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=37&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
         </frameset>
-
     </frameset>
-
     <noframes>
     <body>
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==4) {
     include ("../inc.conf.php");
     include ("inc.header.php");
@@ -401,10 +359,8 @@ if ($_GET["fu"]==4) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==5) {
     include ("inc.header.php");
-
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
     $spielernummer=$_POST["empfang"];
@@ -416,16 +372,12 @@ if ($_GET["fu"]==5) {
     $ok = @mysql_data_seek($zeiger,0);
     $sprachtemp_2 = @mysql_fetch_array($zeiger);
     $spieler2sprache=($sprachtemp_2["sprache"]=='')?$language:$sprachtemp_2["sprache"];
-
     $file="../lang/".$spieler2sprache."/lang.kommunikation_subfunk_b.php";
     include($file);
-
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
-        
         $nachricht=$_POST["nachricht"];
-        
         function iif ($expression,$returntrue,$returnfalse) {
             if ($expression==0) {
                 return $returnfalse;
@@ -433,19 +385,16 @@ if ($_GET["fu"]==5) {
                 return $returntrue;
             }
         }
-
         function checkurl($url, $hyperlink="") {
             $righturl = $url;
             if(!preg_match("![a-z]://!si", $url)) {
                 $righturl = "http://$righturl";
             }
-            
             $righturl = preg_replace("/javascript:/si", "java script:", $righturl);
             $righturl = preg_replace("/about:/si", "about :", $righturl);
             $hyperlink = iif(trim($hyperlink)=="" or $hyperlink==$url, iif(strlen($url)>50,substr($url,0,35)."...".substr($url,-15),$url) ,$hyperlink);
             return "<a href=\"$righturl\" target=\"_blank\">$hyperlink</a>";
         }
-
         function checkmail($url, $hyperlink="") {
             $righturl = $url;
             if(!preg_match("!mailto:!si", $url)) {
@@ -455,24 +404,19 @@ if ($_GET["fu"]==5) {
             // remove threat of users including javascript in url
             return "<a href=\"$righturl\">$hyperlink</a>";
         }
-        
         function checkfont($url, $hyperlink="") {
             $righturl = $url;
             return "<font face=\"$righturl\">$hyperlink</font>";
         }
-        
         function checkcolor($url, $hyperlink="") {
             $righturl = $url;
             return "<font color=\"$righturl\">$hyperlink</font>";
         }
-
         function checksize($url, $hyperlink="") {
             $righturl = $url;
             return "<font size=\"$righturl\">$hyperlink</font>";
         }
-        
         function parsetext($bbcode) {
-        
             // kill any rogue html code
             $bbcode=str_replace("&","&amp;",$bbcode);
             $bbcode=str_replace("<","&lt;",$bbcode);
@@ -483,75 +427,58 @@ if ($_GET["fu"]==5) {
             $bbcode=str_replace("�","&Auml;",$bbcode);
             $bbcode=str_replace("�","&Ouml;",$bbcode);
             $bbcode=str_replace("�","&Uuml;",$bbcode);
-        
             $bbcode=nl2br($bbcode);
-            
             $bbcode=eregi_replace(quotemeta("[b]"),quotemeta("<b>"),$bbcode);
             $bbcode=eregi_replace(quotemeta("[/b]"),quotemeta("</b>"),$bbcode);
             $bbcode=eregi_replace(quotemeta("[i]"),quotemeta("<i>"),$bbcode);
             $bbcode=eregi_replace(quotemeta("[/i]"),quotemeta("</i>"),$bbcode);
             $bbcode=eregi_replace(quotemeta("[u]"),quotemeta("<u>"),$bbcode);
             $bbcode=eregi_replace(quotemeta("[/u]"),quotemeta("</u>"),$bbcode);
-            
             $searcharray = array(
                 "/(\[)(url)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/url\])/esiU",
                 "/(\[)(url)(])(.*)(\[\/url\])/esiU",
                 "/(\[)(email)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/email\])/esiU",
                 "/(\[)(email)(])(.*)(\[\/email\])/esiU"
             );
-    
             $replacearray = array(
                 "checkurl('\\5', '\\7')",
                 "checkurl('\\4')",
                 "checkmail('\\5', '\\7')",
                 "checkmail('\\4')"
             );
-    
             $bbcode=preg_replace($searcharray, $replacearray, $bbcode);
-        
             $searcharray = array(
                 "/(\[)(font)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/font\])/esiU",
                 "/(\[)(font)(])(.*)(\[\/font\])/esiU",
                 "/(\[)(color)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/color\])/esiU",
                 "/(\[)(color)(])(.*)(\[\/color\])/esiU"
             );
-
             $replacearray = array(
                 "checkfont('\\5', '\\7')",
                 "checkfont('\\4')",
                 "checkcolor('\\5', '\\7')",
                 "checkcolor('\\4')"
             );
-
             $bbcode=preg_replace($searcharray, $replacearray, $bbcode);
-        
             $searcharray = array(
                 "/(\[)(size)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/size\])/esiU",
                 "/(\[)(size)(])(.*)(\[\/size\])/esiU" );
-
             $replacearray = array(
                 "checksize('\\5', '\\7')",
                 "checksize('\\4')"
             );
-
             $bbcode=preg_replace($searcharray, $replacearray, $bbcode);
-            
             $bbcode=eregi_replace("\\[img\\]([^\\[]*)\\[/img\\]","<img src=\"\\1\" border=0>",$bbcode);
             $bbcode2=$bbcode;
             return $bbcode2;
         }
-        
-        
         $nachricht=str_replace("'", "",$nachricht);
         $nachricht=str_replace("\\", "",$nachricht);
         $nachricht=str_replace("::::::", ":::::",$nachricht);
         $nachricht=parsetext($nachricht);
-        
         $nachricht=str_replace(array('{1}','{2}','{3}'),array($spielerfarbe[$spieler], $spieler_name, $nachricht),$spieler."::::::".$lang['kommunikationsubfunk_b']['nachricht']);
-        
         $datum=time();
         $zeiger_temp = @mysql_query("insert into $skrupel_neuigkeiten (datum,art,icon,inhalt,spieler_id,spiel_id,sicher) values ('$datum',7,'../bilder/news/subfunk.jpg','$nachricht',".$_GET["emp"].",$spiel,1);");
-        
         ?>
         <center>
             <table border="0" cellspacing="0" cellpadding="0" height="100%">
@@ -566,4 +493,3 @@ if ($_GET["fu"]==5) {
         <?php
     include ("inc.footer.php");
 }
-?>

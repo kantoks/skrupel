@@ -7,5 +7,3 @@ $lang['spielgamma']['listerunde'] = 'Runde';
 $lang['spielgamma']['listeletztertick'] = 'letzter Tick';
 $lang['spielgamma']['listeautozug'] = 'automatischer Tick';
 $lang['spielgamma']['listemitspieler'] = 'Mitspieler';
-
-?>

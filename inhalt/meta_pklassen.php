@@ -2,8 +2,6 @@
 include ("../inc.conf.php");
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 include ("../lang/".$_GET["sprache"]."/lang.meta_pklassen.php");
-
-
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ?>
@@ -485,7 +483,6 @@ if ($_GET["fu"]==1) {
             </table>
         </center>
         </div>
-        <?php
+        <?
     include ("inc.footer.php");
 }
-?>

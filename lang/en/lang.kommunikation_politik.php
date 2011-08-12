@@ -13,9 +13,7 @@ $lang['kommunikationpolitik']['icon'][5][0]='Allianz';
 $lang['kommunikationpolitik']['icon'][5][1]='Allianz endet n&auml;chsten Monat.';
 $lang['kommunikationpolitik']['icon'][5][2]='Allianz endet in {1} Monaten.';
 $lang['kommunikationpolitik']['slot_n']="Slot nicht belegt";
-
 $lang['kommunikationpolitik']['politik']='Politik';
-
 $lang['kommunikationpolitik']['handlung'][0]='Krieg erklären';
 $lang['kommunikationpolitik']['handlung'][1]='Kriegsende erbitten';
 $lang['kommunikationpolitik']['handlung'][2]='Handelsabkommen anbieten';
@@ -23,11 +21,9 @@ $lang['kommunikationpolitik']['handlung'][3]='Nichtangriffspakt anbieten';
 $lang['kommunikationpolitik']['handlung'][4]='V&ouml;lkerb&uuml;ndnis anbieten';
 $lang['kommunikationpolitik']['handlung'][5]='Allianz anbieten';
 $lang['kommunikationpolitik']['handlung'][6]='Abkommen beenden';
-
 $lang['kommunikationpolitik']['empfwaehlen']='Bitte Empfängervolk wählen';
 $lang['kommunikationpolitik']['erklaerunguebermitteln']='Erklärung &uuml;bermitteln';
 $lang['kommunikationpolitik']['allein']='Uns begegnete leider noch kein Volk';
-
 $lang['kommunikationpolitik']['keinebotschaft']='Es wurde keine Botschaft ausgewählt.';
 $lang['kommunikationpolitik']['keinvolk']='Es wurde kein Empfängervolk ausgewählt.';
 $lang['kommunikationpolitik']['bereitskrieg']='Es herrscht bereits Krieg mit dem Empfängervolk.';
@@ -48,7 +44,6 @@ $lang['kommunikationpolitik']['bereitsgebrochen']='Das Abkommen wurde bereits ge
 $lang['kommunikationpolitik']['handelendet']='Das Handelsabkommen wurde erfolgreich gebrochen<br><br>und endet in <b>3</b> Monaten';
 $lang['kommunikationpolitik']['nichtangriffendet']='Der Nichtangriffspakt wurde erfolgreich gebrochen<br><br>und endet in <b>6</b> Monaten.';
 $lang['kommunikationpolitik']['voelkerendet']='Das V&ouml;lkerb&uuml;ndnis wurde erfolgreich gebrochen<br><br>und endet in <b>9</b> Monaten.';
-
 $lang['kommunikationpolitik']['nichtbrechen']='Bei TeamTodfeind kann diese<br>Allianz nicht gebrochen werden.';
 $lang['kommunikationpolitik']['allianzendet']="Die Allianz wurde erfolgreich gebrochen<br>und endet in <b>12</b> Monaten.";
 $lang['kommunikationpolitik']['ingespraechen']="Wir befinden uns bereits mit dem Empf&auml;ngervolk in Gespr&auml;chen.";

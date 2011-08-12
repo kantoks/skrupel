@@ -6,18 +6,13 @@ include ('../inc.conf.php');
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 include ("../lang/".$_GET["sprache"]."/lang.zugende.php");
 include_once ('inc.hilfsfunktionen.php');
-
 $fuid = int_get('fu');
-
 //fu:1 Zugende Hauptmenu {{{
 if ($fuid==1) {
     include ("inc.header.php");
-
     $zeiger2 = @mysql_query("SELECT count(*) AS total FROM $skrupel_spiele WHERE (spieler_1=$spieler_id or spieler_2=$spieler_id or spieler_3=$spieler_id or spieler_4=$spieler_id or spieler_5=$spieler_id or spieler_6=$spieler_id or spieler_7=$spieler_id or spieler_8=$spieler_id or spieler_9=$spieler_id or spieler_10=$spieler_id) and id<>$spiel and phase=0");
     $array2 = @mysql_fetch_array($zeiger2);
-
     $weitere = $array2['total'];
-
     ?>
     <body text="#000000" bgcolor="#444444" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <center>
@@ -55,18 +50,12 @@ if ($fuid==1) {
 if ($fuid==2) {
     $conn = @mysql_connect($server.':'.$port,$login,$password);
     $db = @mysql_select_db($database,$conn);
-
     include ("inc.check.php");
-
     $zeiger = mysql_query("UPDATE $skrupel_user set uid='',bildpfad='' where id=$spieler_id;");
-
     $nachricht = $spieler_name.' '.$lang['zugende']['verlassen'];
     $aktuell = time();
-
     $zeiger = @mysql_query("INSERT INTO $skrupel_chat (spiel,datum,text,an,von,farbe) VALUES ($spiel,'$aktuell','$nachricht',0,'System','000000');");
-
     @mysql_close();
-
     if ($bildpfad=='../bilder') { $bildpfad='bilder'; }
     $backlink = "../index.php?pic_path=$bildpfad&sprache=".$_GET["sprache"];
     header ("Location: $backlink");
@@ -76,16 +65,12 @@ if ($fuid==2) {
 if ($fuid==3) {
     $conn = @mysql_connect($server.':'.$port,$login,$password);
     $db = @mysql_select_db($database,$conn);
-
     include ('inc.check.php');
-
     $spalte = "spieler_{$spieler}_zug";
     $spieler_zug_c[$spieler] = 1;
-
     @mysql_query("UPDATE $skrupel_spiele SET $spalte=1 WHERE sid='$sid';");
     $array = mysql_fetch_array(mysql_query("SELECT extend FROM $skrupel_info"));
     $spiel_extend  = $array['extend'];
-	
     if (@intval(substr($spiel_extend,1,1))==1) {
         //Wird nur bei installierter, aktiver KI ausgefuehrt. Es wird zunaechst ueberprueft, ob alle
         //menschlichen Spieler ihren Zug beendet haben, damit die KI ihren Zug berechnen kann. Ist dies
@@ -93,14 +78,11 @@ if ($fuid==3) {
         //den Zug des jeweiligen Spielers berechnet. 
         include("../extend/ki/ki_basis/zugendeKI.php");
     }
-    
     @mysql_close();
-    
     $fertig = 0;
     for($i=1; $i<=10; $i++) {
         if($spieler_zug_c[$i]==1) $fertig++;
     }    
-    
     if($fertig>=$spieleranzahl) {
         $backlink = "zugende.php?fu=6&uid=$uid&sid=$sid&sprache=".$_GET["sprache"];
     } else {
@@ -112,7 +94,6 @@ if ($fuid==3) {
 //fu:4 Nachricht Zug abgeschlossen {{{
 if ($fuid==4) {
     include ('inc.header.php');
-
     ?>
         <body text="#000000" bgcolor="#444444" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <center>
@@ -129,20 +110,16 @@ if ($fuid==4) {
 //fu:5 Zug berechnen {{{
 if ($fuid==5) {
     include ('inc.header.php');
-
     $fertig = 0;
     for($i=1; $i<=10; $i++) {
         if($spieler_zug_c[$i]==1) $fertig++;
     }
-
     if($fertig>=$spieleranzahl) {
         $lasttick = time();
         @mysql_query("UPDATE $skrupel_spiele SET lasttick='$lasttick',spieler_1_zug=0,spieler_2_zug=0,spieler_3_zug=0,spieler_4_zug=0,spieler_5_zug=0,spieler_6_zug=0,spieler_7_zug=0,spieler_8_zug=0,spieler_9_zug=0,spieler_10_zug=0 WHERE sid='$sid';");
-
         $main_verzeichnis = '../';
         include ('inc.host.php');
     }
-
     ?>
     <script language=JavaScript>
         function link(url) {
@@ -232,7 +209,6 @@ if ($fuid==7) {
                                     while ($array = @mysql_fetch_array($zeiger2)) {
                                         $spielneuid=$array["id"];
                                         $spielneuname=$array["name"];
-                            
                                         $farbe = '#444444';
                                         for($i=1; $i<=10; $i++) {
                                             $tmpstr = 'spieler_'.$i;
@@ -266,10 +242,8 @@ if ($fuid==7) {
 //fu:8 Galaxiesprung durchfuehren {{{
 if ($fuid==8) {
     include ("inc.header.php");
-
     $neuesspiel = int_post('neuesspiel');
     $zeiger2 = @mysql_query("SELECT id,sid FROM $skrupel_spiele WHERE id=$neuesspiel;");
-
     if (@mysql_num_rows($zeiger2)==1) {
         $array2 = @mysql_fetch_array($zeiger2);
         $sidneu = $array2['sid'];
@@ -307,20 +281,15 @@ if ($fuid==8) {
 if ($fuid==9) {
     $conn = @mysql_connect($server.':'.$port,$login,$password);
     $db = @mysql_select_db($database,$conn);
-
     include ('inc.check.php');
-
     $spalte = "spieler_{$spieler}_zug";
     $spieler_zug_c[$spieler] = 1;
-
     @mysql_query("UPDATE $skrupel_spiele SET $spalte=1 WHERE sid='$sid';");
     @mysql_close();
-
     $fertig = 0;
     for($i=1; $i<=10; $i++) {
         if($spieler_zug_c[$i]==1) $fertig++;
     }
-
     if($fertig>=$spieleranzahl) {
         $backlink = "zugende.php?fu=6&uid=$uid&sid=$sid&sprache=".$_GET["sprache"];
     } else {
@@ -329,4 +298,3 @@ if ($fuid==9) {
     header ("Location: $backlink");
 }
 //}}}
-?>

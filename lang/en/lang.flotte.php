@@ -13,16 +13,13 @@ $lang['flotte']['versuchterfeindkontakt']='attempted<br>enemy contact';
 $lang['flotte']['begleitschutz']='escort';
 $lang['flotte']['keineflotte']='You don`t have a fleet.';
 $lang['flotte']['ordnerleer']='There`s no ship in this directory.';
-
 $lang['flotte']['nochkursmodus']='You`re still in course-mode!';
-
 $lang['flotte']['crew']='crew ({1}/{2})';
 $lang['flotte']['lemin']='lemin ({1}/{2})';
 $lang['flotte']['schaden']='damage {1} %';
 $lang['flotte']['fracht']='Beladung ({1}/{2})';
 $lang['flotte']['erfahrungslevel']='level';
 $lang['flotte']['ordneruebersicht']='Ordnerübersicht';
-
 $lang['flotte']['kurs']='course';
 $lang['flotte']['spezialmission']='special mission';
 $lang['flotte']['scanning']='scanning';

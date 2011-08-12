@@ -3,12 +3,9 @@ include ("../inc.conf.php");
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.kommunikation_exch.php";
 include ($file);
-
-
 $uid=$_GET["uid"];
 $sid=$_GET["sid"];
 if ($_GET["fu"]==1) {
-
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
     if(!$_POST["scroll_lock"]){$_POST["scroll_lock"]=0;}
@@ -24,27 +21,22 @@ if ($_GET["fu"]==1) {
                 body {margin: 0px; border: 0px;}
                 #contentDiv {width: 100%; height: 100%;}
                 #contentFrame {width: 100%; height: 100%;}
-
                 body {
                     font: MessageBox;
                     font: Message-Box;
                     background: ThreeDFace;
                 }
-
                 body, html {
                  border: 1;
                 }
-
                 fieldset {
                     padding: 5px;
                     margin: 10px 5px;
                 }
-
                 td,input,select,textarea {
                     font: MessageBox;
                     font: Message-Box;
                 }
-
             </style>
             <script type="text/javascript">
                 function fixSize() {
@@ -76,7 +68,6 @@ if ($_GET["fu"]==1) {
     <?php
     @mysql_close();
 }
-
 if ($_GET["fu"]==2) {
     ?>
     <html>
@@ -86,7 +77,6 @@ if ($_GET["fu"]==2) {
             <META NAME="Author" CONTENT="Bernd Kantoks bernd@kantoks.de">
             <meta name="robots" content="index">
             <meta name="keywords" content=" ">
-            
             <frameset framespacing="0" border="false" frameborder="0" rows="*,24,74">
                 <frame name="chatinhalt" scrolling="yes" marginwidth="0" marginheight="0" noresize src="kommunikation_exch.php?fu=4&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self" style="border-color:#000000 buttonhighlight buttonhighlight #000000; border-style:solid;border-width:1;">
                 <frame name="formatierung" scrolling="no" marginwidth="0" marginheight="0" noresize src="kommunikation_exch.php?fu=6&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
@@ -98,17 +88,13 @@ if ($_GET["fu"]==2) {
     </html>
     <?php
 }
-
 if ($_GET["fu"]==3) {
-    
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
-
     $zeiger = @mysql_query("SELECT chatfarbe, id From $skrupel_user where uid='$uid'");
     $array = @mysql_fetch_array($zeiger);
     $spieler_chatfarbe = $array["chatfarbe"];
     $spieler_id = $array["id"];
-
     include ("inc.check.php");
     ?>
     <html>
@@ -122,13 +108,11 @@ if ($_GET["fu"]==3) {
                 body    {margin: 0px; border: 0px;}
                 #contentDiv {width: 100%; height: 100%;}
                 #contentFrame    {width: 100%; height: 100%;}
-                
                 body {
                     background: ThreeDFace;
                     font-family:Verdana;
                     font-size:10px;
                 }
-                
                 body, html {
                     border: 1;
                 }
@@ -147,7 +131,6 @@ if ($_GET["fu"]==3) {
             </style>
             <?php
             if (strlen($_POST["nachricht"])>=1) {
-
                 function iif ($expression,$returntrue,$returnfalse) {
                     if ($expression==0) {
                         return $returnfalse;
@@ -155,19 +138,16 @@ if ($_GET["fu"]==3) {
                         return $returntrue;
                     }
                 }
-
                 function checkurl($url, $hyperlink="") {
                     $righturl = $url;
                     if(!preg_match("![a-z]://!si", $url)) {
                         $righturl = "http://$righturl";
                     }
-
                     $righturl = preg_replace("/javascript:/si", "java script:", $righturl);
                     $righturl = preg_replace("/about:/si", "about :", $righturl);
                     $hyperlink = iif(trim($hyperlink)=="" or $hyperlink==$url, iif(strlen($url)>50,substr($url,0,35)."...".substr($url,-15),$url) ,$hyperlink);
                     return "<a href=\"$righturl\" target=\"_blank\">$hyperlink</a>";
                 }
-
                 function checkmail($url, $hyperlink="") {
                     $righturl = $url;
                     if(!preg_match("!mailto:!si", $url)) {
@@ -177,24 +157,19 @@ if ($_GET["fu"]==3) {
                     // remove threat of users including javascript in url
                     return "<a href=\"$righturl\">$hyperlink</a>";
                 }
-
                 function checkfont($url, $hyperlink="") {
                     $righturl = $url;
                     return "<font face=\"$righturl\">$hyperlink</font>";
                 }
-                
                 function checkcolor($url, $hyperlink="") {
                     $righturl = $url;
                     return "<font color=\"$righturl\">$hyperlink</font>";
                 }
-                
                 function checksize($url, $hyperlink="") {
                     $righturl = $url;
                     return "<font size=\"$righturl\">$hyperlink</font>";
                 }
-                
                 function parsetext($bbcode) {
-
                     // kill any rogue html code
                     $bbcode=str_replace("&","&amp;",$bbcode);
                     $bbcode=str_replace("<","&lt;",$bbcode);
@@ -205,64 +180,51 @@ if ($_GET["fu"]==3) {
                     $bbcode=str_replace("�","&Auml;",$bbcode);
                     $bbcode=str_replace("�","&Ouml;",$bbcode);
                     $bbcode=str_replace("�","&Uuml;",$bbcode);
-    
                     $bbcode=nl2br($bbcode);
-                    
                     $bbcode=eregi_replace(quotemeta("[b]"),quotemeta("<b>"),$bbcode);
                     $bbcode=eregi_replace(quotemeta("[/b]"),quotemeta("</b>"),$bbcode);
                     $bbcode=eregi_replace(quotemeta("[i]"),quotemeta("<i>"),$bbcode);
                     $bbcode=eregi_replace(quotemeta("[/i]"),quotemeta("</i>"),$bbcode);
                     $bbcode=eregi_replace(quotemeta("[u]"),quotemeta("<u>"),$bbcode);
                     $bbcode=eregi_replace(quotemeta("[/u]"),quotemeta("</u>"),$bbcode);
-                    
                     $searcharray = array(
                             "/(\[)(url)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/url\])/esiU",
                             "/(\[)(url)(])(.*)(\[\/url\])/esiU",
                             "/(\[)(email)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/email\])/esiU",
                             "/(\[)(email)(])(.*)(\[\/email\])/esiU"
                     );
-                    
                     $replacearray = array(
                             "checkurl('\\5', '\\7')",
                             "checkurl('\\4')",
                             "checkmail('\\5', '\\7')",
                             "checkmail('\\4')"
                     );
-                    
                     $bbcode=preg_replace($searcharray, $replacearray, $bbcode);
-                    
                     $searcharray = array(
                             "/(\[)(font)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/font\])/esiU",
                             "/(\[)(font)(])(.*)(\[\/font\])/esiU",
                             "/(\[)(color)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/color\])/esiU",
                             "/(\[)(color)(])(.*)(\[\/color\])/esiU"
                     );
-                    
                     $replacearray = array(
                             "checkfont('\\5', '\\7')",
                             "checkfont('\\4')",
                             "checkcolor('\\5', '\\7')",
                             "checkcolor('\\4')"
                     );
-                    
                     $bbcode=preg_replace($searcharray, $replacearray, $bbcode);
-                    
                     $searcharray = array(
                             "/(\[)(size)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/size\])/esiU",
                             "/(\[)(size)(])(.*)(\[\/size\])/esiU" );
-                    
                     $replacearray = array(
                             "checksize('\\5', '\\7')",
                             "checksize('\\4')"
                     );
-                    
                     $bbcode=preg_replace($searcharray, $replacearray, $bbcode);
-                    
                     $bbcode=eregi_replace("\\[img\\]([^\\[]*)\\[/img\\]","<img src=\"\\1\" border=0>",$bbcode);
                     $bbcode2=$bbcode;
                     return $bbcode2;
                 }
-
                 $aktuell=time();
                 $farbe=$spieler_chatfarbe;
                 $nachricht=$_POST["nachricht"];
@@ -271,26 +233,18 @@ if ($_GET["fu"]==3) {
                 $nachricht=str_replace("\\", "",$nachricht);
                 $nachricht=parsetext($nachricht);
                 $jetzt=date("H:i",$aktuell);
-    
-    
                 //$text="<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td valign=\"top\" style=\"color:$farbe;\"><nobr>$spieler_name&nbsp;</nobr></td><td valign=\"top\" style=\"color:#aaaaaa;\"><nobr>@ $jetzt&nbsp;</nobr></td><td valign=\"top\">$nachricht</td></tr></table>";
                 $an=$_POST["an"];
-                
                 $zeiger = @mysql_query("INSERT INTO $skrupel_chat (spiel,datum,text,an,von,farbe) values (1,'$aktuell','$nachricht','$an','$spieler_name','$farbe');");
             }
-    
             if (strlen($_GET["zeit"])>=1) { } else { $neuzeit=time();$first=1;}
-    
             ?>
             <script language="JavaScript">
                 function senden(e) {
                     parent.chatkonsole.document.formular.an.value=parent.formatierung.document.formular.an.value;
                 }
-                
                 var hotkey=13;
-                
                 if (document.layers) { document.captureEvents(Event.KEYPRESS); }
-                
                 function enter(e) {
                     if (document.layers){
                         if (e.which==hotkey) {
@@ -344,47 +298,35 @@ if ($_GET["fu"]==3) {
     <?php
     @mysql_close();
 }
-
 if ($_GET["fu"]==4) {
-
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
     $zeiger = @mysql_query("SELECT chatfarbe, id From $skrupel_user where uid='$uid'");
     $array = @mysql_fetch_array($zeiger);
     $spieler_chatfarbe = $array["chatfarbe"];
     $spieler_id = $array["id"];
-    
     include ("inc.check.php");
-
     $aktuell=time();
     $aktuell=$aktuell-86400;
-    
     $zeiger = @mysql_query("DELETE FROM $skrupel_chat where datum<$aktuell");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_chat where an=0 or an=$spieler_id order by datum desc ");
     $chatanzahl = @mysql_num_rows($zeiger);
-    
     if ($chatanzahl>=1) {
-    
         for ($i=$chatanzahl-1; $i>=0;$i--) {
             $ok = @mysql_data_seek($zeiger,$i);
-        
             $array = @mysql_fetch_array($zeiger);
             $textn=$array["text"];
-        
             $von=$array["von"];
             $vonfarbe=$array["farbe"];
             $an=$array["an"];
-    
             if ($an==$spieler_id) {
                 $textn="<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td><img src=\"../bilder/empty.gif\" width=\"1\" height=\"15\"></td><td valign=\"top\" style=\"color:#$vonfarbe;\"><nobr><b>[$von] ".$lang['kommunikationexch']['fluestert']."</b>&nbsp;</nobr></td><td valign=\"top\">$textn</td></tr></table>";
             } else {
                 $textn="<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td><img src=\"../bilder/empty.gif\" width=\"1\" height=\"15\"></td><td valign=\"top\" style=\"color:#$vonfarbe;\"><nobr>[$von]&nbsp;</nobr></td><td valign=\"top\">$textn</td></tr></table>";
             }
-
             $neutext=$neutext.$textn;
         }
     }
-
     ?>
     <html>
         <head>
@@ -399,16 +341,13 @@ if ($_GET["fu"]==4) {
                     font-size:11px;
                     background: buttonhighlight;
                 }
-                
                 body, html {
                     border: 1;
                 }
-                
                 fieldset {
                     padding:    5px;
                     margin:        10px 5px;
                 }
-                
                 td,input,select,textarea {
                     font-family:Verdana;
                     font-size:11px;
@@ -429,16 +368,13 @@ if ($_GET["fu"]==4) {
     <?php
     @mysql_close();
 }
-
 if ($_GET["fu"]==5) {
-
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
     $zeiger = @mysql_query("SELECT chatfarbe, id From $skrupel_user where uid='$uid'");
     $array = @mysql_fetch_array($zeiger);
     $spieler_chatfarbe = $array["chatfarbe"];
     $spieler_id = $array["id"];
-
     include ("inc.check.php");
     ?>
     <html>
@@ -452,27 +388,22 @@ if ($_GET["fu"]==5) {
                 body    {margin: 0px; border: 0px;}
                 #contentDiv {width: 100%; height: 100%;}
                 #contentFrame    {width: 100%; height: 100%;}
-                
                 body {
                     background: ThreeDFace;
                     font-family:Verdana;
                     font-size:10px;
                 }
-                
                 body, html {
                     border: 1;
                 }
-                
                 fieldset {
                     padding:    5px;
                     margin:        10px 5px;
                 }
-                
                 td,input,select {
                     font-family:Verdana;
                     font-size:10px;
                 }
-                
                 textarea {
                     font-family:Verdana;
                     font-size:12px;
@@ -485,19 +416,15 @@ if ($_GET["fu"]==5) {
                 $datumzeit=$_GET["zeit"];
                 $zeiger = @mysql_query("SELECT * FROM $skrupel_chat where datum>$datumzeit and (an=0 or an=$spieler_id) order by datum");
                 $chatanzahl = @mysql_num_rows($zeiger);
-                
                 if ($chatanzahl>=1) {
-                
                     for ($i=0; $i<$chatanzahl;$i++) {
                         $ok = @mysql_data_seek($zeiger,$i);
-                
                         $array = @mysql_fetch_array($zeiger);
                         $textn=$array["text"];
                         $datumn=$array["datum"];
                         $von=$array["von"];
                         $vonfarbe=$array["farbe"];
                         $an=$array["an"];
-
                         if ($an==$spieler_id) {
                             $textn="<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td><img src=\"../bilder/empty.gif\" width=\"1\" height=\"15\"></td><td valign=\"top\" style=\"color:#$vonfarbe;\"><nobr><b>[$von] ".$lang['kommunikationexch']['fluestert']."</b>&nbsp;</nobr></td><td valign=\"top\">$textn</td></tr></table>";
                         } else {
@@ -518,11 +445,9 @@ if ($_GET["fu"]==5) {
             <script language="JavaScript">
                 function startClock2() {
                     Interv = Interv - 1;
-                    
                     var now = new Date();
                     var dummystr = parseInt(now.getTime() / 1000);
                     delete now;
-                    
                     if (0 > Interv) {
                         Interv=4;
                         document.formular.submit();
@@ -553,17 +478,12 @@ if ($_GET["fu"]==5) {
     <?php
     @mysql_close();
 }
-
 if ($_GET["fu"]==6) {
-
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
-    
     include ("inc.check.php");
-    
     $zeiger = @mysql_query("SELECT * FROM $skrupel_user order by nick");
     $useranzahl = @mysql_num_rows($zeiger);
-
     ?>
     <html>
         <head>
@@ -576,27 +496,22 @@ if ($_GET["fu"]==6) {
                 body    {margin: 0px; border: 0px;}
                 #contentDiv {width: 100%; height: 100%;}
                 #contentFrame    {width: 100%; height: 100%;}
-                
                 body {
                     background: ThreeDFace;
                     font-family:Verdana;
                     font-size:10px;
                 }
-                
                 body, html {
                     border: 1;
                 }
-                
                 fieldset {
                     padding:    5px;
                     margin:        10px 5px;
                 }
-                
                 td,input,select {
                     font-family:Verdana;
                     font-size:10px;
                 }
-                
                 textarea {
                     font-family:Verdana;
                     font-size:12px;
@@ -608,17 +523,13 @@ if ($_GET["fu"]==6) {
                 link_text_prompt = "<?php echo $lang['kommunikationexch']['linktext']; ?>";
                 link_url_prompt = "<?php echo $lang['kommunikationexch']['linkurl']; ?>";
                 link_email_prompt = "<?php echo $lang['kommunikationexch']['email']; ?>";
-    
                 tags = new Array();
-    
                 function code(theform,vbcode,prompttext) {
                     inserttext = prompt(tag_prompt+"\n["+vbcode+"]xxx[/"+vbcode+"]",prompttext);
                         if ((inserttext != null) && (inserttext != ""))
                         parent.chatkonsole.document.formular.nachricht.value += "["+vbcode+"]"+inserttext+"[/"+vbcode+"] ";
                         parent.chatkonsole.document.formular.nachricht.focus();
-                
                 }
-    
                 function namedlink(theform,thetype) {
                     linktext = prompt(link_text_prompt,"");
                         var prompttext;
@@ -639,8 +550,6 @@ if ($_GET["fu"]==6) {
                         }
                     parent.chatkonsole.document.formular.nachricht.focus();
                 }
-    
-    
                 function smilie(thesmilie) {
                     parent.chatkonsole.document.formular.nachricht.value += thesmilie;
                     parent.chatkonsole.document.formular.nachricht.focus();
@@ -665,7 +574,7 @@ if ($_GET["fu"]==6) {
                                 $user_id=$array["id"];
                                 $spielerchatfarbe=$array["chatfarbe"];
                                 ?>
-                                <option value="<?php echo $user_id; ?>" style="background-color:#<?php echo $spielerchatfarbe?>;color:#000000" <?php if($_POST["an"]==$user_id) echo "selected";?> ><?php echo $nick?></option>
+                                <option value="<?php echo $user_id; ?>" style="background-color:#<?php echo $spielerchatfarbe?>;color:#000000" <?if($_POST["an"]==$user_id) echo "selected";?> ><?php echo $nick?></option>
                                 <?php
                             }
                             ?>
@@ -695,12 +604,9 @@ if ($_GET["fu"]==6) {
     </html>
     <?php @mysql_close();
 }
-
 if ($_GET["fu"]==7) {
-
 ?>
 <html>
-
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <title>Skrupel Chat</title>
@@ -708,17 +614,14 @@ if ($_GET["fu"]==7) {
 <meta name="robots" content="index">
 <meta name="keywords" content=" ">
 <style type="text/css">
-
 body    {margin: 0px; border: 0px;}
 #contentDiv {width: 100%; height: 100%;}
 #contentFrame    {width: 100%; height: 100%;}
-
 body {
  background: ThreeDFace;
  font-family:Verdana;
  font-size:10px;
 }
-
 body, html {
  border: 1;
 }
@@ -733,10 +636,7 @@ td,input,select {
 textarea {
  font-family:Verdana;
  font-size:12px;
-
 }
-
-
 </style>
 </head>
 <body scroll="no" style="background: buttonface;" topmargin="0" leftmargin="0" rightmargin="0" marginwidth="0" marginheight="0">
@@ -745,4 +645,5 @@ textarea {
 </script>
 </body>
 </html>
-<?php } ?>
+<?php
+}

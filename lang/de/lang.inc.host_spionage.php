@@ -3,14 +3,11 @@ $lang['host']['de']['spionage']['energetik'] = array("","Laser","Phaser","Plasma
 $lang['host']['de']['spionage']['projektile'] = array ("","Fusionsraketen","Photonentorpedos","Transformkanone","Gammabomben","Fissionstorpedos","Mun-Katapult","Quantentorpedos","Micromitgesch&uuml;tz","Singularit&auml;tswerfer","Novabomben");
 $lang['host']['de']['spionage']['antriebsnamen'] = array("","Sonnensegel","Antigrav-Triebwerk","Drugun-Umsetzer","Lineartriebwerk","Tachion-Flux","Mikro-Grav","Solarisplasmotan","Psiongleitnetz","Transwarp");
 $lang['host']['de']['spionage']['keine'] = 'keine';
-
 $lang['host']['de']['spionage'][0] = "Der Kontakt zu unserem Spion {1} ging aufgrund des Verlustes seiner Heimatbasis {2} verloren.<br>Er gilt als in den Weiten des Universums verschollen.";
 $lang['host']['de']['spionage'][1] = "Unser Spion {1} konnte den feindlichen Spion {2} gezielt t&auml;uschen und seinen aktuellen Auftrag ({3}) verhindern.";
 $lang['host']['de']['spionage'][2] = "Der feindliche Spion {1} hat unseren Spion {2} in die Irre gef&uuml;hrt und seinen Auftrag ({3}) vereitelt, wir vermuten ihn in Sektor {4}."; 
 $lang['host']['de']['spionage'][3] = "Unser Spion {1} hat vergeblich versucht den feindlichen Spion {2} zu t&auml;uschen.";
-
 $lang['host']['de']['spionage'][99] = "Der feindliche Spion {1} war nicht in der Lage unseren Spion {2} zu t&auml;uschen, wir vermuten ihn in Sektor {3}.";
-
 $lang['host']['de']['spionage'][4] = "Unser Spion {1} war erfolgreich, konnte aber leider keine feindliche Subraumnachrichten finden";
 $lang['host']['de']['spionage'][5] = "Unser Spion {1} war erfolgreich, und konnte folgende feindliche Subraumnachrichten abfangen:";
 $lang['host']['de']['spionage'][6] = "Der feindliche Spion {1} hat unsere geheimen Subraumnachrichten abgeh&ouml;rt";
@@ -66,4 +63,3 @@ $lang['host']['de']['spionage'][55] = "Der feindliche Spion {1} hat unser Schiff
 $lang['host']['de']['spionage'][56] = ", wir vermuten ihn in Sektor {1}.";
 $lang['host']['de']['spionage'][57] = "Unser Spion {1} hat bei seinem aktuellen Auftrag ({2}) versagt.";
 $lang['host']['de']['spionage'][58] = "Unser Spion {1} konnte seinen Auftrag ({2}) nicht durchf&uuml;hren da unser Abkommen dies nicht erlaubt.";
-?>

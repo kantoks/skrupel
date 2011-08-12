@@ -3,11 +3,9 @@ include ("../inc.conf.php");
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.flotte_alpha.php";
 include ($file);
-
 $shid=$_GET["shid"];
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT fracht_min2,kox,koy,flug,warp,zielx,ziely,zielid,antrieb,mission,masse_gesamt,lemin FROM $skrupel_schiffe where id=$shid");
     $array = @mysql_fetch_array($zeiger);
     $shipx=$array["kox"];
@@ -22,7 +20,6 @@ if ($_GET["fu"]==1) {
     $mission=$array["mission"];
     $masse_gesamt=$array["masse_gesamt"];
     $lemin=$array["lemin"];
-
     if ($antrieb==0) {
         ?>
         <body text="#000000" scroll="auto" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -33,7 +30,6 @@ if ($_GET["fu"]==1) {
         ?>
         <body text="#000000" scroll="auto" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="rechnen();">
         <?php
-
         if ($antrieb==1) { $verbrauchpromonat = array ("0","0","0","0","0","0","0","0","0","0"); 
         }elseif ($antrieb==2) { $verbrauchpromonat = array ("0","100","107.5","300","400","500","600","700","800","900"); 
         }elseif ($antrieb==3) { $verbrauchpromonat = array ("0","100","106.25","107.78","337.5","500","600","700","800","900");
@@ -43,9 +39,7 @@ if ($_GET["fu"]==1) {
         }elseif ($antrieb==7) { $verbrauchpromonat = array ("0","100","103.75","104.44","106.25","104","103.69","108.16","303.91","529.63");
         }elseif ($antrieb==8) { $verbrauchpromonat = array ("0","100","100","100","100","100","100","102.04","109.38","529.63");
         }elseif ($antrieb==9) { $verbrauchpromonat = array ("0","100","100","100","100","100","100","100","100","100"); }
-
         if ($flug==0) {
-
             $zielxy="- / -";
             $zielname="-";
             $zielid=0;
@@ -54,120 +48,87 @@ if ($_GET["fu"]==1) {
             $warpfaktor=$antrieb;
             $zeit="-";
             $verbrauch="0";
-
         }elseif ($flug==1) {
-
             $zielxy="$zielx / $ziely";
             $zielname=$lang['flottealpha']['freierraum'];
-
             $zielid=0;
-
             $startx=$shipx;
             $starty=$shipy;
             $tempx=$zielx;
             $tempy=$ziely;
-
             $lichtjahre=(round((sqrt(($startx-$tempx)*($startx-$tempx)+($starty-$tempy)*($starty-$tempy)))*100))/100;
             $zeit=round(($lichtjahre / ($warp*$warp)) + 0.5);
             $lichtjahref=$lichtjahre;
             $lichtjahre="$lichtjahre ".$lang['flottealpha']['lichtjahre'];
             $zeittemp=$zeit;
-
             if ($zeit==1) { $zeit="1 ".$lang['flottealpha']['monat']; } else { $zeit="$zeit ".$lang['flottealpha']['monate']; }
-
             $warpfaktor=$warp;
             $verbrauch=$verbrauchpromonat[$warp];
             $verbrauch=round($lichtjahref*$verbrauch*$masse_gesamt/100000);
-
             if ($verbrauch<$zeittemp) { $verbrauch=$zeittemp; }
             if ($verbrauchpromonat[$warp]==0) { $verbrauch=0; }
-
         }elseif ($flug==2) {
-
             $zeiger_temp = @mysql_query("SELECT id,name FROM $skrupel_planeten where id=$zielid");
             $array_temp = @mysql_fetch_array($zeiger_temp);
             $planeten_name=$array_temp["name"];
             $zielname=$planeten_name;
-
             $zielxy="$zielx / $ziely";
-
             $startx=$shipx;
             $starty=$shipy;
             $tempx=$zielx;
             $tempy=$ziely;
-
             $lichtjahre=(round((sqrt(($startx-$tempx)*($startx-$tempx)+($starty-$tempy)*($starty-$tempy)))*100))/100;
             $zeit=round(($lichtjahre / ($warp*$warp)) + 0.5);
             $lichtjahref=$lichtjahre;
             $lichtjahre="$lichtjahre ".$lang['flottealpha']['lichtjahre'];
             $zeittemp=$zeit;
             if ($zeit==1) { $zeit="1 ".$lang['flottealpha']['monat']; } else { $zeit="$zeit ".$lang['flottealpha']['monate']; }
-
             $warpfaktor=$warp;
             $verbrauch=$verbrauchpromonat[$warp];
             $verbrauch=round($lichtjahref*$verbrauch*$masse_gesamt/100000);
-
             if ($verbrauch<$zeittemp) { $verbrauch=$zeittemp; }
             if ($verbrauchpromonat[$warp]==0) { $verbrauch=0; }
-
         }elseif ($flug==3) {
-
             $zielname=$lang['flottealpha']['feindkontakt'];
-
             $zielxy="$zielx / $ziely";
-
             $startx=$shipx;
             $starty=$shipy;
             $tempx=$zielx;
             $tempy=$ziely;
-
             $lichtjahre=(round((sqrt(($startx-$tempx)*($startx-$tempx)+($starty-$tempy)*($starty-$tempy)))*100))/100;
             $zeit=round(($lichtjahre / ($warp*$warp)) + 0.5);
             $lichtjahref=$lichtjahre;
             $lichtjahre="$lichtjahre ".$lang['flottealpha']['lichtjahre'];
             $zeittemp=$zeit;
-    
             if ($zeit==1) { $zeit="1 ".$lang['flottealpha']['monat']; } else { $zeit="$zeit ".$lang['flottealpha']['monate']; }
-
             $warpfaktor=$warp;
             $verbrauch=$verbrauchpromonat[$warp];
             $verbrauch=round($lichtjahref*$verbrauch*$masse_gesamt/100000);
-
             if ($verbrauch<$zeittemp) { $verbrauch=$zeittemp; }
             if ($verbrauchpromonat[$warp]==0) { $verbrauch=0; }
-
         }elseif ($flug==4) {
-
             $zeiger_temp = @mysql_query("SELECT id,name FROM $skrupel_schiffe where id=$zielid");
             $array_temp = @mysql_fetch_array($zeiger_temp);
             $schiff_name=$array_temp["name"];
-
             $zielname=$schiff_name;
-
             $zielxy="$zielx / $ziely";
-
             $startx=$shipx;
             $starty=$shipy;
             $tempx=$zielx;
             $tempy=$ziely;
-
             $lichtjahre=(round((sqrt(($startx-$tempx)*($startx-$tempx)+($starty-$tempy)*($starty-$tempy)))*100))/100;
             $zeit=round(($lichtjahre / ($warp*$warp)) + 0.5);
             $lichtjahref=$lichtjahre;
             $lichtjahre="$lichtjahre ".$lang['flottealpha']['lichtjahre'];
             $zeittemp=$zeit;
-
             if ($zeit==1) { $zeit="1 ".$lang['flottealpha']['monat']; } else { $zeit="$zeit ".$lang['flottealpha']['monate']; }
-
             $warpfaktor=$warp;
             $verbrauch=$verbrauchpromonat[$warp];
             $verbrauch=round($lichtjahref*$verbrauch*$masse_gesamt/100000);
-            
             if ($verbrauch<$zeittemp) { $verbrauch=$zeittemp; }
             if ($verbrauchpromonat[$warp]==0) { $verbrauch=0; }
             if ($lichtjahref==0) {$zeit="-";$verbrauch="0";}
         }
-
         ?>
         <script language=JavaScript>
             function rechnen(e) {
@@ -200,22 +161,16 @@ if ($_GET["fu"]==1) {
                         var verbrauch = 0;
                     }
                 }
-
                 document.getElementById("formular").verbrauchf.value=verbrauchpromonat[warp];
-
                 var ant=document.getElementById('zeit');
                 if (monate==-1) ant.innerHTML='-';
                 if (monate==0) ant.innerHTML='<?php echo $lang['flottealpha']['unendlich']; ?>';
                 if (monate==1) ant.innerHTML='1 <?php echo $lang['flottealpha']['monat']; ?>';
                 if (monate>=2) ant.innerHTML=monate+' <?php echo $lang['flottealpha']['monate']; ?>';
-
                 var ant=document.getElementById('verbrauch');
                 ant.innerHTML=verbrauch+' KT';
-
             }
-
             function modicheck(e) {
-
                 if (parent.parent.mittelinksoben.document.globals.kursmodus.value==1) {
                     parent.parent.mittelinksoben.document.globals.kursmodus.value=0;
                     var ant=document.getElementById('modi');
@@ -228,17 +183,14 @@ if ($_GET["fu"]==1) {
                     }
                     ?>
                     parent.parent.mittemitte.document.getElementById("auswahlrand").style.visibility='hidden';
-
                     var ant=document.getElementById('zielxy');
                     ant.innerHTML='<?php echo $zielxy; ?>';
                     var ant=document.getElementById('lichtjahre');
                     ant.innerHTML='<?php echo $lichtjahre; ?>';
                     var ant=document.getElementById('zielname');
                     ant.innerHTML='<?php echo $zielname; ?>';
-
                     var ant=document.getElementById('zeit');
                     ant.innerHTML='<?php echo $zeit; ?>';
-
                     formularr = document.getElementById("formular");
                     formularr.lichtjahref.value=<?php echo $lichtjahref; ?>;
                     formularr.zielxf.value=<?php echo $zielx; ?>;
@@ -246,9 +198,7 @@ if ($_GET["fu"]==1) {
                     formularr.zielidf.value=<?php echo $zielid; ?>;
                     formularr.flug.value=<?php echo $flug; ?>;
                     formularr.warpfaktor.value=<?php echo $warpfaktor; ?>;
-
                 } else {
-                    
                     formularr = document.getElementById("formular");
                     parent.parent.mittelinksoben.document.globals.kursmodus.value=1;
                     parent.parent.mittelinksoben.document.globals.schiffid.value=<?php echo $shid; ?>;
@@ -376,13 +326,11 @@ if ($_GET["fu"]==1) {
         }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==2) {
     include ("inc.header.php");
     ?>
     <body text="#000000" scroll="no" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
-
         $warpfaktor=$_POST["warpfaktor"];
         $flug=$_POST["flug"];
         $lemin=$_POST["lemin"];
@@ -394,70 +342,50 @@ if ($_GET["fu"]==2) {
         $verbrauchf=$_POST["verbrauchf"];
         $benzin2=$_POST["benzin2"];
         $kursmodus=$_POST["pathfind"];
-
         if ($warpfaktor==0) {
-
             $flug=0;
             $warp=0;
             $zielx=0;
             $ziely=0;
             $zielid=0;
             $message=$lang['flottealpha']['warpo'];
-
         } else {
-
             if ($flug==0) {
-
                 $warp=0;
                 $zielx=0;
                 $ziely=0;
                 $zielid=0;
                 $message=$lang['flottealpha']['auftraggesichert'];
             } else {
-
                 $lichtjahre=sqrt(($koxf-$zielxf)*($koxf-$zielxf)+($koyf-$zielyf)*($koyf-$zielyf));
                 $zeit=round(($lichtjahre / ($warpfaktor*$warpfaktor)) + 0.5);
                 $verbrauch=round($lichtjahre*$verbrauchf*$masse_gesamt/100000);
-
                 if ($verbrauch<$zeit) { $verbrauch=$zeit; }
                 if ($verbrauchf==0) { $verbrauch=0; }
-
                 $lemin=$lemin-$verbrauch+$benzin2;
-
                 if ($lemin<0) {
-                    
                     $flug=0;
                     $warp=0;
                     $zielx=0;
                     $ziely=0;
                     $zielid=0;
                     $message=$lang['flottealpha']['verbrauchzuhoch'];
-                    
                 } else {
-                    
                     $warp=$warpfaktor;
                     $zielx=$zielxf;
                     $ziely=$zielyf;                                        
                     $message=$lang['flottealpha']['kursgesichert'];
-                                        
                     if ($flug==1) {
-
                         $zielid=0;
-                        
                     } else {
-
                         $zielid=$zielidf;
-
                     }
                 }
             }
         }
-
         //echo "update $skrupel_schiffe set flug=$flug,warp=$warp,zielx=$zielx,ziely=$ziely,zielid=$zielid where id=$shid and besitzer=$spieler";
-
         $zeiger = @mysql_query("update $skrupel_schiffe set flug=$flug,warp=$warp,plasmawarp=0,zielx=$zielx,ziely=$ziely,zielid=$zielid where id=$shid and besitzer=$spieler");
         $zeiger_temp = @mysql_query("UPDATE $skrupel_schiffe set routing_schritt=0,routing_status=0,routing_koord='',routing_id='',routing_mins='',routing_warp=0,routing_tank=0,routing_rohstoff=0 where id=$shid and besitzer=$spieler");
-
         //echo "update $skrupel_schiffe set flug=$flug,warp=$warp,zielx=$zielx,ziely=$ziely,zielid=$zielid,mission=$mission where id=$shid and besitzer=$spieler";
         ?>
         <br><br>
@@ -484,7 +412,6 @@ if ($_GET["fu"]==2) {
                     }
                     ?>
                     parent.parent.mittemitte.document.getElementById("auswahlrand_<?php echo $shid; ?>").style.visibility='hidden';
-
                     parent.ship.auftrag.style.color='#990000';
                     var ant=parent.ship.document.getElementById('auftrag');
                     ant.innerHTML='<?php echo $lang['flottealpha']['keinauftrag']; ?>';
@@ -499,7 +426,6 @@ if ($_GET["fu"]==2) {
                     }
                     ?>
                     parent.parent.mittemitte.document.getElementById("auswahlrand_<?php echo $shid; ?>").style.visibility='hidden';
-
                     parent.ship.auftrag.style.color='#009900';
                     var ant=parent.ship.document.getElementById('auftrag');
                     ant.innerHTML='<?php echo str_replace('{1}',$zielx."/".$ziely,$lang['flottealpha']['unterwegsnach']); ?>';
@@ -519,7 +445,6 @@ if ($_GET["fu"]==2) {
                     parent.parent.mittemitte.document.getElementById("auswahlrand_<?php echo $shid; ?>").style.left=parent.parent.mittemitte.document.getElementById("auswahlrand").style.left;
                     parent.parent.mittemitte.document.getElementById("auswahlrand_<?php echo $shid; ?>").style.top=parent.parent.mittemitte.document.getElementById("auswahlrand").style.top;
                     parent.parent.mittemitte.document.getElementById("auswahlrand_<?php echo $shid; ?>").style.visibility='visible';
-
                     parent.ship.auftrag.style.color='#009900';
                     var ant=parent.ship.document.getElementById('auftrag');
                     ant.innerHTML='<?php echo str_replace('{1}',$planeten_name,$lang['flottealpha']['unterwegsnach']); ?>';
@@ -536,7 +461,6 @@ if ($_GET["fu"]==2) {
                     parent.parent.mittemitte.document.getElementById("auswahlrand_<?php echo $shid; ?>").style.left=parent.parent.mittemitte.document.getElementById("auswahlrand").style.left;
                     parent.parent.mittemitte.document.getElementById("auswahlrand_<?php echo $shid; ?>").style.top=parent.parent.mittemitte.document.getElementById("auswahlrand").style.top;
                     parent.parent.mittemitte.document.getElementById("auswahlrand_<?php echo $shid; ?>").style.visibility='visible';
-
                     parent.ship.auftrag.style.color='#009900';
                     var ant=parent.ship.document.getElementById('auftrag');
                     ant.innerHTML='<?php echo $lang['flottealpha']['versuchterfeindkontakt']; ?>';
@@ -553,13 +477,11 @@ if ($_GET["fu"]==2) {
                     parent.parent.mittemitte.document.getElementById("auswahlrand_<?php echo $shid; ?>").style.left=parent.parent.mittemitte.document.getElementById("auswahlrand").style.left;
                     parent.parent.mittemitte.document.getElementById("auswahlrand_<?php echo $shid; ?>").style.top=parent.parent.mittemitte.document.getElementById("auswahlrand").style.top;
                     parent.parent.mittemitte.document.getElementById("auswahlrand_<?php echo $shid; ?>").style.visibility='visible';
-
                     parent.ship.auftrag.style.color='#009900';
                     var ant=parent.ship.document.getElementById('auftrag');
                     ant.innerHTML='<?php echo $lang['flottealpha']['begleitschutz']; ?>';
                     <?php
                 }
-
             }
             ?>
         </script>
@@ -569,7 +491,6 @@ if ($_GET["fu"]==2) {
 if ($_GET["fu"]==3) {
     include ("inc.header.php");
     include ("../lang/".$_GET["sprache"]."/lang.spionagen.php");
-    
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid and besitzer=$spieler");
     $array = @mysql_fetch_array($zeiger);
     $status=$array["status"];
@@ -643,7 +564,6 @@ if ($_GET["fu"]==3) {
     $hmatrix=@intval(substr($fertigkeiten,58,1));
     $wellengenerator=@intval(substr($fertigkeiten,60,1));
     $schilddaempfer=@intval(substr($fertigkeiten,61,1));
-
     if($array['volk'] == 'unknown' && $array['klasseid'] == 1) { $spionage_schiff = 1; } else { $spionage_schiff = 0; }
     if($module[0]) {
         $erfahrung = $array['erfahrung'];
@@ -671,7 +591,6 @@ if ($_GET["fu"]==3) {
             @fclose($fp);
         } else { $module[0] = 0; }
     }
-
     ?>
     <body text="#000000" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <div id="bodybody" class="flexcroll" onfocus="this.blur()">
@@ -1219,7 +1138,7 @@ if ($_GET["fu"]==3) {
                     </tr>
                     <?php
                 }
-                if ($overdrive_max>=1) {
+                if ($overdrive_min>=1) {
                     ?>
                     <tr>
                         <td></td>
@@ -1233,7 +1152,7 @@ if ($_GET["fu"]==3) {
                                     <td>
                                         <select name="overdrive">
                                             <?php
-                                            for ($kli=$overdrive_min;$kli<=$overdrive_max;$kli++) {
+                                            for ($kli=$overdrive_min;$kli<$overdrive_max;$kli++) {
                                                 ?>
                                                 <option value="<?php echo 60+$kli; ?>" <?php if (($spezialmission-60)==$kli) { echo 'selected'; } ?>><?php echo $kli*10; ?> %</option><?php
                                             }
@@ -1542,7 +1461,6 @@ if ($_GET["fu"]==3) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==4) {
     include ("inc.header.php");
     ?>
@@ -1552,7 +1470,6 @@ if ($_GET["fu"]==4) {
         $begleitschutz=$_POST["begleitschutz"];
         $crewmen=$_POST["crewmen"];
         $projektile=$_POST["projektile"];
-
         $zeiger = @mysql_query("SELECT id,kox,koy,flug,zielid,warp FROM $skrupel_schiffe where id=$shid");
         $array = @mysql_fetch_array($zeiger);
         $kox=$array["kox"];
@@ -1561,7 +1478,6 @@ if ($_GET["fu"]==4) {
         $zielalt=$array["zielid"];
         $warpalt=$array["warp"];
         $spezialmission=$_POST["aktion"];
-
         if ($spezialmission==0) {
             $message=$lang['flottealpha']['speznachricht'][0];
         } elseif ($spezialmission==1) {
@@ -1705,23 +1621,17 @@ if ($_GET["fu"]==4) {
                 $lang['flottealpha']['speznachricht'][74];
             }
         }
-
         $zeiger = @mysql_query("UPDATE $skrupel_schiffe set spezialmission=".$spezialmission." where id=$shid");
-
         $zielid=$_POST["schiff_id"];
         $warp=$_POST["warpfaktor"];
-
         if (($begleitschutz==1) and (($flugalt!=4) or ($zielalt!=$zielid) or ($warpalt!=$warp))) {
-
             $flug=4;
             $zeiger = @mysql_query("SELECT id,kox,koy,name FROM $skrupel_schiffe where id=$zielid");
             $array = @mysql_fetch_array($zeiger);
             $zielx=$array["kox"];
             $ziely=$array["koy"];
             $name=$array["name"];
-
             $message=$message.str_replace('{1}',$name,$lang['flottealpha']['begleitschutzaktiviert']);
-
             $zeiger = @mysql_query("update $skrupel_schiffe set flug=$flug,warp=$warp,plasmawarp=0,zielx=$zielx,ziely=$ziely,zielid=$zielid where id=$shid and besitzer=$spieler");
             $zeiger_temp = @mysql_query("UPDATE $skrupel_schiffe set routing_schritt=0,routing_status=0,routing_koord='',routing_id='',routing_mins='',routing_warp=0,routing_tank=0,routing_rohstoff=0 where id=$shid and besitzer=$spieler");
         } else {
@@ -1754,16 +1664,12 @@ if ($_GET["fu"]==4) {
                     $schritty=($ziely-$koy)/20;
                     $laufx=$kox;
                     $laufy=$koy;
-
                     for ($k=1;$k<=20;$k++) {
-
                         $laufx=$laufx+$schrittx;
                         $laufy=$laufy+$schritty;
-
                         echo "parent.parent.mittemitte.document.getElementById('punkt_".$k."_".$shid."').style.left=".$laufx.";";
                         echo "parent.parent.mittemitte.document.getElementById('punkt_".$k."_".$shid."').style.top=".$laufy.";";
                         echo "parent.parent.mittemitte.document.getElementById('punkt_".$k."_".$shid."').style.visibility='visible';";
-
                     }
                     ?>
                     parent.parent.mittemitte.document.getElementById('auswahlrand_<?php echo $shid; ?>').style.left=<?php echo $zielx-8; ?>;
@@ -1797,18 +1703,14 @@ if ($_GET["fu"]==4) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==5) {
     include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT id,routing_status,status,kox,koy FROM $skrupel_schiffe where id=$shid");
     $array = @mysql_fetch_array($zeiger);
     $routing_status=$array["routing_status"];
-
     if ($routing_status==0) { $msg=$lang['flottealpha']['keineroute']; }
     if ($routing_status==1) { $msg=$lang['flottealpha']['aufbauroute']; }
     if ($routing_status==2) { $msg=$lang['flottealpha']['routevorhanden']; }
-
     ?>
     <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0"">
         <center>
@@ -1841,10 +1743,8 @@ if ($_GET["fu"]==5) {
         <?php 
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==6) {
     include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
     $array = @mysql_fetch_array($zeiger);
     $kox=$array["kox"];
@@ -2094,7 +1994,6 @@ if ($_GET["fu"]==6) {
                         <input type="hidden" name="kol_<?php echo $point; ?>" value=0>
                         <input type="hidden" name="lbt_<?php echo $point; ?>" value=0>
                         <input type="hidden" name="sbt_<?php echo $point; ?>" value=0>
-                    
                         <?php
                         for($i=$point;$i<$points-1;$i++){
                             $pid_h[$i+1]=$_POST["pid_".$i];
@@ -2129,7 +2028,6 @@ if ($_GET["fu"]==6) {
                             }else{
                                 $point=0;
                             }
-                            
                         }
                         $points=$_POST["points"];
                         for($i=0;$i<$points;$i++){
@@ -2171,7 +2069,6 @@ if ($_GET["fu"]==6) {
                         }else{
                             $davor=$point-1;
                             $danach=0;
-                            
                         }
                     }
                     if($_POST["wechsel"]==$lang['flottealpha']['fracht']){
@@ -2409,7 +2306,6 @@ if ($_GET["fu"]==6) {
     }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==7) {
     include ("inc.header.php");
     $routing_mins=$_POST["routing_mins"];
@@ -2419,16 +2315,13 @@ if ($_GET["fu"]==7) {
     $ziely=$_POST["ziely"];
     $zielid=$_POST["zielid"];
     $flug=$_POST["flug"];
-
     if ($_POST["submitbutton"]==$lang['flottealpha']['routeabschliessen']) {
-
         $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
         $array = @mysql_fetch_array($zeiger);
         $antrieb=$array["antrieb"];
         $leminmax=$array["leminmax"];
         $tank=$array["routing_tank"];
         $rohstoff=$array["routing_rohstoff"];
-  
         ?>
         <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
             <center>
@@ -2527,11 +2420,8 @@ if ($_GET["fu"]==7) {
         } 
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==8) {
     include ("inc.header.php");
-
-
     $zeiger = @mysql_query("UPDATE $skrupel_schiffe set routing_id=\"".$_POST["routing_id"]."\",
                                                      routing_koord=\"".$_POST["routing_koord"]."\",
                                                      routing_mins=\"".$_POST["routing_mins"]."\",
@@ -2540,9 +2430,7 @@ if ($_GET["fu"]==8) {
                                                      routing_warp=".$_POST["warpfaktor"].",
                                                      routing_tank=".$_POST["tank"].",
                                                      routing_rohstoff=".$_POST["rohstoff"]." where id=$shid");
-    
     $zeiger_temp = @mysql_query("UPDATE $skrupel_schiffe set flug=".$_POST["flug"].",warp=".$_POST["warpfaktor"].",plasmawarp=0,zielx=".$_POST["zielx"].",ziely=".$_POST["ziely"].",zielid=".$_POST["zielid"]." where id=$shid");
-
     ?>
     <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <br><br><br>
@@ -2567,16 +2455,12 @@ if ($_GET["fu"]==8) {
                 $schritty=($_POST["ziely"]-$_POST["koy"])/20;
                 $laufx=$_POST["kox"];
                 $laufy=$_POST["koy"];
-
                 for ($k=1;$k<=20;$k++) {
-
                     $laufx=$laufx+$schrittx;
                     $laufy=$laufy+$schritty;
-
                     echo "parent.parent.mittemitte.document.getElementById('punkt_".$k."_".$shid."').style.left=".$laufx.";";
                     echo "parent.parent.mittemitte.document.getElementById('punkt_".$k."_".$shid."').style.top=".$laufy.";";
                     echo "parent.parent.mittemitte.document.getElementById('punkt_".$k."_".$shid."').style.visibility='visible';";
-
                 }
                 ?>
                 parent.parent.mittemitte.document.getElementById('auswahlrand_<?php echo $shid; ?>').style.left=<?php echo $zielx-8; ?>;
@@ -2592,4 +2476,3 @@ if ($_GET["fu"]==8) {
         <?php
     include ("inc.footer.php");
 }
-?>

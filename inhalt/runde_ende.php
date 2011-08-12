@@ -3,11 +3,8 @@ include ("../inc.conf.php");
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.runde_ende.php";
 include ($file);
-
 if (($_GET["bildpfad"]=="bilder") or ($_GET["bildpfad"]=="")) {$_GET["bildpfad"]="../bilder";}
-
 if ($_GET["fu"]==1) {
-
     ?>
     <html>
         <head>
@@ -24,7 +21,6 @@ if ($_GET["fu"]==1) {
         </head>
         <frameset framespacing="0" border="false" frameborder="0" rows="*,18,508,16,*">
             <frame name="rahmenk" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-
             <frameset framespacing="0" border="false" frameborder="0" cols="*,114,670,114,*">
                 <frame name="rahmen0" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
                 <frame name="rahmen1" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=19&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
@@ -32,27 +28,21 @@ if ($_GET["fu"]==1) {
                 <frame name="rahmen3" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=21&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
                 <frame name="rahmen4" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
             </frameset>
-            
             <frameset framespacing="0" border="false" frameborder="0" cols="*,18,862,18,*">
                 <frame name="rahmen10" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                
                 <frameset framespacing="0" border="false" frameborder="0" rows="80,*,92">
                     <frame name="rahmen15" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=25&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
                     <frame name="rahmen16" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=26&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
                     <frame name="rahmen17" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=27&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
                 </frameset>
-                
                 <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="runde_ende.php?fu=2&spiel=<?php echo $_GET["spiel"]?>&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                
                 <frameset framespacing="0" border="false" frameborder="0" rows="80,*,92">
                     <frame name="rahmen18" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=28&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
                     <frame name="rahmen19" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=29&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
                     <frame name="rahmen20" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=30&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
                 </frameset>
-                
                 <frame name="rahmen14" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
             </frameset>
-            
             <frameset framespacing="0" border="false" frameborder="0" cols="*,114,670,114,*">
                 <frame name="rahmen5" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
                 <frame name="rahmen6" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=22&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
@@ -60,7 +50,6 @@ if ($_GET["fu"]==1) {
                 <frame name="rahmen8" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=24&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
                 <frame name="rahmen9" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
             </frameset>
-            
             <frame name="rahmenk" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
         </frameset>
         <noframes>
@@ -69,39 +58,30 @@ if ($_GET["fu"]==1) {
     </html>
     <?php 
 }
-
 if ($_GET["fu"]==2) {
-
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
-
     $zeiger = @mysql_query("SELECT extend,serial FROM $skrupel_info");
     $array = @mysql_fetch_array($zeiger);
     $spiel_extend=$array["extend"];
     $spiel_serial=$array["serial"];
-    
     function compressed_output(){
         $encoding = getEnv("HTTP_ACCEPT_ENCODING");
         $useragent = getEnv("HTTP_USER_AGENT");
         $method = trim(getEnv("REQUEST_METHOD"));
         $msie = preg_match("=msie=i", $useragent);
         $gzip = preg_match("=gzip=i", $encoding);
-        
         if ($gzip && ($method != "POST" or !$msie)){
             ob_start("ob_gzhandler");
         }else{
             ob_start();
         }
     }
-
     compressed_output();
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where phase=1 and id=".$_GET["spiel"]);
     $datensaetze = @mysql_num_rows($zeiger);
-
     if ($datensaetze==1) {
         $array = @mysql_fetch_array($zeiger);
-        
         $spieler_1_basen=$array["spieler_1_basen"];$spieler_1_planeten=$array["spieler_1_planeten"];$spieler_1_schiffe=$array["spieler_1_schiffe"];
         $spieler_2_basen=$array["spieler_2_basen"];$spieler_2_planeten=$array["spieler_2_planeten"];$spieler_2_schiffe=$array["spieler_2_schiffe"];
         $spieler_3_basen=$array["spieler_3_basen"];$spieler_3_planeten=$array["spieler_3_planeten"];$spieler_3_schiffe=$array["spieler_3_schiffe"];
@@ -112,7 +92,6 @@ if ($_GET["fu"]==2) {
         $spieler_8_basen=$array["spieler_8_basen"];$spieler_8_planeten=$array["spieler_8_planeten"];$spieler_8_schiffe=$array["spieler_8_schiffe"];
         $spieler_9_basen=$array["spieler_9_basen"];$spieler_9_planeten=$array["spieler_9_planeten"];$spieler_9_schiffe=$array["spieler_9_schiffe"];
         $spieler_10_basen=$array["spieler_10_basen"];$spieler_10_planeten=$array["spieler_10_planeten"];$spieler_10_schiffe=$array["spieler_10_schiffe"];
-
         $spieler_1_gesamt=$array["spieler_1_platz"];
         $spieler_2_gesamt=$array["spieler_2_platz"];
         $spieler_3_gesamt=$array["spieler_3_platz"];
@@ -123,7 +102,6 @@ if ($_GET["fu"]==2) {
         $spieler_8_gesamt=$array["spieler_8_platz"];
         $spieler_9_gesamt=$array["spieler_9_platz"];
         $spieler_10_gesamt=$array["spieler_10_platz"];
-
         $ziel_id=$array["ziel_id"];
         $ziel_info=$array["ziel_info"];
         $spieler_1_ziel=$array["spieler_1_ziel"];
@@ -136,8 +114,6 @@ if ($_GET["fu"]==2) {
         $spieler_8_ziel=$array["spieler_8_ziel"];
         $spieler_9_ziel=$array["spieler_9_ziel"];
         $spieler_10_ziel=$array["spieler_10_ziel"];
-
-
         $spieler_1=$array["spieler_1"];
         $spieler_2=$array["spieler_2"];
         $spieler_3=$array["spieler_3"];
@@ -158,17 +134,12 @@ if ($_GET["fu"]==2) {
         $spieler_8_raus=$array["spieler_8_raus"];
         $spieler_9_raus=$array["spieler_9_raus"];
         $spieler_10_raus=$array["spieler_10_raus"];
-
         $spiel_name=$array["name"];
-
         $gewinner=$array["gewinner"];
         $siegeranzahl=$array["siegeranzahl"];
-
-
         $runde=$array["runde"];
         $lasttick=$array["lasttick"];
         $autotick=$array["autozug"];
-
         if ($lasttick>=1) {
             $datum=date('d.m.y G:i',$lasttick);
         } else {
@@ -179,9 +150,7 @@ if ($_GET["fu"]==2) {
         } else {
             $autot=$lang['rundeende']['niemals'];
         }
-
         $runde=round($runde/12*100)/100;
-
         $spieler_ids[1]=$spieler_1;
         $spieler_ids[2]=$spieler_2;
         $spieler_ids[3]=$spieler_3;
@@ -192,11 +161,8 @@ if ($_GET["fu"]==2) {
         $spieler_ids[8]=$spieler_8;
         $spieler_ids[9]=$spieler_9;
         $spieler_ids[10]=$spieler_10;
-
         if ($ziel_id==0) {
-
             $siegb=$lang['rundeende']['justforfun'];
-
             if ($siegeranzahl>1) {
             $gewinner=str_replace(array('{1}'),array($gewinner),$lang['rundeende']['justforfun2']);
                 } else {
@@ -204,7 +170,6 @@ if ($_GET["fu"]==2) {
             }
         }elseif ($ziel_id==1) {
             $siegb=str_replace(array('{1}'),array($ziel_info),$lang['rundeende']['ueberlebe']);
-
             if ($siegeranzahl>1) {
                 $gewinner=str_replace(array('{1}'),array($gewinner),$lang['rundeende']['ueberleben2']);
             } else {
@@ -212,7 +177,6 @@ if ($_GET["fu"]==2) {
             }
         }elseif ($ziel_id==2) {
             $siegb=$lang['rundeende']['todfeind'];
-
             if ($siegeranzahl>1) {
                 $gewinner=str_replace(array('{1}'),array($gewinner),$lang['rundeende']['todfeind2']);
             } else {
@@ -220,7 +184,6 @@ if ($_GET["fu"]==2) {
             }
         }elseif ($ziel_id==5) {
             $siegb=str_replace(array('{1}'),array($ziel_info),$lang['rundeende']['spice']);
-
             if ($siegeranzahl>1) {
                 $gewinner=str_replace(array('{1}'),array($gewinner),$lang['rundeende']['spice2']);
             } else {
@@ -228,7 +191,6 @@ if ($_GET["fu"]==2) {
             }
         }elseif ($ziel_id==6) {
             $siegb=$lang['rundeende']['teamtodfeind'];
-
             if ($siegeranzahl>1) {
                 $gewinner=str_replace(array('{1}'),array($gewinner),$lang['rundeende']['teamtodfeind2']);
             } else {
@@ -245,16 +207,12 @@ if ($_GET["fu"]==2) {
                         font-family:    Verdana;
                         font-size:    10px;
                         color:        #ffffff;
-
                         scrollbar-DarkShadow-Color:#444444;
                         scrollbar-3dLight-Color:#444444;
-                        
                         scrollbar-Track-Color:#444444;
                         scrollbar-Face-Color:#555555;
-                        
                         scrollbar-Shadow-Color:#222222;
                         scrollbar-Highlight-Color:#888888;
-                        
                         scrollbar-Arrow-Color:#555555;
                     }
                     TD.weissklein{
@@ -278,7 +236,6 @@ if ($_GET["fu"]==2) {
                         color:            #ffffff;
                     }
                     INPUT,SELECT{
-
                         background-color:    #555555;
                         color:            #ffffff;
                         BORDER-BOTTOM-COLOR:     #222222;
@@ -291,7 +248,6 @@ if ($_GET["fu"]==2) {
                         font-size:        10px;
                     }
                     INPUT.nofunc{
-
                         background-color:        #555555;
                         color:        #777777;
                         BORDER-BOTTOM-COLOR: #222222;
@@ -304,7 +260,6 @@ if ($_GET["fu"]==2) {
                         font-size:                10px;
                     }
                     INPUT.eingabe{
-                    
                         background-color:        #555555;
                         color:        #ffffff;
                         BORDER-BOTTOM-COLOR: #888888;
@@ -715,37 +670,28 @@ if ($_GET["fu"]==2) {
     }
     @mysql_close();
 }
-
 if ($_GET["fu"]==3) {
     $breite=250;
     $hoehe=250;
-
     $spiel=$_GET["spiel"];
-
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
-
     function compressed_output(){
         $encoding = getEnv("HTTP_ACCEPT_ENCODING");
         $useragent = getEnv("HTTP_USER_AGENT");
         $method = trim(getEnv("REQUEST_METHOD"));
         $msie = preg_match("=msie=i", $useragent);
         $gzip = preg_match("=gzip=i", $encoding);
-        
         if ($gzip && ($method != "POST" or !$msie)){
             ob_start("ob_gzhandler");
         }else{
             ob_start();
         }
     }
-
     compressed_output();
-
     $zeiger = @mysql_query("SELECT id,phase,umfang FROM $skrupel_spiele where phase=1 and id=".$_GET["spiel"]);
     $datensaetze = @mysql_num_rows($zeiger);
-
     if ($datensaetze==1) {
-
         $array_temp = @mysql_fetch_array($zeiger);
         $umfang=$array_temp["umfang"];
         ?>
@@ -758,16 +704,12 @@ if ($_GET["fu"]==3) {
                         font-family:    Verdana;
                         font-size:    10px;
                         color:        #ffffff;
-
                         scrollbar-DarkShadow-Color:#444444;
                         scrollbar-3dLight-Color:#444444;
-                        
                         scrollbar-Track-Color:#444444;
                         scrollbar-Face-Color:#555555;
-                        
                         scrollbar-Shadow-Color:#222222;
                         scrollbar-Highlight-Color:#888888;
-                        
                         scrollbar-Arrow-Color:#555555;
                     }
                     TD.weissklein{
@@ -791,7 +733,6 @@ if ($_GET["fu"]==3) {
                         color:            #ffffff;
                     }
                     INPUT,SELECT{
-
                         background-color:    #555555;
                         color:            #ffffff;
                         BORDER-BOTTOM-COLOR:     #222222;
@@ -804,7 +745,6 @@ if ($_GET["fu"]==3) {
                         font-size:        10px;
                     }
                     INPUT.nofunc{
-
                         background-color:        #555555;
                         color:        #777777;
                         BORDER-BOTTOM-COLOR: #222222;
@@ -817,7 +757,6 @@ if ($_GET["fu"]==3) {
                         font-size:                10px;
                     }
                     INPUT.eingabe{
-                    
                         background-color:        #555555;
                         color:        #ffffff;
                         BORDER-BOTTOM-COLOR: #888888;
@@ -845,7 +784,6 @@ if ($_GET["fu"]==3) {
             </head>
             <?php 
             $sektoranzahl=$umfang/250;
-
             $breite=250;
             $hoehe=250;
             ?>
@@ -855,7 +793,6 @@ if ($_GET["fu"]==3) {
                         <td><img src="<?php echo $_GET["bildpfad"]?>/karte/mapklein.gif" width="<?php echo $breite?>" height="<?php echo $hoehe?>"></td>
                     </tr>
                 </table>
-
                 <?php 
                 for ($n=1;$n<=$sektoranzahl;$n++) {
                     $x=(250*$n)/$umfang*$breite;
@@ -869,44 +806,31 @@ if ($_GET["fu"]==3) {
                     <div id="strich<?php echo $n+5?>" style="position: absolute; left:0px; top:<?php echo $y?>px; width:<?php echo $breite?>px; height:1px;visibility=visible;background-Color:#333333;"><img border="0" src="../bilder/empty.gif" width="<?php echo $breite?>" height="1"></div>
                     <?php
                 }
-
                 $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where spiel=$spiel order by id");
-
                 $datensaetze = @mysql_num_rows($zeiger);
-
                 if ($datensaetze>=1) {
-
                     for ($i=0; $i<$datensaetze;$i++) {
                         $ok = @mysql_data_seek($zeiger,$i);
-                
                         $array = @mysql_fetch_array($zeiger);
                         $id=$array["id"];
                         $x_pos=$array["kox"];
                         $y_pos=$array["koy"];
                         $besitzer=$array["besitzer"];
                         $spezialmission=$array["spezialmission"];
-                    
                         $x_position=$x_pos/$umfang*$breite;
                         $y_position=$y_pos/$umfang*$hoehe;
-                
                         if (($spezialmission>=41) and ($spezialmission<=50)) { $besitzer=$spezialmission-40; }
                         $farbe=$spielerfarbe["$besitzer"];
-
                         ?>
                         <div id="schiff_<?php echo $id?>_1" style="position: absolute; left:<?php echo $x_position; ?>px; top:<?php echo $y_position; ?>px; width:1px; height:1px;visibility=visible;background-Color:<?php echo $farbe?>;"><img border="0" src="../bilder/empty.gif" width="1" height="1"></div>
                         <?php 
                     }
                 }
-
                 $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where spiel=$spiel order by id");
-
                 $datensaetze = @mysql_num_rows($zeiger);
-                   
                 if ($datensaetze>=1) {
-                
                     for ($i=0; $i<$datensaetze;$i++) {
                         $ok = @mysql_data_seek($zeiger,$i);
-                
                         $array = @mysql_fetch_array($zeiger);
                         $id=$array["id"];
                         $name=$array["name"];
@@ -914,12 +838,9 @@ if ($_GET["fu"]==3) {
                         $y_pos=$array["y_pos"];
                         $besitzer=$array["besitzer"];
                         $klasse=$array["klasse"];
-                    
                         $x_position=$x_pos/$umfang*$breite;
                         $y_position=$y_pos/$umfang*$hoehe;
-                
                         $farbe="#ffffff";
-                
                         if ($besitzer==0) {
                             ?>
                             <div id="planet_<?php echo $id?>" style="position: absolute; left:<?php echo $x_position?>px; top:<?php echo $y_position?>px; width:1px; height:1px;visibility=visible;background-Color:#ffffff;"><img border="0" src="../bilder/empty.gif" width="1" height="1"></div>
@@ -936,9 +857,7 @@ if ($_GET["fu"]==3) {
                         }
                     }
                 }
-                   
                 $zeiger = @mysql_query("SELECT * FROM $skrupel_anomalien where (art=1 or art=2) and spiel=$spiel order by id");
-                
                 $datensaetze = @mysql_num_rows($zeiger);
                 if ($datensaetze>=1) {
                     for ($i=0; $i<$datensaetze;$i++) {
@@ -948,12 +867,9 @@ if ($_GET["fu"]==3) {
                         $art=$array["art"];
                         $x_pos=$array["x_pos"];
                         $y_pos=$array["y_pos"];
-                    
                         $x_position=$x_pos/$umfang*$breite;
                         $y_position=$y_pos/$umfang*$hoehe;
-                    
                         $nummer=rand(1,6);
-                           
                         ?>
                         <div id="anomalie_<?php echo $aid?>" style="position: absolute; left:<?php echo $x_position; ?>px; top:<?php echo $y_position; ?>px; width:1px; height:1px;visibility=visible;"><img border="0" src="../bilder/export/anomalie_<?php echo $nummer?>.gif" width="1" height="1"></div>
                         <?php 
@@ -966,4 +882,3 @@ if ($_GET["fu"]==3) {
     }
     @mysql_close();
 }
-?>

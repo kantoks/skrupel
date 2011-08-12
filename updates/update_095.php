@@ -1,4 +1,4 @@
-<?php
+<?
   include ("../inc.conf.php");
 
   $conn = @mysql_connect($server.':'.$port,"$login","$password");
@@ -60,7 +60,7 @@ $name[$rasse]=$daten[0];
 
    for  ($i=0; $i<$spielanzahl;$i++) {
    $ok = @mysql_data_seek($zeiger,$i);
-	 $array = @mysql_fetch_array($zeiger);
+   $array = @mysql_fetch_array($zeiger);
    $slot_id=$array["id"];
 
    $spieler_1_rasse=$array["spieler_1_rasse"];

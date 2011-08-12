@@ -3,7 +3,6 @@ include ("../inc.conf.php");
 if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
 $file="../lang/".$_GET["sprache"]."/lang.planeten.php";
 include ($file);
-
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ?>
@@ -18,15 +17,11 @@ if ($_GET["fu"]==1) {
             else if (parent.parent.mittemitte.document.body && parent.parent.mittemitte.document.body.offsetHeight) return parent.parent.mittemitte.document.body.offsetHeight;
             else return 0;
         }
-
         function movemap(wertx,werty) {
-
             breite=fensterbreit();
             hoch=fensterhoch();
-    
             aktuellx=wertx-15;
             aktuelly=werty-15;
-    
             wertx=wertx-(breite/2);
             werty=werty-(hoch/2);
             <?php if (@intval(substr($spieler_optionen,17,1))!=1) { ?>
@@ -39,19 +34,15 @@ if ($_GET["fu"]==1) {
             parent.parent.mittemitte.document.getElementById("aktuell").style.visibility='visible';
             parent.parent.mittemitte.document.getElementById("aktuell").style.left=aktuellx;
             parent.parent.mittemitte.document.getElementById("aktuell").style.top=aktuelly;
-    
         }
     </script>
     <body text="#000000" <?php if (@intval(substr($spieler_optionen,17,1))!=1) { ?>onload="document.getElementById('bodycontent').style.width = (document.getElementById('bodytable').offsetWidth) + 'px';CSBfleXcroll('bodybody');"<?php } ?> style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <div id="bodybody" class="flexcrollafter" onfocus="this.blur()">
         <div id="bodycontent" style="margin:0 auto;">
         <?php
-
         $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and spiel=$spiel order by name");
         $planetenanzahl = @mysql_num_rows($zeiger);
-
         if ($planetenanzahl>=1) {
-
         ?>
         <center>
             <table border="0" cellspacing="0" cellpadding="0" id="bodytable">
@@ -65,7 +56,6 @@ if ($_GET["fu"]==1) {
                                 <?php
                                 for ($i=0; $i<$planetenanzahl;$i++) {
                                     $ok = @mysql_data_seek($zeiger,$i);
-                            
                                     $array = @mysql_fetch_array($zeiger);
                                     $pid=$array["id"];
                                     $name=$array["name"];
@@ -78,7 +68,6 @@ if ($_GET["fu"]==1) {
                                     $fabriken=$array["fabriken"];
                                     $abwehr=$array["abwehr"];
                                     $logbuch=$array["logbuch"];
-                            
                                     $tip="[$name]";
                                     if (strlen($logbuch)>=1) {
                                         $tip=$tip."&#10;$logbuch";
@@ -142,7 +131,6 @@ if ($_GET["fu"]==1) {
         }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==2) {
     include ("inc.header.php");
     ?>
@@ -164,13 +152,10 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==3) {
     include ("../inc.conf.php");
     include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
-
     $array = @mysql_fetch_array($zeiger);
     $pid=$array["id"];
     $name=$array["name"];
@@ -188,7 +173,6 @@ if ($_GET["fu"]==3) {
     $vorrat=$array["vorrat"];
     $fabriken=$array["fabriken"];
     $abwehr=$array["abwehr"];
-
     ?>
     <script language=JavaScript>
         function fensterbreit(){
@@ -201,31 +185,24 @@ if ($_GET["fu"]==3) {
             else if (parent.parent.mittemitte.document.body && parent.parent.mittemitte.document.body.offsetHeight) return parent.parent.mittemitte.document.body.offsetHeight;
             else return 0;
         }
-
         function movemap(wertx,werty) {
             if (parent.parent.mittelinksoben.document.globals.map.value==1) {
                 breite=fensterbreit();
                 hoch=fensterhoch();
-
                 aktuellx=wertx-15;
                 aktuelly=werty-15;
-
                 wertx=wertx-(breite/2);
                 werty=werty-(hoch/2);
                 parent.parent.mittemitte.window.scrollTo(wertx,werty);
-
                 parent.parent.mittemitte.document.getElementById("aktuell").style.visibility='visible';
                 parent.parent.mittemitte.document.getElementById("aktuell").style.left=aktuellx;
                 parent.parent.mittemitte.document.getElementById("aktuell").style.top=aktuelly;
             }
         }
-
         function linksub(url) {
             parent.planetendetails.window.location=url;
         }
-
     </script>
-
     <body text="#000000" background="<?php echo $bildpfad?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="movemap(<?php echo $x_pos.",".$y_pos; ?>);">
         <table border="0" cellspacing="0" cellpadding="0">
             <tr>
@@ -310,7 +287,6 @@ if ($_GET["fu"]==3) {
                 <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
                 <td><img src="../bilder/empty.gif" border="0" width="15" height="1"></td>
                 <td><div id="fabriken"><?php echo $fabriken?></div></td>
-        
                 <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
                 <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
                 <td><img src="../bilder/empty.gif" border="0" width="15" height="1"></td>
@@ -369,7 +345,6 @@ if ($_GET["fu"]==3) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==4) {
     include ("inc.header.php");
     ?>
@@ -393,9 +368,7 @@ if ($_GET["fu"]==4) {
             <area shape=rect coords="120,15,143,40" href="javascript:linksub('planeten_alpha.php?fu=2&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['sternenbasis']?>">
             <area shape=rect coords="69,62,103,86" href="javascript:linksub('planeten_beta.php?fu=2&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['logbuch']?>">
             <area shape=rect coords="26,58,53,84" href="javascript:linksub('planeten_beta.php?fu=1&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['dominantespezies']?>">
-        
             <area shape=rect coords="120,62,143,86" href="javascript:linksub('planeten_beta.php?fu=4&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['schiffe']?>">
-        
             <area shape=rect coords="163,11,184,33" href="javascript:linksub('planeten_gamma.php?fu=1&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['minen']?>">
             <area shape=rect coords="163,40,184,60" href="javascript:linksub('planeten_gamma.php?fu=4&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['fabriken']?>">
             <area shape=rect coords="163,65,184,87" href="javascript:linksub('planeten_gamma.php?fu=9&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['pds']?>">
@@ -403,7 +376,6 @@ if ($_GET["fu"]==4) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==5) {
     include ("inc.header.php");
     ?>
@@ -430,7 +402,6 @@ if ($_GET["fu"]==5) {
         <?php
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==6) {
     include ("inc.header.php");
     $pid=$_GET["pid"];
@@ -444,14 +415,11 @@ if ($_GET["fu"]==6) {
         <?php
         $zeiger = @mysql_query("SELECT id FROM $skrupel_planeten where besitzer=$spieler and spiel=$spiel order by name");
         $planetenanzahl = @mysql_num_rows($zeiger);
-
         if ($planetenanzahl>=1) {
-
             for ($i=0; $i<$planetenanzahl;$i++) {
                 $ok = @mysql_data_seek($zeiger,$i);
                 $array = @mysql_fetch_array($zeiger);
                 $pid_t=$array["id"];
-
                 if (($pid==$pid_t) and ($i>=1)) {
                     ?>
                     <table border="0" cellspacing="0" cellpadding="0">
@@ -469,7 +437,6 @@ if ($_GET["fu"]==6) {
         }
     include ("inc.footer.php");
 }
-
 if ($_GET["fu"]==7) {
     include ("inc.header.php");
     $pid=$_GET["pid"];
@@ -483,14 +450,11 @@ if ($_GET["fu"]==7) {
         <?php
         $zeiger = @mysql_query("SELECT id FROM $skrupel_planeten where besitzer=$spieler and spiel=$spiel order by name");
         $planetenanzahl = @mysql_num_rows($zeiger);
-
         if ($planetenanzahl>=1) {
-        
             for ($i=0; $i<$planetenanzahl;$i++) {
                 $ok = @mysql_data_seek($zeiger,$i);
                 $array = @mysql_fetch_array($zeiger);
                 $pid_t=$array["id"];
-
                 if ($pid==$pid_back) {
                     ?>
                     <table border="0" cellspacing="0" cellpadding="0">

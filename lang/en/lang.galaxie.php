@@ -8,11 +8,9 @@ $lang['galaxie']['kt']=' KT';
 $lang['galaxie']['raumflotte']='spacefleet';
 $lang['galaxie']['feindkontakt']='attacking';
 $lang['galaxie']['begleitschutz']='Begleitschutz';
-
 $lang['galaxie']['wurmloch']='Wurmloch';
 $lang['galaxie']['sprungtor']='Sprungtor';
 $lang['galaxie']['Raumfalte']='Raumfalte';
-
 $lang['galaxie']['speztip'][0]='no special mission';
 $lang['galaxie']['speztip'][1]='autorefuel';
 $lang['galaxie']['speztip'][2]='terraforming';
@@ -47,11 +45,8 @@ $lang['galaxie']['speztip'][30]='gravity-well generator';
 $lang['galaxie']['speztip'][31]='shield damper';
 $lang['galaxie']['speztip'][32]='Ausbildungsakademie';
 $lang['galaxie']['speztip'][33]='DrugunPhasenverzerrer';
-
 $lang['galaxie']['auto']='(auto)';
 $lang['galaxie']['nologdata']='no logdata';
 $lang['galaxie']['klasse']='category';
-
 $lang['galaxie']['imperien']='Empires';
-
 $lang['galaxie']['lade']='Galaxymap<br><br>is loading';
