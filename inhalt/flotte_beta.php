@@ -2612,9 +2612,9 @@ if ($_GET["fu"]==10) {
                     if ($richtung==4) { $xpos--;$ypos--; }
                     if ($richtung==5) { $ypos--;$xpos++; }
                     if ($richtung==6) { $xpos++;$ypos++; }
-                    if ($richtung==7) { $xpos--;$ypos++; }                    
+                    if ($richtung==7) { $xpos--;$ypos++; }
                 }
-            }            
+            }
         }
     }
 

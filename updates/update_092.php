@@ -1,4 +1,4 @@
-<?
+<?php
   include ("../inc.conf.php");
 
   $conn = @mysql_connect($server.':'.$port,"$login","$password");
@@ -16,4 +16,3 @@
 
 @mysql_close();
 
-?>

@@ -86,4 +86,4 @@ function zufallstring($size = 20, $url = ONLY_LETTERS){
     $salt .= $pool[mt_rand(0, $pool_size - 1)];
   }
   return $salt; 
-}    
+}
