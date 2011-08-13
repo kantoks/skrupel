@@ -1138,7 +1138,7 @@ if ($_GET["fu"]==3) {
                     </tr>
                     <?php
                 }
-                if ($overdrive_min>=1) {
+                if ($overdrive_max>=1) {
                     ?>
                     <tr>
                         <td></td>
@@ -1152,7 +1152,7 @@ if ($_GET["fu"]==3) {
                                     <td>
                                         <select name="overdrive">
                                             <?php
-                                            for ($kli=$overdrive_min;$kli<$overdrive_max;$kli++) {
+                                            for ($kli=$overdrive_min;$kli<=$overdrive_max;$kli++) {
                                                 ?>
                                                 <option value="<?php echo 60+$kli; ?>" <?php if (($spezialmission-60)==$kli) { echo 'selected'; } ?>><?php echo $kli*10; ?> %</option><?php
                                             }

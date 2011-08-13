@@ -1,4 +1,4 @@
-<?
+<?php
   include ("../inc.conf.php");
 
   $conn = @mysql_connect($server.':'.$port,"$login","$password");
@@ -96,5 +96,3 @@ $name[$rasse]=$daten[0];
   }
 
 @mysql_close();
-
-?>
