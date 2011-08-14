@@ -70,7 +70,7 @@ if($module[0]) {
         }
         fclose($fp);
     }
-    //arrays f�llen
+    //arrays fuellen
     $id_array = array();
     $zeiger_spione = mysql_query("SELECT * FROM $skrupel_schiffe WHERE volk='unknown' AND klasseid=1 AND spiel=$spiel ORDER BY erfahrung DESC, id ASC;");
     while(($spion = mysql_fetch_array($zeiger_spione)) && $spiodatei) {
@@ -515,7 +515,7 @@ if($module[0]) {
                             if(spionerfolg(10, $stufe)) {
                                 $vernichtet_techlevel = mt_rand(1, 4);
                                 switch($vernichtet_techlevel) {
-                                    case 1 : { $t_stufe = $t_huelle; $t_huelle -= 1; if($t_huelle<0) { $t_huelle=0; } $techlevelname = "R�mpfe"; } break;
+                                    case 1 : { $t_stufe = $t_huelle; $t_huelle -= 1; if($t_huelle<0) { $t_huelle=0; } $techlevelname = "R&uuml;mpfe"; } break;
                                     case 2 : { $t_stufe = $t_antrieb; $t_antrieb -= 1; if($t_antrieb<0) { $t_antrieb=0; } $techlevelname = "Antriebe"; } break;
                                     case 3 : { $t_stufe = $t_energie; $t_energie -= 1; if($t_energie<0) { $t_energie=0; } $techlevelname = "Energetikwaffen"; } break;
                                     case 4 : { $t_stufe = $t_explosiv; $t_explosiv -= 1; if($t_explosiv<0) { $t_explosiv=0; } $techlevelname = "Projektile"; } break;

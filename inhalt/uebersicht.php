@@ -17,7 +17,7 @@ include ("inc.header.php");
                         <td><center><a href="uebersicht_kolonien.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" target="rahmen12" onclick="self.focus();"><img src="<?php echo $bildpfad?>/menu/planeten.gif" width="75" height="75" border="0"><br><nobr><?php echo $lang['uebersicht']['kolonien']?></nobr></a></center></td>
                     <?php }
                     /* 
-                    <td><center><a href="uebersicht_konplaene.php?fu=1&uid=<?=$uid?>&sid=<?=$sid?>" target="rahmen12" onclick="self.focus();"><img src="<?=$bildpfad?>/empty.gif" width="75" height="75" border="0"><br><nobr>KonPl�ne</nobr></a></center></td>
+                    <td><center><a href="uebersicht_konplaene.php?fu=1&uid=<?=$uid?>&sid=<?=$sid?>" target="rahmen12" onclick="self.focus();"><img src="<?=$bildpfad?>/empty.gif" width="75" height="75" border="0"><br><nobr>KonPl&auml;ne</nobr></a></center></td>
                     <td><center><a href="neuigkeiten.php?fu=3&art=2&uid=<?=$uid?>&sid=<?=$sid?>" target="rahmen12" onclick="self.focus();"><img src="<?=$bildpfad?>/menu/flotte.gif" width="75" height="75" border="0"><br><nobr>Raumflotte</nobr></a></center></td>
                     <td><center><a href="neuigkeiten.php?fu=3&art=3&uid=<?=$uid?>&sid=<?=$sid?>" target="rahmen12" onclick="self.focus();"><img src="<?=$bildpfad?>/menu/basen.gif" width="75" height="75" border="0"><br><nobr>Sternenbasen</nobr></a></center></td>
                     */ ?>

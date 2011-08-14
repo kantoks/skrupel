@@ -1,6 +1,6 @@
 <?php
-$erweiterung[0]['beschreibung']='Bei jeder Zugauswertung wird vom aktuellen Stand der Galaxie eine Bestandsaufnahme gemacht. Nach Abschlu&szlig; des Spiels erscheint in der Endauswertung keine Karte des letzten Standes, sondern ein Film ¸ber das ganze Spiel in Form eines animierten Gifs.';
-$erweiterung[1]['beschreibung']='Dieses Erweiterung liefert einen RSS-Feed f¸r einen RSS-Reader, welcher einen &uuml;ber den aktuellen Stand der eigenen Spiele informiert. So ist es mˆglich, schnell seine eigenen Z¸ge abzugeben, sobald man an der Reihe ist. Das Script muﬂ im RSS-Reader samt Benutzernamen aufgerufen werden. Also z.B. beim Benutzernamen <b>Jannis</b> mit der URL Skrupelserver/extend/rss/runden.xml.php?name=<b>Jannis</b>';
+$erweiterung[0]['beschreibung']='Bei jeder Zugauswertung wird vom aktuellen Stand der Galaxie eine Bestandsaufnahme gemacht. Nach Abschlu&szlig; des Spiels erscheint in der Endauswertung keine Karte des letzten Standes, sondern ein Film √ºber das ganze Spiel in Form eines animierten Gifs.';
+$erweiterung[1]['beschreibung']='Dieses Erweiterung liefert einen RSS-Feed f√ºr einen RSS-Reader, welcher einen &uuml;ber den aktuellen Stand der eigenen Spiele informiert. So ist es m√∂glich, schnell seine eigenen Z√ºge abzugeben, sobald man an der Reihe ist. Das Script mu√ü im RSS-Reader samt Benutzernamen aufgerufen werden. Also z.B. beim Benutzernamen <b>Jannis</b> mit der URL Skrupelserver/extend/rss/runden.xml.php?name=<b>Jannis</b>';
 $lang['admin']['allgemein']['gamma']['erweiterung']='Erweiterungen';
 $lang['admin']['allgemein']['gamma']['name']='Name';
 $lang['admin']['allgemein']['gamma']['ordner']='Ordner';

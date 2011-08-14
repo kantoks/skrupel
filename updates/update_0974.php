@@ -9,7 +9,7 @@
     @mysql_query("UPDATE $skrupel_info set version='0.974'");
     echo "Die Datenbankstruktur wurde erfolgreich aktualisiert.";
   } else {
-   echo "<b>Fehler</b>: Dieser Patch benötigt Version 0.973, die aktuelle Version ist aber $spiel_version.";
+   echo "<b>Fehler</b>: Dieser Patch ben&ouml;tigt Version 0.973, die aktuelle Version ist aber $spiel_version.";
   }
   @mysql_close();
-?>
+

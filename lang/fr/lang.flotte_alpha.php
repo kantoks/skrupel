@@ -72,7 +72,7 @@ $lang['flottealpha']['schilddaempfer']='Affaiblisseur de bouclier';
 $lang['flottealpha']['ausbildung']='Formation academique';
 $lang['flottealpha']['spezmissakt']='Activer la mission speciale.';
 
-$lang['flottealpha']['speznachricht'][0]='Les missions speciales ont ete désactivees.';
+$lang['flottealpha']['speznachricht'][0]='Les missions speciales ont ete dÃ©sactivees.';
 $lang['flottealpha']['speznachricht'][1]='Plein de lemin automatique actif.';
 $lang['flottealpha']['speznachricht'][2]='Le vaisseau sera recycle des que possible.';
 $lang['flottealpha']['speznachricht'][3]='Ils vont gouter de nos armes !';
@@ -112,7 +112,7 @@ $lang['flottealpha']['speznachricht'][70]='The gravity-well generator was initia
 $lang['flottealpha']['speznachricht'][71]='The damperfield will weaken enemy shielding.';
 $lang['flottealpha']['speznachricht'][72]='Das Schiff wird ausgebildet und bald an Erfahrung hinzugewinnen.<br>Noch einen Monat.';
 $lang['flottealpha']['speznachricht'][73]='Das Schiff wird ausgebildet und bald an Erfahrung hinzugewinnen. Noch {1} Monate.';
-$lang['flottealpha']['speznachricht'][74]='Dieses Schiff kann nicht ausgebildet werden.<br>Überprüfen Sie die Einhaltung der Parametetr.';
+$lang['flottealpha']['speznachricht'][74]='Dieses Schiff kann nicht ausgebildet werden.<br>ÃœberprÃ¼fen Sie die Einhaltung der Parametetr.';
 
 $lang['flottealpha']['begleitschutzaktiviert']='<br><br>Begleitschutz <b>{1}</b> aktiviert.';
 
