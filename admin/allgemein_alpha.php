@@ -26,7 +26,7 @@ if ($_GET["fu"]==1) {
                             <center>
                                 <table border="0" cellspacing="0" cellpadding="0">
                                     <tr>
-                                        <td><input type="submit" name="dumdidum" value="Offenbarung verkünden" style="width:250px;"></td>
+                                        <td><input type="submit" name="dumdidum" value="Offenbarung verk&uuml;nden" style="width:250px;"></td>
                                         <td></form></td>
                                     </tr>
                                 </table>

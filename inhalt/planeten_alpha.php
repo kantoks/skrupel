@@ -1347,7 +1347,7 @@ if ($_GET["fu"]==13) {
         if(($osys_1==13) or ($osys_2==13) or ($osys_3==13) or ($osys_4==13) or ($osys_5==13) or ($osys_6==13)){$reichweite=90;}
         if($sternenbasis_art>1){$reichweite=116;}
         $raumschiffe=0;
-        //wenn das schiff absolute tarnung hat, dann ignorieren -> spione k�nnen nicht durch diese scanner erfasst werden
+        //wenn das schiff absolute tarnung hat, dann ignorieren -> spione koennen nicht durch diese scanner erfasst werden
         $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where sqrt(((kox-$x_pos)*(kox-$x_pos))+((koy-$y_pos)*(koy-$y_pos)))<=$reichweite and besitzer<>$spieler and tarnfeld<2 and spiel=$spiel order by id");
         $schiffanzahl = @mysql_num_rows($zeiger);
         if ($schiffanzahl>=1) {

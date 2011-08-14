@@ -91,8 +91,8 @@ if ($spielanzahl>=1) {
         }
           ?></center></td>
           <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
-         <tr><td><form name="formular"  method="post" action="spiel_gamma.php?fu=2&slot_id=<?php echo $slot_id?>" onsubmit="return confirm('Das Spiel \'<?php echo $name; ?>\' wirklich l�schen?');"></td>
-         <td><input type="submit" name="bla" value="L�schen" style="width:120px;"></td>
+         <tr><td><form name="formular"  method="post" action="spiel_gamma.php?fu=2&slot_id=<?php echo $slot_id?>" onsubmit="return confirm('Das Spiel \'<?php echo $name; ?>\' wirklich l&ouml;schen?');"></td>
+         <td><input type="submit" name="bla" value="L&ouml;schen" style="width:120px;"></td>
          <td></form></td></tr>
        </table></td>
         </tr>

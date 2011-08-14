@@ -29,7 +29,7 @@
 
       for  ($k=1; $k<11;$k++) {
          $zeiger_temp = @mysql_query("INSERT INTO $skrupel_ordner (name,besitzer,spiel) values ('Frachter',$k,$spid)");
-         $zeiger_temp = @mysql_query("INSERT INTO $skrupel_ordner (name,besitzer,spiel) values ('J�ger',$k,$spid)");
+         $zeiger_temp = @mysql_query("INSERT INTO $skrupel_ordner (name,besitzer,spiel) values ('Jäger',$k,$spid)");
          $zeiger_temp = @mysql_query("INSERT INTO $skrupel_ordner (name,besitzer,spiel) values ('Sonstige',$k,$spid)");
       }
     }
@@ -57,7 +57,7 @@
 
   } else {
 
-   echo "<b>Fehler</b>: Dieser Patch ben�tigt Version 0.95, die aktuelle Version ist aber $spiel_version.";
+   echo "<b>Fehler</b>: Dieser Patch ben&ouml;tigt Version 0.95, die aktuelle Version ist aber $spiel_version.";
 
   }
 

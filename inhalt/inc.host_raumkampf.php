@@ -596,11 +596,11 @@ if ($schiffanzahl>=1) {
                                                     $aufzeichnung_hangar_1_zusatz=1;
                                                     if ($schild_2>0 && !$daempfer_an1) {
                                                         $schild_2=$schild_2-4;
-                                                        //echo "J�ger 1 trifft Schild 2, Schild 2 = $schild_2<br>";
+                                                        //echo "Jaeger 1 trifft Schild 2, Schild 2 = $schild_2<br>";
                                                     } else {
                                                         $schaden_2=$schaden_2+4;
                                                         $crew_2=$crew_2-floor($crewmax_2*1.5/100);
-                                                        //echo "J�ger 1 trifft Rumpf 2, Rumpf 2 = $schaden_2<br>";
+                                                        //echo "Jaeger 1 trifft Rumpf 2, Rumpf 2 = $schaden_2<br>";
                                                     }
                                                 } else { $aufzeichnung_hangar_1_zusatz=0; }
                                                 ////////////////////////////////////////////////////////////////Hangar Spieler 2
@@ -608,11 +608,11 @@ if ($schiffanzahl>=1) {
                                                     $aufzeichnung_hangar_2_zusatz=1;
                                                     if ($schild>0 && !$daempfer_an2) {
                                                         $schild=$schild-4;
-                                                        //echo "J�ger 2 trifft Schild 1, Schild 1 = $schild<br>";
+                                                        //echo "Jaeger 2 trifft Schild 1, Schild 1 = $schild<br>";
                                                     } else {
                                                         $schaden=$schaden+4;
                                                         $crew=$crew-floor($crewmax*1.5/100);
-                                                        //echo "J�ger 2 trifft Rumpf 1, Rumpf 1 = $schaden<br>";
+                                                        //echo "Jaeger 2 trifft Rumpf 1, Rumpf 1 = $schaden<br>";
                                                     }
                                                 } else { $aufzeichnung_hangar_2_zusatz=0; }
                                                 if (($aufzeichnung_energetik_1_zusatz>=1) or ($aufzeichnung_energetik_2_zusatz>=1) or

@@ -113,7 +113,7 @@ $lang['metaspezien'][25]['beschreibung']="Die Ewoks sind ein freundliches putzig
 $lang['metaspezien'][25]['effekt']="Die Effektivit&auml;t der Minen und Fabriken erh&ouml;ht sich um 45%.";
 
 $lang['metaspezien'][26]['name']="Fl&ouml;rschem";
-$lang['metaspezien'][26]['beschreibung']="Die Fl&ouml;rschem leben ín den Rohren und dem Abwasser der Industrie und verstopfen Leitungen und fallen regelm&auml;&szlig;ig Arbeiter an.";
+$lang['metaspezien'][26]['beschreibung']="Die Fl&ouml;rschem leben Ã­n den Rohren und dem Abwasser der Industrie und verstopfen Leitungen und fallen regelm&auml;&szlig;ig Arbeiter an.";
 $lang['metaspezien'][26]['effekt']="Die Effektivit&auml;t der Fabriken sinkt um 79%.";
 
 $lang['metaspezien'][27]['name']="Ithorianer";
@@ -149,7 +149,7 @@ $lang['metaspezien'][34]['beschreibung']="Die Wookiee sind ein stolzes und stark
 $lang['metaspezien'][34]['effekt']="Die Verteidigungsst&auml;rke im Bodenkampf senkt sich um 81%.";
 
 $lang['metaspezien'][35]['name']="Aarus";
-$lang['metaspezien'][35]['beschreibung']="Im Aussehen erinnern die Aarus durch ihren fischartigen K&ouml;rperbau und den balkenf&ouml;rmigen Kopf an aufrechtgehende terranische Hammerhaie. Arme und Beine sind aus Flossen hervorgegegangen und k&ouml;nnen im Wasser auch als solche benutzt werden, denn die Aarus leben amphibisch. Der &quot;Balken&quot; verf&uuml;gt &uuml;ber zwei starre Augen an den Seiten mit zusammen 340° Sichtfeld, sowie eine Balkennase. Mit diesem Sinnesorgan k&ouml;nnen Aarus elektromagnetische Felder exakt ersp&uuml;ren.";
+$lang['metaspezien'][35]['beschreibung']="Im Aussehen erinnern die Aarus durch ihren fischartigen K&ouml;rperbau und den balkenf&ouml;rmigen Kopf an aufrechtgehende terranische Hammerhaie. Arme und Beine sind aus Flossen hervorgegegangen und k&ouml;nnen im Wasser auch als solche benutzt werden, denn die Aarus leben amphibisch. Der &quot;Balken&quot; verf&uuml;gt &uuml;ber zwei starre Augen an den Seiten mit zusammen 340Â° Sichtfeld, sowie eine Balkennase. Mit diesem Sinnesorgan k&ouml;nnen Aarus elektromagnetische Felder exakt ersp&uuml;ren.";
 $lang['metaspezien'][35]['effekt']="Die Effektivit&auml;t beim Sch&uuml;rfen erh&ouml;ht sich auf das Maximum.";
 
 $lang['metaspezien'][36]['name']='Adlaten';

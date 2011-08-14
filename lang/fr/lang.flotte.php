@@ -21,7 +21,7 @@ $lang['flotte']['lemin']='Lemin ({1}/{2})';
 $lang['flotte']['schaden']='Dommages {1} %';
 $lang['flotte']['fracht']='Beladung ({1}/{2})';
 $lang['flotte']['erfahrungslevel']='Erfahrungslevel';
-$lang['flotte']['ordneruebersicht']='Ordnerübersicht';
+$lang['flotte']['ordneruebersicht']='OrdnerÃ¼bersicht';
 
 $lang['flotte']['kurs']='Course';
 $lang['flotte']['spezialmission']='Mission speciale';

@@ -17,7 +17,7 @@ $lang['uebersichtneuigkeiten']['allianzablehnen']='Refuser cette alliance';
 
 $lang['uebersichtneuigkeiten']['geburtstag']='<br><br>C`est l`anniversaire de qui aujourd`hui? C`est celui de Bernd`s bien sur! Vous ne le connaissez pas? Il va avoir {1} ans aujourd`hui et c`est lui qui a invente ce jeu. Si vous appreciez ce jeu, faites lui en part en lui envoyant un <a href="mailto:bernd@kantoks.de">Mail</a> pour lui feter son anniversaire :-)';
 $lang['uebersichtneuigkeiten']['happy']='Happy Birthday!';
-$lang['uebersichtneuigkeiten']['nichtloeschtbar']='Nachricht kann nicht gelöscht werden.';
+$lang['uebersichtneuigkeiten']['nichtloeschtbar']='Nachricht kann nicht gelÃ¶scht werden.';
 $lang['uebersichtneuigkeiten']['wirdnichtgeloescht']='A conserver';
 $lang['uebersichtneuigkeiten']['wirdgeloescht']='A supprimer';
 $lang['uebersichtneuigkeiten']['keineneuigkeitenvorhanden']='Aucune nouvelle disponible.';

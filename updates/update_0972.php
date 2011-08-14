@@ -23,7 +23,7 @@
     @mysql_query("CREATE TABLE $skrupel_begegnung (id INT NOT NULL AUTO_INCREMENT,partei_a TINYINT NOT NULL,partei_b TINYINT NOT NULL,spiel INT NOT NULL,PRIMARY KEY (id))");
     echo "Die Datenbankstruktur wurde erfolgreich aktualisiert.";
   } else {
-   echo "<b>Fehler</b>: Dieser Patch ben�tigt Version 0.971, die aktuelle Version ist aber $spiel_version.";
+   echo "<b>Fehler</b>: Dieser Patch ben&ouml;tigt Version 0.971, die aktuelle Version ist aber $spiel_version.";
   }
   @mysql_close();
-?>
+
