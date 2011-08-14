@@ -1,62 +1,20 @@
 <?php
 $zeiger_temp = mysql_query("update $skrupel_anomalien set
-                                sicht_1=0,
-                                sicht_2=0,
-                                sicht_3=0,
-                                sicht_4=0,
-                                sicht_5=0,
-                                sicht_6=0,
-                                sicht_7=0,
-                                sicht_8=0,
-                                sicht_9=0,
-                                sicht_10=0
-                                where spiel=$spiel");
+  sicht_1=0, sicht_2=0, sicht_3=0, sicht_4=0, sicht_5=0, sicht_6=0, sicht_7=0, sicht_8=0, sicht_9=0, sicht_10=0
+  where spiel=$spiel");
+
 $zeiger_temp = mysql_query("update $skrupel_sternenbasen set
-                                sicht_1=0,
-                                sicht_2=0,
-                                sicht_3=0,
-                                sicht_4=0,
-                                sicht_5=0,
-                                sicht_6=0,
-                                sicht_7=0,
-                                sicht_8=0,
-                                sicht_9=0,
-                                sicht_10=0
-                                where spiel=$spiel");
+  sicht_1=0, sicht_2=0, sicht_3=0, sicht_4=0, sicht_5=0, sicht_6=0, sicht_7=0, sicht_8=0, sicht_9=0, sicht_10=0
+  where spiel=$spiel");
+
 $zeiger_temp = mysql_query("update $skrupel_planeten set
-                                sicht_1=0,
-                                sicht_2=0,
-                                sicht_3=0,
-                                sicht_4=0,
-                                sicht_5=0,
-                                sicht_6=0,
-                                sicht_7=0,
-                                sicht_8=0,
-                                sicht_9=0,
-                                sicht_10=0
-                                where spiel=$spiel");
+  sicht_1=0, sicht_2=0, sicht_3=0, sicht_4=0, sicht_5=0, sicht_6=0, sicht_7=0, sicht_8=0, sicht_9=0, sicht_10=0
+  where spiel=$spiel");
 $zeiger_temp = mysql_query("update $skrupel_schiffe set
-                                sicht_1=0,
-                                sicht_2=0,
-                                sicht_3=0,
-                                sicht_4=0,
-                                sicht_5=0,
-                                sicht_6=0,
-                                sicht_7=0,
-                                sicht_8=0,
-                                sicht_9=0,
-                                sicht_10=0,
-                                sicht_1_beta=0,
-                                sicht_2_beta=0,
-                                sicht_3_beta=0,
-                                sicht_4_beta=0,
-                                sicht_5_beta=0,
-                                sicht_6_beta=0,
-                                sicht_7_beta=0,
-                                sicht_8_beta=0,
-                                sicht_9_beta=0,
-                                sicht_10_beta=0
-                                where spiel=$spiel");
+  sicht_1=0, sicht_2=0, sicht_3=0, sicht_4=0, sicht_5=0, sicht_6=0, sicht_7=0, sicht_8=0, sicht_9=0, sicht_10=0,
+  sicht_1_beta=0, sicht_2_beta=0, sicht_3_beta=0, sicht_4_beta=0, sicht_5_beta=0, sicht_6_beta=0, sicht_7_beta=0,
+  sicht_8_beta=0, sicht_9_beta=0, sicht_10_beta=0
+  where spiel=$spiel");
 $scans = array();
 $scanhash = array();
 $zeiger = mysql_query("SELECT id,spiel,y_pos,x_pos,besitzer,sternenbasis_art,sternenbasis,osys_1,osys_2,osys_3,osys_4,osys_5,osys_6 FROM $skrupel_planeten where spiel=$spiel");
