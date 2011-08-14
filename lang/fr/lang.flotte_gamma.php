@@ -18,8 +18,8 @@ $lang['flottegamma']['waffen'][13]='Gammabomben';
 $lang['flottegamma']['waffen'][14]='Fissionstorpedos';
 $lang['flottegamma']['waffen'][15]='Mun-Katapult';
 $lang['flottegamma']['waffen'][16]='Quantentorpedos';
-$lang['flottegamma']['waffen'][17]='Micromitgeschütz';
-$lang['flottegamma']['waffen'][18]='Singularitätswerfer';
+$lang['flottegamma']['waffen'][17]='MicromitgeschÃ¼tz';
+$lang['flottegamma']['waffen'][18]='SingularitÃ¤tswerfer';
 $lang['flottegamma']['waffen'][19]='Novabomben';
 
 $lang['flottegamma']['waffensysteme']='Armement';

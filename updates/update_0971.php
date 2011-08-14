@@ -104,7 +104,7 @@
       echo "<b>Fehler</b>: Bitte verwende die aktuelle Version der Datei <i>inc.conf.php</i>.";
     }
   } else {
-   echo "<b>Fehler</b>: Dieser Patch ben�tigt Version 0.97, die aktuelle Version ist aber $spiel_version.";
+   echo "<b>Fehler</b>: Dieser Patch ben&ouml;tigt Version 0.97, die aktuelle Version ist aber $spiel_version.";
   }
 
   @mysql_close();

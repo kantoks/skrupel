@@ -20,7 +20,7 @@
 
     echo "Die Datenbankstruktur wurde erfolgreich aktualisiert.";
   } else {
-   echo "<b>Fehler</b>: Dieser Patch ben�tigt Version 0.969, die aktuelle Version ist aber $spiel_version.";
+   echo "<b>Fehler</b>: Dieser Patch ben&ouml;tigt Version 0.969, die aktuelle Version ist aber $spiel_version.";
   }
 
   @mysql_close();

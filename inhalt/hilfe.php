@@ -146,7 +146,7 @@ if ($_GET["fu"]>=1) {
                             </table>
                         </center>
                         <?php echo $lang['hilfe'][6][1];
-                    //}elseif ($_GET["fu"]==7) { da unn�tig, nur kopf
+                    //}elseif ($_GET["fu"]==7) { da unnoetig, nur kopf
                     }elseif ($_GET["fu"]==8) {
                         ?>
                         <center>
@@ -193,7 +193,7 @@ if ($_GET["fu"]>=1) {
                         </center>
                         <?php 
                         echo $lang['hilfe'][8][9];
-                    //}elseif ($_GET["fu"]==9) { da unn�tig, nur kopf
+                    //}elseif ($_GET["fu"]==9) { da unnoetig, nur kopf
                     }elseif ($_GET["fu"]==10) {
                         ?>
                         <center>
@@ -214,7 +214,7 @@ if ($_GET["fu"]>=1) {
                             </table>
                         </center>
                         <?php
-                    //}elseif ($_GET["fu"]==11) { da unn�tig, nur kopf
+                    //}elseif ($_GET["fu"]==11) { da unnoetig, nur kopf
                     }elseif ($_GET["fu"]==12) {
                         ?>
                         <center>
@@ -306,7 +306,7 @@ if ($_GET["fu"]>=1) {
                         </center>
                         <center><?php echo $lang['hilfe'][12][9];?></center>
                         <?php
-                    //}elseif ($_GET["fu"]==13 bis 15 ) { unn�tig, nur kopf
+                    //}elseif ($_GET["fu"]==13 bis 15 ) { unnoetig, nur kopf
                     }elseif ($_GET["fu"]==16) {
                         ?>
                         <ul>
@@ -321,7 +321,7 @@ if ($_GET["fu"]>=1) {
                         </ul>
                         <?php
                         echo $lang['hilfe'][16][2];
-                    //}elseif ($_GET["fu"]==17 bis 32) { unn�tig, nur kopf
+                    //}elseif ($_GET["fu"]==17 bis 32) { unnoetig, nur kopf
                     }elseif ($_GET["fu"]==33) {
                         ?>
                         <center>

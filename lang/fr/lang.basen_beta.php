@@ -35,8 +35,8 @@ $lang['basenbeta']['waffen'][13]='gammabombs';
 $lang['basenbeta']['waffen'][14]='fissiontorpedos';
 $lang['basenbeta']['waffen'][15]='mun-catapult';
 $lang['basenbeta']['waffen'][16]='quantum-torpedos';
-$lang['basenbeta']['waffen'][17]='Micromitgeschütz';
-$lang['basenbeta']['waffen'][18]='Singularitätswerfer';
+$lang['basenbeta']['waffen'][17]='MicromitgeschÃ¼tz';
+$lang['basenbeta']['waffen'][18]='SingularitÃ¤tswerfer';
 $lang['basenbeta']['waffen'][19]='novabombs';
 
 $lang['basenbeta']['projektilerfolgreichproduziert']='Le projectile {1}<br><br>a ete produit {2}x avec succes.';

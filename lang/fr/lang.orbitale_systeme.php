@@ -25,7 +25,7 @@ $lang['orbitalesysteme']['lang'][6]='';
 
 $lang['orbitalesysteme']['name'][7]='Bunker';
 $lang['orbitalesysteme']['kurz'][7]='Le bunker ne protege pas contre l`invasion virale, le destabilisateur et les invasions terrestre.';
-$lang['orbitalesysteme']['lang'][7]='Au moins 1000 colons survivent a un bombardement. Es können von anderen Mitspielern die ersten 500 Catox sowie jeweils 100 Vorräte, Lemin, Baxterium, Rennurbin und Vormissan nicht mehr hinaufgebeamt werden.';
+$lang['orbitalesysteme']['lang'][7]='Au moins 1000 colons survivent a un bombardement. Es kÃ¶nnen von anderen Mitspielern die ersten 500 Catox sowie jeweils 100 VorrÃ¤te, Lemin, Baxterium, Rennurbin und Vormissan nicht mehr hinaufgebeamt werden.';
 
 $lang['orbitalesysteme']['name'][8]='Centre radar';
 $lang['orbitalesysteme']['kurz'][8]='Les vaisseaux dans la zone planetaire peuvent etre scannes activement.';
@@ -49,7 +49,7 @@ $lang['orbitalesysteme']['lang'][12]='';
 
 $lang['orbitalesysteme']['name'][13]='PSI Corps';
 $lang['orbitalesysteme']['kurz'][13]='Scan actif d`une portee de 90 annees lumiere.';
-$lang['orbitalesysteme']['lang'][13]='Les PSI-Corps sentent les vaisseaux de peuples étrangers. Des vaisseaux camoufles dans la peripherie de 90 annees lumiere sont decouverts sans difficultes.';
+$lang['orbitalesysteme']['lang'][13]='Les PSI-Corps sentent les vaisseaux de peuples Ã©trangers. Des vaisseaux camoufles dans la peripherie de 90 annees lumiere sont decouverts sans difficultes.';
 
 $lang['orbitalesysteme']['name'][14]='Controle meteo';
 $lang['orbitalesysteme']['kurz'][14]='Permet d`adapter la meteo de la planete';
@@ -59,9 +59,9 @@ $lang['orbitalesysteme']['name'][15]='Chantier spatial avance';
 $lang['orbitalesysteme']['kurz'][15]='Les materiaux necessaires doivent exister sur la base.';
 $lang['orbitalesysteme']['lang'][15]='Il permet de construire en meme temps dans une base 2 chasseurs (masse plus petite que 100 et pas de capacitees speciales excepte les Tir chanceux et Overdrive).';
 
-$lang['orbitalesysteme']['name'][16]='Académie de pilotes';
+$lang['orbitalesysteme']['name'][16]='AcadÃ©mie de pilotes';
 $lang['orbitalesysteme']['kurz'][16]='Les frais de formations sont de : 50 Lemin, 10 materiaux et 100 Cantox.';
-$lang['orbitalesysteme']['lang'][16]='Le pilote d`un vaisseau de type chasseur (Masse<100, pas de capacitees excepte les Tir chanceux et Overdrive) sont formes dans un délai de 5 mois. L`experience augmenter de 1 pour chaque formation. Le chasseur doit etre en place dans l`orbite de la planete.';
+$lang['orbitalesysteme']['lang'][16]='Le pilote d`un vaisseau de type chasseur (Masse<100, pas de capacitees excepte les Tir chanceux et Overdrive) sont formes dans un dÃ©lai de 5 mois. L`experience augmenter de 1 pour chaque formation. Le chasseur doit etre en place dans l`orbite de la planete.';
 
 $lang['orbitalesysteme']['name'][17]='Base de recyclage';
 $lang['orbitalesysteme']['kurz'][17]='Les vaisseaux peuvent etre recycles a 85%.';

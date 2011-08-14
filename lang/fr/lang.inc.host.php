@@ -98,11 +98,11 @@ $lang['host']['fr']['sprungtor'][4]='Nous avons termine avec succes un barrage d
 $lang['host']['fr']['tarnfeld'][0]='Sur le vaisseau {1} nous avons subit une decharge de plasma. Le generateur de camouflage a du etre desactive.';
 
 $lang['host']['fr']['drugun'][0]='Die Tarnung des Schiffes {1} wurde durch eine Drugunemission deaktiviert.';
-$lang['host']['fr']['drugun'][1]='Die Tarnung des Spions {1} wurde durch eine Drugunemission geschw�cht.';
+$lang['host']['fr']['drugun'][1]='Die Tarnung des Spions {1} wurde durch eine Drugunemission geschw&auml;cht.';
 $lang['host']['fr']['drugun'][2]='Auf dem Schiff {1} kam es zu einer Drugunemission.';
 $lang['host']['fr']['drugun'][3]='Die Tarnung des Schiffes {1} wurde durch eine Drugunverzerrerschockwelle deaktiviert.';
-$lang['host']['fr']['drugun'][4]='Die Tarnung des Spions {1} wurde durch eine Drugunverzerrerschockwelle geschw�cht.';
-$lang['host']['fr']['drugun'][5]='Das Schiff {1} hat sich mit dem Drugunverzerrer selbst zerst�rt, eine Drugunschockwelle mit einer Reichweite von {2}Lj wurde ausgesandt.';
+$lang['host']['fr']['drugun'][4]='Die Tarnung des Spions {1} wurde durch eine Drugunverzerrerschockwelle geschw&auml;cht.';
+$lang['host']['fr']['drugun'][5]='Das Schiff {1} hat sich mit dem Drugunverzerrer selbst zerst&ouml;rt, eine Drugunschockwelle mit einer Reichweite von {2}Lj wurde ausgesandt.';
 
 $lang['host']['fr']['akademie'][0]='Le pilote du vaisseau <b>{1}</b> est actuellement en formation a l`academie. Sa formation devrait prendre fin dans {2} mois.';
 $lang['host']['fr']['akademie'][1]='Le pilote du vaisseau <b>{1}</b> est actuellement en formation a l`academie. Sa formation prend fin le mois prochain.';

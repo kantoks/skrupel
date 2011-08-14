@@ -3496,7 +3496,7 @@ if ($schiffanzahl>=1) {
                 $r_fracht[0]+=$r_planet[0];
                 $r_planet[0]=0;
             }
-            //einladen(Vorr�te zum schlu�)
+            //einladen(Vorraete zum schluss)
             $ztest=1;
             $zaehler=2;
             while($ztest==1){

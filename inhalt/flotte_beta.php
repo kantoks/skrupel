@@ -55,7 +55,7 @@ if ($_GET["fu"]==1) {
         }
     }
 
-    //wenn das schiff absolute tarnung hat, dann ignorieren -> spione k�nnen nicht durch diese scanner erfasst werden
+    //wenn das schiff absolute tarnung hat, dann ignorieren -> spione koennen nicht durch diese scanner erfasst werden
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where sqrt(((kox-$kox)*(kox-$kox))+((koy-$koy)*(koy-$koy)))<=$reichweite and besitzer<>$spieler and tarnfeld<2 and spiel=$spiel order by id");
     $schiffanzahl = @mysql_num_rows($zeiger);
     

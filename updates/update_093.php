@@ -20,7 +20,7 @@
 
   } else {
 
-   echo "<b>Fehler</b>: Dieser Patch ben�tigt Version 0.92, die aktuelle Version ist aber $spiel_version.";
+   echo "<b>Fehler</b>: Dieser Patch ben&ouml;tigt Version 0.92, die aktuelle Version ist aber $spiel_version.";
 
   }
 

@@ -36,17 +36,17 @@ if ($_GET["fu"]==2) {
     require_once "classes/class.jabber.php";
     // Ein neues JABBER Objekt erstellen, mit den gewuenschten Zugangsdaten.
     $jabber = new Jabber();
-    // Servername f�r den Account
+    // Servername fuer den Account
     $jabber->server = $jabber_server;
-    // Username f�r den Account
+    // Username fuer den Account
     $jabber->username = $jabber_botname;
-    // Klartext-Passwort f�r den Account
+    // Klartext-Passwort fuer den Account
     $jabber->password = $jabber_passwort;
     // Die Ressource klassifiziert lediglich einen Account, ist also nur ein Hilfsmerkmal
     $jabber->resource = 'skrupelNotificationBot';
-    // Logging f�r Problel�ufe
+    // Logging fuer Problelaeufe
     $jabber->enable_logging = true;
-    // Der Empf�nger f�r meine Nachrichten
+    // Der Empfaenger fuer meine Nachrichten
     $jabber->to = $jab;
     // Jabber-Verbindung herstellen
     $jabber->Connect();

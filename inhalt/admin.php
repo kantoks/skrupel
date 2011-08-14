@@ -439,12 +439,12 @@ if ($_GET["fu"]==4) {
             if ($klasse==1) { $bild=rand(1,9);  //Klasse M wie Erde
             }elseif ($klasse==2) { $bild=rand(1,24);  //Klasse N Wasserwelt
             }elseif ($klasse==3) { $bild=rand(1,16);  //Klasse J wie Luna
-            }elseif ($klasse==4) { $bild=rand(1,14);  //Klasse L warm nur wenig Wasseroberfl�che
-            }elseif ($klasse==5) { $bild=rand(1,11);  //Klasse G W�stenplanet
+            }elseif ($klasse==4) { $bild=rand(1,14);  //Klasse L warm nur wenig Wasseroberflaeche
+            }elseif ($klasse==5) { $bild=rand(1,11);  //Klasse G Wuestenplanet
             }elseif ($klasse==6) { $bild=rand(1,22);  //Klasse I Heiss giftige Gase
             }elseif ($klasse==7) { $bild=rand(1,13);   //Klasse C Heiss wie Venus
             }elseif ($klasse==8) { $bild=rand(1,33);  //Klasse K wie Mars
-            }elseif ($klasse==9) { $bild=rand(1,9);}    //Klasse F jung zerkl�ftet
+            }elseif ($klasse==9) { $bild=rand(1,9);}    //Klasse F jung zerklueftet
             $temp=$r_eigenschaften[$rasse]['temperatur'];
             if ($temp==0) {
                 if ($klasse==1) { $temp=rand(40,60);

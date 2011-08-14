@@ -67,7 +67,7 @@ $lang['flottebeta']['projektil']='projectiles';
 $lang['flottebeta']['hangar']='hangar';
 
 $lang['flottebeta']['leminueberladen'][0]='Le reservoir de {1} KT est trop rempli.';
-$lang['flottebeta']['leminueberladen'][0]=' KT übertankt';
+$lang['flottebeta']['leminueberladen'][0]=' KT Ã¼bertankt';
 $lang['flottebeta']['frachtueberladen'][0]='La soute de {1} KT est surchargee de ';
 $lang['flottebeta']['frachtueberladen'][1]=' KT ';
 $lang['flottebeta']['transporterraum']='Soute';

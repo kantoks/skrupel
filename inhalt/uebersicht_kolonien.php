@@ -108,7 +108,7 @@ if ($_GET["fu"]==1) {
                         $konz_min2=$array["konz_min2"];
                         $konz_min3=$array["konz_min3"];
                         if ($konz_lemin==1) {
-                            $konz_lemin="fl�chtig";
+                            $konz_lemin="fl&uuml;chtig";
                         }elseif ($konz_lemin==2) {
                             $konz_lemin="weit gestreut";
                         }elseif ($konz_lemin==3) {
@@ -119,7 +119,7 @@ if ($_GET["fu"]==1) {
                             $konz_lemin="hochkonz.";
                         }
                         if ($konz_min1==1) {
-                            $konz_min1="fl�chtig";
+                            $konz_min1="fl&uuml;chtig";
                         }elseif ($konz_min1==2) {
                             $konz_min1="weit gestreut";
                         }elseif ($konz_min1==3) {
@@ -130,7 +130,7 @@ if ($_GET["fu"]==1) {
                             $konz_min1="hochkonz.";
                         }
                         if ($konz_min2==1) {
-                            $konz_min2="fl�chtig";
+                            $konz_min2="fl&uuml;chtig";
                         }elseif ($konz_min2==2) {
                             $konz_min2="weit gestreut";
                         }elseif ($konz_min2==3) {
@@ -141,7 +141,7 @@ if ($_GET["fu"]==1) {
                             $konz_min2="hochkonz.";
                         }
                         if ($konz_min3==1) {
-                            $konz_min3="fl�chtig";
+                            $konz_min3="fl&uuml;chtig";
                         }elseif ($konz_min3==2) {
                             $konz_min3="weit gestreut";
                         }elseif ($konz_min3==3) {
