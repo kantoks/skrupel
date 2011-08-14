@@ -12,21 +12,24 @@ if ($_GET["fu"]==1) {
 <?php
 $daten_verzeichnis="../daten/";
 $handle=opendir("$daten_verzeichnis");
-while ($rasses=readdir($handle)) {
-   if ((substr($rasses,0,1)<>'.') and (substr($rasses,0,7)<>'bilder_') and (substr($rasses,strlen($rasses)-4,4)<>'.txt')) {
-$daten="";
-$file=$daten_verzeichnis.$rasses.'/daten.txt';
-$fp = @fopen("$file","r");
-if ($fp) {
-$zaehler2=0;
-while (!feof ($fp)) {
-    $buffer = @fgets($fp, 4096);
-    $daten[$zaehler2]=$buffer;
-    $zaehler2++;
+while ($rasses=readdir($handle)){
+  $file=$daten_verzeichnis.$rasses.'/daten.txt';
+  //if ((substr($rasses,0,1)<>'.') and (substr($rasses,0,7)<>'bilder_') and (substr($rasses,-4)<>'.txt')) {
+  if(is_dir($daten_verzeichnis.$rasses) && is_file($file)){
+    $daten=array();
+    $fp = @fopen("$file","r");
+    if ($fp) {
+      $zaehler2=0;
+      while (!feof ($fp)) {
+        $buffer = @fgets($fp, 4096);
+        $daten[$zaehler2]=$buffer;
+        $zaehler2++;
+      }
+      @fclose($fp);
+      $r_eigenschaften[$rasses]['name']=trim($daten[0]);
+    }
+  }
 }
-@fclose($fp); }
-$r_eigenschaften[$rasses]['name']=trim($daten[0]);
-}}
   $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele order by name");
   $spielanzahl = @mysql_num_rows($zeiger);
   if ($spielanzahl>=1) {
