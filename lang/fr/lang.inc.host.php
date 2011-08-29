@@ -148,4 +148,4 @@ $lang['host']['fr']['letztermonat'][24]="Im Spiel {1} kam es zur Zugauswertung."
 $lang['host']['fr']['mineralader']='Sur notre colonie {1} un nouveau filon de {2} a ete decouvert- Une chance!';
 $lang['host']['fr']['kolonisten']='Sur notre colonie {1} nous avons decouvert une colonie oubliee composee de {2} individus et avons pu les integrer.';
 $lang['host']['fr']['wetterstation']='Nous avons trouve sur la planete {1} un poste de controle provenant d`une autre civilisation. Ce poste permet d`adapter automatiquement les temperatures en fonction des besoins des habitants.';
-?>
+$lang['host']['fr']['angriffswarnung']='Die Ureinwohner unserer Kolonie auf {1} warnen: Der Feind hat einen Kurs auf den Planeten gesetzt.';
