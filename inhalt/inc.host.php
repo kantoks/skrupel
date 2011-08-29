@@ -3011,6 +3011,7 @@ if ($planetenanzahl>=1) {
         $native_fert_attacke=intval(substr($native_fert,18,3))/100;
         $native_fert_intens=intval(substr($native_fert,26,1));
         $native_fert_klau=intval(substr($native_fert,27,1));
+        $native_fert_angriffswarnung=intval(substr($native_fert,29,1));
         if ($native_fert_intens==1) {
             $konz_lemin=5;
             $konz_min1=5;
@@ -3150,6 +3151,26 @@ if ($planetenanzahl>=1) {
         if($osys_1==3 or $osys_2==3 or $osys_3==3 or $osys_4==3 or $osys_5==3 or $osys_6==3){$Bankbonus=1.075;}
         $reservat=0;
         if($osys_1==23 or $osys_2==23 or $osys_3==23 or $osys_4==23 or $osys_5==23 or $osys_6==23){$reservat=10000;}
+        //NATIVE ANGRIFFSWARNUNG ANFANG
+        if (($native_id>=1) and ($native_kol>1) and ($native_fert_angriffswarnung==1)) {
+            $anzahl_angreifer=0;
+            $zeiger_temp = mysql_query("SELECT id,besitzer FROM $skrupel_schiffe where flug=2 and zielid=$pid and besitzer!=$besitzer");
+            $anzahl_temp = mysql_num_rows($zeiger_temp);
+            if ($anzahl_temp>0) {
+                for ($zaehler=0; $zaehler<$anzahl_temp; $zaehler++) {
+                    $ok = mysql_data_seek($zeiger_temp,$zaehler);
+                    $array_temp = mysql_fetch_array($zeiger_temp);
+                    $s_besitzer = $array_temp["besitzer"];
+                    if ($beziehung[$besitzer][$s_besitzer]['status']<2) {
+                        $anzahl_angreifer++;
+                    }
+                }
+            }
+            if ($anzahl_angreifer>0) {
+                neuigkeiten(1,"../bilder/planeten/$klasse"."_"."$bild.jpg",$besitzer,$lang['host'][$spielersprache[$besitzer]]['angriffswarnung'],array($name));
+            }
+        }
+        //NATIVE ANGRIFFSWARNUNG ENDE
         //NATIVE ANFANG
         if (($native_id>=1) and ($native_kol<1000000)) {
             $schwank=mt_rand(1,2);
@@ -3240,7 +3261,7 @@ if ($planetenanzahl>=1) {
                 //Lemin Ende
                 //Baxterium Anfang
                 $minen_min1=$planet_min1*$minen_fert_temp*$r_eigenschaften[$rasse]['minen']/$mineralgesamt;
-    $min1_neu=min($planet_min1,floor($minen_min1/max($minen_je_kt_mineral[$konz_min1-1],1)));
+                $min1_neu=min($planet_min1,floor($minen_min1/max($minen_je_kt_mineral[$konz_min1-1],1)));
                 $mineral_klau=0;
                 if ($native_fert_klau==2) {
                     $mineral_klau=round($min1_neu/100*mt_rand(30,80));
@@ -3250,7 +3271,7 @@ if ($planetenanzahl>=1) {
                 //Baxterium Ende
                 //Rennurbin Anfang
                 $minen_min2=$planet_min2*$minen_fert_temp*$r_eigenschaften[$rasse]['minen']/$mineralgesamt;
-    $min2_neu=min($planet_min2,floor($minen_min2/max($minen_je_kt_mineral[$konz_min2-1],1)));
+                $min2_neu=min($planet_min2,floor($minen_min2/max($minen_je_kt_mineral[$konz_min2-1],1)));
                 $mineral_klau=0;
                 if ($native_fert_klau==3) {
                     $mineral_klau=round($min2_neu/100*mt_rand(30,80));
@@ -3260,7 +3281,7 @@ if ($planetenanzahl>=1) {
                 //Rennurbin Ende
                 //Vormissan Anfang
                 $minen_min3=$planet_min3*$minen_fert_temp*$r_eigenschaften[$rasse]['minen']/$mineralgesamt;
-    $min3_neu=min($planet_min3,floor($minen_min3/max($minen_je_kt_mineral[$konz_min3-1],1)));
+                $min3_neu=min($planet_min3,floor($minen_min3/max($minen_je_kt_mineral[$konz_min3-1],1)));
                 $mineral_klau=0;
                 if ($native_fert_klau==4) {
                     $mineral_klau=round($min3_neu/100*mt_rand(30,80));
