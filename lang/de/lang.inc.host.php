@@ -120,3 +120,4 @@ $lang['host']['de']['letztermonat'][24]="Im Spiel {1} kam es zur Zugauswertung."
 $lang['host']['de']['mineralader']='Auf unserer Kolonie {1} wurde eine bisher unbekannte {2}-Ader entdeckt.';
 $lang['host']['de']['kolonisten']='Auf unserer Kolonie {1} wurde eine vergessene Splitterkolonie mit {2} Individuen entdeckt und wieder eingegliedert.';
 $lang['host']['de']['wetterstation']='Wir fanden auf dem Planeten {1} eine Wetterkontrollstation der vergessenen Dnreb. Sie pa&szlig;t die Planetentemepratur automatisch den Bed&uuml;rfnissen der Bewohner an.';
+$lang['host']['de']['angriffswarnung']='Die Ureinwohner unserer Kolonie auf {1} warnen: Der Feind hat einen Kurs auf den Planeten gesetzt.';
