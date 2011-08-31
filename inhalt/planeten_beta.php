@@ -1,8 +1,7 @@
 <?php 
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.planeten_beta.php";
-include ($file);
+$langfile_1='planeten_beta';
+
 if ($_GET["fu"]==1) {
 include ("inc.header.php");
     $zeiger = @mysql_query("SELECT besitzer,id,native_id,native_name,native_art_name,native_abgabe,native_bild,native_text,native_kol FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
@@ -127,7 +126,7 @@ if ($_GET["fu"]==2) {
         <center>
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><form name="formular" method="post" action="planeten_beta.php?fu=3&pid=<?php echo $_GET["pid"]; ?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                    <td><form name="formular" method="post" action="planeten_beta.php?fu=3&pid=<?php echo $_GET["pid"]; ?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                     <td><textarea style="width:390px;height:59px;" name="logbuchdaten"><?php echo $logbuch?></textarea></td>
                     <td></td>
                 </tr>
@@ -246,12 +245,12 @@ if ($_GET["fu"]==4) {
         function link_schiff(shid_t,oid_t) {
             if (parent.parent.mittelinksoben.document.globals.map.value==0) {
                 parent.parent.mittelinksoben.document.globals.map.value=1;
-                parent.parent.mittemitte.window.location='galaxie.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>';
+                parent.parent.mittemitte.window.location='galaxie.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>';
       }
 //            else {
 //                parent.parent.mittemitte.aktuell.style.visibility='hidden';
 //            }
-            parent.parent.untenmitte.window.location='flotte.php?fu=2&shid='+shid_t+'&oid='+oid_t+'&uid=<?php echo $uid;?>&sid=<?php echo $sid;?>&sprache=<?php echo $_GET["sprache"]?>';
+            parent.parent.untenmitte.window.location='flotte.php?fu=2&shid='+shid_t+'&oid='+oid_t+'&uid=<?php echo $uid;?>&sid=<?php echo $sid;?>';
         }
     </script>
     <body text="#000000" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">

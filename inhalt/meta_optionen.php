@@ -1,21 +1,20 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.meta_optionen.php";
+$langfile_1='meta_optionen';
 include ("../lang/sprachen.php");
-include ($file);
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT sprache, optionen, email, icq, jabber, avatar, chatfarbe From $skrupel_user where uid='$uid'");
     $array = @mysql_fetch_array($zeiger);
-    $id=$array["id"];
-    $spieler_sprache = $array["sprache"];
+    $id=$array['id'];
+    $spieler_sprache = $array['sprache'];
     if(!$spieler_sprache){$spieler_sprache=$language;}
-    $spieler_avatar = $array["avatar"];
-    $spieler_email = $array["email"];
-    $spieler_icq = $array["icq"];
-    $spieler_optionen = $array["optionen"];
-    $spieler_chatfarbe = $array["chatfarbe"];
+    $spieler_avatar = $array['avatar'];
+    $spieler_email = $array['email'];
+    $spieler_icq = $array['icq'];
+    $spieler_optionen = $array['optionen'];
+    $spieler_chatfarbe = $array['chatfarbe'];
     ?>
     <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <div id="bodybody" class="flexcroll" onfocus="this.blur()">
@@ -23,7 +22,7 @@ if ($_GET["fu"]==1) {
             <table border="0" cellspacing="0" cellpadding="0" height="100%">
                 <tr>
                     <td>
-                        <center><img src="../lang/<?php echo $_GET["sprache"]?>/topics/optionen.gif" width="165" height="52"></center>
+                        <center><img src="../lang/<?php echo $spieler_sprache?>/topics/optionen.gif" width="165" height="52"></center>
                         <center>
                             <table border="0" cellspacing="0" cellpadding="0">
                                 <tr>
@@ -33,7 +32,7 @@ if ($_GET["fu"]==1) {
                                                 <td colspan="2"><?php echo $lang['metaoptionen']['datenpersoenlich']?></td>
                                             </tr>
                                             <tr>
-                                                <td>&nbsp;</td><td><form name="formular"  method="post" action="meta_optionen.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                                <td>&nbsp;</td><td><form name="formular"  method="post" action="meta_optionen.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                             </tr>
                                             <tr>
                                                 <td style="color:#aaaaaa;"><?php echo $lang['metaoptionen']['sprache']?></td>
@@ -274,33 +273,34 @@ if ($_GET["fu"]==2) {
     <body text="#000000" bgcolor="#444444"  link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <div id="bodybody" class="flexcroll" onfocus="this.blur()">
         <?php
-        $email=$_POST["email"];
-        $icq=$_POST["icq"];
-        $jabber=$_POST["jabber"];
-        $avatar=$_POST["avatar"];
-        $chatfarbe=$_POST["chatfarbe"];
-        $passwortneu="";
-        $passwortneu=$_POST["passwortneu"];
-        $optionen="";
-        if ($_POST["email_nach"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST["icq_nach"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST["tool_kol"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST["tool_min"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST["tool_vorrat"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST["tool_cantox"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST["tool_logbuch"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST["tool_schiff_tank"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST["tool_schiff_fracht"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST["tool_schiff_spezial"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST["tool_schiff_logbuch"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST["feature_i"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST["feature_ii"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST["feature_iii"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST["tool_schiff_bild"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST["feature_iiii"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST["feature_iiiii"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST["feature_iiiiii"]==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        $zeiger_temp = @mysql_query("UPDATE $skrupel_user set jabber='$jabber', email='$email', icq='$icq', optionen='$optionen', chatfarbe='$chatfarbe', avatar='$avatar', sprache='".$_POST["sprache"]."' where uid='$uid'");
+        $sprache=$_POST['sprache'];
+        $email=$_POST['email'];
+        $icq=$_POST['icq'];
+        $jabber=$_POST['jabber'];
+        $avatar=$_POST['avatar'];
+        $chatfarbe=$_POST['chatfarbe'];
+        $passwortneu='';
+        $passwortneu=$_POST['passwortneu'];
+        $optionen='';
+        if ($_POST['email_nach']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if ($_POST['icq_nach']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if ($_POST['tool_kol']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if ($_POST['tool_min']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if ($_POST['tool_vorrat']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if ($_POST['tool_cantox']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if ($_POST['tool_logbuch']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if ($_POST['tool_schiff_tank']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if ($_POST['tool_schiff_fracht']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if ($_POST['tool_schiff_spezial']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if ($_POST['tool_schiff_logbuch']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if ($_POST['feature_i']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if ($_POST['feature_ii']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if ($_POST['feature_iii']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if ($_POST['tool_schiff_bild']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if ($_POST['feature_iiii']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if ($_POST['feature_iiiii']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if ($_POST['feature_iiiiii']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        $zeiger_temp = @mysql_query("UPDATE $skrupel_user set jabber='$jabber', email='$email', icq='$icq', optionen='$optionen', chatfarbe='$chatfarbe', avatar='$avatar', sprache='$sprache' where uid='$uid'");
         if (strlen($passwortneu)>=1) {
             $zeiger_temp = @mysql_query("UPDATE $skrupel_user set passwort='$passwortneu' where uid='$uid'");
         }
@@ -312,7 +312,7 @@ if ($_GET["fu"]==2) {
                             <center><?php echo $lang['metaoptionen']['wurdengespeichert']?><br><br>
                                 <table border="0" cellspacing="0" cellpadding="0">
                                     <tr>
-                                        <td><form name="formular"  method="post" action="meta_optionen.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_POST["sprache"]?>"></td>
+                                        <td><form name="formular"  method="post" action="meta_optionen.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                         <td><input type="submit" name="bla" value="<?php echo $lang['metaoptionen']['zurueck']; ?>" style="width:120px;"></td>
                                         <td></form></td>
                                     </tr>

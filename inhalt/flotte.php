@@ -1,9 +1,8 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.flotte.php";
-include ($file);
+$langfile_1='flotte';
 $shid=$_GET["shid"];
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ?>
@@ -85,7 +84,7 @@ if ($_GET["fu"]==1) {
                                                         </tr>
                                                         <tr>
                                                             <td><img src="../bilder/empty.gif" border="0" width="1" height="58"></td>
-                                                            <td style="filter:glow(color=#000000, strenght=#1);" valign="top"><center><a href="flotte.php?fu=1&oid=<?php echo $ooid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" style="color:#ffffff;"><?php echo $name; ?><br><?php echo $total; ?></a></center></td>
+                                                            <td style="filter:glow(color=#000000, strenght=#1);" valign="top"><center><a href="flotte.php?fu=1&oid=<?php echo $ooid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" style="color:#ffffff;"><?php echo $name; ?><br><?php echo $total; ?></a></center></td>
                                                             <td><img src="../bilder/empty.gif" border="0" width="1" height="58"></td>
                                                         </tr>
                                                     </table>
@@ -169,7 +168,7 @@ if ($_GET["fu"]==1) {
                                                     </tr>
                                                     <tr>
                                                         <td background="<?php echo $bildpfad; ?>/aufbau/tarnrand.gif"><img src="../bilder/empty.gif" border="0" width="1" height="1"></td>
-                                                        <td bgcolor="#000000"><a href="flotte.php?fu=2&shid=<?php echo $shid; ?>&oid=<?php echo $oid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"><img src="../daten/<?php echo $volk; ?>/bilder_schiffe/<?php echo $bild; ?>" border="0"  height="80" title="<?php echo $tip; ?>" style="filter:alpha(opacity=50);" onmouseover="this.style.filter='alpha(opacity=100)';" onmouseout="this.style.filter='alpha(opacity=50)';"></a></td>
+                                                        <td bgcolor="#000000"><a href="flotte.php?fu=2&shid=<?php echo $shid; ?>&oid=<?php echo $oid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"><img src="../daten/<?php echo $volk; ?>/bilder_schiffe/<?php echo $bild; ?>" border="0"  height="80" title="<?php echo $tip; ?>" style="filter:alpha(opacity=50);" onmouseover="this.style.filter='alpha(opacity=100)';" onmouseout="this.style.filter='alpha(opacity=50)';"></a></td>
                                                         <td background="<?php echo $bildpfad; ?>/aufbau/tarnrand.gif"><img src="../bilder/empty.gif" border="0" width="1" height="1"></td>
                                                     </tr>
                                                     <tr>
@@ -187,7 +186,7 @@ if ($_GET["fu"]==1) {
                                                     </tr>
                                                     <tr>
                                                         <td bgcolor="#aaaaaa"><img src="../bilder/empty.gif" border="0" width="1" height="1"></td>
-                                                        <td><a href="flotte.php?fu=2&shid=<?php echo $shid; ?>&oid=<?php echo $oid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"><img src="../daten/<?php echo $volk; ?>/bilder_schiffe/<?php echo $bild; ?>" border="0"  height="80" width="122" title="<?php echo $tip; ?>"></a></td>
+                                                        <td><a href="flotte.php?fu=2&shid=<?php echo $shid; ?>&oid=<?php echo $oid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"><img src="../daten/<?php echo $volk; ?>/bilder_schiffe/<?php echo $bild; ?>" border="0"  height="80" width="122" title="<?php echo $tip; ?>"></a></td>
                                                         <td bgcolor="#aaaaaa"><img src="../bilder/empty.gif" border="0" width="1" height="1"></td>
                                                     </tr>
                                                     <tr>
@@ -324,18 +323,18 @@ if ($_GET["fu"]==2) {
     }
     ?>
     <frameset framespacing="0" border="false" frameborder="0" cols="*,26,230,239,400,26,*">
-        <frame name="randlinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-        <frame name="pfeillinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="flotte.php?fu=7&oid=<?php echo $oid; ?>&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-        <frame name="ship" scrolling="no" marginwidth="0" marginheight="0" noresize src="flotte.php?fu=3&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+        <frame name="randlinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&bildpfad=<?php echo $bildpfad; ?>" target="_self">
+        <frame name="pfeillinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="flotte.php?fu=7&oid=<?php echo $oid; ?>&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
+        <frame name="ship" scrolling="no" marginwidth="0" marginheight="0" noresize src="flotte.php?fu=3&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
         <?php if ($zug_abgeschlossen==0) { ?>
-            <frame name="shipsmenu" scrolling="no" marginwidth="0" marginheight="0" noresize src="flotte.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-            <frame name="shipsdetails" scrolling="auto" marginwidth="0" marginheight="0" noresize src="flotte_alpha.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+            <frame name="shipsmenu" scrolling="no" marginwidth="0" marginheight="0" noresize src="flotte.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
+            <frame name="shipsdetails" scrolling="auto" marginwidth="0" marginheight="0" noresize src="flotte_alpha.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
         <?php } else { ?>
-            <frame name="shipsmenu" scrolling="no" marginwidth="0" marginheight="0" noresize src="flotte.php?fu=5&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-            <frame name="shipsdetails" scrolling="auto" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+            <frame name="shipsmenu" scrolling="no" marginwidth="0" marginheight="0" noresize src="flotte.php?fu=5&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
+            <frame name="shipsdetails" scrolling="auto" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14" target="_self">
         <?php } ?>
-        <frame name="pfeilrechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="flotte.php?fu=8&oid=<?php echo $oid; ?>&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-        <frame name="randrechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+        <frame name="pfeilrechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="flotte.php?fu=8&oid=<?php echo $oid; ?>&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
+        <frame name="randrechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&bildpfad=<?php echo $bildpfad; ?>" target="_self">
     </frameset>
     <noframes>
     <body>
@@ -447,12 +446,12 @@ if ($_GET["fu"]==3) {
             function schiffdetail(shid,volk) {
                 oben=100;
                 links=Math.ceil((screen.width-580)/2);
-                window.open('hilfe_schiff.php?fu2='+shid+'&volk='+volk+'&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>','Hilfe','resizable=yes,scrollbars=no,width=580,height=180,top='+oben+',left='+links);
+                window.open('hilfe_schiff.php?fu2='+shid+'&volk='+volk+'&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>','Hilfe','resizable=yes,scrollbars=no,width=580,height=180,top='+oben+',left='+links);
             }
             function hilfe_spionage_schiff(shid) {
                 oben=100;
                 links=Math.ceil((screen.width-480)/2);
-                window.open('hilfe_spionage.php?fu2=4&spid='+shid+'&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>','Hilfe','resizable=yes,scrollbars=no,width=480,height=200,top='+oben+',left='+links);
+                window.open('hilfe_spionage.php?fu2=4&spid='+shid+'&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>','Hilfe','resizable=yes,scrollbars=no,width=480,height=200,top='+oben+',left='+links);
             }
         </script>
         <table  border="0" cellspacing="0" cellpadding="0">
@@ -486,7 +485,7 @@ if ($_GET["fu"]==3) {
                                 <td width="100%"><img src="<?php echo $bildpfad; ?>/icons/erf_<?php echo $erfahrung; ?>.gif" title="<?php echo $lang['flotte']['erfahrungslevel']." ".$erfahrung; ?>" border="0" width="22" height="22"></td>
                             <?php } ?>
                             <td align="right" <?php if ($erfahrung==0) { ?>width="100%"<?php } ?>>
-                                <a href="javascript:linktop('flotte.php?fu=1&oid=<?php echo $ordner; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');document.body.focus();">
+                                <a href="javascript:linktop('flotte.php?fu=1&oid=<?php echo $ordner; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');document.body.focus();">
                                     <img src="<?php echo $bildpfad; ?>/icons/flotteordner.gif" title="<?php echo $lang['flotte']['ordneruebersicht']?>" border="0" width="22" height="22">
                                 </a>
                             </td>
@@ -652,26 +651,26 @@ if ($_GET["fu"]==4) {
             </tr>
         </table>
         <map name="konsole">
-            <area shape=rect coords="26,16,53,36" href="javascript:linksub('flotte_alpha.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['kurs']; ?>">
-            <area shape=rect coords="72,11,99,40" href="javascript:linksub('flotte_alpha.php?fu=3&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['spezialmission']; ?>">
-            <area shape=rect coords="118,12,148,40" href="javascript:linksub('flotte_alpha.php?fu=5&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['routing']; ?>">
-            <area shape=rect coords="25,59,52,83" href="javascript:linksub('flotte_beta.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['scanning']; ?>">
+            <area shape=rect coords="26,16,53,36" href="javascript:linksub('flotte_alpha.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['kurs']; ?>">
+            <area shape=rect coords="72,11,99,40" href="javascript:linksub('flotte_alpha.php?fu=3&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['spezialmission']; ?>">
+            <area shape=rect coords="118,12,148,40" href="javascript:linksub('flotte_alpha.php?fu=5&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['routing']; ?>">
+            <area shape=rect coords="25,59,52,83" href="javascript:linksub('flotte_beta.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['scanning']; ?>">
             <?php if(@intval(substr($spieler_optionen,13,1))==1) { ?>
-                <area shape=rect coords="72,57,100,85" href="javascript:linksub('flotte_beta.php?fu=6&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['transporterraum']; ?>">
+                <area shape=rect coords="72,57,100,85" href="javascript:linksub('flotte_beta.php?fu=6&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['transporterraum']; ?>">
             <?php } else { ?>
-                <area shape=rect coords="72,57,100,85" href="javascript:linksub('flotte_beta.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['transporterraum']; ?>">
+                <area shape=rect coords="72,57,100,85" href="javascript:linksub('flotte_beta.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['transporterraum']; ?>">
             <?php } ?>
-            <area shape=rect coords="116,61,146,84" href="javascript:linksub('flotte_beta.php?fu=8&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['logbuch']; ?>">
-            <area shape=rect coords="163,15,182,29" href="javascript:linksub('flotte_gamma.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['waffensysteme']; ?>">
+            <area shape=rect coords="116,61,146,84" href="javascript:linksub('flotte_beta.php?fu=8&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['logbuch']; ?>">
+            <area shape=rect coords="163,15,182,29" href="javascript:linksub('flotte_gamma.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['waffensysteme']; ?>">
             <?php if(@intval(substr($spieler_optionen,13,1))==1) { ?>
-                <area shape=rect coords="163,40,182,56" href="javascript:linksub('flotte_gamma.php?fu=5&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['aggressivitaet']; ?>">
+                <area shape=rect coords="163,40,182,56" href="javascript:linksub('flotte_gamma.php?fu=5&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['aggressivitaet']; ?>">
             <?php } else { ?>
-                <area shape=rect coords="163,40,182,56" href="javascript:linksub('flotte_gamma.php?fu=2&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['aggressivitaet']; ?>">
+                <area shape=rect coords="163,40,182,56" href="javascript:linksub('flotte_gamma.php?fu=2&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['aggressivitaet']; ?>">
             <?php } ?>
-            <area shape=rect coords="163,65,182,86" href="javascript:linksub('flotte_gamma.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['lagerraeume']; ?>">
-            <area shape=rect coords="194,15,213,29" href="javascript:linksub('flotte_delta.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['projektillager']; ?>">
-            <area shape=rect coords="194,40,213,56" href="javascript:linksub('flotte_delta.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['antriebssysteme']; ?>">
-            <area shape=rect coords="194,65,213,86" href="javascript:linksub('flotte_delta.php?fu=5&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['optionen']; ?>">
+            <area shape=rect coords="163,65,182,86" href="javascript:linksub('flotte_gamma.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['lagerraeume']; ?>">
+            <area shape=rect coords="194,15,213,29" href="javascript:linksub('flotte_delta.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['projektillager']; ?>">
+            <area shape=rect coords="194,40,213,56" href="javascript:linksub('flotte_delta.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['antriebssysteme']; ?>">
+            <area shape=rect coords="194,65,213,86" href="javascript:linksub('flotte_delta.php?fu=5&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['optionen']; ?>">
         </map>
         <?php
     include ("inc.footer.php");
@@ -698,12 +697,12 @@ if ($_GET["fu"]==5) {
             </tr>
         </table>
         <map name="konsole">
-            <area shape=rect coords="25,59,52,83" href="javascript:linksub('flotte_beta.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['scanning']; ?>">
-            <area shape=rect coords="116,61,146,84" href="javascript:linksub('flotte_beta.php?fu=8&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['logbuch']; ?>">
-            <area shape=rect coords="163,15,182,29" href="javascript:linksub('flotte_gamma.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['waffensysteme']; ?>">
-            <area shape=rect coords="163,65,182,86" href="javascript:linksub('flotte_gamma.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['lagerraeume']; ?>">
-            <area shape=rect coords="194,40,213,56" href="javascript:linksub('flotte_delta.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['antriebssysteme']; ?>">
-            <area shape=rect coords="194,65,213,86" href="javascript:linksub('flotte_delta.php?fu=5&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['flotte']['optionen']; ?>">
+            <area shape=rect coords="25,59,52,83" href="javascript:linksub('flotte_beta.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['scanning']; ?>">
+            <area shape=rect coords="116,61,146,84" href="javascript:linksub('flotte_beta.php?fu=8&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['logbuch']; ?>">
+            <area shape=rect coords="163,15,182,29" href="javascript:linksub('flotte_gamma.php?fu=1&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['waffensysteme']; ?>">
+            <area shape=rect coords="163,65,182,86" href="javascript:linksub('flotte_gamma.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['lagerraeume']; ?>">
+            <area shape=rect coords="194,40,213,56" href="javascript:linksub('flotte_delta.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['antriebssysteme']; ?>">
+            <area shape=rect coords="194,65,213,86" href="javascript:linksub('flotte_delta.php?fu=5&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['flotte']['optionen']; ?>">
         </map>
         <?php
     include ("inc.footer.php");
@@ -837,7 +836,7 @@ if ($_GET["fu"]==6) {
                                                             <img src="../bilder/empty.gif" border="0" width="1" height="1">
                                                         </td>
                                                         <td bgcolor="#000000">
-                                                            <a href="flotte.php?fu=2&shid=<?php echo $shid; ?>&oid=<?php echo $ordner; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>">
+                                                            <a href="flotte.php?fu=2&shid=<?php echo $shid; ?>&oid=<?php echo $ordner; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>">
                                                                 <img src="../daten/<?php echo $volk; ?>/bilder_schiffe/<?php echo $bild; ?>" border="0"  height="80" title="<?php echo $tip; ?>" style="filter:alpha(opacity=50);" onmouseover="this.style.filter='alpha(opacity=100)';" onmouseout="this.style.filter='alpha(opacity=50)';">
                                                             </a>
                                                         </td>
@@ -863,7 +862,7 @@ if ($_GET["fu"]==6) {
                                                     <tr>
                                                         <td bgcolor="#aaaaaa"><img src="../bilder/empty.gif" border="0" width="1" height="1"></td>
                                                         <td>
-                                                            <a href="flotte.php?fu=2&shid=<?php echo $shid; ?>&oid=<?php echo $ordner; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>">
+                                                            <a href="flotte.php?fu=2&shid=<?php echo $shid; ?>&oid=<?php echo $ordner; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>">
                                                                 <img src="../daten/<?php echo $volk; ?>/bilder_schiffe/<?php echo $bild; ?>" border="0"  height="80" title="<?php echo $tip; ?>">
                                                             </a>
                                                         </td>
@@ -1021,7 +1020,7 @@ if ($_GET["fu"]==7) {
                         </tr>
                         <tr>
                             <td>
-                                <a href="javascript:linksub('flotte.php?fu=2&shid=<?php echo $shid_back; ?>&oid=<?php echo $oid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();">
+                                <a href="javascript:linksub('flotte.php?fu=2&shid=<?php echo $shid_back; ?>&oid=<?php echo $oid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();">
                                     <img src="<?php echo $bildpfad; ?>/konsole/pfeil_links.gif" border="0" width="26" height="90">
                                 </a>
                             </td>
@@ -1064,7 +1063,7 @@ if ($_GET["fu"]==8) {
                         </tr>
                         <tr>
                             <td>
-                                <a href="javascript:linksub('flotte.php?fu=2&shid=<?php echo $shid_t; ?>&oid=<?php echo $oid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();">
+                                <a href="javascript:linksub('flotte.php?fu=2&shid=<?php echo $shid_t; ?>&oid=<?php echo $oid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();">
                                     <img src="<?php echo $bildpfad; ?>/konsole/pfeil_rechts.gif" border="0" width="26" height="90">
                                 </a>
                             </td>

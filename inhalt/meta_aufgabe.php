@@ -1,8 +1,8 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-include ("../lang/".$_GET["sprache"]."/lang.meta_aufgabe.php");
+$langfile_1='meta_aufgabe';
 include_once ('inc.hilfsfunktionen.php');
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ?>
@@ -11,7 +11,7 @@ if ($_GET["fu"]==1) {
             <table border="0" cellspacing="0" cellpadding="0" height="100%">
                 <tr>
                     <td>
-                        <center><img src="../lang/<?php echo $_GET["sprache"]?>/topics/aufgabe.gif" border="0" width="157" height="52"></center>
+                        <center><img src="../lang/<?php echo $spieler_sprache?>/topics/aufgabe.gif" border="0" width="157" height="52"></center>
                         <br>
                         <center>
                             <table border="0" cellspacing="0" cellpadding="0">
@@ -26,7 +26,7 @@ if ($_GET["fu"]==1) {
                         <center>
                             <table border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td><form method="post" action="meta_aufgabe.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" onsubmit="return confirm('<?php echo $lang['metaaufgabe']['wirklichaufgeben']?>');"></td>
+                                    <td><form method="post" action="meta_aufgabe.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>" onsubmit="return confirm('<?php echo $lang['metaaufgabe']['wirklichaufgeben']?>');"></td>
                                 </tr>
                                 <tr>
                                     <td><input type="submit" name="button" value="<?php echo $lang['metaaufgabe']['aufgeben']?>"></td>
@@ -69,7 +69,7 @@ if ($_GET["fu"]==2) {
             </table>
         </center>
         <script language=JavaScript>
-            top.window.location='meta_aufgabe.php?fu=3&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>';
+            top.window.location='meta_aufgabe.php?fu=3&uid=<?php echo $uid?>&sid=<?php echo $sid?>';
         </script>
         <?php
     include ("inc.footer.php");
@@ -256,6 +256,6 @@ if ($_GET["fu"]==3) {
     ///////////////////////////////////////////////////////////////////////////////////////////////RANGLISTE ENDE
     @mysql_close();
     if ($bildpfad=='../bilder') { $bildpfad='bilder'; }
-    $backlink="../index.php?pic_path=$bildpfad&sprache=".$_GET["sprache"];
+    $backlink="../index.php?pic_path=$bildpfad&sprache=".$spieler_sprache;
     header ("Location: $backlink");
 }

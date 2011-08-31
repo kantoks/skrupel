@@ -1,16 +1,15 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.kommunikation_ch.php";
-include ($file);
+$langfile_1='kommunikation_ch';
+
 if ($_GET["fu"]==1) {
     include ("../inc.conf.php");
     include ("inc.header.php");
     ?>
     <frameset framespacing="0" border="false" frameborder="0" cols="*,360,*">
-        <frame name="randlinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-        <frame name="chatkonsole" scrolling="no" marginwidth="0" marginheight="0" noresize src="kommunikation_ch.php?fu=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-        <frame name="randrechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+        <frame name="randlinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&bildpfad=<?php echo $bildpfad; ?>" target="_self">
+        <frame name="chatkonsole" scrolling="no" marginwidth="0" marginheight="0" noresize src="kommunikation_ch.php?fu=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
+        <frame name="randrechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&bildpfad=<?php echo $bildpfad; ?>" target="_self">
     </frameset>
     <noframes>
     <body>
@@ -206,7 +205,7 @@ if ($_GET["fu"]==2) {
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td colspan="3"><img src="../bilder/empty.gif" border="0" width="1" height="9"></td>
-                    <td><form name="formular" method="post" action="kommunikation_ch.php?fu=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&zeit=<?php echo $neuzeit; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                    <td><form name="formular" method="post" action="kommunikation_ch.php?fu=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&zeit=<?php echo $neuzeit; ?>"></td>
                     <td><input type="hidden" name="neu" value="1"></td>
                 </tr>
                 <tr>

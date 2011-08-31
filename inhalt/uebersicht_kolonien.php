@@ -1,10 +1,8 @@
 <?php 
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.uebersicht_kolonien.php";
-include ($file);
-$file="../lang/".$_GET["sprache"]."/lang.orbitale_systeme.php";
-include ($file);
+$langfile_1='uebersicht_kolonien';
+$langfile_2='orbitale_systeme';
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ?>
@@ -13,11 +11,11 @@ if ($_GET["fu"]==1) {
             function nativedetail(shid) {
                 oben=100;
                 links=Math.ceil((screen.width-580)/2);
-                window.open('hilfe_native.php?fu2='+shid+'&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>','domspezien','resizable=yes,scrollbars=no,width=580,height=180,top='+oben+',left='+links);
+                window.open('hilfe_native.php?fu2='+shid+'&uid=<?php echo $uid?>&sid=<?php echo $sid?>','domspezien','resizable=yes,scrollbars=no,width=580,height=180,top='+oben+',left='+links);
             }
         </script>
         <div id="bodybody" class="flexcroll" onfocus="this.blur()">
-        <center><img src="../lang/<?php echo $_GET["sprache"]?>/topics/kolonien.gif" border="0" width="162" height="52"></center>
+        <center><img src="../lang/<?php echo $spieler_sprache?>/topics/kolonien.gif" border="0" width="162" height="52"></center>
         <?php 
         $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and spiel=$spiel order by name");
         $planetenanzahl = @mysql_num_rows($zeiger);
@@ -160,7 +158,7 @@ if ($_GET["fu"]==1) {
                                     </tr>
                                     <tr>
                                         <td bgcolor="#aaaaaa"><img src="../bilder/empty.gif" border="0" width="1" height="1"></td>
-                                        <td><a href="planeten.php?fu=2&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" target="untenmitte"><img src="<?php echo $bildpfad?>/planeten/<?php echo $klasse?>_<?php echo $bild?>.jpg" border="0" title="<?php echo $logbuch?>"></a></td>
+                                        <td><a href="planeten.php?fu=2&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>" target="untenmitte"><img src="<?php echo $bildpfad?>/planeten/<?php echo $klasse?>_<?php echo $bild?>.jpg" border="0" title="<?php echo $logbuch?>"></a></td>
                                         <td bgcolor="#aaaaaa"><img src="../bilder/empty.gif" border="0" width="1" height="1"></td>
                                     </tr>
                                     <tr>
@@ -173,7 +171,7 @@ if ($_GET["fu"]==1) {
                                 <center>
                                     <table border="0" cellspacing="0" cellpadding="0">
                                         <tr>
-                                            <td><nobr><a href="planeten.php?fu=2&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" target="untenmitte"><?php echo $name?></a></nobr></td>
+                                            <td><nobr><a href="planeten.php?fu=2&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>" target="untenmitte"><?php echo $name?></a></nobr></td>
                                             <td  style="color:#aaaaaa;"><nobr>&nbsp;(<?php echo  $x_pos."/".$y_pos;?>)</nobr></td>
                                         </tr>
                                         <tr>
@@ -438,7 +436,7 @@ if ($_GET["fu"]==1) {
                                     }
                                     ?>
                                     <center>
-                                        <a href="basen.php?fu=2&baid=<?php echo $sternenbasis_id?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" target="untenmitte">
+                                        <a href="basen.php?fu=2&baid=<?php echo $sternenbasis_id?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>" target="untenmitte">
                                             <img src="<?php echo $bildpfad?>/icons/<?php echo $icon?>" border="0" title="<?php echo $artname?>">
                                             <br>
                                             <img src="../bilder/icons/basis.gif" border="0" width="36" height="36" title="<?php echo $artname?>">

@@ -3,8 +3,7 @@
 :noTabs=false:indentSize=4:tabSize=4:folding=explicit:collapseFolds=1:
 */
 include ('../inc.conf.php');
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-include ("../lang/".$_GET["sprache"]."/lang.uebersicht_neuigkeiten.php");
+$langfile_1='uebersicht_neuigkeiten';
 include_once ('inc.hilfsfunktionen.php');
 
 $fuid = int_get('fu');
@@ -25,7 +24,7 @@ if ($fuid==1) {
                     <tr>
                         <td>
                             <center>
-                                <img src="../lang/<?php echo $_GET["sprache"]?>/topics/politik.gif" width="105" height="32" title="Politik">
+                                <img src="../lang/<?php echo $spieler_sprache?>/topics/politik.gif" width="105" height="32" title="Politik">
                                 <br><br>
                             </center>
                             <table border="0" cellspacing="0" cellpadding="4">
@@ -73,12 +72,12 @@ if ($fuid==1) {
                                             <center>
                                                 <table border="0" cellspacing="0" cellpadding="0">
                                                     <tr>
-                                                        <td><form name="formular" method="post" action="kommunikation_politik.php?fu=5&anf=<?php echo $anfrage_id?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                                        <td><form name="formular" method="post" action="kommunikation_politik.php?fu=5&anf=<?php echo $anfrage_id?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                                         <td><input type="hidden" name="spieler2" value="<?php echo $partei_b; ?>" ></td>
                                                         <td><input type="submit" name="bla" value="<?php echo $button_1; ?>" style="width:200px;"></td>
                                                         <td></form></td>
                                                         <td><nobr>&nbsp;&nbsp;</nobr></td>
-                                                        <td><form name="formular" method="post" action="kommunikation_politik.php?fu=6&anf=<?php echo $anfrage_id?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                                        <td><form name="formular" method="post" action="kommunikation_politik.php?fu=6&anf=<?php echo $anfrage_id?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                                         <td><input type="hidden" name="spieler2" value="<?php echo $partei_b; ?>" ></td>
                                                         <td><input type="submit" name="bla2" value="<?php echo $button_2; ?>" style="width:200px;"></td>
                                                         <td></form></td>
@@ -105,7 +104,7 @@ if ($fuid==1) {
                 function gefecht(art,sh1,sh2,datum) {
                     oben=100;
                     links=screen.width-400;
-                    window.open('gefecht.php?fu='+art+'&sh1='+sh1+'&sh2='+sh2+'&datum='+datum+'&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>','Gefecht','resizable=no,scrollbars=no,width=300,height=206,top='+oben+',left='+links);
+                    window.open('gefecht.php?fu='+art+'&sh1='+sh1+'&sh2='+sh2+'&datum='+datum+'&uid=<?php echo $uid?>&sid=<?php echo $sid?>','Gefecht','resizable=no,scrollbars=no,width=300,height=206,top='+oben+',left='+links);
                 }
             </script>
             <?php 
@@ -174,11 +173,11 @@ if ($fuid==1) {
                                         <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
                                             <tr>
                                                 <td>
-                                                <form name=\"formular\" method=\"post\" action=\"uebersicht_neuigkeiten.php?fu=4&nid=$nid&pid=$spieler&spid=$spiel&gegner=$gegner&uid=$uid&sid=$sid&sprache=".$_GET["sprache"]."\"></td>
+                                                <form name=\"formular\" method=\"post\" action=\"uebersicht_neuigkeiten.php?fu=4&nid=$nid&pid=$spieler&spid=$spiel&gegner=$gegner&uid=$uid&sid=$sid\"></td>
                                                 <td><input type=\"submit\" name=\"bla\" value=\"".$lang['uebersichtneuigkeiten']['annehmen']."\" style=\"width:120px;\"></td>
                                                 <td></form></td>
                                                 <td><nobr>&nbsp;&nbsp;</nobr></td>
-                                                <td><form name=\"formular\" method=\"post\" action=\"uebersicht_neuigkeiten.php?fu=5&nid=$nid&pid=$spieler&spid=$spiel&gegner=$gegner&uid=$uid&sid=$sid&sprache=".$_GET["sprache"]."\"></td>
+                                                <td><form name=\"formular\" method=\"post\" action=\"uebersicht_neuigkeiten.php?fu=5&nid=$nid&pid=$spieler&spid=$spiel&gegner=$gegner&uid=$uid&sid=$sid\"></td>
                                                 <td><input type=\"submit\" name=\"bla2\" value=\"".$lang['uebersichtneuigkeiten']['ablehnen']."\" style=\"width:120px;\"></td>
                                                 <td></form></td>
                                             </tr>
@@ -194,11 +193,11 @@ if ($fuid==1) {
                                         <br><br>
                                         <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
                                             <tr>
-                                                <td><form name=\"formular\" method=\"post\" action=\"uebersicht_neuigkeiten.php?fu=6&nid=$nid&pid=$spieler&spid=$spiel&gegner=$gegner&uid=$uid&sid=$sid&sprache=".$_GET["sprache"]."\"></td>
+                                                <td><form name=\"formular\" method=\"post\" action=\"uebersicht_neuigkeiten.php?fu=6&nid=$nid&pid=$spieler&spid=$spiel&gegner=$gegner&uid=$uid&sid=$sid\"></td>
                                                 <td><input type=\"submit\" name=\"bla\" value=\"".$lang['uebersichtneuigkeiten']['annehmen']."\" style=\"width:120px;\"></td>
                                                 <td></form></td>
                                                 <td><nobr>&nbsp;&nbsp;</nobr></td>
-                                                <td><form name=\"formular\" method=\"post\" action=\"uebersicht_neuigkeiten.php?fu=7&nid=$nid&pid=$spieler&spid=$spiel&gegner=$gegner&uid=$uid&sid=$sid&sprache=".$_GET["sprache"]."\"></td>
+                                                <td><form name=\"formular\" method=\"post\" action=\"uebersicht_neuigkeiten.php?fu=7&nid=$nid&pid=$spieler&spid=$spiel&gegner=$gegner&uid=$uid&sid=$sid\"></td>
                                                 <td><input type=\"submit\" name=\"bla2\" value=\"".$lang['uebersichtneuigkeiten']['ablehnen']."\" style=\"width:120px;\"></td>
                                                 <td></form></td>
                                             </tr>
@@ -214,7 +213,7 @@ if ($fuid==1) {
                                         <br>
                                         <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
                                             <tr>
-                                                <td><form name=\"formular\" method=\"post\" action=\"kommunikation_subfunk.php?fu=1&an=$gegner&uid=$uid&sid=$sid&sprache=".$_GET["sprache"]."\"></td>
+                                                <td><form name=\"formular\" method=\"post\" action=\"kommunikation_subfunk.php?fu=1&an=$gegner&uid=$uid&sid=$sid\"></td>
                                                 <td><input type=\"submit\" name=\"bla\" value=\"".$lang['uebersichtneuigkeiten']['antworten']."\" style=\"width:120px;\"></td>
                                                 <td></form></td>
                                             </tr>
@@ -230,7 +229,7 @@ if ($fuid==1) {
                                         <br>
                                         <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">
                                             <tr>
-                                                <td><form name=\"formular\" method=\"post\" action=\"kommunikation_board.php?fu=3&fo=1&thema=$forum&uid=$uid&sid=$sid&sprache=".$_GET["sprache"]."\"></td>
+                                                <td><form name=\"formular\" method=\"post\" action=\"kommunikation_board.php?fu=3&fo=1&thema=$forum&uid=$uid&sid=$sid\"></td>
                                                 <td><input type=\"submit\" name=\"bla\" value=\"".$lang['uebersichtneuigkeiten']['kommentieren']."\" style=\"width:120px;\"></td>
                                                 <td></form></td>
                                             </tr>
@@ -272,13 +271,13 @@ if ($fuid==1) {
                                             } else {
                                                 if ($sicher==1) {
                                                     ?>
-                                                    <td><form name="formular" method="post" action="uebersicht_neuigkeiten.php?fu=2&nid=<?php echo $nid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                                    <td><form name="formular" method="post" action="uebersicht_neuigkeiten.php?fu=2&nid=<?php echo $nid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                                     <td><input type="submit" name="submit" value="<?php echo $lang['uebersichtneuigkeiten']['wirdnichtgeloescht']?>" style="width:120px;"></td>
                                                     <td></form></td>
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <td><form name="formular" method="post" action="uebersicht_neuigkeiten.php?fu=3&nid=<?php echo $nid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                                    <td><form name="formular" method="post" action="uebersicht_neuigkeiten.php?fu=3&nid=<?php echo $nid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                                     <td><input type="submit" name="submit" value="<?php echo $lang['uebersichtneuigkeiten']['wirdgeloescht']?>" style="width:120px;"></td>
                                                     <td></form></td>
                                                     <?php
@@ -323,7 +322,7 @@ if ($fuid==2) {
 
     @mysql_close();
 
-    $site = "uebersicht_neuigkeiten.php?fu=1&uid=".$uid."&sid=".$sid."&sprache=".$_GET["sprache"];
+    $site = "uebersicht_neuigkeiten.php?fu=1&uid=".$uid."&sid=".$sid;
     header("Location: $site");
 }
 //}}}
@@ -340,7 +339,7 @@ if ($fuid==3) {
 
     @mysql_close();
 
-    $site = "uebersicht_neuigkeiten.php?fu=1&uid=".$uid."&sid=".$sid."&sprache=".$_GET["sprache"];
+    $site = "uebersicht_neuigkeiten.php?fu=1&uid=".$uid."&sid=".$sid;
     header("Location: $site");
 }
 /*/}}}
@@ -364,7 +363,7 @@ if ($fuid==4) {
 
     @mysql_close();
 
-    $site = "uebersicht_neuigkeiten.php?fu=1&uid=".$uid."&sid=".$sid."&sprache=".$_GET["sprache"];
+    $site = "uebersicht_neuigkeiten.php?fu=1&uid=".$uid."&sid=".$sid;
     header("Location: $site");
 }
 //}}}
@@ -384,7 +383,7 @@ if ($fuid==5) {
 
     @mysql_close();
 
-    $site = "uebersicht_neuigkeiten.php?fu=1&uid=".$uid."&sid=".$sid."&sprache=".$_GET["sprache"];
+    $site = "uebersicht_neuigkeiten.php?fu=1&uid=".$uid."&sid=".$sid;
     header("Location: $site");
 }
 //}}}
@@ -436,7 +435,7 @@ if ($fuid==6) {
 
     $zeiger = @mysql_query("DELETE FROM $skrupel_neuigkeiten where id=$nide");
 
-    $site="uebersicht_neuigkeiten.php?fu=1&uid=".$uid."&sid=".$sid."&sprache=".$_GET["sprache"];
+    $site="uebersicht_neuigkeiten.php?fu=1&uid=".$uid."&sid=".$sid;
     header("Location: $site");
 
     @mysql_close();
@@ -487,7 +486,7 @@ if ($_GET["fu"]==7) {
 
     $zeiger = @mysql_query("DELETE FROM $skrupel_neuigkeiten where id=$nide");
 
-    $site="uebersicht_neuigkeiten.php?fu=1&uid=".$uid."&sid=".$sid."&sprache=".$_GET["sprache"];
+    $site="uebersicht_neuigkeiten.php?fu=1&uid=".$uid."&sid=".$sid;
     header("Location: $site");
 
     @mysql_close();

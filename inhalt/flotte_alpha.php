@@ -1,9 +1,8 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.flotte_alpha.php";
-include ($file);
+$langfile_1='flotte_alpha';
 $shid=$_GET["shid"];
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT fracht_min2,kox,koy,flug,warp,zielx,ziely,zielid,antrieb,mission,masse_gesamt,lemin FROM $skrupel_schiffe where id=$shid");
@@ -219,7 +218,7 @@ if ($_GET["fu"]==1) {
                     <td colspan="8" rowspan="2" width="100%">
                         <table border="0" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td><form name="formular" id="formular" method="post" action="flotte_alpha.php?fu=2&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                <td><form name="formular" id="formular" method="post" action="flotte_alpha.php?fu=2&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                                 <td><input type="checkbox" name="pathfind" value="1" onfocus="blur();rechnen();modicheck();"></td>
                                 <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
                                 <td><div id="modi"><?php echo $lang['flottealpha']['keinkursmodus']; ?></div></td>
@@ -490,7 +489,7 @@ if ($_GET["fu"]==2) {
 }
 if ($_GET["fu"]==3) {
     include ("inc.header.php");
-    include ("../lang/".$_GET["sprache"]."/lang.spionagen.php");
+    include ("../lang/".$spieler_sprache."/lang.spionagen.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid and besitzer=$spieler");
     $array = @mysql_fetch_array($zeiger);
     $status=$array["status"];
@@ -609,7 +608,7 @@ if ($_GET["fu"]==3) {
         <center>
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><form name="formular" id="formular"  method="post" action="flotte_alpha.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                    <td><form name="formular" id="formular"  method="post" action="flotte_alpha.php?fu=4&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                     <td><input type="radio" name="aktion" value="0" style="width:20px;" <?php if ($spezialmission==0) { echo "checked"; }?>></td>
                     <td><img src="../bilder/empty.gif" border="0" width="3" height="3"></td>
                     <td><?php echo $lang['flottealpha']['keine']; ?></td>
@@ -1281,7 +1280,7 @@ if ($_GET["fu"]==3) {
                                     oben=100;
                                     var spid=document.formular.spionage_id.value;
                                     links=Math.ceil((screen.width-480)/2);
-                                    window.open('hilfe_spionage.php?fu2=3&spid='+spid+'&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>','Hilfe','resizable=yes,scrollbars=no,width=480,height=200,top='+oben+',left='+links);
+                                    window.open('hilfe_spionage.php?fu2=3&spid='+spid+'&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>','Hilfe','resizable=yes,scrollbars=no,width=480,height=200,top='+oben+',left='+links);
                                 }
                             </script>
                         </td>
@@ -1732,7 +1731,7 @@ if ($_GET["fu"]==5) {
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td>
-                        <form name="formular"  id="formular"  method="post" action="flotte_alpha.php?fu=6&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                        <form name="formular"  id="formular"  method="post" action="flotte_alpha.php?fu=6&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                         <input type="hidden" value="<?php echo $lang['flottealpha']['fracht']; ?>" name="wechsel">
                     </td>
                     <td><input type="submit" value="<?php echo $lang['flottealpha']['neueroute']; ?>"  name="submitbutton"><?php if($routing_status>0){?><input type="submit" value="<?php echo $lang['flottealpha']['routebearbeiten']; ?>"  name="submitbutton"><?php }?></td>
@@ -1806,7 +1805,7 @@ if ($_GET["fu"]==6) {
         }
         ?>
         <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0"">
-        <form name="formular" id="formular"  method="post" action="flotte_alpha.php?fu=7&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>">
+        <form name="formular" id="formular"  method="post" action="flotte_alpha.php?fu=7&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>">
             <center><table border="0" cellspacing="0" cellpadding="5">
                 <tr><td colspan="5"><img src="../bilder/empty.gif" border="0" width="1" height="5"></td></tr>
                 <tr><td></td></tr>
@@ -1831,7 +1830,7 @@ if ($_GET["fu"]==6) {
     }else{ 
         ?>
         <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-        <form name="formular" id="formular"  method="post" action="flotte_alpha.php?fu=6&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>">
+        <form name="formular" id="formular"  method="post" action="flotte_alpha.php?fu=6&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>">
             <center><table border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td colspan="3"><img src="../bilder/empty.gif" border="0" width="1" height="5"></td>
@@ -2330,7 +2329,7 @@ if ($_GET["fu"]==7) {
                         <td colspan="3"><img src="../bilder/empty.gif" border="0" width="1" height="5"></td>
                     </tr>
                     <tr>
-                        <td><form name="formular" id="formular"  method="post" action="flotte_alpha.php?fu=8&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                        <td><form name="formular" id="formular"  method="post" action="flotte_alpha.php?fu=8&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                         <td><?php echo $lang['flottealpha']['flugoptionen']; ?></td>
                         <td>
                             <input type="hidden" name="kox" value=<?php echo $_POST["kox"]; ?>>

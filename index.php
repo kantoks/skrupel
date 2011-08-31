@@ -81,9 +81,9 @@ if ($db) {
       $array = @mysql_fetch_array($zeiger);
       $spieler_id = $array['id'];
       $spieler_name = $array['nick'];
-      $_GET["sprache"] = $array['sprache'];
-      if($_GET["sprache"]==""){
-        $_GET["sprache"]=$language;
+      $_GET['sprache'] = $array['sprache'];
+      if($_GET['sprache']==''){
+        $_GET['sprache']=$language;
       }
       $zeiger2 = @mysql_query("SELECT * FROM $skrupel_spiele WHERE (spieler_1=$spieler_id or spieler_2=$spieler_id or spieler_3=$spieler_id or spieler_4=$spieler_id or spieler_5=$spieler_id or spieler_6=$spieler_id or spieler_7=$spieler_id or spieler_8=$spieler_id or spieler_9=$spieler_id or spieler_10=$spieler_id) and id=$spiel_slot");
       if (@mysql_num_rows($zeiger2)==1) {
@@ -107,7 +107,7 @@ if ($db) {
   }
   if ($spieler>0)  {
     if ($phase==1) {
-      header("Location: inhalt/runde_ende.php?fu=1&spiel=$spiel&bildpfad=$bildpfad&sprache=".$_GET["sprache"]);
+      header("Location: inhalt/runde_ende.php?fu=1&spiel=$spiel&bildpfad=$bildpfad&sprache=".$_GET['sprache']);
       exit;
     }
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -182,37 +182,37 @@ if ($db) {
       </head>
       <frameset framespacing="0" border="false" frameborder="0" rows="41,*,13,107,10">
         <frameset framespacing="0" border="false" frameborder="0" cols="348,*,402">
-          <frame name="obenlinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=1&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
-          <frame name="obenmitte" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=2&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
-          <frame name="obenrechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=3&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
+          <frame name="obenlinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=1&bildpfad=<?php echo $bildpfad?>" target="_self">
+          <frame name="obenmitte" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=2&bildpfad=<?php echo $bildpfad?>" target="_self">
+          <frame name="obenrechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=3&bildpfad=<?php echo $bildpfad?>" target="_self">
         </frameset>
         <frameset framespacing="0" border="false" frameborder="0" cols="57,*,7">
           <frameset framespacing="0" border="false" frameborder="0" rows="339,*,40">
-            <frame name="mittelinksoben" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/menu.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-            <frame name="mittelinksmitte" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=4&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
-            <frame name="mittelinksunten" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=5&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
+            <frame name="mittelinksoben" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/menu.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>" target="_self">
+            <frame name="mittelinksmitte" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=4&bildpfad=<?php echo $bildpfad?>" target="_self">
+            <frame name="mittelinksunten" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=5&bildpfad=<?php echo $bildpfad?>" target="_self">
           </frameset>
-          <frame name="mittemitte" scrolling="auto" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=100&query=uebersicht_uebersicht.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
+          <frame name="mittemitte" scrolling="auto" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=100&query=uebersicht_uebersicht.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&bildpfad=<?php echo $bildpfad?>" target="_self">
           <frameset framespacing="0" border="false" frameborder="0" rows="233,*,146">
-            <frame name="mitterechtsoben" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=7&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
-            <frame name="mitterechtssmitte" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=8&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
-            <frame name="mitterechtsunten" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=9&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
+            <frame name="mitterechtsoben" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=7&bildpfad=<?php echo $bildpfad?>" target="_self">
+            <frame name="mitterechtssmitte" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=8&bildpfad=<?php echo $bildpfad?>" target="_self">
+            <frame name="mitterechtsunten" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=9&bildpfad=<?php echo $bildpfad?>" target="_self">
           </frameset>
         </frameset>
         <frameset framespacing="0" border="false" frameborder="0" cols="387,*,364">
-          <frame name="mitte2links" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=10&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
-          <frame name="mitte2mitte" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=11&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
-          <frame name="mitte2mitte" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=12&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
+          <frame name="mitte2links" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=10&bildpfad=<?php echo $bildpfad?>" target="_self">
+          <frame name="mitte2mitte" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=11&bildpfad=<?php echo $bildpfad?>" target="_self">
+          <frame name="mitte2mitte" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=12&bildpfad=<?php echo $bildpfad?>" target="_self">
         </frameset>
         <frameset framespacing="0" border="false" frameborder="0" cols="56,*,19">
-          <frame name="untenlinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/menu.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
-          <frame name="untenmitte" scrolling="auto" marginwidth="0" marginheight="0" noresize src="inhalt/uebersicht.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
-          <frame name="untenrechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=15&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
+          <frame name="untenlinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/menu.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>" target="_self">
+          <frame name="untenmitte" scrolling="auto" marginwidth="0" marginheight="0" noresize src="inhalt/uebersicht.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>" target="_self">
+          <frame name="untenrechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=15&bildpfad=<?php echo $bildpfad?>" target="_self">
         </frameset>
         <frameset framespacing="0" border="false" frameborder="0" cols="389,*,361">
-          <frame name="unten2links" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=16&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
-          <frame name="unten2mitte" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=17&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
-          <frame name="unten2rechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=18&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
+          <frame name="unten2links" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=16&bildpfad=<?php echo $bildpfad?>" target="_self">
+          <frame name="unten2mitte" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=17&bildpfad=<?php echo $bildpfad?>" target="_self">
+          <frame name="unten2rechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="inhalt/aufbau.php?fu=18&bildpfad=<?php echo $bildpfad?>" target="_self">
         </frameset>
       </frameset>
       <body>
@@ -223,7 +223,7 @@ if ($db) {
     ?>
     <html>
       <head>
-        <title>Skrupel - Tribute Compilation V<?php echo$spiel_version?></title>
+        <title>Skrupel - Tribute Compilation V<?php echo $spiel_version?></title>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
         <meta name="Author" content="Bernd Kantoks bernd@kantoks.de">
         <meta name="robots" content="index">
@@ -291,7 +291,7 @@ if ($db) {
         </style>
         <script language=JavaScript>
           if(parent.frames.length>0) {
-            window.top.location.href = "index.php?sprache=<?php echo $_GET['sprache']?>";
+            window.top.location.href = "index.php<?php if (!empty($_GET['sprache'])) echo '?sprache='.$_GET['sprache']; ?>";
           }
           function check() {
             if(document.formular.login_f.value == "") {
@@ -358,7 +358,7 @@ if ($db) {
                           ?>
                                  <table border="0" cellspacing="0" cellpadding="4">
                             <tr>
-                                 <td><form action="index.php?sprache=<?php echo $_GET['sprache']?>" method="post" name="formular" onSubmit="return check();"><input type="hidden" name="pic_path" value="<?php echo $bildpfad?>"></td>
+                                 <td><form action="index.php<?php if (!empty($_GET['sprache'])) echo '?sprache='.$_GET['sprache']; ?>" method="post" name="formular" onSubmit="return check();"><input type="hidden" name="pic_path" value="<?php echo $bildpfad?>"></td>
                                <td align="right"><?php echo $lang['index']['benutzername']?>&nbsp;</td>
                                <td><input type="text" name="login_f" class="eingabe" maxlength="50" style="width:350px;" value=""></td>
                               <td>

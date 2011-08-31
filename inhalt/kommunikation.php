@@ -3,8 +3,7 @@
 :noTabs=false:indentSize=4:tabSize=4:folding=explicit:collapseFolds=1:
 */
 include ('../inc.conf.php');
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-include ("../lang/".$_GET["sprache"]."/lang.kommunikation.php");
+$langfile_1='kommunikation';
 include ('inc.header.php');
 $fuid = int_get('fu');
 if ($fuid==1) {
@@ -21,7 +20,7 @@ if ($fuid==1) {
         function chat() {
             oben=100;
             links=screen.width-450;
-            window.open('kommunikation_exch.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>','SKRUPELChat','resizable=yes,scrollbars=no,width=350,height=300,top='+oben+',left='+links);
+            window.open('kommunikation_exch.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>','SKRUPELChat','resizable=yes,scrollbars=no,width=350,height=300,top='+oben+',left='+links);
         }
     </script>
     <body text="#000000" bgcolor="#444444" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -33,7 +32,7 @@ if ($fuid==1) {
                         ?>
                         <td>
                             <center>
-                                <a href="Javascript:;" onclick="link('kommunikation_politik.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');">
+                                <a href="Javascript:;" onclick="link('kommunikation_politik.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>');">
                                     <img src="<?php echo $bildpfad?>/menu/politik.gif" width="75" height="75" border="0">
                                     <br>
                                     <nobr><?php echo $lang['kommunikation']['politik']?></nobr>
@@ -42,7 +41,7 @@ if ($fuid==1) {
                         </td>
                         <td>
                             <center>
-                                <a href="Javascript:;" onclick="link('kommunikation_subfunk.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');">
+                                <a href="Javascript:;" onclick="link('kommunikation_subfunk.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>');">
                                     <img src="<?php echo $bildpfad?>/menu/subfunk.gif" width="75" height="75" border="0">
                                     <br>
                                     <nobr><?php echo $lang['kommunikation']['subfunk']?></nobr>
@@ -55,7 +54,7 @@ if ($fuid==1) {
                         ?>
                         <td>
                             <center>
-                                <a href="Javascript:;" onclick="link('kommunikation_board.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');">
+                                <a href="Javascript:;" onclick="link('kommunikation_board.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>');">
                                     <img src="<?php echo $bildpfad?>/menu/forum.gif" width="75" height="75" border="0">
                                     <br>
                                     <nobr><?php echo $lang['kommunikation']['board']?></nobr>
@@ -80,7 +79,7 @@ if ($fuid==1) {
                         ?>
                         <td>
                             <center>
-                                <a href="kommunikation_ch.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" target="_self" onclick="link('kommunikation_ch.php?fu=3&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');">
+                                <a href="kommunikation_ch.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>" target="_self" onclick="link('kommunikation_ch.php?fu=3&uid=<?php echo $uid?>&sid=<?php echo $sid?>');">
                                     <img src="<?php echo $bildpfad?>/menu/chat.gif" width="75" height="75" border="0">
                                     <br>
                                     <nobr><?php echo $lang['kommunikation']['chat']?></nobr>

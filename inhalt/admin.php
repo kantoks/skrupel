@@ -1,8 +1,8 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-include ("../lang/".$_GET["sprache"]."/lang.admin.php");
+$langfile_1='admin';
 include_once ('inc.hilfsfunktionen.php');
+
 if ($_GET["fu"]==1) {
   include ("inc.header.php");
   if ($spieler==$spieler_admin) {
@@ -15,7 +15,7 @@ if ($_GET["fu"]==1) {
         <td>
           <table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td><form name="formular"  method="post" action="admin.php?fu=11&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+              <td><form name="formular"  method="post" action="admin.php?fu=11&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
               <td><input type="submit" name="bla" value="<?php echo $lang['admin']['zug']?>" style="width:120px;"></td>
               <td></form></td>
             </tr>
@@ -24,7 +24,7 @@ if ($_GET["fu"]==1) {
         <td>
           <table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td><form name="formular"  method="post" action="admin.php?fu=7&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+              <td><form name="formular"  method="post" action="admin.php?fu=7&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
               <td><input type="submit" name="bla" value="<?php echo $lang['admin']['autozug']?>" style="width:120px;"></td>
               <td></form></td>
             </tr>
@@ -36,7 +36,7 @@ if ($_GET["fu"]==1) {
         <td>
           <table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td><form name="formular"  method="post" action="admin.php?fu=3&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+              <td><form name="formular"  method="post" action="admin.php?fu=3&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
               <td><input type="submit" name="bla" value="<?php echo $lang['admin']['neuerspieler']?>" style="width:120px;"></td>
               <td></form></td>
             </tr>
@@ -54,7 +54,7 @@ if ($_GET["fu"]==1) {
         <td>
           <table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+              <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
               <td><input type="submit" name="bla" value="" style="width:120px;"></td>
               <td></form></td>
             </tr>
@@ -63,7 +63,7 @@ if ($_GET["fu"]==1) {
         <td>
           <table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td><form name="formular"  method="post" action="admin.php?fu=9&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+              <td><form name="formular"  method="post" action="admin.php?fu=9&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
               <td><input type="submit" name="bla" value="<?php echo $lang['admin']['plasmasturm']?>" style="width:120px;"></td>
               <td></form></td>
             </tr>
@@ -75,7 +75,7 @@ if ($_GET["fu"]==1) {
         <td>
           <table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td><form name="formular"  method="post" action="admin.php?fu=5&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+              <td><form name="formular"  method="post" action="admin.php?fu=5&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
               <td><input type="submit" name="bla" value="<?php echo $lang['admin']['entfernespieler']?>" style="width:120px;"></td>
               <td></form></td>
             </tr>
@@ -93,7 +93,7 @@ if ($_GET["fu"]==1) {
           <td>
             <table border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                 <td><input type="submit" name="bla" value="" style="width:120px;"></td>
                 <td></form></td>
               </tr>
@@ -102,7 +102,7 @@ if ($_GET["fu"]==1) {
           <td>
             <table border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td><form name="formular"  method="post" action="admin.php?fu=12&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                <td><form name="formular"  method="post" action="admin.php?fu=12&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                 <td><input type="submit" name="bla" value="<?php echo $lang['admin']['piraten']?>" style="width:120px;"></td>
                 <td></form></td>
               </tr>
@@ -111,7 +111,7 @@ if ($_GET["fu"]==1) {
           <td>
             <table border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                 <td><input type="submit" name="bla" value="" style="width:120px;"></td>
                 <td></form></td>
               </tr>
@@ -122,7 +122,7 @@ if ($_GET["fu"]==1) {
           <td>
             <table border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                 <td><input type="submit" name="bla" value="" style="width:120px;"></td>
                 <td></form></td>
               </tr>
@@ -131,7 +131,7 @@ if ($_GET["fu"]==1) {
         <td>
           <table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td><form name="formular"  method="post" action="admin.php?fu=14&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+              <td><form name="formular"  method="post" action="admin.php?fu=14&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
               <td><input type="submit" name="bla" value="<?php echo $lang['admin']['otional']?>" style="width:120px;"></td>
               <td></form></td>
             </tr>
@@ -140,7 +140,7 @@ if ($_GET["fu"]==1) {
         <td>
           <table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+              <td><form name="formular"  method="post" action="admin.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
               <td><input type="submit" name="bla" value="" style="width:120px;"></td>
               <td></form></td>
             </tr>
@@ -165,13 +165,13 @@ if($_GET["fu"]==2){
   function link(url) {
     if (parent.mittelinksoben.document.globals.map.value==1) {
       parent.mittelinksoben.document.globals.map.value=0;
-      parent.mittemitte.window.location='aufbau.php?fu=100&query='+url+'&sprache=<?php echo $_GET["sprache"]?>';
+      parent.mittemitte.window.location='aufbau.php?fu=100&query='+url;
     }else{
       parent.mittemitte.rahmen12.window.location=url;
     }
   }
 </script>
-<body onLoad="window.location='uebersicht.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>';" text="#ffffff" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#ffffff" vlink="#ffffff" alink="#ffffff" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<body onLoad="window.location='uebersicht.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>';" text="#ffffff" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#ffffff" vlink="#ffffff" alink="#ffffff" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
   <br><br><br><br>
   <center>
     <?php
@@ -183,8 +183,8 @@ if($_GET["fu"]==2){
     include ("inc.host_messenger.php");
     ?>
   <script language=JavaScript>
-    link('uebersicht_uebersicht.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');
-    window.location='uebersicht.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');
+    link('uebersicht_uebersicht.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');
+    window.location='uebersicht.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');
   </script>
     <?php
     include ("inc.footer.php");
@@ -259,7 +259,7 @@ if ($_GET["fu"]==3) {
                             <td colspan="8"><center><?php echo $lang['admin']['zusatzspieler']?></center></td>
                         </tr>
                         <tr>
-                            <td><form name="formular" method="post" action="admin.php?fu=4&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                            <td><form name="formular" method="post" action="admin.php?fu=4&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                             <td><?php echo $lang['admin']['spieler']?></td>
                             <td>
                                 <select name="spielerid" style="width:150px;">
@@ -626,7 +626,7 @@ if ($_GET["fu"]==5) {
                         <tr>
                             <td colspan="3"><center><?php echo $lang['admin']['wersollraus']?></center></td></tr>
                         <tr>
-                            <td><form name="formular" method="post" action="admin.php?fu=6&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                            <td><form name="formular" method="post" action="admin.php?fu=6&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                             <td>
                                 <center>
                                     <select name="spielerid" style="width:250px;"><?php
@@ -730,7 +730,7 @@ if ($_GET["fu"]==7) {
             <center>
                 <table border="0" cellspacing="0" cellpadding="1">
                     <tr>
-                    <td><form name="formular" method="post" action="admin.php?fu=8&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                    <td><form name="formular" method="post" action="admin.php?fu=8&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                     <td><?php echo $lang['admin']['zugauswertung']?> &nbsp;</td>
                         <td>
                             <select name="autozug">
@@ -795,7 +795,7 @@ if ($_GET["fu"]==9) {
             <center>
                 <table border="0" cellspacing="0" cellpadding="0">
                     <tr>
-                        <td><form name="formular" method="post" action="admin.php?fu=10&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                        <td><form name="formular" method="post" action="admin.php?fu=10&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                         <td><?php echo $lang['admin']['wievielplasmastuerme']?> &nbsp;</td>
                         <td>
                             <select name="max" style="width:100px;">
@@ -909,7 +909,7 @@ if ($_GET["fu"]==11) {
                 </table>
             </center>
             <script language=JavaScript>
-                window.location='admin.php?fu=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>';
+                window.location='admin.php?fu=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>';
             </script>
             <?php
         include ("inc.footer.php");
@@ -938,7 +938,7 @@ if ($_GET["fu"]==12) {
                         <td colspan="8"><img src="../bilder/empty.gif" border="0" width="1" height="10"></td>
                     </tr>
                     <tr>
-                        <td><form name="formular" method="post" action="admin.php?fu=13&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                        <td><form name="formular" method="post" action="admin.php?fu=13&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                         <td><?php echo $lang['admin']['wktzentrum']?></td>
                         <td>&nbsp;</td>
                         <td>
@@ -1135,7 +1135,7 @@ if ($_GET["fu"]==14) {
             <center>
                 <table border="0" cellspacing="0" cellpadding="0">
                     <tr>
-                        <td><form name="formular" method="post" action="admin.php?fu=15&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                        <td><form name="formular" method="post" action="admin.php?fu=15&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                     </tr>
                     <tr>
                         <td><input type="checkbox" name="modul_0" value="1"<?php echo $checked[$module[0]];?>></td><td><?php echo $lang['admin']['sus']?></td>

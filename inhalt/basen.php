@@ -1,8 +1,6 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.basen.php";
-include ($file);
+$langfile_1='basen';
 
 $baid=$_GET["baid"];
 if ($_GET["fu"]==1) {
@@ -92,7 +90,7 @@ if ($_GET["fu"]==1) {
                                                 <tr>
                                                     <td bgcolor="#aaaaaa"><img src="../bilder/empty.gif" border="0" width="1" height="1"></td>
                                                     <td>
-                                                        <a href="basen.php?fu=2&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"><img src="<?php
+                                                        <a href="basen.php?fu=2&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"><img src="<?php
                                                         $file='../daten/'.$rasse.'/bilder_basen/'.$basisbild;
                                                         if (@file_exists($file)) { echo $file; } else { echo '../daten/'.$rasse.'/bilder_basen/1.jpg'; }?>" border="0"  height="80" title="<?php echo $tip; ?>"></a>
                                                     </td>
@@ -152,17 +150,17 @@ if ($_GET["fu"]==2) {
     include ("inc.header.php");
     ?>
     <frameset framespacing="0" border="false" frameborder="0" cols="*,26,290,167,420,26,*">
-        <frame name="randlinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-        <frame name="pfeillinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="basen.php?fu=7&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-        <frame name="planeten" scrolling="no" marginwidth="0" marginheight="0" noresize src="basen.php?fu=3&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+        <frame name="randlinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&bildpfad=<?php echo $bildpfad; ?>" target="_self">
+        <frame name="pfeillinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="basen.php?fu=7&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
+        <frame name="planeten" scrolling="no" marginwidth="0" marginheight="0" noresize src="basen.php?fu=3&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
         <?php if ($zug_abgeschlossen==0) { ?>
-            <frame name="planetenmenu" scrolling="no" marginwidth="0" marginheight="0" noresize src="basen.php?fu=4&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+            <frame name="planetenmenu" scrolling="no" marginwidth="0" marginheight="0" noresize src="basen.php?fu=4&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
         <?php } else { ?>
-            <frame name="planetenmenu" scrolling="no" marginwidth="0" marginheight="0" noresize src="basen.php?fu=5&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+            <frame name="planetenmenu" scrolling="no" marginwidth="0" marginheight="0" noresize src="basen.php?fu=5&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
         <?php } ?>
-        <frame name="planetendetails" scrolling="auto" marginwidth="0" marginheight="0" noresize src="basen.php?fu=6&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-        <frame name="pfeilrechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="basen.php?fu=8&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-        <frame name="randrechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+        <frame name="planetendetails" scrolling="auto" marginwidth="0" marginheight="0" noresize src="basen.php?fu=6&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
+        <frame name="pfeilrechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="basen.php?fu=8&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
+        <frame name="randrechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&bildpfad=<?php echo $bildpfad; ?>" target="_self">
     </frameset>
     <noframes>
     <body>
@@ -430,26 +428,26 @@ if ($_GET["fu"]==4) {
         </table>
         <?php if (($art==0) or ($art==3)) { ?>
             <map name="konsole">
-                <area shape=rect coords="24,14,50,40" href="javascript:linksub('basen_alpha.php?fu=1&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['basen']['techlevel']; ?>">
-                <area shape=rect coords="71,11,97,39" href="javascript:linksub('basen_alpha.php?fu=3&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['basen']['abwehrsysteme']; ?>">
-                <area shape=rect coords="112,12,144,42" href="javascript:linksub('basen_alpha.php?fu=5&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['basen']['raumfaltentechnologie']; ?>">
+                <area shape=rect coords="24,14,50,40" href="javascript:linksub('basen_alpha.php?fu=1&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['basen']['techlevel']; ?>">
+                <area shape=rect coords="71,11,97,39" href="javascript:linksub('basen_alpha.php?fu=3&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['basen']['abwehrsysteme']; ?>">
+                <area shape=rect coords="112,12,144,42" href="javascript:linksub('basen_alpha.php?fu=5&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['basen']['raumfaltentechnologie']; ?>">
 
-                <area shape=rect coords="16,54,33,66" href="javascript:linksub('basen_beta.php?fu=1&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['basen']['ruempfe']; ?>">
-                <area shape=rect coords="40,54,56,67" href="javascript:linksub('basen_beta.php?fu=3&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['basen']['antriebssysteme']; ?>">
-                <area shape=rect coords="17,73,33,89" href="javascript:linksub('basen_beta.php?fu=5&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['basen']['energetischewaffen']; ?>">
-                <area shape=rect coords="39,75,56,86" href="javascript:linksub('basen_beta.php?fu=7&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['basen']['projektilbasierendewaffen']; ?>">
+                <area shape=rect coords="16,54,33,66" href="javascript:linksub('basen_beta.php?fu=1&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['basen']['ruempfe']; ?>">
+                <area shape=rect coords="40,54,56,67" href="javascript:linksub('basen_beta.php?fu=3&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['basen']['antriebssysteme']; ?>">
+                <area shape=rect coords="17,73,33,89" href="javascript:linksub('basen_beta.php?fu=5&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['basen']['energetischewaffen']; ?>">
+                <area shape=rect coords="39,75,56,86" href="javascript:linksub('basen_beta.php?fu=7&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['basen']['projektilbasierendewaffen']; ?>">
 
-                <area shape=rect coords="72,59,98,83" href="javascript:linksub('basen_gamma.php?fu=1&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['basen']['schiffproduzieren']; ?>">
-                <area shape=rect coords="114,62,144,84" href="javascript:linksub('basen_gamma.php?fu=4&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['basen']['logbuch']; ?>">
+                <area shape=rect coords="72,59,98,83" href="javascript:linksub('basen_gamma.php?fu=1&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['basen']['schiffproduzieren']; ?>">
+                <area shape=rect coords="114,62,144,84" href="javascript:linksub('basen_gamma.php?fu=4&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['basen']['logbuch']; ?>">
             </map>
         <?php }elseif ($art==1) { ?>
             <map name="konsole">
-                <area shape=rect coords="114,62,144,84" href="javascript:linksub('basen_gamma.php?fu=4&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['basen']['logbuch']; ?>">
+                <area shape=rect coords="114,62,144,84" href="javascript:linksub('basen_gamma.php?fu=4&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['basen']['logbuch']; ?>">
             </map>
         <?php }elseif ($art==2) { ?>
             <map name="konsole">
-                <area shape=rect coords="71,11,97,39" href="javascript:linksub('basen_alpha.php?fu=3&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['basen']['abwehrsysteme']; ?>">
-                <area shape=rect coords="114,62,144,84" href="javascript:linksub('basen_gamma.php?fu=4&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['basen']['logbuch']; ?>">
+                <area shape=rect coords="71,11,97,39" href="javascript:linksub('basen_alpha.php?fu=3&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['basen']['abwehrsysteme']; ?>">
+                <area shape=rect coords="114,62,144,84" href="javascript:linksub('basen_gamma.php?fu=4&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['basen']['logbuch']; ?>">
             </map>
         <?php }
     include ("inc.footer.php");
@@ -473,7 +471,7 @@ if ($_GET["fu"]==5) {
             </tr>
         </table>
         <map name="konsole">
-            <area shape=rect coords="114,62,144,84" href="javascript:linksub('basen_gamma.php?fu=4&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['basen']['logbuch']; ?>">
+            <area shape=rect coords="114,62,144,84" href="javascript:linksub('basen_gamma.php?fu=4&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['basen']['logbuch']; ?>">
         </map>
         <?php
     include ("inc.footer.php");
@@ -570,7 +568,7 @@ if ($_GET["fu"]==7) {
                             <td><img src="../bilder/empty.gif" border="0" width="26" height="8"></td>
                         </tr>
                         <tr>
-                            <td><a href="javascript:linksub('basen.php?fu=2&baid=<?php echo $pid_back; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();"><img src="<?php echo $bildpfad; ?>/konsole/pfeil_links.gif" border="0" width="26" height="90"></a></td>
+                            <td><a href="javascript:linksub('basen.php?fu=2&baid=<?php echo $pid_back; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();"><img src="<?php echo $bildpfad; ?>/konsole/pfeil_links.gif" border="0" width="26" height="90"></a></td>
                         </tr>
                     </table>
                     <?php
@@ -608,7 +606,7 @@ if ($_GET["fu"]==8) {
                             <td><img src="../bilder/empty.gif" border="0" width="26" height="8"></td>
                         </tr>
                         <tr>
-                            <td><a href="javascript:linksub('basen.php?fu=2&baid=<?php echo $pid_t; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();"><img src="<?php echo $bildpfad; ?>/konsole/pfeil_rechts.gif" border="0" width="26" height="90"></a></td>
+                            <td><a href="javascript:linksub('basen.php?fu=2&baid=<?php echo $pid_t; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();"><img src="<?php echo $bildpfad; ?>/konsole/pfeil_rechts.gif" border="0" width="26" height="90"></a></td>
                         </tr>
                     </table>
                     <?php

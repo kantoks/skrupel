@@ -1,10 +1,8 @@
 <?php
-    include ("../inc.conf.php");
-    if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-    $file="../lang/".$_GET["sprache"]."/lang.meta_spezien.php";
-    include ($file);
+include ("../inc.conf.php");
+$langfile_1='meta_spezien';
 
-    if ($_GET["fu"]==1) {
+if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ?>
     <body text="#000000" bgcolor="#444444"  link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -23,7 +21,7 @@
         }
     
         ?>
-        <center><img src="../lang/<?php echo $_GET["sprache"]?>/topics/dominantespezien.gif" border="0" width="302" height="52"></center>
+        <center><img src="../lang/<?php echo $spieler_sprache?>/topics/dominantespezien.gif" border="0" width="302" height="52"></center>
         <table border="0" cellspacing="0" cellpadding="4">
             <?php
             for ($i=0;$i<$zaehler;$i++) {
