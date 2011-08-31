@@ -1,9 +1,10 @@
 <?php 
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.runde_ende.php";
+if(empty($_GET['sprache'])){$_GET['sprache']=$language;}
+$file="../lang/".$_GET['sprache']."/lang.runde_ende.php";
 include ($file);
 if (($_GET["bildpfad"]=="bilder") or ($_GET["bildpfad"]=="")) {$_GET["bildpfad"]="../bilder";}
+
 if ($_GET["fu"]==1) {
     ?>
     <html>
@@ -15,42 +16,42 @@ if ($_GET["fu"]==1) {
             <meta name="keywords" content=" ">
             <script language="JavaScript">
                 if(parent.frames.length>=1) {
-                    window.top.location.href="runde_ende.php?fu=1&spiel=<?php echo $_GET["spiel"]?>&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>";
+                    window.top.location.href="runde_ende.php?fu=1&spiel=<?php echo $_GET["spiel"]?>&bildpfad=<?php echo $_GET["bildpfad"]?>";
                 }
             </script>
         </head>
         <frameset framespacing="0" border="false" frameborder="0" rows="*,18,508,16,*">
-            <frame name="rahmenk" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+            <frame name="rahmenk" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0" target="_self">
             <frameset framespacing="0" border="false" frameborder="0" cols="*,114,670,114,*">
-                <frame name="rahmen0" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                <frame name="rahmen1" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=19&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                <frame name="rahmen2" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=20&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                <frame name="rahmen3" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=21&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                <frame name="rahmen4" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+                <frame name="rahmen0" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
+                <frame name="rahmen1" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=19&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
+                <frame name="rahmen2" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=20&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
+                <frame name="rahmen3" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=21&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
+                <frame name="rahmen4" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
             </frameset>
             <frameset framespacing="0" border="false" frameborder="0" cols="*,18,862,18,*">
-                <frame name="rahmen10" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+                <frame name="rahmen10" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
                 <frameset framespacing="0" border="false" frameborder="0" rows="80,*,92">
-                    <frame name="rahmen15" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=25&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                    <frame name="rahmen16" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=26&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                    <frame name="rahmen17" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=27&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+                    <frame name="rahmen15" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=25&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
+                    <frame name="rahmen16" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=26&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
+                    <frame name="rahmen17" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=27&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
                 </frameset>
-                <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="runde_ende.php?fu=2&spiel=<?php echo $_GET["spiel"]?>&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+                <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="runde_ende.php?fu=2&spiel=<?php echo $_GET["spiel"]?>&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
                 <frameset framespacing="0" border="false" frameborder="0" rows="80,*,92">
-                    <frame name="rahmen18" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=28&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                    <frame name="rahmen19" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=29&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                    <frame name="rahmen20" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=30&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+                    <frame name="rahmen18" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=28&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
+                    <frame name="rahmen19" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=29&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
+                    <frame name="rahmen20" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=30&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
                 </frameset>
-                <frame name="rahmen14" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+                <frame name="rahmen14" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
             </frameset>
             <frameset framespacing="0" border="false" frameborder="0" cols="*,114,670,114,*">
-                <frame name="rahmen5" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                <frame name="rahmen6" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=22&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                <frame name="rahmen7" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=23&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                <frame name="rahmen8" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=24&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                <frame name="rahmen9" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+                <frame name="rahmen5" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
+                <frame name="rahmen6" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=22&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
+                <frame name="rahmen7" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=23&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
+                <frame name="rahmen8" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=24&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
+                <frame name="rahmen9" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
             </frameset>
-            <frame name="rahmenk" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+            <frame name="rahmenk" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=0&bildpfad=<?php echo $_GET["bildpfad"]?>" target="_self">
         </frameset>
         <noframes>
         <body>
@@ -347,7 +348,7 @@ if ($_GET["fu"]==2) {
                             <center>
                                 <table border="0" cellspacing="0" cellpadding="3" width="100%">
                                     <tr>
-                                        <td width="100%"><img src="../lang/<?php echo $_GET["sprache"]?>/topics/dieimperien.gif" border="0" width="185" height="52"></td>
+                                        <td width="100%"><img src="../lang/<?php echo $_GET['sprache']?>/topics/dieimperien.gif" border="0" width="185" height="52"></td>
                                         <td><center><img src="<?php echo $_GET["bildpfad"]?>/aufbau/rang_1.gif" border="0" width="41" height="41"></center></td>
                                         <td><center><img src="<?php echo $_GET["bildpfad"]?>/aufbau/rang_2.gif" border="0" width="41" height="41"></center></td>
                                         <td><center><img src="<?php echo $_GET["bildpfad"]?>/aufbau/rang_3.gif" border="0" width="41" height="41"></center></td>
@@ -647,7 +648,7 @@ if ($_GET["fu"]==2) {
                                                     </tr>
                                                     <tr>
                                                         <td><img src="<?php echo $_GET["bildpfad"]?>/aufbau/galalinks.gif" border="0" width="4" height="250"></td>
-                                                        <td><iframe src="runde_ende.php?fu=3&spiel=<?php echo $_GET["spiel"]?>&bildpfad=<?php echo $_GET["bildpfad"]?>&sprache=<?php echo $_GET["sprache"]?>" width="250" height="250" name="map" scrolling="no" marginheight="0" marginwidth="0" frameborder="0"></iframe></td>
+                                                        <td><iframe src="runde_ende.php?fu=3&spiel=<?php echo $_GET["spiel"]?>&bildpfad=<?php echo $_GET["bildpfad"]?>" width="250" height="250" name="map" scrolling="no" marginheight="0" marginwidth="0" frameborder="0"></iframe></td>
                                                         <td><img src="<?php echo $_GET["bildpfad"]?>/aufbau/galarechts.gif" border="0" width="4" height="250"></td>
                                                     <tr>
                                                         <td colspan="3"><img src="<?php echo $_GET["bildpfad"]?>/aufbau/galaunten.gif" border="0" width="258" height="4"></td>

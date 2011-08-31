@@ -1,9 +1,8 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.basen_beta.php";
-include ($file);
+$langfile_1='basen_beta';
 $baid=$_GET["baid"];
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
@@ -46,7 +45,7 @@ if ($_GET["fu"]==1) {
             function schiffdetail(shid,volk) {
                 oben=100;
                 links=Math.ceil((screen.width-580)/2);
-                window.open('hilfe_schiff.php?fu2='+shid+'&volk='+volk+'&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"];?>','Hilfe','resizable=yes,scrollbars=no,width=580,height=180,top='+oben+',left='+links);
+                window.open('hilfe_schiff.php?fu2='+shid+'&volk='+volk+'&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>','Hilfe','resizable=yes,scrollbars=no,width=580,height=180,top='+oben+',left='+links);
             }
         </script>
         <table border="0" cellspacing="0" cellpadding="2">
@@ -77,7 +76,7 @@ if ($_GET["fu"]==1) {
                 <tr>
                     <td><img src="../bilder/empty.gif" border="0" width="1" height="18"></td>
                     <td>
-                        <form name="formular" method="post" action="basen_beta.php?fu=2&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>">
+                        <form name="formular" method="post" action="basen_beta.php?fu=2&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>">
                         <input type="hidden" name="schiffid" value="<?php echo $schiffwert[1]; ?>">
                     </td>
                     <td><nobr><a href="javascript:schiffdetail(<?php echo $schiffwert[1]; ?>, '<?php echo $rasse; ?>')" style="<?php if ($t_huelle<$schiffwert[2]) { echo 'color:#aaaaaa;'; } else {echo 'color:#ffffff;';} ?>;"><?php echo $schiffwert[0]; ?></a></nobr></td>
@@ -128,7 +127,7 @@ if ($_GET["fu"]==1) {
                         <tr>
                             <td><img src="../bilder/empty.gif" border="0" width="1" height="18"></td>
                             <td>
-                                <form name="formular" method="post" action="basen_beta.php?fu=9&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>">
+                                <form name="formular" method="post" action="basen_beta.php?fu=9&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>">
                                 <input type="hidden" name="schiffid" value="<?php echo $konid; ?>">
                             </td>
                             <td><nobr><a href="javascript:schiffdetail(<?php echo $klasseid; ?>,'<?php echo $rasses; ?>');" style="<?php if ($t_huelle<$techlevel) { echo 'color:#aaaaaa;'; } else {echo 'color:#ffffff;';} ?>;"><?php echo $klasse; ?></a></nobr></td>
@@ -271,7 +270,7 @@ if ($_GET["fu"]==3) {
             function antriebdetail(aid) {
                 oben=100;
                 links=Math.ceil((screen.width-580)/2);
-                window.open('hilfe_antriebe.php?fu2='+aid+'&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>','Hilfe','resizable=yes,scrollbars=no,width=580,height=180,top='+oben+',left='+links);
+                window.open('hilfe_antriebe.php?fu2='+aid+'&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>','Hilfe','resizable=yes,scrollbars=no,width=580,height=180,top='+oben+',left='+links);
             }
         </script>
         <table border="0" cellspacing="0" cellpadding="2">
@@ -299,7 +298,7 @@ if ($_GET["fu"]==3) {
                 <tr>
                     <td><img src="../bilder/empty.gif" border="0" width="1" height="18"></td>
                     <td>
-                        <form name="formular" method="post" action="basen_beta.php?fu=4&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>">
+                        <form name="formular" method="post" action="basen_beta.php?fu=4&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>">
                         <input type="hidden" name="stufe" value="<?php echo $i?>">
                     </td>
                     <td><a href="javascript:antriebdetail(<?php echo $i?>);" <?php if ($t_antrieb<1) { echo "style=\"color:#aaaaaa;\""; } else { echo "style=\"color:#ffffff;\""; } ?>><nobr><?php echo $name[$i-1]; ?></nobr></a></td>
@@ -495,7 +494,7 @@ if ($_GET["fu"]==5) {
                 <tr>
                     <td><img src="../bilder/empty.gif" border="0" width="1" height="18"></td>
                     <td>
-                        <form name="formular" method="post" action="basen_beta.php?fu=6&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>">
+                        <form name="formular" method="post" action="basen_beta.php?fu=6&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>">
                         <input type="hidden" name="stufe" value="<?php echo $n; ?>">
                     </td>
                     <td <?php if ($t_energie<$techlevel["$n"]) { echo 'style="color:#aaaaaa;"'; }?>><nobr><?php echo $waffen["$n"]; ?></nobr></td>
@@ -692,7 +691,7 @@ if ($_GET["fu"]==7) {
                 <tr>
                     <td><img src="../bilder/empty.gif" border="0" width="1" height="18"></td>
                     <td>
-                        <form name="formular" method="post" action="basen_beta.php?fu=8&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>">
+                        <form name="formular" method="post" action="basen_beta.php?fu=8&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>">
                         <input type="hidden" name="stufe" value="<?php echo $n; ?>"></td>
                     <td <?php if ($t_explosiv<$techlevel["$n"]) { echo 'style="color:#aaaaaa;"'; }?>><nobr><?php echo $waffen["$n"]; ?></nobr></td>
                     <td><center><?php echo $techlevel["$n"]; ?></center></td>

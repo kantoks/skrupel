@@ -8,6 +8,8 @@ $db = @mysql_select_db($database,$conn);
 
 include_once ('inc.hilfsfunktionen.php');
 include ('inc.check.php');
+if (!empty($langfile_1)) include ('../lang/'.$spieler_sprache.'/lang.'.$langfile_1.'.php');
+if (!empty($langfile_2)) include ('../lang/'.$spieler_sprache.'/lang.'.$langfile_2.'.php');
 
 $zeiger = @mysql_query("SELECT * FROM $skrupel_info");
 $array = @mysql_fetch_array($zeiger);
@@ -136,7 +138,7 @@ if ($linux) { $plus=1; }
         function hilfe(hid) {
             oben=100;
             links=Math.ceil((screen.width-480)/2);
-            window.open('hilfe.php?fu2='+hid+'&uid=<?php echo $uid; ?>&sid=<?php echo $sid;?>&sprache=<?php echo $_GET["sprache"]?>','Hilfe','resizable=yes,scrollbars=no,width=480,height=180,top='+oben+',left='+links);
+            window.open('hilfe.php?fu2='+hid+'&uid=<?php echo $uid; ?>&sid=<?php echo $sid;?>','Hilfe','resizable=yes,scrollbars=no,width=480,height=180,top='+oben+',left='+links);
         }
     </script>
     <link href="js/flexcroll/standard_grey.css" rel="stylesheet" type="text/css" />

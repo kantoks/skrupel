@@ -1,8 +1,7 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.kommunikation_board.php";
-include ($file);
+$langfile_1='kommunikation_board';
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ?>
@@ -68,7 +67,7 @@ if ($_GET["fu"]==1) {
                         <tr>
                             <td><img src="../bilder/empty.gif" border="0" width="5" height="5"></td>
                             <td>
-                                <a href="kommunikation_board.php?fu=2&fo=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" style="color:#ffffff;font-size:12px;text-decoration:underline;">
+                                <a href="kommunikation_board.php?fu=2&fo=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" style="color:#ffffff;font-size:12px;text-decoration:underline;">
                                     <b><?php echo $lang['kommunikationboard']['offenbarungen']; ?></b>
                                 </a>
                             </td>
@@ -137,7 +136,7 @@ if ($_GET["fu"]==1) {
                         <tr>
                             <td><img src="../bilder/empty.gif" border="0" width="5" height="5"></td>
                             <td>
-                                <a href="kommunikation_board.php?fu=2&fo=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" style="color:#ffffff;font-size:12px;text-decoration:underline;">
+                                <a href="kommunikation_board.php?fu=2&fo=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" style="color:#ffffff;font-size:12px;text-decoration:underline;">
                                     <b><?php echo $lang['kommunikationboard']['smalltalk']; ?></b>
                                 </a>
                             </td>
@@ -185,7 +184,7 @@ if ($_GET["fu"]==1) {
                         <tr>
                             <td><img src="../bilder/empty.gif" border="0" width="5" height="5"></td>
                             <td>
-                                <a href="kommunikation_board.php?fu=2&fo=3&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" style="color:#ffffff;font-size:12px;text-decoration:underline;">
+                                <a href="kommunikation_board.php?fu=2&fo=3&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" style="color:#ffffff;font-size:12px;text-decoration:underline;">
                                     <b><?php echo $lang['kommunikationboard']['handel']; ?></b>
                                 </a>
                             </td>
@@ -233,7 +232,7 @@ if ($_GET["fu"]==1) {
                         <tr>
                             <td><img src="../bilder/empty.gif" border="0" width="5" height="5"></td>
                             <td>
-                                <a href="kommunikation_board.php?fu=2&fo=4&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" style="color:#ffffff;font-size:12px;text-decoration:underline;">
+                                <a href="kommunikation_board.php?fu=2&fo=4&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" style="color:#ffffff;font-size:12px;text-decoration:underline;">
                                     <b><?php echo $lang['kommunikationboard']['strategie']; ?></b>
                                 </a>
                             </td>
@@ -302,7 +301,7 @@ if ($_GET["fu"]==1) {
                         <tr>
                             <td><img src="../bilder/empty.gif" border="0" width="5" height="5"></td>
                             <td>
-                                <a href="kommunikation_board.php?fu=2&fo=5&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" style="color:#ffffff;font-size:12px;text-decoration:underline;">
+                                <a href="kommunikation_board.php?fu=2&fo=5&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" style="color:#ffffff;font-size:12px;text-decoration:underline;">
                                     <b><?php echo $lang['kommunikationboard']['howtos']; ?></b>
                                 </a>
                             </td>
@@ -350,7 +349,7 @@ if ($_GET["fu"]==1) {
                         <tr>
                             <td><img src="../bilder/empty.gif" border="0" width="5" height="5"></td>
                             <td>
-                                <a href="kommunikation_board.php?fu=2&fo=6&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" style="color:#ffffff;font-size:12px;text-decoration:underline;">
+                                <a href="kommunikation_board.php?fu=2&fo=6&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" style="color:#ffffff;font-size:12px;text-decoration:underline;">
                                     <b><?php echo $lang['kommunikationboard']['zahlentechnisches']; ?></b>
                                 </a>
                             </td>
@@ -436,7 +435,7 @@ if ($_GET["fu"]==2) {
                         <tr>
                             <td><img src="../bilder/empty.gif" border="0" width="5" height="5"></td>
                             <td>
-                                <a href="kommunikation_board.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" style="color:#ffffff;font-size:10px;text-decoration:underline;">
+                                <a href="kommunikation_board.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" style="color:#ffffff;font-size:10px;text-decoration:underline;">
                                     &lt&lt&lt <?php echo $lang['kommunikationboard']['uebersicht']; ?>
                                 </a>
                             </td>
@@ -483,7 +482,7 @@ if ($_GET["fu"]==2) {
                                 </tr>
                                 <tr>
                                     <td><img src="../bilder/empty.gif" border="0" width="5" height="5"></td>
-                                    <td><a href="kommunikation_board.php?fu=3&fo=<?php echo $forum; ?>&thema=<?php echo $id; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" style="color:#ffffff;font-size:10px;text-decoration:underline;"><?php echo $thema; ?></a></td>
+                                    <td><a href="kommunikation_board.php?fu=3&fo=<?php echo $forum; ?>&thema=<?php echo $id; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" style="color:#ffffff;font-size:10px;text-decoration:underline;"><?php echo $thema; ?></a></td>
                                     <td><img src="../bilder/empty.gif" border="0" width="5" height="5"></td>
                                 </tr>
                                 <tr>
@@ -584,7 +583,7 @@ if ($_GET["fu"]==2) {
                                 </tr>
                                 <tr>
                                     <td><img src="../bilder/empty.gif" border="0" width="5" height="5"></td>
-                                    <td><form name="formular" method="post" action="kommunikation_board.php?fu=4&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&forum=<?php echo $forum; ?>&sprache=<?php echo $_GET["sprache"]?>" onSubmit="return checkeingabe();"></td>
+                                    <td><form name="formular" method="post" action="kommunikation_board.php?fu=4&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&forum=<?php echo $forum; ?>" onSubmit="return checkeingabe();"></td>
                                     <td><center><?php echo $lang['kommunikationboard']['neuesthema']?></center></td>
                                     <td><img src="../bilder/empty.gif" border="0" width="5" height="5"></td>
                                 </tr>
@@ -676,7 +675,7 @@ if ($_GET["fu"]==4) {
     $idthema=$array["id"];
     $zeiger = mysql_query("INSERT INTO $skrupel_forum_beitrag (thema,forum,datum,beitrag,verfasser,spielerid) values ($idthema,$forum,'$letzter','$beitrag','$beginner',$spieler);");
     @mysql_close();
-    $backlink="kommunikation_board.php?fu=2&uid=$uid&sid=$sid&fo=$forum&sprache=".$_GET["sprache"];
+    $backlink="kommunikation_board.php?fu=2&uid=$uid&sid=$sid&fo=$forum";
     header ("Location: $backlink");
 }
 if ($_GET["fu"]==3) {
@@ -730,9 +729,9 @@ if ($_GET["fu"]==3) {
                         <tr>
                             <td><img src="../bilder/empty.gif" border="0" width="5" height="5"></td>
                             <td>
-                                <a href="kommunikation_board.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" style="color:#ffffff;font-size:10px;text-decoration:underline;">
+                                <a href="kommunikation_board.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" style="color:#ffffff;font-size:10px;text-decoration:underline;">
                                     &lt&lt&lt <?php echo $lang['kommunikationboard']['uebersicht']?></a>
-                                <a href="kommunikation_board.php?fu=2&fo=<?php echo $forum; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" style="color:#ffffff;font-size:10px;text-decoration:underline;">
+                                <a href="kommunikation_board.php?fu=2&fo=<?php echo $forum; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" style="color:#ffffff;font-size:10px;text-decoration:underline;">
                                     &lt&lt&lt <?php echo $formname; ?>
                                 </a>
                             </td>
@@ -843,7 +842,7 @@ if ($_GET["fu"]==3) {
                             </tr>
                             <tr>
                                 <td><img src="../bilder/empty.gif" border="0" width="5" height="5"></td>
-                                <td><form name="formular" method="post" action="kommunikation_board.php?fu=5&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&forum=<?php echo $forum; ?>&thema=<?php echo $thema; ?>&sprache=<?php echo $_GET["sprache"]?>" onSubmit="return checkeingabe();"></td>
+                                <td><form name="formular" method="post" action="kommunikation_board.php?fu=5&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&forum=<?php echo $forum; ?>&thema=<?php echo $thema; ?>" onSubmit="return checkeingabe();"></td>
                                 <td><center><?php echo $lang['kommunikationboard']['antworten']; ?></center></td>
                                 <td><img src="../bilder/empty.gif" border="0" width="5" height="5"></td>
                             </tr>
@@ -900,6 +899,6 @@ if ($_GET["fu"]==5) {
     $zeiger = mysql_query("INSERT INTO $skrupel_forum_beitrag (thema,forum,datum,beitrag,verfasser,spielerid) values ($thema,$forum,'$letzter','$beitrag','$beginner',$spieler);");
     $zeiger = mysql_query("UPDATE $skrupel_forum_thema set antworten=antworten+1,letzter='$letzter' where id=$thema;");
     @mysql_close();
-    $backlink="kommunikation_board.php?fu=3&uid=$uid&sid=$sid&fo=$forum&thema=$thema&sprache=".$_GET["sprache"];
+    $backlink="kommunikation_board.php?fu=3&uid=$uid&sid=$sid&fo=$forum&thema=$thema";
     header ("Location: $backlink");
 }

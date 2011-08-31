@@ -1,8 +1,7 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.meta_simulation.php";
-include ($file);
+$langfile_1='meta_simulation';
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ///////////////////////////////////////////////////////////////////////////////////////////////RASSENEIGENSCHAFTEN ANFANG
@@ -116,7 +115,7 @@ if ($_GET["fu"]==1) {
                                     <td><img src="../bilder/empty.gif" width="1" height="1" border="0"></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="3"><center><img src="../lang/<?php echo $_GET["sprache"]?>/topics/simbb.gif" width="391" height="26" border="0"></center></td>
+                                    <td colspan="3"><center><img src="../lang/<?php echo $spieler_sprache?>/topics/simbb.gif" width="391" height="26" border="0"></center></td>
                                 </tr>
                                 <tr>
                                     <td><img src="../bilder/empty.gif" width="1" height="1" border="0"></td>
@@ -1462,7 +1461,7 @@ if ($_GET["fu"]==2) {
                     <td><img src="../bilder/empty.gif" width="1" height="5" border="0"></td>
                 </tr>
                 <tr>
-                    <td colspan="3"><center><img src="../lang/<?php echo $_GET["sprache"]?>/topics/simss.gif" width="374" height="25" border="0"></center></td>
+                    <td colspan="3"><center><img src="../lang/<?php echo $spieler_sprache?>/topics/simss.gif" width="374" height="25" border="0"></center></td>
                 </tr>
                 <tr>
                     <td><img src="../bilder/empty.gif" width="1" height="10" border="0"></td>
@@ -2257,7 +2256,7 @@ if ($_GET["fu"]==3) {
                                 </tr>
                                 <tr>
                                     <td colspan="3">
-                                        <center><img src="../lang/<?php echo $_GET["sprache"]?>/topics/simsp.gif" width="418" height="25" border="0"></center>
+                                        <center><img src="../lang/<?php echo $spieler_sprache?>/topics/simsp.gif" width="418" height="25" border="0"></center>
                                     </td>
                                 </tr>
                                 <tr>

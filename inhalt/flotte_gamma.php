@@ -1,10 +1,8 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.flotte_gamma.php";
-include ($file);
-
+$langfile_1='flotte_gamma';
 $shid=$_GET["shid"];
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
 
@@ -115,7 +113,7 @@ if ($_GET["fu"]==2) {
                     <td><img src="../bilder/empty.gif" border="0" width="1" height="57"></td>
                 </tr>
                 <tr>
-                    <td><form name="formular" id="formular" method="post" action="flotte_gamma.php?fu=3&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                    <td><form name="formular" id="formular" method="post" action="flotte_gamma.php?fu=3&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                     <td><img src="../bilder/empty.gif" border="0" width="254" height="1"></td>
                     <td><input type="hidden" name="aggro" value="<?php echo $aggro; ?>"></td>
                 </tr>
@@ -377,7 +375,7 @@ if ($_GET["fu"]==5) {
         <center>
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><form name="formular" id="formular" method="post" action="flotte_gamma.php?fu=6&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                    <td><form name="formular" id="formular" method="post" action="flotte_gamma.php?fu=6&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                     <?php
                     if ($module[3]==1) {
                         ?>

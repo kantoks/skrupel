@@ -1,8 +1,7 @@
 <?php
 include("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.osys_spionage.php";
-include ($file);
+$langfile_1='osys_spionage';
+
 include("inc.header.php");
 $schiffdatei = false;
 $file='../daten/unknown/schiffe.txt';
@@ -55,12 +54,12 @@ if($_GET["fu"] == 1) {
             function hilfe_spionage_osys() {
                 oben=100;
                 links=Math.ceil((screen.width-480)/2);
-                window.open('hilfe_spionage.php?fu2=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>','<?php echo $lang['osys']['spionage']['hilfe']?>','resizable=yes,scrollbars=no,width=480,height=200,top='+oben+',left='+links);
+                window.open('hilfe_spionage.php?fu2=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>','<?php echo $lang['osys']['spionage']['hilfe']?>','resizable=yes,scrollbars=no,width=480,height=200,top='+oben+',left='+links);
             }
             function hilfe_spionage_schiff(shid) {
                 oben=100;
                 links=Math.ceil((screen.width-480)/2);
-                window.open('hilfe_spionage.php?fu2=2&spid='+shid+'&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>','<?php echo $lang['osys']['spionage']['hilfe']?>','resizable=yes,scrollbars=no,width=480,height=200,top='+oben+',left='+links);
+                window.open('hilfe_spionage.php?fu2=2&spid='+shid+'&uid=<?php echo $uid?>&sid=<?php echo $sid?>','<?php echo $lang['osys']['spionage']['hilfe']?>','resizable=yes,scrollbars=no,width=480,height=200,top='+oben+',left='+links);
             }
         </script>
         <?php
@@ -135,7 +134,7 @@ if($_GET["fu"] == 1) {
                             <tr>
                                 <td><img src="../bilder/empty.gif" border="0" width="1" height="18"></td>
                                 <td>
-                                    <form name="formular" method="post" action="osys_spionage.php?fu=2&pid=<?php echo $planet['id'];?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>">
+                                    <form name="formular" method="post" action="osys_spionage.php?fu=2&pid=<?php echo $planet['id'];?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>">
                                     <input type="hidden" name="stufe" value="<?php echo $si;?>">
                                 </td>
                                 <td><nobr><a href="javascript:hilfe_spionage_schiff(<?php echo $spion_daten[$si]['erfahrung'];?>);" style="color:#ffffff;"><?php echo $spion_daten[$si]['name'];?></a></nobr></td>
@@ -172,12 +171,12 @@ if($_GET["fu"] == 1) {
                 function link_spionschiff() {
                     if (parent.parent.mittelinksoben.document.globals.map.value==0) {
                         parent.parent.mittelinksoben.document.globals.map.value=1;
-                        parent.parent.mittemitte.window.location='galaxie.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>';
+                        parent.parent.mittemitte.window.location='galaxie.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>';
                     }
                     else {
                         parent.parent.mittemitte.aktuell.style.visibility='hidden';
                     }
-                    parent.parent.untenmitte.window.location='flotte.php?fu=2&shid=<?php echo $schiff['id'];?>&oid=<?php echo $schiff['ordner'];?>&uid=<?php echo $uid;?>&sid=<?php echo $sid;?>&sprache=<?php echo $_GET["sprache"]?>';
+                    parent.parent.untenmitte.window.location='flotte.php?fu=2&shid=<?php echo $schiff['id'];?>&oid=<?php echo $schiff['ordner'];?>&uid=<?php echo $uid;?>&sid=<?php echo $sid;?>';
                 }
             </script>
             <center>
@@ -235,7 +234,7 @@ if($_GET["fu"] == 2) {
                 </tr>
                 <tr>
                     <td>
-                        <form name="formular"  method="post" action="osys_spionage.php?fu=3&pid=<?php echo $_GET['pid'];?>&uid=<?php echo $uid;?>&sid=<?php echo $sid;?>&sprache=<?php echo $_GET["sprache"]?>" onSubmit="return check();">
+                        <form name="formular"  method="post" action="osys_spionage.php?fu=3&pid=<?php echo $_GET['pid'];?>&uid=<?php echo $uid;?>&sid=<?php echo $sid;?>" onSubmit="return check();">
                         <input type="hidden" name="stufe" value="<?php echo $_POST['stufe'];?>">
                     </td>
                     <td><?php echo $lang['osys']['spionage']['Schiffsname']?></td>

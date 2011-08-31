@@ -1,10 +1,8 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.planeten_alpha.php";
-include ($file);
-$file="../lang/".$_GET["sprache"]."/lang.orbitale_systeme.php";
-include ($file);
+$langfile_1='planeten_alpha';
+$langfile_2='orbitale_systeme';
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
@@ -164,7 +162,7 @@ if ($_GET["fu"]==2) {
                     $vorhanden=1;
                     ?>
                     <td><?php echo $lang['planetenalpha']['raumwerft']?></td>
-                    <td><form name="formular" method="post" action="planeten_alpha.php?fu=12&art=1&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                    <td><form name="formular" method="post" action="planeten_alpha.php?fu=12&art=1&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                     <td <?php if ($cantox<$kosten_werft[0]) { echo "style='color:#990000;'";$vorhanden=0; } else { echo "style='color:#aaaaaa;'"; } ?>><center><?php echo $kosten_werft[0]?></center></td>
                     <td <?php if ($vorrat<$kosten_werft[1]) { echo "style='color:#990000;'";$vorhanden=0; } else { echo "style='color:#aaaaaa;'"; } ?>><center><?php echo $kosten_werft[1]?></center></td>
                     <td <?php if ($lemin<$kosten_werft[2]) { echo "style='color:#990000;'";$vorhanden=0; } else { echo "style='color:#aaaaaa;'"; } ?>><center><?php echo $kosten_werft[2]?></center></td>
@@ -180,7 +178,7 @@ if ($_GET["fu"]==2) {
                     $vorhanden=1;
                     ?>
                     <td><?php echo $lang['planetenalpha']['kampfstation']?></td>
-                    <td><form name="formular" method="post" action="planeten_alpha.php?fu=12&art=2&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                    <td><form name="formular" method="post" action="planeten_alpha.php?fu=12&art=2&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                     <td <?php if ($cantox<$kosten_station[0]) { echo "style='color:#990000;'";$vorhanden=0; } else { echo "style='color:#aaaaaa;'"; } ?>><center><?php echo $kosten_station[0]?></center></td>
                     <td <?php if ($vorrat<$kosten_station[1]) { echo "style='color:#990000;'";$vorhanden=0; } else { echo "style='color:#aaaaaa;'"; } ?>><center><?php echo $kosten_station[1]?></center></td>
                     <td <?php if ($lemin<$kosten_station[2]) { echo "style='color:#990000;'";$vorhanden=0; } else { echo "style='color:#aaaaaa;'"; } ?>><center><?php echo $kosten_station[2]?></center></td>
@@ -194,7 +192,7 @@ if ($_GET["fu"]==2) {
                 <tr>
                     <?php $vorhanden=1; ?>
                     <td><?php echo $lang['planetenalpha']['sternenbasis']?></td>
-                    <td><form name="formular" method="post" action="planeten_alpha.php?fu=12&art=0&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                    <td><form name="formular" method="post" action="planeten_alpha.php?fu=12&art=0&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                     <td <?php if ($cantox<$kosten_sbasis[0]) { echo "style='color:#990000;'";$vorhanden=0; } else { echo "style='color:#aaaaaa;'"; } ?>><center><?php echo $kosten_sbasis[0]?></center></td>
                     <td <?php if ($vorrat<$kosten_sbasis[1]) { echo "style='color:#990000;'";$vorhanden=0; } else { echo "style='color:#aaaaaa;'"; } ?>><center><?php echo $kosten_sbasis[1]?></center></td>
                     <td <?php if ($lemin<$kosten_sbasis[2]) { echo "style='color:#990000;'";$vorhanden=0; } else { echo "style='color:#aaaaaa;'"; } ?>><center><?php echo $kosten_sbasis[2]?></center></td>
@@ -208,7 +206,7 @@ if ($_GET["fu"]==2) {
                 <tr>
                     <?php $vorhanden=1; ?>
                     <td><?php echo $lang['planetenalpha']['kriegsbasis']?></td>
-                    <td><form name="formular" method="post" action="planeten_alpha.php?fu=12&art=3&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                    <td><form name="formular" method="post" action="planeten_alpha.php?fu=12&art=3&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                     <td <?php if ($cantox<$kosten_kbasis[0]) { echo "style='color:#990000;'";$vorhanden=0; } else { echo "style='color:#aaaaaa;'"; } ?>><center><?php echo $kosten_kbasis[0]?></center></td>
                     <td <?php if ($vorrat<$kosten_kbasis[1]) { echo "style='color:#990000;'";$vorhanden=0; } else { echo "style='color:#aaaaaa;'"; } ?>><center><?php echo $kosten_kbasis[1]?></center></td>
                     <td <?php if ($lemin<$kosten_kbasis[2]) { echo "style='color:#990000;'";$vorhanden=0; } else { echo "style='color:#aaaaaa;'"; } ?>><center><?php echo $kosten_kbasis[2]?></center></td>
@@ -254,7 +252,7 @@ if ($_GET["fu"]==2) {
                     </tr>
                     <tr>
                         <td bgcolor="#aaaaaa"><img src="../bilder/empty.gif" border="0" width="1" height="1"></td>
-                        <td><a href="basen.php?fu=2&baid=<?php echo $sternenbasis_id?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" target="_parent"><img src="<?php $file='../daten/'.$sternenbasis_rasse.'/bilder_basen/'.$basisbild; if (@file_exists($file)) { echo $file; } else { echo '../daten/'.$sternenbasis_rasse.'/bilder_basen/1.jpg'; }?>" border="0" height="94" width="141"></a></td>
+                        <td><a href="basen.php?fu=2&baid=<?php echo $sternenbasis_id?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>" target="_parent"><img src="<?php $file='../daten/'.$sternenbasis_rasse.'/bilder_basen/'.$basisbild; if (@file_exists($file)) { echo $file; } else { echo '../daten/'.$sternenbasis_rasse.'/bilder_basen/1.jpg'; }?>" border="0" height="94" width="141"></a></td>
                         <td bgcolor="#aaaaaa"><img src="../bilder/empty.gif" border="0" width="1" height="1"></td>
                     </tr>
                     <tr>
@@ -430,7 +428,7 @@ if ($_GET["fu"]==4) {
                                     <?php
                                 }
                                 ?>
-                                <a href="planeten_alpha.php?fu=6&position=<?php echo $n?>&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"><img src="../bilder/osysteme/blank.gif" border="0" width="61" height="64" title="<?php echo $lang['planetenalpha']['leererstandort']?>"></a>
+                                <a href="planeten_alpha.php?fu=6&position=<?php echo $n?>&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"><img src="../bilder/osysteme/blank.gif" border="0" width="61" height="64" title="<?php echo $lang['planetenalpha']['leererstandort']?>"></a>
                             </td>
                             <?php
                         } else {
@@ -443,7 +441,7 @@ if ($_GET["fu"]==4) {
                                     <?php
                                 }
                                 ?>
-                                <a href="<?php echo $osys_daten[$osys[$n]][1]?>&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"><img src="../bilder/osysteme/<?php echo $osys[$n]?>.gif" border="0" width="61" height="64" title="<?php echo $lang['orbitalesysteme']['name'][$osys[$n]]?>"></a>
+                                <a href="<?php echo $osys_daten[$osys[$n]][1]?>&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"><img src="../bilder/osysteme/<?php echo $osys[$n]?>.gif" border="0" width="61" height="64" title="<?php echo $lang['orbitalesysteme']['name'][$osys[$n]]?>"></a>
                             </td>
                             <?php
                         }
@@ -567,7 +565,7 @@ if ($_GET["fu"]==6) {
             function systemdetail(syid) {
                 oben=100;
                 links=Math.ceil((screen.width-580)/2);
-                window.open('hilfe_osystem.php?fu2='+syid+'&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>','Hilfe','resizable=yes,scrollbars=no,width=580,height=180,top='+oben+',left='+links);
+                window.open('hilfe_osystem.php?fu2='+syid+'&uid=<?php echo $uid?>&sid=<?php echo $sid?>','Hilfe','resizable=yes,scrollbars=no,width=580,height=180,top='+oben+',left='+links);
             }
         </script>
         <center>
@@ -595,7 +593,7 @@ if ($_GET["fu"]==6) {
                     <tr>
                         <td><img src="../bilder/empty.gif" border="0" width="1" height="18"></td>
                         <td>
-                            <form name="formular" method="post" action="planeten_alpha.php?fu=7&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>">
+                            <form name="formular" method="post" action="planeten_alpha.php?fu=7&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>">
                             <input type="hidden" name="bau" value="<?php echo $nj?>">
                             <input type="hidden" name="position" value="<?php echo $_GET["position"]?>">
                         </td>
@@ -897,7 +895,7 @@ if ($_GET["fu"]==8) {
                                                 <?php
                                                 if ($moeglich>=1) {
                                                     ?>
-                                                    <td><form name="formular" method="post" action="planeten_alpha.php?fu=9&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                                    <td><form name="formular" method="post" action="planeten_alpha.php?fu=9&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                                     <td>
                                                         <select name="neuinfa" style="width:50px;">
                                                             <?php
@@ -1147,7 +1145,7 @@ if ($_GET["fu"]==10) {
                                                 <?php
                                                 if ($moeglich>=1) {
                                                     ?>
-                                                    <td><form name="formular" method="post" action="planeten_alpha.php?fu=11&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                                    <td><form name="formular" method="post" action="planeten_alpha.php?fu=11&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                                     <td>
                                                         <select name="neuinfa" style="width:50px;">
                                                             <?php
@@ -1292,7 +1290,7 @@ if ($_GET["fu"]==12) {
         <center>
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><form name="formular" method="post" action="planeten_alpha.php?fu=3&pid=<?php echo $_GET['pid']?>&art=<?php echo $art?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" onSubmit="return check();"></td>
+                    <td><form name="formular" method="post" action="planeten_alpha.php?fu=3&pid=<?php echo $_GET['pid']?>&art=<?php echo $art?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>" onSubmit="return check();"></td>
                     <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
                     <td><center><?php echo $lang['planetenalpha']['stationsname']?></center></td>
                     <td></td>
@@ -1421,7 +1419,7 @@ if ($_GET["fu"]==13) {
                                     </table>
                                 </td>
                                 <td><img src="../bilder/empty.gif" border="0" width="10" height="1"></td>
-                                <td><form name="formular" method="post" action="flotte_beta.php?fu=3&shid=<?php echo $schiff_scan[$i][0]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                <td><form name="formular" method="post" action="flotte_beta.php?fu=3&shid=<?php echo $schiff_scan[$i][0]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                 <td><input type="submit" name="bla" value="<?php echo $lang['planetenalpha']['detailscan']?>" style="width:70px;"></td>
                                 <td></form></td>
                             </tr>

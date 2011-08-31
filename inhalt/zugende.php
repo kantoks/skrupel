@@ -3,10 +3,10 @@
 :noTabs=false:indentSize=4:tabSize=4:folding=explicit:collapseFolds=1:
 */
 include ('../inc.conf.php');
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-include ("../lang/".$_GET["sprache"]."/lang.zugende.php");
+$langfile_1='zugende';
 include_once ('inc.hilfsfunktionen.php');
 $fuid = int_get('fu');
+
 //fu:1 Zugende Hauptmenu {{{
 if ($fuid==1) {
     include ("inc.header.php");
@@ -22,19 +22,19 @@ if ($fuid==1) {
                     if($weitere > 0) {
                         ?>
                         <td>
-                            <center><a href="zugende.php?fu=7&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" target="_self"><img src="<?php echo $bildpfad?>/menu/gsprung.gif" width="75" height="75" border="0"><br><nobr><?php echo $lang['zugende']['galaxiesprung']?></nobr></a></center>
+                            <center><a href="zugende.php?fu=7&uid=<?php echo $uid?>&sid=<?php echo $sid?>" target="_self"><img src="<?php echo $bildpfad?>/menu/gsprung.gif" width="75" height="75" border="0"><br><nobr><?php echo $lang['zugende']['galaxiesprung']?></nobr></a></center>
                         </td>
                         <?php
                     }
                     ?>
                     <td>
-                        <center><a href="zugende.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" target="_top"><img src="<?php echo $bildpfad?>/menu/logout.gif" width="75" height="75" border="0"><br><nobr><?php echo $lang['zugende']['logout']?></nobr></a></center>
+                        <center><a href="zugende.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>" target="_top"><img src="<?php echo $bildpfad?>/menu/logout.gif" width="75" height="75" border="0"><br><nobr><?php echo $lang['zugende']['logout']?></nobr></a></center>
                     </td>
                     <?php
                     if ($zug_abgeschlossen==0 and $spieler_raus==0){
                         ?>
                         <td>
-                            <center><a href="zugende.php?fu=3&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" target="_self"><img src="<?php echo $bildpfad?>/menu/abschliessen.gif" width="75" height="75" border="0"><br><nobr><?php echo $lang['zugende']['zugabschliessen']?></nobr></a></center>
+                            <center><a href="zugende.php?fu=3&uid=<?php echo $uid?>&sid=<?php echo $sid?>" target="_self"><img src="<?php echo $bildpfad?>/menu/abschliessen.gif" width="75" height="75" border="0"><br><nobr><?php echo $lang['zugende']['zugabschliessen']?></nobr></a></center>
                         </td>
                         <?php
                     }
@@ -51,13 +51,14 @@ if ($fuid==2) {
     $conn = @mysql_connect($server.':'.$port,$login,$password);
     $db = @mysql_select_db($database,$conn);
     include ("inc.check.php");
+    include ('../lang/'.$spieler_sprache.'/lang.zugende.php');
     $zeiger = mysql_query("UPDATE $skrupel_user set uid='',bildpfad='' where id=$spieler_id;");
     $nachricht = $spieler_name.' '.$lang['zugende']['verlassen'];
     $aktuell = time();
     $zeiger = @mysql_query("INSERT INTO $skrupel_chat (spiel,datum,text,an,von,farbe) VALUES ($spiel,'$aktuell','$nachricht',0,'System','000000');");
     @mysql_close();
     if ($bildpfad=='../bilder') { $bildpfad='bilder'; }
-    $backlink = "../index.php?pic_path=$bildpfad&sprache=".$_GET["sprache"];
+    $backlink = "../index.php?pic_path=$bildpfad&sprache=".$spieler_sprache;
     header ("Location: $backlink");
 }
 //}}}
@@ -66,6 +67,7 @@ if ($fuid==3) {
     $conn = @mysql_connect($server.':'.$port,$login,$password);
     $db = @mysql_select_db($database,$conn);
     include ('inc.check.php');
+    include ('../lang/'.$spieler_sprache.'/lang.zugende.php');
     $spalte = "spieler_{$spieler}_zug";
     $spieler_zug_c[$spieler] = 1;
     @mysql_query("UPDATE $skrupel_spiele SET $spalte=1 WHERE sid='$sid';");
@@ -84,9 +86,9 @@ if ($fuid==3) {
         if($spieler_zug_c[$i]==1) $fertig++;
     }    
     if($fertig>=$spieleranzahl) {
-        $backlink = "zugende.php?fu=6&uid=$uid&sid=$sid&sprache=".$_GET["sprache"];
+        $backlink = "zugende.php?fu=6&uid=$uid&sid=$sid";
     } else {
-        $backlink = "zugende.php?fu=9&uid=$uid&sid=$sid&sprache=".$_GET["sprache"];
+        $backlink = "zugende.php?fu=9&uid=$uid&sid=$sid";
     }
     header ("Location: $backlink");
 }
@@ -131,8 +133,8 @@ if ($fuid==5) {
             }
         }
         function redir() {
-            link('uebersicht_uebersicht.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');
-            window.location='uebersicht.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>';
+            link('uebersicht_uebersicht.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>');
+            window.location='uebersicht.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>';
         }
     </script>
         <body onload="javascript:redir();" text="#000000" bgcolor="#444444" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -153,7 +155,7 @@ if ($fuid==5) {
 if ($fuid==6) {
     include ('inc.header.php');
     ?>
-    <body onLoad="window.location='zugende.php?fu=5&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>';" text="#000000" bgcolor="#444444" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;"  link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+    <body onLoad="window.location='zugende.php?fu=5&uid=<?php echo $uid?>&sid=<?php echo $sid?>';" text="#000000" bgcolor="#444444" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;"  link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <center>
             <table border="0" cellspacing="0" cellpadding="0" height="100%">
                 <tr>
@@ -194,7 +196,7 @@ if ($fuid==7) {
                     <td colspan="3"><img src="../bilder/empty.gif" border="0" width="1" height="1"></td>
                 </tr>
                 <tr>
-                    <td><form name="formular" method="post" action="zugende.php?fu=8&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                    <td><form name="formular" method="post" action="zugende.php?fu=8&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                     <td><center><?php $lang['zugende']['sprungwohin']?></center></td>
                     <td></td>
                 </tr>
@@ -259,10 +261,10 @@ if ($fuid==8) {
             }
         }
         function galaxiewechsel() {
-            parent.mittelinksoben.window.location = 'menu.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sidneu?>&sprache=<?php echo $_GET["sprache"]?>';
-            parent.untenlinks.window.location     = 'menu.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sidneu?>&sprache=<?php echo $_GET["sprache"]?>';
-            link('uebersicht_uebersicht.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sidneu?>&sprache=<?php echo $_GET["sprache"]?>');
-            window.location = 'uebersicht.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sidneu?>&sprache=<?php echo $_GET["sprache"]?>';
+            parent.mittelinksoben.window.location = 'menu.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sidneu?>';
+            parent.untenlinks.window.location     = 'menu.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sidneu?>';
+            link('uebersicht_uebersicht.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sidneu?>');
+            window.location = 'uebersicht.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sidneu?>';
         }
     </script>
     <body onload="javascript:galaxiewechsel();" text="#000000" bgcolor="#444444" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -282,6 +284,7 @@ if ($fuid==9) {
     $conn = @mysql_connect($server.':'.$port,$login,$password);
     $db = @mysql_select_db($database,$conn);
     include ('inc.check.php');
+    include ('../lang/'.$spieler_sprache.'/lang.zugende.php');
     $spalte = "spieler_{$spieler}_zug";
     $spieler_zug_c[$spieler] = 1;
     @mysql_query("UPDATE $skrupel_spiele SET $spalte=1 WHERE sid='$sid';");
@@ -291,9 +294,9 @@ if ($fuid==9) {
         if($spieler_zug_c[$i]==1) $fertig++;
     }
     if($fertig>=$spieleranzahl) {
-        $backlink = "zugende.php?fu=6&uid=$uid&sid=$sid&sprache=".$_GET["sprache"];
+        $backlink = "zugende.php?fu=6&uid=$uid&sid=$sid";
     } else {
-        $backlink = "zugende.php?fu=4&uid=$uid&sid=$sid&sprache=".$_GET["sprache"];
+        $backlink = "zugende.php?fu=4&uid=$uid&sid=$sid";
     }
     header ("Location: $backlink");
 }

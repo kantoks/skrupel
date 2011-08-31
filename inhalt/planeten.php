@@ -1,8 +1,7 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.planeten.php";
-include ($file);
+$langfile_1='planeten';
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ?>
@@ -80,7 +79,7 @@ if ($_GET["fu"]==1) {
                                             </tr>
                                             <tr>
                                                 <td bgcolor="#aaaaaa"><img src="../bilder/empty.gif" border="0" width="1" height="1"></td>
-                                                <td><a href="planeten.php?fu=2&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"><img src="<?php echo $bildpfad?>/planeten/<?php echo $klasse?>_<?php echo $bild?>.jpg" border="0" height="80" width="93" title="<?php echo $tip?>"></a></td>
+                                                <td><a href="planeten.php?fu=2&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"><img src="<?php echo $bildpfad?>/planeten/<?php echo $klasse?>_<?php echo $bild?>.jpg" border="0" height="80" width="93" title="<?php echo $tip?>"></a></td>
                                                 <td bgcolor="#aaaaaa"><img src="../bilder/empty.gif" border="0" width="1" height="1"></td>
                                             </tr>
                                             <tr>
@@ -135,17 +134,17 @@ if ($_GET["fu"]==2) {
     include ("inc.header.php");
     ?>
     <frameset framespacing="0" border="false" frameborder="0" cols="*,26,270,208,400,26,*">
-        <frame name="randlinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-        <frame name="pfeillinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="planeten.php?fu=6&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-        <frame name="planeten" scrolling="no" marginwidth="0" marginheight="0" noresize src="planeten.php?fu=3&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+        <frame name="randlinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&bildpfad=<?php echo $bildpfad?>" target="_self">
+        <frame name="pfeillinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="planeten.php?fu=6&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>" target="_self">
+        <frame name="planeten" scrolling="no" marginwidth="0" marginheight="0" noresize src="planeten.php?fu=3&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>" target="_self">
         <?php if ($zug_abgeschlossen==0) { ?>
-        <frame name="planetenmenu" scrolling="no" marginwidth="0" marginheight="0" noresize src="planeten.php?fu=4&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+        <frame name="planetenmenu" scrolling="no" marginwidth="0" marginheight="0" noresize src="planeten.php?fu=4&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>" target="_self">
         <?php } else { ?>
-        <frame name="planetenmenu" scrolling="no" marginwidth="0" marginheight="0" noresize src="planeten.php?fu=5&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+        <frame name="planetenmenu" scrolling="no" marginwidth="0" marginheight="0" noresize src="planeten.php?fu=5&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>" target="_self">
         <?php } ?>
-        <frame name="planetendetails" scrolling="auto" marginwidth="0" marginheight="0" noresize src="planeten_alpha.php?fu=1&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-        <frame name="pfeilrechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="planeten.php?fu=7&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-        <frame name="randrechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+        <frame name="planetendetails" scrolling="auto" marginwidth="0" marginheight="0" noresize src="planeten_alpha.php?fu=1&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>" target="_self">
+        <frame name="pfeilrechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="planeten.php?fu=7&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>" target="_self">
+        <frame name="randrechts" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&bildpfad=<?php echo $bildpfad?>" target="_self">
     </frameset>
     <noframes>
     <body>
@@ -363,15 +362,15 @@ if ($_GET["fu"]==4) {
             </tr>
         </table>
         <map name="konsole">
-            <area shape=rect coords="26,15,52,40" href="javascript:linksub('planeten_alpha.php?fu=1&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['details']?>">
-            <area shape=rect coords="74,15,97,40" href="javascript:linksub('planeten_alpha.php?fu=4&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['globalesysteme']?>">
-            <area shape=rect coords="120,15,143,40" href="javascript:linksub('planeten_alpha.php?fu=2&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['sternenbasis']?>">
-            <area shape=rect coords="69,62,103,86" href="javascript:linksub('planeten_beta.php?fu=2&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['logbuch']?>">
-            <area shape=rect coords="26,58,53,84" href="javascript:linksub('planeten_beta.php?fu=1&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['dominantespezies']?>">
-            <area shape=rect coords="120,62,143,86" href="javascript:linksub('planeten_beta.php?fu=4&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['schiffe']?>">
-            <area shape=rect coords="163,11,184,33" href="javascript:linksub('planeten_gamma.php?fu=1&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['minen']?>">
-            <area shape=rect coords="163,40,184,60" href="javascript:linksub('planeten_gamma.php?fu=4&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['fabriken']?>">
-            <area shape=rect coords="163,65,184,87" href="javascript:linksub('planeten_gamma.php?fu=9&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['pds']?>">
+            <area shape=rect coords="26,15,52,40" href="javascript:linksub('planeten_alpha.php?fu=1&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>');self.focus();" title="<?php echo $lang['planeten']['details']?>">
+            <area shape=rect coords="74,15,97,40" href="javascript:linksub('planeten_alpha.php?fu=4&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>');self.focus();" title="<?php echo $lang['planeten']['globalesysteme']?>">
+            <area shape=rect coords="120,15,143,40" href="javascript:linksub('planeten_alpha.php?fu=2&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>');self.focus();" title="<?php echo $lang['planeten']['sternenbasis']?>">
+            <area shape=rect coords="69,62,103,86" href="javascript:linksub('planeten_beta.php?fu=2&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>');self.focus();" title="<?php echo $lang['planeten']['logbuch']?>">
+            <area shape=rect coords="26,58,53,84" href="javascript:linksub('planeten_beta.php?fu=1&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>');self.focus();" title="<?php echo $lang['planeten']['dominantespezies']?>">
+            <area shape=rect coords="120,62,143,86" href="javascript:linksub('planeten_beta.php?fu=4&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>');self.focus();" title="<?php echo $lang['planeten']['schiffe']?>">
+            <area shape=rect coords="163,11,184,33" href="javascript:linksub('planeten_gamma.php?fu=1&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>');self.focus();" title="<?php echo $lang['planeten']['minen']?>">
+            <area shape=rect coords="163,40,184,60" href="javascript:linksub('planeten_gamma.php?fu=4&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>');self.focus();" title="<?php echo $lang['planeten']['fabriken']?>">
+            <area shape=rect coords="163,65,184,87" href="javascript:linksub('planeten_gamma.php?fu=9&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>');self.focus();" title="<?php echo $lang['planeten']['pds']?>">
         </map>
         <?php
     include ("inc.footer.php");
@@ -394,10 +393,10 @@ if ($_GET["fu"]==5) {
             </tr>
         </table>
         <map name="konsole">
-            <area shape=rect coords="26,15,52,40" href="javascript:linksub('planeten_alpha.php?fu=1&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['details']?>">
-            <area shape=rect coords="69,62,103,86" href="javascript:linksub('planeten_beta.php?fu=2&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['logbuch']?>">
-            <area shape=rect coords="26,58,53,84" href="javascript:linksub('planeten_beta.php?fu=1&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['dominantespezies']?>">
-            <area shape=rect coords="120,62,143,86" href="javascript:linksub('planeten_beta.php?fu=4&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();" title="<?php echo $lang['planeten']['schiffe']?>">
+            <area shape=rect coords="26,15,52,40" href="javascript:linksub('planeten_alpha.php?fu=1&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>');self.focus();" title="<?php echo $lang['planeten']['details']?>">
+            <area shape=rect coords="69,62,103,86" href="javascript:linksub('planeten_beta.php?fu=2&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>');self.focus();" title="<?php echo $lang['planeten']['logbuch']?>">
+            <area shape=rect coords="26,58,53,84" href="javascript:linksub('planeten_beta.php?fu=1&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>');self.focus();" title="<?php echo $lang['planeten']['dominantespezies']?>">
+            <area shape=rect coords="120,62,143,86" href="javascript:linksub('planeten_beta.php?fu=4&pid=<?php echo $_GET["pid"]?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>');self.focus();" title="<?php echo $lang['planeten']['schiffe']?>">
         </map>
         <?php
     include ("inc.footer.php");
@@ -427,7 +426,7 @@ if ($_GET["fu"]==6) {
                             <td><img src="../bilder/empty.gif" border="0" width="26" height="8"></td>
                         </tr>
                         <tr>
-                            <td><a href="javascript:linksub('planeten.php?fu=2&pid=<?php echo $pid_back?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>');self.focus();"><img src="<?php echo $bildpfad?>/konsole/pfeil_links.gif" border="0" width="26" height="90"></a></td>
+                            <td><a href="javascript:linksub('planeten.php?fu=2&pid=<?php echo $pid_back?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>');self.focus();"><img src="<?php echo $bildpfad?>/konsole/pfeil_links.gif" border="0" width="26" height="90"></a></td>
                         </tr>
                     </table>
                     <?php

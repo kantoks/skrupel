@@ -1,8 +1,7 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.uebersicht_uebersicht.php";
-include ($file);
+$langfile_1='uebersicht_uebersicht';
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where id=$spiel");
@@ -27,7 +26,7 @@ if ($_GET["fu"]==1) {
             <tr>
                 <td><img src="../bilder/empty.gif" border="0" width="10" height="1"></td>
                 <td width="100%" valign=top>
-                    <center><img src="../lang/<?php echo $_GET["sprache"]?>/topics/aktuelles.gif" border="0" width="199" height="52"></center>
+                    <center><img src="../lang/<?php echo $spieler_sprache?>/topics/aktuelles.gif" border="0" width="199" height="52"></center>
                     <br><br>
                     <center>
                         <table border="0" cellspacing="0" cellpadding="0">
@@ -54,7 +53,7 @@ if ($_GET["fu"]==1) {
                                     </tr>
                                     <tr>
                                         <td><img src="<?php echo $bildpfad?>/aufbau/galalinks.gif" border="0" width="4" height="250"></td>
-                                        <td><iframe src="uebersicht_uebersicht.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" width="250" height="250" name="map" scrolling="no" marginheight="0" marginwidth="0" frameborder="0"></iframe></td>
+                                        <td><iframe src="uebersicht_uebersicht.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>" width="250" height="250" name="map" scrolling="no" marginheight="0" marginwidth="0" frameborder="0"></iframe></td>
                                         <td><img src="<?php echo $bildpfad?>/aufbau/galarechts.gif" border="0" width="4" height="250"></td>
                                     </tr>
                                     <tr>
@@ -76,7 +75,7 @@ if ($_GET["fu"]==1) {
 }
 if ($_GET["fu"]==2) {
     include ("inc.header.php");
-    ?><body onLoad="window.location='uebersicht_uebersicht.php?fu=3&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>';" text="#000000" bgcolor="#000000"   link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+    ?><body onLoad="window.location='uebersicht_uebersicht.php?fu=3&uid=<?php echo $uid?>&sid=<?php echo $sid?>';" text="#000000" bgcolor="#000000"   link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <center>
             <table border="0" cellspacing="0" cellpadding="0" height="100%">
                 <tr><td><center><img src="<?php echo $bildpfad?>/radb.gif" height="46" width="51"><br><br><?php echo $lang['uebersichtuebersicht']['galaxie']?></center></td></tr>
@@ -113,12 +112,12 @@ if ($_GET["fu"]==3) {
                     }
                 }    
                 function map() {
-                    parent.parent.parent.untenmitte.window.location = 'planeten.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>';
+                    parent.parent.parent.untenmitte.window.location = 'planeten.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>';
                     parent.parent.parent.mittelinksoben.document.globals.map.value = 1;
-                    parent.parent.parent.mittemitte.window.location = 'galaxie.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>&gox=' + tempX + '&goy=' + tempY;
+                    parent.parent.parent.mittemitte.window.location = 'galaxie.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&gox=' + tempX + '&goy=' + tempY;
                 }
             </script>
-            <a href="javascript:map();" style="cursor: crosshair;"><img src="uebersicht_uebersicht.php?fu=4&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" width="250" height="250" border="0"></a>
+            <a href="javascript:map();" style="cursor: crosshair;"><img src="uebersicht_uebersicht.php?fu=4&uid=<?php echo $uid?>&sid=<?php echo $sid?>" width="250" height="250" border="0"></a>
             <?php
         include ("inc.footer.php");
     } else {

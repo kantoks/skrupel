@@ -18,6 +18,7 @@ if ($datensaetze==1) {
     $spieler_avatar=$array['avatar'];
     $spieler_jabber=$array['jabber'];
     $bildpfad=$array['bildpfad'];
+    $spieler_sprache=$array['sprache'];
     $zeiger2 = @mysql_query("SELECT * FROM $skrupel_spiele where sid='$sid' and (spieler_1=$spieler_id or spieler_2=$spieler_id or spieler_3=$spieler_id or spieler_4=$spieler_id or spieler_5=$spieler_id or spieler_6=$spieler_id or spieler_7=$spieler_id or spieler_8=$spieler_id or spieler_9=$spieler_id or spieler_10=$spieler_id)");
     $datensaetze2 = @mysql_num_rows($zeiger2);
     if ($datensaetze2==1) {
@@ -28,9 +29,9 @@ if ($datensaetze==1) {
         $module = array_pad($module, 5, 0);
         if ($phase==1) {
             if ((preg_match ("/kommunikation_exch/i",$SCRIPT_NAME)) or (preg_match ("/kommunikation_exch/i",$SCRIPT_FILENAME))) {
-                header("Location: kommunikation_exch.php?fu=7&sprache=".$_GET['sprache']);exit;
+                header("Location: kommunikation_exch.php?fu=7");exit;
             } else {
-                header("Location: runde_ende.php?fu=1&spiel=$spiel&sprache=".$_GET['sprache']);exit;
+                header("Location: runde_ende.php?fu=1&spiel=$spiel&sprache=".$spieler_sprache);exit;
             }
         }
         $spieler_1=$array2["spieler_1"];
@@ -112,15 +113,15 @@ if ($datensaetze==1) {
         $piraten_max=$array2['piraten_max'];
     } else {
         if ((preg_match ("/kommunikation_exch/i",$SCRIPT_NAME)) or (preg_match ("/kommunikation_exch/i",$SCRIPT_FILENAME))) {
-            header("Location: kommunikation_exch.php?fu=7&sprache=".$_GET['sprache']); exit;
+            header("Location: kommunikation_exch.php?fu=7"); exit;
         } else {
-            header("Location: ../index.php?sprache=".$_GET['sprache']); exit;
+            header("Location: ../index.php?sprache=".$spieler_sprache); exit;
         }
     }
 } else {
     if ((preg_match ("/kommunikation_exch/i",$SCRIPT_NAME)) or (preg_match ("/kommunikation_exch/i",$SCRIPT_FILENAME))) {
-        header("Location: kommunikation_exch.php?fu=7&sprache=".$_GET['sprache']); exit;
+        header("Location: kommunikation_exch.php?fu=7"); exit;
     } else {
-        header("Location: ../index.php?sprache=".$_GET['sprache']); exit;
+        header("Location: ../index.php"); exit;
     }
 }

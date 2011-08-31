@@ -1,9 +1,8 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.basen_gamma.php";
-include ($file);
+$langfile_1='basen_gamma';
 $baid=$_GET["baid"];
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
@@ -23,7 +22,7 @@ if ($_GET["fu"]==1) {
                             if ($huellenanzahl>=1) {
                                 ?>
                                 <center>
-                                    <form name="formular" method="post" action="basen_gamma.php?fu=<?php if ($art==3) { echo '6'; } else { echo '2'; } ?>&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>">
+                                    <form name="formular" method="post" action="basen_gamma.php?fu=<?php if ($art==3) { echo '6'; } else { echo '2'; } ?>&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>">
                                         <br>
                                         <?php echo $lang['basengamma']['ruempfeimlager']; ?>
                                         <br><br>
@@ -180,7 +179,7 @@ if ($_GET["fu"]==2) {
                     <td colspan="9"><img src="../bilder/empty.gif" border="0" width="10" height="7"></td>
                 </tr>
                 <tr>
-                    <td><form name="formular"  method="post" action="basen_gamma.php?fu=3&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" onSubmit="return check();"></td>
+                    <td><form name="formular"  method="post" action="basen_gamma.php?fu=3&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" onSubmit="return check();"></td>
                     <td colspan="7">
                         <center><?php echo $lang['basengamma']['komponentenfestlegen']; ?></center>
                         <input type="hidden" name="zusatz" value="<?php echo $zusatz; ?>"></td>
@@ -505,7 +504,7 @@ if ($_GET["fu"]==4) {
         <center>
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><form name="formular"  method="post" action="basen_gamma.php?fu=5&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                    <td><form name="formular"  method="post" action="basen_gamma.php?fu=5&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                     <td><textarea style="width:390px;height:59px;" name="logbuchdaten"><?php echo $logbuch; ?></textarea></td>
                     <td></td>
                 </tr>
@@ -544,7 +543,7 @@ if ($_GET["fu"]==6) {
             <table border="0" cellspacing="0" cellpadding="0" height="100%">
                 <tr>
                     <td>
-                        <center><form name="formular" method="post" action="basen_gamma.php?fu=2&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>">
+                        <center><form name="formular" method="post" action="basen_gamma.php?fu=2&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>">
                             <br>
                             <?php echo $lang['basengamma']['zusatzmodule']; ?>
                             <br><br>

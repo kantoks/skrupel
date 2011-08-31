@@ -1,8 +1,7 @@
 <?php 
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.planeten_gamma.php";
-include ($file);
+$langfile_1='planeten_gamma';
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
@@ -122,7 +121,7 @@ if ($_GET["fu"]==1) {
                             ?>
                             <table border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td><form name="formular" method="post" action="planeten_gamma.php?fu=3&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                    <td><form name="formular" method="post" action="planeten_gamma.php?fu=3&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                     <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
                                     <td>
                                         <select name="minenauftrag" style="font-family:Verdana;font-size:9px;width:50px;">
@@ -149,7 +148,7 @@ if ($_GET["fu"]==1) {
                         ?>
                         <table border="0" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td><form name="formular" method="post" action="planeten_gamma.php?fu=2&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                <td><form name="formular" method="post" action="planeten_gamma.php?fu=2&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                 <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
                                 <td><input type="checkbox" name="minauto" value="1" style="width:25px;" <?php if ($auto_minen==1) { echo "checked"; }?>></td>
                                 <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
@@ -161,7 +160,7 @@ if ($_GET["fu"]==1) {
                     <td><img src="../bilder/empty.gif" border="0" width="13" height="1"></td>
                     <td>
                         <img src="../bilder/empty.gif" border="0" width="5" height="6"><br>
-                        <iframe src="planeten_gamma.php?fu=12&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" width="97" height="97" name="map" scrolling="no" marginheight="0" marginwidth="0" frameborder="0"></iframe>
+                        <iframe src="planeten_gamma.php?fu=12&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>" width="97" height="97" name="map" scrolling="no" marginheight="0" marginwidth="0" frameborder="0"></iframe>
                     </td>
                     <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
                     <td>
@@ -376,7 +375,7 @@ if ($_GET["fu"]==4) {
                             ?>
                             <table border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td><form name="formular" method="post" action="planeten_gamma.php?fu=6&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                    <td><form name="formular" method="post" action="planeten_gamma.php?fu=6&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                     <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
                                     <td>
                                         <select name="fabrikenauftrag" style="font-family:Verdana;font-size:9px;width:50px;">
@@ -403,7 +402,7 @@ if ($_GET["fu"]==4) {
                         ?>
                         <table border="0" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td><form name="formular" method="post" action="planeten_gamma.php?fu=5&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                <td><form name="formular" method="post" action="planeten_gamma.php?fu=5&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                 <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
                                 <td><input type="checkbox" name="fabrikauto" value="1" style="width:25px;" <?php if ($auto_fabriken==1) { echo "checked"; }?>></td>
                                 <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
@@ -449,7 +448,7 @@ if ($_GET["fu"]==4) {
                             ?>
                             <table border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td><form name="formular" method="post" action="planeten_gamma.php?fu=7&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                    <td><form name="formular" method="post" action="planeten_gamma.php?fu=7&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                     <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
                                     <td>
                                         <select name="vorratauftrag" style="font-family:Verdana;font-size:9px;width:50px;">
@@ -476,7 +475,7 @@ if ($_GET["fu"]==4) {
                         ?>
                         <table border="0" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td><form name="formular" method="post" action="planeten_gamma.php?fu=8&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                <td><form name="formular" method="post" action="planeten_gamma.php?fu=8&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                 <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
                                 <td><input type="checkbox" name="vorratauto" value="1" style="width:25px;" <?php if ($auto_vorrat==1) { echo "checked"; }?>></td>
                                 <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
@@ -689,7 +688,7 @@ if ($_GET["fu"]==9) {
                             ?>
                             <table border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td><form name="formular" method="post" action="planeten_gamma.php?fu=11&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                    <td><form name="formular" method="post" action="planeten_gamma.php?fu=11&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                     <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
                                     <td>
                                         <select name="abwehrauftrag" style="font-family:Verdana;font-size:9px;width:50px;">
@@ -716,7 +715,7 @@ if ($_GET["fu"]==9) {
                         ?>
                         <table border="0" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td><form name="formular" method="post" action="planeten_gamma.php?fu=10&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                <td><form name="formular" method="post" action="planeten_gamma.php?fu=10&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                 <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
                                 <td><input type="checkbox" name="abwehrauto" value="1" style="width:25px;" <?php if ($auto_abwehr==1) { echo "checked"; }?>></td>
                                 <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
