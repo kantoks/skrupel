@@ -1,10 +1,8 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.meta_rassen.php";
-include ($file);
-$file="../lang/".$_GET["sprache"]."/lang.orbitale_systeme.php";
-include ($file);
+$langfile_1='meta_rassen';
+$langfile_2='orbitale_systeme';
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ?>
@@ -28,7 +26,7 @@ if ($_GET["fu"]==1) {
             while ($file=readdir($handle)) {
                 if ((substr($file,0,1)<>'.') and (substr($file,0,7)<>'bilder_') and (substr($file,strlen($file)-4,4)<>'.txt')) {
                     if(($file == "unknown") or($file == "CVS")) { continue; }
-                    $raceshtml .= '<td><img src="'.$bildpfad.'/empty.gif" border="0" width="5" height="1"></td><td><a href="javascript:;" border="0" onclick="link(\'meta_rassen.php?fu=2&uid='.$uid.'&sid='.$sid.'&rasse='.$file.'&sprache='.$_GET["sprache"].'\');body.focus();"><img src="../daten/'.$file.'/bilder_allgemein/menu.png" border="0" width="186" height="75"></a></td>';
+                    $raceshtml .= '<td><img src="'.$bildpfad.'/empty.gif" border="0" width="5" height="1"></td><td><a href="javascript:;" border="0" onclick="link(\'meta_rassen.php?fu=2&uid='.$uid.'&sid='.$sid.'&rasse='.$file.'\');body.focus();"><img src="../daten/'.$file.'/bilder_allgemein/menu.png" border="0" width="186" height="75"></a></td>';
                     $racecount++;
                 }
             }

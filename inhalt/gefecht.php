@@ -1,8 +1,7 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.gefecht.php";
-include ($file);
+$langfile_1='gefecht';
+
 if ($_GET["fu"]==1) {
     include ("../inc.conf.php");
     include ("inc.header.php");

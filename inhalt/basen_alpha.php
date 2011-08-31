@@ -1,9 +1,8 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.basen_alpha.php";
-include ($file);
+$langfile_1='basen_alpha';
 $baid=$_GET["baid"];
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
@@ -45,7 +44,7 @@ if ($_GET["fu"]==1) {
                         <td colspan="2" style="color:#aaaaaa;"><?php echo $lang['basenalpha']['techlevelrumpf']; ?></td>
                         <td><img src="../bilder/empty.gif" border="0" width="6" height="1"></td>
                         <td rowspan="2">
-                            <form name="formular" method="post" action="basen_alpha.php?fu=2&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>">
+                            <form name="formular" method="post" action="basen_alpha.php?fu=2&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>">
                             <input type="hidden" name="antriebtl" value=0><input type="hidden" name="energietl" value=0><input type="hidden" name="huelletl" value=0><input type="hidden" name="explosivtl" value=0>
                             <?php
                             $schalter=0;
@@ -390,7 +389,7 @@ if ($_GET["fu"]==3) {
                 ?>
                 <table border="0" cellspacing="0" cellpadding="0">
                     <tr>
-                        <td><form name="formular"  method="post" action="basen_alpha.php?fu=4&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                        <td><form name="formular"  method="post" action="basen_alpha.php?fu=4&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                         <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
                         <td>
                             <select name="abwehrauftrag" style="font-family:Verdana;font-size:9px;width:50px;">
@@ -585,7 +584,7 @@ if ($_GET["fu"]==5) {
                 </script>
                 <table border="0" cellspacing="0" cellpadding="0">
                     <tr>
-                        <td><form name="formular" onsubmit="return checken();"  method="post" action="basen_alpha.php?fu=6&baid=<?php echo $baid; ?>&pid=<?php echo $pid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                        <td><form name="formular" onsubmit="return checken();"  method="post" action="basen_alpha.php?fu=6&baid=<?php echo $baid; ?>&pid=<?php echo $pid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                         <td><img src="../bilder/empty.gif" border="0" width="230" height="5"></td>
                         <td><img src="../bilder/empty.gif" border="0" width="60" height="5"></td>
                     </tr>

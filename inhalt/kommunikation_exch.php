@@ -1,10 +1,9 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.kommunikation_exch.php";
-include ($file);
+$langfile_1='kommunikation_exch';
 $uid=$_GET["uid"];
 $sid=$_GET["sid"];
+
 if ($_GET["fu"]==1) {
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
@@ -52,13 +51,13 @@ if ($_GET["fu"]==1) {
                     <tr>
                         <td><img src="<?php echo $bildpfad; ?>/chat/logo.gif" width="86" height="20" alt="<?php echo $lang['kommunikationexch']['skrupelchat']?>"></td>
                         <td align="right">
-                            <iframe src="kommunikation_exch.php?fu=5&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" scrolling="no" id="clockFrame" name="clockFrame" frameborder="0" style="width:20px;height:20px;"></iframe>
+                            <iframe src="kommunikation_exch.php?fu=5&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" scrolling="no" id="clockFrame" name="clockFrame" frameborder="0" style="width:20px;height:20px;"></iframe>
                         </td>
                     </tr>
                 </table>
             </span>
             <div id="contentDiv">
-                <iframe src="kommunikation_exch.php?fu=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" scrolling="yes" id="contentFrame" name="contentFrame" frameborder="0"></iframe>
+                <iframe src="kommunikation_exch.php?fu=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" scrolling="yes" id="contentFrame" name="contentFrame" frameborder="0"></iframe>
             </div>
             <script>
                 fixSize();
@@ -78,9 +77,9 @@ if ($_GET["fu"]==2) {
             <meta name="robots" content="index">
             <meta name="keywords" content=" ">
             <frameset framespacing="0" border="false" frameborder="0" rows="*,24,74">
-                <frame name="chatinhalt" scrolling="yes" marginwidth="0" marginheight="0" noresize src="kommunikation_exch.php?fu=4&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self" style="border-color:#000000 buttonhighlight buttonhighlight #000000; border-style:solid;border-width:1;">
-                <frame name="formatierung" scrolling="no" marginwidth="0" marginheight="0" noresize src="kommunikation_exch.php?fu=6&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                <frame name="chatkonsole" scrolling="no" marginwidth="0" marginheight="0" noresize src="kommunikation_exch.php?fu=3&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+                <frame name="chatinhalt" scrolling="yes" marginwidth="0" marginheight="0" noresize src="kommunikation_exch.php?fu=4&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self" style="border-color:#000000 buttonhighlight buttonhighlight #000000; border-style:solid;border-width:1;">
+                <frame name="formatierung" scrolling="no" marginwidth="0" marginheight="0" noresize src="kommunikation_exch.php?fu=6&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
+                <frame name="chatkonsole" scrolling="no" marginwidth="0" marginheight="0" noresize src="kommunikation_exch.php?fu=3&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
             <noframes>
         </head>
         <body>
@@ -268,7 +267,7 @@ if ($_GET["fu"]==3) {
             <table border="0" cellspacing="0" cellpadding="0" width="100%">
                 <tr>
                     <td>
-                        <form name="formular" method="post" onsubmit="senden();" action="kommunikation_exch.php?fu=3&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&zeit=<?php echo $neuzeit; ?>&sprache=<?php echo $_GET["sprache"]?>">
+                        <form name="formular" method="post" onsubmit="senden();" action="kommunikation_exch.php?fu=3&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&zeit=<?php echo $neuzeit; ?>">
                         <input type="hidden" name="akt" value="10">
                         <input type="hidden" name="neu" value="1">
                     </td>

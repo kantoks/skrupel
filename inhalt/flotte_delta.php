@@ -1,9 +1,8 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.flotte_delta.php";
-include ($file);
+$langfile_1='flotte_delta';
 $shid=$_GET["shid"];
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
@@ -72,7 +71,7 @@ if ($_GET["fu"]==1) {
             <center>
                 <table border="0" cellspacing="0" cellpadding="0">
                     <tr>
-                        <td><form name="formular"  method="post" action="flotte_delta.php?fu=2&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                        <td><form name="formular"  method="post" action="flotte_delta.php?fu=2&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                         <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
                         <td>
                             <select name="bau_auftrag" style="font-family:Verdana;font-size:9px;width:50px;">
@@ -101,7 +100,7 @@ if ($_GET["fu"]==1) {
         <center>
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><form name="formular"  method="post" action="flotte_delta.php?fu=3&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                    <td><form name="formular"  method="post" action="flotte_delta.php?fu=3&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                     <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
                     <td><input type="checkbox" name="auto" value="1" style="width:25px;" <?php if ($projektile_auto==1) { echo "checked"; }?>></td>
                     <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
@@ -144,7 +143,7 @@ if ($_GET["fu"]==2) {
     ?>
     <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <script language=JavaScript>
-            parent.ship.window.location='flotte.php?fu=3&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>';
+            parent.ship.window.location='flotte.php?fu=3&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>';
         </script>
         <br><br><br><br>
         <center><?php echo $lang['flottedelta']['projektileerfolgreich']; ?></center>
@@ -245,7 +244,7 @@ if ($_GET["fu"]==5) {
         <center>
             <table border="0" cellspacing="0" cellpadding="1">
                 <tr>
-                    <td><form name="formular" method="post" action="flotte_delta.php?fu=6&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                    <td><form name="formular" method="post" action="flotte_delta.php?fu=6&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                     <td><?php echo $lang['flottedelta']['schiffsname']; ?></td>
                     <td></td>
                     <td></td>
@@ -257,7 +256,7 @@ if ($_GET["fu"]==5) {
                     <td></form></td>
                 </tr>
                 <tr>
-                    <td><form name="formular" method="post" action="flotte_delta.php?fu=7&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                    <td><form name="formular" method="post" action="flotte_delta.php?fu=7&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                     <td><?php echo $lang['flottedelta']['flottenordner']; ?></td>
                     <td></td>
                     <td></td>
@@ -301,7 +300,7 @@ if ($_GET["fu"]==6) {
         <br><br><br><br>
         <center><?php echo $lang['flottedelta']['uebernommen']?></center>
         <script language=JavaScript>
-            parent.ship.window.location='flotte.php?fu=3&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>';
+            parent.ship.window.location='flotte.php?fu=3&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>';
         </script>
         <?php
     include ("inc.footer.php");
@@ -314,9 +313,9 @@ if ($_GET["fu"]==7) {
         <br><br><br><br>
         <center><?php echo $lang['flottedelta']['uebernommen']?></center>
         <script language=JavaScript>
-            parent.pfeillinks.window.location='flotte.php?fu=7&oid=<?php echo $_POST["oid"]; ?>&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>';
-            parent.pfeilrechts.window.location='flotte.php?fu=8&oid=<?php echo $_POST["oid"]; ?>&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>';
-            parent.ship.window.location='flotte.php?fu=3&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>';
+            parent.pfeillinks.window.location='flotte.php?fu=7&oid=<?php echo $_POST["oid"]; ?>&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>';
+            parent.pfeilrechts.window.location='flotte.php?fu=8&oid=<?php echo $_POST["oid"]; ?>&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>';
+            parent.ship.window.location='flotte.php?fu=3&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>';
         </script>
         <?php
     include ("inc.footer.php");

@@ -1,15 +1,14 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.kommunikation_politik.php";
-include ($file);
+$langfile_1='kommunikation_politik';
+
 include_once ('inc.hilfsfunktionen.php');
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ?>
     <frameset framespacing="0" border="false" frameborder="0" cols="50%,50%">
-        <frame name="politik1" scrolling="no" marginwidth="0" marginheight="0" noresize src="kommunikation_politik.php?fu=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-        <frame name="politik2" scrolling="no" marginwidth="0" marginheight="0" noresize src="kommunikation_politik.php?fu=3&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+        <frame name="politik1" scrolling="no" marginwidth="0" marginheight="0" noresize src="kommunikation_politik.php?fu=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
+        <frame name="politik2" scrolling="no" marginwidth="0" marginheight="0" noresize src="kommunikation_politik.php?fu=3&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
     </frameset>
     <body>
         <?php
@@ -171,13 +170,13 @@ if ($_GET["fu"]==3) {
     include ("inc.header.php");
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-        <form name="formular" method="post" action="kommunikation_politik.php?fu=4&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>">
+        <form name="formular" method="post" action="kommunikation_politik.php?fu=4&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>">
         <center>
             <table border="0" cellspacing="0" cellpadding="0" height="100%">
                 <tr>
                     <td>
                         <center>
-                            <img src="../lang/<?php echo $_GET["sprache"]; ?>/topics/politik.gif" width="105" height="32" title="<?php echo $lang['kommunikationpolitik']['politik']?>">
+                            <img src="../lang/<?php echo $spieler_sprache; ?>/topics/politik.gif" width="105" height="32" title="<?php echo $lang['kommunikationpolitik']['politik']?>">
                             <br><br>
                             <?php
                             $verhandlung = false;
@@ -315,7 +314,7 @@ if ($_GET["fu"]==4) {
                 <tr>
                     <td>
                         <center>
-                            <img src="../lang/<?php echo $_GET["sprache"]; ?>/topics/politik.gif" width="105" height="32" title="<?php echo $lang['kommunikationpolitik']['politik']?>">
+                            <img src="../lang/<?php echo $spieler_sprache; ?>/topics/politik.gif" width="105" height="32" title="<?php echo $lang['kommunikationpolitik']['politik']?>">
                             <br><br>
                             <?php
                             $meldung="";
@@ -338,7 +337,7 @@ if ($_GET["fu"]==4) {
                                                 $zeigertemp = @mysql_query("INSERT INTO $skrupel_politik (partei_a,partei_b,status,optionen,spiel) values ($volk_a,$volk_b,1,0,$spiel)");
                                                 ?>
                                                 <script language=JavaScript>
-                                                    parent.politik1.window.location='kommunikation_politik.php?fu=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>';
+                                                    parent.politik1.window.location='kommunikation_politik.php?fu=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>';
                                                 </script>
                                                 <?php
                                             }
@@ -629,7 +628,7 @@ if ($_GET["fu"]==5) {
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <script language="JavaScript">
-            window.location='uebersicht_neuigkeiten.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>';
+            window.location='uebersicht_neuigkeiten.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>';
         </script>
         <?php
     include ("inc.footer.php");
@@ -680,7 +679,7 @@ if ($_GET["fu"]==6) {
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <script language="JavaScript">
-            window.location='uebersicht_neuigkeiten.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>';
+            window.location='uebersicht_neuigkeiten.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>';
         </script>
         <?php
     include ("inc.footer.php");

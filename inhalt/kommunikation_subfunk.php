@@ -1,8 +1,7 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.kommunikation_subfunk.php";
-include ($file);
+$langfile_1='kommunikation_subfunk';
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ?>
@@ -10,7 +9,7 @@ if ($_GET["fu"]==1) {
         <table height="100%" width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td></td>
-                <td><center><img src="../lang/<?php echo $_GET["sprache"]; ?>/topics/subfunk.gif" width="137" height="40"></center></td>
+                <td><center><img src="../lang/<?php echo $spieler_sprache; ?>/topics/subfunk.gif" width="137" height="40"></center></td>
                 <td></td>
             </tr>
             <tr>
@@ -37,7 +36,7 @@ if ($_GET["fu"]==1) {
             if (($verhandlung == true) or ($module[4]==0)) {
                 ?> 
                 <tr>
-                    <td><form name="formular" method="post" action="kommunikation_subfunk.php?fu=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                    <td><form name="formular" method="post" action="kommunikation_subfunk.php?fu=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                     <td>
                         <center>
                             <table border="0" cellspacing="0" cellpadding="0">
@@ -246,7 +245,7 @@ if ($_GET["fu"]==2) {
                             <br><br>
                             <table border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td><form name="formular" method="post" action="kommunikation_subfunk.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                    <td><form name="formular" method="post" action="kommunikation_subfunk.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                                     <td><input type="submit" name="bla" value="<?php echo $lang['kommunikationsubfunk']['zurueck']; ?>" style="width:120px;"></td>
                                     <td></form></td>
                                 </tr>
@@ -268,7 +267,7 @@ if ($_GET["fu"]==2) {
                                 <br><br>
                                 <table border="0" cellspacing="0" cellpadding="0">
                                     <tr>
-                                        <td><form name="formular" method="post" action="kommunikation_subfunk.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                        <td><form name="formular" method="post" action="kommunikation_subfunk.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                                         <td>
                                             <input type="hidden" name="nachricht" value="<?php echo $nachricht_org; ?>">
                                             <input type="submit" name="bla" value="<?php echo $lang['kommunikationsubfunk']['zurueck']; ?>" style="width:120px;">
@@ -290,27 +289,27 @@ if ($_GET["fu"]==3) {
     ?>
     <frameset framespacing="0" border="false" frameborder="0" rows="18,*,16">
         <frameset framespacing="0" border="false" frameborder="0" cols="114,*,114">
-            <frame name="rahmen1" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=34&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-            <frame name="rahmen2" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=20&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-            <frame name="rahmen3" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=35&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+            <frame name="rahmen1" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=34&bildpfad=<?php echo $bildpfad; ?>" target="_self">
+            <frame name="rahmen2" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=20&bildpfad=<?php echo $bildpfad; ?>" target="_self">
+            <frame name="rahmen3" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=35&bildpfad=<?php echo $bildpfad; ?>" target="_self">
         </frameset>
         <frameset framespacing="0" border="false" frameborder="0" cols="18,*,18">
             <frameset framespacing="0" border="false" frameborder="0" rows="80,*,92">
-                <frame name="rahmen15" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=25&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                <frame name="rahmen16" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=26&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                <frame name="rahmen17" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=27&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+                <frame name="rahmen15" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=25&bildpfad=<?php echo $bildpfad; ?>" target="_self">
+                <frame name="rahmen16" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=26&bildpfad=<?php echo $bildpfad; ?>" target="_self">
+                <frame name="rahmen17" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=27&bildpfad=<?php echo $bildpfad; ?>" target="_self">
             </frameset>
-            <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="kommunikation_subfunk.php?fu=4&emp=<?php echo $_GET["emp"]; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+            <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="kommunikation_subfunk.php?fu=4&emp=<?php echo $_GET["emp"]; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
             <frameset framespacing="0" border="false" frameborder="0" rows="80,*,92">
-                <frame name="rahmen18" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=28&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                <frame name="rahmen19" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=29&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-                <frame name="rahmen20" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=30&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+                <frame name="rahmen18" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=28&bildpfad=<?php echo $bildpfad; ?>" target="_self">
+                <frame name="rahmen19" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=29&bildpfad=<?php echo $bildpfad; ?>" target="_self">
+                <frame name="rahmen20" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=30&bildpfad=<?php echo $bildpfad; ?>" target="_self">
             </frameset>
         </frameset>
         <frameset framespacing="0" border="false" frameborder="0" cols="114,*,114">
-            <frame name="rahmen6" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=36&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-            <frame name="rahmen7" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=23&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
-            <frame name="rahmen8" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=37&bildpfad=<?php echo $bildpfad; ?>&sprache=<?php echo $_GET["sprache"]?>" target="_self">
+            <frame name="rahmen6" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=36&bildpfad=<?php echo $bildpfad; ?>" target="_self">
+            <frame name="rahmen7" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=23&bildpfad=<?php echo $bildpfad; ?>" target="_self">
+            <frame name="rahmen8" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=37&bildpfad=<?php echo $bildpfad; ?>" target="_self">
         </frameset>
     </frameset>
     <noframes>
@@ -331,7 +330,7 @@ if ($_GET["fu"]==4) {
                 <td></td>
             </tr>
             <tr>
-                <td><form name="formular" method="post" action="kommunikation_subfunk.php?fu=5&emp=<?php echo $_GET["emp"]; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                <td><form name="formular" method="post" action="kommunikation_subfunk.php?fu=5&emp=<?php echo $_GET["emp"]; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                 <td><img src="../bilder/empty.gif" width="1" height="2"></td>
                 <td></td>
             </tr>

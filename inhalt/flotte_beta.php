@@ -1,10 +1,8 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.flotte_beta.php";
-include ($file);
-
+$langfile_1='flotte_beta';
 $shid=$_GET["shid"];
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     $p_zahl=0;
@@ -91,7 +89,7 @@ if ($_GET["fu"]==1) {
             function nativedetail(shid) {
                 oben=100;
                 links=Math.ceil((screen.width-580)/2);
-                window.open('hilfe_native.php?fu2='+shid+'&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>','domspezien','resizable=yes,scrollbars=no,width=580,height=180,top='+oben+',left='+links);
+                window.open('hilfe_native.php?fu2='+shid+'&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>','domspezien','resizable=yes,scrollbars=no,width=580,height=180,top='+oben+',left='+links);
             }
         </script>
         <div id="bodybody" class="flexcroll" onfocus="this.blur()">
@@ -166,7 +164,7 @@ if ($_GET["fu"]==1) {
                                 </table>
                             </td>
                             <td><img src="../bilder/empty.gif" border="0" width="10" height="1"></td>
-                            <td><form name="formular"  method="post" action="flotte_beta.php?fu=2&pid=<?php echo $planet_scan[$i][5]; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                            <td><form name="formular"  method="post" action="flotte_beta.php?fu=2&pid=<?php echo $planet_scan[$i][5]; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                             <td><input type="submit" name="bla" value="<?php echo $lang['flottebeta']['detailscan']; ?>" style="width:70px;"></td>
                             <td></form></td>
                         </tr>
@@ -224,7 +222,7 @@ if ($_GET["fu"]==1) {
                                 </table>
                             </td>
                             <td><img src="../bilder/empty.gif" border="0" width="10" height="1"></td>
-                            <td><form name="formular"  method="post" action="flotte_beta.php?fu=3&shid=<?php echo $schiff_scan[$i][0]; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                            <td><form name="formular"  method="post" action="flotte_beta.php?fu=3&shid=<?php echo $schiff_scan[$i][0]; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                             <td><input type="submit" name="bla" value="<?php echo $lang['flottebeta']['detailscan']; ?>" style="width:70px;"></td>
                             <td></form></td>
                         </tr>
@@ -250,6 +248,7 @@ if ($_GET["fu"]==1) {
 
 if ($_GET["fu"]==2) {
     include ("inc.header.php");
+    include ("../lang/".$spieler_sprache."/lang.basen.php");
 
     $pid=$_GET["pid"];
 
@@ -281,7 +280,7 @@ if ($_GET["fu"]==2) {
     $osys_4=$array["osys_4"];
     $osys_5=$array["osys_5"];
     $osys_6=$array["osys_6"];
-    
+
     $sternenbasis=$array["sternenbasis"];
     $sternenbasis_name=$array["sternenbasis_name"];
     $sternenbasis_id=$array["sternenbasis_id"];
@@ -300,8 +299,6 @@ if ($_GET["fu"]==2) {
         $zeiger = @mysql_query("SELECT defense FROM $skrupel_sternenbasen where id=$sternenbasis_id");
         $array = @mysql_fetch_array($zeiger);
         $defense=$array["defense"];
-        $file="../lang/".$_GET["sprache"]."/lang.basen.php";
-        include ($file);        
         if ($sternenbasis_art==1) { $basisbild='2.jpg'; $icon='erf_1.gif'; $artname=$lang['basen']['raumwerft']; 
         }elseif ($sternenbasis_art==2) { $basisbild='3.jpg'; $icon='erf_2.gif'; $artname=$lang['basen']['kampfstation']; 
         }elseif ($sternenbasis_art==0) { $basisbild='1.jpg'; $icon='erf_3.gif'; $artname=$lang['basen']['sternenbasis']; 
@@ -426,7 +423,7 @@ if ($_GET["fu"]==2) {
                     <td>
                         <img src="../bilder/empty.gif" border="0" width="5" height="6">
                         <br>
-                        <iframe src="flotte_beta.php?fu=10&pid=<?php echo $pid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>" width="97" height="97" name="map" scrolling="no" marginheight="0" marginwidth="0" frameborder="0"></iframe>
+                        <iframe src="flotte_beta.php?fu=10&pid=<?php echo $pid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" width="97" height="97" name="map" scrolling="no" marginheight="0" marginwidth="0" frameborder="0"></iframe>
                     </td>
                     <td><img src="../bilder/empty.gif" border="0" width="5" height="1"></td>
                     <td valign="top"></td>
@@ -445,7 +442,7 @@ if ($_GET["fu"]==2) {
 }
 
 if ($_GET["fu"]==3) {
-include ("inc.header.php");
+    include ("inc.header.php");
 
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
 
@@ -1019,7 +1016,7 @@ if ($_GET["fu"]==4) {
         </script>
         <table border="0" cellspacing="0" cellpadding="0">
             <tr>
-                <td><form name="formular" onsubmit="return checken();"  method="post" action="flotte_beta.php?fu=5&shid=<?php echo $shid; ?>&pid=<?php echo $pid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                <td><form name="formular" onsubmit="return checken();"  method="post" action="flotte_beta.php?fu=5&shid=<?php echo $shid; ?>&pid=<?php echo $pid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                 <td><img src="../bilder/empty.gif" border="0" width="230" height="5"></td>
                 <td><img src="../bilder/empty.gif" border="0" width="60" height="5"></td>
             </tr>
@@ -1769,7 +1766,7 @@ if ($_GET["fu"]==5) {
         //echo "UPDATE $skrupel_schiffe set fracht_leute=$fracht_leute,fracht_cantox=$fracht_cantox,fracht_vorrat=$fracht_vorrat,lemin=fracht_lemin,fracht_min1=$fracht_min1,fracht_min2=$fracht_min2,fracht_min3=$fracht_min3 where id=$shid";
         ?>
         <script language=JavaScript>
-            parent.ship.window.location='flotte.php?fu=3&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>';
+            parent.ship.window.location='flotte.php?fu=3&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>';
         </script>
         <br><br><br><br>
         <center><?php echo $lang['flottebeta']['transporterfolgreich']; ?></center>
@@ -1992,7 +1989,7 @@ include ("inc.header.php");
             </script>
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><form name="formular" onsubmit="return checken();"  method="post" action="flotte_beta.php?fu=5&shid=<?php echo $shid; ?>&pid=<?php echo $pid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                    <td><form name="formular" onsubmit="return checken();"  method="post" action="flotte_beta.php?fu=5&shid=<?php echo $shid; ?>&pid=<?php echo $pid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                     <td><img src="../bilder/empty.gif" border="0" width="230" height="5"></td>
                     <td><img src="../bilder/empty.gif" border="0" width="60" height="5"></td>
                 </tr>
@@ -2496,7 +2493,7 @@ if ($_GET["fu"]==8) {
         <center>
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><form name="formular"  method="post" action="flotte_beta.php?fu=9&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                    <td><form name="formular"  method="post" action="flotte_beta.php?fu=9&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                     <td><textarea style="width:390px;height:59px;" name="logbuchdaten"><?php echo $logbuch; ?></textarea></td>
                     <td></td>
                 </tr>

@@ -1,8 +1,7 @@
 <?php
 include ("../inc.conf.php");
-if(empty($GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.uebersicht_imperien.php";
-include ($file);
+$langfile_1='uebersicht_imperien';
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
         $farbe="5f4444";
@@ -19,7 +18,7 @@ if ($_GET["fu"]==1) {
                                     <center>
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
-                                                <td><center><img src="../lang/<?php echo $_GET["sprache"]?>/topics/siegbedingungen.gif" border="0" width="199" height="52"></center></td>
+                                                <td><center><img src="../lang/<?php echo $spieler_sprache?>/topics/siegbedingungen.gif" border="0" width="199" height="52"></center></td>
                                             </tr>
                                             <tr>
                                                 <td>
@@ -102,7 +101,7 @@ if ($_GET["fu"]==1) {
                                     <center>
                                         <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                             <tr>
-                                                <td width="100%" colspan="3"><img src="../lang/<?php echo $_GET["sprache"]?>/topics/dieimperien.gif" border="0" width="185" height="52"></td>
+                                                <td width="100%" colspan="3"><img src="../lang/<?php echo $spieler_sprache?>/topics/dieimperien.gif" border="0" width="185" height="52"></td>
                                                 <td><center><img src="<?php echo $bildpfad?>/aufbau/rang_1.gif" border="0" width="41" height="41"></center></td>
                                                 <td><center><img src="<?php echo $bildpfad?>/aufbau/rang_2.gif" border="0" width="41" height="41"></center></td>
                                                 <td><center><img src="<?php echo $bildpfad?>/aufbau/rang_3.gif" border="0" width="41" height="41"></center></td>
@@ -123,9 +122,9 @@ if ($_GET["fu"]==1) {
                                                         }
                                                     }
                                                     ?>
-                                                        <td><a href="meta_rassen.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>&rasse=<?php echo$spieler_rasse_c[$k]?>&sprache=<?php echo $_GET["sprache"]?>"><img src="../daten/<?php echo $spieler_rasse_c[$k]?>/bilder_allgemein/menu.png" width="186" height="75" border="0"></a></td>
+                                                        <td><a href="meta_rassen.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>&rasse=<?php echo$spieler_rasse_c[$k]?>"><img src="../daten/<?php echo $spieler_rasse_c[$k]?>/bilder_allgemein/menu.png" width="186" height="75" border="0"></a></td>
                                                         <td>&nbsp;</td>
-                                                        <td style="color:<?php echo $spielerfarbe[$k]?>;font-size:12px;" width="100%"><?php echo $spieler_rassename_c[$k]?><?php if ($spieler==$k) {?> <a href="uebersicht_imperien.php?fu=2&spid=<?php echo $spieler?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" style="font-size:9px;">(<?php echo $lang['uebersichtimperien']['edit']?>)</a><?php }?><br><br><nobr><a href="uebersicht_imperien.php?fu=4&spid=<?php echo $spieler?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"><?php echo $username?></a></nobr></td>
+                                                        <td style="color:<?php echo $spielerfarbe[$k]?>;font-size:12px;" width="100%"><?php echo $spieler_rassename_c[$k]?><?php if ($spieler==$k) {?> <a href="uebersicht_imperien.php?fu=2&spid=<?php echo $spieler?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>" style="font-size:9px;">(<?php echo $lang['uebersichtimperien']['edit']?>)</a><?php }?><br><br><nobr><a href="uebersicht_imperien.php?fu=4&spid=<?php echo $spieler?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"><?php echo $username?></a></nobr></td>
                                                         <td style="font-size:11px;"><nobr><center><?php echo $spieler_basen_c[$k]?>.</center></nobr></td>
                                                         <td style="font-size:11px;"><nobr><center><?php echo $spieler_planeten_c[$k]?>.</center></nobr></td>
                                                         <td style="font-size:11px;"><nobr><center><?php echo $spieler_schiffe_c[$k]?>.</center></nobr></td>
@@ -158,7 +157,7 @@ if ($_GET["fu"]==2) {
                         <td>
                             <center>
                                 <table border="0" cellspacing="0" cellpadding="5">
-                                    <form name="formular" method="post" action="uebersicht_imperien.php?fu=3&spid=<?php echo $spieler?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>">
+                                    <form name="formular" method="post" action="uebersicht_imperien.php?fu=3&spid=<?php echo $spieler?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>">
                                         <tr>
                                             <td></td>
                                             <td><input type="text" name="neu_name" class="eingabe" value="<?php echo $rassenname?>" maxlength="40" style="width:250px;"></td>
@@ -186,7 +185,7 @@ if ($_GET["fu"]==3) {
             $zeiger_temp= @mysql_query("UPDATE $skrupel_spiele set $spalte='".$_POST['neu_name']."' where id=$spiel");
             ?>
             <script language=JavaScript>
-                window.location='uebersicht_imperien.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>';
+                window.location='uebersicht_imperien.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>';
             </script>
             <?php
         }
@@ -210,11 +209,11 @@ if ($_GET["fu"]==4) {
         $stat_monate=$array_temp["stat_monate"];
         ?>
         <body text="#ffffff" bgcolor="#444444"  link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-            <center><img src="../lang/<?php echo $_GET["sprache"]?>/topics/kolonien.gif" border="0" width="162" height="52"></center>
+            <center><img src="../lang/<?php echo $spieler_sprache?>/topics/kolonien.gif" border="0" width="162" height="52"></center>
             <center>
                 <table cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                        <td><img src="../lang/<?php echo $_GET["sprache"]?>/topics/kolonien.gif" border="0" width="150" height="150"></td>
+                        <td><img src="../lang/<?php echo $spieler_sprache?>/topics/kolonien.gif" border="0" width="150" height="150"></td>
                         <td><img src="<?php echo $bildpfad?>/empty.gif" border="0" width="20" height="1"></td>
                     </tr>
                 </table>

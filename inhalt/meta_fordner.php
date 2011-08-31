@@ -1,13 +1,13 @@
 <?php
 include ("../inc.conf.php");
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-include ("../lang/".$_GET["sprache"]."/lang.meta_fordner.php");
+$langfile_1='meta_fordner';
+
 if ($_GET["fu"]==1) {
     include ("inc.header.php");
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <div id="bodybody" class="flexcroll" onfocus="this.blur()">
-            <center><img src="../lang/<?php echo $_GET["sprache"]?>/topics/flottenordner.gif" border="0" width="242" height="52"></center>
+            <center><img src="../lang/<?php echo $spieler_sprache?>/topics/flottenordner.gif" border="0" width="242" height="52"></center>
             <center>
                 <table border="0" cellspacing="0" cellpadding="0">
                     <tr>
@@ -21,7 +21,7 @@ if ($_GET["fu"]==1) {
             <center>
                 <table border="0" cellspacing="0" cellpadding="3">
                     <tr>
-                        <td><form name="formular" method="post" action="meta_fordner.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                        <td><form name="formular" method="post" action="meta_fordner.php?fu=2&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                         <td colspan="2"><?php echo $lang['metafordner']['ordneranlegen']?></td>
                         <td></td>
                     </tr>
@@ -93,7 +93,7 @@ if ($_GET["fu"]==1) {
                                 <td>
                                     <table border="0" cellspacing="0" cellpadding="3">
                                         <tr>
-                                            <td><form name="formular" method="post" action="meta_fordner.php?fu=3&ooid=<?php echo $ooid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                            <td><form name="formular" method="post" action="meta_fordner.php?fu=3&ooid=<?php echo $ooid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                             <td colspan="2"><?php echo $lang['metafordner']['ordnerumbenennen']?></td>
                                             <td></td>
                                         </tr>
@@ -108,7 +108,7 @@ if ($_GET["fu"]==1) {
                                 <td>
                                     <table border="0" cellspacing="0" cellpadding="3">
                                         <tr>
-                                            <td><form name="formular" method="post" action="meta_fordner.php?fu=5&ooid=<?php echo $ooid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>"></td>
+                                            <td><form name="formular" method="post" action="meta_fordner.php?fu=5&ooid=<?php echo $ooid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                                             <td colspan="2"><?php echo $lang['metafordner']['iconaendern']?></td>
                                             <td></td>
                                         </tr>
@@ -131,7 +131,7 @@ if ($_GET["fu"]==1) {
                                 <td>
                                     <table border="0" cellspacing="0" cellpadding="3">
                                         <tr>
-                                            <td><form name="formular" method="post" action="meta_fordner.php?fu=4&ooid=<?php echo $ooid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>" onSubmit="return confirm('<?php echo $lang['metafordner']['ordnerwirklichloeschen']?>');"></td>
+                                            <td><form name="formular" method="post" action="meta_fordner.php?fu=4&ooid=<?php echo $ooid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>" onSubmit="return confirm('<?php echo $lang['metafordner']['ordnerwirklichloeschen']?>');"></td>
                                             <td><?php echo $lang['metafordner']['ordnerloeschen']?></td>
                                             <td></td>
                                         </tr>
@@ -163,7 +163,7 @@ if ($_GET["fu"]==2) {
         $zeiger_temp = @mysql_query("INSERT INTO $skrupel_ordner (name,besitzer,spiel) values ('$ordnerneu',$spieler,$spiel)");
         ?>
         <script language=JavaScript>
-            window.location='meta_fordner.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>';
+            window.location='meta_fordner.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>';
         </script>
         <?php
     include ("inc.footer.php");
@@ -179,7 +179,7 @@ if ($_GET["fu"]==3) {
         $zeiger_temp = @mysql_query("UPDATE $skrupel_ordner set name='$ordnerneu' where id =$ooid");
         ?>
         <script language=JavaScript>
-            window.location='meta_fordner.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>';
+            window.location='meta_fordner.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>';
         </script>
         <?php
     include ("inc.footer.php");
@@ -194,7 +194,7 @@ if ($_GET["fu"]==4) {
         $zeiger_temp = @mysql_query("UPDATE $skrupel_schiffe set ordner=0 where ordner=$ooid");
         ?>
         <script language=JavaScript>
-            window.location='meta_fordner.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>';
+            window.location='meta_fordner.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>';
         </script>
         <?php
     include ("inc.footer.php");
@@ -209,7 +209,7 @@ if ($_GET["fu"]==5) {
         $zeiger_temp = @mysql_query("UPDATE $skrupel_ordner set icon='$icon' where id =$ooid");
         ?>
         <script language=JavaScript>
-            window.location='meta_fordner.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>&sprache=<?php echo $_GET["sprache"]?>';
+            window.location='meta_fordner.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>';
         </script>
         <?php
     include ("inc.footer.php");

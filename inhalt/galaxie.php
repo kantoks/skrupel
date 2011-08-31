@@ -1,9 +1,7 @@
 <?php
 include ('../inc.conf.php');
 //todo das hier ist ne directory traversal lücke und muss weg !!!
-if(empty($_GET["sprache"])){$_GET["sprache"]=$language;}
-$file="../lang/".$_GET["sprache"]."/lang.galaxie.php";
-include ($file);
+$langfile_1='galaxie';
 $conn = mysql_connect($server.':'.$port, $login, $password);
 $db = mysql_select_db($database, $conn);
 include ('inc.check.php');
@@ -34,7 +32,7 @@ if ($fuid==1) {
                 }
             </style>
         </head>
-        <body style="background-color: #000000; border: 0;" onLoad="window.location='galaxie.php?fu=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?><?php echo $sprung; ?>&sprache=<?php echo $_GET["sprache"]?>';" background="<?php echo $bildpfad; ?>/karte/hintergrund_c.gif" scroll="auto" style="background-image:url('<?php echo $bildpfad; ?>/karte/hintergrund_c.gif'); background-attachment:fixed;" TEXT="#ffffff" LINK="#000000" VLINK="#000000" ALINK="#000000" topmargin="0" leftmargin=0 marginwidth="0" marginheight="0">
+        <body style="background-color: #000000; border: 0;" onLoad="window.location='galaxie.php?fu=2&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?><?php echo $sprung; ?>';" background="<?php echo $bildpfad; ?>/karte/hintergrund_c.gif" scroll="auto" style="background-image:url('<?php echo $bildpfad; ?>/karte/hintergrund_c.gif'); background-attachment:fixed;" TEXT="#ffffff" LINK="#000000" VLINK="#000000" ALINK="#000000" topmargin="0" leftmargin=0 marginwidth="0" marginheight="0">
             <center>
                 <table border="0" cellspacing="0" cellpadding="0" height="100%">
                     <tr>
@@ -110,12 +108,12 @@ if ($fuid==2) {
                     scrollbar-Arrow-Color:        #555555;
                 }
             </style>
-            <script type="text/javascript" src="../lang/<?php echo $_GET['sprache']; ?>/lang.galaxie.js"></script>
+            <script type="text/javascript" src="../lang/<?php echo $spieler_sprache; ?>/lang.galaxie.js"></script>
             <script type="text/javascript" src="js/galaxie.js"></script>
             <script type="text/javascript">
                 info.uid = '<?php echo $uid; ?>';
                 info.sid = '<?php echo $sid; ?>';
-                info.sprache = '<?php echo $_GET['sprache']; ?>';
+                info.sprache = '<?php echo $spieler_sprache; ?>';
                 info.bildpfad = '<?php echo $bildpfad; ?>';
                 info.umfang = <?php echo $umfang; ?>;
                 <?php
