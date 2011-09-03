@@ -1,8 +1,10 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='kommunikation_subfunk';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'kommunikation_subfunk';
+$fuid = int_get('fu');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
     ?>
     <body text="#000000" scroll="no" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -64,7 +66,7 @@ if ($_GET["fu"]==1) {
                                             if ($zahl>=1) {
                                                 for ($n=0;$n<$zahl;$n++) {
                                                     ?>
-                                                    <option value="<?php echo $feind[$n][2]; ?>" style="background-color:<?php echo $feind[$n][1]; ?>;" <?php if ($_GET["an"]==$feind[$n][2]) { echo "selected"; } ?>><?php echo $feind[$n][0]; ?></option>
+                                                    <option value="<?php echo $feind[$n][2]; ?>" style="background-color:<?php echo $feind[$n][1]; ?>;" <?php if (int_get('an')==$feind[$n][2]) { echo "selected"; } ?>><?php echo $feind[$n][0]; ?></option>
                                                     <?php
                                                 }
                                             }
@@ -113,10 +115,10 @@ if ($_GET["fu"]==1) {
     include ("inc.footer.php");
     @mysql_close();
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
-    $spielernummer=$_POST["empfang"];
+    $spielernummer=int_post('empfang');
     $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$_GET["sid"]."'");
     $ok = @mysql_data_seek($zeiger,0);
     $sprachtemp_1 = @mysql_fetch_array($zeiger);
@@ -231,10 +233,10 @@ if ($_GET["fu"]==2) {
     $nachricht=str_replace("::::::", ":::::",$nachricht);
     $nachricht=parsetext($nachricht);
     $nachricht_org=$nachricht;
-    if ($_POST["empfang"]>=1) {
+    if (int_post('empfang')>=1) {
         $nachricht=str_replace(array('{1}','{2}','{3}'),array($spielerfarbe[$spieler], $spieler_name, $nachricht),$spieler."::::::".$lang['kommunikationsubfunk_b']['nachricht']);
         $datum=time();
-        $zeiger_temp = @mysql_query("insert into $skrupel_neuigkeiten (datum,art,icon,inhalt,spieler_id,spiel_id,sicher) values ('$datum',7,'../bilder/news/subfunk.jpg','$nachricht',".$_POST["empfang"].",$spiel,1);");
+        $zeiger_temp = @mysql_query("insert into $skrupel_neuigkeiten (datum,art,icon,inhalt,spieler_id,spiel_id,sicher) values ('$datum',7,'../bilder/news/subfunk.jpg','$nachricht',".int_post('empfang').",$spiel,1);");
         ?>
         <center>
             <table border="0" cellspacing="0" cellpadding="0" height="100%">
@@ -284,7 +286,7 @@ if ($_GET["fu"]==2) {
         }
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     include ("inc.header.php");
     ?>
     <frameset framespacing="0" border="false" frameborder="0" rows="18,*,16">
@@ -299,7 +301,7 @@ if ($_GET["fu"]==3) {
                 <frame name="rahmen16" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=26&bildpfad=<?php echo $bildpfad; ?>" target="_self">
                 <frame name="rahmen17" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=27&bildpfad=<?php echo $bildpfad; ?>" target="_self">
             </frameset>
-            <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="kommunikation_subfunk.php?fu=4&emp=<?php echo $_GET["emp"]; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
+            <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="kommunikation_subfunk.php?fu=4&emp=<?php echo int_get('emp'); ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
             <frameset framespacing="0" border="false" frameborder="0" rows="80,*,92">
                 <frame name="rahmen18" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=28&bildpfad=<?php echo $bildpfad; ?>" target="_self">
                 <frame name="rahmen19" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=29&bildpfad=<?php echo $bildpfad; ?>" target="_self">
@@ -317,8 +319,7 @@ if ($_GET["fu"]==3) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==4) {
-    include ("../inc.conf.php");
+if ($fuid==4) {
     include ("inc.header.php");
     ?>
     <body text="#000000" bgcolor="#444444" scroll="no" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -330,7 +331,7 @@ if ($_GET["fu"]==4) {
                 <td></td>
             </tr>
             <tr>
-                <td><form name="formular" method="post" action="kommunikation_subfunk.php?fu=5&emp=<?php echo $_GET["emp"]; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
+                <td><form name="formular" method="post" action="kommunikation_subfunk.php?fu=5&emp=<?php echo int_get('emp'); ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                 <td><img src="../bilder/empty.gif" width="1" height="2"></td>
                 <td></td>
             </tr>
@@ -358,11 +359,11 @@ if ($_GET["fu"]==4) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==5) {
+if ($fuid==5) {
     include ("inc.header.php");
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
-    $spielernummer=$_POST["empfang"];
+    $spielernummer=int_post('empfang');
     $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$_GET["sid"]."'");
     $ok = @mysql_data_seek($zeiger,0);
     $sprachtemp_1 = @mysql_fetch_array($zeiger);
@@ -477,7 +478,7 @@ if ($_GET["fu"]==5) {
         $nachricht=parsetext($nachricht);
         $nachricht=str_replace(array('{1}','{2}','{3}'),array($spielerfarbe[$spieler], $spieler_name, $nachricht),$spieler."::::::".$lang['kommunikationsubfunk_b']['nachricht']);
         $datum=time();
-        $zeiger_temp = @mysql_query("insert into $skrupel_neuigkeiten (datum,art,icon,inhalt,spieler_id,spiel_id,sicher) values ('$datum',7,'../bilder/news/subfunk.jpg','$nachricht',".$_GET["emp"].",$spiel,1);");
+        $zeiger_temp = @mysql_query("insert into $skrupel_neuigkeiten (datum,art,icon,inhalt,spieler_id,spiel_id,sicher) values ('$datum',7,'../bilder/news/subfunk.jpg','$nachricht',".$int_get('emp').",$spiel,1);");
         ?>
         <center>
             <table border="0" cellspacing="0" cellpadding="0" height="100%">

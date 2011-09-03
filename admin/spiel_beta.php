@@ -1,8 +1,11 @@
 <?php
 include ("../inc.conf.php");
+include_once ('../inhalt/inc.hilfsfunktionen.php');
 include ("../lang/".$language."/lang.admin.spiel_beta.php");
+$fuid = int_get('fu');
 $prozentarray=array(0,1,2,3,4,5,6,7,8,9,10,15,20,30,40,50,60,70,80,90,100);
-if ($_GET["fu"]==1) {
+
+if ($fuid==1) {
   include_once ('../inhalt/inc.hilfsfunktionen.php');
   include ("inc.header.php");
   if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
@@ -228,11 +231,10 @@ while ($rasses=readdir($handle)){
 <?php
 } include ("inc.footer.php");
  }
- if ($_GET["fu"]==2) {
-include ("../inc.conf.php");
+ if ($fuid==2) {
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
-$spiel=$_GET["slot_id"];
+$spiel=int_get('slot_id');
     $zeiger2 = @mysql_query("SELECT * FROM $skrupel_spiele where id='$spiel'");
     $datensaetze2 = @mysql_num_rows($zeiger2);
     $array2 = @mysql_fetch_array($zeiger2);
@@ -497,42 +499,41 @@ if ($spieler_id_c[$k]>=1) {
 }
 include ("inc.footer.php");
 }
-if ($_GET["fu"]==3) {
-  include ("../inc.conf.php");
+if ($fuid==3) {
   include ("inc.header.php");
   if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
-  $spiel=$_GET["slot_id"];
+  $spiel=int_get('slot_id');
   $spiel_name=$_POST["spiel_name"];
   $module = array();
-  $module[0] = @intval($_POST["modul_0"]);
+  $module[0] = int_post('modul_0');
   $module[1] = 0;
-  $module[2] = @intval($_POST["modul_2"]);
-  $module[3] = @intval($_POST["modul_3"]);
-    $module[4] = @intval($_POST["modul_4"]);
-    $module[5] = @intval($_POST["modul_5"]);
-    $module[6] = @intval($_POST["modul_6"]);  
+  $module[2] = int_post('modul_2');
+  $module[3] = int_post('modul_3');
+    $module[4] = int_post('modul_4');
+    $module[5] = int_post('modul_5');
+    $module[6] = int_post('modul_6');  
   $module = @implode(":", $module);
-  $aufloesung=intval($_POST["aufloesung"]);
-  $autotick=intval($_POST["autotick"]);
-  $out=intval($_POST["out"]);
-  $max=intval($_POST["max"]);
-  $wahr=intval($_POST["wahr"]);
-  $llang=intval($_POST["llang"]);
-  $nebel=intval($_POST["nebel"]);
-  $piraten_mitte=intval($_POST["piraten_mitte"]);
-  $piraten_aussen=intval($_POST["piraten_aussen"]);
-  $piraten_min=intval($_POST["piraten_min"]);
-  $piraten_max=intval($_POST["piraten_max"]);
-  $spieler_raus[1]=intval($_POST["spieler_1_raus"]);
-  $spieler_raus[2]=intval($_POST["spieler_2_raus"]);
-  $spieler_raus[3]=intval($_POST["spieler_3_raus"]);
-  $spieler_raus[4]=intval($_POST["spieler_4_raus"]);
-  $spieler_raus[5]=intval($_POST["spieler_5_raus"]);
-  $spieler_raus[6]=intval($_POST["spieler_6_raus"]);
-  $spieler_raus[7]=intval($_POST["spieler_7_raus"]);
-  $spieler_raus[8]=intval($_POST["spieler_8_raus"]);
-  $spieler_raus[9]=intval($_POST["spieler_9_raus"]);
-  $spieler_raus[10]=intval($_POST["spieler_10_raus"]);
+  $aufloesung=int_post('aufloesung');
+  $autotick=int_post('autotick');
+  $out=int_post('out');
+  $max=int_post('max');
+  $wahr=int_post('wahr');
+  $llang=int_post('llang');
+  $nebel=int_post('nebel');
+  $piraten_mitte=int_post('piraten_mitte');
+  $piraten_aussen=int_post('piraten_aussen');
+  $piraten_min=int_post('piraten_min');
+  $piraten_max=int_post('piraten_max');
+  $spieler_raus[1]=int_post('spieler_1_raus');
+  $spieler_raus[2]=int_post('spieler_2_raus');
+  $spieler_raus[3]=int_post('spieler_3_raus');
+  $spieler_raus[4]=int_post('spieler_4_raus');
+  $spieler_raus[5]=int_post('spieler_5_raus');
+  $spieler_raus[6]=int_post('spieler_6_raus');
+  $spieler_raus[7]=int_post('spieler_7_raus');
+  $spieler_raus[8]=int_post('spieler_8_raus');
+  $spieler_raus[9]=int_post('spieler_9_raus');
+  $spieler_raus[10]=int_post('spieler_10_raus');
   $zeiger = @mysql_query("SELECT spiel,partei_a,partei_b,status,optionen FROM $skrupel_politik where spiel=$spiel");
   $polanzahl = @mysql_num_rows($zeiger);
   if ($polanzahl>=1) {
@@ -623,11 +624,10 @@ if ($_GET["fu"]==3) {
   } 
   include ("inc.footer.php");
 }
-if ($_GET["fu"]==4) {
-include ("../inc.conf.php");
+if ($fuid==4) {
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
-$spiel=$_GET["slot_id"];
+$spiel=int_get('slot_id');
 ?>
 <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <center><table border="0" height="100%" cellspacing="0" cellpadding="0">
@@ -641,11 +641,10 @@ $spiel=$_GET["slot_id"];
 <?php
 } include ("inc.footer.php");
  }
-if ($_GET["fu"]==5) {
-include ("../inc.conf.php");
+if ($fuid==5) {
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
-$spiel=$_GET["slot_id"];
+$spiel=int_get('slot_id');
     $zeiger2 = @mysql_query("SELECT * FROM $skrupel_spiele where id='$spiel'");
     $datensaetze2 = @mysql_num_rows($zeiger2);
     if ($datensaetze2==1) {

@@ -1,7 +1,10 @@
 <?php
 include ("../inc.conf.php");
+include_once ('../inhalt/inc.hilfsfunktionen.php');
 include ("../lang/".$language."/lang.admin.mitspieler_gamma.php");
-if ($_GET["fu"]==1) {
+$fuid = int_get('fu');
+
+if ($fuid==1) {
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 ?>
@@ -63,10 +66,10 @@ if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 </table></center>
 <?php } include ("inc.footer.php");
  }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
-$id=$_GET["spieler_id"];
+$id=int_get('spieler_id');
 $zeiger = @mysql_query("DELETE from $skrupel_user where id=$id");
 ?>
 <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">

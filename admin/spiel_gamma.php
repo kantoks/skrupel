@@ -3,8 +3,11 @@
 :noTabs=false:indentSize=4:tabSize=4:folding=explicit:collapseFolds=1:
 */
 include ("../inc.conf.php");
+include_once ('../inhalt/inc.hilfsfunktionen.php');
 include ("../lang/".$language."/lang.spiel_gamma.php");
-if ($_GET["fu"]==1) {
+$fuid = int_get('fu');
+
+if ($fuid==1) {
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 ?>
@@ -109,11 +112,10 @@ if ($spielanzahl>=1) {
 }
 include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
-include ("../inc.conf.php");
+if ($fuid==2) {
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
-    $spiel = $_GET["slot_id"];
+    $spiel = int_get('slot_id');
     if (@intval(substr($spiel_extend,1,1))==1){
       include("../extend/ki/ki_basis/spielLoeschenKI.php");
     }

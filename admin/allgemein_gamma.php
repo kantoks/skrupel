@@ -1,6 +1,9 @@
 <?php 
 include ("../inc.conf.php");
+include_once ('../inhalt/inc.hilfsfunktionen.php');
 include ("../lang/".$language."/lang.admin.allgemein_gamma.php");
+$fuid = int_get('fu');
+
 $erweiterung[0]['name']='Movie-GIF';
 $erweiterung[0]['ordner']='moviegif';
 $erweiterung[0]['autor']='Skrupel.de';
@@ -21,7 +24,8 @@ $erweiterung[3]['ordner']='xstats';
 $erweiterung[3]['autor']='Stefan Heller';
 $erweiterung[3]['activate']=1;
 $erweiterung[3]['activatepos']=2;
-if ($_GET["fu"]==1) {
+
+if ($fuid==1) {
     include ("inc.header.php");
     if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
         $zeiger = @mysql_query("SELECT extend FROM $skrupel_info");
@@ -75,11 +79,11 @@ if ($_GET["fu"]==1) {
     }
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
     if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
-        $value=$_GET["value"];
-        $pos=$_GET["pos"];
+        $value=int_get('value');
+        $pos=int_get('pos');
         $zeiger = @mysql_query("SELECT extend FROM $skrupel_info");
         $array = @mysql_fetch_array($zeiger);
         $spiel_extend=$array["extend"];

@@ -1,8 +1,10 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='uebersicht_imperien';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'uebersicht_imperien';
+$fuid = int_get('fu');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
         $farbe="5f4444";
         ?>
@@ -146,9 +148,9 @@ if ($_GET["fu"]==1) {
             <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
-        if ($spieler==$_GET["spid"]) {
+        if ($spieler==int_get('spid')) {
             $rassenname=$spieler_rassename_c[$spieler];
             ?>
             <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -178,9 +180,9 @@ if ($_GET["fu"]==2) {
         }
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     include ("inc.header.php");
-        if ($spieler==$_GET["spid"]) {
+        if ($spieler==int_get('spid')) {
             $spalte="spieler_".$spieler."_rassename";
             $zeiger_temp= @mysql_query("UPDATE $skrupel_spiele set $spalte='".$_POST['neu_name']."' where id=$spiel");
             ?>
@@ -191,9 +193,9 @@ if ($_GET["fu"]==3) {
         }
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==4) {
+if ($fuid==4) {
     include ("inc.header.php");
-        $spid=$_GET["spid"];
+        $spid=int_get('spid');
         $zeiger_temp= @mysql_query("SELECT * FROM $skrupel_user where id=$spid");
         $array_temp = @mysql_fetch_array($zeiger_temp);
         $nick=$array_temp["nick"];

@@ -1,11 +1,14 @@
 <?php
-    if(empty($_GET['fu']))$_GET['fu'] = 1;
-    if ($_GET["fu"]==1) {
-    include ("../inc.conf.php");
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$fuid = int_get('fu');
+if (!$fuid) $fuid=1;
 
-    $breite=$_GET["width"];
-    $hoehe=$_GET["height"];
-    $spiel=$_GET["spiel"];
+if ($fuid==1) {
+
+    $breite=int_get('width');
+    $hoehe=int_get('height');
+    $spiel=int_get('spiel');
 
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
@@ -166,9 +169,8 @@
     @mysql_close();
     }
 
-if ($_GET["fu"]==2) {
-    include ("../inc.conf.php");
-    $spiel=$_GET["spiel"];
+if ($fuid==2) {
+    $spiel=int_get('spiel');
 
 
     $conn = @mysql_connect($server.':'.$port,"$login","$password");

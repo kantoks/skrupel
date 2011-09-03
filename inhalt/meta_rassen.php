@@ -1,9 +1,11 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='meta_rassen';
-$langfile_2='orbitale_systeme';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'meta_rassen';
+$langfile_2 = 'orbitale_systeme';
+$fuid = int_get('fu');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
     ?>
     <script type="text/javascript">
@@ -48,7 +50,7 @@ if ($_GET["fu"]==1) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
     $rasse=$_GET["rasse"];
     if ((!strstr($rasse, '.')) and (!strstr($rasse, '/'))) {
