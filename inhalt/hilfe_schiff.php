@@ -1,8 +1,10 @@
 <?php
-$langfile_1='hilfe_schiff';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'hilfe_schiff';
+$fuid = int_get('fu');
 
-if ($_GET["fu"]>=1) {
-    include ("../inc.conf.php");
+if ($fuid>=1) {
     include ("inc.header.php");
     ?>
 <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -21,7 +23,7 @@ if ($_GET["fu"]>=1) {
     }
     for ($i=0;$i<$zaehler;$i++) {
         $schiffwert=explode(':',$schiff[$i]);
-        if($schiffwert[1]==$_GET["fu"]) { 
+        if($schiffwert[1]==$fuid) { 
             $fertigkeiten=trim($schiffwert[17]);
             $subpartikel=@intval(substr($fertigkeiten,0,2));
             $terra_warm=@intval(substr($fertigkeiten,5,1));
@@ -358,7 +360,6 @@ if ($_GET["fu"]>=1) {
         }
     include ("inc.footer.php");
 } else {
-    include ("../inc.conf.php");
     include ("inc.header.php");
     ?>
     <frameset framespacing="0" border="false" frameborder="0" rows="18,*,16">
@@ -373,7 +374,7 @@ if ($_GET["fu"]>=1) {
                 <frame name="rahmen16" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=26&bildpfad=<?php echo $bildpfad; ?>" target="_self">
                 <frame name="rahmen17" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=27&bildpfad=<?php echo $bildpfad; ?>" target="_self">
             </frameset>
-            <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="hilfe_schiff.php?fu=<?php echo $_GET["fu2"]; ?>&volk=<?php echo $_GET["volk"]; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
+            <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="hilfe_schiff.php?fu=<?php echo int_get('fu2'); ?>&volk=<?php echo $_GET["volk"]; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
             <frameset framespacing="0" border="false" frameborder="0" rows="80,*,92">
                 <frame name="rahmen18" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=28&bildpfad=<?php echo $bildpfad; ?>" target="_self">
                 <frame name="rahmen19" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=29&bildpfad=<?php echo $bildpfad; ?>" target="_self">

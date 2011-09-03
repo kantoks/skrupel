@@ -1,19 +1,20 @@
 <?php
 include ('../inc.conf.php');
 //todo das hier ist ne directory traversal lücke und muss weg !!!
-$langfile_1='galaxie';
 $conn = mysql_connect($server.':'.$port, $login, $password);
 $db = mysql_select_db($database, $conn);
 include ('inc.check.php');
 include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'galaxie';
 $fuid = int_get('fu');
 $noani='';
 if (@intval(substr($spieler_optionen,15,1))==1) {
     $noani='_noani';
 }
+
 if ($fuid==1) {
-    $gox = intval($_GET['gox']);
-    $goy = intval($_GET['goy']);
+    $gox = int_get('gox');
+    $goy = int_get('goy');
     $sprung='';
     if (($gox >= 1) and ($goy >= 1)) {
         $gox = round($gox*$umfang/250);
@@ -705,8 +706,8 @@ if ($fuid==2) {
                     }
                 }
                 //////////////////////////////////////////////////////////////////////////////////erste sternenbasis und bildaufbau
-                $gox = intval($_GET['gox']);
-                $goy = intval($_GET['goy']);
+                $gox = int_get('gox');
+                $goy = int_get('goy');
                 if (($gox>=1) and ($goy>=1)) {
                     $start_map_x = $gox;
                     $start_map_y = $goy;

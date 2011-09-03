@@ -1,9 +1,12 @@
 <?php
 include ("../inc.conf.php");
+include_once ('../inhalt/inc.hilfsfunktionen.php');
 $lang = array();
 include ("../lang/".$language."/lang.admin.spiel_alpha.php");
+$fuid = int_get('fu');
 $prozentarray=array(0,1,2,3,4,5,6,7,8,9,10,15,20,30,40,50,60,70,80,90,100);
-if ($_GET["fu"]==1) {
+
+if ($fuid==1) {
 include ("inc.header.php");
 if (@intval(substr($spiel_extend,1,1))==1) {
     //Wird nur bei installierter, aktiver KI ausgefuehrt. Es werden pro installierter KI ein Spieler
@@ -74,7 +77,7 @@ if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 </tr></table></center><?php
  } include ("inc.footer.php");
  }
-if ($_GET["fu"]==10) {
+if ($fuid==10) {
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 ?>
@@ -161,7 +164,7 @@ if ($zahl==2) {
 </tr></table></center><br><br><?php
  } include ("inc.footer.php");
  }
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 $file='../daten/gala_strukturen.txt';
@@ -194,7 +197,7 @@ function check() {
       alert("<?php echo $lang['admin']['spiel']['alpha']['min_spieler']?>");
           return false;
   }
-<?php if  ($_POST["startposition"]==1) { ?>
+<?php if (int_post('startposition')==1) { ?>
   if (spielermog[spieleranzahl]==0) {
     alert ('<?php echo str_replace('{1}',$spieleranzahlmog,$lang['admin']['spiel']['alpha']['nur_spieler'])?>');
     return false;
@@ -212,7 +215,7 @@ function check() {
          }
    }
 <?php } ?>
-<?php if ($_POST["siegbedingungen"]==6) {  ?>
+<?php if (int_post('siegbedingungen')==6) {  ?>
 <?php for ($oprt=1;$oprt<=10;$oprt++) { ?>
   if (document.formular.user_<?php echo $oprt; ?>.value >= '1') {
     <?php for ($op=0;$op<=4;$op++) { ?>
@@ -282,7 +285,7 @@ closedir($handle);
    <tr>
    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
    <td style="color:#aaaaaa;"><?php echo $lang['admin']['spiel']['alpha']['admin']?></td>
-<?php if ($_POST["siegbedingungen"]==6) {  ?>
+<?php if (int_post('siegbedingungen')==6) {  ?>
    <td>&nbsp;&nbsp;</td>
    <td><?php echo $lang['admin']['spiel']['alpha']['teams']?></td>
    <td>&nbsp;</td>
@@ -333,7 +336,7 @@ closedir($handle);
           </select></td>
           <td>&nbsp;</td>
           <td><input type="radio" name="spieler_admin" value="<?php echo $k; ?>"></td>
-<?php if ($_POST["siegbedingungen"]==6) {  ?>
+<?php if (int_post('siegbedingungen')==6) {  ?>
    <td>&nbsp;</td>
    <td>&nbsp;</td>
    <td>&nbsp;</td>
@@ -363,7 +366,7 @@ closedir($handle);
 <?php
  } include ("inc.footer.php");
  }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
 include ("inc.header.php");
 ?>
 <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -416,9 +419,9 @@ foreach ($_POST as $key => $value) {
 <?php
 include ("inc.footer.php");
  }
-if ($_GET["fu"]==4) {
+if ($fuid==4) {
 include ("inc.header.php");
-if(!empty($_GET["startposset"]) && ($_GET["startposset"] !== '1') and ($_POST["startposition"] == 3)) {
+if ((int_get('startposset') !== 1) and (int_post('startposition') == 3)) {
 ?>
 <script type="text/javascript">
     function check () {
@@ -465,8 +468,8 @@ foreach ($_POST as $key => $value) {
             <?php
               $first = 0;
               for ($n=1;$n<=10;$n++) {
-                if (intval($_POST['user_'.$n]) >= 1) {
-                   $zeiger_temp = @mysql_query("SELECT * FROM $skrupel_user where id = ".intval($_POST['user_'.$n]));
+                if (int_post('user_'.$n) >= 1) {
+                   $zeiger_temp = @mysql_query("SELECT * FROM $skrupel_user where id = ".int_post('user_'.$n));
                    $array_temp = @mysql_fetch_array($zeiger_temp);
                    echo '<tr><td><input type="radio" name="active" id="active" value="'.$n.'" ';
                    if ($first == 0) {
@@ -529,7 +532,7 @@ foreach ($_POST as $key => $value) {
 }
 include ("inc.footer.php");
  }
-if ($_GET["fu"]==5) {
+if ($fuid==5) {
 include ("inc.header.php");
 ?>
 <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -590,7 +593,7 @@ foreach ($_POST as $key => $value) {
 <?php
 include ("inc.footer.php");
  }
-if ($_GET["fu"]==6) {
+if ($fuid==6) {
 include ("inc.header.php");
 ?>
 <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -647,7 +650,7 @@ foreach ($_POST as $key => $value) {
 <?php
 include ("inc.footer.php");
  }
-if ($_GET["fu"]==7) {
+if ($fuid==7) {
 include ("inc.header.php");
 ?>
 <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -692,7 +695,7 @@ foreach ($_POST as $key => $value) {
 <?php
 include ("inc.footer.php");
  }
-if ($_GET["fu"]==8) {
+if ($fuid==8) {
 include ("inc.header.php");
 ?>
 <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -745,7 +748,7 @@ foreach ($_POST as $key => $value) {
 <?php
 include ("inc.footer.php");
  }
-if ($_GET["fu"]==12) {
+if ($fuid==12) {
 include ("inc.header.php");
 ?>
 <script type="text/javascript">
@@ -818,7 +821,7 @@ for ($n=1;$n<11;$n++) {
 <?php
 include ("inc.footer.php");
  }
-if ($_GET["fu"]==11) {
+if ($fuid==11) {
 include ("inc.header.php");
 ?>
 <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -841,7 +844,7 @@ foreach ($_POST as $key => $value) {
 <?php
 include ("inc.footer.php");
  }
-if ($_GET["fu"]==9) {
+if ($fuid==9) {
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 srand((double)microtime()*1000000);
@@ -864,7 +867,7 @@ function zufallstring() {
     $salt = "$a$b$c$d$e$f$g$h$i$j$k$l$m$n$o$p$q$r$s$t";
     return $salt;
 }
-*/
+
 define('ONLY_LETTERS',0);
 define('WITH_NUMBERS', 1);
 define('WITH_SPECIAL_CHARACTERS', 2);
@@ -884,7 +887,7 @@ function zufallstring($size = 20, $url = ONLY_LETTERS){
     $salt .= $pool[mt_rand(0, $pool_size - 1)];
   }
   return $salt; 
-} 
+}*/
 //////////////////////////////////////
   $zeiger = @mysql_query("SELECT extend,serial FROM $skrupel_info");
   $array = @mysql_fetch_array($zeiger);
@@ -895,14 +898,14 @@ $sid=zufallstring();
 $spielname=$_POST["spiel_name"];
    $spielname=str_replace("'"," ",$spielname);
    $spielname=str_replace('"'," ",$spielname);
-$ziel_id=$_POST["siegbedingungen"];
-$umfang=$_POST["umfang"];
+$ziel_id=int_post('siegbedingungen');
+$umfang=int_post('umfang');
 $struktur=$_POST["struktur"];
-$piraten_mitte=$_POST["piraten_mitte"];
-$piraten_aussen=$_POST["piraten_aussen"];
-$piraten_min=$_POST["piraten_min"];
-$piraten_max=$_POST["piraten_max"];
-$out=$_POST["out"];
+$piraten_mitte=int_post('piraten_mitte');
+$piraten_aussen=int_post('piraten_aussen');
+$piraten_min=int_post('piraten_min');
+$piraten_max=int_post('piraten_max');
+$out=int_post('out');
 if ($ziel_id==6) {
  $team[1]=$_POST["team1"];
  $team[2]=$_POST["team2"];
@@ -916,13 +919,13 @@ if ($ziel_id==6) {
  $team[10]=$_POST["team10"];
 }
 $module = array();
-$module[0] = @intval($_POST["modul_0"]);
+$module[0] = int_post('modul_0');
 $module[1] = 0;
-$module[2] = @intval($_POST["modul_2"]);
-$module[3] = @intval($_POST["modul_3"]);
-$module[4] = @intval($_POST["modul_4"]);
-$module[5] = @intval($_POST["modul_5"]);
-$module[6] = @intval($_POST["modul_6"]);
+$module[2] = int_post('modul_2');
+$module[3] = int_post('modul_3');
+$module[4] = int_post('modul_4');
+$module[5] = int_post('modul_5');
+$module[6] = int_post('modul_6');
 $module = @implode(":", $module);
 $zeiger = @mysql_query("INSERT INTO $skrupel_spiele (sid,name,module,oput) values ('$sid','$spielname','$module',$out)");
 $zeiger = @mysql_query("SELECT id,sid FROM $skrupel_spiele where sid='$sid'");
@@ -953,7 +956,7 @@ while ($rasse=readdir($handle)) {
 }
 ///////////////////////////////////////////////////SPEZIEN
 $speziena=0;
-if ($_POST["spezien"]>=1) {
+if (int_post('spezien')>=1) {
 $file='../daten/dom_spezien.txt';
 $fp = @fopen("$file","r");
 if ($fp) {
@@ -1010,8 +1013,8 @@ while (!feof ($fp)) {
 ///////////////////////////////////////////////PLANETEN GENRERIEREN ANFANG
 $planetenname=@file('../daten/planetennamen.txt');
 shuffle($planetenname);
-$sternendichte=$_POST["sternendichte"];
-$startposition=$_POST["startposition"];
+$sternendichte=int_post('sternendichte');
+$startposition=int_post('startposition');
 for ($i=0;$i<$sternendichte;$i++) {
 //for ($i=0;$i<50;$i++) {
   $ok=1;
@@ -1056,10 +1059,10 @@ for ($i=0;$i<$sternendichte;$i++) {
   $min1=rand(1,70);
   $min2=rand(1,70);
   $min3=rand(1,70);
-  if ($_POST["mineralien"]==1) { $minrand=1000;$maxrand=7000; }
-  if ($_POST["mineralien"]==2) { $minrand=800;$maxrand=5000; }
-  if ($_POST["mineralien"]==3) { $minrand=500;$maxrand=3500; }
-  if ($_POST["mineralien"]==4) { $minrand=100;$maxrand=1500; }
+  if (int_post('mineralien')==1) { $minrand=1000;$maxrand=7000; }
+  if (int_post('mineralien')==2) { $minrand=800;$maxrand=5000; }
+  if (int_post('mineralien')==3) { $minrand=500;$maxrand=3500; }
+  if (int_post('mineralien')==4) { $minrand=100;$maxrand=1500; }
   $rohstoff=rand($minrand,$maxrand);
   $rohstoffe[0]=rand(0,$rohstoff);
   $rohstoffe[1]=rand(0,($rohstoff-$rohstoffe[0]));
@@ -1074,13 +1077,13 @@ for ($i=0;$i<$sternendichte;$i++) {
   $konz_min1=rand(1,5);
   $konz_min2=rand(1,5);
   $konz_min3=rand(1,5);
-  if ($_POST["leminvorkommen"]==2) {
+  if (int_post('leminvorkommen')==2) {
      $zulemin=(rand(25,50)+100)/100;
      $planet_lemin=round($planet_lemin*$zulemin);
      $zulemin=(rand(25,50)+100)/100;
      $lemin=round($lemin*$zulemin);
   }
-  if ($_POST["leminvorkommen"]==3) {
+  if (int_post('leminvorkommen')==3) {
      $zulemin=(rand(50,100)+100)/100;
      $planet_lemin=round($planet_lemin*$zulemin);
      $zulemin=(rand(50,100)+100)/100;
@@ -1097,9 +1100,9 @@ for ($i=0;$i<$sternendichte;$i++) {
   $native_text='';
   $native_fert='';
   $native_kol=0;
-if ($_POST["spezien"]>=1) {
+if (int_post('spezien')>=1) {
    $zufall=rand(1,100);
-   if ($zufall<=$_POST["spezien"]) {
+   if ($zufall<=int_post('spezien')) {
       $zufall_art=rand(0,$speziena-1);
   $native_id=$ur[$zufall_art][1];
   $native_name=$lang['admin']['spiel']['alpha']['spezien'][$ur[$zufall_art][1]]['name'];
@@ -1119,16 +1122,16 @@ if ($_POST["spezien"]>=1) {
 ///////////////////////////////////////////////PLANETEN GENRERIEREN ENDE
 ////////////////////////////////////////////////WER SPIELT MIT
 $spieleranzahl=0;
-if ($_POST["user_1"]>=1) { $spieleranzahl++;$spieler[1][0]=$_POST["user_1"];$spieler[1][1]=$_POST["rasse_1"]; } else { $spieler[1][0]=0;$spieler[1][1]=''; }
-if ($_POST["user_2"]>=1) { $spieleranzahl++;$spieler[2][0]=$_POST["user_2"];$spieler[2][1]=$_POST["rasse_2"]; } else { $spieler[2][0]=0;$spieler[2][1]=''; }
-if ($_POST["user_3"]>=1) { $spieleranzahl++;$spieler[3][0]=$_POST["user_3"];$spieler[3][1]=$_POST["rasse_3"]; } else { $spieler[3][0]=0;$spieler[3][1]=''; }
-if ($_POST["user_4"]>=1) { $spieleranzahl++;$spieler[4][0]=$_POST["user_4"];$spieler[4][1]=$_POST["rasse_4"]; } else { $spieler[4][0]=0;$spieler[4][1]=''; }
-if ($_POST["user_5"]>=1) { $spieleranzahl++;$spieler[5][0]=$_POST["user_5"];$spieler[5][1]=$_POST["rasse_5"]; } else { $spieler[5][0]=0;$spieler[5][1]=''; }
-if ($_POST["user_6"]>=1) { $spieleranzahl++;$spieler[6][0]=$_POST["user_6"];$spieler[6][1]=$_POST["rasse_6"]; } else { $spieler[6][0]=0;$spieler[6][1]=''; }
-if ($_POST["user_7"]>=1) { $spieleranzahl++;$spieler[7][0]=$_POST["user_7"];$spieler[7][1]=$_POST["rasse_7"]; } else { $spieler[7][0]=0;$spieler[7][1]=''; }
-if ($_POST["user_8"]>=1) { $spieleranzahl++;$spieler[8][0]=$_POST["user_8"];$spieler[8][1]=$_POST["rasse_8"]; } else { $spieler[8][0]=0;$spieler[8][1]=''; }
-if ($_POST["user_9"]>=1) { $spieleranzahl++;$spieler[9][0]=$_POST["user_9"];$spieler[9][1]=$_POST["rasse_9"]; } else { $spieler[9][0]=0;$spieler[9][1]=''; }
-if ($_POST["user_10"]>=1) { $spieleranzahl++;$spieler[10][0]=$_POST["user_10"];$spieler[10][1]=$_POST["rasse_10"]; } else { $spieler[10][0]=0;$spieler[10][1]=''; }
+if (int_post('user_1')>=1) { $spieleranzahl++;$spieler[1][0]=int_post('user_1');$spieler[1][1]=$_POST["rasse_1"]; } else { $spieler[1][0]=0;$spieler[1][1]=''; }
+if (int_post('user_2')>=1) { $spieleranzahl++;$spieler[2][0]=int_post('user_2');$spieler[2][1]=$_POST["rasse_2"]; } else { $spieler[2][0]=0;$spieler[2][1]=''; }
+if (int_post('user_3')>=1) { $spieleranzahl++;$spieler[3][0]=int_post('user_3');$spieler[3][1]=$_POST["rasse_3"]; } else { $spieler[3][0]=0;$spieler[3][1]=''; }
+if (int_post('user_4')>=1) { $spieleranzahl++;$spieler[4][0]=int_post('user_4');$spieler[4][1]=$_POST["rasse_4"]; } else { $spieler[4][0]=0;$spieler[4][1]=''; }
+if (int_post('user_5')>=1) { $spieleranzahl++;$spieler[5][0]=int_post('user_5');$spieler[5][1]=$_POST["rasse_5"]; } else { $spieler[5][0]=0;$spieler[5][1]=''; }
+if (int_post('user_6')>=1) { $spieleranzahl++;$spieler[6][0]=int_post('user_6');$spieler[6][1]=$_POST["rasse_6"]; } else { $spieler[6][0]=0;$spieler[6][1]=''; }
+if (int_post('user_7')>=1) { $spieleranzahl++;$spieler[7][0]=int_post('user_7');$spieler[7][1]=$_POST["rasse_7"]; } else { $spieler[7][0]=0;$spieler[7][1]=''; }
+if (int_post('user_8')>=1) { $spieleranzahl++;$spieler[8][0]=int_post('user_8');$spieler[8][1]=$_POST["rasse_8"]; } else { $spieler[8][0]=0;$spieler[8][1]=''; }
+if (int_post('user_9')>=1) { $spieleranzahl++;$spieler[9][0]=int_post('user_9');$spieler[9][1]=$_POST["rasse_9"]; } else { $spieler[9][0]=0;$spieler[9][1]=''; }
+if (int_post('user_10')>=1) { $spieleranzahl++;$spieler[10][0]=int_post('user_10');$spieler[10][1]=$_POST["rasse_10"]; } else { $spieler[10][0]=0;$spieler[10][1]=''; }
 ///////////////////////////////////////////////SPIELER AUFBAUEN ANFANG
 ///////////////////////////////////////////////STARTPOSITIONEN
 if ($startposition==1) {
@@ -1168,12 +1171,13 @@ if ($startposition==2) {
 }
 if (3 == $startposition) {
     for ($kkk=1;$kkk<11;$kkk++) {
-        $position[$kkk]['x'] = $_POST['user_'.$kkk.'_x'];
-        $position[$kkk]['y'] = $_POST['user_'.$kkk.'_y'];
+        $position[$kkk]['x'] = int_post('user_'.$kkk.'_x');
+        $position[$kkk]['y'] = int_post('user_'.$kkk.'_y');
     }
 }
-if (($_POST["imperiumgroesse"]==1) or ($_POST["imperiumgroesse"]==2) or ($_POST["imperiumgroesse"]==3) or ($_POST["imperiumgroesse"]==4)) {
-if ($_POST["imperiumgroesse"]==1) {
+$imperiumgroesse = int_post('imperiumgroesse');
+if (($imperiumgroesse==1) or ($imperiumgroesse==2) or ($imperiumgroesse==3) or ($imperiumgroesse==4)) {
+if ($imperiumgroesse==1) {
 }
 $iii=0;
 for ($i=1;$i<=10;$i++) {
@@ -1207,15 +1211,15 @@ for ($i=1;$i<=10;$i++) {
   $minen=5;
   $abwehr=5;
   $fabriken=5;
-  $cantox=$_POST["geldmittel"];
+  $cantox=int_post('geldmittel');
   $lemin=rand(50,70);
   $min1=rand(50,70);
   $min2=rand(50,70);
   $min3=rand(50,70);
-  if ($_POST["mineralienhome"]==1) { $minrand=2000;$maxrand=3000; }
-  if ($_POST["mineralienhome"]==2) { $minrand=1500;$maxrand=2500; }
-  if ($_POST["mineralienhome"]==3) { $minrand=1000;$maxrand=2000; }
-  if ($_POST["mineralienhome"]==4) { $minrand=500;$maxrand=1000; }
+  if (int_post('mineralienhome')==1) { $minrand=2000;$maxrand=3000; }
+  if (int_post('mineralienhome')==2) { $minrand=1500;$maxrand=2500; }
+  if (int_post('mineralienhome')==3) { $minrand=1000;$maxrand=2000; }
+  if (int_post('mineralienhome')==4) { $minrand=500;$maxrand=1000; }
   $planet_lemin=rand($minrand,$maxrand);
   $planet_min1=rand($minrand,$maxrand);
   $planet_min2=rand($minrand,$maxrand);
@@ -1244,7 +1248,7 @@ for ($i=1;$i<=10;$i++) {
   if ($klasse==9) { $temp=rand(25,45); }
   }
     $zeiger = @mysql_query("UPDATE $skrupel_planeten set konz_lemin=$konz_lemin,konz_min1=$konz_min1,konz_min2=$konz_min2,konz_min3=$konz_min3,osys_anzahl=4,native_id=0,native_name ='',native_art=0,native_art_name='',native_abgabe=0,native_bild='',native_text='',native_fert='',native_kol=0,besitzer=$i,heimatplanet=$i,vorrat=$vorrat,cantox=$cantox,minen=$minen,abwehr=$abwehr,fabriken=$fabriken,kolonisten=$kolonisten,lemin=$lemin,min1=$min1,min2=$min2,min3=$min3,klasse=$klasse,bild=$bild,temp=$temp,planet_lemin=$planet_lemin,planet_min1=$planet_min1,planet_min2=$planet_min2,planet_min3=$planet_min3 where id=$pid");
-if (($_POST["imperiumgroesse"]==1) or ($_POST["imperiumgroesse"]==2)) {
+if (($imperiumgroesse==1) or ($imperiumgroesse==2)) {
   $namesb='Starbase I';
   $rasse = $spieler[$i][1];
   $zeiger = @mysql_query("INSERT INTO $skrupel_sternenbasen (name,x_pos,y_pos,rasse,planetid,besitzer,status,spiel) values ('$namesb',$x_pos,$y_pos,'$rasse',$pid,$i,1,$spiel)");
@@ -1253,7 +1257,7 @@ if (($_POST["imperiumgroesse"]==1) or ($_POST["imperiumgroesse"]==2)) {
   $baid=$array_temp["id"];
   $zeiger_temp = @mysql_query("UPDATE $skrupel_planeten set sternenbasis=2,sternenbasis_name='$namesb',sternenbasis_id=$baid,sternenbasis_rasse='$rasse' where id=$pid");
 }
-if ($_POST["imperiumgroesse"]==1) {
+if ($imperiumgroesse==1) {
     $schiffbau_klasse=$array["schiffbau_klasse"];
     $schiffbau_bild_gross=$array["schiffbau_bild_gross"];
     $schiffbau_bild_klein=$array["schiffbau_bild_klein"];
@@ -1282,8 +1286,8 @@ if ($_POST["imperiumgroesse"]==1) {
 }
 //////////////////////////////////////////////SPIELER AUFBAUEN ENDE
 ///////////////////////////////////////////////INSTABLIE WURMLOECHER ANFANG
-if ($_POST["instabil"]>=1) {
-for ($i=0;$i<$_POST["instabil"];$i++) {
+if (int_post('instabil')>=1) {
+for ($i=0;$i<int_post('instabil');$i++) {
   $ok=1;
   while ($ok==1) {
   $x=rand(50,$umfang-100);
@@ -1309,30 +1313,31 @@ for ($i=0;$i<$_POST["instabil"];$i++) {
 }
 ///////////////////////////////////////////////INSTABLIE WURMLOECHER ENDE
 ///////////////////////////////////////////////STABILE WURMLOECHER ANFANG
-if ($_POST["stabil"]>=1) {
-  if ($_POST["stabil"]<=5) {$anzahl=$_POST["stabil"];}
-  if ($_POST["stabil"]==6) {$anzahl=1;}
-  if ($_POST["stabil"]==7) {$anzahl=2;}
-  if ($_POST["stabil"]==8) {$anzahl=1;}
-  if ($_POST["stabil"]==9) {$anzahl=2;}
-  if ($_POST["stabil"]==10) {$anzahl=2;}
-  if ($_POST["stabil"]==11) {$anzahl=1;}
-  if ($_POST["stabil"]==12) {$anzahl=1;}
-  if ($_POST["stabil"]==13) {$anzahl=2;}
+$stabil = int_post('stabil');
+if ($stabil>=1) {
+  if ($stabil<=5) {$anzahl=$stabil;}
+  if ($stabil==6) {$anzahl=1;}
+  if ($stabil==7) {$anzahl=2;}
+  if ($stabil==8) {$anzahl=1;}
+  if ($stabil==9) {$anzahl=2;}
+  if ($stabil==10) {$anzahl=2;}
+  if ($stabil==11) {$anzahl=1;}
+  if ($stabil==12) {$anzahl=1;}
+  if ($stabil==13) {$anzahl=2;}
    for ($i=0;$i<$anzahl;$i++) {
   $ok=1;
   while ($ok==1) {
-  if ($_POST["stabil"]<=5) { $x=rand(50,$umfang-100);$y=rand(50,$umfang-100); }
-  if ($_POST["stabil"]==6) { $x=rand(50,$umfang-100);$y=rand(50,($umfang/2)-50); }
-  if ($_POST["stabil"]==7) { $x=rand(50,$umfang-100);$y=rand(50,($umfang/2)-50); }
-  if ($_POST["stabil"]==8) { $x=rand(50,($umfang/2)-50);$y=rand(50,$umfang-100); }
-  if ($_POST["stabil"]==9) { $x=rand(50,($umfang/2)-50);$y=rand(50,$umfang-100); }
-  if (($_POST["stabil"]==10) and ($i==0)) { $x=rand(50,$umfang-100);$y=rand(50,($umfang/2)-50); }
-  if (($_POST["stabil"]==10) and ($i==1)) { $x=rand(50,($umfang/2)-50);$y=rand(50,$umfang-100); }
-  if ($_POST["stabil"]==11) { $x=rand(50,($umfang/2)-50);$y=rand(50,($umfang/2)-50); }
-  if ($_POST["stabil"]==12) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,($umfang/2)-50); }
-  if (($_POST["stabil"]==13) and ($i==0)) { $x=rand(50,($umfang/2)-50);$y=rand(50,($umfang/2)-50); }
-  if (($_POST["stabil"]==13) and ($i==1)) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,($umfang/2)-50); }
+  if ($stabil<=5) { $x=rand(50,$umfang-100);$y=rand(50,$umfang-100); }
+  if ($stabil==6) { $x=rand(50,$umfang-100);$y=rand(50,($umfang/2)-50); }
+  if ($stabil==7) { $x=rand(50,$umfang-100);$y=rand(50,($umfang/2)-50); }
+  if ($stabil==8) { $x=rand(50,($umfang/2)-50);$y=rand(50,$umfang-100); }
+  if ($stabil==9) { $x=rand(50,($umfang/2)-50);$y=rand(50,$umfang-100); }
+  if (($stabil==10) and ($i==0)) { $x=rand(50,$umfang-100);$y=rand(50,($umfang/2)-50); }
+  if (($stabil==10) and ($i==1)) { $x=rand(50,($umfang/2)-50);$y=rand(50,$umfang-100); }
+  if ($stabil==11) { $x=rand(50,($umfang/2)-50);$y=rand(50,($umfang/2)-50); }
+  if ($stabil==12) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,($umfang/2)-50); }
+  if (($stabil==13) and ($i==0)) { $x=rand(50,($umfang/2)-50);$y=rand(50,($umfang/2)-50); }
+  if (($stabil==13) and ($i==1)) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,($umfang/2)-50); }
   $oben=$y-30;
   $unten=$y+30;
   $links=$x-30;
@@ -1357,17 +1362,17 @@ if ($_POST["stabil"]>=1) {
       $y_pos_eins=$array["y_pos"];
   $ok=1;
   while ($ok==1) {
-  if ($_POST["stabil"]<=5) { $x=rand(50,$umfang-100);$y=rand(50,$umfang-100); }
-  if ($_POST["stabil"]==6) { $x=rand(50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
-  if ($_POST["stabil"]==7) { $x=rand(50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
-  if ($_POST["stabil"]==8) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,$umfang-100); }
-  if ($_POST["stabil"]==9) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,$umfang-100); }
-  if (($_POST["stabil"]==10) and ($i==0)) { $x=rand(50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
-  if (($_POST["stabil"]==10) and ($i==1)) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,$umfang-100); }
-  if ($_POST["stabil"]==11) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
-  if ($_POST["stabil"]==12) { $x=rand(50,($umfang/2)-50);$y=rand(($umfang/2)+50,$umfang-100); }
-  if (($_POST["stabil"]==13) and ($i==0)) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
-  if (($_POST["stabil"]==13) and ($i==1)) { $x=rand(50,($umfang/2)-50);$y=rand(($umfang/2)+50,$umfang-100); }
+  if ($stabil<=5) { $x=rand(50,$umfang-100);$y=rand(50,$umfang-100); }
+  if ($stabil==6) { $x=rand(50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
+  if ($stabil==7) { $x=rand(50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
+  if ($stabil==8) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,$umfang-100); }
+  if ($stabil==9) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,$umfang-100); }
+  if (($stabil==10) and ($i==0)) { $x=rand(50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
+  if (($stabil==10) and ($i==1)) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(50,$umfang-100); }
+  if ($stabil==11) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
+  if ($stabil==12) { $x=rand(50,($umfang/2)-50);$y=rand(($umfang/2)+50,$umfang-100); }
+  if (($stabil==13) and ($i==0)) { $x=rand(($umfang/2)+50,$umfang-100);$y=rand(($umfang/2)+50,$umfang-100); }
+  if (($stabil==13) and ($i==1)) { $x=rand(50,($umfang/2)-50);$y=rand(($umfang/2)+50,$umfang-100); }
   $oben=$y-30;
   $unten=$y+30;
   $links=$x-30;
@@ -1508,7 +1513,7 @@ if ($ziel_id==5) {
 }
 //////////////////////////////////////////////ZIEL
 ///////////////////////////////////////////////NEBEL ERSTELLEN ANFANG
-$nebel=$_POST["nebel"];
+$nebel=int_post('nebel');
       $besitzer_recht[1]='1000000000';
       $besitzer_recht[2]='0100000000';
       $besitzer_recht[3]='0010000000';
@@ -1553,10 +1558,10 @@ $spieler_7=$spieler[7][0];
 $spieler_8=$spieler[8][0];
 $spieler_9=$spieler[9][0];
 $spieler_10=$spieler[10][0];
-$plasma_wahr=$_POST["wahr"];
-$plasma_lang=$_POST["lang"];
-$plasma_max=$_POST["max"];
-$spieler_admin=$_POST["spieler_admin"];
+$plasma_wahr=int_post('wahr');
+$plasma_lang=int_post('lang');
+$plasma_max=int_post('max');
+$spieler_admin=int_post('spieler_admin');
 for ($sp=1; $sp<=10; $sp++) {
     if (strlen($spieler_rasse_c[$sp])>=2) {
         $spieler_rassename_c[$sp] = $namerassen[$spieler_rasse_c[$sp]];

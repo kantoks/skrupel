@@ -1,8 +1,10 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='meta_simulation';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'meta_simulation';
+$fuid = int_get('fu');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
     ///////////////////////////////////////////////////////////////////////////////////////////////RASSENEIGENSCHAFTEN ANFANG
     $daten_verzeichnis=$main_verzeichnis."../daten/";
@@ -297,7 +299,7 @@ if ($_GET["fu"]==1) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
     ///////////////////////////////////////////////////////////////////////////////////////////////SCHIFFE ANFANG
     $daten_verzeichnis=$main_verzeichnis."../daten/";
@@ -1950,7 +1952,7 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     include ("inc.header.php");
     ///////////////////////////////////////////////////////////////////////////////////////////////SCHIFFE ANFANG
     $daten_verzeichnis=$main_verzeichnis."../daten/";

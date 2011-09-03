@@ -1,9 +1,11 @@
 <?php
-$langfile_1='hilfe_spionage';
-$langfile_2='spionagen';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'hilfe_spionage';
+$langfile_2 = 'spionagen';
+$fuid = int_get('fu');
 
-if ($_GET["fu"]>=1) {
-    include ("../inc.conf.php");
+if ($fuid>=1) {
     include ("inc.header.php");
     ?>
     <body text="#000000" bgcolor="#444444"  link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">    
@@ -26,7 +28,7 @@ if ($_GET["fu"]>=1) {
             include ("inc.footer.php");
             die();
         }
-        if ($_GET["fu"]==1) { ?>
+        if ($fuid==1) { ?>
             <table border="0" cellspacing="0" cellpadding="4" width="100%">
                 <tr>
                     <td colspan="2" style="font-size:18px; font-weight:bold; filter:DropShadow(color=black, offx=2, offy=2); text-align:center;"><?php echo $lang['hilfe_spionage']['zentrum']?></td>
@@ -48,8 +50,8 @@ if ($_GET["fu"]>=1) {
                 </tr>
             </table>
             <?php
-        }elseif ($_GET["fu"]==2) {
-            $xp = @intval($_GET['spid']);
+        }elseif ($fuid==2) {
+            $xp = int_get('spid');
             $stufe = spionstufe($xp);
             if($stufe > 5) { $lvl = 5; } else { $lvl = $stufe; }
             ?>
@@ -183,8 +185,8 @@ if ($_GET["fu"]>=1) {
                 </tr>
             </table>
             <?php
-        }elseif ($_GET["fu"]==3) {
-            $spionage_id = @intval($_GET['spid']);
+        }elseif ($fuid==3) {
+            $spionage_id = int_get('spid');
             //spionagen
             $file="../daten/unknown/spionagen.txt";
             $fp = @fopen("$file","r");
@@ -275,8 +277,8 @@ if ($_GET["fu"]>=1) {
                 </tr>
             </table>
             <?php
-        }elseif ($_GET["fu"]==4) {
-            $shid = @intval($_GET['spid']);
+        }elseif ($fuid==4) {
+            $shid = int_get('spid');
             $zeiger_schiff = @mysql_query("SELECT * FROM $skrupel_schiffe where besitzer=$spieler and id=$shid");
             $schiff = @mysql_fetch_array($zeiger_schiff);
             $extra = @explode(":", $schiff['extra']);
@@ -378,7 +380,6 @@ if ($_GET["fu"]>=1) {
     include ("inc.footer.php");
 }
 else {
-    include ("../inc.conf.php");
     include ("inc.header.php");
     ?>
     <frameset framespacing="0" border="false" frameborder="0" rows="18,*,16">
@@ -393,7 +394,7 @@ else {
                 <frame name="rahmen16" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=26&bildpfad=<?php echo $bildpfad; ?>" target="_self">
                 <frame name="rahmen17" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=27&bildpfad=<?php echo $bildpfad; ?>" target="_self">
             </frameset>
-            <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="hilfe_spionage.php?fu=<?php echo $_GET['fu2']; ?>&spid=<?php echo $_GET['spid']; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
+            <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="hilfe_spionage.php?fu=<?php echo int_get('fu2'); ?>&spid=<?php echo int_get('spid'); ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
             <frameset framespacing="0" border="false" frameborder="0" rows="80,*,92">
                 <frame name="rahmen18" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=28&bildpfad=<?php echo $bildpfad; ?>" target="_self">
                 <frame name="rahmen19" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=29&bildpfad=<?php echo $bildpfad; ?>" target="_self">

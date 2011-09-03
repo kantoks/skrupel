@@ -1,7 +1,10 @@
 <?php
 include ("../inc.conf.php");
+include_once ('../inhalt/inc.hilfsfunktionen.php');
 include ("../lang/".$language."/lang.admin.mitspieler_alpha.php");
-if ($_GET["fu"]==1) {
+$fuid = int_get('fu');
+
+if ($fuid==1) {
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 ?>
@@ -26,7 +29,7 @@ if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
    </table></form></center>
 <?php } include ("inc.footer.php");
  }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 $nick=$_POST["nick"];

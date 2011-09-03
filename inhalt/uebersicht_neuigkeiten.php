@@ -3,9 +3,8 @@
 :noTabs=false:indentSize=4:tabSize=4:folding=explicit:collapseFolds=1:
 */
 include ('../inc.conf.php');
-$langfile_1='uebersicht_neuigkeiten';
 include_once ('inc.hilfsfunktionen.php');
-
+$langfile_1 = 'uebersicht_neuigkeiten';
 $fuid = int_get('fu');
 
 //fu:1 Nachrichten anzeigen {{{

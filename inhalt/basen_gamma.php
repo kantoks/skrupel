@@ -1,9 +1,11 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='basen_gamma';
-$baid=$_GET["baid"];
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'basen_gamma';
+$fuid = int_get('fu');
+$baid = int_get('baid');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
     $array = @mysql_fetch_array($zeiger);
@@ -64,7 +66,7 @@ if ($_GET["fu"]==1) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
     $array = @mysql_fetch_array($zeiger);
@@ -82,7 +84,7 @@ if ($_GET["fu"]==2) {
     $defense=$array["defense"];
     $jaeger=$array["jaeger"];
     $art=$array["art"];
-    $zusatz=$_POST['zusatz'];
+    $zusatz=int_post('zusatz');
     if ($art!=3) { $zusatz=0; }
     $vorrat_projektile_1=$array["vorrat_projektile_1"];
     $vorrat_projektile_2=$array["vorrat_projektile_2"];
@@ -113,7 +115,7 @@ if ($_GET["fu"]==2) {
     $vorrat_antrieb_7=$array["vorrat_antrieb_7"];
     $vorrat_antrieb_8=$array["vorrat_antrieb_8"];
     $vorrat_antrieb_9=$array["vorrat_antrieb_9"];
-    $huellenid=$_POST['rumpf'];
+    $huellenid=int_post('rumpf');
     $zeiger2 = @mysql_query("SELECT * FROM $skrupel_huellen where id=$huellenid");
     $array2 = @mysql_fetch_array($zeiger2);
     $hid=$array2["id"];
@@ -373,7 +375,7 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
     $array = @mysql_fetch_array($zeiger);
@@ -402,18 +404,18 @@ if ($_GET["fu"]==3) {
       $native_fert_material=0;
     }
     //natives liefern baumaterial ende
-    $antriebestufe=$_POST['antriebe'];
-    $projektilestufe=$_POST['projektile'];
-    $energetikstufe=$_POST['energetik'];
+    $antriebestufe=int_post('antriebe');
+    $projektilestufe=int_post('projektile');
+    $energetikstufe=int_post('energetik');
     $schiffsname=$_POST['schiffsname'];
-    $zusatz=$_POST['zusatz'];
+    $zusatz=int_post('zusatz');
     $schiffsname=str_replace("'"," ",$schiffsname);
     $schiffsname=str_replace('"'," ",$schiffsname);
     if ($art!=3) { $zusatz=0; }
     if ($projektilestufe>=1) {} else {$projektilestufe=0;}
     if ($energetikstufe>=1) {} else {$energetikstufe=0;}
     if ($antriebestufe>=1) {} else {$antriebestufe=0;}
-    $huellenid=$_POST['rumpf'];
+    $huellenid=int_post('rumpf');
     $zeiger2 = @mysql_query("SELECT * FROM $skrupel_huellen where id=$huellenid");
     $array2 = @mysql_fetch_array($zeiger2);
     $hid=$array2["id"];
@@ -481,7 +483,7 @@ if ($_GET["fu"]==3) {
         <?php echo $message;
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==4) {
+if ($fuid==4) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT id,logbuch FROM $skrupel_sternenbasen where id=$baid");
     $array = @mysql_fetch_array($zeiger);
@@ -518,7 +520,7 @@ if ($_GET["fu"]==4) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==5) {
+if ($fuid==5) {
     include ("inc.header.php");
     $eintrag=$_POST["logbuchdaten"];
     $eintrag=str_replace("\"", "\'",$eintrag);
@@ -531,12 +533,12 @@ if ($_GET["fu"]==5) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==6) {
+if ($fuid==6) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
     $array = @mysql_fetch_array($zeiger);
     $art=$array["art"];
-    $huellenid=$_POST['rumpf'];
+    $huellenid=int_post('rumpf');
     ?>
     <body text="#000000" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" scroll="auto" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <center>

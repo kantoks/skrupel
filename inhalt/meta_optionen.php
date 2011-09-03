@@ -1,9 +1,11 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='meta_optionen';
-include ("../lang/sprachen.php");
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+include ('../lang/sprachen.php');
+$langfile_1 = 'meta_optionen';
+$fuid = int_get('fu');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT sprache, optionen, email, icq, jabber, avatar, chatfarbe From $skrupel_user where uid='$uid'");
     $array = @mysql_fetch_array($zeiger);
@@ -267,7 +269,7 @@ if ($_GET["fu"]==1) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
     ?>
     <body text="#000000" bgcolor="#444444"  link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -282,24 +284,24 @@ if ($_GET["fu"]==2) {
         $passwortneu='';
         $passwortneu=$_POST['passwortneu'];
         $optionen='';
-        if ($_POST['email_nach']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST['icq_nach']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST['tool_kol']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST['tool_min']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST['tool_vorrat']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST['tool_cantox']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST['tool_logbuch']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST['tool_schiff_tank']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST['tool_schiff_fracht']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST['tool_schiff_spezial']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST['tool_schiff_logbuch']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST['feature_i']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST['feature_ii']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST['feature_iii']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST['tool_schiff_bild']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST['feature_iiii']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST['feature_iiiii']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        if ($_POST['feature_iiiiii']==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if (int_post('email_nach')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if (int_post('icq_nach')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if (int_post('tool_kol')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if (int_post('tool_min')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if (int_post('tool_vorrat')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if (int_post('tool_cantox')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if (int_post('tool_logbuch')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if (int_post('tool_schiff_tank')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if (int_post('tool_schiff_fracht')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if (int_post('tool_schiff_spezial')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if (int_post('tool_schiff_logbuch')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if (int_post('feature_i')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if (int_post('feature_ii')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if (int_post('feature_iii')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if (int_post('tool_schiff_bild')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if (int_post('feature_iiii')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if (int_post('feature_iiiii')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
+        if (int_post('feature_iiiiii')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
         $zeiger_temp = @mysql_query("UPDATE $skrupel_user set jabber='$jabber', email='$email', icq='$icq', optionen='$optionen', chatfarbe='$chatfarbe', avatar='$avatar', sprache='$sprache' where uid='$uid'");
         if (strlen($passwortneu)>=1) {
             $zeiger_temp = @mysql_query("UPDATE $skrupel_user set passwort='$passwortneu' where uid='$uid'");

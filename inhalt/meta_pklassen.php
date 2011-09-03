@@ -1,8 +1,10 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='meta_pklassen';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'meta_pklassen';
+$fuid = int_get('fu');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">

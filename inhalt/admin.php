@@ -1,9 +1,10 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='admin';
+include ('../inc.conf.php');
 include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'admin';
+$fuid = int_get('fu');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
   include ("inc.header.php");
   if ($spieler==$spieler_admin) {
     ?>
@@ -153,7 +154,7 @@ if ($_GET["fu"]==1) {
     include ("inc.footer.php");
   }
 }
-if($_GET["fu"]==2){
+if ($fuid==2) {
   include ("inc.header.php");
   if($spieler==$spieler_admin){
     $main_verzeichnis="../";
@@ -190,7 +191,7 @@ if($_GET["fu"]==2){
     include ("inc.footer.php");
   }
 }
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
   include ("inc.header.php");
   if($spieler==$spieler_admin){
     if ($spieleranzahl==10) {
@@ -361,14 +362,14 @@ if ($_GET["fu"]==3) {
         }
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==4) {
+if ($fuid==4) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
-        $uid = $_POST["spielerid"];
+        $uid = int_post('spielerid');
         if (($uid>1) and ($spieler_1<>$uid) and ($spieler_2<>$uid) and ($spieler_3<>$uid) and ($spieler_4<>$uid) and ($spieler_5<>$uid) and ($spieler_6<>$uid) and ($spieler_7<>$uid) and ($spieler_8<>$uid) and ($spieler_9<>$uid) and ($spieler_10<>$uid)) {
             $kord=explode("-",$_POST["koord"]);
-            $i=$_POST["slot"];
-            $ausstattung=$_POST["ausstattung"];
+            $i=int_post('slot');
+            $ausstattung=int_post('ausstattung');
             $rasse=$_POST["rasse"];
 ///////////////////////////////////////////////////////////////////////////////////////////////RASSENEIGENSCHAFTEN ANFANG
             $daten_verzeichnis="../daten/";
@@ -413,16 +414,17 @@ if ($_GET["fu"]==4) {
             $minen=5;
             $abwehr=5;
             $fabriken=5;
-            $cantox=$_POST["geldmittel"];
-            if ($_POST["mineralienhome"]==1) { 
+            $cantox=int_post('geldmittel');
+            $mineralienhome=int_post('mineralienhome');
+            if ($mineralienhome==1) {
                 $minrand=50;$maxrand=70;
-            }elseif ($_POST["mineralienhome"]==2) {
-                $minrand=150;$maxrand=250; 
-            }elseif ($_POST["mineralienhome"]==3) {
-                $minrand=400;$maxrand=600; 
-            }elseif ($_POST["mineralienhome"]==4) { 
-                $minrand=700;$maxrand=1000; 
-            }elseif ($_POST["mineralienhome"]==5) {
+            }elseif ($mineralienhome==2) {
+                $minrand=150;$maxrand=250;
+            }elseif ($mineralienhome==3) {
+                $minrand=400;$maxrand=600;
+            }elseif (mineralienhome==4) {
+                $minrand=700;$maxrand=1000;
+            }elseif (mineralienhome==5) {
                 $minrand=1500;$maxrand=2000;
             }
             $lemin=rand($minrand,$maxrand);
@@ -480,7 +482,7 @@ if ($_GET["fu"]==4) {
             $spalte_spieler_rassenname="spieler_".$i."_rassename";
             $planetenwert=5;
             if ($ausstattung>=2) { $basenwert=10; } else { $basenwert=0; }
-            $spielerid = $_POST["spielerid"];
+            $spielerid = int_post('spielerid');
             $zeiger_temp = @mysql_query("UPDATE $skrupel_spiele set $spalte_spieler=$spielerid,$spalte_spieler_rasse='$rasse',$spalte_spieler_planeten=$planetenwert,$spalte_spieler_basen=$basenwert,$spalte_spieler_schiffe=0,$spalte_spieler_rassenname='$rassenname',spieleranzahl=spieleranzahl+1 where id=$spiel");
             function allifinden($partei_a,$partei_b) {
                 global $conn,$db,$skrupel_politik,$spiel;
@@ -521,7 +523,7 @@ if ($_GET["fu"]==4) {
         include ("inc.footer.php");
     }
 }
-if ($_GET["fu"]==5) {
+if ($fuid==5) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
         ?>
@@ -656,10 +658,10 @@ if ($_GET["fu"]==5) {
         include ("inc.footer.php");
     }
 }
-if ($_GET["fu"]==6) {
+if ($fuid==6) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
-        $raus=$_POST["spielerid"];
+        $raus=int_post('spielerid');
         $zeiger = @mysql_query("SELECT besitzer,id,spiel FROM $skrupel_sternenbasen where besitzer=$raus and spiel=$spiel order by id");
         $basenanzahl = @mysql_num_rows($zeiger);
         if ($basenanzahl>=1) {
@@ -704,7 +706,7 @@ if ($_GET["fu"]==6) {
         include ("inc.footer.php");
     }
 }
-if ($_GET["fu"]==7) {
+if ($fuid==7) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
         $zeiger_temp = @mysql_query("SELECT id,autozug FROM $skrupel_spiele where id=$spiel");
@@ -759,10 +761,10 @@ if ($_GET["fu"]==7) {
         include ("inc.footer.php");
     }
 }
-if ($_GET["fu"]==8) {
+if ($fuid==8) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
-        $autozug=$_POST["autozug"];
+        $autozug=int_post('autozug');
         $zeiger_temp = @mysql_query("UPDATE $skrupel_spiele set autozug=$autozug where id=$spiel");
         ?>
         <body text="#ffffff" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#ffffff" vlink="#ffffff" alink="#ffffff" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -775,7 +777,7 @@ if ($_GET["fu"]==8) {
         include ("inc.footer.php");
     }
 }
-if ($_GET["fu"]==9) {
+if ($fuid==9) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
         ?>
@@ -876,12 +878,12 @@ if ($_GET["fu"]==9) {
         include ("inc.footer.php");
     }
 }
-if ($_GET["fu"]==10) {
+if ($fuid==10) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
-        $plasma_max=$_POST["max"];
-        $plasma_wahr=$_POST["wahr"];
-        $plasma_lang=$_POST["lang"];
+        $plasma_max=int_post('max');
+        $plasma_wahr=int_post('wahr');
+        $plasma_lang=int_post('lang');
         $zeiger_temp = @mysql_query("UPDATE $skrupel_spiele set plasma_max=$plasma_max,plasma_wahr=$plasma_wahr,plasma_lang=$plasma_lang where id=$spiel");
         ?>
         <body text="#ffffff" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#444444" link="#ffffff" vlink="#ffffff" alink="#ffffff" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -894,7 +896,7 @@ if ($_GET["fu"]==10) {
         include ("inc.footer.php");
     }
 }
-if ($_GET["fu"]==11) {
+if ($fuid==11) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
         ?>
@@ -915,7 +917,7 @@ if ($_GET["fu"]==11) {
         include ("inc.footer.php");
     }
 }
-if ($_GET["fu"]==12) {
+if ($fuid==12) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
         ?>
@@ -1097,13 +1099,13 @@ if ($_GET["fu"]==12) {
         include ("inc.footer.php");
     }
 }
-if ($_GET["fu"]==13) {
+if ($fuid==13) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
-        $piraten_aussen2=$_POST["piraten_aussen"];
-        $piraten_mitte2=$_POST["piraten_mitte"];
-        $piraten_max2=$_POST["piraten_max"];
-        $piraten_min2=$_POST["piraten_min"];
+        $piraten_aussen2=int_post('piraten_aussen');
+        $piraten_mitte2=int_post('piraten_mitte');
+        $piraten_max2=int_post('piraten_max');
+        $piraten_min2=int_post('piraten_min');
         $zeiger_temp = @mysql_query("UPDATE $skrupel_spiele set piraten_mitte=$piraten_mitte2,piraten_aussen=$piraten_aussen2,piraten_max=$piraten_max2,piraten_min=$piraten_min2 where id=$spiel");
         ?>
         <body text="#ffffff" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#444444" link="#ffffff" vlink="#ffffff" alink="#ffffff" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -1116,7 +1118,7 @@ if ($_GET["fu"]==13) {
         include ("inc.footer.php");
     }
 }
-if ($_GET["fu"]==14) {
+if ($fuid==14) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
         $checked[0] = "";
@@ -1166,16 +1168,16 @@ if ($_GET["fu"]==14) {
         include ("inc.footer.php");
     }
 }
-if ($_GET["fu"]==15) {
+if ($fuid==15) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
-        $module[0] = @intval($_POST['modul_0']);
+        $module[0] = int_post('modul_0');
         $module[1] = 0;
-        $module[2] = @intval($_POST['modul_2']);
-        $module[3] = @intval($_POST['modul_3']);
-        $module[4] = @intval($_POST['modul_4']);
-        $module[5] = @intval($_POST['modul_5']);
-        $module[6] = @intval($_POST['modul_6']);        
+        $module[2] = int_post('modul_2');
+        $module[3] = int_post('modul_3');
+        $module[4] = int_post('modul_4');
+        $module[5] = int_post('modul_5');
+        $module[6] = int_post('modul_6');
         $module_neu = @implode(":", $module);
         @mysql_query("UPDATE $skrupel_spiele SET module='$module_neu' WHERE id=$spiel");
         ?>

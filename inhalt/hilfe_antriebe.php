@@ -1,19 +1,21 @@
 <?php
-$langfile_1='hilfe_antriebe';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'hilfe_antriebe';
+$fuid = int_get('fu');
 
-if($_GET["fu"]>=1){
-  include ("../inc.conf.php");
+if($fuid>=1){
   include ("inc.header.php");
   ?>
   <body text="#000000" bgcolor="#444444"  link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-    <script language=JavaScript>parent.document.title='<?php echo $lang['hilfe_antriebe'][$_GET["fu"]][0]; ?>';</script>
+    <script language=JavaScript>parent.document.title='<?php echo $lang['hilfe_antriebe'][$fuid][0]; ?>';</script>
     <br>
     <table border="0" cellspacing="0" cellpadding="4" width="100%">
       <tr>
         <td colspan="5" style="font-size:18px; font-weight:bold; filter:DropShadow(color=black, offx=2, offy=2)">
           <center>
   <?php
-  echo $lang['hilfe_antriebe'][$_GET["fu"]][0];
+  echo $lang['hilfe_antriebe'][$fuid][0];
   ?>
           </center>
         </td>
@@ -23,7 +25,7 @@ if($_GET["fu"]>=1){
           <br>
           <center>
   <?php
-  echo str_replace('{1}',$lang['hilfe_antriebe'][$_GET["fu"]][1],$lang['hilfe_antriebe']['maxwarp']);
+  echo str_replace('{1}',$lang['hilfe_antriebe'][$fuid][1],$lang['hilfe_antriebe']['maxwarp']);
   ?>
           </center>
         </td>
@@ -31,7 +33,7 @@ if($_GET["fu"]>=1){
       <tr>
         <td style="color:#aaaaaa;"><br>
   <?php
-  echo $lang['hilfe_antriebe'][$_GET["fu"]][2];
+  echo $lang['hilfe_antriebe'][$fuid][2];
   ?>
         </td>
       </tr>
@@ -39,7 +41,6 @@ if($_GET["fu"]>=1){
   <?php
   include ("inc.footer.php");
 }else{
-  include ("../inc.conf.php");
   include ("inc.header.php");
   ?>
 <frameset framespacing="0" border="false" frameborder="0" rows="18,*,16">
@@ -54,7 +55,7 @@ if($_GET["fu"]>=1){
       <frame name="rahmen16" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=26&bildpfad=<?php echo $bildpfad; ?>" target="_self">
       <frame name="rahmen17" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=27&bildpfad=<?php echo $bildpfad; ?>" target="_self">
     </frameset>
-    <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="hilfe_antriebe.php?fu=<?php echo $_GET["fu2"]; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
+    <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="hilfe_antriebe.php?fu=<?php echo int_get('fu2'); ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
     <frameset framespacing="0" border="false" frameborder="0" rows="80,*,92">
       <frame name="rahmen18" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=28&bildpfad=<?php echo $bildpfad; ?>" target="_self">
       <frame name="rahmen19" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=29&bildpfad=<?php echo $bildpfad; ?>" target="_self">

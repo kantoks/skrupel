@@ -1,6 +1,9 @@
 <?php
-include("../inc.conf.php");
-$langfile_1='osys_spionage';
+include('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'osys_spionage';
+$fuid = int_get('fu');
+$pid = int_get('fu');
 
 include("inc.header.php");
 $schiffdatei = false;
@@ -47,7 +50,7 @@ if(!$schiffdatei) {
     die();
 }
 //spion bzw auswahl an spionen anzeigen
-if($_GET["fu"] == 1) {
+if ($fuid==1) {
     ?>
     <body text="#000000" scroll="auto" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <script language=JavaScript>
@@ -63,7 +66,7 @@ if($_GET["fu"] == 1) {
             }
         </script>
         <?php
-        $zeiger_planet = @mysql_query("SELECT id,cantox,besitzer,min1,min2,min3,x_pos,y_pos,sternenbasis,sternenbasis_id FROM $skrupel_planeten where besitzer=$spieler and id=".@intval($_GET['pid']));
+        $zeiger_planet = @mysql_query("SELECT id,cantox,besitzer,min1,min2,min3,x_pos,y_pos,sternenbasis,sternenbasis_id FROM $skrupel_planeten where besitzer=$spieler and id=".$pid);
         $planet = @mysql_fetch_array($zeiger_planet);
         $zeiger_schiff = @mysql_query("SELECT id,name,klasse,volk,tarnfeld,bild_gross,ordner FROM $skrupel_schiffe where spiel=$spiel and besitzer=$spieler and volk='unknown' and klasseid=1 and s_x=".$planet['x_pos']." and s_y=".$planet['y_pos']);
         if(@mysql_num_rows($zeiger_schiff) == 0) {
@@ -213,7 +216,7 @@ if($_GET["fu"] == 1) {
             <?php
         }
 }
-if($_GET["fu"] == 2) {
+if ($fuid==2) {
     ?>
     <body text="#000000" scroll="auto" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <script language="JavaScript">
@@ -234,8 +237,8 @@ if($_GET["fu"] == 2) {
                 </tr>
                 <tr>
                     <td>
-                        <form name="formular"  method="post" action="osys_spionage.php?fu=3&pid=<?php echo $_GET['pid'];?>&uid=<?php echo $uid;?>&sid=<?php echo $sid;?>" onSubmit="return check();">
-                        <input type="hidden" name="stufe" value="<?php echo $_POST['stufe'];?>">
+                        <form name="formular"  method="post" action="osys_spionage.php?fu=3&pid=<?php echo $pid;?>&uid=<?php echo $uid;?>&sid=<?php echo $sid;?>" onSubmit="return check();">
+                        <input type="hidden" name="stufe" value="<?php echo int_post('stufe');?>">
                     </td>
                     <td><?php echo $lang['osys']['spionage']['Schiffsname']?></td>
                     <td></td>
@@ -263,11 +266,11 @@ if($_GET["fu"] == 2) {
         </script>
         <?php
 }
-if($_GET["fu"] == 3) {
+if ($fuid==3) {
     ?>
     <body text="#000000" scroll="auto" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
-        $zeiger_planet = @mysql_query("SELECT id,cantox,besitzer,min1,min2,min3,x_pos,y_pos,sternenbasis,sternenbasis_id FROM $skrupel_planeten where besitzer=$spieler and id=".@intval($_GET['pid']));
+        $zeiger_planet = @mysql_query("SELECT id,cantox,besitzer,min1,min2,min3,x_pos,y_pos,sternenbasis,sternenbasis_id FROM $skrupel_planeten where besitzer=$spieler and id=".$pid);
         $planet = @mysql_fetch_array($zeiger_planet);
         $zeiger_schiff = @mysql_query("SELECT id FROM $skrupel_schiffe where spiel=$spiel and besitzer=$spieler and volk='unknown' and klasseid=1 and s_x=".$planet['x_pos']." and s_y=".$planet['y_pos']);
         if($zug_abgeschlossen==0 && @mysql_num_rows($zeiger_schiff) == 0) {
@@ -312,7 +315,7 @@ if($_GET["fu"] == 3) {
                 <br>
                 <?php
             }else {
-                $si = $_POST['stufe'];
+                $si = int_post('stufe');
                 if($spion_daten[$si]['cantox']<=$planet['cantox'] && $spion_daten[$si]['min1']<=$planet['min1'] && $spion_daten[$si]['min2']<=$planet['min2'] && $spion_daten[$si]['min3']<=$planet['min3']) { $ok=1; } else { $ok=0; };
                 if($ok) {
                     $cantox = $planet['cantox'] - $spion_daten[$si]['cantox'];

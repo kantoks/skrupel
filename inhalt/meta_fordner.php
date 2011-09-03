@@ -1,8 +1,10 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='meta_fordner';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'meta_fordner';
+$fuid = int_get('fu');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -153,7 +155,7 @@ if ($_GET["fu"]==1) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -168,12 +170,12 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     include ("inc.header.php");
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
-        $ooid=$_GET["ooid"];
+        $ooid=int_get('ooid');
         $ordnerneu=$_POST["ordnerneu"];
         $ordnerneu=addslashes($ordnerneu);
         $zeiger_temp = @mysql_query("UPDATE $skrupel_ordner set name='$ordnerneu' where id =$ooid");
@@ -184,12 +186,12 @@ if ($_GET["fu"]==3) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==4) {
+if ($fuid==4) {
     include ("inc.header.php");
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
-        $ooid=$_GET["ooid"];
+        $ooid=int_get('ooid');
         $zeiger_temp = @mysql_query("DELETE FROM $skrupel_ordner where id =$ooid");
         $zeiger_temp = @mysql_query("UPDATE $skrupel_schiffe set ordner=0 where ordner=$ooid");
         ?>
@@ -199,12 +201,12 @@ if ($_GET["fu"]==4) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==5) {
+if ($fuid==5) {
     include ("inc.header.php");
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
-        $ooid=$_GET["ooid"];
+        $ooid=int_get('ooid');
         $icon=$_POST["icon"];
         $zeiger_temp = @mysql_query("UPDATE $skrupel_ordner set icon='$icon' where id =$ooid");
         ?>

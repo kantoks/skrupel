@@ -1,9 +1,11 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='basen_alpha';
-$baid=$_GET["baid"];
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'basen_alpha';
+$fuid = int_get('fu');
+$baid = int_get('baid');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
     $kosten_huelle = array ("0","100","300","600","1400","2400","3600","6100","11100","18600","28600");
@@ -202,14 +204,14 @@ if ($_GET["fu"]==1) {
     }
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
     $kosten_huelle = array ("0","100","300","600","1400","2400","3600","6100","11100","18600","28600");
     $kosten_antrieb = array ("0","100","300","600","1000","1500","2100","2800","6800","13800","23800");
     $kosten_energetik = array ("0","100","500","1400","3000","5500","9100","14000","20400","28500","38500");
     $kosten_explosiv = array ("0","100","500","1400","3000","5500","9100","14000","20400","28500","38500");
-    $abwehrauftrag=$_POST["explosivtl"];
+    $abwehrauftrag=int_post('explosivtl');
     $array = @mysql_fetch_array($zeiger);
     $baid=$array["id"];
     $name=$array["name"];
@@ -233,7 +235,7 @@ if ($_GET["fu"]==2) {
         $cantox=$array["cantox"];
         $schalter=0;
         if($t_huelle<10){
-            for($li=$t_huelle+1;$li<=$_POST["huelletl"];$li++){
+            for($li=$t_huelle+1;$li<=int_post('huelletl');$li++){
                 if ($cantox>=$kosten_huelle[$li]-$kosten_huelle[$li-1]) {
                     $minus=$kosten_huelle[$li]-$kosten_huelle[$li-1];
                     $zeiger_temp = @mysql_query("UPDATE $skrupel_planeten set cantox=cantox-$minus where besitzer=$spieler and id=$planetid");
@@ -249,7 +251,7 @@ if ($_GET["fu"]==2) {
             $message=$lang['basenalpha']['rumpferhoeht']."<br><br>";
         }
         if($t_antrieb<10){
-            for($li=$t_antrieb+1;$li<=$_POST["antriebtl"];$li++){
+            for($li=$t_antrieb+1;$li<=int_post('antriebtl');$li++){
                 if ($cantox>=$kosten_antrieb[$li]-$kosten_antrieb[$li-1]) {
                     $minus=$kosten_antrieb[$li]-$kosten_antrieb[$li-1];
                     $zeiger_temp = @mysql_query("UPDATE $skrupel_planeten set cantox=cantox-$minus where besitzer=$spieler and id=$planetid");
@@ -265,7 +267,7 @@ if ($_GET["fu"]==2) {
             $message=$message.$lang['basenalpha']['antrieberhoeht']."<br><br>";
         }
         if($t_energie<10){
-            for($li=$t_energie+1;$li<=$_POST["energietl"];$li++){
+            for($li=$t_energie+1;$li<=int_post('energietl');$li++){
                 if ($cantox>=$kosten_energetik[$li]-$kosten_energetik[$li-1]) {
                     $minus=$kosten_energetik[$li]-$kosten_energetik[$li-1];
                     $zeiger_temp = @mysql_query("UPDATE $skrupel_planeten set cantox=cantox-$minus where besitzer=$spieler and id=$planetid");
@@ -281,7 +283,7 @@ if ($_GET["fu"]==2) {
             $message=$message.$lang['basenalpha']['energetikerhoeht']."<br><br>";
         }
         if($t_explosiv<10){
-            for($li=$t_explosiv+1;$li<=$_POST["explosivtl"];$li++){
+            for($li=$t_explosiv+1;$li<=int_post('explosivtl');$li++){
                 if ($cantox>=$kosten_explosiv[$li]-$kosten_explosiv[$li-1]) {
                     $minus=$kosten_explosiv[$li]-$kosten_explosiv[$li-1];
                     $zeiger_temp = @mysql_query("UPDATE $skrupel_planeten set cantox=cantox-$minus where besitzer=$spieler and id=$planetid");
@@ -316,7 +318,7 @@ if ($_GET["fu"]==2) {
     }
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     include ("inc.header.php");    
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
     $array = @mysql_fetch_array($zeiger);
@@ -416,9 +418,9 @@ if ($_GET["fu"]==3) {
     }
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==4) {
+if ($fuid==4) {
     include ("inc.header.php");
-    $abwehrauftrag=$_POST["abwehrauftrag"];
+    $abwehrauftrag=int_post('abwehrauftrag');
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen WHERE besitzer=$spieler AND status=1 AND id=$baid");
     $array = @mysql_fetch_array($zeiger);
     $baid=$array["id"];
@@ -465,7 +467,7 @@ if ($_GET["fu"]==4) {
         }
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==5) {
+if ($fuid==5) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
     $array = @mysql_fetch_array($zeiger);
@@ -1026,20 +1028,20 @@ if ($_GET["fu"]==5) {
         }
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==6) {
+if ($fuid==6) {
     include ("inc.header.php");
-    $falte_cantox=($_POST["falte_cantox"]<0)?0:$_POST["falte_cantox"];
-    $falte_lemin=($_POST["falte_lemin"]<0)?0:$_POST["falte_lemin"];
-    $falte_min1=($_POST["falte_min1"]<0)?0:$_POST["falte_min1"];
-    $falte_min2=($_POST["falte_min2"]<0)?0:$_POST["falte_min2"];
-    $falte_min3=($_POST["falte_min3"]<0)?0:$_POST["falte_min3"];
-    $falte_vorrat=($_POST["falte_vorrat"]<0)?0:$_POST["falte_vorrat"];
-    $planet_cantox=($_POST["planet_cantox"]<0)?0:$_POST["planet_cantox"];
-    $planet_lemin=($_POST["planet_lemin"]<0)?0:$_POST["planet_lemin"];
-    $planet_min1=($_POST["planet_min1"]<0)?0:$_POST["planet_min1"];
-    $planet_min2=($_POST["planet_min2"]<0)?0:$_POST["planet_min2"];
-    $planet_min3=($_POST["planet_min3"]<0)?0:$_POST["planet_min3"];
-    $planet_vorrat=($_POST["planet_vorrat"]<0)?0:$_POST["planet_vorrat"];
+    $falte_cantox=(int_post('falte_cantox')<0)?0:int_post('falte_cantox');
+    $falte_lemin=(int_post('falte_lemin')<0)?0:int_post('falte_lemin');
+    $falte_min1=(int_post('falte_min1')<0)?0:int_post('falte_min1');
+    $falte_min2=(int_post('falte_min2')<0)?0:int_post('falte_min2');
+    $falte_min3=(int_post('falte_min3')<0)?0:int_post('falte_min3');
+    $falte_vorrat=(int_post('falte_vorrat')<0)?0:int_post('falte_vorrat');
+    $planet_cantox=(int_post('planet_cantox')<0)?0:int_post('planet_cantox');
+    $planet_lemin=(int_post('planet_lemin')<0)?0:int_post('planet_lemin');
+    $planet_min1=(int_post('planet_min1')<0)?0:int_post('planet_min1');
+    $planet_min2=(int_post('planet_min2')<0)?0:int_post('planet_min2');
+    $planet_min3=(int_post('planet_min3')<0)?0:int_post('planet_min3');
+    $planet_vorrat=(int_post('planet_vorrat')<0)?0:int_post('planet_vorrat');
     $zielid=$_POST["zielid"];
     $zielart=substr($zielid,0,1);
     $zielid=substr($zielid,1,strlen($zielid)-1);

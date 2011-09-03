@@ -1,8 +1,10 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='uebersicht_uebersicht';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'uebersicht_uebersicht';
+$fuid = int_get('fu');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where id=$spiel");
     $array = @mysql_fetch_array($zeiger);
@@ -73,7 +75,7 @@ if ($_GET["fu"]==1) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
     ?><body onLoad="window.location='uebersicht_uebersicht.php?fu=3&uid=<?php echo $uid?>&sid=<?php echo $sid?>';" text="#000000" bgcolor="#000000"   link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <center>
@@ -84,7 +86,7 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     include ("inc.header.php");
     if ((@extension_loaded('gd')) or (@dl('gd.so'))) {
         ?>    
@@ -264,7 +266,7 @@ if ($_GET["fu"]==3) {
         include ("inc.footer.php");
     }
 }
-if ($_GET["fu"]==4) {
+if ($fuid==4) {
     $conn = @mysql_connect($server.':'.$port,$login,$password);
     $db = @mysql_select_db($database,$conn);
     include ('inc.check.php');

@@ -1,7 +1,10 @@
 <?php
 include ("../inc.conf.php");
+include_once ('../inhalt/inc.hilfsfunktionen.php');
 include ("../lang/".$language."/lang.admin.allgemein_beta.php");
-if ($_GET["fu"]==1) {
+$fuid = int_get('fu');
+
+if ($fuid==1) {
     include ("inc.header.php");
     if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
         $zeiger = @mysql_query("SELECT * FROM $skrupel_info");
@@ -125,12 +128,12 @@ if ($_GET["fu"]==1) {
     }
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
     if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
-        $chat=$_POST["chat"];
-        $anleitung=$_POST["anleitung"];
-        $forum=$_POST["forum"];
+        $chat=int_post('chat');
+        $anleitung=int_post('anleitung');
+        $forum=int_post('forum');
         $forum_url=$_POST["forum_url"];
         $zeiger = @mysql_query("update $skrupel_info set chat=$chat, anleitung=$anleitung, forum=$forum, forum_url='$forum_url'");
         ?>

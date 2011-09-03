@@ -1,8 +1,10 @@
 <?php
-include ("../inc.conf.php");
+include ('../inc.conf.php');
+include_once ('../inhalt/inc.hilfsfunktionen.php');
+$fuid = int_get('fu');
 if(empty($_GET["bildpfad"])) {$_GET["bildpfad"]='../bilder';}
 
-if ($_GET["fu"]==0) { ?>
+if ($fuid==0) { ?>
     <html>
         <head>
             <META NAME="Author" CONTENT="Bernd Kantoks bernd@kantoks.de">
@@ -11,8 +13,8 @@ if ($_GET["fu"]==0) { ?>
         </body>
     </html>
 <?php }
-if (($_GET["fu"]>=1) and ($_GET["fu"]<=99)) {
-    if ($_GET["fu"]==8) {
+if (($fuid>=1) and ($fuid<=99)) {
+    if ($fuid==8) {
         $url="http://".$_SERVER['SERVER_NAME'];
         $folders = explode('/', $_SERVER['SCRIPT_NAME']);
         $count = 0;
@@ -36,12 +38,12 @@ if (($_GET["fu"]>=1) and ($_GET["fu"]<=99)) {
             <head>
                 <META NAME="Author" CONTENT="Bernd Kantoks bernd@kantoks.de">
             </head>
-            <body text="#000000" bgcolor="#444444" background="<?php echo $_GET["bildpfad"]; ?>/aufbau/<?php echo $_GET["fu"]; ?>.gif" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+            <body text="#000000" bgcolor="#444444" background="<?php echo $_GET["bildpfad"]; ?>/aufbau/<?php echo $fuid; ?>.gif" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
             </body>
         </html>
     <?php } ?>
 <?php }
-if ($_GET["fu"]==100) {
+if ($fuid==100) {
     include ("inc.header.php");
     ?>
     <frameset framespacing="0" border="false" frameborder="0" rows="50,18,*,16,50">

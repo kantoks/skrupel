@@ -1,10 +1,13 @@
 <?php 
-include ("../inc.conf.php");
-$langfile_1='planeten_gamma';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'planeten_gamma';
+$fuid = int_get('fu');
+$pid = int_get('pid');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
-    $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
+    $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$pid);
     $array = @mysql_fetch_array($zeiger);
     $pid=$array["id"];
     $name=$array["name"];
@@ -224,27 +227,27 @@ if ($_GET["fu"]==1) {
         <?php 
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
     ?>
     <body text="#000000" scroll="no" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php 
         $auto_minen=0;
-        if ($_POST["minauto"]==1) { $auto_minen=1;$message="<center>".$lang['planetengamma']['mineautoja']."</center>"; } else { $auto_minen=0;$message="<center>".$lang['planetengamma']['mineautonein']."</center>"; }
-        $zeiger = @mysql_query("update $skrupel_planeten set auto_minen=$auto_minen where id=".$_GET["pid"]." and besitzer=$spieler");
+        if (int_post('minauto')==1) { $auto_minen=1;$message="<center>".$lang['planetengamma']['mineautoja']."</center>"; } else { $auto_minen=0;$message="<center>".$lang['planetengamma']['mineautonein']."</center>"; }
+        $zeiger = @mysql_query("update $skrupel_planeten set auto_minen=$auto_minen where id=".$pid." and besitzer=$spieler");
         ?>
         <br><br>
         <?php
         echo $message;
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     include ("inc.header.php");
     ?>
     <body text="#000000" scroll="no" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php 
-        $minenauftrag=$_POST["minenauftrag"];
-        $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
+        $minenauftrag=int_post('minenauftrag');
+        $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$pid);
         $array = @mysql_fetch_array($zeiger);
         $pid=$array["id"];
         $minen=$array["minen"];
@@ -292,9 +295,9 @@ if ($_GET["fu"]==3) {
         <?php 
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==4) {
+if ($fuid==4) {
     include ("inc.header.php");
-    $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
+    $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$pid);
     $array = @mysql_fetch_array($zeiger);
     $pid=$array["id"];
     $name=$array["name"];
@@ -494,27 +497,27 @@ if ($_GET["fu"]==4) {
         <?php 
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==5) {
+if ($fuid==5) {
     include ("inc.header.php");
     ?>
     <body text="#000000" scroll="no" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php 
         $auto_fabriken=0;
-        if ($_POST["fabrikauto"]==1) { $auto_fabriken=1;$message="<center>".$lang['planetengamma']['fabrikautoja']."</center>"; } else { $auto_fabriken=0;$message="<center>".$lang['planetengamma']['farbikautonein']."</center>"; }
-        $zeiger = @mysql_query("update $skrupel_planeten set auto_fabriken=$auto_fabriken where id=".$_GET["pid"]." and besitzer=$spieler");
+        if (int_post('fabrikauto')==1) { $auto_fabriken=1;$message="<center>".$lang['planetengamma']['fabrikautoja']."</center>"; } else { $auto_fabriken=0;$message="<center>".$lang['planetengamma']['farbikautonein']."</center>"; }
+        $zeiger = @mysql_query("update $skrupel_planeten set auto_fabriken=$auto_fabriken where id=".$pid." and besitzer=$spieler");
         ?>
         <br><br>
         <?php 
         echo $message;
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==6) {
+if ($fuid==6) {
     include ("inc.header.php");
     ?>
     <body text="#000000" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" scroll="no" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php 
-        $fabrikenauftrag=$_POST["fabrikenauftrag"];
-        $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
+        $fabrikenauftrag=int_post('fabrikenauftrag');
+        $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$pid);
         $array = @mysql_fetch_array($zeiger);
         $pid=$array["id"];
         $fabriken=$array["fabriken"];
@@ -562,13 +565,13 @@ if ($_GET["fu"]==6) {
         <?php 
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==7) {
+if ($fuid==7) {
     include ("inc.header.php");
     ?>
     <body text="#000000" scroll="no" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php 
-        $vorratauftrag=$_POST["vorratauftrag"];
-        $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
+        $vorratauftrag=int_post('vorratauftrag');
+        $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$pid);
         $array = @mysql_fetch_array($zeiger);
         $pid=$array["id"];
         $cantox=$array["cantox"];
@@ -590,23 +593,23 @@ if ($_GET["fu"]==7) {
         <?php 
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==8) {
+if ($fuid==8) {
     include ("inc.header.php");
     ?>
     <body text="#000000" scroll="no" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php 
         $auto_vorrat=0;
-        if ($_POST["vorratauto"]==1) { $auto_vorrat=1;$message="<center>".$lang['planetengamma']['vorratautoja']."</center>"; } else { $auto_vorrat=0;$message="<center>".$lang['planetengamma']['vorratautonein']."</center>"; }
-        $zeiger = @mysql_query("update $skrupel_planeten set auto_vorrat=$auto_vorrat where id=".$_GET["pid"]." and besitzer=$spieler");
+        if (int_post('vorratauto')==1) { $auto_vorrat=1;$message="<center>".$lang['planetengamma']['vorratautoja']."</center>"; } else { $auto_vorrat=0;$message="<center>".$lang['planetengamma']['vorratautonein']."</center>"; }
+        $zeiger = @mysql_query("update $skrupel_planeten set auto_vorrat=$auto_vorrat where id=".$pid." and besitzer=$spieler");
         ?>
         <br><br>
         <?php
         echo $message;
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==9) {
+if ($fuid==9) {
     include ("inc.header.php");
-    $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
+    $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$pid);
     $array = @mysql_fetch_array($zeiger);
     $pid=$array["id"];
     $name=$array["name"];
@@ -771,26 +774,26 @@ if ($_GET["fu"]==9) {
         <?php 
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==10) {
+if ($fuid==10) {
     include ("inc.header.php");
     ?>
     <body text="#000000" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" scroll="no" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php 
         $auto_abwehr=0;
-        if ($_POST["abwehrauto"]==1) { $auto_abwehr=1;$message="<center>".$lang['planetengamma']['pdsautoja']."</center>"; } else { $auto_abwehr=0;$message="<center>".$lang['planetengamma']['pdsautonein']."</center>"; }
-        $zeiger = @mysql_query("update $skrupel_planeten set auto_abwehr=$auto_abwehr where id=".$_GET["pid"]." and besitzer=$spieler");
+        if (int_post('abwehrauto')==1) { $auto_abwehr=1;$message="<center>".$lang['planetengamma']['pdsautoja']."</center>"; } else { $auto_abwehr=0;$message="<center>".$lang['planetengamma']['pdsautonein']."</center>"; }
+        $zeiger = @mysql_query("update $skrupel_planeten set auto_abwehr=$auto_abwehr where id=".$pid." and besitzer=$spieler");
         ?>
         <br><br>
         <?php echo $message;
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==11) {
+if ($fuid==11) {
     include ("inc.header.php");
     ?>
     <body text="#000000" style="background-image:url('<?php echo $bildpfad?>/aufbau/14.gif'); background-attachment:fixed;" scroll="no" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php 
-         $abwehrauftrag=$_POST["abwehrauftrag"];
-         $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
+        $abwehrauftrag=int_post('abwehrauftrag');
+        $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$pid);
         $array = @mysql_fetch_array($zeiger);
         $pid=$array["id"];
         $cantox=$array["cantox"];
@@ -837,9 +840,9 @@ if ($_GET["fu"]==11) {
         <?php 
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==12) {
+if ($fuid==12) {
     include ("inc.header.php");
-    $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
+    $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where besitzer=$spieler and id=".$pid);
     $array = @mysql_fetch_array($zeiger);
     $pid=$array["id"];
     $name=$array["name"];

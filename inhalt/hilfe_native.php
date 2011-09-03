@@ -1,8 +1,10 @@
 <?php
-$langfile_1='hilfe_native';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'hilfe_native';
+$fuid = int_get('fu');
 
-if ($_GET["fu"]>=1) {
-    include ("../inc.conf.php");
+if ($fuid>=1) {
     include ("inc.header.php");
     
     ?>
@@ -22,13 +24,13 @@ if ($_GET["fu"]>=1) {
 
     for ($i=0;$i<$zaehler;$i++) {
 
-        if ($ur[$i][1]==$_GET["fu"]) {
+        if ($ur[$i][1]==$fuid) {
         ?>
-        <script language=JavaScript>parent.document.title='<?php echo $lang['hilfe_native'][$_GET["fu"]]['name']?>';</script>
+        <script language=JavaScript>parent.document.title='<?php echo $lang['hilfe_native'][$fuid]['name']?>';</script>
         <table border="0" cellspacing="0" cellpadding="4">
             <tr>
                 <td colspan="5" style="font-size:18px; font-weight:bold; filter:DropShadow(color=black, offx=2, offy=2)">
-                    <center><?php echo $lang['hilfe_native'][$_GET["fu"]]['name']?></center>
+                    <center><?php echo $lang['hilfe_native'][$fuid]['name']?></center>
                 </td>
             <tr>
             <tr>
@@ -78,13 +80,13 @@ if ($_GET["fu"]>=1) {
                     <td valign="top" width="100%">
                         <table border="0" cellspacing="0" cellpadding="0" width="100%">
                             <tr>
-                                <td style="color:#aaaaaa;"><?php echo $lang['hilfe_native'][$_GET["fu"]]['beschreibung']; ?></td>
+                                <td style="color:#aaaaaa;"><?php echo $lang['hilfe_native'][$fuid]['beschreibung']; ?></td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td><center><?php echo $lang['hilfe_native'][$_GET["fu"]]['effekt']; ?></center></td>
+                                <td><center><?php echo $lang['hilfe_native'][$fuid]['effekt']; ?></center></td>
                             </tr>
                          </table>
                         </td>
@@ -95,7 +97,6 @@ if ($_GET["fu"]>=1) {
         }
     include ("inc.footer.php");
 } else {
-    include ("../inc.conf.php");
     include ("inc.header.php");
     ?>
     <frameset framespacing="0" border="false" frameborder="0" rows="18,*,16">
@@ -114,7 +115,7 @@ if ($_GET["fu"]>=1) {
                 <frame name="rahmen17" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=27&bildpfad=<?php echo $bildpfad; ?>" target="_self">
             </frameset>
 
-            <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="hilfe_native.php?fu=<?php echo $_GET["fu2"]; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
+            <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="hilfe_native.php?fu=<?php echo int_get('fu2'); ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
 
             <frameset framespacing="0" border="false" frameborder="0" rows="80,*,92">
                 <frame name="rahmen18" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=28&bildpfad=<?php echo $bildpfad; ?>" target="_self">

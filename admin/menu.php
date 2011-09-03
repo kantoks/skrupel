@@ -1,7 +1,10 @@
 <?php
 include ("../inc.conf.php");
+include_once ('../inhalt/inc.hilfsfunktionen.php');
 include ("../lang/".$language."/lang.admin.menu.php");
-if ($_GET["fu"]==1) { ?>
+$fuid = int_get('fu');
+
+if ($fuid==1) { ?>
 <?php
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
@@ -132,7 +135,7 @@ if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 </table></center>
 <?php } include ("inc.footer.php"); ?>
 <?php } ?>
-<?php if ($_GET["fu"]==2) { ?>
+<?php if ($fuid==2) { ?>
 <?php
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {

@@ -1,8 +1,10 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='menu';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'menu';
+$fuid = int_get('fu');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
     ?>
     <script language=JavaScript>
@@ -84,7 +86,7 @@ if ($_GET["fu"]==1) {
         </form>
     <?php include ("inc.footer.php"); 
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
     ?>
     <script language=JavaScript>

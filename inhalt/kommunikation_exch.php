@@ -1,13 +1,15 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='kommunikation_exch';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'kommunikation_exch';
+$fuid = int_get('fu');
 $uid=$_GET["uid"];
 $sid=$_GET["sid"];
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
-    if(!$_POST["scroll_lock"]){$_POST["scroll_lock"]=0;}
+    //if(!$_POST["scroll_lock"]){$_POST["scroll_lock"]=0;}
     include ("inc.check.php"); ?>
     <html>
         <head>
@@ -67,7 +69,7 @@ if ($_GET["fu"]==1) {
     <?php
     @mysql_close();
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     ?>
     <html>
         <head>
@@ -87,7 +89,7 @@ if ($_GET["fu"]==2) {
     </html>
     <?php
 }
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
     $zeiger = @mysql_query("SELECT chatfarbe, id From $skrupel_user where uid='$uid'");
@@ -233,7 +235,7 @@ if ($_GET["fu"]==3) {
                 $nachricht=parsetext($nachricht);
                 $jetzt=date("H:i",$aktuell);
                 //$text="<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td valign=\"top\" style=\"color:$farbe;\"><nobr>$spieler_name&nbsp;</nobr></td><td valign=\"top\" style=\"color:#aaaaaa;\"><nobr>@ $jetzt&nbsp;</nobr></td><td valign=\"top\">$nachricht</td></tr></table>";
-                $an=$_POST["an"];
+                $an=int_post('an');
                 $zeiger = @mysql_query("INSERT INTO $skrupel_chat (spiel,datum,text,an,von,farbe) values (1,'$aktuell','$nachricht','$an','$spieler_name','$farbe');");
             }
             if (strlen($_GET["zeit"])>=1) { } else { $neuzeit=time();$first=1;}
@@ -297,7 +299,7 @@ if ($_GET["fu"]==3) {
     <?php
     @mysql_close();
 }
-if ($_GET["fu"]==4) {
+if ($fuid==4) {
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
     $zeiger = @mysql_query("SELECT chatfarbe, id From $skrupel_user where uid='$uid'");
@@ -367,7 +369,7 @@ if ($_GET["fu"]==4) {
     <?php
     @mysql_close();
 }
-if ($_GET["fu"]==5) {
+if ($fuid==5) {
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
     $zeiger = @mysql_query("SELECT chatfarbe, id From $skrupel_user where uid='$uid'");
@@ -477,7 +479,7 @@ if ($_GET["fu"]==5) {
     <?php
     @mysql_close();
 }
-if ($_GET["fu"]==6) {
+if ($fuid==6) {
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
     include ("inc.check.php");
@@ -573,7 +575,7 @@ if ($_GET["fu"]==6) {
                                 $user_id=$array["id"];
                                 $spielerchatfarbe=$array["chatfarbe"];
                                 ?>
-                                <option value="<?php echo $user_id; ?>" style="background-color:#<?php echo $spielerchatfarbe?>;color:#000000" <?php if($_POST["an"]==$user_id) echo "selected";?> ><?php echo $nick?></option>
+                                <option value="<?php echo $user_id; ?>" style="background-color:#<?php echo $spielerchatfarbe?>;color:#000000" <?php if(int_post('an')==$user_id) echo "selected";?> ><?php echo $nick?></option>
                                 <?php
                             }
                             ?>
@@ -603,7 +605,7 @@ if ($_GET["fu"]==6) {
     </html>
     <?php @mysql_close();
 }
-if ($_GET["fu"]==7) {
+if ($fuid==7) {
 ?>
 <html>
 <head>

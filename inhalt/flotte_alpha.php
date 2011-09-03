@@ -1,9 +1,11 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='flotte_alpha';
-$shid=$_GET["shid"];
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'flotte_alpha';
+$fuid = int_get('fu');
+$shid = int_get('shid');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT fracht_min2,kox,koy,flug,warp,zielx,ziely,zielid,antrieb,mission,masse_gesamt,lemin FROM $skrupel_schiffe where id=$shid");
     $array = @mysql_fetch_array($zeiger);
@@ -325,21 +327,21 @@ if ($_GET["fu"]==1) {
         }
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
     ?>
     <body text="#000000" scroll="no" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
-        $warpfaktor=$_POST["warpfaktor"];
-        $flug=$_POST["flug"];
-        $lemin=$_POST["lemin"];
-        $zielxf=$_POST["zielxf"];
-        $zielyf=$_POST["zielyf"];
-        $koxf=$_POST["koxf"];
-        $koyf=$_POST["koyf"];
-        $zielidf=$_POST["zielidf"];
-        $verbrauchf=$_POST["verbrauchf"];
-        $benzin2=$_POST["benzin2"];
+        $warpfaktor=int_post('warpfaktor');
+        $flug=int_post('flug');
+        $lemin=int_post('lemin');
+        $zielxf=int_post('zielxf');
+        $zielyf=int_post('zielyf');
+        $koxf=int_post('koxf');
+        $koyf=int_post('koyf');
+        $zielidf=int_post('zielidf');
+        $verbrauchf=int_post('verbrauchf');
+        $benzin2=int_post('benzin2');
         $kursmodus=$_POST["pathfind"];
         if ($warpfaktor==0) {
             $flug=0;
@@ -372,7 +374,7 @@ if ($_GET["fu"]==2) {
                 } else {
                     $warp=$warpfaktor;
                     $zielx=$zielxf;
-                    $ziely=$zielyf;                                        
+                    $ziely=$zielyf;
                     $message=$lang['flottealpha']['kursgesichert'];
                     if ($flug==1) {
                         $zielid=0;
@@ -487,7 +489,7 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     include ("inc.header.php");
     include ("../lang/".$spieler_sprache."/lang.spionagen.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid and besitzer=$spieler");
@@ -1460,15 +1462,14 @@ if ($_GET["fu"]==3) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==4) {
+if ($fuid==4) {
     include ("inc.header.php");
     ?>
     <body text="#000000" scroll="no" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
-        $shid=$_GET["shid"];
-        $begleitschutz=$_POST["begleitschutz"];
-        $crewmen=$_POST["crewmen"];
-        $projektile=$_POST["projektile"];
+        $begleitschutz=int_post('begleitschutz');
+        $crewmen=int_post('crewmen');
+        $projektile=int_post('projektile');
         $zeiger = @mysql_query("SELECT id,kox,koy,flug,zielid,warp FROM $skrupel_schiffe where id=$shid");
         $array = @mysql_fetch_array($zeiger);
         $kox=$array["kox"];
@@ -1476,7 +1477,9 @@ if ($_GET["fu"]==4) {
         $flugalt=$array["flug"];
         $zielalt=$array["zielid"];
         $warpalt=$array["warp"];
-        $spezialmission=$_POST["aktion"];
+        $spezialmission=int_post('aktion');
+        $betamodus=int_post('betamodus');
+        $viralziel=int_post('viralziel');
         if ($spezialmission==0) {
             $message=$lang['flottealpha']['speznachricht'][0];
         } elseif ($spezialmission==1) {
@@ -1485,25 +1488,25 @@ if ($_GET["fu"]==4) {
             $message=$lang['flottealpha']['speznachricht'][2];
         } elseif ($spezialmission==3) { 
             $message=$lang['flottealpha']['speznachricht'][3];
-        } elseif (($spezialmission==4) and ($_POST["betamodus"]<>1)) { 
+        } elseif (($spezialmission==4) and ($betamodus<>1)) { 
             $message=$lang['flottealpha']['speznachricht'][4];
-        } elseif (($spezialmission==4) and ($_POST["betamodus"]==1)) {
+        } elseif (($spezialmission==4) and ($betamodus==1)) {
             $spezialmission=27;
             $message=$lang['flottealpha']['speznachricht'][27];
         } elseif ($spezialmission==5) {
             $message=$lang['flottealpha']['speznachricht'][5];
-        } elseif (($spezialmission==6) and ($_POST["betamodus"]<>1)) {
+        } elseif (($spezialmission==6) and ($betamodus<>1)) {
             $message=$lang['flottealpha']['speznachricht'][6];
-        } elseif (($spezialmission==6) and ($_POST["betamodus"]==1)) {
+        } elseif (($spezialmission==6) and ($betamodus==1)) {
             $spezialmission=26;
             $message=$lang['flottealpha']['speznachricht'][26];
         } elseif ($spezialmission==7) {
             $message=$lang['flottealpha']['speznachricht'][7]; 
         } elseif ($spezialmission==8) { 
             $message=$lang['flottealpha']['speznachricht'][8]; 
-        } elseif (($spezialmission==9) and ($_POST["betamodus"]<>1)) {
+        } elseif (($spezialmission==9) and ($betamodus<>1)) {
             $message=$lang['flottealpha']['speznachricht'][9];
-        } elseif (($spezialmission==9) and ($_POST["betamodus"]==1)) { 
+        } elseif (($spezialmission==9) and ($betamodus==1)) { 
             $spezialmission=10;
             $message=$lang['flottealpha']['speznachricht'][10];
         } elseif ($spezialmission==11) {
@@ -1518,20 +1521,20 @@ if ($_GET["fu"]==4) {
             $message=$lang['flottealpha']['speznachricht'][15];
         } elseif ($spezialmission==16) {
             $message=$lang['flottealpha']['speznachricht'][16];
-        } elseif (($spezialmission==17) and ($_POST["viralziel"]<>1)) { 
+        } elseif (($spezialmission==17) and ($viralziel<>1)) { 
             $message=$lang['flottealpha']['speznachricht'][17];
-        } elseif (($spezialmission==17) and ($_POST["viralziel"]==1)) {
+        } elseif (($spezialmission==17) and ($viralziel==1)) {
             $spezialmission=18;
             $message=$lang['flottealpha']['speznachricht'][18];
-        } elseif (($spezialmission==19) and ($_POST["betamodus"]<>1)) {
+        } elseif (($spezialmission==19) and ($betamodus<>1)) {
             $message=$lang['flottealpha']['speznachricht'][19];
-        } elseif (($spezialmission==19) and ($_POST["betamodus"]==1)) {
+        } elseif (($spezialmission==19) and ($betamodus==1)) {
             $spezialmission=28;
             $message=$lang['flottealpha']['speznachricht'][28];
         } elseif ($spezialmission==20) {
             $message=$lang['flottealpha']['speznachricht'][20];
         } elseif ($spezialmission==21) {
-            $traktor_id=$_POST["traktor_id"];
+            $traktor_id=int_post('traktor_id');
             if ($traktor_id>=1) {
                 $message=$lang['flottealpha']['speznachricht'][21]['t'];
                 $zeiger = @mysql_query("UPDATE $skrupel_schiffe set traktor_id=".$traktor_id." where id=$shid");
@@ -1546,7 +1549,7 @@ if ($_GET["fu"]==4) {
             if(@mysql_num_rows($zeiger_extra) == 1) {
                 $ex_extra = @mysql_fetch_array($zeiger_extra);
                 $extra = @explode(":", $ex_extra['extra']);
-                $extra[1] = @intval($crewmen);
+                $extra[1] = $crewmen;
                 $extra_neu = @implode(":", $extra);
                 $zeiger_extra_temp = @mysql_query("UPDATE $skrupel_schiffe set extra='$extra_neu' where id=$shid");
             }
@@ -1558,7 +1561,7 @@ if ($_GET["fu"]==4) {
                 $extra = @explode(":", $ex_extra['extra']);
                 if (strlen($extra[0])==0)  { $extra[0]=''; }
                 if (strlen($extra[1])==0)  { $extra[1]=''; }
-                $extra[2] = @intval($projektile);
+                $extra[2] = $projektile;
                 $extra_neu = @implode(":", $extra);
                 $zeiger_extra_temp = @mysql_query("UPDATE $skrupel_schiffe set extra='$extra_neu' where id=$shid");
             }
@@ -1568,29 +1571,29 @@ if ($_GET["fu"]==4) {
         } elseif ($spezialmission==29) {
             $message=$lang['flottealpha']['speznachricht'][29];
         } elseif ($spezialmission==30) { 
-            $spezialmission=30+$_POST["spielerid"];                //31-40
+            $spezialmission=30+int_post('spielerid');                //31-40
             if ($spezialmission==30){
                 $message=$lang['flottealpha']['speznachricht'][30];
             }else{
-                $message=str_replace('{1}',$spielerfarbe[$_POST["spielerid"]],$lang['flottealpha']['speznachricht'][31]);
+                $message=str_replace('{1}',$spielerfarbe[int_post('spielerid')],$lang['flottealpha']['speznachricht'][31]);
             }
         } elseif ($spezialmission==40) { 
-            $spezialmission=40+$_POST["spielerfarbe"];            //41-50
-            $message=str_replace('{1}',$spielerfarbe[$_POST["spielerfarbe"]],$lang['flottealpha']['speznachricht'][41]);
+            $spezialmission=40+int_post('spielerfarbe');            //41-50
+            $message=str_replace('{1}',$spielerfarbe[int_post('spielerfarbe')],$lang['flottealpha']['speznachricht'][41]);
         } elseif ($module[0] and $spezialmission == 51) {
             $zeiger_spionage = @mysql_query("SELECT extra FROM $skrupel_schiffe where besitzer=$spieler and id=$shid and volk='unknown' and klasseid=1");
             if(@mysql_num_rows($zeiger_spionage) == 1) {
                 $spionage = @mysql_fetch_array($zeiger_spionage);
                 $extra = @explode(":", $spionage['extra']);
                 $extra_spio = @explode("-", $extra[0]);
-                $extra_spio[3] = @intval($_POST['spionage_id']);
+                $extra_spio[3] = int_post('spionage_id');
                 $extra[0] = @implode("-", $extra_spio);
                 $extra_neu = @implode(":", $extra);
                 $zeiger_spionage_temp = @mysql_query("UPDATE $skrupel_schiffe set extra='$extra_neu' where id=$shid");
             }
             $message = $lang['flottealpha']['speznachricht'][51];
         } elseif ($spezialmission==61) {
-            $spezialmission=$_POST["overdrive"];
+            $spezialmission=int_post('overdrive');
             $message=$lang['flottealpha']['speznachricht'][61];
         } elseif ($spezialmission==70) {
             $message=$lang['flottealpha']['speznachricht'][70];
@@ -1621,8 +1624,8 @@ if ($_GET["fu"]==4) {
             }
         }
         $zeiger = @mysql_query("UPDATE $skrupel_schiffe set spezialmission=".$spezialmission." where id=$shid");
-        $zielid=$_POST["schiff_id"];
-        $warp=$_POST["warpfaktor"];
+        $zielid=int_post('schiff_id');
+        $warp=int_post('warpfaktor');
         if (($begleitschutz==1) and (($flugalt!=4) or ($zielalt!=$zielid) or ($warpalt!=$warp))) {
             $flug=4;
             $zeiger = @mysql_query("SELECT id,kox,koy,name FROM $skrupel_schiffe where id=$zielid");
@@ -1702,7 +1705,7 @@ if ($_GET["fu"]==4) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==5) {
+if ($fuid==5) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT id,routing_status,status,kox,koy FROM $skrupel_schiffe where id=$shid");
     $array = @mysql_fetch_array($zeiger);
@@ -1742,7 +1745,7 @@ if ($_GET["fu"]==5) {
         <?php 
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==6) {
+if ($fuid==6) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
     $array = @mysql_fetch_array($zeiger);
@@ -1765,29 +1768,29 @@ if ($_GET["fu"]==6) {
     $routing_id="";
     $routing_koord="";
     if(urldecode($_POST["submitbutton"]) == utf8_encode(html_entity_decode($lang['flottealpha']['uebernehmen']))){
-        for($i=0;$i<$_POST["points"];$i++){
-            if($_POST["pid_".$i]!=-1){
-                $routing_mins=$routing_mins.$_POST["cantox_".$i].$_POST["vorrat_".$i].$_POST["lem_".$i].$_POST["bax_".$i].$_POST["ren_".$i].$_POST["vor_".$i].$_POST["vol_".$i];
-                $temp_1=$_POST["kol_".$i];
+        for($i=0;$i<int_post('points');$i++){
+            if(int_post('pid_'.$i)!=-1){
+                $routing_mins=$routing_mins.int_post('cantox_'.$i).int_post('vorrat_'.$i).int_post('lem_'.$i).int_post('bax_'.$i).int_post('ren_'.$i).int_post('vor_'.$i).int_post('vol_'.$i);
+                $temp_1=int_post('kol_'.$i);
                 for($j=1000000;$j>=1;$j=$j/10){
                     $temp_2=(int)($temp_1/$j);
                     $temp_1=$temp_1-($temp_2*$j);
                     $routing_mins=$routing_mins.$temp_2;
                 }
-                $temp_1=$_POST["lbt_".$i];
+                $temp_1=int_post('lbt_'.$i);
                 for($j=1000;$j>=1;$j=$j/10){
                     $temp_2=(int)($temp_1/$j);
                     $temp_1=$temp_1-($temp_2*$j);
                     $routing_mins=$routing_mins.$temp_2;
                 }
-                $temp_1=$_POST["sbt_".$i];
+                $temp_1=int_post('sbt_'.$i);
                 for($j=1000;$j>=1;$j=$j/10){
                     $temp_2=(int)($temp_1/$j);
                     $temp_1=$temp_1-($temp_2*$j);
                     $routing_mins=$routing_mins.$temp_2;
                 }
                 $routing_mins=$routing_mins.":";
-                $pid_a=$_POST["pid_".$i];
+                $pid_a=int_post('pid_'.$i);
                 $zeiger = @mysql_query("SELECT x_pos,y_pos FROM $skrupel_planeten where besitzer=$spieler and id=$pid_a and spiel=$spiel order by name");
                 $ok = @mysql_data_seek($zeiger,0);
                 $array = @mysql_fetch_array($zeiger);
@@ -1797,9 +1800,9 @@ if ($_GET["fu"]==6) {
                     $zielx=$array["x_pos"];
                     $ziely=$array["y_pos"];
                     $flug=(($zielx==$kox)and($ziely==$koy))?0:2;
-                    $zielid=$_POST["pid_".$i];
+                    $zielid=int_post('pid_'.$i);
                 }
-                $routing_id=$routing_id.$_POST["pid_".$i].":";
+                $routing_id=$routing_id.int_post('pid_'.$i).":";
                 $routing_koord=$routing_koord.$x_pos.":".$y_pos."::";
             }
         }
@@ -1864,7 +1867,7 @@ if ($_GET["fu"]==6) {
                         $points=count($routing_id)-1;
                         $j=0;
                         for($i=$routing_schritt;$i<$points;$i++){
-                            $_POST["pid_".$j]=$routing_id[$i];                        
+                            $_POST["pid_".$j]=$routing_id[$i];
                             ?>
                             <input type="hidden" name="pid_<?php echo $j; ?>" value=<?php echo $routing_id[$i]; ?>>
                             <input type="hidden" name="cantox_<?php echo $j; ?>" value=<?php echo substr($routing_mins[$i],0,1); ?>>
@@ -1910,74 +1913,74 @@ if ($_GET["fu"]==6) {
                         $lbt_a=substr($routing_mins[$i],14,4);
                         $sbt_a=substr($routing_mins[$i],18,4);
                     }elseif(urldecode($_POST["submitbutton"])==utf8_encode(html_entity_decode($lang['flottealpha']['loeschen']))){
-                        $point=$_POST["point"];
-                        $points=$_POST["points"]-1;
+                        $point=int_post('point');
+                        $points=int_post('points')-1;
                         for($i=0;$i<$point;$i++){
-                            $pid_h[$i]=$_POST["pid_".$i];
+                            $pid_h[$i]=int_post('pid_'.$i);
                             ?>
-                            <input type="hidden" name="pid_<?php echo $i; ?>" value=<?php echo $_POST["pid_".$i]; ?>>
-                            <input type="hidden" name="cantox_<?php echo $i; ?>" value=<?php echo $_POST["cantox_".$i]; ?>>
-                            <input type="hidden" name="vorrat_<?php echo $i; ?>" value=<?php echo $_POST["vorrat_".$i]; ?>>
-                            <input type="hidden" name="lem_<?php echo $i; ?>" value=<?php echo $_POST["lem_".$i]; ?>>
-                            <input type="hidden" name="bax_<?php echo $i; ?>" value=<?php echo $_POST["bax_".$i]; ?>>
-                            <input type="hidden" name="ren_<?php echo $i; ?>" value=<?php echo $_POST["ren_".$i]; ?>>
-                            <input type="hidden" name="vor_<?php echo $i; ?>" value=<?php echo $_POST["vor_".$i]; ?>>
-                            <input type="hidden" name="vol_<?php echo $i; ?>" value=<?php echo $_POST["vol_".$i]; ?>>
-                            <input type="hidden" name="kol_<?php echo $i; ?>" value=<?php echo $_POST["kol_".$i]; ?>>
-                            <input type="hidden" name="lbt_<?php echo $i; ?>" value=<?php echo $_POST["lbt_".$i]; ?>>
-                            <input type="hidden" name="sbt_<?php echo $i; ?>" value=<?php echo $_POST["sbt_".$i]; ?>>
+                            <input type="hidden" name="pid_<?php echo $i; ?>" value=<?php echo int_post('pid_'.$i); ?>>
+                            <input type="hidden" name="cantox_<?php echo $i; ?>" value=<?php echo int_post('cantox_'.$i); ?>>
+                            <input type="hidden" name="vorrat_<?php echo $i; ?>" value=<?php echo int_post('vorrat_'.$i); ?>>
+                            <input type="hidden" name="lem_<?php echo $i; ?>" value=<?php echo int_post('lem_'.$i); ?>>
+                            <input type="hidden" name="bax_<?php echo $i; ?>" value=<?php echo int_post('bax_'.$i); ?>>
+                            <input type="hidden" name="ren_<?php echo $i; ?>" value=<?php echo int_post('ren_'.$i); ?>>
+                            <input type="hidden" name="vor_<?php echo $i; ?>" value=<?php echo int_post('vor_'.$i); ?>>
+                            <input type="hidden" name="vol_<?php echo $i; ?>" value=<?php echo int_post('vol_'.$i); ?>>
+                            <input type="hidden" name="kol_<?php echo $i; ?>" value=<?php echo int_post('kol_'.$i); ?>>
+                            <input type="hidden" name="lbt_<?php echo $i; ?>" value=<?php echo int_post('lbt_'.$i); ?>>
+                            <input type="hidden" name="sbt_<?php echo $i; ?>" value=<?php echo int_post('sbt_'.$i); ?>>
                             <?php
                         }
                         for($i=$point+1;$i<$points+1;$i++){
-                            $pid_h[$i-1]=$_POST["pid_".$i];
+                            $pid_h[$i-1]=int_post('pid_'.$i);
                             ?>
-                            <input type="hidden" name="pid_<?php echo $i-1; ?>" value=<?php echo $_POST["pid_".$i]; ?>>
-                            <input type="hidden" name="cantox_<?php echo $i-1; ?>" value=<?php echo $_POST["cantox_".$i]; ?>>
-                            <input type="hidden" name="vorrat_<?php echo $i-1; ?>" value=<?php echo $_POST["vorrat_".$i]; ?>>
-                            <input type="hidden" name="lem_<?php echo $i-1; ?>" value=<?php echo $_POST["lem_".$i]; ?>>
-                            <input type="hidden" name="bax_<?php echo $i-1; ?>" value=<?php echo $_POST["bax_".$i]; ?>>
-                            <input type="hidden" name="ren_<?php echo $i-1; ?>" value=<?php echo $_POST["ren_".$i]; ?>>
-                            <input type="hidden" name="vor_<?php echo $i-1; ?>" value=<?php echo $_POST["vor_".$i]; ?>>
-                            <input type="hidden" name="vol_<?php echo $i-1; ?>" value=<?php echo $_POST["vol_".$i]; ?>>
-                            <input type="hidden" name="kol_<?php echo $i-1; ?>" value=<?php echo $_POST["kol_".$i]; ?>>
-                            <input type="hidden" name="lbt_<?php echo $i-1; ?>" value=<?php echo $_POST["lbt_".$i]; ?>>
-                            <input type="hidden" name="sbt_<?php echo $i-1; ?>" value=<?php echo $_POST["sbt_".$i]; ?>>
+                            <input type="hidden" name="pid_<?php echo $i-1; ?>" value=<?php echo int_post('pid_'.$i); ?>>
+                            <input type="hidden" name="cantox_<?php echo $i-1; ?>" value=<?php echo int_post('cantox_'.$i); ?>>
+                            <input type="hidden" name="vorrat_<?php echo $i-1; ?>" value=<?php echo int_post('vorrat_'.$i); ?>>
+                            <input type="hidden" name="lem_<?php echo $i-1; ?>" value=<?php echo int_post('lem_'.$i); ?>>
+                            <input type="hidden" name="bax_<?php echo $i-1; ?>" value=<?php echo int_post('bax_'.$i); ?>>
+                            <input type="hidden" name="ren_<?php echo $i-1; ?>" value=<?php echo int_post('ren_'.$i); ?>>
+                            <input type="hidden" name="vor_<?php echo $i-1; ?>" value=<?php echo int_post('vor_'.$i); ?>>
+                            <input type="hidden" name="vol_<?php echo $i-1; ?>" value=<?php echo int_post('vol_'.$i); ?>>
+                            <input type="hidden" name="kol_<?php echo $i-1; ?>" value=<?php echo int_post('kol_'.$i); ?>>
+                            <input type="hidden" name="lbt_<?php echo $i-1; ?>" value=<?php echo int_post('lbt_'.$i); ?>>
+                            <input type="hidden" name="sbt_<?php echo $i-1; ?>" value=<?php echo int_post('sbt_'.$i); ?>>
                             <?php
                         }
                         $i=$point+1;
                         $i=($point==$points)?$point-1:$i;
-                        $pid_a=$_POST["pid_".$i];
-                        $cantox_a=$_POST["cantox_".$i];
-                        $vorrat_a=$_POST["vorrat_".$i];
-                        $lem_a=$_POST["lem_".$i];
-                        $bax_a=$_POST["bax_".$i];
-                        $ren_a=$_POST["ren_".$i];
-                        $vor_a=$_POST["vor_".$i];
-                        $vol_a=$_POST["vol_".$i];
-                        $kol_a=$_POST["kol_".$i];
-                        $lbt_a=$_POST["lbt_".$i];
-                        $sbt_a=$_POST["sbt_".$i];
+                        $pid_a=int_post('pid_'.$i);
+                        $cantox_a=int_post('cantox_'.$i);
+                        $vorrat_a=int_post('vorrat_'.$i);
+                        $lem_a=int_post('lem_'.$i);
+                        $bax_a=int_post('bax_'.$i);
+                        $ren_a=int_post('ren_'.$i);
+                        $vor_a=int_post('vor_'.$i);
+                        $vol_a=int_post('vol_'.$i);
+                        $kol_a=int_post('kol_'.$i);
+                        $lbt_a=int_post('lbt_'.$i);
+                        $sbt_a=int_post('sbt_'.$i);
                         $point=($point==$points)?$point-1:$point;
                         for($i=0;$i<$points;$i++){
                             $_POST["pid_".$i]=$pid_h[$i];
                         }
                     }elseif(urldecode($_POST["submitbutton"])==utf8_encode(html_entity_decode($lang['flottealpha']['neuerpunkt']))){
-                        $point=$_POST["point"]+1;
-                        $points=$_POST["points"]+1;
+                        $point=int_post('point')+1;
+                        $points=int_post('points')+1;
                         for($i=0;$i<$point;$i++){
-                            $pid_h[$i]=$_POST["pid_".$i];
+                            $pid_h[$i]=int_post('pid_'.$i);
                             ?>
-                            <input type="hidden" name="pid_<?php echo $i; ?>" value=<?php echo $_POST["pid_".$i]; ?>>
-                            <input type="hidden" name="cantox_<?php echo $i; ?>" value=<?php echo $_POST["cantox_".$i]; ?>>
-                            <input type="hidden" name="vorrat_<?php echo $i; ?>" value=<?php echo $_POST["vorrat_".$i]; ?>>
-                            <input type="hidden" name="lem_<?php echo $i; ?>" value=<?php echo $_POST["lem_".$i]; ?>>
-                            <input type="hidden" name="bax_<?php echo $i; ?>" value=<?php echo $_POST["bax_".$i]; ?>>
-                            <input type="hidden" name="ren_<?php echo $i; ?>" value=<?php echo $_POST["ren_".$i]; ?>>
-                            <input type="hidden" name="vor_<?php echo $i; ?>" value=<?php echo $_POST["vor_".$i]; ?>>
-                            <input type="hidden" name="vol_<?php echo $i; ?>" value=<?php echo $_POST["vol_".$i]; ?>>
-                            <input type="hidden" name="kol_<?php echo $i; ?>" value=<?php echo $_POST["kol_".$i]; ?>>
-                            <input type="hidden" name="lbt_<?php echo $i; ?>" value=<?php echo $_POST["lbt_".$i]; ?>>
-                            <input type="hidden" name="sbt_<?php echo $i; ?>" value=<?php echo $_POST["sbt_".$i]; ?>>
+                            <input type="hidden" name="pid_<?php echo $i; ?>" value=<?php echo int_post('pid_'.$i); ?>>
+                            <input type="hidden" name="cantox_<?php echo $i; ?>" value=<?php echo int_post('cantox_'.$i); ?>>
+                            <input type="hidden" name="vorrat_<?php echo $i; ?>" value=<?php echo int_post('vorrat_'.$i); ?>>
+                            <input type="hidden" name="lem_<?php echo $i; ?>" value=<?php echo int_post('lem_'.$i); ?>>
+                            <input type="hidden" name="bax_<?php echo $i; ?>" value=<?php echo int_post('bax_'.$i); ?>>
+                            <input type="hidden" name="ren_<?php echo $i; ?>" value=<?php echo int_post('ren_'.$i); ?>>
+                            <input type="hidden" name="vor_<?php echo $i; ?>" value=<?php echo int_post('vor_'.$i); ?>>
+                            <input type="hidden" name="vol_<?php echo $i; ?>" value=<?php echo int_post('vol_'.$i); ?>>
+                            <input type="hidden" name="kol_<?php echo $i; ?>" value=<?php echo int_post('kol_'.$i); ?>>
+                            <input type="hidden" name="lbt_<?php echo $i; ?>" value=<?php echo int_post('lbt_'.$i); ?>>
+                            <input type="hidden" name="sbt_<?php echo $i; ?>" value=<?php echo int_post('sbt_'.$i); ?>>
                             <?php
                         }
                         $pid_h[$point]=-1;
@@ -1995,68 +1998,68 @@ if ($_GET["fu"]==6) {
                         <input type="hidden" name="sbt_<?php echo $point; ?>" value=0>
                         <?php
                         for($i=$point;$i<$points-1;$i++){
-                            $pid_h[$i+1]=$_POST["pid_".$i];
+                            $pid_h[$i+1]=int_post('pid_'.$i);
                             ?>
-                            <input type="hidden" name="pid_<?php echo $i+1; ?>" value=<?php echo $_POST["pid_".$i]; ?>>
-                            <input type="hidden" name="cantox_<?php echo $i+1; ?>" value=<?php echo $_POST["cantox_".$i]; ?>>
-                            <input type="hidden" name="vorrat_<?php echo $i+1; ?>" value=<?php echo $_POST["vorrat_".$i]; ?>>
-                            <input type="hidden" name="lem_<?php echo $i+1; ?>" value=<?php echo $_POST["lem_".$i]; ?>>
-                            <input type="hidden" name="bax_<?php echo $i+1; ?>" value=<?php echo $_POST["bax_".$i]; ?>>
-                            <input type="hidden" name="ren_<?php echo $i+1; ?>" value=<?php echo $_POST["ren_".$i]; ?>>
-                            <input type="hidden" name="vor_<?php echo $i+1; ?>" value=<?php echo $_POST["vor_".$i]; ?>>
-                            <input type="hidden" name="vol_<?php echo $i+1; ?>" value=<?php echo $_POST["vol_".$i]; ?>>
-                            <input type="hidden" name="kol_<?php echo $i+1; ?>" value=<?php echo $_POST["kol_".$i]; ?>>
-                            <input type="hidden" name="lbt_<?php echo $i+1; ?>" value=<?php echo $_POST["lbt_".$i]; ?>>
-                            <input type="hidden" name="sbt_<?php echo $i+1; ?>" value=<?php echo $_POST["sbt_".$i]; ?>>
+                            <input type="hidden" name="pid_<?php echo $i+1; ?>" value=<?php echo int_post('pid_'.$i); ?>>
+                            <input type="hidden" name="cantox_<?php echo $i+1; ?>" value=<?php echo int_post('cantox_'.$i); ?>>
+                            <input type="hidden" name="vorrat_<?php echo $i+1; ?>" value=<?php echo int_post('vorrat_'.$i); ?>>
+                            <input type="hidden" name="lem_<?php echo $i+1; ?>" value=<?php echo int_post('lem_'.$i); ?>>
+                            <input type="hidden" name="bax_<?php echo $i+1; ?>" value=<?php echo int_post('bax_'.$i); ?>>
+                            <input type="hidden" name="ren_<?php echo $i+1; ?>" value=<?php echo int_post('ren_'.$i); ?>>
+                            <input type="hidden" name="vor_<?php echo $i+1; ?>" value=<?php echo int_post('vor_'.$i); ?>>
+                            <input type="hidden" name="vol_<?php echo $i+1; ?>" value=<?php echo int_post('vol_'.$i); ?>>
+                            <input type="hidden" name="kol_<?php echo $i+1; ?>" value=<?php echo int_post('kol_'.$i); ?>>
+                            <input type="hidden" name="lbt_<?php echo $i+1; ?>" value=<?php echo int_post('lbt_'.$i); ?>>
+                            <input type="hidden" name="sbt_<?php echo $i+1; ?>" value=<?php echo int_post('sbt_'.$i); ?>>
                             <?php
                         }
                         for($i=0;$i<$points;$i++){
                             $_POST["pid_".$i]=$pid_h[$i];
                         }
                     }else{
-                        $point=$_POST["point"];
+                        $point=int_post('point');
+                        $points=int_post('points');
                         if($_POST["submitbutton"]=="<"){
-                            if($_POST["point"]>0){
-                                $point=$_POST["point"]-1;
+                            if($point>0){
+                                $point=$point-1;
                             }else{
-                                $point=$_POST["points"]-1;
+                                $point=$points-1;
                             }
                         }elseif($_POST["submitbutton"]==">"){
-                            if($_POST["point"]<$_POST["points"]-1){
-                                $point=$_POST["point"]+1;
+                            if($point<$points-1){
+                                $point=$point+1;
                             }else{
                                 $point=0;
                             }
                         }
-                        $points=$_POST["points"];
                         for($i=0;$i<$points;$i++){
                             ?>
-                            <input type="hidden" name="pid_<?php echo $i; ?>" value=<?php echo $_POST["pid_".$i]; ?>>
-                            <input type="hidden" name="kox_<?php echo $i; ?>" value=<?php echo $_POST["kox_".$i]; ?>>
-                            <input type="hidden" name="koy_<?php echo $i; ?>" value=<?php echo $_POST["koy_".$i]; ?>>
-                            <input type="hidden" name="cantox_<?php echo $i; ?>" value=<?php echo $_POST["cantox_".$i]; ?>>
-                            <input type="hidden" name="vorrat_<?php echo $i; ?>" value=<?php echo $_POST["vorrat_".$i]; ?>>
-                            <input type="hidden" name="lem_<?php echo $i; ?>" value=<?php echo $_POST["lem_".$i]; ?>>
-                            <input type="hidden" name="bax_<?php echo $i; ?>" value=<?php echo $_POST["bax_".$i]; ?>>
-                            <input type="hidden" name="ren_<?php echo $i; ?>" value=<?php echo $_POST["ren_".$i]; ?>>
-                            <input type="hidden" name="vor_<?php echo $i; ?>" value=<?php echo $_POST["vor_".$i]; ?>>
-                            <input type="hidden" name="vol_<?php echo $i; ?>" value=<?php echo $_POST["vol_".$i]; ?>>
-                            <input type="hidden" name="kol_<?php echo $i; ?>" value=<?php echo $_POST["kol_".$i]; ?>>
-                            <input type="hidden" name="lbt_<?php echo $i; ?>" value=<?php echo $_POST["lbt_".$i]; ?>>
-                            <input type="hidden" name="sbt_<?php echo $i; ?>" value=<?php echo $_POST["sbt_".$i]; ?>>
+                            <input type="hidden" name="pid_<?php echo $i; ?>" value=<?php echo int_post('pid_'.$i); ?>>
+                            <input type="hidden" name="kox_<?php echo $i; ?>" value=<?php echo int_post('kox_'.$i); ?>>
+                            <input type="hidden" name="koy_<?php echo $i; ?>" value=<?php echo int_post('koy_'.$i); ?>>
+                            <input type="hidden" name="cantox_<?php echo $i; ?>" value=<?php echo int_post('cantox_'.$i); ?>>
+                            <input type="hidden" name="vorrat_<?php echo $i; ?>" value=<?php echo int_post('vorrat_'.$i); ?>>
+                            <input type="hidden" name="lem_<?php echo $i; ?>" value=<?php echo int_post('lem_'.$i); ?>>
+                            <input type="hidden" name="bax_<?php echo $i; ?>" value=<?php echo int_post('bax_'.$i); ?>>
+                            <input type="hidden" name="ren_<?php echo $i; ?>" value=<?php echo int_post('ren_'.$i); ?>>
+                            <input type="hidden" name="vor_<?php echo $i; ?>" value=<?php echo int_post('vor_'.$i); ?>>
+                            <input type="hidden" name="vol_<?php echo $i; ?>" value=<?php echo int_post('vol_'.$i); ?>>
+                            <input type="hidden" name="kol_<?php echo $i; ?>" value=<?php echo int_post('kol_'.$i); ?>>
+                            <input type="hidden" name="lbt_<?php echo $i; ?>" value=<?php echo int_post('lbt_'.$i); ?>>
+                            <input type="hidden" name="sbt_<?php echo $i; ?>" value=<?php echo int_post('sbt_'.$i); ?>>
                             <?php
                         }
-                        $pid_a=$_POST["pid_".$point];
-                        $cantox_a=$_POST["cantox_".$point];
-                        $vorrat_a=$_POST["vorrat_".$point];
-                        $lem_a=$_POST["lem_".$point];
-                        $bax_a=$_POST["bax_".$point];
-                        $ren_a=$_POST["ren_".$point];
-                        $vor_a=$_POST["vor_".$point];
-                        $vol_a=$_POST["vol_".$point];
-                        $kol_a=$_POST["kol_".$point];
-                        $lbt_a=$_POST["lbt_".$point];
-                        $sbt_a=$_POST["sbt_".$point];
+                        $pid_a=int_post('pid_'.$point);
+                        $cantox_a=int_post('cantox_'.$point);
+                        $vorrat_a=int_post('vorrat_'.$point);
+                        $lem_a=int_post('lem_'.$point);
+                        $bax_a=int_post('bax_'.$point);
+                        $ren_a=int_post('ren_'.$point);
+                        $vor_a=int_post('vor_'.$point);
+                        $vol_a=int_post('vol_'.$point);
+                        $kol_a=int_post('kol_'.$point);
+                        $lbt_a=int_post('lbt_'.$point);
+                        $sbt_a=int_post('sbt_'.$point);
                     }
                     if($points>1){
                         if((0<$point)&&($point<$points-1)){
@@ -2084,7 +2087,7 @@ if ($_GET["fu"]==6) {
                                     $array = @mysql_fetch_array($zeiger);
                                     $piid=$array["id"];
                                     $name=$array["name"];
-                                    if(($piid<>$_POST["pid_".$davor])&&($piid<>$_POST["pid_".$danach])&&($piid<>$pid_a))echo "<option value='$piid'>$name</option>";
+                                    if(($piid<>int_post('pid_'.$davor))&&($piid<>int_post('pid_'.$danach))&&($piid<>$pid_a))echo "<option value='$piid'>$name</option>";
                                     if($piid==$pid_a)echo "<option value='$piid' selected>$name</option>";
                                 }
                             }
@@ -2305,15 +2308,15 @@ if ($_GET["fu"]==6) {
     }
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==7) {
+if ($fuid==7) {
     include ("inc.header.php");
     $routing_mins=$_POST["routing_mins"];
     $routing_id=$_POST["routing_id"];
     $routing_koord=$_POST["routing_koord"];
-    $zielx=$_POST["zielx"];
-    $ziely=$_POST["ziely"];
-    $zielid=$_POST["zielid"];
-    $flug=$_POST["flug"];
+    $zielx=int_post('zielx');
+    $ziely=int_post('ziely');
+    $zielid=int_post('zielid');
+    $flug=int_post('flug');
     if ($_POST["submitbutton"]==$lang['flottealpha']['routeabschliessen']) {
         $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
         $array = @mysql_fetch_array($zeiger);
@@ -2332,8 +2335,8 @@ if ($_GET["fu"]==7) {
                         <td><form name="formular" id="formular"  method="post" action="flotte_alpha.php?fu=8&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                         <td><?php echo $lang['flottealpha']['flugoptionen']; ?></td>
                         <td>
-                            <input type="hidden" name="kox" value=<?php echo $_POST["kox"]; ?>>
-                            <input type="hidden" name="koy" value=<?php echo $_POST["koy"]; ?>>
+                            <input type="hidden" name="kox" value=<?php echo int_post('kox'); ?>>
+                            <input type="hidden" name="koy" value=<?php echo int_post('koy'); ?>>
                             <input type="hidden" name="routing_mins" value="<?php echo $routing_mins?>">
                             <input type="hidden" name="routing_id" value="<?php echo $routing_id; ?>">
                             <input type="hidden" name="routing_koord" value="<?php echo $routing_koord; ?>">
@@ -2419,24 +2422,24 @@ if ($_GET["fu"]==7) {
         } 
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==8) {
+if ($fuid==8) {
     include ("inc.header.php");
     $zeiger = @mysql_query("UPDATE $skrupel_schiffe set routing_id=\"".$_POST["routing_id"]."\",
                                                      routing_koord=\"".$_POST["routing_koord"]."\",
                                                      routing_mins=\"".$_POST["routing_mins"]."\",
                                                      routing_status=2,
                                                      routing_schritt=0,
-                                                     routing_warp=".$_POST["warpfaktor"].",
-                                                     routing_tank=".$_POST["tank"].",
-                                                     routing_rohstoff=".$_POST["rohstoff"]." where id=$shid");
-    $zeiger_temp = @mysql_query("UPDATE $skrupel_schiffe set flug=".$_POST["flug"].",warp=".$_POST["warpfaktor"].",plasmawarp=0,zielx=".$_POST["zielx"].",ziely=".$_POST["ziely"].",zielid=".$_POST["zielid"]." where id=$shid");
+                                                     routing_warp=".int_post('warpfaktor').",
+                                                     routing_tank=".int_post('tank').",
+                                                     routing_rohstoff=".int_post('rohstoff')." where id=$shid");
+    $zeiger_temp = @mysql_query("UPDATE $skrupel_schiffe set flug=".int_post('flug').",warp=".int_post('warpfaktor').",plasmawarp=0,zielx=".int_post('zielx').",ziely=".int_post('ziely').",zielid=".int_post('zielid')." where id=$shid");
     ?>
     <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <br><br><br>
         <center><?php echo $lang['flottealpha']['routeerfolgreich']; ?></center>
         <script language=JavaScript>
             <?php
-            if (($_POST["kox"]==$_POST["zielx"]) and ($_POST["koy"]==$_POST["ziely"])) {
+            if ((int_post('kox')==int_post('zielx')) and (int_post('koy')==int_post('ziely'))) {
                 for ($k=1;$k<=20;$k++) {
                     ?>
                     parent.parent.mittemitte.document.getElementById('punkt_<?php echo $k; ?>_<?php echo $shid; ?>').style.left=0;
@@ -2450,10 +2453,10 @@ if ($_GET["fu"]==8) {
                 parent.parent.mittemitte.document.getElementById('auswahlrand_<?php echo $shid; ?>').style.visibility='hidden';
                 <?php
             } else {
-                $schrittx=($_POST["zielx"]-$_POST["kox"])/20;
-                $schritty=($_POST["ziely"]-$_POST["koy"])/20;
-                $laufx=$_POST["kox"];
-                $laufy=$_POST["koy"];
+                $schrittx=(int_post('zielx')-int_post('kox'))/20;
+                $schritty=(int_post('ziely')-int_post('koy'))/20;
+                $laufx=int_post('kox');
+                $laufy=int_post('koy');
                 for ($k=1;$k<=20;$k++) {
                     $laufx=$laufx+$schrittx;
                     $laufy=$laufy+$schritty;

@@ -3,10 +3,12 @@
 :noTabs=false:indentSize=4:tabSize=4:folding=explicit:collapseFolds=1:
 */
 include ('../inc.conf.php');
-$langfile_1='kommunikation';
-include ('inc.header.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'kommunikation';
 $fuid = int_get('fu');
+
 if ($fuid==1) {
+    include ('inc.header.php');
     ?>
     <script language=javascript>
         function link(url) {
@@ -102,5 +104,5 @@ if ($fuid==1) {
             </table>
         </center>
         <?php
-}
 include ('inc.footer.php');
+}

@@ -1,8 +1,10 @@
 <?php 
-include ("../inc.conf.php");
-$langfile_1='uebersicht_konplaene';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'uebersicht_konplaene';
+$fuid = int_get('fu');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     
     include ("inc.header.php");
     ?>
