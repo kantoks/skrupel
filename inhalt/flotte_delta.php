@@ -1,9 +1,11 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='flotte_delta';
-$shid=$_GET["shid"];
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'flotte_delta';
+$fuid = int_get('fu');
+$shid = int_get('shid');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
     $array = @mysql_fetch_array($zeiger);
@@ -113,7 +115,7 @@ if ($_GET["fu"]==1) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
     $array = @mysql_fetch_array($zeiger);
@@ -133,7 +135,7 @@ if ($_GET["fu"]==2) {
     $max_min1=floor($fracht_min1/2);
     if ($max_min1<$max_bau) {$max_bau=$max_min1;}
     if ($fracht_min2<$max_bau) {$max_bau=$fracht_min2;}
-    $bau=$_POST["bau_auftrag"];
+    $bau=int_post('bau_auftrag');
     if ($max_bau<$bau) {$bau=$max_bau;}
     $projektile=$projektile+$bau;
     $fracht_cantox=$fracht_cantox-($bau*35);
@@ -150,12 +152,12 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     include ("inc.header.php");
     ?>
     <body text="#000000" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" scroll="no" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
-        if ($_POST["auto"]==1) { 
+        if (int_post('auto')==1) { 
             $auto_projektile=1;$message="<center>".$lang['flottedelta']['autoaktiviert']."</center>";
         } else {
             $auto_projektile=0;$message="<center>".$lang['flottedelta']['autodeaktiviert']."</center>";
@@ -167,7 +169,7 @@ if ($_GET["fu"]==3) {
         echo $message;
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==4) {
+if ($fuid==4) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
     $array = @mysql_fetch_array($zeiger);
@@ -221,7 +223,7 @@ if ($_GET["fu"]==4) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==5) {
+if ($fuid==5) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT id,name,ordner FROM $skrupel_schiffe where id=$shid");
     $array = @mysql_fetch_array($zeiger);
@@ -292,7 +294,7 @@ if ($_GET["fu"]==5) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==6) {
+if ($fuid==6) {
     include ("inc.header.php");
     $zeiger = @mysql_query("UPDATE $skrupel_schiffe set name=\"".$_POST["schiffname"]."\" where id=$shid and besitzer=$spieler");
     ?>
@@ -305,16 +307,16 @@ if ($_GET["fu"]==6) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==7) {
+if ($fuid==7) {
     include ("inc.header.php");
-    $zeiger = @mysql_query("UPDATE $skrupel_schiffe set ordner=\"".$_POST["oid"]."\" where ((id=$shid) or ((zielid=$shid) and (flug=4))) and besitzer=$spieler");
+    $zeiger = @mysql_query("UPDATE $skrupel_schiffe set ordner=\"".int_post('oid')."\" where ((id=$shid) or ((zielid=$shid) and (flug=4))) and besitzer=$spieler");
     ?>
     <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <br><br><br><br>
         <center><?php echo $lang['flottedelta']['uebernommen']?></center>
         <script language=JavaScript>
-            parent.pfeillinks.window.location='flotte.php?fu=7&oid=<?php echo $_POST["oid"]; ?>&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>';
-            parent.pfeilrechts.window.location='flotte.php?fu=8&oid=<?php echo $_POST["oid"]; ?>&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>';
+            parent.pfeillinks.window.location='flotte.php?fu=7&oid=<?php echo int_post('oid'); ?>&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>';
+            parent.pfeilrechts.window.location='flotte.php?fu=8&oid=<?php echo int_post('oid'); ?>&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>';
             parent.ship.window.location='flotte.php?fu=3&shid=<?php echo $shid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>';
         </script>
         <?php

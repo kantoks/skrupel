@@ -1,9 +1,11 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='flotte';
-$shid=$_GET["shid"];
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'flotte';
+$fuid = int_get('fu');
+$shid = int_get('shid');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
     ?>
     <body text="#000000" <?php if (@intval(substr($spieler_optionen,17,1))!=1) { ?>onload="document.getElementById('bodycontent').style.width = (document.getElementById('bodytable').offsetWidth) + 'px';CSBfleXcroll('bodybody');"<?php } ?> style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -40,7 +42,7 @@ if ($_GET["fu"]==1) {
             }
         </script>
         <?php
-        $oid=$_GET["oid"];
+        $oid=int_get('oid');
         if (!$oid) { $oid=0; }
         $total=0;
         $zeiger5 = @mysql_query("SELECT count(*) as total FROM $skrupel_schiffe where besitzer=$spieler and spiel=$spiel");
@@ -313,9 +315,9 @@ if ($_GET["fu"]==1) {
         }
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
-    $oid=$_GET["oid"];
+    $oid=int_get('oid');
     if (!$oid) {
         $zeiger = @mysql_query("SELECT id,ordner,besitzer FROM $skrupel_schiffe where besitzer=$spieler and id=$shid");
         $array = @mysql_fetch_array($zeiger);
@@ -341,8 +343,7 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==3) {
-    include ("../inc.conf.php");
+if ($fuid==3) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where besitzer=$spieler and id=$shid");
     $schiffanzahl = @mysql_num_rows($zeiger);
@@ -629,7 +630,7 @@ if ($_GET["fu"]==3) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==4) {
+if ($fuid==4) {
     include ("inc.header.php");
     ?>
     <script language=JavaScript>
@@ -675,7 +676,7 @@ if ($_GET["fu"]==4) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==5) {
+if ($fuid==5) {
     include ("inc.header.php");
     ?>
     <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -707,7 +708,7 @@ if ($_GET["fu"]==5) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==6) {
+if ($fuid==6) {
     include ("inc.header.php");
     ?>
     <body text="#000000" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -742,8 +743,8 @@ if ($_GET["fu"]==6) {
             }
         </script>
         <?php
-        $flottex=$_GET["flottex"];
-        $flottey=$_GET["flottey"];
+        $flottex=int_get('flottex');
+        $flottey=int_get('flottey');
         $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where besitzer=$spieler and status>0 and spiel=$spiel and kox=$flottex and koy=$flottey order by name");
         $schiffanzahl = @mysql_num_rows($zeiger);
         if ($schiffanzahl>=1) {
@@ -991,9 +992,9 @@ if ($_GET["fu"]==6) {
         }
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==7) {
+if ($fuid==7) {
     include ("inc.header.php");
-    $oid=$_GET["oid"];
+    $oid=int_get('oid');
     ?>
     <script language=JavaScript>
         function linksub(url) {
@@ -1033,9 +1034,9 @@ if ($_GET["fu"]==7) {
         }
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==8) {
+if ($fuid==8) {
     include ("inc.header.php");
-    $oid=$_GET["oid"];
+    $oid=int_get('oid');
     ?>
     <script language=JavaScript>
         function linksub(url) {

@@ -1,11 +1,15 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='gefecht';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'gefecht';
+$fuid = int_get('fu');
 
-if ($_GET["fu"]==1) {
-    include ("../inc.conf.php");
+if ($fuid==1) {
     include ("inc.header.php");
-    $zeiger = @mysql_query("SELECT * FROM $skrupel_kampf where schiff_id_1=$_GET[sh1] and schiff_id_2=$_GET[sh2] and datum=$_GET[datum]");
+    $schiff_id_1=int_get('sh1');
+    $schiff_id_2=int_get('sh2');
+    $datum=int_get('datum');
+    $zeiger = @mysql_query("SELECT * FROM $skrupel_kampf where schiff_id_1=$schiff_id_1 and schiff_id_2=$schiff_id_2 and datum=$datum");
     $gefechteanzahl = @mysql_num_rows($zeiger);
     $array = @mysql_fetch_array($zeiger);
     $id=$array["id"];

@@ -1,7 +1,10 @@
 <?php
-if ($_GET["fu"]==1) {
-  include ("../inc.conf.php");
-  include ("../lang/".$language."/lang.admin.welcome.php");
+include ('../inc.conf.php');
+include_once ('../inhalt/inc.hilfsfunktionen.php');
+include ("../lang/".$language."/lang.admin.welcome.php");
+$fuid = int_get('fu');
+
+if ($fuid==1) {
   include ("inc.header.php");
   if(($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)){
     ?>

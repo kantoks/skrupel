@@ -1,8 +1,10 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='kommunikation_board';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'kommunikation_board';
+$fuid = int_get('fu');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
     ?>
     <style type="text/css">
@@ -390,9 +392,9 @@ if ($_GET["fu"]==1) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
-    $forum=$_GET["fo"];
+    $forum=int_get('fo');
     ?>
     <style type="text/css">
         td.forumdunkel {
@@ -651,10 +653,10 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==4) {
+if ($fuid==4) {
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
-    $forum=$_GET["forum"];
+    $forum=int_get('forum');
     $icon=$_POST["icon"];
     include ("inc.check.php");
     $beginner=$spieler_name;
@@ -678,9 +680,9 @@ if ($_GET["fu"]==4) {
     $backlink="kommunikation_board.php?fu=2&uid=$uid&sid=$sid&fo=$forum";
     header ("Location: $backlink");
 }
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     include ("inc.header.php");
-    $forum=$_GET["fo"];
+    $forum=int_get('fo');
     $thema=$_GET["thema"];
     if ($forum==1) { $formname=$lang['kommunikationboard']['offenbarungen'];}
     if ($forum==2) { $formname=$lang['kommunikationboard']['smalltalk'];}
@@ -882,10 +884,10 @@ if ($_GET["fu"]==3) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==5) {
+if ($fuid==5) {
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
-    $forum=$_GET["forum"];
+    $forum=int_get('forum');
     $thema=$_GET["thema"];
     $icon=$_POST["icon"];
     include ("inc.check.php");

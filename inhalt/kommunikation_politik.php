@@ -1,9 +1,10 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='kommunikation_politik';
-
+include ('../inc.conf.php');
 include_once ('inc.hilfsfunktionen.php');
-if ($_GET["fu"]==1) {
+$langfile_1 = 'kommunikation_politik';
+$fuid = int_get('fu');
+
+if ($fuid==1) {
     include ("inc.header.php");
     ?>
     <frameset framespacing="0" border="false" frameborder="0" cols="50%,50%">
@@ -14,7 +15,7 @@ if ($_GET["fu"]==1) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -166,7 +167,7 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     include ("inc.header.php");
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -268,10 +269,10 @@ if ($_GET["fu"]==3) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==4) {
+if ($fuid==4) {
     include ("inc.header.php");
-    $art=$_POST["art"];
-    $spielernummer=$_POST["spielernummer"];
+    $art = int_post('art');
+    $spielernummer = int_post('spielernummer');
     $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$_GET["sid"]."'");
     $ok = @mysql_data_seek($zeiger,0);
     $sprachtemp_1 = @mysql_fetch_array($zeiger);
@@ -522,10 +523,10 @@ if ($_GET["fu"]==4) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==5) {
+if ($fuid==5) {
     include ("inc.header.php");
-    $art=$_POST["art"];
-    $spielernummer=$_POST["spieler2"];
+    $art = int_post('art');
+    $spielernummer = int_post('spieler2');
     $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$_GET["sid"]."'");
     $ok = @mysql_data_seek($zeiger,0);
     $sprachtemp_1 = @mysql_fetch_array($zeiger);
@@ -536,7 +537,7 @@ if ($_GET["fu"]==5) {
     $spieler2sprache=($sprachtemp_2["sprache"]=='')?$language:$sprachtemp_2["sprache"];
     $file="../lang/".$spieler2sprache."/lang.kommunikation_politik_b.php";
     include($file);
-    $anfrage_id=$_GET["anf"];
+    $anfrage_id=int_get('anf');
     $zeiger = @mysql_query("SELECT * FROM $skrupel_politik_anfrage where partei_a=$spieler and spiel=$spiel and id=$anfrage_id");
     $anzahl = @mysql_num_rows($zeiger);
     if ($anzahl==1) {
@@ -633,10 +634,10 @@ if ($_GET["fu"]==5) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==6) {
+if ($fuid==6) {
     include ("inc.header.php");
-    $art=$_POST["art"];
-    $spielernummer=$_POST["spieler2"];
+    $art = int_post('art');
+    $spielernummer = int_post('spieler2');
     $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$_GET["sid"]."'");
     $ok = @mysql_data_seek($zeiger,0);
     $sprachtemp_1 = @mysql_fetch_array($zeiger);
@@ -647,7 +648,7 @@ if ($_GET["fu"]==6) {
     $spieler2sprache=($sprachtemp_2["sprache"]=='')?$language:$sprachtemp_2["sprache"];
     $file="../lang/".$spieler2sprache."/lang.kommunikation_politik_b.php";
     include($file);
-    $anfrage_id=$_GET["anf"];
+    $anfrage_id=int_get('anf');
     $zeiger = @mysql_query("SELECT * FROM $skrupel_politik_anfrage where partei_a=$spieler and spiel=$spiel and id=$anfrage_id");
     $anzahl = @mysql_num_rows($zeiger);
     if ($anzahl==1) {

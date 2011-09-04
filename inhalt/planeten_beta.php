@@ -1,10 +1,13 @@
 <?php 
-include ("../inc.conf.php");
-$langfile_1='planeten_beta';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'planeten_beta';
+$fuid = int_get('fu');
+$pid = int_get('pid');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
 include ("inc.header.php");
-    $zeiger = @mysql_query("SELECT besitzer,id,native_id,native_name,native_art_name,native_abgabe,native_bild,native_text,native_kol FROM $skrupel_planeten where besitzer=$spieler and id=".$_GET["pid"]);
+    $zeiger = @mysql_query("SELECT besitzer,id,native_id,native_name,native_art_name,native_abgabe,native_bild,native_text,native_kol FROM $skrupel_planeten where besitzer=$spieler and id=".$pid);
     $array = @mysql_fetch_array($zeiger);
     $native_id=$array["native_id"];
     $native_name=$array["native_name"];
@@ -103,9 +106,9 @@ include ("inc.header.php");
         }
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
-    $zeiger = @mysql_query("SELECT id,logbuch FROM $skrupel_planeten where id=".$_GET["pid"]);
+    $zeiger = @mysql_query("SELECT id,logbuch FROM $skrupel_planeten where id=".$pid);
     $array = @mysql_fetch_array($zeiger);
     $logbuch=$array["logbuch"];
     $logbuch=str_replace("\\", "",$logbuch);
@@ -126,7 +129,7 @@ if ($_GET["fu"]==2) {
         <center>
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><form name="formular" method="post" action="planeten_beta.php?fu=3&pid=<?php echo $_GET["pid"]; ?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
+                    <td><form name="formular" method="post" action="planeten_beta.php?fu=3&pid=<?php echo $pid?>&uid=<?php echo $uid?>&sid=<?php echo $sid?>"></td>
                     <td><textarea style="width:390px;height:59px;" name="logbuchdaten"><?php echo $logbuch?></textarea></td>
                     <td></td>
                 </tr>
@@ -140,12 +143,12 @@ if ($_GET["fu"]==2) {
         <?php 
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     include ("inc.header.php");
     $eintrag=$_POST["logbuchdaten"];
     $eintrag=str_replace("\"", "\'",$eintrag);
     $eintrag=str_replace("\\", "",$eintrag);
-    $zeiger = @mysql_query("UPDATE $skrupel_planeten set logbuch=\"$eintrag\" where id=".$_GET["pid"]);
+    $zeiger = @mysql_query("UPDATE $skrupel_planeten set logbuch=\"$eintrag\" where id=".$pid);
     ?>
     <body text="#000000" background="<?php echo $bildpfad?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <br><br><br><br>
@@ -153,9 +156,9 @@ if ($_GET["fu"]==3) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==4) {
+if ($fuid==4) {
     include ("inc.header.php");
-    $zeiger = @mysql_query("SELECT id,x_pos,y_pos FROM $skrupel_planeten where id=".$_GET["pid"]);
+    $zeiger = @mysql_query("SELECT id,x_pos,y_pos FROM $skrupel_planeten where id=".$pid);
     $array = @mysql_fetch_array($zeiger);
     $xpos=$array["x_pos"];
     $ypos=$array["y_pos"];

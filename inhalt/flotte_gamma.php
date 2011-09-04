@@ -1,9 +1,11 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='flotte_gamma';
-$shid=$_GET["shid"];
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'flotte_gamma';
+$fuid = int_get('fu');
+$shid = int_get('shid');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
 
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
@@ -62,7 +64,7 @@ if ($_GET["fu"]==1) {
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
 
     $zeiger = @mysql_query("SELECT id,aggro,mission FROM $skrupel_schiffe where id=$shid");
@@ -168,13 +170,13 @@ if ($_GET["fu"]==2) {
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     include ("inc.header.php");
 
     if ($module[3]==1) {
-        $zeiger = @mysql_query("UPDATE $skrupel_schiffe set aggro=\"".$_POST["aggro"]."\",mission=\"".$_POST["taktik"]."\" where id=$shid and besitzer=$spieler");
+        $zeiger = @mysql_query("UPDATE $skrupel_schiffe set aggro=\"".int_post('aggro')."\",mission=\"".int_post('taktik')."\" where id=$shid and besitzer=$spieler");
     } else {
-        $zeiger = @mysql_query("UPDATE $skrupel_schiffe set aggro=\"".$_POST["aggro"]."\" where id=$shid and besitzer=$spieler");
+        $zeiger = @mysql_query("UPDATE $skrupel_schiffe set aggro=\"".int_post('aggro')."\" where id=$shid and besitzer=$spieler");
     }
     ?>
     <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -184,7 +186,7 @@ if ($_GET["fu"]==3) {
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==4) {
+if ($fuid==4) {
     include ("inc.header.php");
 
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
@@ -351,7 +353,7 @@ if ($_GET["fu"]==4) {
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==5) {
+if ($fuid==5) {
     include ("inc.header.php");
 
     $zeiger = @mysql_query("SELECT id,aggro,mission FROM $skrupel_schiffe where id=$shid");
@@ -422,13 +424,13 @@ if ($_GET["fu"]==5) {
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==6) {
+if ($fuid==6) {
     include ("inc.header.php");
 
     if ($module[3]==1) {
-        $zeiger = @mysql_query("UPDATE $skrupel_schiffe set aggro=\"".$_POST["aggro"]."\",mission=\"".$_POST["taktik"]."\" where id=$shid and besitzer=$spieler");
+        $zeiger = @mysql_query("UPDATE $skrupel_schiffe set aggro=\"".int_post('aggro')."\",mission=\"".int_post('taktik')."\" where id=$shid and besitzer=$spieler");
     } else {
-        $zeiger = @mysql_query("UPDATE $skrupel_schiffe set aggro=\"".$_POST["aggro"]."\" where id=$shid and besitzer=$spieler");
+        $zeiger = @mysql_query("UPDATE $skrupel_schiffe set aggro=\"".int_post('aggro')."\" where id=$shid and besitzer=$spieler");
     }
 
     ?>

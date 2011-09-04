@@ -1,9 +1,11 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='basen';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'basen';
+$fuid = int_get('fu');
+$baid = int_get('baid');
 
-$baid=$_GET["baid"];
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
     ?>
     <script language=JavaScript>
@@ -146,7 +148,7 @@ if ($_GET["fu"]==1) {
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
     ?>
     <frameset framespacing="0" border="false" frameborder="0" cols="*,26,290,167,420,26,*">
@@ -168,7 +170,7 @@ if ($_GET["fu"]==2) {
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     include ("inc.header.php");
 
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
@@ -403,7 +405,7 @@ if ($_GET["fu"]==3) {
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==4) {
+if ($fuid==4) {
     include ("inc.header.php");
 
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
@@ -453,7 +455,7 @@ if ($_GET["fu"]==4) {
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==5) {
+if ($fuid==5) {
     include ("inc.header.php");
     ?>
     <script language=JavaScript>
@@ -477,7 +479,7 @@ if ($_GET["fu"]==5) {
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==6) {
+if ($fuid==6) {
     include ("inc.header.php");
 
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
@@ -541,9 +543,9 @@ if ($_GET["fu"]==6) {
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==7) {
+if ($fuid==7) {
     include ("inc.header.php");
-    $pid=$_GET["pid"];
+    $pid=int_get('pid');
     ?>
     <script language=JavaScript>
         function linksub(url) {
@@ -579,9 +581,9 @@ if ($_GET["fu"]==7) {
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==8) {
+if ($fuid==8) {
     include ("inc.header.php");
-    $pid=$_GET["pid"];
+    $pid=int_get('pid');
     ?>
     <script language=JavaScript>
         function linksub(url) {

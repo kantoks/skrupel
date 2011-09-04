@@ -1,8 +1,10 @@
 <?php
-$langfile_1='hilfe';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'hilfe';
+$fuid = int_get('fu');
 
-if ($_GET["fu"]>=1) {
-    include ("../inc.conf.php");
+if ($fuid>=1) {
     include ("inc.header.php");
     
     function tlquad($tl){
@@ -11,14 +13,14 @@ if ($_GET["fu"]>=1) {
     
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-        <script language=JavaScript>parent.document.title='<?php echo $lang['hilfe']['ueberschrift'][$_GET["fu"]]?>';</script>
+        <script language=JavaScript>parent.document.title='<?php echo $lang['hilfe']['ueberschrift'][$fuid]?>';</script>
         <center>
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td><img src="../bilder/empty.gif" border="0" width="1" height="5"></td>
                 </tr>
                 <tr>
-                    <td style="font-size:12px;"><b><?php echo $lang['hilfe']['ueberschrift'][$_GET["fu"]]?></b></td>
+                    <td style="font-size:12px;"><b><?php echo $lang['hilfe']['ueberschrift'][$fuid]?></b></td>
                 </tr>
                 <tr>
                     <td><img src="../bilder/empty.gif" border="0" width="1" height="7"></td>
@@ -29,12 +31,12 @@ if ($_GET["fu"]>=1) {
             <tr>
                 <td style="color:#aaaaaa;">
                     <?php 
-                    echo $lang['hilfe']['text'][$_GET["fu"]];
+                    echo $lang['hilfe']['text'][$fuid];
 
 
                     //////////////////////////////////////////////////////////////////////////
             
-                    if ($_GET["fu"]==1) {
+                    if ($fuid==1) {
                         echo $lang['hilfe'][$von]['ueberschrift']
                         ?>
                         <table border="0" cellspacing="0" cellpadding="2" width="100%">
@@ -53,7 +55,7 @@ if ($_GET["fu"]>=1) {
                             ?>
                         </table>
                         <?php
-                    } elseif ($_GET["fu"]==2) { 
+                    } elseif ($fuid==2) { 
                         ?>
                         <table border="0" cellspacing="0" cellpadding="2" width="100%">
                             <?php
@@ -71,7 +73,7 @@ if ($_GET["fu"]>=1) {
                             ?>
                         </table>
                         <?php
-                    }elseif ($_GET["fu"]==3) {
+                    }elseif ($fuid==3) {
                         ?>
                         <table border="0" cellspacing="0" cellpadding="2" width="100%">
                             <?php
@@ -88,7 +90,7 @@ if ($_GET["fu"]>=1) {
                             ?>
                         </table>
                         <?php
-                    }elseif ($_GET["fu"]==4) {
+                    }elseif ($fuid==4) {
                         ?>
                         <table border="0" cellspacing="0" cellpadding="2" width="100%">
                             <?php
@@ -105,7 +107,7 @@ if ($_GET["fu"]>=1) {
                             ?>
                         </table>
                         <?php
-                    }elseif ($_GET["fu"]==5) {
+                    }elseif ($fuid==5) {
                         ?>
                         <center>
                             <table border="0" cellspacing="0" cellpadding="2">
@@ -125,7 +127,7 @@ if ($_GET["fu"]>=1) {
                             </table>
                         </center>
                         <?php echo $lang['hilfe'][5][1];
-                    }elseif ($_GET["fu"]==6) {
+                    }elseif ($fuid==6) {
                         ?>
                         <center>
                             <table border="0" cellspacing="0" cellpadding="2">
@@ -145,8 +147,8 @@ if ($_GET["fu"]>=1) {
                             </table>
                         </center>
                         <?php echo $lang['hilfe'][6][1];
-                    //}elseif ($_GET["fu"]==7) { da unnoetig, nur kopf
-                    }elseif ($_GET["fu"]==8) {
+                    //}elseif ($fuid==7) { da unnoetig, nur kopf
+                    }elseif ($fuid==8) {
                         ?>
                         <center>
                             <table border="0" cellspacing="0" cellpadding="2">
@@ -192,8 +194,8 @@ if ($_GET["fu"]>=1) {
                         </center>
                         <?php 
                         echo $lang['hilfe'][8][9];
-                    //}elseif ($_GET["fu"]==9) { da unnoetig, nur kopf
-                    }elseif ($_GET["fu"]==10) {
+                    //}elseif ($fuid==9) { da unnoetig, nur kopf
+                    }elseif ($fuid==10) {
                         ?>
                         <center>
                             <table border="0" cellspacing="0" cellpadding="2">
@@ -213,8 +215,8 @@ if ($_GET["fu"]>=1) {
                             </table>
                         </center>
                         <?php
-                    //}elseif ($_GET["fu"]==11) { da unnoetig, nur kopf
-                    }elseif ($_GET["fu"]==12) {
+                    //}elseif ($fuid==11) { da unnoetig, nur kopf
+                    }elseif ($fuid==12) {
                         ?>
                         <center>
                             <table border="0" cellspacing="0" cellpadding="0">
@@ -305,8 +307,8 @@ if ($_GET["fu"]>=1) {
                         </center>
                         <center><?php echo $lang['hilfe'][12][9];?></center>
                         <?php
-                    //}elseif ($_GET["fu"]==13 bis 15 ) { unnoetig, nur kopf
-                    }elseif ($_GET["fu"]==16) {
+                    //}elseif ($fuid==13 bis 15 ) { unnoetig, nur kopf
+                    }elseif ($fuid==16) {
                         ?>
                         <ul>
                             <?php
@@ -320,8 +322,8 @@ if ($_GET["fu"]>=1) {
                         </ul>
                         <?php
                         echo $lang['hilfe'][16][2];
-                    //}elseif ($_GET["fu"]==17 bis 32) { unnoetig, nur kopf
-                    }elseif ($_GET["fu"]==33) {
+                    //}elseif ($fuid==17 bis 32) { unnoetig, nur kopf
+                    }elseif ($fuid==33) {
                         ?>
                         <center>
                             <table border="0" cellspacing="0" cellpadding="2">
@@ -370,8 +372,8 @@ if ($_GET["fu"]>=1) {
                             </table>
                         </center>
                         <?php echo $lang['hilfe'][33][0];
-                    }//elseif ($_GET["fu"]==34-47) {}
-                    elseif ($_GET["fu"]==9999) {
+                    }//elseif ($fuid==34-47) {}
+                    elseif ($fuid==9999) {
                         echo 'Sorry, no help found.';
                     }
                     ?>
@@ -382,7 +384,6 @@ if ($_GET["fu"]>=1) {
         //////////////////////////////////////////////////////////////////////////
     include ("inc.footer.php");
 } else {
-    include ("../inc.conf.php");
     include ("inc.header.php");
     ?>
     <frameset framespacing="0" border="false" frameborder="0" rows="18,*,16">
@@ -401,7 +402,7 @@ if ($_GET["fu"]>=1) {
                 <frame name="rahmen17" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=27&bildpfad=<?php echo $bildpfad; ?>" target="_self">
             </frameset>
 
-            <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="hilfe.php?fu=<?php if (intval($_GET["fu2"])>=1) {echo $_GET["fu2"];} else {echo "9999";} ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
+            <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="hilfe.php?fu=<?php if (int_get('fu2')>=1) {echo int_get('fu2');} else {echo "9999";} ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
 
             <frameset framespacing="0" border="false" frameborder="0" rows="80,*,92">
                 <frame name="rahmen18" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=28&bildpfad=<?php echo $bildpfad; ?>" target="_self">

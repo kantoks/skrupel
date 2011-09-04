@@ -1,9 +1,11 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='flotte_beta';
-$shid=$_GET["shid"];
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'flotte_beta';
+$fuid = int_get('fu');
+$shid = int_get('shid');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
     $p_zahl=0;
     $s_zahl=0;
@@ -246,11 +248,11 @@ if ($_GET["fu"]==1) {
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
     include ("../lang/".$spieler_sprache."/lang.basen.php");
 
-    $pid=$_GET["pid"];
+    $pid=int_get('pid');
 
     $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where id=$pid");
 
@@ -441,7 +443,7 @@ if ($_GET["fu"]==2) {
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     include ("inc.header.php");
 
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
@@ -651,7 +653,7 @@ if ($_GET["fu"]==3) {
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==4) {
+if ($fuid==4) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
     $array = @mysql_fetch_array($zeiger);
@@ -1603,15 +1605,15 @@ if ($_GET["fu"]==4) {
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==5) {
+if ($fuid==5) {
     include ("inc.header.php");
     ?>
     <body text="#000000" scroll="no" style="background-image:url('<?php echo $bildpfad; ?>/aufbau/14.gif'); background-attachment:fixed;" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
-        $pid=$_GET["pid"];
+        $pid=int_get('pid');
         $zeiger_temp = @mysql_query("SELECT * FROM $skrupel_planeten where id=$pid");
         $array_temp = @mysql_fetch_array($zeiger_temp);
-    
+
         $planet_name=$array_temp["name"];
         $besitzer=$array_temp["besitzer"];
         $s_x_pos=$array_temp["x_pos"];
@@ -1634,44 +1636,26 @@ if ($_GET["fu"]==5) {
         $s_planet_min1=$array_temp["min1"];
         $s_planet_min2=$array_temp["min2"];
         $s_planet_min3=$array_temp["min3"];
-        $planet_kolonisten=$_POST["planet_kolonisten"];
-        $planet_cantox=$_POST["planet_cantox"];
-        $planet_vorrat=$_POST["planet_vorrat"];
-        $planet_lemin=$_POST["planet_lemin"];
-        $planet_min1=$_POST["planet_min1"];
-        $planet_min2=$_POST["planet_min2"];
-        $planet_min3=$_POST["planet_min3"];
-        $fracht_leute=$_POST["fracht_leute"];
-        $fracht_cantox=$_POST["fracht_cantox"];
-        $fracht_vorrat=$_POST["fracht_vorrat"];
-        $fracht_lemin=$_POST["fracht_lemin"];
-        $fracht_min1=$_POST["fracht_min1"];
-        $fracht_min2=$_POST["fracht_min2"];
-        $fracht_min3=$_POST["fracht_min3"];
-        $s_leichtebt=$_POST["s_leichtebt"];
-        $s_schwerebt=$_POST["s_schwerebt"];
-        $p_leichtebt=$_POST["p_leichtebt"];
-        $p_schwerebt=$_POST["p_schwerebt"];
-        
-        if (!ctype_digit($planet_kolonisten)) $planet_kolonisten = 0;
-        if (!ctype_digit($planet_cantox)) $planet_cantox = 0;
-        if (!ctype_digit($planet_vorrat)) $planet_vorrat = 0;
-        if (!ctype_digit($planet_lemin)) $planet_lemin = 0;
-        if (!ctype_digit($planet_min1)) $planet_min1 = 0;
-        if (!ctype_digit($planet_min2)) $planet_min2 = 0;
-        if (!ctype_digit($planet_min3)) $planet_min3 = 0;
-        if (!ctype_digit($fracht_leute)) $fracht_leute = 0;
-        if (!ctype_digit($fracht_cantox)) $fracht_cantox = 0;
-        if (!ctype_digit($fracht_vorrat)) $fracht_vorrat = 0;
-        if (!ctype_digit($fracht_lemin)) $fracht_lemin = 0;
-        if (!ctype_digit($fracht_min1)) $fracht_min1 = 0;
-        if (!ctype_digit($fracht_min2)) $fracht_min2 = 0;
-        if (!ctype_digit($fracht_min3)) $fracht_min3 = 0;
-        if (!ctype_digit($s_leichtebt)) $s_leichtebt = 0;
-        if (!ctype_digit($s_schwerebt)) $s_schwerebt = 0;
-        if (!ctype_digit($p_leichtebt)) $p_leichtebt = 0;
-        if (!ctype_digit($p_schwerebt)) $p_schwerebt = 0;
-    
+
+        $planet_kolonisten = (!int_post('planet_kolonisten'))?0:int_post('planet_kolonisten');
+        $planet_cantox = (!int_post('planet_cantox'))?0:int_post('planet_cantox');
+        $planet_vorrat = (!int_post('planet_vorrat'))?0:int_post('planet_vorrat');
+        $planet_lemin = (!int_post('planet_lemin'))?0:int_post('planet_lemin');
+        $planet_min1 = (!int_post('planet_min1'))?0:int_post('planet_min1');
+        $planet_min2 = (!int_post('planet_min2'))?0:int_post('planet_min2');
+        $planet_min3 = (!int_post('planet_min3'))?0:int_post('planet_min3');
+        $fracht_leute = (!int_post('fracht_leute'))?0:int_post('fracht_leute');
+        $fracht_cantox = (!int_post('fracht_cantox'))?0:int_post('fracht_cantox');
+        $fracht_vorrat = (!int_post('fracht_vorrat'))?0:int_post('fracht_vorrat');
+        $fracht_lemin = (!int_post('fracht_lemin'))?0:int_post('fracht_lemin');
+        $fracht_min1 = (!int_post('fracht_min1'))?0:int_post('fracht_min1');
+        $fracht_min2 = (!int_post('fracht_min2'))?0:int_post('fracht_min2');
+        $fracht_min3 = (!int_post('fracht_min3'))?0:int_post('fracht_min3');
+        $p_leichtebt = (!int_post('p_leichtebt'))?0:int_post('p_leichtebt');
+        $p_schwerebt = (!int_post('p_schwerebt'))?0:int_post('p_schwerebt');
+        $s_leichtebt = (!int_post('s_leichtebt'))?0:int_post('s_leichtebt');
+        $s_schwerebt = (!int_post('s_schwerebt'))?0:int_post('s_schwerebt');
+
         if (($planet_kolonisten>=0) and ($p_leichtebt>=0) and ($p_schwerebt>=0) and ($planet_cantox>=0) and ($planet_vorrat>=0) and ($planet_lemin>=0) and ($planet_min1>=0) and ($planet_min2>=0) and ($planet_min3>=0) and ($fracht_leute>=0) and ($s_leichtebt>=0) and ($s_schwerebt>=0) and ($fracht_cantox>=0) and ($fracht_vorrat>=0) and ($fracht_lemin>=0) and ($fracht_min1>=0) and ($fracht_min2>=0) and ($fracht_min3>=0)) {
             $s_zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
             $s_array = @mysql_fetch_array($s_zeiger);
@@ -1773,7 +1757,7 @@ if ($_GET["fu"]==5) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==6) {
+if ($fuid==6) {
 include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
     $array = @mysql_fetch_array($zeiger);
@@ -2468,7 +2452,7 @@ include ("inc.header.php");
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==8) {
+if ($fuid==8) {
     include ("inc.header.php");
 
     $zeiger = @mysql_query("SELECT id,logbuch FROM $skrupel_schiffe where id=$shid");
@@ -2508,7 +2492,7 @@ if ($_GET["fu"]==8) {
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==9) {
+if ($fuid==9) {
     include ("inc.header.php");
 
     $eintrag=$_POST["logbuchdaten"];
@@ -2524,10 +2508,10 @@ if ($_GET["fu"]==9) {
     include ("inc.footer.php");
 }
 
-if ($_GET["fu"]==10) {
+if ($fuid==10) {
     include ("inc.header.php");
 
-    $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where id=".$_GET["pid"]);
+    $zeiger = @mysql_query("SELECT * FROM $skrupel_planeten where id=".int_get('pid'));
     $array = @mysql_fetch_array($zeiger);
     $pid=$array["id"];
     $name=$array["name"];

@@ -1,9 +1,10 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='kommunikation_ch';
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'kommunikation_ch';
+$fuid = int_get('fu');
 
-if ($_GET["fu"]==1) {
-    include ("../inc.conf.php");
+if ($fuid==1) {
     include ("inc.header.php");
     ?>
     <frameset framespacing="0" border="false" frameborder="0" cols="*,360,*">
@@ -16,8 +17,7 @@ if ($_GET["fu"]==1) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
-    include ("../inc.conf.php");
+if ($fuid==2) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT chatfarbe, id From $skrupel_user where uid='$uid'");
     $array = @mysql_fetch_array($zeiger);
@@ -134,7 +134,7 @@ if ($_GET["fu"]==2) {
         $nachricht=parsetext($nachricht);
         $jetzt=date("H:i",$aktuell);
          //$text="<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td valign=\"top\" style=\"color:$farbe;\"><nobr>$spieler_name&nbsp;</nobr></td><td valign=\"top\" style=\"color:#aaaaaa;\"><nobr>@ $jetzt&nbsp;</nobr></td><td valign=\"top\">$nachricht</td></tr></table>";
-        $an=$_POST["an"];
+        $an=int_post('an');
         $zeiger = @mysql_query("INSERT INTO $skrupel_chat (spiel,datum,text,an,von,farbe) values ($spiel,'$aktuell','$nachricht','$an','$spieler_name','$farbe');");
     }
     if (strlen($_GET["zeit"])>=1) {
@@ -173,7 +173,7 @@ if ($_GET["fu"]==2) {
     } else { 
         $neuzeit=time();$first=1;
     }
-    $akt=$_POST["akt"];
+    $akt=int_post('akt');
     if (!$akt) {$akt=10;}
     ?>
     <script language="Javascript">
@@ -291,7 +291,7 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT chatfarbe, id From $skrupel_user where uid='$uid'");
     $array = @mysql_fetch_array($zeiger);

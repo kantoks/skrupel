@@ -1,9 +1,11 @@
 <?php
-include ("../inc.conf.php");
-$langfile_1='basen_beta';
-$baid=$_GET["baid"];
+include ('../inc.conf.php');
+include_once ('inc.hilfsfunktionen.php');
+$langfile_1 = 'basen_beta';
+$fuid = int_get('fu');
+$baid = int_get('baid');
 
-if ($_GET["fu"]==1) {
+if ($fuid==1) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
     $array = @mysql_fetch_array($zeiger);
@@ -162,7 +164,7 @@ if ($_GET["fu"]==1) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==2) {
+if ($fuid==2) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
     $array = @mysql_fetch_array($zeiger);
@@ -199,8 +201,8 @@ if ($_GET["fu"]==2) {
     }
     for ($i=0;$i<$zaehler;$i++) {
         $schiffwert=explode(':',$schiff[$i]);
-        if ($schiffwert[1]==$_POST["schiffid"]) {
-            if (($cantox>=$schiffwert[5]) and ($min1>=$schiffwert[6])  and ($min2>=$schiffwert[7])  and ($min3>=$schiffwert[8] and ($schiffwert[2]<=$t_huelle))) {
+        if ($schiffwert[1]==int_post('schiffid')) {
+            if (($cantox>=$schiffwert[5]) and ($min1>=$schiffwert[6]) and ($min2>=$schiffwert[7]) and ($min3>=$schiffwert[8] and ($schiffwert[2]<=$t_huelle))) {
                 $cantox=$cantox-$schiffwert[5];
                 $min1=$min1-$schiffwert[6];
                 $min2=$min2-$schiffwert[7];
@@ -229,7 +231,7 @@ if ($_GET["fu"]==2) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==3) {
+if ($fuid==3) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
     $array = @mysql_fetch_array($zeiger);
@@ -343,8 +345,8 @@ if ($_GET["fu"]==3) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==4) {
-include ("inc.header.php");
+if ($fuid==4) {
+    include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
     $array = @mysql_fetch_array($zeiger);
     $baid=$array["id"];
@@ -381,24 +383,25 @@ include ("inc.header.php");
     $minkosten_1 = array (0,1,2,2,3,3,3,3,13,17);
     $minkosten_2 = array (0,5,5,3,3,3,4,5,3,3);
     $minkosten_3 = array (0,0,1,5,7,7,15,15,28,35);
-    $anzahl=$_POST["anzahl"];
-    if (($cantox>=$kosten[$_POST["stufe"]]*$anzahl) and ($min1>=$minkosten_1[$_POST["stufe"]]*$anzahl)  and ($min2>=$minkosten_2[$_POST["stufe"]]*$anzahl)  and ($min3>=$minkosten_3[$_POST["stufe"]]*$anzahl) and ((($_POST["stufe"]<8)and ($_POST["stufe"]<=$t_antrieb))or(($_POST["stufe"]>7)and ($_POST["stufe"]<$t_antrieb)))) {
-        $cantox=$cantox-($kosten[$_POST["stufe"]]*$anzahl);
-        $min1=$min1-($minkosten_1[$_POST["stufe"]]*$anzahl);
-        $min2=$min2-($minkosten_2[$_POST["stufe"]]*$anzahl);
-        $min3=$min3-($minkosten_3[$_POST["stufe"]]*$anzahl);
-        if ($_POST["stufe"]==1) { $vorrat_antrieb_1=$vorrat_antrieb_1+$anzahl;
-        }elseif ($_POST["stufe"]==2) { $vorrat_antrieb_2=$vorrat_antrieb_2+$anzahl;
-        }elseif ($_POST["stufe"]==3) { $vorrat_antrieb_3=$vorrat_antrieb_3+$anzahl;
-        }elseif ($_POST["stufe"]==4) { $vorrat_antrieb_4=$vorrat_antrieb_4+$anzahl;
-        }elseif ($_POST["stufe"]==5) { $vorrat_antrieb_5=$vorrat_antrieb_5+$anzahl;
-        }elseif ($_POST["stufe"]==6) { $vorrat_antrieb_6=$vorrat_antrieb_6+$anzahl;
-        }elseif ($_POST["stufe"]==7) { $vorrat_antrieb_7=$vorrat_antrieb_7+$anzahl;
-        }elseif ($_POST["stufe"]==8) { $vorrat_antrieb_8=$vorrat_antrieb_8+$anzahl;
-        }elseif ($_POST["stufe"]==9) { $vorrat_antrieb_9=$vorrat_antrieb_9+$anzahl;}
+    $anzahl=int_post('anzahl');
+    $stufe=int_post('stufe');
+    if (($cantox>=$kosten[$stufe]*$anzahl) and ($min1>=$minkosten_1[$stufe]*$anzahl) and ($min2>=$minkosten_2[$stufe]*$anzahl) and ($min3>=$minkosten_3[$stufe]*$anzahl) and ((($stufe<8) and ($stufe<=$t_antrieb)) or (($stufe>7) and ($stufe<$t_antrieb)))) {
+        $cantox=$cantox-($kosten[$stufe]*$anzahl);
+        $min1=$min1-($minkosten_1[$stufe]*$anzahl);
+        $min2=$min2-($minkosten_2[$stufe]*$anzahl);
+        $min3=$min3-($minkosten_3[$stufe]*$anzahl);
+        if ($stufe==1) { $vorrat_antrieb_1=$vorrat_antrieb_1+$anzahl;
+        }elseif ($stufe==2) { $vorrat_antrieb_2=$vorrat_antrieb_2+$anzahl;
+        }elseif ($stufe==3) { $vorrat_antrieb_3=$vorrat_antrieb_3+$anzahl;
+        }elseif ($stufe==4) { $vorrat_antrieb_4=$vorrat_antrieb_4+$anzahl;
+        }elseif ($stufe==5) { $vorrat_antrieb_5=$vorrat_antrieb_5+$anzahl;
+        }elseif ($stufe==6) { $vorrat_antrieb_6=$vorrat_antrieb_6+$anzahl;
+        }elseif ($stufe==7) { $vorrat_antrieb_7=$vorrat_antrieb_7+$anzahl;
+        }elseif ($stufe==8) { $vorrat_antrieb_8=$vorrat_antrieb_8+$anzahl;
+        }elseif ($stufe==9) { $vorrat_antrieb_9=$vorrat_antrieb_9+$anzahl;}
         $zeiger_temp = @mysql_query("UPDATE $skrupel_planeten set cantox=$cantox,min1=$min1,min2=$min2,min3=$min3 where besitzer=$spieler and id=$planetid");
         $zeiger_temp = @mysql_query("UPDATE $skrupel_sternenbasen set vorrat_antrieb_1=$vorrat_antrieb_1,vorrat_antrieb_2=$vorrat_antrieb_2,vorrat_antrieb_3=$vorrat_antrieb_3,vorrat_antrieb_4=$vorrat_antrieb_4,vorrat_antrieb_5=$vorrat_antrieb_5,vorrat_antrieb_6=$vorrat_antrieb_6,vorrat_antrieb_7=$vorrat_antrieb_7,vorrat_antrieb_8=$vorrat_antrieb_8,vorrat_antrieb_9=$vorrat_antrieb_9 where besitzer=$spieler and id=$baid");
-        $aname=$antriebname[$_POST["stufe"]];
+        $aname=$antriebname[$stufe];
         $message=str_replace(array('{1}','{2}'),array($aname,$anzahl),$lang['basenbeta']['antrieberfolgreichproduziert']);
         $message='<center>'.$message.'</center>';
     }
@@ -419,7 +422,7 @@ include ("inc.header.php");
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==5) {
+if ($fuid==5) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
     $array = @mysql_fetch_array($zeiger);
@@ -537,7 +540,7 @@ if ($_GET["fu"]==5) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==6) {
+if ($fuid==6) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
     $array = @mysql_fetch_array($zeiger);
@@ -577,25 +580,26 @@ if ($_GET["fu"]==6) {
     $minkosten_1 = array (0,0,0,2,12,12,12,12,12,18,12);
     $minkosten_2 = array (0,1,1,1,1,1,1,1,1,1,1);
     $minkosten_3 = array (0,0,0,0,1,5,1,14,30,38,57);
-    $anzahl=$_POST["anzahl"];
-    if (($cantox>=$kosten[$_POST["stufe"]]*$anzahl) and ($min1>=$minkosten_1[$_POST["stufe"]]*$anzahl)  and ($min2>=$minkosten_2[$_POST["stufe"]]*$anzahl)  and ($min3>=$minkosten_3[$_POST["stufe"]]*$anzahl) and ($techlevel[$_POST["stufe"]]<=$t_energie)) {
-        $cantox=$cantox-($kosten[$_POST["stufe"]]*$anzahl);
-        $min1=$min1-($minkosten_1[$_POST["stufe"]]*$anzahl);
-        $min2=$min2-($minkosten_2[$_POST["stufe"]]*$anzahl);
-        $min3=$min3-($minkosten_3[$_POST["stufe"]]*$anzahl);
-        if ($_POST["stufe"]==1) { $vorrat_energetik_1=$vorrat_energetik_1+$anzahl;
-        }elseif ($_POST["stufe"]==2) { $vorrat_energetik_2=$vorrat_energetik_2+$anzahl;
-        }elseif ($_POST["stufe"]==3) { $vorrat_energetik_3=$vorrat_energetik_3+$anzahl;
-        }elseif ($_POST["stufe"]==4) { $vorrat_energetik_4=$vorrat_energetik_4+$anzahl;
-        }elseif ($_POST["stufe"]==5) { $vorrat_energetik_5=$vorrat_energetik_5+$anzahl;
-        }elseif ($_POST["stufe"]==6) { $vorrat_energetik_6=$vorrat_energetik_6+$anzahl;
-        }elseif ($_POST["stufe"]==7) { $vorrat_energetik_7=$vorrat_energetik_7+$anzahl;
-        }elseif ($_POST["stufe"]==8) { $vorrat_energetik_8=$vorrat_energetik_8+$anzahl;
-        }elseif ($_POST["stufe"]==9) { $vorrat_energetik_9=$vorrat_energetik_9+$anzahl;
-        }elseif ($_POST["stufe"]==10) { $vorrat_energetik_10=$vorrat_energetik_10+$anzahl;}
+    $anzahl=int_post('anzahl');
+    $stufe=int_post('stufe');
+    if (($cantox>=$kosten[$stufe]*$anzahl) and ($min1>=$minkosten_1[$stufe]*$anzahl) and ($min2>=$minkosten_2[$stufe]*$anzahl) and ($min3>=$minkosten_3[$stufe]*$anzahl) and ($techlevel[$stufe]<=$t_energie)) {
+        $cantox=$cantox-($kosten[$stufe]*$anzahl);
+        $min1=$min1-($minkosten_1[$stufe]*$anzahl);
+        $min2=$min2-($minkosten_2[$stufe]*$anzahl);
+        $min3=$min3-($minkosten_3[$stufe]*$anzahl);
+        if ($stufe==1) { $vorrat_energetik_1=$vorrat_energetik_1+$anzahl;
+        }elseif ($stufe==2) { $vorrat_energetik_2=$vorrat_energetik_2+$anzahl;
+        }elseif ($stufe==3) { $vorrat_energetik_3=$vorrat_energetik_3+$anzahl;
+        }elseif ($stufe==4) { $vorrat_energetik_4=$vorrat_energetik_4+$anzahl;
+        }elseif ($stufe==5) { $vorrat_energetik_5=$vorrat_energetik_5+$anzahl;
+        }elseif ($stufe==6) { $vorrat_energetik_6=$vorrat_energetik_6+$anzahl;
+        }elseif ($stufe==7) { $vorrat_energetik_7=$vorrat_energetik_7+$anzahl;
+        }elseif ($stufe==8) { $vorrat_energetik_8=$vorrat_energetik_8+$anzahl;
+        }elseif ($stufe==9) { $vorrat_energetik_9=$vorrat_energetik_9+$anzahl;
+        }elseif ($stufe==10) { $vorrat_energetik_10=$vorrat_energetik_10+$anzahl;}
         $zeiger_temp = @mysql_query("UPDATE $skrupel_planeten set cantox=$cantox,min1=$min1,min2=$min2,min3=$min3 where besitzer=$spieler and id=$planetid");
         $zeiger_temp = @mysql_query("UPDATE $skrupel_sternenbasen set vorrat_energetik_1=$vorrat_energetik_1,vorrat_energetik_2=$vorrat_energetik_2,vorrat_energetik_3=$vorrat_energetik_3,vorrat_energetik_4=$vorrat_energetik_4,vorrat_energetik_5=$vorrat_energetik_5,vorrat_energetik_6=$vorrat_energetik_6,vorrat_energetik_7=$vorrat_energetik_7,vorrat_energetik_8=$vorrat_energetik_8,vorrat_energetik_9=$vorrat_energetik_9,vorrat_energetik_10=$vorrat_energetik_10 where besitzer=$spieler and id=$baid");
-        $message=str_replace(array('{1}','{2}'),array($waffen[$_POST["stufe"]],$anzahl),$lang['basenbeta']['energetikerfolgreichproduziert']);
+        $message=str_replace(array('{1}','{2}'),array($waffen[$stufe],$anzahl),$lang['basenbeta']['energetikerfolgreichproduziert']);
         $message='<center>'.$message.'</center>';
     }
     ?>
@@ -615,7 +619,7 @@ if ($_GET["fu"]==6) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==7) {
+if ($fuid==7) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
     $array = @mysql_fetch_array($zeiger);
@@ -732,7 +736,7 @@ if ($_GET["fu"]==7) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==8) {
+if ($fuid==8) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
     $array = @mysql_fetch_array($zeiger);
@@ -772,25 +776,26 @@ if ($_GET["fu"]==8) {
     $minkosten_1 = array (0,1,0,4,3,1,4,7,2,3,1);
     $minkosten_2 = array (0,1,1,1,1,1,1,1,1,1,1);
     $minkosten_3 = array (0,0,0,0,1,5,1,14,7,8,9);
-    $anzahl=$_POST["anzahl"];
-    if (($cantox>=$kosten[$_POST["stufe"]]*$anzahl) and ($min1>=$minkosten_1[$_POST["stufe"]]*$anzahl)  and ($min2>=$minkosten_2[$_POST["stufe"]]*$anzahl)  and ($min3>=$minkosten_3[$_POST["stufe"]]*$anzahl) and ($techlevel[$_POST["stufe"]]<=$t_explosiv)) {
-        $cantox=$cantox-($kosten[$_POST["stufe"]]*$anzahl);
-        $min1=$min1-($minkosten_1[$_POST["stufe"]]*$anzahl);
-        $min2=$min2-($minkosten_2[$_POST["stufe"]]*$anzahl);
-        $min3=$min3-($minkosten_3[$_POST["stufe"]]*$anzahl);
-        if ($_POST["stufe"]==1) { $vorrat_projektile_1=$vorrat_projektile_1+$anzahl;
-        }elseif ($_POST["stufe"]==2) { $vorrat_projektile_2=$vorrat_projektile_2+$anzahl;
-        }elseif ($_POST["stufe"]==3) { $vorrat_projektile_3=$vorrat_projektile_3+$anzahl;
-        }elseif ($_POST["stufe"]==4) { $vorrat_projektile_4=$vorrat_projektile_4+$anzahl;
-        }elseif ($_POST["stufe"]==5) { $vorrat_projektile_5=$vorrat_projektile_5+$anzahl;
-        }elseif ($_POST["stufe"]==6) { $vorrat_projektile_6=$vorrat_projektile_6+$anzahl;
-        }elseif ($_POST["stufe"]==7) { $vorrat_projektile_7=$vorrat_projektile_7+$anzahl;
-        }elseif ($_POST["stufe"]==8) { $vorrat_projektile_8=$vorrat_projektile_8+$anzahl;
-        }elseif ($_POST["stufe"]==9) { $vorrat_projektile_9=$vorrat_projektile_9+$anzahl;
-        }elseif ($_POST["stufe"]==10) { $vorrat_projektile_10=$vorrat_projektile_10+$anzahl;}
+    $anzahl=int_post('anzahl');
+    $stufe=int_post('stufe');
+    if (($cantox>=$kosten[$stufe]*$anzahl) and ($min1>=$minkosten_1[$stufe]*$anzahl) and ($min2>=$minkosten_2[$stufe]*$anzahl) and ($min3>=$minkosten_3[$stufe]*$anzahl) and ($techlevel[$stufe]<=$t_explosiv)) {
+        $cantox=$cantox-($kosten[$stufe]*$anzahl);
+        $min1=$min1-($minkosten_1[$stufe]*$anzahl);
+        $min2=$min2-($minkosten_2[$stufe]*$anzahl);
+        $min3=$min3-($minkosten_3[$stufe]*$anzahl);
+        if ($stufe==1) { $vorrat_projektile_1=$vorrat_projektile_1+$anzahl;
+        }elseif ($stufe==2) { $vorrat_projektile_2=$vorrat_projektile_2+$anzahl;
+        }elseif ($stufe==3) { $vorrat_projektile_3=$vorrat_projektile_3+$anzahl;
+        }elseif ($stufe==4) { $vorrat_projektile_4=$vorrat_projektile_4+$anzahl;
+        }elseif ($stufe==5) { $vorrat_projektile_5=$vorrat_projektile_5+$anzahl;
+        }elseif ($stufe==6) { $vorrat_projektile_6=$vorrat_projektile_6+$anzahl;
+        }elseif ($stufe==7) { $vorrat_projektile_7=$vorrat_projektile_7+$anzahl;
+        }elseif ($stufe==8) { $vorrat_projektile_8=$vorrat_projektile_8+$anzahl;
+        }elseif ($stufe==9) { $vorrat_projektile_9=$vorrat_projektile_9+$anzahl;
+        }elseif ($stufe==10) { $vorrat_projektile_10=$vorrat_projektile_10+$anzahl;}
         $zeiger_temp = @mysql_query("UPDATE $skrupel_planeten set cantox=$cantox,min1=$min1,min2=$min2,min3=$min3 where besitzer=$spieler and id=$planetid");
         $zeiger_temp = @mysql_query("UPDATE $skrupel_sternenbasen set vorrat_projektile_1=$vorrat_projektile_1,vorrat_projektile_2=$vorrat_projektile_2,vorrat_projektile_3=$vorrat_projektile_3,vorrat_projektile_4=$vorrat_projektile_4,vorrat_projektile_5=$vorrat_projektile_5,vorrat_projektile_6=$vorrat_projektile_6,vorrat_projektile_7=$vorrat_projektile_7,vorrat_projektile_8=$vorrat_projektile_8,vorrat_projektile_9=$vorrat_projektile_9,vorrat_projektile_10=$vorrat_projektile_10 where besitzer=$spieler and id=$baid");
-        $message=str_replace(array('{1}','{2}'),array($waffen[$_POST["stufe"]],$anzahl),$lang['basenbeta']['projektilerfolgreichproduziert']);
+        $message=str_replace(array('{1}','{2}'),array($waffen[$stufe],$anzahl),$lang['basenbeta']['projektilerfolgreichproduziert']);
         $message='<center>'.$message.'</center>';
     }
     ?>
@@ -810,7 +815,7 @@ if ($_GET["fu"]==8) {
         <?php
     include ("inc.footer.php");
 }
-if ($_GET["fu"]==9) {
+if ($fuid==9) {
     include ("inc.header.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
     $array = @mysql_fetch_array($zeiger);
@@ -834,7 +839,7 @@ if ($_GET["fu"]==9) {
     $min1=$array2["min1"];
     $min2=$array2["min2"];
     $min3=$array2["min3"];
-    $zeiger3 = @mysql_query("SELECT * FROM $skrupel_konplaene where besitzer=$spieler and spiel=$spiel and id=".$_POST["schiffid"]);
+    $zeiger3 = @mysql_query("SELECT * FROM $skrupel_konplaene where besitzer=$spieler and spiel=$spiel and id=".int_post('schiffid'));
     $array3 = @mysql_fetch_array($zeiger3);
     $konid=$array3["id"];
     $rasses=$array3["rasse"];
@@ -843,7 +848,7 @@ if ($_GET["fu"]==9) {
     $techlevel=$array3["techlevel"];
     $sonstiges=$array3["sonstiges"];
     $schiffwert=explode(':',$sonstiges);
-    if (($cantox>=$schiffwert[2]) and ($min1>=$schiffwert[3])  and ($min2>=$schiffwert[4])  and ($min3>=$schiffwert[5])) {
+    if (($cantox>=$schiffwert[2]) and ($min1>=$schiffwert[3]) and ($min2>=$schiffwert[4]) and ($min3>=$schiffwert[5])) {
         $cantox=$cantox-$schiffwert[2];
         $min1=$min1-$schiffwert[3];
         $min2=$min2-$schiffwert[4];
