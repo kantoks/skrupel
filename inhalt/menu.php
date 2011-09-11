@@ -10,7 +10,7 @@ if ($fuid==1) {
     <script language=JavaScript>
         function link_fenster_beide(url,url2) {
             if (document.globals.kursmodus.value==1) {
-                alert('<?php echo $lang['menu']['kursmodus']?>');
+                alert('<?php echo html_entity_decode($lang['menu']['kursmodus'])?>');
             } else {
                 parent.untenmitte.window.location=url;
                 if (document.globals.map.value==1) {
@@ -23,7 +23,7 @@ if ($fuid==1) {
         }
         function link_all(url) {
             if (document.globals.kursmodus.value==1) {
-                alert('<?php echo $lang['menu']['kursmodus']?>');
+                alert('<?php echo html_entity_decode($lang['menu']['kursmodus'])?>');
             } else {
                 parent.untenmitte.window.location=url;
                 if (document.globals.map.value==0) {
@@ -36,7 +36,7 @@ if ($fuid==1) {
         }
         function link_unten(url) {
             if (document.globals.kursmodus.value==1) {
-                alert('<?php echo $lang['menu']['kursmodus']?>');
+                alert('<?php echo html_entity_decode($lang['menu']['kursmodus'])?>');
             } else {
                 parent.untenmitte.window.location=url;
             }
@@ -92,7 +92,7 @@ if ($fuid==2) {
     <script language=JavaScript>
         function link_unten(url) {
             if (parent.mittelinksoben.document.getElementById("globals").kursmodus.value==1) {
-                alert('<?php echo $lang['menu']['kursmodus']?>');
+                alert('<?php echo html_entity_decode($lang['menu']['kursmodus'])?>');
             } else {
                 parent.untenmitte.window.location=url;
             }

@@ -574,11 +574,11 @@ if ($fuid==5) {
                         var cantoxhab = eval(document.formular.planet_cantox.value+'+0');
                         if (cantoxnot<75) {cantoxnot=75;}
                         if(cantoxnot > cantoxhab) {
-                            alert("<?php echo $lang['basenalpha']['raumfaltenichta']; ?> "+cantoxnot+" <?php echo $lang['basenalpha']['raumfaltenichtb']; ?>");
+                            alert("<?php echo html_entity_decode($lang['basenalpha']['raumfaltenichta']); ?> "+cantoxnot+" <?php echo html_entity_decode($lang['basenalpha']['raumfaltenichtb']); ?>");
                             return false;
                         }
                         if(document.formular.zielid.value=='0') {
-                            alert("<?php echo $lang['basenalpha']['zielobjekt']; ?>");
+                            alert("<?php echo html_entity_decode($lang['basenalpha']['zielobjekt']); ?>");
                             return false;
                         }
                         return true;

@@ -432,14 +432,14 @@ if ($fuid==3) {
             }
             function linksub(url) {
                 if (parent.parent.mittelinksoben.document.globals.kursmodus.value==1) {
-                    alert('<?php echo $lang['flotte']['nochkursmodus']?>');
+                    alert('<?php echo html_entity_decode($lang['flotte']['nochkursmodus'])?>');
                 } else {
                     parent.shipsdetails.window.location=url;
                 }
             }
             function linktop(url) {
                 if (parent.parent.mittelinksoben.document.globals.kursmodus.value==1) {
-                    alert('<?php echo $lang['flotte']['nochkursmodus']?>');
+                    alert('<?php echo html_entity_decode($lang['flotte']['nochkursmodus'])?>');
                 } else {
                     parent.window.location=url;
                 }
@@ -636,7 +636,7 @@ if ($fuid==4) {
     <script language=JavaScript>
         function linksub(url) {
             if (parent.parent.mittelinksoben.document.globals.kursmodus.value==1) {
-                alert('<?php echo $lang['flotte']['nochkursmodus']?>');
+                alert('<?php echo html_entity_decode($lang['flotte']['nochkursmodus'])?>');
             } else {
                 parent.shipsdetails.window.location=url;
             }
@@ -683,7 +683,7 @@ if ($fuid==5) {
         <script language=JavaScript>
             function linksub(url) {
                 if (parent.parent.mittelinksoben.document.globals.kursmodus.value==1) {
-                    alert('<?php echo $lang['flotte']['nochkursmodus']?>');
+                    alert('<?php echo html_entity_decode($lang['flotte']['nochkursmodus'])?>');
                 } else {
                     parent.shipsdetails.window.location=url;
                 }
@@ -1041,7 +1041,7 @@ if ($fuid==8) {
     <script language=JavaScript>
         function linksub(url) {
             if (parent.parent.mittelinksoben.document.globals.kursmodus.value==1) {
-                alert('<?php echo $lang['flotte']['nochkursmodus']; ?>');
+                alert('<?php echo html_entity_decode($lang['flotte']['nochkursmodus']); ?>');
             } else {
                 parent.window.location=url;
             }

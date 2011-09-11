@@ -194,12 +194,12 @@ function check() {
   if (document.formular.user_9.value != '0') { spieleranzahl++; }
   if (document.formular.user_10.value != '0') { spieleranzahl++; }
   if ((document.formular.user_1.value == '0') <?php for ($n=2;$n<=10;$n++) { ?> && (document.formular.user_<?php echo $n; ?>.value == '0')<?php } ?>)  {
-      alert("<?php echo $lang['admin']['spiel']['alpha']['min_spieler']?>");
+      alert("<?php echo html_entity_decode($lang['admin']['spiel']['alpha']['min_spieler'])?>");
           return false;
   }
 <?php if (int_post('startposition')==1) { ?>
   if (spielermog[spieleranzahl]==0) {
-    alert ('<?php echo str_replace('{1}',$spieleranzahlmog,$lang['admin']['spiel']['alpha']['nur_spieler'])?>');
+    alert ('<?php echo html_entity_decode(str_replace('{1}',$spieleranzahlmog,$lang['admin']['spiel']['alpha']['nur_spieler']))?>');
     return false;
   }
 <?php } ?>
@@ -210,7 +210,7 @@ function check() {
              if (document.formular.user_<?php echo $n; ?>.value == document.formular.user_<?php echo $oprt; ?>.value) { anzahle++; }
            <?php } ?>
          if (anzahle!=1) {
-           alert("<?php echo $lang['admin']['spiel']['alpha']['max_slot']?>");
+           alert("<?php echo html_entity_decode($lang['admin']['spiel']['alpha']['max_slot'])?>");
            return false;
          }
    }
@@ -225,18 +225,18 @@ function check() {
              if (document.formular.team<?php echo $n; ?>[<?php echo $op; ?>].checked == true) { anzahl++; }
            <?php } ?>
          if (anzahl!=2) {
-           alert("<?php echo $lang['admin']['spiel']['alpha']['zwei_spieler']?>");
+           alert("<?php echo html_entity_decode($lang['admin']['spiel']['alpha']['zwei_spieler'])?>");
            return false;
          }
      }
     <?php } ?>
   if ((document.formular.team<?php echo $oprt;?>[0].checked == false) <?php for ($n=1;$n<=4;$n++) { ?> && (document.formular.team<?php echo $oprt; ?>[<?php echo $n; ?>].checked == false)<?php } ?>)  {
-      alert("<?php echo $lang['admin']['spiel']['alpha']['team_spieler']?>");
+      alert("<?php echo html_entity_decode($lang['admin']['spiel']['alpha']['team_spieler'])?>");
       return false;
   }
   } else {
   if ((document.formular.team<?php echo $oprt; ?>[0].checked == true) <?php for ($n=1;$n<=4;$n++) { ?> || (document.formular.team<?php echo $oprt; ?>[<?php echo $n; ?>].checked == true)<?php } ?>)  {
-      alert("<?php echo $lang['admin']['spiel']['alpha']['kein_team']?>");
+      alert("<?php echo html_entity_decode($lang['admin']['spiel']['alpha']['kein_team'])?>");
       return false;
   }
   }
@@ -428,7 +428,7 @@ if ((int_get('startposset') !== 1) and (int_post('startposition') == 3)) {
         for (n=0;n<document.formular.active.length;n++) {
             feldnamex = 'user_' + document.formular.active[n].value + '_xx';
             if (document.getElementById(feldnamex).value == '') {
-                alert ('<?php echo $lang['admin']['spiel']['alpha']['jeder_startposition']?>');
+                alert ('<?php echo html_entity_decode($lang['admin']['spiel']['alpha']['jeder_startposition'])?>');
                 return false;
             }
         }

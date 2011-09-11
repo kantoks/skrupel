@@ -222,7 +222,7 @@ if ($fuid==2) {
         <script language="JavaScript">
             function check() {
                 if(document.formular.schiffsname.value == "")  {
-                    alert("<?php echo $lang['osys']['spionage']['bitteschiffsname']?>");
+                    alert("<?php echo html_entity_decode($lang['osys']['spionage']['bitteschiffsname'])?>");
                     document.formular.schiffsname.focus();
                     return false;
                 }
