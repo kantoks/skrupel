@@ -1003,13 +1003,13 @@ if ($fuid==4) {
                 ?>
                 if(beladenzahl > <?php echo $frachtraum; ?>)  {
                     var zuviel = beladenzahl -  <?php echo $frachtraum; ?>;
-                    alert("<?php echo str_replace(array('{1}'),array($frachtraum),$lang['flottebeta']['frachtueberladen'][0]);?>"+zuviel+"<?php echo $lang['flottebeta']['frachtueberladen'][1]; ?>");
+                    alert("<?php echo html_entity_decode(str_replace(array('{1}'),array($frachtraum),$lang['flottebeta']['frachtueberladen'][0]));?>"+zuviel+"<?php echo html_entity_decode($lang['flottebeta']['frachtueberladen'][1]); ?>");
                     return false;
                 }
                 var lemin= eval(document.getElementById('hid_fracht_lemin').value+'+0');
                 if(lemin > <?php echo $leminmax; ?>)  {
                     var zuviell = lemin -  <?php echo $leminmax; ?>;
-                    alert("<?php echo str_replace(array('{1}'),array($leminmax),$lang['flottebeta']['leminueberladen'][0]);?>"+zuviell+"<?php echo $lang['flottebeta']['leminueberladen'][1]; ?>");
+                    alert("<?php echo html_entity_decode(str_replace(array('{1}'),array($leminmax),$lang['flottebeta']['leminueberladen'][0]));?>"+zuviell+"<?php echo html_entity_decode($lang['flottebeta']['leminueberladen'][1]); ?>");
                     return false;
                 }
 
@@ -1959,13 +1959,13 @@ include ("inc.header.php");
                     ?>
                     if(beladenzahl > <?php echo $frachtraum; ?>)  {
                         var zuviel = beladenzahl -  <?php echo $frachtraum; ?>;
-                        alert("<?php echo str_replace(array('{1}'),array($frachtraum),$lang['flottebeta']['frachtueberladen'][0]);?>"+zuviel+"<?php echo $lang['flottebeta']['frachtueberladen'][1]; ?>");
+                        alert("<?php echo html_entity_decode(str_replace(array('{1}'),array($frachtraum),$lang['flottebeta']['frachtueberladen'][0]));?>"+zuviel+"<?php echo html_entity_decode($lang['flottebeta']['frachtueberladen'][1]); ?>");
                         return false;
                     }
                     var lemin= eval(document.formular.fracht_lemin.value+'+0');
                     if(lemin > <?php echo $leminmax; ?>)  {
                         var zuviell = lemin -  <?php echo $leminmax; ?>;
-                        alert("<?php echo str_replace(array('{1}'),array($leminmax),$lang['flottebeta']['leminueberladen'][0]);?>"+zuviell+"<?php echo $lang['flottebeta']['leminueberladen'][1]; ?>");
+                        alert("<?php echo html_entity_decode(str_replace(array('{1}'),array($leminmax),$lang['flottebeta']['leminueberladen'][0]));?>"+zuviell+"<?php echo html_entity_decode($lang['flottebeta']['leminueberladen'][1]); ?>");
                         return false;
                     }
                     return true;

@@ -422,9 +422,9 @@ if ($fuid==4) {
                 $minrand=150;$maxrand=250;
             }elseif ($mineralienhome==3) {
                 $minrand=400;$maxrand=600;
-            }elseif (mineralienhome==4) {
+            }elseif ($mineralienhome==4) {
                 $minrand=700;$maxrand=1000;
-            }elseif (mineralienhome==5) {
+            }elseif ($mineralienhome==5) {
                 $minrand=1500;$maxrand=2000;
             }
             $lemin=rand($minrand,$maxrand);

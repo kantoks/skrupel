@@ -166,12 +166,12 @@ window.top.location.href="index.php";
 //-->
 function check() {
   if(document.formular.login_f.value == "")  {
-      alert("<?php echo $lang['admin']['index']['bittenamen']?>");
+      alert("<?php echo html_entity_decode($lang['admin']['index']['bittenamen'])?>");
         document.formular.login_f.focus();
         return false;
    }
   if(document.formular.passwort_f.value == "")  {
-    alert("<?php echo $lang['admin']['index']['bittepasswort']?>");
+    alert("<?php echo html_entity_decode($lang['admin']['index']['bittepasswort'])?>");
         document.formular.passwort_f.focus();
         return false;
    }

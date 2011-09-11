@@ -295,17 +295,17 @@ if ($db) {
           }
           function check() {
             if(document.formular.login_f.value == "") {
-              alert("<?php echo $lang['index']['bitteName'];?>");
+              alert("<?php echo html_entity_decode($lang['index']['bitteName']);?>");
               document.formular.login_f.focus();
               return false;
             }
             if(document.formular.passwort_f.value == "") {
-              alert("<?php echo $lang['index']['bittePasswort'];?>");
+              alert("<?php echo html_entity_decode($lang['index']['bittePasswort']);?>");
               document.formular.passwort_f.focus();
               return false;
             }
             if(document.formular.spiel_slot.value == 0) {
-              alert("<?php echo $lang['index']['bittespiel'];?>");
+              alert("<?php echo html_entity_decode($lang['index']['bittespiel']);?>");
               return false;
             }
             return true;
@@ -486,7 +486,7 @@ if ($db) {
         if (strlen($fehler)>0) {
           ?>
           <script language="JavaScript">
-            alert('<?php echo $fehler ?>');
+            alert('<?php echo html_entity_decode($fehler) ?>');
           </script>
           <?php
         }
