@@ -264,7 +264,7 @@ if ($fuid==1) {
                                             if (($art==5) or ($art==6)) {
                                                 ?>
                                                 <td></td>
-                                                <td><input type="button" onclick="alert('<?php echo $lang['uebersichtneuigkeiten']['nichtloeschtbar']?>');" name="submit" value="<?php echo $lang['uebersichtneuigkeiten']['wirdnichtgeloescht']?>" style="width:120px;"></td>
+                                                <td><input type="button" onclick="alert('<?php echo html_entity_decode($lang['uebersichtneuigkeiten']['nichtloeschtbar'])?>');" name="submit" value="<?php echo $lang['uebersichtneuigkeiten']['wirdnichtgeloescht']?>" style="width:120px;"></td>
                                                 <td></td>
                                                 <?php
                                             } else {

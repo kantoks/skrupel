@@ -168,7 +168,7 @@ if ($fuid==2) {
         <script language="JavaScript">
             function check() {
                 if(document.formular.schiffsname.value == "")  {
-                    alert("<?php echo $lang['basengamma']['nameneingeben']; ?>");
+                    alert("<?php echo html_entity_decode($lang['basengamma']['nameneingeben']); ?>");
                     document.formular.schiffsname.focus();
                     return false;
                 }

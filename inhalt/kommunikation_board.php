@@ -419,8 +419,8 @@ if ($fuid==2) {
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <script language=JavaScript>
             function checkeingabe(e) {
-                if (document.formular.thema.value=="") { alert('<?php echo $lang['kommunikationboard']['themaeingeben']; ?>'); return false;}
-                if (document.formular.beitrag.value=="") { alert('<?php echo $lang['kommunikationboard']['beitrageingeben']; ?>'); return false;}
+                if (document.formular.thema.value=="") { alert('<?php echo html_entity_decode($lang['kommunikationboard']['themaeingeben']); ?>'); return false;}
+                if (document.formular.beitrag.value=="") { alert('<?php echo html_entity_decode($lang['kommunikationboard']['beitrageingeben']); ?>'); return false;}
                 return true;
             }
         </script>
@@ -714,7 +714,7 @@ if ($fuid==3) {
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <script language=JavaScript>
             function checkeingabe(e) {
-                if (document.formular.beitrag.value=="") { alert('<?php echo $lang['kommunikationboard']['beitrageingeben']; ?>'); return false;}
+                if (document.formular.beitrag.value=="") { alert('<?php echo html_entity_decode($lang['kommunikationboard']['beitrageingeben']); ?>'); return false;}
                 return true;
             }
         </script>

@@ -1285,7 +1285,7 @@ if ($fuid==12) {
         <script language="JavaScript">
             function check() {
                 if(document.formular.stationsname.value == "") {
-                    alert("<?php echo $lang['planetenalpha']['bittename']?>");
+                    alert("<?php echo html_entity_decode($lang['planetenalpha']['bittename'])?>");
                     document.formular.stationsname.focus();
                     return false;
                 }
