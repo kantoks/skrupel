@@ -134,7 +134,7 @@ if ($fuid==2) {
         $chat=int_post('chat');
         $anleitung=int_post('anleitung');
         $forum=int_post('forum');
-        $forum_url=$_POST["forum_url"];
+        $forum_url=str_post('forum_url','SQLSAFE');
         $zeiger = @mysql_query("update $skrupel_info set chat=$chat, anleitung=$anleitung, forum=$forum, forum_url='$forum_url'");
         ?>
         <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">

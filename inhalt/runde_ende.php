@@ -1,11 +1,14 @@
 <?php 
 include ('../inc.conf.php');
 include_once ('inc.hilfsfunktionen.php');
-if(empty($_GET['sprache'])){$_GET['sprache']=$language;}
-$file="../lang/".$_GET['sprache']."/lang.runde_ende.php";
-include ($file);
-if (($_GET["bildpfad"]=="bilder") or ($_GET["bildpfad"]=="")) {$_GET["bildpfad"]="../bilder";}
-$bildpfad = $_GET["bildpfad"];
+
+$sprache = str_get('sprache','SHORTNAME');
+if ($sprache=='' || !preg_match('/^[a-z]{2}$/', $sprache) || !is_dir('../lang/'.$sprache)) {$sprache = $language;}
+include ('../lang/'.$sprache.'/lang.runde_ende.php');
+
+$bildpfad = str_get('bildpfad','PATHNAME');
+if ($bildpfad=='' or $bildpfad=='bilder') {$bildpfad='../bilder';}
+
 $spiel = int_get('spiel');
 $fuid = int_get('fu');
 
@@ -40,7 +43,7 @@ if ($fuid==1) {
                     <frame name="rahmen16" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=26&bildpfad=<?php echo $bildpfad?>" target="_self">
                     <frame name="rahmen17" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=27&bildpfad=<?php echo $bildpfad?>" target="_self">
                 </frameset>
-                <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="runde_ende.php?fu=2&spiel=<?php echo $spiel?>&bildpfad=<?php echo $bildpfad?>&sprache=<?php echo $_GET['sprache']?>" target="_self">
+                <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="runde_ende.php?fu=2&spiel=<?php echo $spiel?>&bildpfad=<?php echo $bildpfad?><?php if (!empty($_GET['sprache'])) echo '&sprache='.$sprache;?>" target="_self">
                 <frameset framespacing="0" border="false" frameborder="0" rows="80,*,92">
                     <frame name="rahmen18" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=28&bildpfad=<?php echo $bildpfad?>" target="_self">
                     <frame name="rahmen19" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=29&bildpfad=<?php echo $bildpfad?>" target="_self">
@@ -352,7 +355,7 @@ if ($fuid==2) {
                             <center>
                                 <table border="0" cellspacing="0" cellpadding="3" width="100%">
                                     <tr>
-                                        <td width="100%"><img src="../lang/<?php echo $_GET['sprache']?>/topics/dieimperien.gif" border="0" width="185" height="52"></td>
+                                        <td width="100%"><img src="../lang/<?php echo $sprache?>/topics/dieimperien.gif" border="0" width="185" height="52"></td>
                                         <td><center><img src="<?php echo $bildpfad?>/aufbau/rang_1.gif" border="0" width="41" height="41"></center></td>
                                         <td><center><img src="<?php echo $bildpfad?>/aufbau/rang_2.gif" border="0" width="41" height="41"></center></td>
                                         <td><center><img src="<?php echo $bildpfad?>/aufbau/rang_3.gif" border="0" width="41" height="41"></center></td>

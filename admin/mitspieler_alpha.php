@@ -32,9 +32,9 @@ if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 if ($fuid==2) {
 include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
-$nick=$_POST["nick"];
-$email=$_POST["email"];
-$passwort=$_POST["passwort"];
+$nick=str_post('nick','SQLSAFE');
+$email=str_post('email','SQLSAFE');
+$passwort=str_post('passwort','SQLSAFE');
 $zeiger = @mysql_query("INSERT INTO $skrupel_user (nick,passwort,email,optionen,sprache) values ('$nick','$passwort','$email','00111111111000', '$language')");
 ?>
 <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">

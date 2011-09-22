@@ -1042,7 +1042,7 @@ if ($fuid==6) {
     $planet_min2=(int_post('planet_min2')<0)?0:int_post('planet_min2');
     $planet_min3=(int_post('planet_min3')<0)?0:int_post('planet_min3');
     $planet_vorrat=(int_post('planet_vorrat')<0)?0:int_post('planet_vorrat');
-    $zielid=$_POST["zielid"];
+    $zielid=str_post('zielid','SHORTNAME');
     $zielart=substr($zielid,0,1);
     $zielid=substr($zielid,1,strlen($zielid)-1);
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");

@@ -23,7 +23,7 @@ if ($fuid==1) {
                             <br>
                             <center><?php echo $lang['admin']['allgemein']['alpha']['offenbarung_text']?></center>
                             <form name="formular" method="post" action="allgemein_alpha.php?fu=2">
-                            <textarea name="nachricht" style="width:100%;height:255px;"></textarea>
+                            <textarea name="offenbarung" style="width:100%;height:255px;"></textarea>
                             <br><br>
                             <center>
                                 <table border="0" cellspacing="0" cellpadding="0">
@@ -53,7 +53,7 @@ if ($fuid==2) {
 
         $letzter=time();
 
-        $beitrag=$_POST["nachricht"];
+        $beitrag=str_post('offenbarung','SQLSAFE');
 
         $thema=substr($beitrag,0,30)."...";
         $thema=str_replace("&","&amp;",$thema);
@@ -64,10 +64,10 @@ if ($fuid==2) {
         $beitrag=str_replace("<","&lt;",$beitrag);
         $beitrag=str_replace(">","&gt;",$beitrag);
 
-        $beitrag=nl2br(stripslashes($beitrag));
-        $beitrag=str_replace("'", "",$beitrag);
-        $beitrag=str_replace("\"", "",$beitrag);
-        $beitrag=str_replace("\\", "",$beitrag);
+        //$beitrag=nl2br(stripslashes($beitrag));
+        //$beitrag=str_replace("'", "",$beitrag);
+        //$beitrag=str_replace("\"", "",$beitrag);
+        //$beitrag=str_replace("\\", "",$beitrag);
 
         $zeiger = @mysql_query("INSERT INTO $skrupel_forum_thema (forum,icon,thema,beginner,antworten,letzter) values ($forum,$icon,'$thema','$beginner',0,'$letzter');");
 

@@ -160,8 +160,8 @@ if ($fuid==2) {
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
-        $ordnerneu=$_POST["ordnerneu"];
-        $ordnerneu=addslashes($ordnerneu);
+        $ordnerneu=str_post('ordnerneu','SQLSAFE');
+        //$ordnerneu=addslashes($ordnerneu);
         $zeiger_temp = @mysql_query("INSERT INTO $skrupel_ordner (name,besitzer,spiel) values ('$ordnerneu',$spieler,$spiel)");
         ?>
         <script language=JavaScript>
@@ -176,8 +176,8 @@ if ($fuid==3) {
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
         $ooid=int_get('ooid');
-        $ordnerneu=$_POST["ordnerneu"];
-        $ordnerneu=addslashes($ordnerneu);
+        $ordnerneu=str_post('ordnerneu','SQLSAFE');
+        //$ordnerneu=addslashes($ordnerneu);
         $zeiger_temp = @mysql_query("UPDATE $skrupel_ordner set name='$ordnerneu' where id =$ooid");
         ?>
         <script language=JavaScript>
@@ -207,7 +207,7 @@ if ($fuid==5) {
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
         $ooid=int_get('ooid');
-        $icon=$_POST["icon"];
+        $icon=int_post('icon');
         $zeiger_temp = @mysql_query("UPDATE $skrupel_ordner set icon='$icon' where id =$ooid");
         ?>
         <script language=JavaScript>

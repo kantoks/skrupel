@@ -502,16 +502,16 @@ include ("inc.footer.php");
 if ($fuid==3) {
   include ("inc.header.php");
   if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
-  $spiel=int_get('slot_id');
-  $spiel_name=$_POST["spiel_name"];
+  $spiel = int_get('slot_id');
+  $spiel_name = str_post('spiel_name','SQLSAFE');
   $module = array();
   $module[0] = int_post('modul_0');
   $module[1] = 0;
   $module[2] = int_post('modul_2');
   $module[3] = int_post('modul_3');
-    $module[4] = int_post('modul_4');
-    $module[5] = int_post('modul_5');
-    $module[6] = int_post('modul_6');  
+  $module[4] = int_post('modul_4');
+  $module[5] = int_post('modul_5');
+  $module[6] = int_post('modul_6');
   $module = @implode(":", $module);
   $aufloesung=int_post('aufloesung');
   $autotick=int_post('autotick');

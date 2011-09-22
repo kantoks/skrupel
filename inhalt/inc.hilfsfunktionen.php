@@ -29,20 +29,60 @@ function int_get($key) {
     }
     return false;
 }
-function str_post($key) {
-    //todo, optionales escapen?
-    if(isset($_POST[$key])) {
-        if(strlen($_POST[$key]) > 0) {
-            return $_POST[$key];
+function str_post($key,$mode) {
+    if (isset($_POST[$key]) and !is_array($_POST[$key])) {
+        if ($mode=='DEFAULT') {
+            if (!preg_match('/[^0-9A-Za-z_&:;\-]/',$_POST[$key])) {
+                return $_POST[$key];
+            }
+        }
+        if ($mode=='PATHNAME') {
+            if (!preg_match('/[^0-9A-Za-z_\/\.]/',$_POST[$key])) {
+                return $_POST[$key];
+            }
+        }
+        if ($mode=='SHORTNAME') {
+            if (!preg_match('/[^0-9A-Za-z_]/',$_POST[$key])) {
+                return $_POST[$key];
+            }
+        }
+        if ($mode=='SQLSAFE') {
+            $retvar = stripslashes($_POST[$key]);
+            if ($key=='thema' || $key=='beitrag' || $key=='offenbarung') {
+                $retvar = nl2br($retvar);
+            }
+            //$retvar = strtr($retvar, array("\x00" => "\\x00", "\x1a" => "\\x1a", "\n" => "\\n", "\r" => "\\r", "\\" => "\\\\", "'" => "\'", "\"" => "\\\"")); // nur escapen
+            $retvar = strtr($retvar, array("\x00" => "\\x00", "\x1a" => "\\x1a", "\n" => "\\n", "\r" => "\\r", "\\" => "", "'" => "", "\"" => "")); // entfernt: " ' \
+            return $retvar;
         }
     }
     return false;
 }
-function str_get($key) {
-    //todo, optionales escapen?
-    if(isset($_GET[$key])) {
-        if(strlen($_GET[$key]) > 0) {
-            return $_GET[$key];
+function str_get($key,$mode) {
+    if (isset($_GET[$key]) and !is_array($_GET[$key])) {
+        if ($mode=='DEFAULT') {
+            if (!preg_match('/[^0-9A-Za-z_&:;\-]/',$_GET[$key])) {
+                return $_GET[$key];
+            }
+        }
+        if ($mode=='PATHNAME') {
+            if (!preg_match('/[^0-9A-Za-z_\/\.]/',$_GET[$key])) {
+                return $_GET[$key];
+            }
+        }
+        if ($mode=='SHORTNAME') {
+            if (!preg_match('/[^0-9A-Za-z_]/',$_GET[$key])) {
+                return $_GET[$key];
+            }
+        }
+        if ($mode=='SQLSAFE') {
+            $retvar = stripslashes($_GET[$key]);
+            if ($key=='thema' || $key=='beitrag' || $key=='offenbarung') {
+                $retvar = nl2br($retvar);
+            }
+            //$retvar = strtr($retvar, array("\x00" => "\\x00", "\x1a" => "\\x1a", "\n" => "\\n", "\r" => "\\r", "\\" => "\\\\", "'" => "\'", "\"" => "\\\"")); // nur escapen
+            $retvar = strtr($retvar, array("\x00" => "\\x00", "\x1a" => "\\x1a", "\n" => "\\n", "\r" => "\\r", "\\" => "", "'" => "", "\"" => "")); // entfernt: " ' \
+            return $retvar;
         }
     }
     return false;

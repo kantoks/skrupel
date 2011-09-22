@@ -86,7 +86,7 @@ if ($fuid==1) {
                 </tr>
                 <tr height="100%">
                     <td></td>
-                    <td><textarea name="nachricht" style="width:100%;height:100%;"><?php echo $_POST["nachricht"]?></textarea></td>
+                    <td><textarea name="nachricht" style="width:100%;height:100%;"><?php echo str_post('nachricht','SQLSAFE')?></textarea></td>
                     <td></td>
                 </tr>
                 <tr>
@@ -116,24 +116,17 @@ if ($fuid==1) {
     @mysql_close();
 }
 if ($fuid==2) {
-    $conn = @mysql_connect($server.':'.$port,"$login","$password");
-    $db = @mysql_select_db("$database",$conn);
-    $spielernummer=int_post('empfang');
-    $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$_GET["sid"]."'");
-    $ok = @mysql_data_seek($zeiger,0);
-    $sprachtemp_1 = @mysql_fetch_array($zeiger);
-    $spielertemp=$sprachtemp_1["spieler_".$spielernummer];
-    $zeiger=@mysql_query("SELECT sprache FROM $skrupel_user where id=$spielertemp");
-    $ok = @mysql_data_seek($zeiger,0);
-    $sprachtemp_2 = @mysql_fetch_array($zeiger);
-    $spieler2sprache=($sprachtemp_2["sprache"]=='')?$language:$sprachtemp_2["sprache"];
-    $file="../lang/".$spieler2sprache."/lang.kommunikation_subfunk_b.php";
-    include($file);
     include ("inc.header.php");
+    $spielernummer = int_post('empfang');
+    $spielertemp = $spieler_id_c[$spielernummer];
+    $zeiger = @mysql_query("SELECT sprache FROM $skrupel_user where id=$spielertemp");
+    $array = @mysql_fetch_array($zeiger);
+    $spieler2sprache = ($array['sprache']=='')?$language:$array['sprache'];
+    include('../lang/'.$spieler2sprache.'/lang.kommunikation_subfunk_b.php');
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
     <?php
-    $nachricht=$_POST["nachricht"];
+    $nachricht=str_post('nachricht','SQLSAFE');
     function iif ($expression,$returntrue,$returnfalse) {
         if ($expression==0) {
             return $returnfalse;
@@ -183,7 +176,8 @@ if ($fuid==2) {
         $bbcode=str_replace("Ä","&Auml;",$bbcode);
         $bbcode=str_replace("Ö","&Ouml;",$bbcode);
         $bbcode=str_replace("Ü","&Uuml;",$bbcode);
-        $bbcode=nl2br($bbcode);
+        //$bbcode=nl2br($bbcode);
+        $bbcode=strtr($bbcode, array("\\r\\n" => "<br />\\r\\n", "\\r" => "<br />\\r", "\\n" => "<br />\\n"));
         $bbcode=eregi_replace(quotemeta("[b]"),quotemeta("<b>"),$bbcode);
         $bbcode=eregi_replace(quotemeta("[/b]"),quotemeta("</b>"),$bbcode);
         $bbcode=eregi_replace(quotemeta("[i]"),quotemeta("<i>"),$bbcode);
@@ -197,7 +191,7 @@ if ($fuid==2) {
             "/(\[)(email)(])(.*)(\[\/email\])/esiU"
         );
         $replacearray = array(
-                "checkurl('\\5', '\\7')",
+            "checkurl('\\5', '\\7')",
             "checkurl('\\4')",
             "checkmail('\\5', '\\7')",
             "checkmail('\\4')"
@@ -228,8 +222,8 @@ if ($fuid==2) {
         $bbcode2=$bbcode;
         return $bbcode2;
     }
-    $nachricht=str_replace("'", "",$nachricht);
-    $nachricht=str_replace("\\", "",$nachricht);
+    //$nachricht=str_replace("'", "",$nachricht);
+    //$nachricht=str_replace("\\", "",$nachricht);
     $nachricht=str_replace("::::::", ":::::",$nachricht);
     $nachricht=parsetext($nachricht);
     $nachricht_org=$nachricht;
@@ -361,23 +355,16 @@ if ($fuid==4) {
 }
 if ($fuid==5) {
     include ("inc.header.php");
-    $conn = @mysql_connect($server.':'.$port,"$login","$password");
-    $db = @mysql_select_db("$database",$conn);
-    $spielernummer=int_post('empfang');
-    $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$_GET["sid"]."'");
-    $ok = @mysql_data_seek($zeiger,0);
-    $sprachtemp_1 = @mysql_fetch_array($zeiger);
-    $spielertemp=$sprachtemp_1["spieler_".$spielernummer];
-    $zeiger=@mysql_query("SELECT sprache FROM $skrupel_user where id=$spielertemp");
-    $ok = @mysql_data_seek($zeiger,0);
-    $sprachtemp_2 = @mysql_fetch_array($zeiger);
-    $spieler2sprache=($sprachtemp_2["sprache"]=='')?$language:$sprachtemp_2["sprache"];
-    $file="../lang/".$spieler2sprache."/lang.kommunikation_subfunk_b.php";
-    include($file);
+    $spielernummer = int_post('empfang');
+    $spielertemp = $spieler_id_c[$spielernummer];
+    $zeiger = @mysql_query("SELECT sprache FROM $skrupel_user where id=$spielertemp");
+    $array = @mysql_fetch_array($zeiger);
+    $spieler2sprache = ($array['sprache']=='')?$language:$array['sprache'];
+    include('../lang/'.$spieler2sprache.'/lang.kommunikation_subfunk_b.php');
     ?>
     <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <?php
-        $nachricht=$_POST["nachricht"];
+        $nachricht=str_post('nachricht','SQLSAFE');
         function iif ($expression,$returntrue,$returnfalse) {
             if ($expression==0) {
                 return $returnfalse;
@@ -427,7 +414,8 @@ if ($fuid==5) {
             $bbcode=str_replace("Ä","&Auml;",$bbcode);
             $bbcode=str_replace("Ö","&Ouml;",$bbcode);
             $bbcode=str_replace("Ü","&Uuml;",$bbcode);
-            $bbcode=nl2br($bbcode);
+            //$bbcode=nl2br($bbcode);
+            $bbcode=strtr($bbcode, array("\\r\\n" => "<br />\\r\\n", "\\r" => "<br />\\r", "\\n" => "<br />\\n"));
             $bbcode=eregi_replace(quotemeta("[b]"),quotemeta("<b>"),$bbcode);
             $bbcode=eregi_replace(quotemeta("[/b]"),quotemeta("</b>"),$bbcode);
             $bbcode=eregi_replace(quotemeta("[i]"),quotemeta("<i>"),$bbcode);
@@ -472,8 +460,8 @@ if ($fuid==5) {
             $bbcode2=$bbcode;
             return $bbcode2;
         }
-        $nachricht=str_replace("'", "",$nachricht);
-        $nachricht=str_replace("\\", "",$nachricht);
+        //$nachricht=str_replace("'", "",$nachricht);
+        //$nachricht=str_replace("\\", "",$nachricht);
         $nachricht=str_replace("::::::", ":::::",$nachricht);
         $nachricht=parsetext($nachricht);
         $nachricht=str_replace(array('{1}','{2}','{3}'),array($spielerfarbe[$spieler], $spieler_name, $nachricht),$spieler."::::::".$lang['kommunikationsubfunk_b']['nachricht']);

@@ -4,8 +4,8 @@
 */
 //$_POST  = @array_map('mysql_real_escape_string', $_POST);
 //$_GET = @array_map('mysql_real_escape_string', $_GET);
-$sid = (isset($_GET['sid'])?$_GET['sid']:0);
-$uid = (isset($_GET['uid'])?$_GET['uid']:0);
+$sid = (isset($_GET['sid']) && !preg_match('/[^0-9A-Za-z]/',$_GET['sid']))?$_GET['sid']:0;
+$uid = (isset($_GET['uid']) && !preg_match('/[^0-9A-Za-z]/',$_GET['uid']))?$_GET['uid']:0;
 $zeiger = @mysql_query("SELECT * FROM $skrupel_user where uid='$uid'");
 $datensaetze = @mysql_num_rows($zeiger);
 if ($datensaetze==1) {
