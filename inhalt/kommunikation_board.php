@@ -657,20 +657,20 @@ if ($fuid==4) {
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
     $forum=int_get('forum');
-    $icon=$_POST["icon"];
+    $icon=int_post('icon');
     include ("inc.check.php");
     $beginner=$spieler_name;
     $letzter=time();
-    $thema=$_POST["thema"];
-    $beitrag=$_POST["beitrag"];
-    $beitrag=nl2br(stripslashes($beitrag));
-    $beitrag=str_replace("'", "",$beitrag);
-    $beitrag=str_replace("\"", "",$beitrag);
-    $beitrag=str_replace("\\", "",$beitrag);
-    $thema=nl2br(stripslashes($thema));
-    $thema=str_replace("'", "",$thema);
-    $thema=str_replace("\"", "",$thema);
-    $thema=str_replace("\\", "",$thema);
+    $thema=str_post('thema','SQLSAFE');
+    $beitrag=str_post('beitrag','SQLSAFE');
+    //$beitrag=nl2br(stripslashes($beitrag));
+    //$beitrag=str_replace("'", "",$beitrag);
+    //$beitrag=str_replace("\"", "",$beitrag);
+    //$beitrag=str_replace("\\", "",$beitrag);
+    //$thema=nl2br(stripslashes($thema));
+    //$thema=str_replace("'", "",$thema);
+    //$thema=str_replace("\"", "",$thema);
+    //$thema=str_replace("\\", "",$thema);
     $zeiger = @mysql_query("INSERT INTO $skrupel_forum_thema (forum,icon,thema,beginner,antworten,letzter) values ($forum,$icon,'$thema','$beginner',0,'$letzter');");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_forum_thema where forum=$forum and icon=$icon and beginner='$beginner' and thema='$thema' and letzter='$letzter' and antworten=0;");
     $array = @mysql_fetch_array($zeiger);
@@ -683,7 +683,7 @@ if ($fuid==4) {
 if ($fuid==3) {
     include ("inc.header.php");
     $forum=int_get('fo');
-    $thema=$_GET["thema"];
+    $thema=int_get('thema');
     if ($forum==1) { $formname=$lang['kommunikationboard']['offenbarungen'];}
     if ($forum==2) { $formname=$lang['kommunikationboard']['smalltalk'];}
     if ($forum==3) { $formname=$lang['kommunikationboard']['handel'];}
@@ -888,16 +888,16 @@ if ($fuid==5) {
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
     $forum=int_get('forum');
-    $thema=$_GET["thema"];
-    $icon=$_POST["icon"];
+    $thema=int_get('thema');
+    $icon=int_post('icon');
     include ("inc.check.php");
     $beginner=$spieler_name;
     $letzter=time();
-    $beitrag=$_POST["beitrag"];
-    $beitrag=nl2br(stripslashes($beitrag));
-    $beitrag=str_replace("'", "",$beitrag);
-    $beitrag=str_replace("\"", "",$beitrag);
-    $beitrag=str_replace("\\", "",$beitrag);
+    $beitrag=str_post('beitrag','SQLSAFE');
+    //$beitrag=nl2br(stripslashes($beitrag));
+    //$beitrag=str_replace("'", "",$beitrag);
+    //$beitrag=str_replace("\"", "",$beitrag);
+    //$beitrag=str_replace("\\", "",$beitrag);
     $zeiger = mysql_query("INSERT INTO $skrupel_forum_beitrag (thema,forum,datum,beitrag,verfasser,spielerid) values ($thema,$forum,'$letzter','$beitrag','$beginner',$spieler);");
     $zeiger = mysql_query("UPDATE $skrupel_forum_thema set antworten=antworten+1,letzter='$letzter' where id=$thema;");
     @mysql_close();

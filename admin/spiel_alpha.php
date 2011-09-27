@@ -173,7 +173,7 @@ if ($fp) {
 while (!feof ($fp)) {
     $buffer = @fgets($fp, 4096);
     $strukturdaten=explode(':',$buffer);
-    if ($strukturdaten[1]==$_POST["struktur"]) {
+    if ($strukturdaten[1]==str_post('struktur','SHORTNAME')) {
        $spieleranzahlmog=trim($strukturdaten[2]);
     }
 }
@@ -421,7 +421,7 @@ include ("inc.footer.php");
  }
 if ($fuid==4) {
 include ("inc.header.php");
-if ((int_get('startposset') !== 1) and (int_post('startposition') == 3)) {
+if ((int_get('startposset') != 1) and (int_post('startposition') == 3)) {
 ?>
 <script type="text/javascript">
     function check () {
@@ -455,7 +455,7 @@ foreach ($_POST as $key => $value) {
             </tr>
             <tr>
               <td><img src="../bilder/aufbau/galalinks.gif" border="0" width="4" height="250"></td>
-              <td><iframe src="spiel_alpha.php?fu=12&struktur=<?php echo $_POST["struktur"]; ?>" width="250" height="250" name="map" scrolling="no" marginheight="0" marginwidth="0" frameborder="0"></iframe></td>
+              <td><iframe src="spiel_alpha.php?fu=12&struktur=<?php echo str_post('struktur','SHORTNAME'); ?>" width="250" height="250" name="map" scrolling="no" marginheight="0" marginwidth="0" frameborder="0"></iframe></td>
               <td><img src="../bilder/aufbau/galarechts.gif" border="0" width="4" height="250"></td>
             </tr>
             <tr>
@@ -803,7 +803,7 @@ function getMouseXY(e) {
 </script>
 <body text="#ffffff" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <div id="galastruktur" style="z-index:1;position: absolute; left:0px; top:0px; width: 250px; height: 250px;">
-    <img src="../daten/bilder_galaxien/<?php echo $_GET['struktur']; ?>.png" width="250" height="250">
+    <img src="../daten/bilder_galaxien/<?php echo str_get('struktur','SHORTNAME'); ?>.png" width="250" height="250">
 </div>
 <div id="stars" style="z-index:2;position: absolute; left:0px; top:0px; width: 250px; height: 250px;">
     <img src="../bilder/admin/gala_stars_big.gif" width="250" height="250" border="0">
@@ -895,28 +895,28 @@ function zufallstring($size = 20, $url = ONLY_LETTERS){
   $spiel_serial=$array["serial"];
 //////////////////////////////////////
 $sid=zufallstring();
-$spielname=$_POST["spiel_name"];
-   $spielname=str_replace("'"," ",$spielname);
-   $spielname=str_replace('"'," ",$spielname);
+$spielname=str_post('spiel_name','SQLSAFE');
+   //$spielname=str_replace("'"," ",$spielname);
+   //$spielname=str_replace('"'," ",$spielname);
 $ziel_id=int_post('siegbedingungen');
 $umfang=int_post('umfang');
-$struktur=$_POST["struktur"];
+$struktur=str_post('struktur','SHORTNAME');
 $piraten_mitte=int_post('piraten_mitte');
 $piraten_aussen=int_post('piraten_aussen');
 $piraten_min=int_post('piraten_min');
 $piraten_max=int_post('piraten_max');
 $out=int_post('out');
 if ($ziel_id==6) {
- $team[1]=$_POST["team1"];
- $team[2]=$_POST["team2"];
- $team[3]=$_POST["team3"];
- $team[4]=$_POST["team4"];
- $team[5]=$_POST["team5"];
- $team[6]=$_POST["team6"];
- $team[7]=$_POST["team7"];
- $team[8]=$_POST["team8"];
- $team[9]=$_POST["team9"];
- $team[10]=$_POST["team10"];
+ $team[1]=int_post('team1');
+ $team[2]=int_post('team2');
+ $team[3]=int_post('team3');
+ $team[4]=int_post('team4');
+ $team[5]=int_post('team5');
+ $team[6]=int_post('team6');
+ $team[7]=int_post('team7');
+ $team[8]=int_post('team8');
+ $team[9]=int_post('team9');
+ $team[10]=int_post('team10');
 }
 $module = array();
 $module[0] = int_post('modul_0');
@@ -1122,16 +1122,16 @@ if (int_post('spezien')>=1) {
 ///////////////////////////////////////////////PLANETEN GENRERIEREN ENDE
 ////////////////////////////////////////////////WER SPIELT MIT
 $spieleranzahl=0;
-if (int_post('user_1')>=1) { $spieleranzahl++;$spieler[1][0]=int_post('user_1');$spieler[1][1]=$_POST["rasse_1"]; } else { $spieler[1][0]=0;$spieler[1][1]=''; }
-if (int_post('user_2')>=1) { $spieleranzahl++;$spieler[2][0]=int_post('user_2');$spieler[2][1]=$_POST["rasse_2"]; } else { $spieler[2][0]=0;$spieler[2][1]=''; }
-if (int_post('user_3')>=1) { $spieleranzahl++;$spieler[3][0]=int_post('user_3');$spieler[3][1]=$_POST["rasse_3"]; } else { $spieler[3][0]=0;$spieler[3][1]=''; }
-if (int_post('user_4')>=1) { $spieleranzahl++;$spieler[4][0]=int_post('user_4');$spieler[4][1]=$_POST["rasse_4"]; } else { $spieler[4][0]=0;$spieler[4][1]=''; }
-if (int_post('user_5')>=1) { $spieleranzahl++;$spieler[5][0]=int_post('user_5');$spieler[5][1]=$_POST["rasse_5"]; } else { $spieler[5][0]=0;$spieler[5][1]=''; }
-if (int_post('user_6')>=1) { $spieleranzahl++;$spieler[6][0]=int_post('user_6');$spieler[6][1]=$_POST["rasse_6"]; } else { $spieler[6][0]=0;$spieler[6][1]=''; }
-if (int_post('user_7')>=1) { $spieleranzahl++;$spieler[7][0]=int_post('user_7');$spieler[7][1]=$_POST["rasse_7"]; } else { $spieler[7][0]=0;$spieler[7][1]=''; }
-if (int_post('user_8')>=1) { $spieleranzahl++;$spieler[8][0]=int_post('user_8');$spieler[8][1]=$_POST["rasse_8"]; } else { $spieler[8][0]=0;$spieler[8][1]=''; }
-if (int_post('user_9')>=1) { $spieleranzahl++;$spieler[9][0]=int_post('user_9');$spieler[9][1]=$_POST["rasse_9"]; } else { $spieler[9][0]=0;$spieler[9][1]=''; }
-if (int_post('user_10')>=1) { $spieleranzahl++;$spieler[10][0]=int_post('user_10');$spieler[10][1]=$_POST["rasse_10"]; } else { $spieler[10][0]=0;$spieler[10][1]=''; }
+if (int_post('user_1')>=1) { $spieleranzahl++;$spieler[1][0]=int_post('user_1');$spieler[1][1]=str_post('rasse_1','SHORTNAME'); } else { $spieler[1][0]=0;$spieler[1][1]=''; }
+if (int_post('user_2')>=1) { $spieleranzahl++;$spieler[2][0]=int_post('user_2');$spieler[2][1]=str_post('rasse_2','SHORTNAME'); } else { $spieler[2][0]=0;$spieler[2][1]=''; }
+if (int_post('user_3')>=1) { $spieleranzahl++;$spieler[3][0]=int_post('user_3');$spieler[3][1]=str_post('rasse_3','SHORTNAME'); } else { $spieler[3][0]=0;$spieler[3][1]=''; }
+if (int_post('user_4')>=1) { $spieleranzahl++;$spieler[4][0]=int_post('user_4');$spieler[4][1]=str_post('rasse_4','SHORTNAME'); } else { $spieler[4][0]=0;$spieler[4][1]=''; }
+if (int_post('user_5')>=1) { $spieleranzahl++;$spieler[5][0]=int_post('user_5');$spieler[5][1]=str_post('rasse_5','SHORTNAME'); } else { $spieler[5][0]=0;$spieler[5][1]=''; }
+if (int_post('user_6')>=1) { $spieleranzahl++;$spieler[6][0]=int_post('user_6');$spieler[6][1]=str_post('rasse_6','SHORTNAME'); } else { $spieler[6][0]=0;$spieler[6][1]=''; }
+if (int_post('user_7')>=1) { $spieleranzahl++;$spieler[7][0]=int_post('user_7');$spieler[7][1]=str_post('rasse_7','SHORTNAME'); } else { $spieler[7][0]=0;$spieler[7][1]=''; }
+if (int_post('user_8')>=1) { $spieleranzahl++;$spieler[8][0]=int_post('user_8');$spieler[8][1]=str_post('rasse_8','SHORTNAME'); } else { $spieler[8][0]=0;$spieler[8][1]=''; }
+if (int_post('user_9')>=1) { $spieleranzahl++;$spieler[9][0]=int_post('user_9');$spieler[9][1]=str_post('rasse_9','SHORTNAME'); } else { $spieler[9][0]=0;$spieler[9][1]=''; }
+if (int_post('user_10')>=1) { $spieleranzahl++;$spieler[10][0]=int_post('user_10');$spieler[10][1]=str_post('rasse_10','SHORTNAME'); } else { $spieler[10][0]=0;$spieler[10][1]=''; }
 ///////////////////////////////////////////////SPIELER AUFBAUEN ANFANG
 ///////////////////////////////////////////////STARTPOSITIONEN
 if ($startposition==1) {
@@ -1414,7 +1414,7 @@ $spieler_1_ziel='';$spieler_2_ziel='';$spieler_3_ziel='';
 $spieler_4_ziel='';$spieler_5_ziel='';$spieler_6_ziel='';
 $spieler_7_ziel='';$spieler_8_ziel='';$spieler_9_ziel='';$spieler_10_ziel='';
 if ($ziel_id==1) {
-   $ziel_info=$_POST["zielinfo_1"];
+   $ziel_info=int_post('zielinfo_1');
 }
 if ($ziel_id==2) {
   $feind=0;$checkstring='';$zahl=0;
@@ -1499,7 +1499,7 @@ if ($ziel_id==6) {
   }
 }
 if ($ziel_id==5) {
-   $ziel_info=$_POST["zielinfo_5"];
+   $ziel_info=int_post('zielinfo_5');
    $spieler_1_ziel="0";
    $spieler_2_ziel="0";
    $spieler_3_ziel="0";

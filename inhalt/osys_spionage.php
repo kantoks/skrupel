@@ -333,9 +333,9 @@ if ($fuid==3) {
                             $lichtjahre1 = $lichtjahre2;
                         }
                     }
-                    $schiffsname=$_POST['schiffsname'];
-                    $schiffsname=str_replace("'"," ",$schiffsname);
-                    $schiffsname=str_replace('"'," ",$schiffsname);
+                    $schiffsname=str_post('schiffsname','SQLSAFE');
+                    //$schiffsname=str_replace("'"," ",$schiffsname);
+                    //$schiffsname=str_replace('"'," ",$schiffsname);
                     $extra = $spion_daten[$si]['erfahrung']."-init-".$planet['x_pos'].",".$planet['y_pos']."-0";
                     $schiff = $spion_daten[$si]['schiff'];
                     //0name:1kid:2tlvl:3bild:4bildk:5ctx:6mi1:7mi2:8mi3:9waf1:10waf2:11waf3:12fra:13tan:14antr:15cre:16ma:17fert:18beschr

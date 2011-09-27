@@ -23,10 +23,10 @@ if ($fuid==2) {
     $array = @mysql_fetch_array($zeiger);
     $spieler_chatfarbe = $array["chatfarbe"];
     $spieler_id = $array["id"];
-    if (strlen($_POST["nachricht"])>=1) {
+    if (strlen(str_post('nachricht','SQLSAFE'))>=1) {
         $aktuell=time();
         $farbe=$spieler_chatfarbe;
-        $nachricht=$_POST["nachricht"];
+        $nachricht=str_post('nachricht','SQLSAFE');
         function iif ($expression,$returntrue,$returnfalse) {
             if ($expression==0) {
                 return $returnfalse;
@@ -76,7 +76,8 @@ if ($fuid==2) {
             $bbcode=str_replace("Ä","&Auml;",$bbcode);
             $bbcode=str_replace("Ö","&Ouml;",$bbcode);
             $bbcode=str_replace("Ü","&Uuml;",$bbcode);
-            $bbcode=nl2br($bbcode);
+            //$bbcode=nl2br($bbcode);
+            $bbcode=strtr($bbcode, array("\\r\\n" => "<br />\\r\\n", "\\r" => "<br />\\r", "\\n" => "<br />\\n"));
             $bbcode=eregi_replace(quotemeta("[b]"),quotemeta("<b>"),$bbcode);
             $bbcode=eregi_replace(quotemeta("[/b]"),quotemeta("</b>"),$bbcode);
             $bbcode=eregi_replace(quotemeta("[i]"),quotemeta("<i>"),$bbcode);
@@ -124,11 +125,11 @@ if ($fuid==2) {
         }
         $aktuell=time();
         $farbe=$spieler_chatfarbe;
-        $nachricht=$_POST["nachricht"];
-        $nachricht=nl2br(stripslashes($nachricht));
-        $nachricht=str_replace("'", "",$nachricht);
+        $nachricht=str_post('nachricht','SQLSAFE');
+        //$nachricht=nl2br(stripslashes($nachricht));
+        //$nachricht=str_replace("'", "",$nachricht);
         //$nachricht=str_replace("\"", "",$nachricht);
-        $nachricht=str_replace("\\", "",$nachricht);
+        //$nachricht=str_replace("\\", "",$nachricht);
         //$nachricht=str_replace("\;", "",$nachricht);
         //$nachricht=str_replace("\n", "",$nachricht);
         $nachricht=parsetext($nachricht);
@@ -137,10 +138,10 @@ if ($fuid==2) {
         $an=int_post('an');
         $zeiger = @mysql_query("INSERT INTO $skrupel_chat (spiel,datum,text,an,von,farbe) values ($spiel,'$aktuell','$nachricht','$an','$spieler_name','$farbe');");
     }
-    if (strlen($_GET["zeit"])>=1) {
+    if (int_get('zeit')>=1) {
         $neutext="";
         $textn="";
-        $datumzeit=$_GET["zeit"];
+        $datumzeit=int_get('zeit');
         $zeiger = @mysql_query("SELECT * FROM $skrupel_chat where datum>$datumzeit and (an=0 or an=$spieler_id) order by datum");
         $chatanzahl = @mysql_num_rows($zeiger);
         if ($chatanzahl>=1) {
@@ -162,7 +163,7 @@ if ($fuid==2) {
                 $neuzeit=$datumn;
             }
         } else { 
-            $neuzeit=$_GET["zeit"];
+            $neuzeit=int_get('zeit');
         }
         ?>
         <script language=JavaScript>
@@ -218,7 +219,7 @@ if ($fuid==2) {
                                     <select name="an" style="width:75px;">
                                         <option value="0"><?php echo str_replace('{1}',$lang['kommunikationch']['alle'],$lang['kommunikationch']['an'])?></option>
                                         <?php
-                                        $zeiger = @mysql_query("SELECT * FROM $skrupel_user WHERE uid<>'".$_GET["uid"]."' order by nick");
+                                        $zeiger = @mysql_query("SELECT * FROM $skrupel_user WHERE uid<>'".$uid."' order by nick");
                                         $user_anzahl = @mysql_num_rows($zeiger);
                                         for  ($i=0; $i<$user_anzahl;$i++) {
                                             $ok = @mysql_data_seek($zeiger,$i);
@@ -227,7 +228,7 @@ if ($fuid==2) {
                                             $user_id=$array["id"];
                                             $spielerchatfarbe=$array["chatfarbe"];
                                             ?>
-                                            <option value="<?php echo $user_id; ?>" style="color:#<?php echo $spielerchatfarbe?>;" <?php if($_POST["an"]==$user_id) echo "selected";?> ><?php echo str_replace('{1}',$nick,$lang['kommunikationch']['an'])?></option>
+                                            <option value="<?php echo $user_id; ?>" style="color:#<?php echo $spielerchatfarbe?>;" <?php if(int_post('an')==$user_id) echo "selected";?> ><?php echo str_replace('{1}',$nick,$lang['kommunikationch']['an'])?></option>
                                             <?php
                                         }
                                         ?>

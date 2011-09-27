@@ -22,12 +22,12 @@ if ($fuu==1) {
         }
     }
 }
-if ($_GET["fu"]==2) {
+if (intval($_GET["fu"])==2) {
     include ("../inc.conf.php");
     $sname=$_GET["sname"];
     $jab=$_GET["jab"];
     $hash=$_GET["hash"];
-    $msg=str_replace('{1}',$sname,$lang['hostmessenger'][$spielersprache[$_GET["k"]]][0]);
+    $msg=str_replace('{1}',$sname,$lang['hostmessenger'][$spielersprache[intval($_GET["k"])]][0]);
     ignore_user_abort(true);
     $url="http://".$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
     $url=substr($url,0,strlen($url)-30);

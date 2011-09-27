@@ -343,9 +343,9 @@ if ($fuid==3) {
                 $min1=$min1-$kosten[3];
                 $min2=$min2-$kosten[4];
                 $min3=$min3-$kosten[5];
-                $stationsname=$_POST['stationsname'];
-                $stationsname=str_replace("'"," ",$stationsname);
-                $stationsname=str_replace('"'," ",$stationsname);
+                $stationsname=str_post('stationsname','SQLSAFE');
+                //$stationsname=str_replace("'"," ",$stationsname);
+                //$stationsname=str_replace('"'," ",$stationsname);
                 $zeiger_temp = @mysql_query("INSERT INTO $skrupel_sternenbasen (art,status,name,x_pos,y_pos,rasse,planetid,besitzer,spiel,t_huelle,t_antrieb,t_energie,t_explosiv) values ($art,0,'$stationsname',$x_pos,$y_pos,'$spieler_rasse',$pid,$spieler,$spiel,$native_fert_tech_1,$native_fert_tech_2,$native_fert_tech_3,$native_fert_tech_4);");
                 $zeiger_temp = @mysql_query("SELECT id,planetid FROM $skrupel_sternenbasen where planetid=$pid");
                 $array_temp = @mysql_fetch_array($zeiger_temp);

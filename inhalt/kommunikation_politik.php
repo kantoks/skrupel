@@ -273,7 +273,7 @@ if ($fuid==4) {
     include ("inc.header.php");
     $art = int_post('art');
     $spielernummer = int_post('spielernummer');
-    $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$_GET["sid"]."'");
+    $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$sid."'");
     $ok = @mysql_data_seek($zeiger,0);
     $sprachtemp_1 = @mysql_fetch_array($zeiger);
     $spielertemp=$sprachtemp_1["spieler_".$spielernummer];
@@ -527,7 +527,7 @@ if ($fuid==5) {
     include ("inc.header.php");
     $art = int_post('art');
     $spielernummer = int_post('spieler2');
-    $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$_GET["sid"]."'");
+    $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$sid."'");
     $ok = @mysql_data_seek($zeiger,0);
     $sprachtemp_1 = @mysql_fetch_array($zeiger);
     $spielertemp=$sprachtemp_1["spieler_".$spielernummer];
@@ -638,7 +638,7 @@ if ($fuid==6) {
     include ("inc.header.php");
     $art = int_post('art');
     $spielernummer = int_post('spieler2');
-    $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$_GET["sid"]."'");
+    $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$sid."'");
     $ok = @mysql_data_seek($zeiger,0);
     $sprachtemp_1 = @mysql_fetch_array($zeiger);
     $spielertemp=$sprachtemp_1["spieler_".$spielernummer];

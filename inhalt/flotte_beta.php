@@ -2458,7 +2458,7 @@ if ($fuid==8) {
     $zeiger = @mysql_query("SELECT id,logbuch FROM $skrupel_schiffe where id=$shid");
     $array = @mysql_fetch_array($zeiger);
     $logbuch=$array["logbuch"];
-    $logbuch=str_replace("\\", "",$logbuch);
+    //$logbuch=str_replace("\\", "",$logbuch);
 
     ?>
     <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -2495,9 +2495,9 @@ if ($fuid==8) {
 if ($fuid==9) {
     include ("inc.header.php");
 
-    $eintrag=$_POST["logbuchdaten"];
-    $eintrag=str_replace("\"", "\'",$eintrag);
-    $eintrag=str_replace("\\", "",$eintrag);
+    $eintrag=str_post('logbuchdaten','SQLSAFE');
+    //$eintrag=str_replace("\"", "\'",$eintrag);
+    //$eintrag=str_replace("\\", "",$eintrag);
     $zeiger = @mysql_query("UPDATE $skrupel_schiffe set logbuch=\"$eintrag\" where id=$shid");
 
     ?>

@@ -367,10 +367,10 @@ if ($fuid==4) {
     if ($spieler==$spieler_admin) {
         $uid = int_post('spielerid');
         if (($uid>1) and ($spieler_1<>$uid) and ($spieler_2<>$uid) and ($spieler_3<>$uid) and ($spieler_4<>$uid) and ($spieler_5<>$uid) and ($spieler_6<>$uid) and ($spieler_7<>$uid) and ($spieler_8<>$uid) and ($spieler_9<>$uid) and ($spieler_10<>$uid)) {
-            $kord=explode("-",$_POST["koord"]);
+            $kord=explode("-",str_post('koord','DEFAULT'));
             $i=int_post('slot');
             $ausstattung=int_post('ausstattung');
-            $rasse=$_POST["rasse"];
+            $rasse=str_post('rasse','SHORTNAME');
 ///////////////////////////////////////////////////////////////////////////////////////////////RASSENEIGENSCHAFTEN ANFANG
             $daten_verzeichnis="../daten/";
             $handle=opendir("$daten_verzeichnis");

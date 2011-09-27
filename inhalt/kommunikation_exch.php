@@ -3,8 +3,8 @@ include ('../inc.conf.php');
 include_once ('inc.hilfsfunktionen.php');
 $langfile_1 = 'kommunikation_exch';
 $fuid = int_get('fu');
-$uid=$_GET["uid"];
-$sid=$_GET["sid"];
+$sid = (isset($_GET['sid']) && !preg_match('/[^0-9A-Za-z]/',$_GET['sid']))?$_GET['sid']:0;
+$uid = (isset($_GET['uid']) && !preg_match('/[^0-9A-Za-z]/',$_GET['uid']))?$_GET['uid']:0;
 
 if ($fuid==1) {
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
@@ -131,7 +131,7 @@ if ($fuid==3) {
                 }
             </style>
             <?php
-            if (strlen($_POST["nachricht"])>=1) {
+            if (strlen(str_post('nachricht','SQLSAFE'))>=1) {
                 function iif ($expression,$returntrue,$returnfalse) {
                     if ($expression==0) {
                         return $returnfalse;
@@ -181,7 +181,8 @@ if ($fuid==3) {
                     $bbcode=str_replace("Ä","&Auml;",$bbcode);
                     $bbcode=str_replace("Ö","&Ouml;",$bbcode);
                     $bbcode=str_replace("Ü","&Uuml;",$bbcode);
-                    $bbcode=nl2br($bbcode);
+                    //$bbcode=nl2br($bbcode);
+                    $bbcode=strtr($bbcode, array("\\r\\n" => "<br />\\r\\n", "\\r" => "<br />\\r", "\\n" => "<br />\\n"));
                     $bbcode=eregi_replace(quotemeta("[b]"),quotemeta("<b>"),$bbcode);
                     $bbcode=eregi_replace(quotemeta("[/b]"),quotemeta("</b>"),$bbcode);
                     $bbcode=eregi_replace(quotemeta("[i]"),quotemeta("<i>"),$bbcode);
@@ -228,17 +229,17 @@ if ($fuid==3) {
                 }
                 $aktuell=time();
                 $farbe=$spieler_chatfarbe;
-                $nachricht=$_POST["nachricht"];
-                $nachricht=nl2br(stripslashes($nachricht));
-                $nachricht=str_replace("'", "",$nachricht);
-                $nachricht=str_replace("\\", "",$nachricht);
+                $nachricht=str_post('nachricht','SQLSAFE');
+                //$nachricht=nl2br(stripslashes($nachricht));
+                //$nachricht=str_replace("'", "",$nachricht);
+                //$nachricht=str_replace("\\", "",$nachricht);
                 $nachricht=parsetext($nachricht);
                 $jetzt=date("H:i",$aktuell);
                 //$text="<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td valign=\"top\" style=\"color:$farbe;\"><nobr>$spieler_name&nbsp;</nobr></td><td valign=\"top\" style=\"color:#aaaaaa;\"><nobr>@ $jetzt&nbsp;</nobr></td><td valign=\"top\">$nachricht</td></tr></table>";
                 $an=int_post('an');
                 $zeiger = @mysql_query("INSERT INTO $skrupel_chat (spiel,datum,text,an,von,farbe) values (1,'$aktuell','$nachricht','$an','$spieler_name','$farbe');");
             }
-            if (strlen($_GET["zeit"])>=1) { } else { $neuzeit=time();$first=1;}
+            if (int_get('zeit')>=1) { } else { $neuzeit=time();$first=1;}
             ?>
             <script language="JavaScript">
                 function senden(e) {
@@ -411,10 +412,10 @@ if ($fuid==5) {
                 }
             </style>
             <?php
-            if (strlen($_GET["zeit"])>=1) {
+            if (int_get('zeit')>=1) {
                 $neutext="";
                 $textn="";
-                $datumzeit=$_GET["zeit"];
+                $datumzeit=int_get('zeit');
                 $zeiger = @mysql_query("SELECT * FROM $skrupel_chat where datum>$datumzeit and (an=0 or an=$spieler_id) order by datum");
                 $chatanzahl = @mysql_num_rows($zeiger);
                 if ($chatanzahl>=1) {
@@ -434,7 +435,7 @@ if ($fuid==5) {
                         $neutext=$neutext.$textn;
                         $neuzeit=$datumn;
                     }
-                } else { $neuzeit=$_GET["zeit"]; }
+                } else { $neuzeit=int_get('zeit'); }
                 ?>
                 <script language=JavaScript>
                     var ant=parent.contentFrame.chatinhalt.document.getElementById('chattext');
@@ -566,7 +567,7 @@ if ($fuid==6) {
                         <select name="an">
                             <option value="0"><?php echo $lang['kommunikationexch']['allemitspieler']; ?></option>
                             <?php
-                            $zeiger = @mysql_query("SELECT * FROM $skrupel_user WHERE uid<>'".$_GET["uid"]."' order by nick");
+                            $zeiger = @mysql_query("SELECT * FROM $skrupel_user WHERE uid<>'".$uid."' order by nick");
                             $user_anzahl = @mysql_num_rows($zeiger);
                             for  ($i=0; $i<$user_anzahl;$i++) {
                                 $ok = @mysql_data_seek($zeiger,$i);

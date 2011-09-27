@@ -52,8 +52,9 @@ if ($fuid==1) {
 }
 if ($fuid==2) {
     include ("inc.header.php");
-    $rasse=$_GET["rasse"];
-    if ((!strstr($rasse, '.')) and (!strstr($rasse, '/'))) {
+    $rasse = str_get('rasse','SHORTNAME');
+    //if ((!strstr($rasse, '.')) and (!strstr($rasse, '/'))) {
+    if ($rasse!='') {
     ?>
     <script type="text/javascript" src="js/helpers/swfobject.js"></script>
     <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">

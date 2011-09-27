@@ -184,7 +184,7 @@ if ($fuid==3) {
     include ("inc.header.php");
         if ($spieler==int_get('spid')) {
             $spalte="spieler_".$spieler."_rassename";
-            $zeiger_temp= @mysql_query("UPDATE $skrupel_spiele set $spalte='".$_POST['neu_name']."' where id=$spiel");
+            $zeiger_temp= @mysql_query("UPDATE $skrupel_spiele set $spalte='".str_post('neu_name','SQLSAFE')."' where id=$spiel");
             ?>
             <script language=JavaScript>
                 window.location='uebersicht_imperien.php?fu=1&uid=<?php echo $uid?>&sid=<?php echo $sid?>';
