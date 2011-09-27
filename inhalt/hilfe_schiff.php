@@ -9,7 +9,7 @@ if ($fuid>=1) {
     ?>
 <body text="#000000" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <?php
-    $volk=$_GET["volk"];
+    $volk=str_get('volk','SHORTNAME');
     $file='../daten/'.$volk.'/schiffe.txt';
     $fp = @fopen("$file","r");
     if($fp){
@@ -374,7 +374,7 @@ if ($fuid>=1) {
                 <frame name="rahmen16" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=26&bildpfad=<?php echo $bildpfad; ?>" target="_self">
                 <frame name="rahmen17" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=27&bildpfad=<?php echo $bildpfad; ?>" target="_self">
             </frameset>
-            <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="hilfe_schiff.php?fu=<?php echo int_get('fu2'); ?>&volk=<?php echo $_GET["volk"]; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
+            <frame name="rahmen12" scrolling="auto" marginwidth="0" marginheight="0" noresize src="hilfe_schiff.php?fu=<?php echo int_get('fu2'); ?>&volk=<?php echo str_get('volk','SHORTNAME'); ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>" target="_self">
             <frameset framespacing="0" border="false" frameborder="0" rows="80,*,92">
                 <frame name="rahmen18" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=28&bildpfad=<?php echo $bildpfad; ?>" target="_self">
                 <frame name="rahmen19" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=29&bildpfad=<?php echo $bildpfad; ?>" target="_self">

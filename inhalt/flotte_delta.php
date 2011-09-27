@@ -296,7 +296,7 @@ if ($fuid==5) {
 }
 if ($fuid==6) {
     include ("inc.header.php");
-    $zeiger = @mysql_query("UPDATE $skrupel_schiffe set name=\"".$_POST["schiffname"]."\" where id=$shid and besitzer=$spieler");
+    $zeiger = @mysql_query("UPDATE $skrupel_schiffe set name=\"".str_post('schiffname','SQLSAFE')."\" where id=$shid and besitzer=$spieler");
     ?>
     <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <br><br><br><br>

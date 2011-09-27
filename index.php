@@ -4,11 +4,12 @@
 */
 include ('inc.conf.php');
 include_once ('inhalt/inc.hilfsfunktionen.php');
-if(isset($_GET['sprache']) && preg_match('/[a-z]{2}/', $_GET['sprache']) && is_dir("lang/".$_GET['sprache'])) {
-  include ("lang/".$_GET['sprache']."/lang.index.php");
-} else {
-  include ("lang/".$language."/lang.index.php");
+$sprache = str_get('sprache','SHORTNAME');
+if ($sprache=='' || !preg_match('/^[a-z]{2}$/', $sprache) || !is_dir('lang/'.$sprache)) {
+  $sprache = $language;
 }
+include ('lang/'.$sprache.'/lang.index.php');
+
 $conn = @mysql_connect($server.':'.$port,$login,$password);
 $db = @mysql_select_db($database,$conn);
 function compressed_output() {
@@ -36,16 +37,16 @@ if ($db) {
   if (!preg_match('/Skrupel/i',getEnv("HTTP_USER_AGENT"))) {
     $bildpfad = 'bilder';
   }
-  if( ($tmp = str_get('pic_path')) !== false) {
+  if( ($tmp = str_get('pic_path','PATHNAME')) !== false) {
     $bildpfad = $tmp;
-  } elseif( ($tmp = str_post('pic_path')) !== false) {
+  } elseif( ($tmp = str_post('pic_path','PATHNAME')) !== false) {
     $bildpfad = $tmp;
   }
-  $login_f  = str_post('login_f');
-  $pass_f    = str_post('passwort_f');
+  $login_f  = str_post('login_f','SQLSAFE');
+  $pass_f    = str_post('passwort_f','SQLSAFE');
   $spiel_slot = int_post('spiel_slot');
 ///////////////////////////////login ueber link
-  if (($hash_f = str_get('hash')) !== false) {
+  if (($hash_f = str_get('hash','SQLSAFE')) !== false) {
     $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele WHERE
       spieler_1_hash = '$hash_f' or
       spieler_2_hash = '$hash_f' or
@@ -81,9 +82,9 @@ if ($db) {
       $array = @mysql_fetch_array($zeiger);
       $spieler_id = $array['id'];
       $spieler_name = $array['nick'];
-      $_GET['sprache'] = $array['sprache'];
-      if($_GET['sprache']==''){
-        $_GET['sprache']=$language;
+      $spieler_sprache = $array['sprache'];
+      if ($spieler_sprache=='') {
+        $spieler_sprache=$language;
       }
       $zeiger2 = @mysql_query("SELECT * FROM $skrupel_spiele WHERE (spieler_1=$spieler_id or spieler_2=$spieler_id or spieler_3=$spieler_id or spieler_4=$spieler_id or spieler_5=$spieler_id or spieler_6=$spieler_id or spieler_7=$spieler_id or spieler_8=$spieler_id or spieler_9=$spieler_id or spieler_10=$spieler_id) and id=$spiel_slot");
       if (@mysql_num_rows($zeiger2)==1) {
@@ -107,7 +108,7 @@ if ($db) {
   }
   if ($spieler>0)  {
     if ($phase==1) {
-      header("Location: inhalt/runde_ende.php?fu=1&spiel=$spiel&bildpfad=$bildpfad&sprache=".$_GET['sprache']);
+      header("Location: inhalt/runde_ende.php?fu=1&spiel=$spiel&bildpfad=$bildpfad&sprache=".$spieler_sprache);
       exit;
     }
 ///////////////////////////////////////////////////////////////////////////////////////////////

@@ -275,14 +275,14 @@ if ($fuid==2) {
     <body text="#000000" bgcolor="#444444"  link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <div id="bodybody" class="flexcroll" onfocus="this.blur()">
         <?php
-        $sprache=$_POST['sprache'];
-        $email=$_POST['email'];
-        $icq=$_POST['icq'];
-        $jabber=$_POST['jabber'];
-        $avatar=$_POST['avatar'];
-        $chatfarbe=$_POST['chatfarbe'];
+        $sprache=str_post('sprache','SHORTNAME');
+        $email=str_post('email','SQLSAFE');
+        $icq=str_post('icq','SQLSAFE');
+        $jabber=str_post('jabber','SQLSAFE');
+        $avatar=str_post('avatar','SQLSAFE');
+        $chatfarbe=str_post('chatfarbe','SHORTNAME');
         $passwortneu='';
-        $passwortneu=$_POST['passwortneu'];
+        $passwortneu=str_post('passwortneu','SQLSAFE');
         $optionen='';
         if (int_post('email_nach')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
         if (int_post('icq_nach')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }

@@ -342,7 +342,7 @@ if ($fuid==2) {
         $zielidf=int_post('zielidf');
         $verbrauchf=int_post('verbrauchf');
         $benzin2=int_post('benzin2');
-        $kursmodus=$_POST["pathfind"];
+        $kursmodus=int_post('pathfind');
         if ($warpfaktor==0) {
             $flug=0;
             $warp=0;
@@ -1767,7 +1767,7 @@ if ($fuid==6) {
     $routing_mins="";
     $routing_id="";
     $routing_koord="";
-    if(urldecode($_POST["submitbutton"]) == utf8_encode(html_entity_decode($lang['flottealpha']['uebernehmen']))){
+    if(urldecode(str_post('submitbutton','DEFAULT')) == utf8_encode(html_entity_decode($lang['flottealpha']['uebernehmen']))){
         for($i=0;$i<int_post('points');$i++){
             if(int_post('pid_'.$i)!=-1){
                 $routing_mins=$routing_mins.int_post('cantox_'.$i).int_post('vorrat_'.$i).int_post('lem_'.$i).int_post('bax_'.$i).int_post('ren_'.$i).int_post('vor_'.$i).int_post('vol_'.$i);
@@ -1840,7 +1840,7 @@ if ($fuid==6) {
                 </tr>
                 <tr>
                     <?php    
-                    if($_POST["submitbutton"]==$lang['flottealpha']['neueroute']){
+                    if(str_post('submitbutton','DEFAULT')==$lang['flottealpha']['neueroute']){
                         ?>
                         <input type="hidden" name="pid_0" value=-1>
                         <input type="hidden" name="cantox_0" value=0>
@@ -1854,7 +1854,7 @@ if ($fuid==6) {
                         <input type="hidden" name="lbt_0" value=0>
                         <input type="hidden" name="sbt_0" value=0>
                         <?php
-                    }elseif($_POST["submitbutton"]==$lang['flottealpha']['routebearbeiten']){
+                    }elseif(str_post('submitbutton','DEFAULT')==$lang['flottealpha']['routebearbeiten']){
                         $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
                         $array = @mysql_fetch_array($zeiger);
                         $routing_id_t=$array["routing_id"];
@@ -1912,7 +1912,7 @@ if ($fuid==6) {
                         $kol_a=substr($routing_mins[$i],7,7);
                         $lbt_a=substr($routing_mins[$i],14,4);
                         $sbt_a=substr($routing_mins[$i],18,4);
-                    }elseif(urldecode($_POST["submitbutton"])==utf8_encode(html_entity_decode($lang['flottealpha']['loeschen']))){
+                    }elseif(urldecode(str_post('submitbutton','DEFAULT'))==utf8_encode(html_entity_decode($lang['flottealpha']['loeschen']))){
                         $point=int_post('point');
                         $points=int_post('points')-1;
                         for($i=0;$i<$point;$i++){
@@ -1964,7 +1964,7 @@ if ($fuid==6) {
                         for($i=0;$i<$points;$i++){
                             $_POST["pid_".$i]=$pid_h[$i];
                         }
-                    }elseif(urldecode($_POST["submitbutton"])==utf8_encode(html_entity_decode($lang['flottealpha']['neuerpunkt']))){
+                    }elseif(urldecode(str_post('submitbutton','DEFAULT'))==utf8_encode(html_entity_decode($lang['flottealpha']['neuerpunkt']))){
                         $point=int_post('point')+1;
                         $points=int_post('points')+1;
                         for($i=0;$i<$point;$i++){
@@ -2019,13 +2019,13 @@ if ($fuid==6) {
                     }else{
                         $point=int_post('point');
                         $points=int_post('points');
-                        if($_POST["submitbutton"]=="<"){
+                        if(str_post('submitbutton','DEFAULT')=='<'){
                             if($point>0){
                                 $point=$point-1;
                             }else{
                                 $point=$points-1;
                             }
-                        }elseif($_POST["submitbutton"]==">"){
+                        }elseif(str_post('submitbutton','DEFAULT')=='>'){
                             if($point<$points-1){
                                 $point=$point+1;
                             }else{
@@ -2073,7 +2073,7 @@ if ($fuid==6) {
                             $danach=0;
                         }
                     }
-                    if($_POST["wechsel"]==$lang['flottealpha']['fracht']){
+                    if(str_post('wechsel','DEFAULT')==$lang['flottealpha']['fracht']){
                         ?>
                         <td style="color:#aaaaaa;"><?php echo $lang['flottealpha']['wegpunkt']; ?> <?php echo $point+1; ?><?php echo $lang['flottealpha']['von']; ?><?php echo $points; ?>&nbsp;</td>
                         <td><select name="pid_<?php echo $point; ?>">
@@ -2153,7 +2153,7 @@ if ($fuid==6) {
                     <input type="submit" value="<" name="submitbutton"><?php if($points>1){?><input type="submit" value="<?php echo $lang['flottealpha']['uebernehmen']; ?>"  name="submitbutton"><?php } if(($points<10) and ($planetenanzahl>0)){?><input type="submit" value="<?php echo $lang['flottealpha']['neuerpunkt']; ?>"  name="submitbutton"><?php }if($points>1){?><input type="submit" value="<?php echo $lang['flottealpha']['loeschen']; ?>"  name="submitbutton"><?php }?><input type="hidden" value="<?php echo $lang['flottealpha']['fracht']; ?>" name="wechsel"><input type="submit" value="<?php echo $lang['flottealpha']['passagiere']; ?>"  name="wechsel"><input type="submit" value=">"  name="submitbutton" >
                 </center>
                 <?php
-            }elseif($_POST["wechsel"]==$lang['flottealpha']['passagiere']){
+            }elseif(str_post('wechsel','DEFAULT')==$lang['flottealpha']['passagiere']){
                 ?>
                 </table>
                 <table border="0" cellspacing="0" cellpadding="1">
@@ -2310,14 +2310,14 @@ if ($fuid==6) {
 }
 if ($fuid==7) {
     include ("inc.header.php");
-    $routing_mins=$_POST["routing_mins"];
-    $routing_id=$_POST["routing_id"];
-    $routing_koord=$_POST["routing_koord"];
+    $routing_mins=str_post('routing_mins','DEFAULT');
+    $routing_id=str_post('routing_id','DEFAULT');
+    $routing_koord=str_post('routing_koord','DEFAULT');
     $zielx=int_post('zielx');
     $ziely=int_post('ziely');
     $zielid=int_post('zielid');
     $flug=int_post('flug');
-    if ($_POST["submitbutton"]==$lang['flottealpha']['routeabschliessen']) {
+    if (str_post('submitbutton','DEFAULT')==$lang['flottealpha']['routeabschliessen']) {
         $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
         $array = @mysql_fetch_array($zeiger);
         $antrieb=$array["antrieb"];
@@ -2424,9 +2424,9 @@ if ($fuid==7) {
 }
 if ($fuid==8) {
     include ("inc.header.php");
-    $zeiger = @mysql_query("UPDATE $skrupel_schiffe set routing_id=\"".$_POST["routing_id"]."\",
-                                                     routing_koord=\"".$_POST["routing_koord"]."\",
-                                                     routing_mins=\"".$_POST["routing_mins"]."\",
+    $zeiger = @mysql_query("UPDATE $skrupel_schiffe set routing_id=\"".str_post('routing_id','DEFAULT')."\",
+                                                     routing_koord=\"".str_post('routing_koord','DEFAULT')."\",
+                                                     routing_mins=\"".str_post('routing_mins','DEFAULT')."\",
                                                      routing_status=2,
                                                      routing_schritt=0,
                                                      routing_warp=".int_post('warpfaktor').",

@@ -407,10 +407,10 @@ if ($fuid==3) {
     $antriebestufe=int_post('antriebe');
     $projektilestufe=int_post('projektile');
     $energetikstufe=int_post('energetik');
-    $schiffsname=$_POST['schiffsname'];
+    $schiffsname=str_post('schiffsname','SQLSAFE');
     $zusatz=int_post('zusatz');
-    $schiffsname=str_replace("'"," ",$schiffsname);
-    $schiffsname=str_replace('"'," ",$schiffsname);
+    //$schiffsname=str_replace("'"," ",$schiffsname);
+    //$schiffsname=str_replace('"'," ",$schiffsname);
     if ($art!=3) { $zusatz=0; }
     if ($projektilestufe>=1) {} else {$projektilestufe=0;}
     if ($energetikstufe>=1) {} else {$energetikstufe=0;}
@@ -488,7 +488,7 @@ if ($fuid==4) {
     $zeiger = @mysql_query("SELECT id,logbuch FROM $skrupel_sternenbasen where id=$baid");
     $array = @mysql_fetch_array($zeiger);
     $logbuch=$array["logbuch"];
-    $logbuch=str_replace("\\", "",$logbuch);
+    //$logbuch=str_replace("\\", "",$logbuch);
     ?>
     <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0"">
         <center>
@@ -522,9 +522,9 @@ if ($fuid==4) {
 }
 if ($fuid==5) {
     include ("inc.header.php");
-    $eintrag=$_POST["logbuchdaten"];
-    $eintrag=str_replace("\"", "\'",$eintrag);
-    $eintrag=str_replace("\\", "",$eintrag);
+    $eintrag=str_post('logbuchdaten','SQLSAFE');
+    //$eintrag=str_replace("\"", "\'",$eintrag);
+    //$eintrag=str_replace("\\", "",$eintrag);
     $zeiger = @mysql_query("UPDATE $skrupel_sternenbasen set logbuch=\"$eintrag\" where id=$baid");
     ?>
     <body text="#000000" background="<?php echo $bildpfad; ?>/aufbau/14.gif" bgcolor="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0"">
