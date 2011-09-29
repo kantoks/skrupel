@@ -3,8 +3,8 @@ include ('../inc.conf.php');
 include_once ('inc.hilfsfunktionen.php');
 $langfile_1 = 'kommunikation_exch';
 $fuid = int_get('fu');
-$sid = (isset($_GET['sid']) && !preg_match('/[^0-9A-Za-z]/',$_GET['sid']))?$_GET['sid']:0;
-$uid = (isset($_GET['uid']) && !preg_match('/[^0-9A-Za-z]/',$_GET['uid']))?$_GET['uid']:0;
+$sid = (isset($_GET['sid']) && !preg_match('/[^0-9A-Za-z\/\.]/',$_GET['sid']))?$_GET['sid']:0;
+$uid = (isset($_GET['uid']) && !preg_match('/[^0-9A-Za-z\/\.]/',$_GET['uid']))?$_GET['uid']:0;
 
 if ($fuid==1) {
     $conn = @mysql_connect($server.':'.$port,"$login","$password");

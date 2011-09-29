@@ -98,7 +98,7 @@ if ($fuid>=1) {
                         <table border="0" cellspacing="0" cellpadding="2">
                             <tr>
                                 <td style="text-align:center;font-size:12px;font-weight:bold;"><nobr><?php echo str_replace('{1}',$stufe,$lang['hilfe_spionage']['stufe'])?></nobr></td>
-                                <td style="text-align:right;"><span style="color:#aaaaaa;"><?php echo str_replace('{1}',$xp,$lang['hilfe_spionage']['erfahrung'])?></td>
+                                <td style="text-align:right;"><span style="color:#aaaaaa;"><?php echo str_replace('{1}',$xp,$lang['hilfe_spionage']['erfahrungspunkte'])?></td>
                             </tr>
                             <tr>
                                 <td colspan="2"><img src="../bilder/empty.gif" border="0" width="1" height="4"></td>
