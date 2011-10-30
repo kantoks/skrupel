@@ -334,6 +334,7 @@ function rzufallstring() {
 define('ONLY_LETTERS',0);
 define('WITH_NUMBERS', 1);
 define('WITH_SPECIAL_CHARACTERS', 2);
+if (! function_exists("zufallstring")){
 function zufallstring($size = 20, $url = ONLY_LETTERS){
   mt_srand();
   $pool = 'abcdefghijklmnopqrstuvwxyz';
@@ -350,4 +351,4 @@ function zufallstring($size = 20, $url = ONLY_LETTERS){
     $salt .= $pool[mt_rand(0, $pool_size - 1)];
   }
   return $salt; 
-} 
+} }
