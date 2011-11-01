@@ -17,6 +17,8 @@ if ($fuid==1) {
     $spieler_icq = $array['icq'];
     $spieler_optionen = $array['optionen'];
     $spieler_chatfarbe = $array['chatfarbe'];
+    $spieler_homepage = $array['homepage'];
+    $spieler_jabber = $array['jabber'];
     ?>
     <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <div id="bodybody" class="flexcroll" onfocus="this.blur()">
@@ -117,7 +119,7 @@ if ($fuid==1) {
                                             </tr>
                                             <tr>
                                                 <td style="color:#aaaaaa;"><?php echo $lang['metaoptionen']['homepage']?>&nbsp;</td>
-                                                <td><input type="text" class="eingabe" style="width:200px;" maxlength="255" name="homepage" value="<?php echo $spieler_hoomepage?>"></td>
+                                                <td><input type="text" class="eingabe" style="width:200px;" maxlength="255" name="homepage" value="<?php echo $spieler_homepage?>"></td>
                                             </tr>
                                         </table>
                                         <table border="0" cellspacing="1" cellpadding="0">
@@ -283,6 +285,7 @@ if ($fuid==2) {
         $chatfarbe=str_post('chatfarbe','SHORTNAME');
         $passwortneu='';
         $passwortneu=str_post('passwortneu','SQLSAFE');
+        $homepage=str_post('homepage','SQLSAFE');
         $optionen='';
         if (int_post('email_nach')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
         if (int_post('icq_nach')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
@@ -302,7 +305,7 @@ if ($fuid==2) {
         if (int_post('feature_iiii')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
         if (int_post('feature_iiiii')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
         if (int_post('feature_iiiiii')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
-        $zeiger_temp = @mysql_query("UPDATE $skrupel_user set jabber='$jabber', email='$email', icq='$icq', optionen='$optionen', chatfarbe='$chatfarbe', avatar='$avatar', sprache='$sprache' where uid='$uid'");
+        $zeiger_temp = @mysql_query("UPDATE $skrupel_user set homepage='$homepage', jabber='$jabber', email='$email', icq='$icq', optionen='$optionen', chatfarbe='$chatfarbe', avatar='$avatar', sprache='$sprache' where uid='$uid'");
         if (strlen($passwortneu)>=1) {
             $zeiger_temp = @mysql_query("UPDATE $skrupel_user set passwort='$passwortneu' where uid='$uid'");
         }
