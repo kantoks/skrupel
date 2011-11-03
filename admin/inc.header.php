@@ -23,8 +23,11 @@ ob_start();
 }
 }
 compressed_output();
-$ftploginname=$_COOKIE["ftploginname"];
-$ftploginpass=$_COOKIE["ftploginpass"];
+session_name('skrupelAdmin');
+session_start();
+isset($_SESSION['ftploginname']) or die();
+$ftploginname=$_SESSION['ftploginname'];
+$ftploginpass=$_SESSION["ftploginpass"];
 ?>
 <html>
 <head>
