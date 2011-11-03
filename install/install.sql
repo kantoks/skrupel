@@ -599,6 +599,7 @@ CREATE TABLE {skrupel_db.user} (
 	    uid varchar(20) NOT NULL default '',
 	    icq varchar(20) NOT NULL default '',
 	    jabber varchar(255) NOT NULL default '',
+            homepage tinytext NOT NULL,
 	    optionen varchar(255) NOT NULL default '',
 	    chatfarbe varchar(6) NOT NULL default 'ffffff',
 	    stat_teilnahme int(11) NOT NULL default '0',
