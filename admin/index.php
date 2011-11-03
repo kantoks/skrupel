@@ -17,13 +17,13 @@ if($db){
     }
   }
   compressed_output();
-  if(!(empty($_POST["loginname"]) or empty($_POST["loginpass"]))){
-    setcookie("ftploginname",$_POST["loginname"],time()+31536000,'/');$ftploginname=$_POST["loginname"];
-    setcookie("ftploginpass",$_POST["loginpass"],time()+31536000,'/');$ftploginpass=$_POST["loginpass"];
-  }else{ $ftploginname=$_COOKIE["ftploginname"];$ftploginpass=$_COOKIE["ftploginpass"]; }
-  $zugang=0;
-  if(($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) { $zugang=1; }
-  if ($zugang==1){
+session_name('skrupelAdmin');
+session_start();
+if (isset($_POST['loginname']) && isset($_POST['loginpass'])) {
+$_SESSION['ftploginname'] =$_POST['loginname'];
+$_SESSION['ftploginpass'] =$_POST['loginpass'];
+}
+if(isset($_SESSION['ftploginname']) && $_SESSION['ftploginname'] ==$admin_login && $_SESSION['ftploginpass'] == $admin_pass){
     ?>
 <html>
 <head>
