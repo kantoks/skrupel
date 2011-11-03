@@ -199,8 +199,10 @@ if ($fuid==4) {
         $zeiger_temp= @mysql_query("SELECT * FROM $skrupel_user where id=$spid");
         $array_temp = @mysql_fetch_array($zeiger_temp);
         $nick=$array_temp["nick"];
+        $userid=$array_temp["id"];
         $email=$array_temp["email"];
         $icq=$array_temp["icq"];
+        $homepage=$array_temp["homepage"];
         $avatar=$array_temp["avatar"];
         $stat_teilnahme=$array_temp["stat_teilnahme"];
         $stat_sieg=$array_temp["stat_sieg"];
@@ -209,17 +211,26 @@ if ($fuid==4) {
         $stat_kol_erobert=$array_temp["stat_kol_erobert"];
         $stat_lichtjahre=$array_temp["stat_lichtjahre"];
         $stat_monate=$array_temp["stat_monate"];
+
         ?>
-        <body text="#ffffff" bgcolor="#444444"  link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-            <center><img src="../lang/<?php echo $spieler_sprache?>/topics/kolonien.gif" border="0" width="162" height="52"></center>
-            <center>
-                <table cellpadding="0" cellspacing="0" border="0">
-                    <tr>
-                        <td><img src="../lang/<?php echo $spieler_sprache?>/topics/kolonien.gif" border="0" width="150" height="150"></td>
-                        <td><img src="<?php echo $bildpfad?>/empty.gif" border="0" width="20" height="1"></td>
-                    </tr>
-                </table>
-            </center>
+<body text="#ffffff" bgcolor="#444444"  link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<br><center><?php if ($avatar) {?><img src="<?php echo $avatar;?>"><?php }?><br>
+<table cellpadding="1" cellspacing="0" border="1" width="50%">
+  <colgroup>
+    <col width="40%">
+    <col width="60%">
+  </colgroup>
+<caption align="top"><h1 style="text-decoration:underline; white-space:nowrap"><?php echo $nick;?></h1></caption>
+  <?php if ($icq) { ?> <tr><td><b>ICQ</b></td><td><a href="http://www.icq.com/people/<?php echo $icq; ?>" target="_blank"><?php echo $icq; ?></a><img src="http://web.icq.com/whitepages/online?icq=<?php echo $icq; ?>&img=5"></td></tr><?php } ?>
+  <?php if ($homepage) { ?><tr><td><b><?php echo $lang['uebersichtimperien']['homepage']; ?></b></td><td><a href="<?php echo $homepage; ?>" target="_blank"><?php echo $homepage; ?></a></td></tr><?php } ?>
+  <?php if ($email) { ?><tr><td><b><?php echo $lang['uebersichtimperien']['email']; ?></b></td><td><a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></td></tr><?php } ?>
+   <tr><td><b><?php echo $lang['uebersichtimperien']['stat_sieg']; ?></b></td><td><?php echo $stat_sieg.' '.$lang['uebersichtimperien']['von'].' '.$stat_teilnahme; ?></td></tr>
+   <tr><td><b><?php echo $lang['uebersichtimperien']['stat_schlacht_sieg']; ?></b></td><td><?php echo $stat_schlacht_sieg.' '.$lang['uebersichtimperien']['von'].' '.$stat_schlacht; ?></td></tr>
+   <tr><td><b><?php echo $lang['uebersichtimperien']['stat_kol_erobert']; ?></b></td><td><?php echo $stat_kol_erobert; ?></td></tr>
+   <tr><td><b><?php echo $lang['uebersichtimperien']['stat_lichtjahre']; ?></b></td><td><?php echo $stat_lichtjahre; ?></td></tr>
+   <tr><td><b><?php echo $lang['uebersichtimperien']['stat_monate']; ?></b></td><td><?php echo $stat_monate; ?></td></tr>
+</table></center>
             <?php
     include ("inc.footer.php");
 }
