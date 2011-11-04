@@ -23,27 +23,16 @@ if ($fuid==1) {
                                                 <td><center><img src="../lang/<?php echo $spieler_sprache?>/topics/siegbedingungen.gif" border="0" width="199" height="52"></center></td>
                                             </tr>
                                             <tr>
-                                                <td>
-                                                    <?php if ($ziel_id==0) { ?>
-                                                        <center>
-                                                            <table border="0" cellspacing="0" cellpadding="0">
+                                                <td style="text-align:center"><input type="button" onClick="var inner = this.parentNode.getElementsByTagName('table')[0]; if (inner.style.display == 'none'){inner.style.display = 'block';this.value=' - ';}else{inner.style.display = 'none';this.value=' + ';}" value=" + ">
+                                                            <table cellspacing="0" cellpadding="0" rules="none" style="display:none; border:2pt #FFF solid">
                                                                 <tr>
-                                                                    <td><?php echo $lang['uebersichtimperien']['justforfun']?></td>
-                                                                </tr>
-                                                            </table>
-                                                        </center>
-                                                    <?php } 
+                                                                    <td>
+                                                    <?php if ($ziel_id==0) { 
+                                                       echo $lang['uebersichtimperien']['justforfun'];
+                                                     } 
                                                     if ($ziel_id==1) {
                                                         $text=str_replace(array('{1}','{2}'),array($ziel_info,$spieleranzahl),$lang['uebersichtimperien']['ueberleben']);
-                                                        ?>
-                                                        <center>
-                                                            <table border="0" cellspacing="0" cellpadding="0">
-                                                                <tr>
-                                                                    <td><?php echo $text?></td>
-                                                                </tr>
-                                                            </table>
-                                                        </center>
-                                                    <?php } 
+                                                              echo $text; } 
                                                     if ($ziel_id==2) {
                                                         $feind=intval($spieler_ziel);
                                                         $feind_id=$spieler_id_c[$feind];
@@ -52,26 +41,10 @@ if ($fuid==1) {
                                                         $username=$array_temp["nick"];
                                                         $todfeind="<font color='".$spielerfarbe[$feind]."'>".$username."</font>";
                                                         $text=str_replace(array('{1}'),array($todfeind),$lang['uebersichtimperien']['todfeind']);
-                                                        ?>
-                                                        <center>
-                                                            <table border="0" cellspacing="0" cellpadding="0">
-                                                                <tr>
-                                                                    <td><?php echo $text?></td>
-                                                                </tr>
-                                                            </table>
-                                                        </center>
-                                                    <?php } 
+                                                                  echo $text; } 
                                                     if ($ziel_id==5) {
                                                         $text=str_replace(array('{1}','{2}'),array($ziel_info,$spieler_ziel),$lang['uebersichtimperien']['spice']);
-                                                        ?>
-                                                        <center>
-                                                            <table border="0" cellspacing="0" cellpadding="0">
-                                                                <tr>
-                                                                    <td><?php echo $text?></td>
-                                                                </tr>
-                                                            </table>
-                                                        </center>
-                                                    <?php } 
+                                                                  echo $text; } 
                                                     if ($ziel_id==6) {
                                                         $zieldaten=explode(':',$spieler_ziel);
                                                         $feinda=intval($zieldaten[1]);
@@ -87,16 +60,8 @@ if ($fuid==1) {
                                                         $username=$array_temp["nick"];
                                                         $todfeindb="<font color='".$spielerfarbe[$feindb]."'>".$username."</font>";
                                                         $text=str_replace(array('{1}','{2}'),array($todfeinda,$todfeindb),$lang['uebersichtimperien']['teamtodfeind']);
-                                                        ?>
-                                                        <center>
-                                                            <table border="0" cellspacing="0" cellpadding="0">
-                                                                <tr>
-                                                                    <td><?php echo $text?></td>
-                                                                </tr>
-                                                            </table>
-                                                        </center>
-                                                    <?php } ?>
-                                                </td>
+                                                        echo $text; } ?>
+                                                                   </td>
                                             </tr>
                                         </table>
                                     </center><br>
