@@ -65,18 +65,25 @@ if ($db) {
         $tmpstr = 'spieler_'.$m;
         if ($array[$tmpstr.'_hash']==$hash_f) {
           $benutzer_id = $array[$tmpstr];
-          $zeiger = @mysql_query("SELECT nick,passwort FROM $skrupel_user where id=$benutzer_id");
+          $zeiger = @mysql_query("SELECT nick,passwort,salt FROM $skrupel_user where id=$benutzer_id");
           $array = @mysql_fetch_array($zeiger);
           $login_f = $array['nick'];
           $pass_f = $array['passwort'];
+		  $salt_f = $array['salt'];
           break;
         }
       }
     }
   }
-///////////////////////////////login ueber link
+///////////////////////////////login
   $fehler = "";
-  if ((strlen($login_f)>=1) and (strlen($pass_f)>=1)) {
+  if (!(empty($login_f) || empty($pass_f))) {
+	$zeiger = @mysql_query("SELECT salt FROM $skrupel_user WHERE nick='$login_f'");
+	if(mysql_fetch_array($zeiger)){
+	$salt_f = $zeiger[0];
+	$pass_f = cryptPasswd($pass_f, $salt_f);
+	$pass_f = explode(':',$pass_f, 2);
+	$pass_f = $pass_f[0];
     $zeiger = @mysql_query("SELECT * FROM $skrupel_user WHERE nick='$login_f' and passwort='$pass_f'");
     if (@mysql_num_rows($zeiger)==1) {
       $array = @mysql_fetch_array($zeiger);
@@ -103,6 +110,9 @@ if ($db) {
         $fehler = $lang['index']['spielnichtfuerdich'];
       }
     } else {
+      $fehler = $lang['index']['falscheZugangsdaten'];
+    }
+	} else {
       $fehler = $lang['index']['falscheZugangsdaten'];
     }
   }
