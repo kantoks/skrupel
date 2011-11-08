@@ -594,7 +594,7 @@ CREATE TABLE {skrupel_db.sternenbasen} (
 CREATE TABLE {skrupel_db.user} (
 	    id int(11) NOT NULL auto_increment,
 	    nick varchar(30) NOT NULL default '',
-	    passwort varchar(30) NOT NULL default '',
+	    passwort varchar(64) NOT NULL default '',
 		salt varchar(16) NOT NULL default '',
 	    email varchar(255) NOT NULL default '',
 	    uid varchar(20) NOT NULL default '',
@@ -613,7 +613,7 @@ CREATE TABLE {skrupel_db.user} (
 	    bildpfad varchar(255) NOT NULL default '',
 	    avatar varchar(255) NOT NULL default '',
 	    sprache varchar(255) NOT NULL default '$language',
-	    UNIQUE KEY id (id)
+	    PRIMARY KEY (id)
 ) ENGINE=MyISAM;
 
 CREATE TABLE {skrupel_db.konplaene} (

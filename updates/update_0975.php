@@ -9,8 +9,12 @@
   $spiel_version = $array["version"];
   if ($spiel_version=='0.974') {
     @mysql_query("UPDATE `$skrupel_info` set version='0.975'");
-	@mysql_query("ALTER TABLE `$skrupel_user` ADD COLUMN `salt` varchar(16) NOT NULL default '' AFTER `passwort`");
-	$user = @mysql_query("SELECT `id`, `passwort`,  FROM `$skrupel_user`");
+	@mysql_query("ALTER TABLE `$skrupel_user` 
+	ADD COLUMN `salt` varchar(16) NOT NULL default '' AFTER `passwort`,
+	MODIFY `passwort` varchar(64) NOT NULL default '',
+	ADD PRIMARY KEY ( `id` ),
+	DROP INDEX `id`");
+	$user = @mysql_query("SELECT `id`, `passwort` FROM `$skrupel_user`");
 	while($id = mysql_fetch_array($user)){
 			$passwd=cryptPasswd($id['passwort']);
 			$passwd= explode(':',$passwd, 2);

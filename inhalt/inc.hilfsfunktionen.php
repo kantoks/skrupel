@@ -147,3 +147,16 @@ function cryptPasswd($passwd, $salt = ''){
 	return $passwd; // 
 					// 
 }
+
+function compressed_output() {
+  $encoding = getEnv("HTTP_ACCEPT_ENCODING");
+  $useragent = getEnv("HTTP_USER_AGENT");
+  $method = trim(getEnv("REQUEST_METHOD"));
+  $msie = preg_match("=msie=i", $useragent);
+  $gzip = preg_match("=gzip=i", $encoding);
+  if ($gzip && ($method != "POST" or !$msie)) {
+    ob_start("ob_gzhandler");
+  } else {
+    ob_start();
+  }
+}
