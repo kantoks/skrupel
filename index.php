@@ -1,11 +1,8 @@
 <?php
-/*
-:noTabs=false:indentSize=4:tabSize=4:folding=explicit:collapseFolds=1:
-*/
 include ('inc.conf.php');
-include_once ('inhalt/inc.hilfsfunktionen.php');
+include_once ('inhalt/inc.hilfsfunktionen.php');		
 $sprache = str_get('sprache','SHORTNAME');
-if ($sprache=='' || !preg_match('/^[a-z]{2}$/', $sprache) || !is_dir('lang/'.$sprache)) {
+if (empty($sprache) || !preg_match('/^[a-z]{2}$/', $sprache) || !is_dir('lang/'.$sprache)) {
   $sprache = $language;
 }
 include ('lang/'.$sprache.'/lang.index.php');
@@ -32,7 +29,7 @@ if ($db) {
     $bildpfad = $tmp;
   }
   $login_f  = str_post('login_f','SQLSAFE');
-  $pass_f    = str_post('passwort_f','SQLSAFE');
+  $pass_f    = str_post('passwort_f','NONE');
   $spiel_slot = int_post('spiel_slot');
 ///////////////////////////////login ueber link
   if (($hash_f = str_get('hash','SQLSAFE')) !== false) {
