@@ -31,59 +31,67 @@ function int_get($key) {
 }
 function str_post($key,$mode) {
     if (isset($_POST[$key]) and !is_array($_POST[$key])) {
-        if ($mode=='DEFAULT') {
-            if (!preg_match('/[^0-9A-Za-z_&:;\-]/',$_POST[$key])) {
-                return $_POST[$key];
-            }
-        }
-        if ($mode=='PATHNAME') {
-            if (!preg_match('/[^0-9A-Za-z_\/\.]/',$_POST[$key])) {
-                return $_POST[$key];
-            }
-        }
-        if ($mode=='SHORTNAME') {
-            if (!preg_match('/[^0-9A-Za-z_]/',$_POST[$key])) {
-                return $_POST[$key];
-            }
-        }
-        if ($mode=='SQLSAFE') {
-            $retvar = stripslashes($_POST[$key]);
+		switch ($mode){
+			case 'NONE':
+				return $_POST[$key];
+			break;
+			case 'SQLSAFE':
+			            $retvar = stripslashes($_POST[$key]);
             if ($key=='thema' || $key=='beitrag' || $key=='offenbarung') {
                 $retvar = nl2br($retvar);
             }
             //$retvar = strtr($retvar, array("\x00" => "\\x00", "\x1a" => "\\x1a", "\n" => "\\n", "\r" => "\\r", "\\" => "\\\\", "'" => "\'", "\"" => "\\\"")); // nur escapen
             $retvar = strtr($retvar, array("\x00" => "\\x00", "\x1a" => "\\x1a", "\n" => "\\n", "\r" => "\\r", "\\" => "", "'" => "", "\"" => "")); // entfernt: " ' \
             return $retvar;
-        }
+			break;
+			case 'SHORTNAME':
+				if (!preg_match('/[^0-9A-Za-z_]/',$_POST[$key])) {
+					return $_POST[$key];
+				}
+			break;
+			case 'PATHNAME':
+				if (!preg_match('/[^0-9A-Za-z_\/\.]/',$_POST[$key])) {
+					return $_POST[$key];
+				}
+			break;
+			default:
+				if (!preg_match('/[^0-9A-Za-z_&:;\-]/',$_POST[$key])) {
+					return $_POST[$key];
+				}
+		}
     }
     return false;
 }
 function str_get($key,$mode) {
     if (isset($_GET[$key]) and !is_array($_GET[$key])) {
-        if ($mode=='DEFAULT') {
-            if (!preg_match('/[^0-9A-Za-z_&:;\-]/',$_GET[$key])) {
-                return $_GET[$key];
-            }
-        }
-        if ($mode=='PATHNAME') {
-            if (!preg_match('/[^0-9A-Za-z_\/\.]/',$_GET[$key])) {
-                return $_GET[$key];
-            }
-        }
-        if ($mode=='SHORTNAME') {
-            if (!preg_match('/[^0-9A-Za-z_]/',$_GET[$key])) {
-                return $_GET[$key];
-            }
-        }
-        if ($mode=='SQLSAFE') {
-            $retvar = stripslashes($_GET[$key]);
+        switch ($mode){
+			case 'NONE':
+				return $_GET[$key];
+			break;
+			case 'SQLSAFE':
+			            $retvar = stripslashes($_GET[$key]);
             if ($key=='thema' || $key=='beitrag' || $key=='offenbarung') {
                 $retvar = nl2br($retvar);
             }
             //$retvar = strtr($retvar, array("\x00" => "\\x00", "\x1a" => "\\x1a", "\n" => "\\n", "\r" => "\\r", "\\" => "\\\\", "'" => "\'", "\"" => "\\\"")); // nur escapen
             $retvar = strtr($retvar, array("\x00" => "\\x00", "\x1a" => "\\x1a", "\n" => "\\n", "\r" => "\\r", "\\" => "", "'" => "", "\"" => "")); // entfernt: " ' \
             return $retvar;
-        }
+			break;
+			case 'SHORTNAME':
+				if (!preg_match('/[^0-9A-Za-z_]/',$_GET[$key])) {
+					return $_GET[$key];
+				}
+			break;
+			case 'PATHNAME':
+				if (!preg_match('/[^0-9A-Za-z_\/\.]/',$_GET[$key])) {
+					return $_GET[$key];
+				}
+			break;
+			default:
+				if (!preg_match('/[^0-9A-Za-z_&:;\-]/',$_GET[$key])) {
+					return $_GET[$key];
+				}
+		}
     }
     return false;
 }
@@ -126,4 +134,32 @@ function zufallstring($size = 20, $url = ONLY_LETTERS){
     $salt .= $pool[mt_rand(0, $pool_size - 1)];
   }
   return $salt; 
+}
+
+/**
+* hast a password + salt with sha256
+*
+* Hast ein Passwort, unter verwendung eines salts. Beim Erstellen eines Hash zur Speicherung leer lassen, beim abgleich muss der Salt aus der DB genommen werden, um identiche ergebnisse zu erhalten 	
+*@param string $passwd Zu hashendes Passwort
+*@param string $salt der zum hashen verwendet werden soll
+*@return string Passwort hash und salt durch ein : getrennt; Achtung: immer nur nach dem ersten : trennen. Im Hash selber kann keines vorkommen, im Salt schon. BSP: explode(':',cryptPasswd('Mein Passwort'), 2);
+*/
+function cryptPasswd($passwd, $salt = ''){
+	if(strlen($salt) < 16)
+		$salt = zufallstring(16, WITH_NUMBERS & WITH_SPECIAL_CHARACTERS);
+	$passwd = hash('sha256',$passwd.$salt).':'.$salt;
+	return $passwd;
+}
+
+function compressed_output() {
+  $encoding = getEnv("HTTP_ACCEPT_ENCODING");
+  $useragent = getEnv("HTTP_USER_AGENT");
+  $method = trim(getEnv("REQUEST_METHOD"));
+  $msie = preg_match("=msie=i", $useragent);
+  $gzip = preg_match("=gzip=i", $encoding);
+  if ($gzip && ($method != "POST" or !$msie)) {
+    ob_start("ob_gzhandler");
+  } else {
+    ob_start();
+  }
 }
