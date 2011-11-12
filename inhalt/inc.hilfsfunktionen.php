@@ -64,30 +64,34 @@ function str_post($key,$mode) {
 }
 function str_get($key,$mode) {
     if (isset($_GET[$key]) and !is_array($_GET[$key])) {
-        if ($mode=='DEFAULT') {
-            if (!preg_match('/[^0-9A-Za-z_&:;\-]/',$_GET[$key])) {
-                return $_GET[$key];
-            }
-        }
-        if ($mode=='PATHNAME') {
-            if (!preg_match('/[^0-9A-Za-z_\/\.]/',$_GET[$key])) {
-                return $_GET[$key];
-            }
-        }
-        if ($mode=='SHORTNAME') {
-            if (!preg_match('/[^0-9A-Za-z_]/',$_GET[$key])) {
-                return $_GET[$key];
-            }
-        }
-        if ($mode=='SQLSAFE') {
-            $retvar = stripslashes($_GET[$key]);
+        switch ($mode){
+			case 'NONE':
+				return $_GET[$key];
+			break;
+			case 'SQLSAFE':
+			            $retvar = stripslashes($_GET[$key]);
             if ($key=='thema' || $key=='beitrag' || $key=='offenbarung') {
                 $retvar = nl2br($retvar);
             }
             //$retvar = strtr($retvar, array("\x00" => "\\x00", "\x1a" => "\\x1a", "\n" => "\\n", "\r" => "\\r", "\\" => "\\\\", "'" => "\'", "\"" => "\\\"")); // nur escapen
             $retvar = strtr($retvar, array("\x00" => "\\x00", "\x1a" => "\\x1a", "\n" => "\\n", "\r" => "\\r", "\\" => "", "'" => "", "\"" => "")); // entfernt: " ' \
             return $retvar;
-        }
+			break;
+			case 'SHORTNAME':
+				if (!preg_match('/[^0-9A-Za-z_]/',$_GET[$key])) {
+					return $_GET[$key];
+				}
+			break;
+			case 'PATHNAME':
+				if (!preg_match('/[^0-9A-Za-z_\/\.]/',$_GET[$key])) {
+					return $_GET[$key];
+				}
+			break;
+			default:
+				if (!preg_match('/[^0-9A-Za-z_&:;\-]/',$_GET[$key])) {
+					return $_GET[$key];
+				}
+		}
     }
     return false;
 }
@@ -144,8 +148,7 @@ function cryptPasswd($passwd, $salt = ''){
 	if(strlen($salt) < 16)
 		$salt = zufallstring(16, WITH_NUMBERS & WITH_SPECIAL_CHARACTERS);
 	$passwd = hash('sha256',$passwd.$salt).':'.$salt;
-	return $passwd; // 
-					// 
+	return $passwd;
 }
 
 function compressed_output() {
