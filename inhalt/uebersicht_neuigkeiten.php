@@ -153,7 +153,6 @@ if ($fuid==1) {
                             $array = @mysql_fetch_array($zeiger);
                             $nid=$array["id"];
                             $datum=$array["datum"];
-                            $special=$array["special"];
                             $icon=$array["icon"];
                             $inhalt=$array["inhalt"];
                             $sicher=$array["sicher"];

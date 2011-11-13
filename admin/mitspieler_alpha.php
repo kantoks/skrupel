@@ -34,8 +34,9 @@ include ("inc.header.php");
 if (($ftploginname==$admin_login) and ($ftploginpass==$admin_pass)) {
 $nick=str_post('nick','SQLSAFE');
 $email=str_post('email','SQLSAFE');
-$passwort=str_post('passwort','SQLSAFE');
-$zeiger = @mysql_query("INSERT INTO $skrupel_user (nick,passwort,email,optionen,sprache) values ('$nick','$passwort','$email','00111111111000', '$language')");
+$passwort=cryptPasswd(str_post('passwort','NONE'));	
+$passwort = explode(':',$passwort, 2);
+$zeiger = @mysql_query("INSERT INTO $skrupel_user (nick,passwort, salt, email,optionen,sprache) values ('$nick','{$passwort[0]}','{$passwort[1]}','$email','00111111111000', '$language')");
 ?>
 <body text="#ffffff" bgcolor="#444444" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <center><table border="0" height="100%" cellspacing="0" cellpadding="0">

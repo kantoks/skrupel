@@ -1,29 +1,15 @@
 <?php
-/*
-:noTabs=false:indentSize=4:tabSize=4:folding=explicit:collapseFolds=1:
-*/
-include ('inc.conf.php');
-include_once ('inhalt/inc.hilfsfunktionen.php');
+require_once ('inc.conf.php');
+require_once ('inhalt/inc.hilfsfunktionen.php');		
 $sprache = str_get('sprache','SHORTNAME');
-if ($sprache=='' || !preg_match('/^[a-z]{2}$/', $sprache) || !is_dir('lang/'.$sprache)) {
+if (empty($sprache) || !preg_match('/^[a-z]{2}$/', $sprache) || !is_dir('lang/'.$sprache)) {
   $sprache = $language;
 }
 include ('lang/'.$sprache.'/lang.index.php');
 
 $conn = @mysql_connect($server.':'.$port,$login,$password);
 $db = @mysql_select_db($database,$conn);
-function compressed_output() {
-  $encoding = getEnv("HTTP_ACCEPT_ENCODING");
-  $useragent = getEnv("HTTP_USER_AGENT");
-  $method = trim(getEnv("REQUEST_METHOD"));
-  $msie = preg_match("=msie=i", $useragent);
-  $gzip = preg_match("=gzip=i", $encoding);
-  if ($gzip && ($method != "POST" or !$msie)) {
-    ob_start("ob_gzhandler");
-  } else {
-    ob_start();
-  }
-}
+
 if ($db) {
   compressed_output();
   $zeiger = @mysql_query("SELECT version, extend, serial FROM $skrupel_info");
@@ -43,11 +29,15 @@ if ($db) {
     $bildpfad = $tmp;
   }
   $login_f  = str_post('login_f','SQLSAFE');
-  $pass_f    = str_post('passwort_f','SQLSAFE');
+  $pass_f    = str_post('passwort_f','NONE');
   $spiel_slot = int_post('spiel_slot');
 ///////////////////////////////login ueber link
   if (($hash_f = str_get('hash','SQLSAFE')) !== false) {
-    $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele WHERE
+    $zeiger = @mysql_query("SELECT 
+	`id`,
+	`spieler_1`, `spieler_2`, `spieler_3`, `spieler_4`, `spieler_5`, `spieler_6`, `spieler_7`, `spieler_8`, `spieler_9`, `spieler_10`,
+	`spieler_1_hash`, `spieler_2_hash`, `spieler_3_hash`, `spieler_4_hash`, `spieler_5_hash`, `spieler_6_hash`, `spieler_7_hash`, `spieler_8_hash`, `spieler_9_hash`, `spieler_10_hash`
+	FROM $skrupel_spiele WHERE
       spieler_1_hash = '$hash_f' or
       spieler_2_hash = '$hash_f' or
       spieler_3_hash = '$hash_f' or
@@ -68,16 +58,28 @@ if ($db) {
           $zeiger = @mysql_query("SELECT nick,passwort FROM $skrupel_user where id=$benutzer_id");
           $array = @mysql_fetch_array($zeiger);
           $login_f = $array['nick'];
-          $pass_f = $array['passwort'];
+          $pass = $array['passwort'];
           break;
         }
       }
     }
   }
-///////////////////////////////login ueber link
+///////////////////////////////login
   $fehler = "";
-  if ((strlen($login_f)>=1) and (strlen($pass_f)>=1)) {
-    $zeiger = @mysql_query("SELECT * FROM $skrupel_user WHERE nick='$login_f' and passwort='$pass_f'");
+  if (!(empty($login_f) || (empty($pass_f) && empty($pass)))) {
+	if(empty($pass)){
+		$zeiger = @mysql_query("SELECT `salt` FROM $skrupel_user WHERE nick='$login_f'");
+		if($zeiger = mysql_fetch_array($zeiger)){
+			
+		  $salt = $zeiger['salt'];
+		  $pass_f = cryptPasswd($pass_f, $salt);
+		  $pass_f = explode(':',$pass_f, 2);
+		  $pass = $pass_f[0];
+		} else {
+          $fehler = $lang['index']['falscheZugangsdaten'];
+        }
+	}
+    $zeiger = @mysql_query("SELECT * FROM $skrupel_user WHERE nick='$login_f' and passwort='$pass'");
     if (@mysql_num_rows($zeiger)==1) {
       $array = @mysql_fetch_array($zeiger);
       $spieler_id = $array['id'];
@@ -105,6 +107,7 @@ if ($db) {
     } else {
       $fehler = $lang['index']['falscheZugangsdaten'];
     }
+	
   }
   if ($spieler>0)  {
     if ($phase==1) {

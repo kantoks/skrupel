@@ -1,12 +1,12 @@
 <?php
-include ('../inc.conf.php');
-include_once ('inc.hilfsfunktionen.php');
+require_once ('../inc.conf.php');
+require_once ('inc.hilfsfunktionen.php');
 $langfile_1 = 'basen';
 $fuid = int_get('fu');
 $baid = int_get('baid');
 
+include ("inc.header.php");
 if ($fuid==1) {
-    include ("inc.header.php");
     ?>
     <script language=JavaScript>
         function fensterbreit(){
@@ -145,11 +145,9 @@ if ($fuid==1) {
             </div></div>
             <?php
         }
-    include ("inc.footer.php");
 }
 
 if ($fuid==2) {
-    include ("inc.header.php");
     ?>
     <frameset framespacing="0" border="false" frameborder="0" cols="*,26,290,167,420,26,*">
         <frame name="randlinks" scrolling="no" marginwidth="0" marginheight="0" noresize src="aufbau.php?fu=14&bildpfad=<?php echo $bildpfad; ?>" target="_self">
@@ -167,12 +165,9 @@ if ($fuid==2) {
     <noframes>
     <body>
         <?php
-    include ("inc.footer.php");
 }
 
 if ($fuid==3) {
-    include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
 
     $array = @mysql_fetch_array($zeiger);
@@ -402,12 +397,9 @@ if ($fuid==3) {
             </tr>
         </table>
         <?php
-    include ("inc.footer.php");
 }
 
 if ($fuid==4) {
-    include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
 
     $array = @mysql_fetch_array($zeiger);
@@ -452,11 +444,9 @@ if ($fuid==4) {
                 <area shape=rect coords="114,62,144,84" href="javascript:linksub('basen_gamma.php?fu=4&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['basen']['logbuch']; ?>">
             </map>
         <?php }
-    include ("inc.footer.php");
 }
 
 if ($fuid==5) {
-    include ("inc.header.php");
     ?>
     <script language=JavaScript>
         function linksub(url) {
@@ -476,12 +466,9 @@ if ($fuid==5) {
             <area shape=rect coords="114,62,144,84" href="javascript:linksub('basen_gamma.php?fu=4&baid=<?php echo $baid; ?>&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');self.focus();" title="<?php echo $lang['basen']['logbuch']; ?>">
         </map>
         <?php
-    include ("inc.footer.php");
 }
 
 if ($fuid==6) {
-    include ("inc.header.php");
-
     $zeiger = @mysql_query("SELECT * FROM $skrupel_sternenbasen where besitzer=$spieler and status=1 and id=$baid");
 
     $array = @mysql_fetch_array($zeiger);
@@ -540,11 +527,9 @@ if ($fuid==6) {
             </table>
         </center>
         <?php
-    include ("inc.footer.php");
 }
 
 if ($fuid==7) {
-    include ("inc.header.php");
     $pid=int_get('pid');
     ?>
     <script language=JavaScript>
@@ -578,11 +563,9 @@ if ($fuid==7) {
                 $pid_back=$pid_t;
             }
         }
-    include ("inc.footer.php");
 }
 
-if ($fuid==8) {
-    include ("inc.header.php");
+if ($fuid==8) {    
     $pid=int_get('pid');
     ?>
     <script language=JavaScript>
@@ -615,6 +598,7 @@ if ($fuid==8) {
                 }
                 $pid_back=$pid_t;
             }
-        }
-    include ("inc.footer.php");
+        }    
 }
+
+include ("inc.footer.php");
