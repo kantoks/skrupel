@@ -1,3 +1,25 @@
+// Kartensteuerung via Tastatur (Zoom nur mit Opera, IE & Skrupel-Client)
+// (c) Till Affeldt - http://www.space-pirates.4lima.de
+document.onkeydown = checkKeycode
+function checkKeycode(e) {
+var keycode;
+if (window.event) keycode = window.event.keyCode;
+else if (e) keycode = e.which;
+return mapControl(keycode);
+}
+function mapControl(code) {
+if(!document.body.style.zoom || document.body.style.zoom==0)
+{ document.body.style.zoom=1; }
+if (code==107) { document.body.style.zoom*=1.2; }         // + Taste
+else if (code==109) { document.body.style.zoom*=0.8; }    // - Taste
+
+else if (code==37) { window.scrollBy(-10, 0); }           // Pfeiltaste (links)
+else if (code==39) { window.scrollBy(10, 0); }            // Pfeiltaste (rechts)
+else if (code==38) { window.scrollBy(0, -10); }           // Pfeiltaste (unten)
+else if (code==40) { window.scrollBy(0, 10); }            // Pfeiltaste (oben)
+ }
+// Ende der Tastatur-Steuerung
+
 var info = {
     uid: '',
     sid: '',
