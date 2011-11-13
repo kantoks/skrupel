@@ -62,7 +62,7 @@ if ($fuid==1) {
                                             </tr>
                                             <tr>
                                                 <td style="color:#aaaaaa;"><?php echo $lang['metaoptionen']['chatfarbe']?></td>
-                                                <td><select name="chatfarbe" style="width:200px;">
+                                                <td><select name="chatfarbe" style="width:200px; background-color:#<?php echo $spieler_chatfarbe; ?>; background-image:none;" onChange="this.style.backgroundColor='#'+this.value; return true;">
                                                     <?php
                                                     $stufe=64;
                                                     for($i1=0;$i1<=256;$i1+=$stufe){
@@ -93,7 +93,7 @@ if ($fuid==1) {
                                                                     $farbe_echt.=$farbe[$b];
                                                                 }
                                                                 ?>
-                                                                <option value="<?php echo $farbe_echt?>" style="background-color:#<?php echo $farbe_echt?>;" <?php if ($farbe_echt==$spieler_chatfarbe) { echo 'selected'; } ?>></option>
+                                                                <option value="<?php echo $farbe_echt; ?>" style="background-color:#<?php echo $farbe_echt; ?>;" <?php if ($farbe_echt==$spieler_chatfarbe) { echo 'selected'; } ?>></option>
                                                                 <?php
                                                             }
                                                         }
