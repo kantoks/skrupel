@@ -6,7 +6,7 @@
 $conn = @mysql_connect($server.':'.$port,$login,$password);
 $db = @mysql_select_db($database,$conn);
 
-include_once ('inc.hilfsfunktionen.php');
+require_once ('inc.hilfsfunktionen.php');
 include ('inc.check.php');
 if (!empty($langfile_1)) include ('../lang/'.$spieler_sprache.'/lang.'.$langfile_1.'.php');
 if (!empty($langfile_2)) include ('../lang/'.$spieler_sprache.'/lang.'.$langfile_2.'.php');
@@ -23,27 +23,12 @@ $spiel_serial    = $array['serial'];
 
 $useragent = getEnv("HTTP_USER_AGENT");
 
-function compressed_output() {
-    $encoding = getEnv("HTTP_ACCEPT_ENCODING");
-    $useragent = getEnv("HTTP_USER_AGENT");
-    $method = trim(getEnv("REQUEST_METHOD"));
-    $msie = preg_match("=msie=i", $useragent);
-    $gzip = preg_match("=gzip=i", $encoding);
-
-    if ($gzip && ($method != "POST" or !$msie)) {
-        ob_start("ob_gzhandler");
-    } else {
-        ob_start();
-    }
-}
-
 //compressed_output();
 
 //ob_start("ob_gzhandler", 65536);
 
 $firefox = preg_match("=firefox=i", $useragent);
 $linux = preg_match("=linux=i", $useragent);
-
 
 $plus=0;
 if ($linux) { $plus=1; }
