@@ -85,6 +85,11 @@ if ($db) {
       $spieler_id = $array['id'];
       $spieler_name = $array['nick'];
       $spieler_sprache = $array['sprache'];
+	  
+	  if(!empty($array['bildpfad']) && !preg_match('|^[a-z]{3,5}://$|', trimm($array['bildpfad']))){
+		$bildpfad = $array['bildpfad'];
+	  }
+	  
       if ($spieler_sprache=='') {
         $spieler_sprache=$language;
       }
