@@ -86,7 +86,7 @@ if ($db) {
       $spieler_name = $array['nick'];
       $spieler_sprache = $array['sprache'];
 	  
-	  if(!empty($array['bildpfad']) && !preg_match('|^[a-z]{3,5}://$|', trimm($array['bildpfad'])) && !preg_match('|^[a-z]{3,5}://|', trimm($array['bildpfad']))){
+	  if(!empty($array['bildpfad']) && preg_match('|^[a-z]{3,5}://|', trimm($array['bildpfad'])) && !preg_match('|^[a-z]{3,5}://$|', trimm($array['bildpfad']))){
 		$bildpfad = $array['bildpfad'];
 	  }
 	  
