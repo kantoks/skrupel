@@ -183,6 +183,8 @@ if ($db) {
         <meta name="Author" content="Bernd Kantoks bernd@kantoks.de">
         <meta name="robots" content="index">
         <meta name="keywords" content=" ">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
+        <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
       </head>
       <frameset framespacing="0" border="false" frameborder="0" rows="41,*,13,107,10">
         <frameset framespacing="0" border="false" frameborder="0" cols="348,*,402">
@@ -228,6 +230,8 @@ if ($db) {
     <html>
       <head>
         <title>Skrupel - Tribute Compilation V<?php echo $spiel_version?></title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
+        <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
         <meta name="Author" content="Bernd Kantoks bernd@kantoks.de">
         <meta name="robots" content="index">
@@ -507,6 +511,8 @@ if ($db) {
     <head>
       <title>Skrupel - Tribute Compilation</title>
       <meta name="Author" content="Bernd Kantoks bernd@kantoks.de">
+      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
+      <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
       <meta name="robots" content="index">
       <meta name="keywords" content=" ">
       <meta http-equiv="imagetoolbar" content="no">
