@@ -20,13 +20,13 @@ if ($db) {
   $spieler=0;
   //$_POST  = @array_map('mysql_real_escape_string', $_POST);
   //$_GET   = @array_map('mysql_real_escape_string', $_GET);
-  if (!preg_match('/Skrupel/i',getEnv("HTTP_USER_AGENT"))) {
-    $bildpfad = 'bilder';
-  }
   if( ($tmp = str_get('pic_path','PATHNAME')) !== false) {
     $bildpfad = $tmp;
   } elseif( ($tmp = str_post('pic_path','PATHNAME')) !== false) {
     $bildpfad = $tmp;
+  }
+  if(empty($bildpfad) || !isset($bildpfad)){
+         $bildpfad = 'bilder';
   }
   $login_f  = str_post('login_f','SQLSAFE');
   $pass_f    = str_post('passwort_f','NONE');
