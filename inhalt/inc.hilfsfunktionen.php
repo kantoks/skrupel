@@ -50,7 +50,7 @@ function str_post($key,$mode) {
 				}
 			break;
 			case 'PATHNAME':
-				if (!preg_match('/[^0-9A-Za-z_\/\.]/',$_POST[$key])) {
+				if (!preg_match('/[^0-9A-Za-z_\/\.:\-]/',$_POST[$key])) {
 					return $_POST[$key];
 				}
 			break;
@@ -83,7 +83,7 @@ function str_get($key,$mode) {
 				}
 			break;
 			case 'PATHNAME':
-				if (!preg_match('/[^0-9A-Za-z_\/\.]/',$_GET[$key])) {
+				if (!preg_match('/[^0-9A-Za-z_\/\.:\-]/',$_GET[$key])) {
 					return $_GET[$key];
 				}
 			break;
