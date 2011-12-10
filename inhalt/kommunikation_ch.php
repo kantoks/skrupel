@@ -78,12 +78,12 @@ if ($fuid==2) {
             $bbcode=str_replace("Ü","&Uuml;",$bbcode);
             //$bbcode=nl2br($bbcode);
             $bbcode=strtr($bbcode, array("\\r\\n" => "<br />\\r\\n", "\\r" => "<br />\\r", "\\n" => "<br />\\n"));
-            $bbcode=eregi_replace(quotemeta("[b]"),quotemeta("<b>"),$bbcode);
-            $bbcode=eregi_replace(quotemeta("[/b]"),quotemeta("</b>"),$bbcode);
-            $bbcode=eregi_replace(quotemeta("[i]"),quotemeta("<i>"),$bbcode);
-            $bbcode=eregi_replace(quotemeta("[/i]"),quotemeta("</i>"),$bbcode);
-            $bbcode=eregi_replace(quotemeta("[u]"),quotemeta("<u>"),$bbcode);
-            $bbcode=eregi_replace(quotemeta("[/u]"),quotemeta("</u>"),$bbcode);
+            $bbcode=preg_replace("/\[b\]/i","<b>",$bbcode);
+            $bbcode=preg_replace("/\[\/b\]/i","</b>",$bbcode);
+            $bbcode=preg_replace("/\[i\]/i","<i>",$bbcode);
+            $bbcode=preg_replace("/\[\/i\]/i","</i>",$bbcode);
+            $bbcode=preg_replace("/\[u\]/i","<u>",$bbcode);
+            $bbcode=preg_replace("/\[\/u\]/i","</u>",$bbcode);
             $searcharray = array(
                 "/(\[)(url)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/url\])/esiU",
                 "/(\[)(url)(])(.*)(\[\/url\])/esiU",
@@ -119,7 +119,7 @@ if ($fuid==2) {
                 "checksize('\\4')"
             );
             $bbcode=preg_replace($searcharray, $replacearray, $bbcode);
-            $bbcode=eregi_replace("\\[img\\]([^\\[]*)\\[/img\\]","<img src=\"\\1\" border=0>",$bbcode);
+            $bbcode=preg_replace("/\\[img\\]([^\\[]*)\\[\/img\\]/i","<img src=\"\\1\" border=0>",$bbcode);
             $bbcode2=$bbcode;
             return $bbcode2;
         }
