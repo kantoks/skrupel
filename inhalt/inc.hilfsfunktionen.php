@@ -95,29 +95,17 @@ function str_get($key,$mode) {
     }
     return false;
 }
-/*function rrannum() {
-    mt_srand((double)microtime()*1000000);
-    $num = mt_rand(48,122);
-    return $num;
-}
-function rgenchr() {
-    do {
-        $num = rrannum();
-    } while ( ( $num > 57 && $num < 65 ) || ( $num > 90 && $num < 97 ) );
-    return chr($num);
-}
-function rzufallstring() {
-    $a = rgenchr();$e = rgenchr();$i = rgenchr();$m = rgenchr();$q = rgenchr();
-    $b = rgenchr();$f = rgenchr();$j = rgenchr();$n = rgenchr();$r = rgenchr();
-    $c = rgenchr();$g = rgenchr();$k = rgenchr();$o = rgenchr();$s = rgenchr();
-    $d = rgenchr();$h = rgenchr();$l = rgenchr();$p = rgenchr();$t = rgenchr();
-    $salt = "$a$b$c$d$e$f$g$h$i$j$k$l$m$n$o$p$q$r$s$t";
-    return $salt;
-}
-*/
+
 define('ONLY_LETTERS',0);
 define('WITH_NUMBERS', 1);
 define('WITH_SPECIAL_CHARACTERS', 2);
+/**
+* Erzeugt einen Zufallsstring
+* 
+* Erzeugt aus Vorgaben einen Zufallsstring
+*@autor finke
+*@return string Zufalsstring
+*/
 function zufallstring($size = 20, $url = ONLY_LETTERS){
   mt_srand();
   $pool = 'abcdefghijklmnopqrstuvwxyz';
@@ -137,9 +125,10 @@ function zufallstring($size = 20, $url = ONLY_LETTERS){
 }
 
 /**
-* hast a password + salt with sha256
+* erzeugt einen Passworthash aus password + salt mit sha256
 *
-* Hast ein Passwort, unter verwendung eines salts. Beim Erstellen eines Hash zur Speicherung leer lassen, beim abgleich muss der Salt aus der DB genommen werden, um identiche ergebnisse zu erhalten 	
+* Hast ein Passwort, unter verwendung eines salts. Beim Erstellen eines Hash zur Speicherung leer lassen, beim abgleich muss der Salt aus der DB genommen werden, um identiche ergebnisse zu erhalten
+*@autor finke 	
 *@param string $passwd Zu hashendes Passwort
 *@param string $salt der zum hashen verwendet werden soll
 *@return string Passwort hash und salt durch ein : getrennt; Achtung: immer nur nach dem ersten : trennen. Im Hash selber kann keines vorkommen, im Salt schon. BSP: explode(':',cryptPasswd('Mein Passwort'), 2);
