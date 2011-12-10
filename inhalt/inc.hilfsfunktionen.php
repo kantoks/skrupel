@@ -95,30 +95,31 @@ function str_get($key,$mode) {
     }
     return false;
 }
-/*function rrannum() {
-    mt_srand((double)microtime()*1000000);
-    $num = mt_rand(48,122);
-    return $num;
-}
-function rgenchr() {
-    do {
-        $num = rrannum();
-    } while ( ( $num > 57 && $num < 65 ) || ( $num > 90 && $num < 97 ) );
-    return chr($num);
-}
-function rzufallstring() {
-    $a = rgenchr();$e = rgenchr();$i = rgenchr();$m = rgenchr();$q = rgenchr();
-    $b = rgenchr();$f = rgenchr();$j = rgenchr();$n = rgenchr();$r = rgenchr();
-    $c = rgenchr();$g = rgenchr();$k = rgenchr();$o = rgenchr();$s = rgenchr();
-    $d = rgenchr();$h = rgenchr();$l = rgenchr();$p = rgenchr();$t = rgenchr();
-    $salt = "$a$b$c$d$e$f$g$h$i$j$k$l$m$n$o$p$q$r$s$t";
-    return $salt;
-}
+
+/**
+*@name ONLY_LETTERS
 */
 define('ONLY_LETTERS',0);
+
+/**
+*@name WITH_NUMBERS
+*/
 define('WITH_NUMBERS', 1);
+
+/**
+*@name WITH_SPECIAL_CHARACTERS
+*/
 define('WITH_SPECIAL_CHARACTERS', 2);
-function zufallstring($size = 20, $url = ONLY_LETTERS){
+/**
+*generate a random String
+*
+*Generiert einen Zufallsstring nach Vorgaben (Laenge + Beinhaltende Zeichen)
+*@author finke
+*@param int $size Laenge des Strings
+*@param int $type Ein Wert welche Zeichen enthalten sien duerfen
+*@return string der Zufallsstrig
+*/
+function zufallstring($size = 20, $type = ONLY_LETTERS){
   mt_srand();
   $pool = 'abcdefghijklmnopqrstuvwxyz';
   $pool .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -140,6 +141,7 @@ function zufallstring($size = 20, $url = ONLY_LETTERS){
 * hast a password + salt with sha256
 *
 * Hast ein Passwort, unter verwendung eines salts. Beim Erstellen eines Hash zur Speicherung leer lassen, beim abgleich muss der Salt aus der DB genommen werden, um identiche ergebnisse zu erhalten 	
+*@author finke
 *@param string $passwd Zu hashendes Passwort
 *@param string $salt der zum hashen verwendet werden soll
 *@return string Passwort hash und salt durch ein : getrennt; Achtung: immer nur nach dem ersten : trennen. Im Hash selber kann keines vorkommen, im Salt schon. BSP: explode(':',cryptPasswd('Mein Passwort'), 2);
