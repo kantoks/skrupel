@@ -25,7 +25,7 @@ if ($db) {
   } elseif( ($tmp = str_post('pic_path','PATHNAME')) !== false) {
     $bildpfad = $tmp;
   }
-  if(empty($bildpfad) || !isset($bildpfad)){
+  if(empty($bildpfad)){
          $bildpfad = 'bilder';
   }
   $login_f  = str_post('login_f','SQLSAFE');
