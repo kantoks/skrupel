@@ -116,6 +116,7 @@ function zufallstring($size = 20, $url = ONLY_LETTERS){
   if($url & WITH_NUMBERS){
     $pool .='0123456789';
   }
+  $pool = str_shuffle($pool);
   $pool_size = strlen($pool);
   $salt ='';
   for($i = 0;$i<$size; $i++){
@@ -127,7 +128,7 @@ function zufallstring($size = 20, $url = ONLY_LETTERS){
 /**
 * erzeugt einen Passworthash aus password + salt mit sha256
 *
-* Hast ein Passwort, unter verwendung eines salts. Beim Erstellen eines Hash zur Speicherung leer lassen, beim abgleich muss der Salt aus der DB genommen werden, um identiche ergebnisse zu erhalten
+* Hasht ein Passwort, unter verwendung eines salts. Beim Erstellen eines Hash zur Speicherung leer lassen, beim abgleich muss der Salt aus der DB genommen werden, um identiche ergebnisse zu erhalten
 *@autor finke 	
 *@param string $passwd Zu hashendes Passwort
 *@param string $salt der zum hashen verwendet werden soll
