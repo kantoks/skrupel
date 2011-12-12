@@ -136,7 +136,7 @@ function zufallstring($size = 20, $url = ONLY_LETTERS){
 */
 function cryptPasswd($passwd, $salt = ''){
 	if(strlen($salt) < 16)
-		$salt = zufallstring(16, WITH_NUMBERS & WITH_SPECIAL_CHARACTERS);
+		$salt = zufallstring(16, WITH_NUMBERS | WITH_SPECIAL_CHARACTERS);
 	$passwd = hash('sha256',$passwd.$salt).':'.$salt;
 	return $passwd;
 }
