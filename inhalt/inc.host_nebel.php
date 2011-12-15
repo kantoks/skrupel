@@ -17,7 +17,8 @@ $zeiger_temp = mysql_query("update $skrupel_schiffe set
   where spiel=$spiel");
 $scans = array();
 $scanhash = array();
-$zeiger = mysql_query("SELECT id,spiel,y_pos,x_pos,besitzer,sternenbasis_art,sternenbasis,osys_1,osys_2,osys_3,osys_4,osys_5,osys_6 FROM $skrupel_planeten where spiel=$spiel");
+$scantelepat = array();
+$zeiger = mysql_query("SELECT id,spiel,y_pos,x_pos,besitzer,sternenbasis_art,sternenbasis,osys_1,osys_2,osys_3,osys_4,osys_5,osys_6,native_fert,native_kol,native_id FROM $skrupel_planeten where spiel=$spiel");
 while ($array = mysql_fetch_array($zeiger)) {
     $p_id = $array['id'];
     $x_pos = $array['x_pos'];
@@ -28,6 +29,9 @@ while ($array = mysql_fetch_array($zeiger)) {
     $osys_4 = $array['osys_4'];
     $osys_5 = $array['osys_5'];
     $osys_6 = $array['osys_6'];
+    $native_id = $array['native_id'];
+    $native_kol = $array['native_kol'];
+    $native_fert = $array['native_fert'];
     $besitzer = $array['besitzer'];
     $sternenbasis_art = $array['sternenbasis_art'];
     $sternenbasis = $array['sternenbasis'];
@@ -35,6 +39,12 @@ while ($array = mysql_fetch_array($zeiger)) {
     if ($osys_1==13 or $osys_2==13 or $osys_3==13 or $osys_4==13 or $osys_5==13 or $osys_6==13){ $scanner_r=90;}
     if (($sternenbasis_art==3) and ($sternenbasis==2)) { $scanner_r=116;}
     if ($besitzer>=1) {
+        //telepat prepare
+        $native_fert_telepat = intval(substr($native_fert,31,1));
+        if ((1 == $native_fert_telepat) && (0 < $native_kol)) {
+            $scantelepat[$native_id][] = $besitzer;
+        }
+        //
         mysql_query("INSERT INTO $skrupel_scan (spiel,besitzer,x,y) values ($spiel,$besitzer,$x_pos,$y_pos)");
         $scans[] = array(
             'besitzer' => $besitzer,
@@ -53,6 +63,38 @@ while ($array = mysql_fetch_array($zeiger)) {
                 $scanhash[$f.'_'.$x_pos.'_'.$y_pos] = $scanner_r;
             }
         }
+    }
+}
+//telepatic connection
+$zeiger = mysql_query("SELECT y_pos,x_pos,native_kol,native_id,besitzer FROM $skrupel_planeten where spiel=$spiel");
+while ($array = mysql_fetch_array($zeiger)) {
+    $x_pos = $array['x_pos'];
+    $y_pos = $array['y_pos'];
+    $native_id = $array['native_id'];
+    $native_kol = $array['native_kol'];
+    $besitzer = $array['besitzer'];
+    $scanner_r = 53;
+    if ((isset($scantelepat[$native_id])) && (0 < $native_kol)) {
+        foreach ($scantelepat[$native_id] as $owner) {
+            mysql_query("INSERT INTO $skrupel_scan (spiel,besitzer,x,y) values ($spiel,$owner,$x_pos,$y_pos)");
+            $scans[] = array(
+                'besitzer' => $owner,
+                'x' => $x_pos,
+                'y' => $y_pos
+            );
+            $scanhash[$owner.'_'.$x_pos.'_'.$y_pos] = $scanner_r;
+            for ($f=1;$f<=10;$f++) {
+                if (($beziehung[$owner][$f]['status']==4) or ($beziehung[$owner][$f]['status']==5) or (($sicht_spionage[$owner][$f]==1) && $module[0])) {
+                    mysql_query("INSERT INTO $skrupel_scan (spiel,besitzer,x,y) values ($spiel,$f,$x_pos,$y_pos)");
+                    $scans[] = array(
+                        'besitzer' => $f,
+                        'x' => $x_pos,
+                        'y' => $y_pos
+                    );
+                    $scanhash[$f.'_'.$x_pos.'_'.$y_pos] = $scanner_r;
+                }
+            }
+        } 
     }
 }
 $zeiger = mysql_query("SELECT id,spiel,kox,koy,besitzer,scanner FROM $skrupel_schiffe where spiel=$spiel");

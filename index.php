@@ -75,6 +75,7 @@ if ($db) {
 		  $pass_f = cryptPasswd($pass_f, $salt);
 		  $pass_f = explode(':',$pass_f, 2);
 		  $pass = $pass_f[0];
+		  
 		} else {
           $fehler = $lang['index']['falscheZugangsdaten'];
         }

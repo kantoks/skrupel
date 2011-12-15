@@ -307,7 +307,6 @@ if ($fuid==2) {
         if (int_post('feature_iiiiii')==1) { $optionen=$optionen.'1'; } else { $optionen=$optionen.'0'; }
         $zeiger_temp = @mysql_query("UPDATE $skrupel_user set homepage='$homepage', jabber='$jabber', email='$email', icq='$icq', optionen='$optionen', chatfarbe='$chatfarbe', avatar='$avatar', sprache='$sprache' where uid='$uid'");
         if (strlen($passwortneu)>=1) {
-			
 			$passwortneu=cryptPasswd($passwortneu);
 			$passwortneu = explode(':',$passwortneu, 2);
             $zeiger_temp = @mysql_query("UPDATE $skrupel_user set passwort='{$passwortneu[0]}', salt = '{$passwortneu[1]}' where uid='$uid'");
