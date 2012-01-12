@@ -3,7 +3,7 @@ include('../inc.conf.php');
 include_once ('inc.hilfsfunktionen.php');
 $langfile_1 = 'osys_spionage';
 $fuid = int_get('fu');
-$pid = int_get('fu');
+$pid = int_get('pid');
 
 include("inc.header.php");
 $schiffdatei = false;
