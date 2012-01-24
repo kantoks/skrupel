@@ -466,7 +466,7 @@ if ($fuid==5) {
         $nachricht=parsetext($nachricht);
         $nachricht=str_replace(array('{1}','{2}','{3}'),array($spielerfarbe[$spieler], $spieler_name, $nachricht),$spieler."::::::".$lang['kommunikationsubfunk_b']['nachricht']);
         $datum=time();
-        $zeiger_temp = @mysql_query("insert into $skrupel_neuigkeiten (datum,art,icon,inhalt,spieler_id,spiel_id,sicher) values ('$datum',7,'../bilder/news/subfunk.jpg','$nachricht',".$int_get('emp').",$spiel,1);");
+        $zeiger_temp = @mysql_query("insert into $skrupel_neuigkeiten (datum,art,icon,inhalt,spieler_id,spiel_id,sicher) values ('$datum',7,'../bilder/news/subfunk.jpg','$nachricht',".int_get('emp').",$spiel,1);");
         ?>
         <center>
             <table border="0" cellspacing="0" cellpadding="0" height="100%">
