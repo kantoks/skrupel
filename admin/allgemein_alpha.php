@@ -56,13 +56,14 @@ if ($fuid==2) {
         $beitrag=str_post('offenbarung','SQLSAFE');
 
         $thema=substr($beitrag,0,30)."...";
-        $thema=str_replace("&","&amp;",$thema);
-        $thema=str_replace("<","&lt;",$thema);
-        $thema=str_replace(">","&gt;",$thema);
 
-        $beitrag=str_replace("&","&amp;",$beitrag);
-        $beitrag=str_replace("<","&lt;",$beitrag);
-        $beitrag=str_replace(">","&gt;",$beitrag);
+        //$thema=str_replace("&","&amp;",$thema);
+        //$thema=str_replace("<","&lt;",$thema);
+        //$thema=str_replace(">","&gt;",$thema);
+
+        //$beitrag=str_replace("&","&amp;",$beitrag);
+        //$beitrag=str_replace("<","&lt;",$beitrag);
+        //$beitrag=str_replace(">","&gt;",$beitrag);
 
         //$beitrag=nl2br(stripslashes($beitrag));
         //$beitrag=str_replace("'", "",$beitrag);
