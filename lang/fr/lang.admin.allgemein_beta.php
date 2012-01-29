@@ -9,4 +9,3 @@ $lang['admin']['allgemein']['beta']['extern']='externer Link:&nbsp;';
 $lang['admin']['allgemein']['beta']['speichern']='&Auml;nderungen speichern';
 $lang['admin']['allgemein']['beta']['aktualisiert']='Die Servereinstellungen wurden erfolgreich aktualisiert.';
 $lang['admin']['allgemein']['beta']['zurueck']='Zur&uuml;ck';
-?>

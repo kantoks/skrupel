@@ -47,4 +47,3 @@ $lang['flottedelta']['aendern']='changer';
 $lang['flottedelta']['verschieben']='deplacer';
 
 $lang['flottedelta']['uebernommen']='modifications sauvegardees.';
-?>

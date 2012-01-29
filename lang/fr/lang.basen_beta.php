@@ -40,5 +40,3 @@ $lang['basenbeta']['waffen'][18]='Singularitätswerfer';
 $lang['basenbeta']['waffen'][19]='novabombs';
 
 $lang['basenbeta']['projektilerfolgreichproduziert']='Le projectile {1}<br><br>a ete produit {2}x avec succes.';
-
-?>

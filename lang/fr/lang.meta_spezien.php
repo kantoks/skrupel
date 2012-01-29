@@ -179,4 +179,3 @@ $lang['metaspezien'][41]['effekt']="Eine neue Sternenbasis erh&auml;lt einen Bon
 $lang['metaspezien'][42]['name']="Matten-Willys";
 $lang['metaspezien'][42]['beschreibung']="In ihrer Normalgestalt &auml;hneln die Matten-Willys schwammigen Kugeln von zwei Meter Gr&ouml;&szlig;e. Sie k&ouml;nnen jedoch jede beliebige Form annehmen, flache Fladen ebenso wie humanoide K&ouml;rper oder M&ouml;belst&uuml;cke. Pseudogliedma&szlig;en und Pseudostielaugen k&ouml;nnen an beliebigen Stellen des K&ouml;rpers ausgebildet werden. Legend&auml;r ist der enorme Durst der Matten-Willys, wobei ihnen oftmals eine gewisse Neigung zu alkoholischen Getr&auml;nken unterstellt wird.";
 $lang['metaspezien'][42]['effekt']="Vorr&auml;te der Kolonisten werden verbraucht.";
-?>

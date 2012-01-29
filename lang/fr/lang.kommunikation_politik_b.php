@@ -16,4 +16,3 @@ $lang['kommunikationpolitik_b']['neinhandel']='<b><font color={1}>{2}</font></b>
 $lang['kommunikationpolitik_b']['neinnichtangriff']='<b><font color={1}>{2}</font></b> refuse de signer le pacte de non-agression.';
 $lang['kommunikationpolitik_b']['neinvoelker']='<b><font color={1}>{2}</font></b> decide que des objectifs communs ne suffisent pas pour signer une alliance des peuples.';
 $lang['kommunikationpolitik_b']['neinallianz']='<b><font color={1}>{2}</font></b> ne veut pas etablir d`alliance.';
-?>

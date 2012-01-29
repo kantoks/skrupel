@@ -95,4 +95,3 @@ $lang['metasimulation']['kriegsbasis']='Kriegsbasis';
 $lang['metasimulation']['raumwerft']='Raumwerft';
 $lang['metasimulation']['verteidigergewinntpk']='<center>La <b>defense planetaire</b> peut repousser avec succes l`attaque du vaisseau.<br>Schildst&auml;rke nach dem Kampf: <b>{1}</b>.</center>';
 $lang['metasimulation']['angreifergewinntpk']='<center>L`<b>agresseur</b> brise les systemes de defense.<br>Son bouclier perd <b>{1}%</b> et le vaisseau prend <b>{2}%</b> de dommages.</center>';
-?>

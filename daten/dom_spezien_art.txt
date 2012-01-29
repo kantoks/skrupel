@@ -3,5 +3,5 @@
 3:Formlos
 4:Plasmanoid
 5:Amphibisch
-6:Parasitär
-7:Künstlich
+6:ParasitÃ¤r
+7:KÃ¼nstlich

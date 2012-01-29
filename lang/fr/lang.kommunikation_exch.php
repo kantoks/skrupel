@@ -13,4 +13,3 @@ $lang['kommunikationexch']['i']='kursiv schreiben';
 $lang['kommunikationexch']['u']='Text unterstreichen';
 $lang['kommunikationexch']['img']='Bild einf&uuml;gen';
 $lang['kommunikationexch']['lnk']='Link einf&uuml;gen';
-?>

@@ -51,4 +51,3 @@ $lang['hilfe_spionage']['wertung'][70]="Ausreichend ({1}%)";
 $lang['hilfe_spionage']['wertung'][40]="Bedenklich ({1}%)";
 $lang['hilfe_spionage']['wertung'][10]="Kritisch ({1}%)";
 $lang['hilfe_spionage']['wertung'][0]="Ausgefallen (0%)";
-?>

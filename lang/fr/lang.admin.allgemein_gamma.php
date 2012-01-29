@@ -15,4 +15,3 @@ $lang['admin']['allgemein']['gamma']['vorhanden']='vorhanden';
 $lang['admin']['allgemein']['gamma']['n_vorhanden']='nicht vorhanden';
 $lang['admin']['allgemein']['gamma']['aktualisiert']='Die Erweiterungseinstellungen wurden erfolgreich aktualisiert.';
 $lang['admin']['allgemein']['gamma']['zurueck']='Zur&uuml;ck';
-?>

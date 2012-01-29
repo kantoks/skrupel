@@ -6,5 +6,3 @@ $lang['gefecht']['aufzeichnungstarten']='Aufzeichnung starten';
 $lang['gefecht']['schild']='Schild(%): ';
 $lang['gefecht']['rumpf']='Rumpf(%): ';
 $lang['gefecht']['crew']='Crew: ';
-
-?>

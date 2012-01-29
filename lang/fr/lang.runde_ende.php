@@ -27,4 +27,3 @@ $lang['rundeende']['jahre']='annees';
 $lang['rundeende']['siegbedingungen']='Conditions de victoire';
 $lang['rundeende']['gewinner']='gagnant';
 $lang['rundeende']['slotnichtbelegt']='emplacement vide';
-?>

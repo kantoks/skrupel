@@ -935,9 +935,9 @@ $aufloesung=50;
 $daten_verzeichnis="../daten/";
 $handle=opendir("$daten_verzeichnis");
 while ($rasse=readdir($handle)) {
-  $file=$daten_verzeichnis.$rasses.'/daten.txt';
-  //if ((substr($rasses,0,1)<>'.') and (substr($rasses,0,7)<>'bilder_') and (substr($rasses,-4)<>'.txt')) {
-  if(is_dir($daten_verzeichnis.$rasses) && is_file($file)){
+  $file=$daten_verzeichnis.$rasse.'/daten.txt';
+  //if ((substr($rasse,0,1)<>'.') and (substr($rasse,0,7)<>'bilder_') and (substr($rasse,strlen($rasse)-4,4)<>'.txt')) {
+  if(is_dir($daten_verzeichnis.$rasse) && is_file($file)){
     $daten=array();
     $attribute="";
     $fp = @fopen("$file","r");
@@ -1404,7 +1404,7 @@ if ($stabil>=1) {
 //////////////////////////////////////////////SCHIFFSORDNER ANFANG
       for  ($k=1; $k<11;$k++) {
          $zeiger_temp = @mysql_query("INSERT INTO $skrupel_ordner (name,besitzer,spiel) values ('Frachter',$k,$spiel)");
-         $zeiger_temp = @mysql_query("INSERT INTO $skrupel_ordner (name,besitzer,spiel) values ('J�ger',$k,$spiel)");
+         $zeiger_temp = @mysql_query("INSERT INTO $skrupel_ordner (name,besitzer,spiel) values ('Jäger',$k,$spiel)");
          $zeiger_temp = @mysql_query("INSERT INTO $skrupel_ordner (name,besitzer,spiel) values ('Sonstige',$k,$spiel)");
       }
 //////////////////////////////////////////////SCHIFFSORDNER ENDE

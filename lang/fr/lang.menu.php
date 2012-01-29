@@ -8,4 +8,3 @@ $lang['menu']['sternenbasen']='Bases et stations';
 
 $lang['menu']['kursmodus']='Vous etes en mode course!';
 $lang['menu']['zugende']='Terminer le tour';
-?>

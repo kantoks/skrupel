@@ -81,4 +81,3 @@ $lang['flottebeta']['transporterfolgreich']='Le transport a ete un succes.';
 $lang['flottebeta']['logbuch']='Notes';
 $lang['flottebeta']['eintragsichern']='Sauvegarder';
 $lang['flottebeta']['logbuchaktualisiert']='Les notes ont ete sauvegardees avec succes.';
-?>

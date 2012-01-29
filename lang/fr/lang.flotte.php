@@ -35,4 +35,3 @@ $lang['flotte']['lagerraeume']='Stocks';
 $lang['flotte']['projektillager']='Stock de projectiles';
 $lang['flotte']['antriebssysteme']='Moteur';
 $lang['flotte']['optionen']='Options';
-?>

@@ -36,4 +36,3 @@ $lang['hilfe_antriebe'][9][1]="Warp 9";
 $lang['hilfe_antriebe'][9][2]="<ul><li>Eingeschränkter Frachtraum<br>Die Maschinen zur Erzeugung einer Warp 9 Warpblase benötigen ein übermässiges Volumen. Ein Schiff büßt daher bei der Konstruktion 1/2 seines Frachtraums ein.<li>Fehlender Traktorstrahl<br>Aufgrund der verwendeten Technologie ist es nicht möglich mit diesem Antrieb einen Traktorstrahl zu nutzen.</ul>";
 
 $lang['hilfe_antriebe']['maxwarp']="Maximale sichere Warpgeschwindigkeit: <b>{1}</b>";
-?>

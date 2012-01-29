@@ -5,4 +5,3 @@ $lang['admin']['index']['name']='Benutzername&nbsp;';
 $lang['admin']['index']['passwort']='Passwort&nbsp;';
 $lang['admin']['index']['login']='Login';
 $lang['admin']['index']['fehler']='FEHLER: Connect zur Datenbank schlug fehl!';
-?>

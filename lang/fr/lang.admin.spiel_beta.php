@@ -70,4 +70,3 @@ $lang['admin']['spiel']['beta']['aktualisiertn']='Die Optionen wurden erfolgreic
 $lang['admin']['spiel']['beta']['zurueck']='Zur&uuml;ck zur Detailansicht';
 $lang['admin']['spiel']['beta']['geduld']='Einen Moment Geduld bitte.<br><br>Der Zug wird berechnet.';
 $lang['admin']['spiel']['beta']['fertig']='Der Zug wurde erfolgreich berechnet.';
-?>
