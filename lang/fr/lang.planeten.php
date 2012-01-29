@@ -18,4 +18,3 @@ $lang['planeten']['sternenbasis']='Base spatiale';
 $lang['planeten']['logbuch']='Notes';
 $lang['planeten']['dominantespezies']='Espece dominante';
 $lang['planeten']['schiffe']='Vaisseaux en orbite';
-?>

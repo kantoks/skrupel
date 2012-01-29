@@ -28,4 +28,3 @@ $lang['basen']['raumwerft']='Station';
 $lang['basen']['kampfstation']='Station de defense';
 $lang['basen']['sternenbasis']='Base spatiale';
 $lang['basen']['kriegsbasis']='Base avancee';
-?>

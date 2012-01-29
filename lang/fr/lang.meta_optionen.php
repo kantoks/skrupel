@@ -36,4 +36,3 @@ $lang['metaoptionen']['zurueck']='retour';
 $lang['metaoptionen']['animationen']='aucune animation sur la carte';
 $lang['metaoptionen']['png']='aucun PNG transparent';
 $lang['metaoptionen']['scroll']='Keine gestalteten Scrollbalken';
-?>

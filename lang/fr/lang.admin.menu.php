@@ -10,4 +10,3 @@ $lang['admin']['menu']['bearbeiten']='Bearbeiten';
 $lang['admin']['menu']['offenbarung']='Offenbarung';
 $lang['admin']['menu']['loeschen']='L&ouml;schen';
 $lang['admin']['menu']['logout']='Logout';
-?>

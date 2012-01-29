@@ -17,4 +17,3 @@ $lang['index']['keinspiel']='Kein offenes Spiel vorhanden.';
 $lang['index']['fehler']='FEHLER: Connect zur Datenbank schlug fehl!';
 $lang['index']['spielnichtfuerdich']='Zugangdaten korrekt, aber leider ist dieses Spiel nicht für Dich geöffnet.';
 $lang['index']['falscheZugangsdaten']='Die Zugangsdaten waren leider fehlerhaft.';
-?>

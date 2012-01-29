@@ -62,4 +62,3 @@ $lang['basengamma']['auftragerflogreich']='La construction du vaisseau<br><br>a 
 $lang['basengamma']['logbuch']='Notes';
 $lang['basengamma']['eintragsichern']='Sauvegarder';
 $lang['basengamma']['logbucherfolgreich']='Les notes ont ete sauvegardees avec succes.';
-?>

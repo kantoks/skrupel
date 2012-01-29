@@ -10,4 +10,3 @@ $lang['osys']['spionage']['ausbilden']="Ausbilden";
 $lang['osys']['spionage']['nichtRohstoffe']="<br>Il n`y a pas asse<br><br>de matieres premieres<br><br>pour cela.";
 $lang['osys']['spionage']['bitteschiffsname']="Bitte Schiffsname angeben.";
 $lang['osys']['spionage']['inauftrag']="Spion in Auftrag geben";
-?>

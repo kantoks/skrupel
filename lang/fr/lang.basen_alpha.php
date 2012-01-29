@@ -29,4 +29,3 @@ $lang['basenalpha']['planeten']='-----Planetes-----';
 $lang['basenalpha']['raumfalteinitialisieren']='Teleporter';
 $lang['basenalpha']['raumfaltefehler']='Pour pouvoir utiliser la technologie de teleportation,<br><br> les coques doivent avoir le niveau 7 et les moteurs 8.';
 $lang['basenalpha']['raumfalteerfolgreich']='Teleportation effectuee avec succes.';
-?>

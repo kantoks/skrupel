@@ -30,4 +30,3 @@ $lang['uebersichtneuigkeiten']['betfrieden']='Nous vivons de nouveau en paix ave
 $lang['uebersichtneuigkeiten']['abfrieden']='{1} a accepte notre offre de paix.';
 $lang['uebersichtneuigkeiten']['getallianz']='Nous avons etabli une alliance avec {1}.';
 $lang['uebersichtneuigkeiten']['noallianz']='{1} a refuse une alliance avec nous.';
-?>

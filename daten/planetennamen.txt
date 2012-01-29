@@ -160,7 +160,7 @@ Flusswelt
 Fondor
 Forlat
 Fzop
-Gäa
+GÃ¤a
 Gagarin
 Galen
 Galor
@@ -320,7 +320,7 @@ Pelleus
 Pentarus
 Pheben
 Phelan
-Phönix
+PhÃ¶nix
 Platonius
 Plophos
 Pollux

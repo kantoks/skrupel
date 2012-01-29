@@ -182,4 +182,3 @@ $lang['hilfe']['text'][46]="Eine Allianz stellt die perfekte Zusammenarbeit zwei
 
 $lang['hilfe']['ueberschrift'][47]='Abkommen brechen';
 $lang['hilfe']['text'][47]="Beim Brechen eines Abkommens wird die andere Partei entsprechend in Kenntnis gesetzt. Wie lange das Abkommen noch hält, bevor es endgültig seine Wirkung verliert, hängt von der Art des Abkommens ab.";
-?>

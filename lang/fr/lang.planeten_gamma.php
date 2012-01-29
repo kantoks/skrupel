@@ -48,4 +48,3 @@ $lang['planetengamma']['militaer']='Defenses terrestre';
 $lang['planetengamma']['leichtebt']='troupes legeres';
 $lang['planetengamma']['schwerebt']='troupes lourdes';
 $lang['planetengamma']['kolonisten']='colons';
-?>

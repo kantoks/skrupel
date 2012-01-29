@@ -9,4 +9,3 @@ $lang['kommunikationsubfunk']['waehle']='Choisissez un destinataire.';
 $lang['kommunikationsubfunk']['zurueck']='retour';
 
 $lang['kommunikationsubfunk']['subfunkkommunikation']='subfunc communication';
-?>

@@ -7,4 +7,3 @@ $lang['kommunikationch']['sek60']='Auto toutes les 60s';
 $lang['kommunikationch']['fluestert']='fl&uumlstert';
 $lang['kommunikationch']['an']='an: {1}';
 $lang['kommunikationch']['alle']='alle';
-?>

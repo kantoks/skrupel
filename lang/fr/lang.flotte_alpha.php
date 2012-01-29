@@ -157,4 +157,3 @@ $lang['flottealpha']['weiterzuwegpunkt']='continuer vers waypoint';
 
 $lang['flottealpha']['routeerfolgreich']='La route a ete etablie avec succes.<br><br>Le vol commencera dans un mois.';
 $lang['flottealpha']['route']='Route';
-?>

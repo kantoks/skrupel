@@ -68,4 +68,3 @@ $lang['metarassen']['fuehrung']='<b>Central de communication</b><br>La coordinat
 $lang['metarassen']['wellengenerator']='<b>Generateur de champ gravitationnel</b><br>Un champ gravitationnel est genere sur une peripherie de 65 annees lumiere. Il permet de bloquer les manoeuvres d`evasion, les moteurs de saut et tout mouvement est ralenti a Warp 7. Ce champ necessite {1} KT de Vomisaan par mois pour fonctionner.';
 $lang['metarassen']['daempfer']='<b>Affaiblissement de bouclier</b><br>Permet d`affaiblir les boucliers des ennemis dans le secteur proche. {1} KT de Rennurbin par mois sont necessaires pour 100 masses de vaisseaux adverses.';
 $lang['metarassen']['kamikaze']='<b>Attaque kamikaze</b><br>Lance une attaque devastatrice sur l`ennemi en detruisant le vaisseau. L`attaque reussit avec une probabilitee de {1}% et cause a l`ennemi {2} de dommages.';
-?>

@@ -22,4 +22,3 @@ $lang['uebersichtkolonien']['raumwerft']='Station';
 $lang['uebersichtkolonien']['kampfstation']='Station de defense';
 $lang['uebersichtkolonien']['sternenbasis']='Base spatiale';
 $lang['uebersichtkolonien']['kriegsbasis']='Base avancee';
-?>

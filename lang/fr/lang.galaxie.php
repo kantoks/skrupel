@@ -55,4 +55,3 @@ $lang['galaxie']['klasse']='categorie';
 $lang['galaxie']['imperien']='Empires';
 
 $lang['galaxie']['lade']='Chargement de<br><br>la carte de la galaxie';
-?>
