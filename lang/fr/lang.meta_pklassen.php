@@ -21,5 +21,3 @@ $lang['metapklassen']['stickstoffsauerstoffargon']='azote, oxygene, argon';
 $lang['metapklassen']['stickstoffsauerstoff']='azote, oxygene';
 $lang['metapklassen']['vollstaendigwasserbedeckt']='recouverte d`eau';
 $lang['metapklassen']['unbekannt']='inconnue';
-
-?>

@@ -43,4 +43,3 @@ $lang['planetenalpha']['klasse']='Classe';
 $lang['planetenalpha']['koordinaten']='Coordonnees';
 $lang['planetenalpha']['maxwarp']='max Warp';
 $lang['planetenalpha']['noscan']='Ni planete ni vaisseau ne se trouve a portee de scan.';
-?>

@@ -94,4 +94,3 @@ $lang['orbitalesysteme']['lang'][23]='';
 $lang['orbitalesysteme']['name'][24]='Augmentation du plan orbital';
 $lang['orbitalesysteme']['kurz'][24]='Par une modification de l`altitude orbitale, il est possible d`avoir jusqu`a deux places de construction.';
 $lang['orbitalesysteme']['lang'][24]='';
-?>

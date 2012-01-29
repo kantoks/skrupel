@@ -49,4 +49,3 @@ $lang['flottegamma']['vomisaan']='Vomisaan';
 $lang['flottegamma']['kt']='KT';
 $lang['flottegamma']['cantox']='Cantox';
 $lang['flottegamma']['vorraete']='Materiel';
-?>

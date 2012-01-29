@@ -7,5 +7,3 @@ $lang['spielgamma']['listerunde'] = 'Tour';
 $lang['spielgamma']['listeletztertick'] = 'Dernier tour';
 $lang['spielgamma']['listeautozug'] = 'Tour automatique';
 $lang['spielgamma']['listemitspieler'] = 'Joueurs';
-
-?>

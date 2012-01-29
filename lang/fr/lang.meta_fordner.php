@@ -15,4 +15,3 @@ $lang['metafordner']['icon3']='Spezial';
 $lang['metafordner']['icon4']='Frachter Groß';
 $lang['metafordner']['icon5']='Bird of Prey';
 $lang['metafordner']['icon6']='Galaxy-Class';
-?>

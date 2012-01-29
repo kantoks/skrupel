@@ -25,4 +25,3 @@ $lang['planetenbeta']['klasse']='Modele';
 $lang['planetenbeta']['mission']='Mission';
 $lang['planetenbeta']['maxwarp']='Max Warp';
 $lang['planetenbeta']['keineschiffe']='Nous n`avons aucun<br><br>vaisseau en orbite.';
-?>

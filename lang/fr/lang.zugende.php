@@ -12,4 +12,3 @@ $lang['zugende']['wirdberechnet']='Attendez une minute svp!<br><br>Les mouvement
 $lang['zugende']['sprungwohin']='Vers quelle galaxie voulez vous sauter?';
 $lang['zugende']['sprungdurchfuehren']='Faire le saut';
 $lang['zugende']['spunginitialisiert']='Attendez une minute svp!.<br><br>Le saut a ete lance.';
-?>

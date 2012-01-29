@@ -44,4 +44,3 @@ $lang['spionagen'][14]['ziel']='Planet ohne Sternenbasis';
 $lang['spionagen'][15]['name']='Schiff &uuml;bernehmen';
 $lang['spionagen'][15]['bsch']='Die Infiltration eines feindlichen Schiffes erm&ouml;glicht es dessen Besatzung zum &Uuml;berlaufen zu bewegen.';
 $lang['spionagen'][15]['ziel']='Schiff';
-?>

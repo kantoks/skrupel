@@ -30,4 +30,3 @@ $lang['kommunikationboard']['icon']='icone';
 $lang['kommunikationboard']['beitrag']='post';
 $lang['kommunikationboard']['abschicken']='envoyer';
 $lang['kommunikationboard']['verfasser']='Verfasser';
-?>

@@ -66,4 +66,3 @@ $lang['host']['fr']['spionage'][55] = "Der feindliche Spion {1} hat unser Schiff
 $lang['host']['fr']['spionage'][56] = ", wir vermuten ihn in Sektor {1}.";
 $lang['host']['fr']['spionage'][57] = "Unser Spion {1} hat bei seinem aktuellen Auftrag ({2}) versagt.";
 $lang['host']['fr']['spionage'][58] = "Unser Spion {1} konnte seinen Auftrag ({2}) nicht durchf&uuml;hren da unser Abkommen dies nicht erlaubt.";
-?>

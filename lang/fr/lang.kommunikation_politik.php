@@ -52,4 +52,3 @@ $lang['kommunikationpolitik']['nichtbrechen']='Avec le jeu en equipe<br>l`allian
 $lang['kommunikationpolitik']['allianzendet']='L`alliance a ete rompue<br><br>et prend fin dans <b>12</b> mois.';
 $lang['kommunikationpolitik']['ingespraechen']="Wir befinden uns bereits mit dem Empf&auml;ngervolk in Gespr&auml;chen.";
 $lang['kommunikationpolitik']['zurueck']='Retour';
-?>

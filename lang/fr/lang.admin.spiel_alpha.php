@@ -275,4 +275,3 @@ $lang['admin']['spiel']['alpha']['spezien'][41]['effekt']="Eine neue Sternenbasi
 
 $lang['admin']['spiel']['alpha']['spezien'][42]['name']="Matten-Willys";
 $lang['admin']['spiel']['alpha']['spezien'][42]['effekt']="Vorr&auml;te der Kolonisten werden verbraucht.";
-?>
