@@ -486,7 +486,7 @@ if ($fuid==5) {
     $jaeger=$array["jaeger"];
     $art=$array["art"];
     if (($art==0) or ($art==3)) {
-        if ($art==0) { $basisbild='3.jpg'; }
+        if ($art==0) { $basisbild='1.jpg'; }
         if ($art==3) { $basisbild='4.jpg'; }
         $zeiger = @mysql_query("SELECT id,cantox,besitzer,min1,min2,min3,lemin,vorrat FROM $skrupel_planeten where besitzer=$spieler and id=$planetid");
         $array = @mysql_fetch_array($zeiger);

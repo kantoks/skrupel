@@ -1,29 +1,18 @@
 <?php
 include ("../inc.conf.php");
+include_once ('../inhalt/inc.hilfsfunktionen.php');
 include ("../lang/".$language."/lang.admin.index.php");
 $conn = @mysql_connect($server.':'.$port,"$login","$password");
 $db = @mysql_select_db("$database",$conn);
 if($db){
-  function compressed_output(){
-    $encoding = getEnv("HTTP_ACCEPT_ENCODING");
-    $useragent = getEnv("HTTP_USER_AGENT");
-    $method = trim(getEnv("REQUEST_METHOD"));
-    $msie = preg_match("=msie=i", $useragent);
-    $gzip = preg_match("=gzip=i", $encoding);
-    if ($gzip && ($method != "POST" or !$msie)){
-      ob_start("ob_gzhandler");
-    }else{
-      ob_start();
+    compressed_output();
+    session_name('skrupelAdmin');
+    session_start();
+    if (isset($_POST['loginname']) && isset($_POST['loginpass'])) {
+        $_SESSION['ftploginname'] =$_POST['loginname'];
+        $_SESSION['ftploginpass'] =$_POST['loginpass'];
     }
-  }
-  compressed_output();
-session_name('skrupelAdmin');
-session_start();
-if (isset($_POST['loginname']) && isset($_POST['loginpass'])) {
-$_SESSION['ftploginname'] =$_POST['loginname'];
-$_SESSION['ftploginpass'] =$_POST['loginpass'];
-}
-if(isset($_SESSION['ftploginname']) && $_SESSION['ftploginname'] ==$admin_login && $_SESSION['ftploginpass'] == $admin_pass){
+    if(isset($_SESSION['ftploginname']) && $_SESSION['ftploginname'] ==$admin_login && $_SESSION['ftploginpass'] == $admin_pass){
     ?>
 <html>
 <head>
