@@ -73,18 +73,6 @@ if ($fuid==2) {
     $array = @mysql_fetch_array($zeiger);
     $spiel_extend=$array["extend"];
     $spiel_serial=$array["serial"];
-    function compressed_output(){
-        $encoding = getEnv("HTTP_ACCEPT_ENCODING");
-        $useragent = getEnv("HTTP_USER_AGENT");
-        $method = trim(getEnv("REQUEST_METHOD"));
-        $msie = preg_match("=msie=i", $useragent);
-        $gzip = preg_match("=gzip=i", $encoding);
-        if ($gzip && ($method != "POST" or !$msie)){
-            ob_start("ob_gzhandler");
-        }else{
-            ob_start();
-        }
-    }
     compressed_output();
     $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where phase=1 and id=".$spiel);
     $datensaetze = @mysql_num_rows($zeiger);
@@ -683,18 +671,6 @@ if ($fuid==3) {
     $hoehe=250;
     $conn = @mysql_connect($server.':'.$port,"$login","$password");
     $db = @mysql_select_db("$database",$conn);
-    function compressed_output(){
-        $encoding = getEnv("HTTP_ACCEPT_ENCODING");
-        $useragent = getEnv("HTTP_USER_AGENT");
-        $method = trim(getEnv("REQUEST_METHOD"));
-        $msie = preg_match("=msie=i", $useragent);
-        $gzip = preg_match("=gzip=i", $encoding);
-        if ($gzip && ($method != "POST" or !$msie)){
-            ob_start("ob_gzhandler");
-        }else{
-            ob_start();
-        }
-    }
     compressed_output();
     $zeiger = @mysql_query("SELECT id,phase,umfang FROM $skrupel_spiele where phase=1 and id=".$spiel);
     $datensaetze = @mysql_num_rows($zeiger);
