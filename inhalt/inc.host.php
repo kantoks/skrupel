@@ -3191,18 +3191,12 @@ if ($planetenanzahl>=1) {
         if (($native_id>=1) and ($native_kol>1) and ($r_eigenschaften[$rasse]['assgrad']>=1) and ($kolonisten>1)) {
             if (($r_eigenschaften[$rasse]['assart']==$native_art) or ($r_eigenschaften[$rasse]['assart']==0)) {
                 $ueberlauf=round($kolonisten/100*$r_eigenschaften[$rasse]['assgrad']);
-                if ($ueberlauf>=1) {
-                    if (($ueberlauf-$reservat)>=$native_kol) {
-                        $ueberlauf=$native_kol;
-                        $kolonisten=$kolonisten+$ueberlauf;
-                        $native_kol=0;
-                        $native_id=0;
-                        $zeiger_temp = mysql_query("UPDATE $skrupel_planeten set kolonisten=$kolonisten,native_id=0,native_kol=0 where id=$pid");
-                    } else {
-                        $kolonisten=$kolonisten+max(0,$ueberlauf-$reservat);
-                        $native_kol=$native_kol-max(0,$ueberlauf-$reservat);
-                        $zeiger_temp = mysql_query("UPDATE $skrupel_planeten set kolonisten=$kolonisten,native_kol=$native_kol where id=$pid");
-                    }
+                if ($ueberlauf>=1 and $native_kol>$reservat) {
+                    $ueberlauf=min($ueberlauf,$native_kol-$reservat);
+                    $kolonisten=$kolonisten+$ueberlauf;
+                    $native_kol=$native_kol-$ueberlauf;
+                    if ($native_kol==0) {$native_id=0;}
+                    $zeiger_temp = mysql_query("UPDATE $skrupel_planeten set kolonisten=$kolonisten,native_id=$native_id,native_kol=$native_kol where id=$pid");
                 }
             }
         }
