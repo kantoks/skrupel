@@ -2,8 +2,8 @@
 /*
 :noTabs=false:indentSize=4:tabSize=4:folding=explicit:collapseFolds=1:
 */
-include ('../inc.conf.php');
-include_once ('inc.hilfsfunktionen.php');
+require_once ('../inc.conf.php'); 
+ require_once ('inc.hilfsfunktionen.php');
 $langfile_1 = 'kommunikation';
 $fuid = int_get('fu');
 

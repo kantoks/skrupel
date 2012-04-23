@@ -7,10 +7,7 @@ if (empty($sprache) || !preg_match('/^[a-z]{2}$/', $sprache) || !is_dir('lang/'.
 }
 include ('lang/'.$sprache.'/lang.index.php');
 
-$conn = @mysql_connect($server.':'.$port,$login,$password);
-$db = @mysql_select_db($database,$conn);
-
-if ($db) {
+if (open_db()) {
   compressed_output();
   $zeiger = @mysql_query("SELECT version, extend, serial FROM $skrupel_info");
   $array = @mysql_fetch_array($zeiger);
@@ -504,7 +501,7 @@ if ($db) {
     </html>
     <?php
   }
-  @mysql_close();
+  
 } else {
   ?>
   <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">

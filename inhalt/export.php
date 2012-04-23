@@ -1,6 +1,8 @@
 <?php
-include ('../inc.conf.php');
-include_once ('inc.hilfsfunktionen.php');
+require_once ('../inc.conf.php'); 
+ require_once ('inc.hilfsfunktionen.php');
+open_db();
+
 $fuid = int_get('fu');
 if (!$fuid) $fuid=1;
 
@@ -9,9 +11,6 @@ if ($fuid==1) {
     $breite=int_get('width');
     $hoehe=int_get('height');
     $spiel=int_get('spiel');
-
-    $conn = @mysql_connect($server.':'.$port,"$login","$password");
-    $db = @mysql_select_db("$database",$conn);
 
     $zeiger_temp = @mysql_query("SELECT id,nebel FROM $skrupel_spiele where id=$spiel");
     $array = @mysql_fetch_array($zeiger_temp);
@@ -166,15 +165,10 @@ if ($fuid==1) {
         </body>
     </html>
     <?php 
-    @mysql_close();
     }
 
 if ($fuid==2) {
     $spiel=int_get('spiel');
-
-
-    $conn = @mysql_connect($server.':'.$port,"$login","$password");
-    $db = @mysql_select_db("$database",$conn);
 
     $zeiger_temp = @mysql_query("SELECT id,nebel FROM $skrupel_spiele where id=$spiel");
     $array = @mysql_fetch_array($zeiger_temp);
@@ -438,5 +432,5 @@ if ($fuid==2) {
          </body>
     </html>
     <?php 
-    @mysql_close();
 }
+

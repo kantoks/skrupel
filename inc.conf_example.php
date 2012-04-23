@@ -3,11 +3,11 @@
 
 //Datenbankzugangsdaten
 
-$server="localhost";
-$port="3306";
-$login="";
-$password="";
-$database="";
+$db_server="localhost";
+$db_port="3306";
+$db_login="";
+$db_password="";
+$db_name="";
 
 //Adminzugangsdaten
 

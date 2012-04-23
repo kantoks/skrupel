@@ -1,9 +1,9 @@
 <?php
-/*
-:noTabs=true:indentSize=4:tabSize=4:folding=explicit:collapseFolds=1:
-*/
-//$_POST  = @array_map('mysql_real_escape_string', $_POST);
-//$_GET = @array_map('mysql_real_escape_string', $_GET);
+
+require_once ('../inc.conf.php');
+require_once ('inc.hilfsfunktionen.php');
+open_db();
+
 $sid = (isset($_GET['sid']) && !preg_match('/[^0-9A-Za-z\/\.]/',$_GET['sid']))?$_GET['sid']:0;
 $uid = (isset($_GET['uid']) && !preg_match('/[^0-9A-Za-z\/\.]/',$_GET['uid']))?$_GET['uid']:0;
 $zeiger = @mysql_query("SELECT * FROM $skrupel_user where uid='$uid'");

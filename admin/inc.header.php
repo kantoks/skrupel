@@ -1,6 +1,7 @@
 <?php
-$conn = @mysql_connect($server.':'.$port,"$login","$password");
-$db = @mysql_select_db("$database",$conn);
+require_once ('../inc.conf.php'); 
+require_once ('../inhalt/inc.hilfsfunktionen.php');
+open_db();
 $zeiger = @mysql_query("SELECT * FROM $skrupel_info");
 $array = @mysql_fetch_array($zeiger);
 $spiel_chat      = $array['chat'];

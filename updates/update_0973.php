@@ -1,8 +1,6 @@
 <?php
   include ("../inc.conf.php");
-  $conn = @mysql_connect($server.':'.$port,"$login","$password");
-  $db = @mysql_select_db("$database",$conn);
-  $zeiger = @mysql_query("SELECT version FROM $skrupel_info");
+open_db()  $zeiger = @mysql_query("SELECT version FROM $skrupel_info");
   $array = @mysql_fetch_array($zeiger);
   $spiel_version = $array["version"];
   if ($spiel_version=='0.972') {
@@ -11,5 +9,5 @@
   } else {
    echo "<b>Fehler</b>: Dieser Patch ben&ouml;tigt Version 0.972, die aktuelle Version ist aber $spiel_version.";
   }
-  @mysql_close();
+  
 

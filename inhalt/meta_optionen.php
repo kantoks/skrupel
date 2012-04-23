@@ -1,6 +1,6 @@
 <?php
-include ('../inc.conf.php');
-include_once ('inc.hilfsfunktionen.php');
+require_once ('../inc.conf.php'); 
+ require_once ('inc.hilfsfunktionen.php');
 include ('../lang/sprachen.php');
 $langfile_1 = 'meta_optionen';
 $fuid = int_get('fu');

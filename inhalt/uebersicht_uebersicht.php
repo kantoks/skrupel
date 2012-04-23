@@ -1,6 +1,6 @@
 <?php
-include ('../inc.conf.php');
-include_once ('inc.hilfsfunktionen.php');
+require_once ('../inc.conf.php'); 
+ require_once ('inc.hilfsfunktionen.php');
 $langfile_1 = 'uebersicht_uebersicht';
 $fuid = int_get('fu');
 
@@ -267,8 +267,7 @@ if ($fuid==3) {
     }
 }
 if ($fuid==4) {
-    $conn = @mysql_connect($server.':'.$port,$login,$password);
-    $db = @mysql_select_db($database,$conn);
+    open_db()
     include ('inc.check.php');
     $spalte=$spalte='sicht_'.$spieler;
     $spalte_beta=$spalte.'_beta';    
