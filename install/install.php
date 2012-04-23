@@ -97,7 +97,7 @@ padding:15px;
     dass die Daten falsch sind.
     <?php
     }else{
-      $serial = zufallstring(20, WITH_SPECIAL_CHARACTERS & WITH_NUMBERS);
+      $serial = zufallstring(20, WITH_SPECIAL_CHARACTERS | WITH_NUMBERS);
       $vars = array(
       'serial' => $serial,
       'version' => $version,
