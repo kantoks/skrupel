@@ -1,6 +1,6 @@
 <?php 
-include ('../inc.conf.php');
-include_once ('inc.hilfsfunktionen.php');
+require_once ('../inc.conf.php'); 
+ require_once ('inc.hilfsfunktionen.php');
 
 $sprache = str_get('sprache','SHORTNAME');
 if ($sprache=='' || !preg_match('/^[a-z]{2}$/', $sprache) || !is_dir('../lang/'.$sprache)) {$sprache = $language;}

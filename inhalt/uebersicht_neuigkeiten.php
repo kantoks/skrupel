@@ -1,9 +1,8 @@
 <?php 
-/*
-:noTabs=false:indentSize=4:tabSize=4:folding=explicit:collapseFolds=1:
-*/
-include ('../inc.conf.php');
-include_once ('inc.hilfsfunktionen.php');
+
+require_once ('../inc.conf.php'); 
+require_once ('inc.hilfsfunktionen.php');
+
 $langfile_1 = 'uebersicht_neuigkeiten';
 $fuid = int_get('fu');
 
@@ -309,8 +308,7 @@ if ($fuid==1) {
 //}}}
 //fu:2 Nachricht markieren zum loeschen {{{
 if ($fuid==2) {
-    $conn = @mysql_connect($server.':'.$port,$login,$password);
-    $db = @mysql_select_db($database,$conn);
+    open_db()
 
     include ('inc.check.php');
 
@@ -326,8 +324,7 @@ if ($fuid==2) {
 //}}}
 //fu:3 Nachricht nicht zum loeschen markieren {{{
 if ($fuid==3) {
-    $conn = @mysql_connect($server.':'.$port,$login,$password);
-    $db = @mysql_select_db($database,$conn);
+    open_db()
 
     include ('inc.check.php');
 
@@ -343,8 +340,7 @@ if ($fuid==3) {
 /*/}}}
 //fu:4 Friedensangebot annehmen, veraltert {{{
 if ($fuid==4) {
-    $conn = @mysql_connect($server.':'.$port,$login,$password);
-    $db = @mysql_select_db($database,$conn);
+    open_db()
 
     include ('inc.check.php');
 
@@ -367,8 +363,7 @@ if ($fuid==4) {
 //}}}
 //fu:5 Friedensangebot ablehnen, veraltert {{{
 if ($fuid==5) {
-    $conn = @mysql_connect($server.':'.$port,$login,$password);
-    $db = @mysql_select_db($database,$conn);
+    open_db()
 
     $nide = int_get('nid');
     $gegner = int_get('gegner');

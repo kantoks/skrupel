@@ -26,7 +26,8 @@ function rasse_laden($filename) {
     }
 }
 function neuigkeiten($art,$icon,$spieler_id,$inhalt,$werte) {
-    global $conn,$db,$skrupel_neuigkeiten,$spiel;
+    global $skrupel_neuigkeiten,$spiel;
+	open_db();
     $datum=time();
     //echo $inhalt.'<br>';
     $search=array();
@@ -37,7 +38,7 @@ function neuigkeiten($art,$icon,$spieler_id,$inhalt,$werte) {
         //echo $platzhalter.'<br>';
     }
     $inhalt=str_replace($search,$werte,$inhalt);
-    $zeiger_temp = mysql_query("insert into $skrupel_neuigkeiten (datum,art,icon,inhalt,spieler_id,spiel_id) values ('$datum',$art,'$icon','$inhalt',$spieler_id,$spiel);",$conn);
+    $zeiger_temp = mysql_query("insert into $skrupel_neuigkeiten (datum,art,icon,inhalt,spieler_id,spiel_id) values ('$datum',$art,'$icon','$inhalt',$spieler_id,$spiel);");
 }
 function sichtaddieren($sicht_alt,$sicht_neu) {
     if ((substr($sicht_alt,0,1)=="1") or (substr($sicht_neu,0,1)=="1")) { $s1="1"; } else { $s1="0"; }
