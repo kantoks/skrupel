@@ -3,10 +3,11 @@
 :noTabs=false:indentSize=4:tabSize=4:folding=explicit:collapseFolds=1:
 */
 
-$conn = @mysql_connect($server.':'.$port,$login,$password);
-$db = @mysql_select_db($database,$conn);
-
+require_once ('../inc.conf.php');
 require_once ('inc.hilfsfunktionen.php');
+
+open_db();
+
 include ('inc.check.php');
 if (!empty($langfile_1)) include ('../lang/'.$spieler_sprache.'/lang.'.$langfile_1.'.php');
 if (!empty($langfile_2)) include ('../lang/'.$spieler_sprache.'/lang.'.$langfile_2.'.php');

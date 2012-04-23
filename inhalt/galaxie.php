@@ -1,10 +1,10 @@
 <?php
 include ('../inc.conf.php');
-//todo das hier ist ne directory traversal lücke und muss weg !!!
-$conn = mysql_connect($server.':'.$port, $login, $password);
-$db = mysql_select_db($database, $conn);
-include ('inc.check.php');
 include_once ('inc.hilfsfunktionen.php');
+
+open_db()
+include ('inc.check.php');
+
 $langfile_1 = 'galaxie';
 $fuid = int_get('fu');
 $noani='';
@@ -1387,4 +1387,4 @@ if ($fuid==2) {
     </html>
     <?php
 }
-@mysql_close();
+

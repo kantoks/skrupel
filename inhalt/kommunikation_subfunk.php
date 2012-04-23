@@ -113,7 +113,7 @@ if ($fuid==1) {
         </table>
         <?php
     include ("inc.footer.php");
-    @mysql_close();
+    
 }
 if ($fuid==2) {
     include ("inc.header.php");

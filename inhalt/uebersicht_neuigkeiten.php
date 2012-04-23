@@ -318,7 +318,7 @@ if ($fuid==2) {
 
     @mysql_query("UPDATE $skrupel_neuigkeiten SET sicher=0 WHERE id=$nide AND spieler_id=$spieler;");
 
-    @mysql_close();
+    
 
     $site = "uebersicht_neuigkeiten.php?fu=1&uid=".$uid."&sid=".$sid;
     header("Location: $site");
@@ -335,7 +335,7 @@ if ($fuid==3) {
 
     $zeiger = @mysql_query("UPDATE $skrupel_neuigkeiten SET sicher=1 WHERE id=$nide AND spieler_id=$spieler;");
 
-    @mysql_close();
+    
 
     $site = "uebersicht_neuigkeiten.php?fu=1&uid=".$uid."&sid=".$sid;
     header("Location: $site");
@@ -359,7 +359,7 @@ if ($fuid==4) {
 
     $zeiger = @mysql_query("DELETE FROM $skrupel_neuigkeiten WHERE id=$nide");
 
-    @mysql_close();
+    
 
     $site = "uebersicht_neuigkeiten.php?fu=1&uid=".$uid."&sid=".$sid;
     header("Location: $site");
@@ -379,7 +379,7 @@ if ($fuid==5) {
 
     $zeiger = @mysql_query("DELETE FROM $skrupel_neuigkeiten WHERE id=$nide");
 
-    @mysql_close();
+    
 
     $site = "uebersicht_neuigkeiten.php?fu=1&uid=".$uid."&sid=".$sid;
     header("Location: $site");
@@ -388,8 +388,7 @@ if ($fuid==5) {
 //fu:6 Friedensangebot ablehnen, veraltert {{{
 if ($fuid==6) {
 
-    $conn = @mysql_connect($server.':'.$port,"$login","$password");
-    $db = @mysql_select_db("$database",$conn);
+open_db()
        
     $nide=$_GET["nid"];
     $gegner=$_GET["gegner"];
@@ -436,14 +435,13 @@ if ($fuid==6) {
     $site="uebersicht_neuigkeiten.php?fu=1&uid=".$uid."&sid=".$sid;
     header("Location: $site");
 
-    @mysql_close();
+    
 }
 //}}}
 //fu:7 Allianzangebot ablehnen, veraltert {{{
 if ($_GET["fu"]==7) {
 
-    $conn = @mysql_connect($server.':'.$port,"$login","$password");
-    $db = @mysql_select_db("$database",$conn);
+open_db()
        
     $nide=$_GET["nid"];
     $gegner=$_GET["gegner"];
@@ -487,6 +485,6 @@ if ($_GET["fu"]==7) {
     $site="uebersicht_neuigkeiten.php?fu=1&uid=".$uid."&sid=".$sid;
     header("Location: $site");
 
-    @mysql_close();
+    
 }
 //}}} */

@@ -68,21 +68,19 @@ padding:15px;
 );
   require_once ('../inhalt/inc.hilfsfunktionen.php');
   $installed = false;
-  $conn = mysql_connect($server.':'.$port,"$login","$password");
-  if ($conn) {
-    $db = mysql_select_db("$database",$conn);
+  $db = open_db()
     if ($db) {
       $zeiger = @mysql_query("SELECT version FROM {$skrupel_db['info']}");
        $array = @mysql_fetch_array($zeiger);
        if( $array["version"] == $version){$installed = true;}
     }
-  }
+	
   ?>
     <h1>Willkommen bei der Skrupel-Installation.</h1>
     <?php
     if ($installed) {
       echo "Skrupel wurde erfolgreich installiert.";
-    } elseif (!$database || !$server || !$login || !$db) {
+    } elseif (empty($db_name) || empty($db_server) || empty($db_login) || empty($db)) {
       ?>
     Bitte &ouml;ffne als erstes die Datei "inc.conf.php"<br>auf deinem
     Computer mit einem Text-Editor (z.B. Notepad).<br> <br> Suche dir

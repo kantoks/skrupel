@@ -77,8 +77,7 @@ if ($fuid==2) {
 }
 if ($fuid==3) {
     include ("inc.host_func.php");
-    $conn = @mysql_connect($server.':'.$port,"$login","$password");
-    $db = @mysql_select_db("$database",$conn);
+open_db()
     include ("inc.check.php");
     ///////////////////////////////Sprachinclude(nur die benoetigten) Anfang
     $zeiger = mysql_query("SELECT * FROM $skrupel_spiele WHERE id=$spiel");
@@ -254,7 +253,7 @@ if ($fuid==3) {
     }
     $zeiger_temp = @mysql_query("UPDATE $skrupel_spiele set spieler_1_basen=$spieler_basen_c[1],spieler_1_planeten=$spieler_planeten_c[1],spieler_1_schiffe=$spieler_schiffe_c[1],spieler_2_basen=$spieler_basen_c[2],spieler_2_planeten=$spieler_planeten_c[2],spieler_2_schiffe=$spieler_schiffe_c[2],spieler_3_basen=$spieler_basen_c[3],spieler_3_planeten=$spieler_planeten_c[3],spieler_3_schiffe=$spieler_schiffe_c[3],spieler_4_basen=$spieler_basen_c[4],spieler_4_planeten=$spieler_planeten_c[4],spieler_4_schiffe=$spieler_schiffe_c[4],spieler_5_basen=$spieler_basen_c[5],spieler_5_planeten=$spieler_planeten_c[5],spieler_5_schiffe=$spieler_schiffe_c[5],spieler_6_basen=$spieler_basen_c[6],spieler_6_planeten=$spieler_planeten_c[6],spieler_6_schiffe=$spieler_schiffe_c[6],spieler_7_basen=$spieler_basen_c[7],spieler_7_planeten=$spieler_planeten_c[7],spieler_7_schiffe=$spieler_schiffe_c[7],spieler_8_basen=$spieler_basen_c[8],spieler_8_planeten=$spieler_planeten_c[8],spieler_8_schiffe=$spieler_schiffe_c[8],spieler_9_basen=$spieler_basen_c[9],spieler_9_planeten=$spieler_planeten_c[9],spieler_9_schiffe=$spieler_schiffe_c[9],spieler_10_basen=$spieler_basen_c[10],spieler_10_planeten=$spieler_planeten_c[10],spieler_10_schiffe=$spieler_schiffe_c[10],spieler_1_platz=$spieler_platz_c[1],spieler_2_platz=$spieler_platz_c[2],spieler_3_platz=$spieler_platz_c[3],spieler_4_platz=$spieler_platz_c[4],spieler_5_platz=$spieler_platz_c[5],spieler_6_platz=$spieler_platz_c[6],spieler_7_platz=$spieler_platz_c[7],spieler_8_platz=$spieler_platz_c[8],spieler_9_platz=$spieler_platz_c[9],spieler_10_platz=$spieler_platz_c[10] where id=$spiel");
     ///////////////////////////////////////////////////////////////////////////////////////////////RANGLISTE ENDE
-    @mysql_close();
+    
     if ($bildpfad=='../bilder') { $bildpfad='bilder'; }
     $backlink="../index.php?pic_path=$bildpfad&sprache=".$spieler_sprache;
     header ("Location: $backlink");

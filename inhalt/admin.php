@@ -485,7 +485,7 @@ if ($fuid==4) {
             $spielerid = int_post('spielerid');
             $zeiger_temp = @mysql_query("UPDATE $skrupel_spiele set $spalte_spieler=$spielerid,$spalte_spieler_rasse='$rasse',$spalte_spieler_planeten=$planetenwert,$spalte_spieler_basen=$basenwert,$spalte_spieler_schiffe=0,$spalte_spieler_rassenname='$rassenname',spieleranzahl=spieleranzahl+1 where id=$spiel");
             function allifinden($partei_a,$partei_b) {
-                global $conn,$db,$skrupel_politik,$spiel;
+                global $conn,$skrupel_politik,$spiel;
                 $total=0;
                 $zeiger2 = @mysql_query("SELECT count(*) as total FROM $skrupel_politik where ((partei_a=$partei_a and partei_b=$partei_b) or (partei_b=$partei_a and partei_a=$partei_b)) and status=2 and spiel=$spiel");
                 $array2 = @mysql_fetch_array($zeiger2);

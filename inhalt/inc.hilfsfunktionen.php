@@ -153,3 +153,22 @@ function compressed_output() {
     ob_start();
   }
 }
+
+/**
+* Oeffnet eine Datenbankverbindung
+*
+*@param bool new_link erzwingt das Oeffnen einer neuen Verbindung
+*@param int client_flags Kombination aus MYSQL_CLIENT_SSL | MYSQL_CLIENT_COMPRESS |  MYSQL_CLIENT_IGNORE_SPACE | MYSQL_CLIENT_INTERACTIVE
+*@return Gibt im Erfolgsfall eine MySQL Verbindungs-Kennung zurueck oder FALSE im Fehlerfall. 
+*/
+function open_db($new_link = FALSE, $client_flags = 0){
+	global $db_server, $db_name, $db_port, $db_login, $db_password;
+
+	if (empty($db_name) || empty($db_server) || empty($db_login)) return false;
+
+	$conn = @mysql_connect($db_server.':'.$db_port,$db_login,$db_password, $new_link, client_flags);
+	if($conn !== FALSE && @mysql_select_db($db_name,$conn)){
+		$GLOBALS['db'] = $conn;
+		return $conn;
+	}else return false;
+}
