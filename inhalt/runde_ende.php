@@ -67,7 +67,7 @@ if ($fuid==1) {
     <?php 
 }
 if ($fuid==2) {
-open_db()
+open_db();
     $zeiger = @mysql_query("SELECT extend,serial FROM $skrupel_info");
     $array = @mysql_fetch_array($zeiger);
     $spiel_extend=$array["extend"];
@@ -668,7 +668,7 @@ open_db()
 if ($fuid==3) {
     $breite=250;
     $hoehe=250;
-open_db()
+	open_db();
     compressed_output();
     $zeiger = @mysql_query("SELECT id,phase,umfang FROM $skrupel_spiele where phase=1 and id=".$spiel);
     $datensaetze = @mysql_num_rows($zeiger);

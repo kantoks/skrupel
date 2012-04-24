@@ -166,8 +166,9 @@ function open_db($new_link = FALSE, $client_flags = 0){
 
 	if (empty($db_name) || empty($db_server) || empty($db_login)) return false;
 
-	$conn = @mysql_connect($db_server.':'.$db_port,$db_login,$db_password, $new_link, client_flags);
-	if($conn !== FALSE && @mysql_select_db($db_name,$conn)){
+	$conn = mysql_connect($db_server.':'.$db_port,$db_login,$db_password, $new_link, $client_flags);
+	
+	if($conn !== FALSE && mysql_select_db($db_name,$conn)){
 		$GLOBALS['db'] = $conn;
 		return $conn;
 	}else return false;

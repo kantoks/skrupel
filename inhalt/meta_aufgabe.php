@@ -77,7 +77,7 @@ if ($fuid==2) {
 }
 if ($fuid==3) {
     include ("inc.host_func.php");
-open_db()
+	open_db();
     include ("inc.check.php");
     ///////////////////////////////Sprachinclude(nur die benoetigten) Anfang
     $zeiger = mysql_query("SELECT * FROM $skrupel_spiele WHERE id=$spiel");
