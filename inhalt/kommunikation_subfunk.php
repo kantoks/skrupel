@@ -1,6 +1,6 @@
 <?php
-include ('../inc.conf.php');
-include_once ('inc.hilfsfunktionen.php');
+require_once ('../inc.conf.php'); 
+ require_once ('inc.hilfsfunktionen.php');
 $langfile_1 = 'kommunikation_subfunk';
 $fuid = int_get('fu');
 
@@ -113,7 +113,7 @@ if ($fuid==1) {
         </table>
         <?php
     include ("inc.footer.php");
-    @mysql_close();
+    
 }
 if ($fuid==2) {
     include ("inc.header.php");

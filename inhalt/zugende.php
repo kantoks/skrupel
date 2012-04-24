@@ -2,8 +2,8 @@
 /*
 :noTabs=false:indentSize=4:tabSize=4:folding=explicit:collapseFolds=1:
 */
-include ('../inc.conf.php');
-include_once ('inc.hilfsfunktionen.php');
+require_once ('../inc.conf.php'); 
+ require_once ('inc.hilfsfunktionen.php');
 $langfile_1 = 'zugende';
 $fuid = int_get('fu');
 
@@ -48,15 +48,14 @@ if ($fuid==1) {
 //}}}
 //fu:2 Spiel verlassen {{{
 if ($fuid==2) {
-    $conn = @mysql_connect($server.':'.$port,$login,$password);
-    $db = @mysql_select_db($database,$conn);
+    open_db()
     include ("inc.check.php");
     include ('../lang/'.$spieler_sprache.'/lang.zugende.php');
     $zeiger = mysql_query("UPDATE $skrupel_user set uid='',bildpfad='' where id=$spieler_id;");
     $nachricht = $spieler_name.' '.$lang['zugende']['verlassen'];
     $aktuell = time();
     $zeiger = @mysql_query("INSERT INTO $skrupel_chat (spiel,datum,text,an,von,farbe) VALUES ($spiel,'$aktuell','$nachricht',0,'System','000000');");
-    @mysql_close();
+    
     if ($bildpfad=='../bilder') { $bildpfad='bilder'; }
     $backlink = "../index.php?pic_path=$bildpfad&sprache=".$spieler_sprache;
     header ("Location: $backlink");
@@ -64,8 +63,7 @@ if ($fuid==2) {
 //}}}
 //fu:3 Zug abschliessen {{{
 if ($fuid==3) {
-    $conn = @mysql_connect($server.':'.$port,$login,$password);
-    $db = @mysql_select_db($database,$conn);
+    open_db()
     include ('inc.check.php');
     include ('../lang/'.$spieler_sprache.'/lang.zugende.php');
     $spalte = "spieler_{$spieler}_zug";
@@ -80,7 +78,7 @@ if ($fuid==3) {
         //den Zug des jeweiligen Spielers berechnet. 
         include("../extend/ki/ki_basis/zugendeKI.php");
     }
-    @mysql_close();
+    
     $fertig = 0;
     for($i=1; $i<=10; $i++) {
         if($spieler_zug_c[$i]==1) $fertig++;
@@ -281,14 +279,13 @@ if ($fuid==8) {
 //}}}
 //fu:9 Zug abschliessen zwischenschritt fuer langsame server oO {{{
 if ($fuid==9) {
-    $conn = @mysql_connect($server.':'.$port,$login,$password);
-    $db = @mysql_select_db($database,$conn);
+    open_db()
     include ('inc.check.php');
     include ('../lang/'.$spieler_sprache.'/lang.zugende.php');
     $spalte = "spieler_{$spieler}_zug";
     $spieler_zug_c[$spieler] = 1;
     @mysql_query("UPDATE $skrupel_spiele SET $spalte=1 WHERE sid='$sid';");
-    @mysql_close();
+    
     $fertig = 0;
     for($i=1; $i<=10; $i++) {
         if($spieler_zug_c[$i]==1) $fertig++;

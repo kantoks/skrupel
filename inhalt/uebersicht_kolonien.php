@@ -1,6 +1,6 @@
 <?php 
-include ('../inc.conf.php');
-include_once ('inc.hilfsfunktionen.php');
+require_once ('../inc.conf.php'); 
+ require_once ('inc.hilfsfunktionen.php');
 $langfile_1 = 'uebersicht_kolonien';
 $langfile_2 = 'orbitale_systeme';
 $fuid = int_get('fu');

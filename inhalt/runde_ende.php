@@ -1,6 +1,6 @@
 <?php 
-include ('../inc.conf.php');
-include_once ('inc.hilfsfunktionen.php');
+require_once ('../inc.conf.php'); 
+ require_once ('inc.hilfsfunktionen.php');
 
 $sprache = str_get('sprache','SHORTNAME');
 if ($sprache=='' || !preg_match('/^[a-z]{2}$/', $sprache) || !is_dir('../lang/'.$sprache)) {$sprache = $language;}
@@ -67,8 +67,7 @@ if ($fuid==1) {
     <?php 
 }
 if ($fuid==2) {
-    $conn = @mysql_connect($server.':'.$port,"$login","$password");
-    $db = @mysql_select_db("$database",$conn);
+open_db()
     $zeiger = @mysql_query("SELECT extend,serial FROM $skrupel_info");
     $array = @mysql_fetch_array($zeiger);
     $spiel_extend=$array["extend"];
@@ -664,13 +663,12 @@ if ($fuid==2) {
         </html>
         <?php 
     }
-    @mysql_close();
+    
 }
 if ($fuid==3) {
     $breite=250;
     $hoehe=250;
-    $conn = @mysql_connect($server.':'.$port,"$login","$password");
-    $db = @mysql_select_db("$database",$conn);
+open_db()
     compressed_output();
     $zeiger = @mysql_query("SELECT id,phase,umfang FROM $skrupel_spiele where phase=1 and id=".$spiel);
     $datensaetze = @mysql_num_rows($zeiger);
@@ -863,5 +861,5 @@ if ($fuid==3) {
         </html>
         <?php
     }
-    @mysql_close();
+    
 }

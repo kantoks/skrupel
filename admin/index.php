@@ -1,10 +1,9 @@
 <?php
-include ("../inc.conf.php");
-include_once ('../inhalt/inc.hilfsfunktionen.php');
+require_once ('../inc.conf.php'); 
+require_once (../inhalt/'inc.hilfsfunktionen.php');
 include ("../lang/".$language."/lang.admin.index.php");
-$conn = @mysql_connect($server.':'.$port,"$login","$password");
-$db = @mysql_select_db("$database",$conn);
-if($db){
+
+if(open_db()){
     compressed_output();
     session_name('skrupelAdmin');
     session_start();
@@ -215,7 +214,7 @@ function check() {
 </body>
 </html>
 <?php }
-@mysql_close();
+
 } else { ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>

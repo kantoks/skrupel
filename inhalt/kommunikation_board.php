@@ -1,6 +1,8 @@
 <?php
-include ('../inc.conf.php');
-include_once ('inc.hilfsfunktionen.php');
+
+require_once ('../inc.conf.php');
+require_once ('inc.hilfsfunktionen.php');
+
 $langfile_1 = 'kommunikation_board';
 $fuid = int_get('fu');
 
@@ -654,8 +656,9 @@ if ($fuid==2) {
     include ("inc.footer.php");
 }
 if ($fuid==4) {
-    $conn = @mysql_connect($server.':'.$port,"$login","$password");
-    $db = @mysql_select_db("$database",$conn);
+    
+	open_db()
+	
     $forum=int_get('forum');
     $icon=int_post('icon');
     include ("inc.check.php");
@@ -676,7 +679,7 @@ if ($fuid==4) {
     $array = @mysql_fetch_array($zeiger);
     $idthema=$array["id"];
     $zeiger = mysql_query("INSERT INTO $skrupel_forum_beitrag (thema,forum,datum,beitrag,verfasser,spielerid) values ($idthema,$forum,'$letzter','$beitrag','$beginner',$spieler);");
-    @mysql_close();
+    
     $backlink="kommunikation_board.php?fu=2&uid=$uid&sid=$sid&fo=$forum";
     header ("Location: $backlink");
 }
@@ -885,8 +888,9 @@ if ($fuid==3) {
     include ("inc.footer.php");
 }
 if ($fuid==5) {
-    $conn = @mysql_connect($server.':'.$port,"$login","$password");
-    $db = @mysql_select_db("$database",$conn);
+    
+	open_db();
+	
     $forum=int_get('forum');
     $thema=int_get('thema');
     $icon=int_post('icon');
@@ -900,7 +904,7 @@ if ($fuid==5) {
     //$beitrag=str_replace("\\", "",$beitrag);
     $zeiger = mysql_query("INSERT INTO $skrupel_forum_beitrag (thema,forum,datum,beitrag,verfasser,spielerid) values ($thema,$forum,'$letzter','$beitrag','$beginner',$spieler);");
     $zeiger = mysql_query("UPDATE $skrupel_forum_thema set antworten=antworten+1,letzter='$letzter' where id=$thema;");
-    @mysql_close();
+    
     $backlink="kommunikation_board.php?fu=3&uid=$uid&sid=$sid&fo=$forum&thema=$thema";
     header ("Location: $backlink");
 }

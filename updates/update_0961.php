@@ -1,9 +1,7 @@
 <?php
   include ("../inc.conf.php");
 
-  $conn = @mysql_connect($server.':'.$port,"$login","$password");
-  $db = @mysql_select_db("$database",$conn);
-
+open_db()
   $zeiger = @mysql_query("SELECT version FROM $skrupel_info");
   $array = @mysql_fetch_array($zeiger);
   $spiel_version=$array["version"];
@@ -33,4 +31,4 @@
 
   }
 
-@mysql_close();
+

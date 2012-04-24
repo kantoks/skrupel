@@ -1,6 +1,6 @@
 <?php
-include ("../inc.conf.php");
-include_once ('../inhalt/inc.hilfsfunktionen.php');
+require_once ('../inc.conf.php'); 
+require_once (../inhalt/'inc.hilfsfunktionen.php');
 include ("../lang/".$language."/lang.admin.allgemein_beta.php");
 $fuid = int_get('fu');
 
