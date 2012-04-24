@@ -3,6 +3,7 @@
 require_once ('../inc.conf.php'); 
 require_once ('inc.hilfsfunktionen.php');
 
+open_db();
 $langfile_1 = 'uebersicht_neuigkeiten';
 $fuid = int_get('fu');
 
@@ -308,7 +309,7 @@ if ($fuid==1) {
 //}}}
 //fu:2 Nachricht markieren zum loeschen {{{
 if ($fuid==2) {
-    open_db()
+    
 
     include ('inc.check.php');
 
@@ -324,7 +325,7 @@ if ($fuid==2) {
 //}}}
 //fu:3 Nachricht nicht zum loeschen markieren {{{
 if ($fuid==3) {
-    open_db()
+    
 
     include ('inc.check.php');
 
@@ -340,7 +341,7 @@ if ($fuid==3) {
 /*/}}}
 //fu:4 Friedensangebot annehmen, veraltert {{{
 if ($fuid==4) {
-    open_db()
+    
 
     include ('inc.check.php');
 
@@ -363,7 +364,7 @@ if ($fuid==4) {
 //}}}
 //fu:5 Friedensangebot ablehnen, veraltert {{{
 if ($fuid==5) {
-    open_db()
+    
 
     $nide = int_get('nid');
     $gegner = int_get('gegner');
@@ -383,7 +384,7 @@ if ($fuid==5) {
 //fu:6 Friedensangebot ablehnen, veraltert {{{
 if ($fuid==6) {
 
-open_db()
+
        
     $nide=$_GET["nid"];
     $gegner=$_GET["gegner"];
@@ -436,7 +437,7 @@ open_db()
 //fu:7 Allianzangebot ablehnen, veraltert {{{
 if ($_GET["fu"]==7) {
 
-open_db()
+
        
     $nide=$_GET["nid"];
     $gegner=$_GET["gegner"];

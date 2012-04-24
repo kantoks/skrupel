@@ -3,6 +3,8 @@
 require_once ('../inc.conf.php');
 require_once ('inc.hilfsfunktionen.php');
 
+open_db();
+
 $langfile_1 = 'kommunikation_board';
 $fuid = int_get('fu');
 
@@ -655,10 +657,8 @@ if ($fuid==2) {
         <?php
     include ("inc.footer.php");
 }
-if ($fuid==4) {
-    
-	open_db()
-	
+if ($fuid==4) {    
+		
     $forum=int_get('forum');
     $icon=int_post('icon');
     include ("inc.check.php");
@@ -889,7 +889,7 @@ if ($fuid==3) {
 }
 if ($fuid==5) {
     
-	open_db();
+	;
 	
     $forum=int_get('forum');
     $thema=int_get('thema');

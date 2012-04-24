@@ -267,7 +267,7 @@ if ($fuid==3) {
     }
 }
 if ($fuid==4) {
-    open_db()
+    open_db();
     include ('inc.check.php');
     $spalte=$spalte='sicht_'.$spieler;
     $spalte_beta=$spalte.'_beta';    

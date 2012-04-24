@@ -89,7 +89,7 @@ if ($fuid==2) {
     <?php
 }
 if ($fuid==3) {
-    open_db()
+    open_db();
     $zeiger = @mysql_query("SELECT chatfarbe, id From $skrupel_user where uid='$uid'");
     $array = @mysql_fetch_array($zeiger);
     $spieler_chatfarbe = $array["chatfarbe"];
@@ -298,7 +298,7 @@ if ($fuid==3) {
     <?php
 }
 if ($fuid==4) {
-open_db()
+open_db();
     $zeiger = @mysql_query("SELECT chatfarbe, id From $skrupel_user where uid='$uid'");
     $array = @mysql_fetch_array($zeiger);
     $spieler_chatfarbe = $array["chatfarbe"];
@@ -367,7 +367,7 @@ open_db()
     
 }
 if ($fuid==5) {
-open_db()
+	open_db();
     $zeiger = @mysql_query("SELECT chatfarbe, id From $skrupel_user where uid='$uid'");
     $array = @mysql_fetch_array($zeiger);
     $spieler_chatfarbe = $array["chatfarbe"];
@@ -476,7 +476,7 @@ open_db()
     
 }
 if ($fuid==6) {
-open_db()
+	open_db();
     include ("inc.check.php");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_user order by nick");
     $useranzahl = @mysql_num_rows($zeiger);

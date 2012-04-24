@@ -7,6 +7,15 @@ if (empty($sprache) || !preg_match('/^[a-z]{2}$/', $sprache) || !is_dir('lang/'.
 }
 include ('lang/'.$sprache.'/lang.index.php');
 
+  if( ($tmp = str_get('pic_path','PATHNAME')) !== false) {
+    $bildpfad = $tmp;
+  } elseif( ($tmp = str_post('pic_path','PATHNAME')) !== false) {
+    $bildpfad = $tmp;
+  }
+  if(empty($bildpfad)){
+         $bildpfad = 'Bilder';
+  }
+  
 if (open_db()) {
   compressed_output();
   $zeiger = @mysql_query("SELECT version, extend, serial FROM $skrupel_info");
@@ -15,16 +24,7 @@ if (open_db()) {
   $spiel_extend  = $array['extend'];
   $spiel_serial  = $array['serial'];
   $spieler=0;
-  //$_POST  = @array_map('mysql_real_escape_string', $_POST);
-  //$_GET   = @array_map('mysql_real_escape_string', $_GET);
-  if( ($tmp = str_get('pic_path','PATHNAME')) !== false) {
-    $bildpfad = $tmp;
-  } elseif( ($tmp = str_post('pic_path','PATHNAME')) !== false) {
-    $bildpfad = $tmp;
-  }
-  if(empty($bildpfad)){
-         $bildpfad = 'bilder';
-  }
+
   $login_f  = str_post('login_f','SQLSAFE');
   $pass_f    = str_post('passwort_f','NONE');
   $spiel_slot = int_post('spiel_slot');
@@ -515,7 +515,7 @@ if (open_db()) {
       <meta name="keywords" content=" ">
       <meta http-equiv="imagetoolbar" content="no">
     </head>
-    <body text="#000000" scroll="no" bgcolor="#000000" background="<?php echo $bildpfad?>/hintergrund.gif" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+    <body text="#000000" scroll="no" bgcolor="#000000" background="<?php echo $bildpfad; ?>/hintergrund.gif" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" rightmargin="0" topmargin="0" marginwidth="0" marginheight="0">
       <center>
         <table border="0" height="100%" cellspacing="0" cellpadding="0">
           <tr><td style="font-family:Verdana;font-size:10px;color:#ffffff;"><nobr><?php echo $lang['index']['fehler']?></nobr></td></tr>

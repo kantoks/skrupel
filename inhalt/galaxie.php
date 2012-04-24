@@ -2,7 +2,7 @@
 require_once ('../inc.conf.php'); 
  require_once ('inc.hilfsfunktionen.php');
 
-open_db()
+open_db();
 include ('inc.check.php');
 
 $langfile_1 = 'galaxie';

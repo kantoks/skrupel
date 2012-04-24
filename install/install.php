@@ -68,7 +68,7 @@ padding:15px;
 );
   require_once ('../inhalt/inc.hilfsfunktionen.php');
   $installed = false;
-  $db = open_db()
+  $db = open_db();
     if ($db) {
       $zeiger = @mysql_query("SELECT version FROM {$skrupel_db['info']}");
        $array = @mysql_fetch_array($zeiger);

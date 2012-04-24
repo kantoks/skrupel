@@ -48,7 +48,7 @@ if ($fuid==1) {
 //}}}
 //fu:2 Spiel verlassen {{{
 if ($fuid==2) {
-    open_db()
+    open_db();
     include ("inc.check.php");
     include ('../lang/'.$spieler_sprache.'/lang.zugende.php');
     $zeiger = mysql_query("UPDATE $skrupel_user set uid='',bildpfad='' where id=$spieler_id;");
@@ -63,7 +63,7 @@ if ($fuid==2) {
 //}}}
 //fu:3 Zug abschliessen {{{
 if ($fuid==3) {
-    open_db()
+    open_db();
     include ('inc.check.php');
     include ('../lang/'.$spieler_sprache.'/lang.zugende.php');
     $spalte = "spieler_{$spieler}_zug";
@@ -279,7 +279,7 @@ if ($fuid==8) {
 //}}}
 //fu:9 Zug abschliessen zwischenschritt fuer langsame server oO {{{
 if ($fuid==9) {
-    open_db()
+    open_db();
     include ('inc.check.php');
     include ('../lang/'.$spieler_sprache.'/lang.zugende.php');
     $spalte = "spieler_{$spieler}_zug";
