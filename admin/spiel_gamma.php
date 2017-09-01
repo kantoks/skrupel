@@ -3,7 +3,7 @@
 :noTabs=false:indentSize=4:tabSize=4:folding=explicit:collapseFolds=1:
 */
 require_once ('../inc.conf.php'); 
-require_once (../inhalt/'inc.hilfsfunktionen.php');
+require_once ('../inhalt/inc.hilfsfunktionen.php');
 include ("../lang/".$language."/lang.spiel_gamma.php");
 $fuid = int_get('fu');
 
