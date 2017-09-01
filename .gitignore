@@ -1,6 +1,7 @@
 .project
 .buildpath
 .settings/
+.extend/
 inc.conf.php
 inc.conf_example.php
 *~

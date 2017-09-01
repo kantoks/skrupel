@@ -1,8 +1,5 @@
 <?php
-require_once ("../inc.conf.php");
-
-
-
+require_once ('inc.conf.php');
 require_once ('inhalt/inc.hilfsfunktionen.php');		
 $sprache = str_get('sprache','SHORTNAME');
 if (empty($sprache) || !preg_match('/^[a-z]{2}$/', $sprache) || !is_dir('lang/'.$sprache)) {
