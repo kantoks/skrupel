@@ -123,7 +123,7 @@ padding:15px;
           }
           //echo "<p>query:$query</p>\n";
           //absenden des Querys
-          mysql_query($query, $conn);
+          mysql_query($query);
           echo mysql_error();
           $puffer = substr($puffer, $pos + 1);
         }
