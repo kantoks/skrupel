@@ -13,7 +13,7 @@ include ('lang/'.$sprache.'/lang.index.php');
     $bildpfad = $tmp;
   }
   if(empty($bildpfad)){
-         $bildpfad = 'Bilder';
+         $bildpfad = 'bilder';
   }
   
 if (open_db()) {
