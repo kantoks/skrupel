@@ -3949,7 +3949,7 @@ for ($m=1;$m<11;$m++) {
     if ($spieler_id_c[$m]>=1) {$zeiger = mysql_query("UPDATE $skrupel_user set stat_sieg=stat_sieg+$stat_sieg[$m],stat_schlacht=stat_schlacht+$stat_schlacht[$m],stat_schlacht_sieg=stat_schlacht_sieg+$stat_schlacht_sieg[$m],stat_kol_erobert=stat_kol_erobert+$stat_kol_erobert[$m],stat_lichtjahre=stat_lichtjahre+$stat_lichtjahre[$m],stat_monate=stat_monate+1 where id=$spieler_id_c[$m]"); }
 }
 if ((@file_exists($xstats_verzeichnis)) and (intval(substr($spiel_extend,2,1))==1)) {
-    xstats_collectAndStore( $sid, &$stat_schlacht,&$stat_schlacht_sieg,&$stat_kol_erobert,&$stat_lichtjahre);
+    xstats_collectAndStore( $sid, $stat_schlacht,$stat_schlacht_sieg,$stat_kol_erobert,$stat_lichtjahre);
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////STATS AUSWERTUNG ENDE
 /////////////////////////////////////////////////////////////////////////////////////////////// BENACHRICHTIGUNG ANFANG
