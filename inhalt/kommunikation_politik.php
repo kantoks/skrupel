@@ -39,6 +39,11 @@ if ($fuid==2) {
         $icon_bilder=array("","krieg","handel","nichtangriff","bund","allianz");
         function icon($partei_a,$partei_b) {
             global $beziehung,$bildpfad,$lang;
+
+            if (!isset($beziehung[$partei_a][$partei_b]['status'])) {
+                $beziehung[$partei_a][$partei_b]['status'] = 0;
+                $beziehung[$partei_a][$partei_b]['optionen'] = 0;
+            }
             $statuss=$beziehung[$partei_a][$partei_b]['status'];
             $optionenn=$beziehung[$partei_a][$partei_b]['optionen'];
             $icon_bilder=array("","krieg","handel","nichtangriff","bund","allianz");
@@ -270,19 +275,10 @@ if ($fuid==3) {
     include ("inc.footer.php");
 }
 if ($fuid==4) {
+    $langfile_2 = 'kommunikation_politik_b';
     include ("inc.header.php");
     $art = int_post('art');
     $spielernummer = int_post('spielernummer');
-    $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$sid."'");
-    $ok = @mysql_data_seek($zeiger,0);
-    $sprachtemp_1 = @mysql_fetch_array($zeiger);
-    $spielertemp=$sprachtemp_1["spieler_".$spielernummer];
-    $zeiger=@mysql_query("SELECT sprache FROM $skrupel_user where id=$spielertemp");
-    $ok = @mysql_data_seek($zeiger,0);
-    $sprachtemp_2 = @mysql_fetch_array($zeiger);
-    $spieler2sprache=($sprachtemp_2["sprache"]=='')?$language:$sprachtemp_2["sprache"];
-    $file="../lang/".$spieler2sprache."/lang.kommunikation_politik_b.php";
-    include($file);
     $zeiger = @mysql_query("SELECT spiel,partei_a,partei_b,status,optionen FROM $skrupel_politik where spiel=$spiel");
     $polanzahl = @mysql_num_rows($zeiger);
     if ($polanzahl>=1) {
@@ -295,7 +291,7 @@ if ($fuid==4) {
             $optionen=$array["optionen"];
             $beziehung[$partei_a][$partei_b]['status']=$status;
             $beziehung[$partei_a][$partei_b]['optionen']=$optionen;
-            }
+        }
     }
     $volk_a=$spieler;
     $volk_b=$spielernummer;
@@ -304,7 +300,7 @@ if ($fuid==4) {
     if ($volk_a>$volk_b) { $temp=$volk_b;$volk_b=$volk_a;$volk_a=$temp; }
         //$partei_a=$volk_a;
         //$partei_b=$volk_b;
-        if (!$beziehung[$volk_a][$volk_b]['status']) {
+        if (!isset($beziehung[$volk_a][$volk_b]['status'])) {
             $beziehung[$volk_a][$volk_b]['status']=0;
             $beziehung[$volk_a][$volk_b]['optionen']=0;
         }
@@ -524,19 +520,10 @@ if ($fuid==4) {
     include ("inc.footer.php");
 }
 if ($fuid==5) {
+    $langfile_2 = 'kommunikation_politik_b';
     include ("inc.header.php");
     $art = int_post('art');
     $spielernummer = int_post('spieler2');
-    $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$sid."'");
-    $ok = @mysql_data_seek($zeiger,0);
-    $sprachtemp_1 = @mysql_fetch_array($zeiger);
-    $spielertemp=$sprachtemp_1["spieler_".$spielernummer];
-    $zeiger=@mysql_query("SELECT sprache FROM $skrupel_user where id=$spielertemp");
-    $ok = @mysql_data_seek($zeiger,0);
-    $sprachtemp_2 = @mysql_fetch_array($zeiger);
-    $spieler2sprache=($sprachtemp_2["sprache"]=='')?$language:$sprachtemp_2["sprache"];
-    $file="../lang/".$spieler2sprache."/lang.kommunikation_politik_b.php";
-    include($file);
     $anfrage_id=int_get('anf');
     $zeiger = @mysql_query("SELECT * FROM $skrupel_politik_anfrage where partei_a=$spieler and spiel=$spiel and id=$anfrage_id");
     $anzahl = @mysql_num_rows($zeiger);
@@ -635,19 +622,10 @@ if ($fuid==5) {
     include ("inc.footer.php");
 }
 if ($fuid==6) {
+    $langfile_2 = 'kommunikation_politik_b';
     include ("inc.header.php");
     $art = int_post('art');
     $spielernummer = int_post('spieler2');
-    $zeiger = @mysql_query("SELECT * FROM $skrupel_spiele where sid='".$sid."'");
-    $ok = @mysql_data_seek($zeiger,0);
-    $sprachtemp_1 = @mysql_fetch_array($zeiger);
-    $spielertemp=$sprachtemp_1["spieler_".$spielernummer];
-    $zeiger=@mysql_query("SELECT sprache FROM $skrupel_user where id=$spielertemp");
-    $ok = @mysql_data_seek($zeiger,0);
-    $sprachtemp_2 = @mysql_fetch_array($zeiger);
-    $spieler2sprache=($sprachtemp_2["sprache"]=='')?$language:$sprachtemp_2["sprache"];
-    $file="../lang/".$spieler2sprache."/lang.kommunikation_politik_b.php";
-    include($file);
     $anfrage_id=int_get('anf');
     $zeiger = @mysql_query("SELECT * FROM $skrupel_politik_anfrage where partei_a=$spieler and spiel=$spiel and id=$anfrage_id");
     $anzahl = @mysql_num_rows($zeiger);

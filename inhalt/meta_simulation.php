@@ -7,6 +7,7 @@ $fuid = int_get('fu');
 if ($fuid==1) {
     include ("inc.header.php");
     ///////////////////////////////////////////////////////////////////////////////////////////////RASSENEIGENSCHAFTEN ANFANG
+    $main_verzeichnis = '';
     $daten_verzeichnis=$main_verzeichnis."../daten/";
     $handle=opendir("$daten_verzeichnis");
     $zaehler=0;
@@ -302,6 +303,7 @@ if ($fuid==1) {
 if ($fuid==2) {
     include ("inc.header.php");
     ///////////////////////////////////////////////////////////////////////////////////////////////SCHIFFE ANFANG
+    $main_verzeichnis = '';
     $daten_verzeichnis=$main_verzeichnis."../daten/";
     $handle=opendir("$daten_verzeichnis");
     $zaehler=0;
@@ -1955,6 +1957,7 @@ if ($fuid==2) {
 if ($fuid==3) {
     include ("inc.header.php");
     ///////////////////////////////////////////////////////////////////////////////////////////////SCHIFFE ANFANG
+    $main_verzeichnis = '';
     $daten_verzeichnis=$main_verzeichnis."../daten/";
     $handle=opendir("$daten_verzeichnis");
     $zaehler=0;

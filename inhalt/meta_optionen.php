@@ -7,7 +7,7 @@ $fuid = int_get('fu');
 
 if ($fuid==1) {
     include ("inc.header.php");
-    $zeiger = @mysql_query("SELECT sprache, optionen, email, icq, jabber, avatar, chatfarbe From $skrupel_user where uid='$uid'");
+    $zeiger = @mysql_query("SELECT sprache, optionen, email, icq, jabber, avatar, chatfarbe, id, homepage From $skrupel_user where uid='$uid'");
     $array = @mysql_fetch_array($zeiger);
     $id=$array['id'];
     $spieler_sprache = $array['sprache'];

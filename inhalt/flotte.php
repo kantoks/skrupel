@@ -1051,6 +1051,7 @@ if ($fuid==8) {
         <?php
         $zeiger = @mysql_query("SELECT id,name,besitzer,status,spiel,flug FROM $skrupel_schiffe where besitzer=$spieler and ordner=$oid and status>0 and spiel=$spiel order by name");
         $schiffanzahl = @mysql_num_rows($zeiger);
+        $shid_old = 0;
         if ($schiffanzahl>=1) {
             for  ($i=0; $i<$schiffanzahl;$i++) {
                 $ok = @mysql_data_seek($zeiger,$i);
@@ -1060,7 +1061,7 @@ if ($fuid==8) {
                     ?>
                     <table border="0" cellspacing="0" cellpadding="0">
                         <tr>
-                            <td><img src="../bilder/empty.gif" border="0" width="26" height="8"></td>
+                            <td><img src="<?php echo $bildpfad; ?>/empty.gif" border="0" width="26" height="8"></td>
                         </tr>
                         <tr>
                             <td>

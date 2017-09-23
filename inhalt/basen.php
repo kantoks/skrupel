@@ -584,6 +584,7 @@ if ($fuid==8) {
                 $ok = @mysql_data_seek($zeiger,$i);
                 $array = @mysql_fetch_array($zeiger);
                 $pid_t=$array["id"];
+                $pid_back = 0;
 
                 if ($baid==$pid_back) { ?>
                     <table border="0" cellspacing="0" cellpadding="0">

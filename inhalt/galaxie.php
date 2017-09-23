@@ -1,11 +1,14 @@
 <?php
 require_once ('../inc.conf.php'); 
- require_once ('inc.hilfsfunktionen.php');
+require_once ('inc.hilfsfunktionen.php');
 
 open_db();
 include ('inc.check.php');
 
 $langfile_1 = 'galaxie';
+if (!empty($langfile_1)) include ('../lang/'.$spieler_sprache.'/lang.'.$langfile_1.'.php');
+if (!empty($langfile_2)) include ('../lang/'.$spieler_sprache.'/lang.'.$langfile_2.'.php');
+
 $fuid = int_get('fu');
 $noani='';
 if (@intval(substr($spieler_optionen,15,1))==1) {
@@ -653,13 +656,13 @@ if ($fuid==2) {
                 }
                 //////////////////////////////////////////////////////////////////////////////////schiffe scanfelder
                 if ($nebel>=1) {
-                    $zeiger = @mysql_query("SELECT id,kox,koy,status,besitzer,spezialmission,tarnfeld,scanner FROM $skrupel_schiffe where (status=1 or status=2) and (tarnfeld=0 or besitzer=$spieler) and spiel=$spiel and $spalte=1");
+                    $zeiger = @mysql_query("SELECT id,kox,koy,status,besitzer,spezialmission,tarnfeld,scanner,name FROM $skrupel_schiffe where (status=1 or status=2) and (tarnfeld=0 or besitzer=$spieler) and spiel=$spiel and $spalte=1");
                 } else {
-                    $zeiger = @mysql_query("SELECT id,kox,koy,status,besitzer,spezialmission,tarnfeld,scanner FROM $skrupel_schiffe where (status=1 or status=2) and (tarnfeld=0 or besitzer=$spieler) and spiel=$spiel");
+                    $zeiger = @mysql_query("SELECT id,kox,koy,status,besitzer,spezialmission,tarnfeld,scanner,name FROM $skrupel_schiffe where (status=1 or status=2) and (tarnfeld=0 or besitzer=$spieler) and spiel=$spiel");
                 }
                 $datensaetze = @mysql_num_rows($zeiger);
-                    if ($datensaetze>=1) {
-                        for  ($i=0; $i<$datensaetze;$i++) {
+                if ($datensaetze>=1) {
+                    for ($i=0; $i<$datensaetze;$i++) {
                         $ok = @mysql_data_seek($zeiger,$i);
                         $array = @mysql_fetch_array($zeiger);
                         $id=$array["id"];

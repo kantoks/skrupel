@@ -23,6 +23,7 @@ if ($fuid==2) {
     $array = @mysql_fetch_array($zeiger);
     $spieler_chatfarbe = $array["chatfarbe"];
     $spieler_id = $array["id"];
+    $first = 0;
     if (strlen(str_post('nachricht','SQLSAFE'))>=1) {
         $aktuell=time();
         $farbe=$spieler_chatfarbe;
@@ -303,6 +304,7 @@ if ($fuid==3) {
     $zeiger = @mysql_query("DELETE FROM $skrupel_chat where datum<$aktuell");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_chat where an=0 or an=$spieler_id order by datum desc ");
     $chatanzahl = @mysql_num_rows($zeiger);
+	$neutext = "";
     if ($chatanzahl>=1) {
         for ($i=$chatanzahl-1; $i>=0;$i--) {
             $ok = @mysql_data_seek($zeiger,$i);
