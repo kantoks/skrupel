@@ -344,15 +344,15 @@ if (open_db()) {
               <td>
                 <table border="0" cellspacing="0" cellpadding="0" background="<?php echo $bildpfad?>/login.gif">
                   <tr>
-                    <td><img src="../bilder/empty.gif" border="0" width="1" height="1"></td>
-                    <td><img src="../bilder/empty.gif" border="0" width="628" height="1"></td>
-                    <td><img src="../bilder/empty.gif" border="0" width="1" height="1"></td>
+                    <td><img src="<?php echo $bildpfad?>/empty.gif" border="0" width="1" height="1"></td>
+                    <td><img src="<?php echo $bildpfad?>/empty.gif" border="0" width="628" height="1"></td>
+                    <td><img src="<?php echo $bildpfad?>/empty.gif" border="0" width="1" height="1"></td>
                   </tr>
                   <tr>
-                    <td><img src="../bilder/empty.gif" border="0" width="1" height="347"></td>
+                    <td><img src="<?php echo $bildpfad?>/empty.gif" border="0" width="1" height="347"></td>
                     <td valign="top">
                       <center>
-                        <img src="../bilder/empty.gif" border="0" width="1" height="30">
+                        <img src="<?php echo $bildpfad?>/empty.gif" border="0" width="1" height="30">
                         <br>
                         <img src="<?php echo $bildpfad?>/logo_login.gif" width="329" height="208">
                         <br>
@@ -457,9 +457,9 @@ if (open_db()) {
                                       ?>
                                     </select>
                                   </td>
-                                  <td><img src="../bilder/empty.gif" border="0" width="8" height="1"></td>
+                                  <td><img src="<?php echo $bildpfad?>/empty.gif" border="0" width="8" height="1"></td>
                                   <td align="right"><input type="button" name="aktuellesspiel" value="?" onclick="infoanzeigen();" style="width:20px;"></td>
-                                  <td><img src="../bilder/empty.gif" border="0" width="7" height="1"></td>
+                                  <td><img src="<?php echo $bildpfad?>/empty.gif" border="0" width="7" height="1"></td>
                                       <td><input type="submit" name="submit" value="<?php echo $lang['index']['login']?>" style="width:65px;"></td>
                                 </table>
                               </td>
@@ -476,12 +476,12 @@ if (open_db()) {
                         ?>
                       </center>
                     </td>
-                    <td><img src="../bilder/empty.gif" border="0" width="1" height="347"></td>
+                    <td><img src="<?php echo $bildpfad?>/empty.gif" border="0" width="1" height="347"></td>
                   </tr>
                   <tr>
-                    <td><img src="../bilder/empty.gif" border="0" width="1" height="1"></td>
-                    <td><img src="../bilder/empty.gif" border="0" width="628" height="1"></td>
-                    <td><img src="../bilder/empty.gif" border="0" width="1" height="1"></td>
+                    <td><img src="<?php echo $bildpfad?>/empty.gif" border="0" width="1" height="1"></td>
+                    <td><img src="<?php echo $bildpfad?>/empty.gif" border="0" width="628" height="1"></td>
+                    <td><img src="<?php echo $bildpfad?>/empty.gif" border="0" width="1" height="1"></td>
                   </tr>
                 </table>
               </td>
