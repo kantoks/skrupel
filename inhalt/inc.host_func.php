@@ -332,9 +332,9 @@ function rzufallstring() {
     return $salt;
 }
 */
-define('ONLY_LETTERS',0);
-define('WITH_NUMBERS', 1);
-define('WITH_SPECIAL_CHARACTERS', 2);
+if (!defined('ONLY_LETTERS')) { define('ONLY_LETTERS',0); }
+if (!defined('WITH_NUMBERS')) { define('WITH_NUMBERS', 1); }
+if (!defined('WITH_SPECIAL_CHARACTERS')) { define('WITH_SPECIAL_CHARACTERS', 2); }
 if (! function_exists("zufallstring")){
 function zufallstring($size = 20, $url = ONLY_LETTERS){
   mt_srand();

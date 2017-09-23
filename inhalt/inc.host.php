@@ -1371,7 +1371,7 @@ if ($schiffanzahl>=1) {
 ///////////////////////////////////////////////////////////////////////////////////////////////GRAVITATION ENDE
 ///////////////////////////////////////////////////////////////////////////////////////////////MINENFELDER ANFANG
 if($module[2]) {
-    $zeiger = mysql_query("SELECT crew,crewmax,masse,id,name,klasse,klasseid,volk,kox,koy,besitzer,bild_gross,status,flug,schaden FROM $skrupel_schiffe where status=1 and not (klasseid=1 and volk like 'unknown') and spiel=$spiel order by id");
+    $zeiger = mysql_query("SELECT crew,crewmax,masse,id,name,klasse,klasseid,volk,kox,koy,besitzer,bild_gross,status,flug,schaden,leminmax FROM $skrupel_schiffe where status=1 and not (klasseid=1 and volk like 'unknown') and spiel=$spiel order by id");
     $schiffanzahl = mysql_num_rows($zeiger);
     if ($schiffanzahl>=1) {
         for  ($i=0; $i<$schiffanzahl;$i++) {
