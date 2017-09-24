@@ -142,25 +142,28 @@ if ($schiffanzahl>=1) {
         $fracht_min2 = $array["fracht_min2"];
         $fracht_min3 = $array["fracht_min3"];
         $voll_laden=substr($mins,6,1);
-        if(($voll_laden!=1)or($mins_vorrat==1)or($mins_min1==1)or($mins_min2==1)or($mins_min3==1)or($leuts_kol==1)or($leuts_kol>2)or($leuts_lbt==1)or($leuts_lbt>2)or($leuts_sbt==1)or($leuts_sbt>2)){
-             if(($voll_laden!=1)or((round(($fracht_leute/100)+($leichtebt*0.3)+($schwerebt*1.5)+0.5)+$fracht_vorrat+$fracht_min1+$fracht_min2+$fracht_min3)>=$frachtraum)){
-                $routing_points_temp=explode("::",$routing_koord);
-                if ($routing_schritt==count($routing_points_temp)-2) {
-                    $routing_schritt=0;} else {$routing_schritt++;
+        if (isset($routing_koord) && $routing_koord!="")
+        {
+             if(($voll_laden!=1)or($mins_vorrat==1)or($mins_min1==1)or($mins_min2==1)or($mins_min3==1)or($leuts_kol==1)or($leuts_kol>2)or($leuts_lbt==1)or($leuts_lbt>2)or($leuts_sbt==1)or($leuts_sbt>2)){
+                 if(($voll_laden!=1)or((round(($fracht_leute/100)+($leichtebt*0.3)+($schwerebt*1.5)+0.5)+$fracht_vorrat+$fracht_min1+$fracht_min2+$fracht_min3)>=$frachtraum)){
+                    $routing_points_temp=explode("::",$routing_koord);
+                    if ($routing_schritt==count($routing_points_temp)-2) {
+                        $routing_schritt=0;} else {$routing_schritt++;
+                    }
+                    $routing_points=explode(":",$routing_points_temp[$routing_schritt]);
+                    $routing_id_temp=explode(":",$routing_id);
+                    $zielx=$routing_points[0];
+                    $ziely=$routing_points[1];
+                    $warp=$routing_warp;
+                    $zielid=$routing_id_temp[$routing_schritt];
+                    $zeigertemp = mysql_query("update $skrupel_schiffe set flug=2,warp=$warp,zielx=$zielx,ziely=$ziely,zielid=$zielid,routing_schritt=$routing_schritt where id=$shid");
+                } else {
+                    $zeigertemp = mysql_query("update $skrupel_schiffe set flug=0,warp=0,zielx=0,ziely=0,zielid=0 where id=$shid");
                 }
-                $routing_points=explode(":",$routing_points_temp[$routing_schritt]);
-                $routing_id_temp=explode(":",$routing_id);
-                $zielx=$routing_points[0];
-                $ziely=$routing_points[1];
-                $warp=$routing_warp;
-                $zielid=$routing_id_temp[$routing_schritt];
-                $zeigertemp = mysql_query("update $skrupel_schiffe set flug=2,warp=$warp,zielx=$zielx,ziely=$ziely,zielid=$zielid,routing_schritt=$routing_schritt where id=$shid");
             } else {
-                $zeigertemp = mysql_query("update $skrupel_schiffe set flug=0,warp=0,zielx=0,ziely=0,zielid=0 where id=$shid");
+                neuigkeiten(2,"../daten/$volk/bilder_schiffe/$bild_gross",$besitzer,$lang['host'][$spielersprache[$besitzer]]['flug'][9],array($name));
+                $zeigertemp = mysql_query("update $skrupel_schiffe set flug=0,warp=0,zielx=0,ziely=0,zielid=0,routing_schritt=0,routing_koord='',routing_warp=0,routing_mins='',routing_id='',routing_tank=0,routing_status=0 where id=$shid");
             }
-        } else {
-            neuigkeiten(2,"../daten/$volk/bilder_schiffe/$bild_gross",$besitzer,$lang['host'][$spielersprache[$besitzer]]['flug'][9],array($name));
-            $zeigertemp = mysql_query("update $skrupel_schiffe set flug=0,warp=0,zielx=0,ziely=0,zielid=0,routing_schritt=0,routing_koord='',routing_warp=0,routing_mins='',routing_id='',routing_tank=0,routing_status=0 where id=$shid");
         }
     }
 }
@@ -1903,7 +1906,7 @@ if ($schiffanzahl>=1) {
         // 113 Lemin runter, 113 Vorraete und 113 Material rauf
         if( ($spezialmission==26) && ($status==2) && $a_planet)
         {
-            beam_s_p($conn, $shid,$planet_id,"lemin",113);
+            beam_s_p($shid,$planet_id,"lemin",113);
             $p_vorrat=$a_planet["vorrat"];
                 $p_min1=$a_planet["min1"];
                 $p_min2=$a_planet["min2"];
@@ -1936,22 +1939,22 @@ if ($schiffanzahl>=1) {
             if($fert_quark_vorrat>=1){
                 $fert_quark_vorrat_t=($fert_quark_vorrat*$uber)-$fracht_vorrat;
                 $fert_quark_vorrat_t=max(0,$fert_quark_vorrat_t);
-                $fracht_vorrat+=beam_p_s($conn, $planet_id, $shid, "vorrat", $fert_quark_vorrat_t);
+                $fracht_vorrat+=beam_p_s($planet_id, $shid, "vorrat", $fert_quark_vorrat_t);
             }
             if ($fert_quark_min1>=1){
                 $fert_quark_min1_t=($fert_quark_min1*$uber)-$fracht_min1;
                 $fert_quark_min1_t=max(0,$fert_quark_min1_t);
-                $fracht_min1+=beam_p_s($conn, $planet_id, $shid, "min1", $fert_quark_min1_t);
+                $fracht_min1+=beam_p_s($planet_id, $shid, "min1", $fert_quark_min1_t);
             }
             if ($fert_quark_min2>=1){
                 $fert_quark_min2_t=($fert_quark_min2*$uber)-$fracht_min2;
                 $fert_quark_min2_t=max(0,$fert_quark_min2_t);
-                $fracht_min2+=beam_p_s($conn, $planet_id, $shid, "min2", $fert_quark_min2_t);
+                $fracht_min2+=beam_p_s($planet_id, $shid, "min2", $fert_quark_min2_t);
             }
             if ($fert_quark_min3>=1){
                 $fert_quark_min3_t=($fert_quark_min3*$uber)-$fracht_min3;
                 $fert_quark_min3_t=max(0,$fert_quark_min3_t);
-                $fracht_min3+=beam_p_s($conn, $planet_id, $shid, "min3", $fert_quark_min3_t);
+                $fracht_min3+=beam_p_s($planet_id, $shid, "min3", $fert_quark_min3_t);
             }
         }
         // Wenn Subpartikelcluster an ist und das Schiff sich im Planetenorbit
@@ -1970,12 +1973,12 @@ if ($schiffanzahl>=1) {
             }
             $fert_sub_vorrat_t=min($fert_sub_vorrat*287,floor(($p_vorrat+$fracht_vorrat)/$fert_sub_vorrat)*$fert_sub_vorrat);
             // Erstmal alles runterbeamen
-            beam_s_p($conn, $shid,$planet_id,"vorrat",$frachtraum);
-            beam_s_p($conn, $shid,$planet_id,"min1",$frachtraum);
-            beam_s_p($conn, $shid,$planet_id,"min2",$frachtraum);
-            beam_s_p($conn, $shid,$planet_id,"min3",$frachtraum);
+            beam_s_p($shid,$planet_id,"vorrat",$frachtraum);
+            beam_s_p($shid,$planet_id,"min1",$frachtraum);
+            beam_s_p($shid,$planet_id,"min2",$frachtraum);
+            beam_s_p($shid,$planet_id,"min3",$frachtraum);
             // Dann ordentlich Vorraete rauf beamen
-            $fracht_vorrat=beam_p_s($conn, $planet_id, $shid, "vorrat", $fert_sub_vorrat_t);
+            $fracht_vorrat=beam_p_s($planet_id, $shid, "vorrat", $fert_sub_vorrat_t);
         }
         // Wenn Cybernrittnikk an ist und das Schiff sich im Planetenorbit
         // befindet: Kolos abladen und Vorraete fassen
@@ -1983,7 +1986,7 @@ if ($schiffanzahl>=1) {
             // Erstmal alles runterbeamen
             // Aber nur, wenn der Planet niemand wichtigem gehoert.
             if($beziehung[$a_planet["besitzer"]][$besitzer]['status']<3){
-                beam_s_p($conn, $shid,$planet_id,"kolonisten",$frachtraum*100);
+                beam_s_p($shid,$planet_id,"kolonisten",$frachtraum*100);
             }
             $p_vorrat=$a_planet["vorrat"];
             $osys_1=$a_planet["osys_1"];
@@ -1998,7 +2001,7 @@ if ($schiffanzahl>=1) {
             }
             $p_vorrat=min(220,$p_vorrat);
             // Dann ordentlich Vorraete rauf beamen
-            $fracht_vorrat+=beam_p_s($conn, $planet_id, $shid, "vorrat", $p_vorrat);
+            $fracht_vorrat+=beam_p_s($planet_id, $shid, "vorrat", $p_vorrat);
         }
         /////////////////////////////////////////////////////////////////////////////////////////////AUTOGRAPSCH ENDE
         /////////////////////////////////////////////////////////////////////////////////////////////SUBPARTIKELVERZERRUNG ANFANG

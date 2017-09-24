@@ -87,14 +87,13 @@ function platz($wert) {
   return $zahl;
 }
 // Function: beam_das
-// Declaration: function beam_das($db_handle_p,$id_a_p,$typ_a_p,$id_b_p,$typ_b_p,$was_p,$wieviel_p)
+// Declaration: function beam_das($id_a_p,$typ_a_p,$id_b_p,$typ_b_p,$was_p,$wieviel_p)
 // Description:
 //   Beamt angegebene Ware in angegebener von A nach B
 //   Dabei wird jedoch nie mehr gebeamt, als auf A vorhanden ist
 //   und auf B passt
 //   Es wird nicht ueberprueft, ob die Objekte nah genug beieinander sind
 // Parameters:
-//   $db_handle_p  Datenbankvirbindung fuer die Queries
 //   $id_a_p    Id des Objekts, von dem gebeamt wird
 //   $typ_b_p    Typ des Objekts, von dem gebeamt wird ("s" oder "p")
 //   $id_b_p    Id des Objekts, auf das gebeamt wird
@@ -116,12 +115,11 @@ function platz($wert) {
 //   -1   id von A nicht eindeutig oder nicht gefunden
 //   -2   id von B nicht eindeutig oder nicht gefunden
 //
-function beam_das($db_handle_p,$id_a_p,$typ_a_p,$id_b_p,$typ_b_p,$was_p,$wieviel_p)
+function beam_das($id_a_p,$typ_a_p,$id_b_p,$typ_b_p,$was_p,$wieviel_p)
 {
     global $skrupel_planeten,$skrupel_schiffe,$debug_beamen;
     if($debug_beamen)
     {
-        print "DB_HANDLE: $db_handle<br>\n";
         print "ID von A: $id_a_p<br>\n";
         print "Typ von A: $typ_a_p<br>\n";
         print "ID von B: $id_b_p<br>\n";
@@ -134,16 +132,14 @@ function beam_das($db_handle_p,$id_a_p,$typ_a_p,$id_b_p,$typ_b_p,$was_p,$wieviel
     // Datensatz von A holen
     if($typ_a_p=="p") { $table_a=$skrupel_planeten; }
     else { $table_a=$skrupel_schiffe; }
-    if(!($query_ret=mysql_query("SELECT * FROM $table_a WHERE id=$id_a_p;",
-                   $db_handle_p)))
+    if(!($query_ret=mysql_query("SELECT * FROM $table_a WHERE id=$id_a_p;")))
     { return -1; }
     if(mysql_num_rows($query_ret)!=1) { return -1; }
     $array_a=mysql_fetch_array($query_ret);
     // Datensatz von B holen
     if($typ_b_p=="p") { $table_b=$skrupel_planeten; }
     else { $table_b=$skrupel_schiffe; }
-    if(!($query_ret=mysql_query("SELECT * FROM $table_b WHERE id=$id_b_p;",
-                   $db_handle_p)))
+    if(!($query_ret=mysql_query("SELECT * FROM $table_b WHERE id=$id_b_p;")))
     { return -1; }
     if(mysql_num_rows($query_ret)!=1) { return -2; }
     $array_b=mysql_fetch_array($query_ret);
@@ -253,7 +249,7 @@ function beam_das($db_handle_p,$id_a_p,$typ_a_p,$id_b_p,$typ_b_p,$was_p,$wieviel
     if($debug_beamen)
     { print "<p>$query_str<br>\n"; }
     else
-    { $zeiger_temp = mysql_query($query_str,$db_handle_p); }
+    { $zeiger_temp = mysql_query($query_str); }
     if($typ_b_p=="p"){
         $besitzera=$array_a["besitzer"];
         $besitzerb=$array_b["besitzer"];
@@ -280,7 +276,7 @@ function beam_das($db_handle_p,$id_a_p,$typ_a_p,$id_b_p,$typ_b_p,$was_p,$wieviel
     if($debug_beamen)
     { print "$query_str<br>\n"; }
     else
-    { $zeiger_temp = mysql_query($query_str,$db_handle_p); }
+    { $zeiger_temp = mysql_query($query_str); }
 /*
     // Sonderfall: Kolonisten auf Fremdplaneten
     if($was_auf_b=="kolonisten_new")
@@ -298,19 +294,19 @@ function beam_das($db_handle_p,$id_a_p,$typ_a_p,$id_b_p,$typ_b_p,$was_p,$wieviel
     return $wieviel;
 }
 // Beamen von Schiff nach Planet
-function beam_s_p($db_handle_p,$id_a_p,$id_b_p,$was_p,$wieviel_p)
+function beam_s_p($id_a_p,$id_b_p,$was_p,$wieviel_p)
 {
-    return beam_das($db_handle_p,$id_a_p,"s",$id_b_p,"p",$was_p,$wieviel_p);
+    return beam_das($id_a_p,"s",$id_b_p,"p",$was_p,$wieviel_p);
 }
 // Beamen von Planet nach Schiff
-function beam_p_s($db_handle_p,$id_a_p,$id_b_p,$was_p,$wieviel_p)
+function beam_p_s($id_a_p,$id_b_p,$was_p,$wieviel_p)
 {
-    return beam_das($db_handle_p,$id_a_p,"p",$id_b_p,"s",$was_p,$wieviel_p);
+    return beam_das($id_a_p,"p",$id_b_p,"s",$was_p,$wieviel_p);
 }
 // Beamen von Schiff nach Schiff
-function beam_s_s($db_handle_p,$id_a_p,$id_b_p,$was_p,$wieviel_p)
+function beam_s_s($id_a_p,$id_b_p,$was_p,$wieviel_p)
 {
-    return beam_das($db_handle_p,$id_a_p,"s",$id_b_p,"s",$was_p,$wieviel_p);
+    return beam_das($id_a_p,"s",$id_b_p,"s",$was_p,$wieviel_p);
 }
 /*function rannum() {
     mt_srand((double)microtime()*1000000);

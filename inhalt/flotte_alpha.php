@@ -343,6 +343,7 @@ if ($fuid==2) {
         $verbrauchf=int_post('verbrauchf');
         $benzin2=int_post('benzin2');
         $kursmodus=int_post('pathfind');
+        $masse_gesamt=int_post('masse_gesamt');
         if ($warpfaktor==0) {
             $flug=0;
             $warp=0;
