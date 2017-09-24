@@ -2906,7 +2906,7 @@ if (($piraten_mitte>=1) or ($piraten_aussen>=1)) {
                         $fracht_cantox_weg=ceil($prozente[3]*$fracht_cantox/100);
                         $fracht_vorrat_weg=ceil($prozente[4]*$fracht_vorrat/100);
                         if (($fracht_min1_weg>=1) or ($fracht_min2_weg>=1) or ($fracht_min3_weg>=1) or ($fracht_cantox_weg>=1) or ($fracht_vorrat_weg>=1)) {
-                            $zeiger = mysql_query("UPDATE $skrupel_schiffe set fracht_min1=fracht_min1-$fracht_min1_weg,fracht_min2=fracht_min2-$fracht_min2_weg,fracht_min3=fracht_min3-$fracht_min3_weg,fracht_cantox=fracht_cantox-$fracht_cantox_weg,fracht_vorrat=fracht_vorrat-$fracht_vorrat_weg where id=$shid");
+                            mysql_query("UPDATE $skrupel_schiffe set fracht_min1=fracht_min1-$fracht_min1_weg,fracht_min2=fracht_min2-$fracht_min2_weg,fracht_min3=fracht_min3-$fracht_min3_weg,fracht_cantox=fracht_cantox-$fracht_cantox_weg,fracht_vorrat=fracht_vorrat-$fracht_vorrat_weg where id=$shid");
                             neuigkeiten(1,"../bilder/news/piraten.jpg",$besitzer,$lang['host'][$spielersprache[$besitzer]]['piraten'][0],array($name,$fracht_cantox_weg,$fracht_vorrat_weg,$fracht_min1_weg,$fracht_min2_weg,$fracht_min3_weg));
                         }
                     } else {
