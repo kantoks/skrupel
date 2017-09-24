@@ -225,7 +225,7 @@ if ($datensaetze>=1) {
                 $warp = $array_temp["warp"];
                 $plasmawarp = $array_temp["plasmawarp"];
                 $plasmawarp = max(0,$warp,$plasmawarp);
-                $zeiger_temp = mysql_query("UPDATE $skrupel_schiffe set plasmawarp=$plasmawarp,warp=5 where spiel=$spiel and id=$shid");
+                mysql_query("UPDATE $skrupel_schiffe set plasmawarp=$plasmawarp,warp=5 where spiel=$spiel and id=$shid");
             }
         }
     }
@@ -3611,12 +3611,12 @@ if ($datensaetze>=1) {
         $array = mysql_fetch_array($zeiger);
         $aid=$array["id"];
         $art=$array["art"];
-        $plasma_lang=$array["extra"];
-        $plasma_lang--;
-        if ($plasma_lang>=1) {
-            $zeiger_temp = mysql_query("UPDATE $skrupel_anomalien set extra='$plasma_lang' where id=$aid");
+        $zeit=$array["extra"];
+        $zeit--;
+        if ($zeit>=1) {
+            $zeiger_temp = mysql_query("UPDATE $skrupel_anomalien set extra='$zeit' where id=$aid");
         } else {
-            if($plasma_lang==0){
+            if($zeit==0){
                 $zeiger_temp = mysql_query("DELETE FROM $skrupel_anomalien where id=$aid");
             }else{}
         }
@@ -3629,8 +3629,9 @@ $array = mysql_fetch_array($zeiger);
 $sturm=$array["total"];
 $zufall=mt_rand(1,100);
 if (($sturm<$plasma_max) and ($zufall<=$plasma_wahr)) {
-     $x=mt_rand(1,(($umfang-310)/10));
-     $y=mt_rand(1,(($umfang-310)/10));
+    $x=mt_rand(1,(($umfang-310)/10));
+    $y=mt_rand(1,(($umfang-310)/10));
+    $plasma_lang_max = 0;
     for($i=0;$i< 31;$i++){
         for($j=0;$j< 31;$j++){
             $abstand=round(sqrt(((15-$i)*(15-$i))+((15-$j)*(15-$j))));
@@ -3640,7 +3641,7 @@ if (($sturm<$plasma_max) and ($zufall<=$plasma_wahr)) {
                 $reihen = mysql_num_rows($zeiger2);
                 if($reihen>=1){
                     $array2=mysql_fetch_array($zeiger2);
-                    $zeit=$array["extra"];
+                    $zeit=$array2["extra"];
                     if($zeit==-1){
                     }else{
                         $runden=mt_rand(3,$plasma_lang);
