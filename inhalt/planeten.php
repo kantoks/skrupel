@@ -452,6 +452,7 @@ if ($fuid==7) {
         <?php
         $zeiger = @mysql_query("SELECT id FROM $skrupel_planeten where besitzer=$spieler and spiel=$spiel order by name");
         $planetenanzahl = @mysql_num_rows($zeiger);
+        $pid_back = 0;
         if ($planetenanzahl>=1) {
             for ($i=0; $i<$planetenanzahl;$i++) {
                 $ok = @mysql_data_seek($zeiger,$i);

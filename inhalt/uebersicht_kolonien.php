@@ -70,7 +70,7 @@ if ($fuid==1) {
                         $osys[6]=$array["osys_6"];
                         for($i2=1; $i2<=$osys_anzahl; $i2++) {
                             if ($osys[$i2]>=1) {
-                                $osys[$i2] = "<img src=\"../bilder/osysteme/".$osys[$i2].".gif\" border=\"0\" width=\"32\" height=\"30\" title=\"".$lang[orbitalesysteme][name][$osys[$i2]]."\">";
+                                $osys[$i2] = "<img src=\"../bilder/osysteme/".$osys[$i2].".gif\" border=\"0\" width=\"32\" height=\"30\" title=\"".$lang['orbitalesysteme']['name'][$osys[$i2]]."\">";
                             } else {
                                 $osys[$i2] = "<img src=\"../bilder/osysteme/blank.gif\" border=\"0\" width=\"32\" height=\"30\">";
                             }

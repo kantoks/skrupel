@@ -10,7 +10,10 @@ $uid = (isset($_GET['uid']) && !preg_match('/[^0-9A-Za-z\/\.]/',$_GET['uid']))?$
 
 if ($fuid==1) {
     //if(!$_POST["scroll_lock"]){$_POST["scroll_lock"]=0;}
-    include ("inc.check.php"); ?>
+    include ("inc.check.php");
+    if (!empty($langfile_1)) include ('../lang/'.$spieler_sprache.'/lang.'.$langfile_1.'.php');
+    if (!empty($langfile_2)) include ('../lang/'.$spieler_sprache.'/lang.'.$langfile_2.'.php');
+?>
     <html>
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -298,17 +301,20 @@ if ($fuid==3) {
     <?php
 }
 if ($fuid==4) {
-open_db();
+    open_db();
     $zeiger = @mysql_query("SELECT chatfarbe, id From $skrupel_user where uid='$uid'");
     $array = @mysql_fetch_array($zeiger);
     $spieler_chatfarbe = $array["chatfarbe"];
     $spieler_id = $array["id"];
     include ("inc.check.php");
+    if (!empty($langfile_1)) include ('../lang/'.$spieler_sprache.'/lang.'.$langfile_1.'.php');
+    if (!empty($langfile_2)) include ('../lang/'.$spieler_sprache.'/lang.'.$langfile_2.'.php');
     $aktuell=time();
     $aktuell=$aktuell-86400;
     $zeiger = @mysql_query("DELETE FROM $skrupel_chat where datum<$aktuell");
     $zeiger = @mysql_query("SELECT * FROM $skrupel_chat where an=0 or an=$spieler_id order by datum desc ");
     $chatanzahl = @mysql_num_rows($zeiger);
+	$neutext = "";
     if ($chatanzahl>=1) {
         for ($i=$chatanzahl-1; $i>=0;$i--) {
             $ok = @mysql_data_seek($zeiger,$i);
@@ -367,12 +373,14 @@ open_db();
     
 }
 if ($fuid==5) {
-	open_db();
+    open_db();
     $zeiger = @mysql_query("SELECT chatfarbe, id From $skrupel_user where uid='$uid'");
     $array = @mysql_fetch_array($zeiger);
     $spieler_chatfarbe = $array["chatfarbe"];
     $spieler_id = $array["id"];
     include ("inc.check.php");
+    if (!empty($langfile_1)) include ('../lang/'.$spieler_sprache.'/lang.'.$langfile_1.'.php');
+    if (!empty($langfile_2)) include ('../lang/'.$spieler_sprache.'/lang.'.$langfile_2.'.php');
     ?>
     <html>
         <head>
@@ -476,8 +484,10 @@ if ($fuid==5) {
     
 }
 if ($fuid==6) {
-	open_db();
+    open_db();
     include ("inc.check.php");
+    if (!empty($langfile_1)) include ('../lang/'.$spieler_sprache.'/lang.'.$langfile_1.'.php');
+    if (!empty($langfile_2)) include ('../lang/'.$spieler_sprache.'/lang.'.$langfile_2.'.php');
     $zeiger = @mysql_query("SELECT * FROM $skrupel_user order by nick");
     $useranzahl = @mysql_num_rows($zeiger);
     ?>

@@ -569,7 +569,7 @@ if ($fuid==3) {
     if($module[0]) {
         $erfahrung = $array['erfahrung'];
         $extra_spio = @explode("-", $extra[0]);
-        $spionage_id = $extra_spio[3];
+        $spionage_id = (isset($extra_spio[3])? $extra_spio[3] : 0);
         //spionagen
         $file="../daten/unknown/spionagen.txt";
         $fp = @fopen("$file","r");
@@ -2317,9 +2317,7 @@ if ($fuid==7) {
     $ziely=int_post('ziely');
     $zielid=int_post('zielid');
     $flug=int_post('flug');
-	echo "111\n";
     if (str_post('submitbutton','NONE')==$lang['flottealpha']['routeabschliessen']) {
-		echo "222\n";
         $zeiger = @mysql_query("SELECT * FROM $skrupel_schiffe where id=$shid");
         $array = @mysql_fetch_array($zeiger);
         $antrieb=$array["antrieb"];

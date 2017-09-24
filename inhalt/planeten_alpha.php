@@ -516,8 +516,8 @@ if ($fuid==6) {
         }
         @fclose($fp);
     }
-    $verbieten=explode(":",trim($daten[6]));
-    $erlauben=explode(":",trim($daten[7]));
+    $verbieten=explode(":",trim(isset($daten[6])?$daten[6]:""));
+    $erlauben=explode(":",trim(isset($daten[7])?$daten[7]:""));
     $file='../daten/orbitale_systeme.txt';
     $fp = @fopen("$file","r");
     if ($fp) {

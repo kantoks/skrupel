@@ -309,7 +309,7 @@ if ($fuid==3) {
                     <td style="color:#aaaaaa;"><center><?php echo $kosten[1][$i-1]?></center></td>
                     <td style="color:#aaaaaa;"><center><?php echo $kosten[2][$i-1]?></center></td>
                     <td style="color:#aaaaaa;"><center><?php echo $kosten[3][$i-1]?></center></td>
-                    <td <?php if ($vorrat_antrieb_1==0) { echo 'style="color:#aaaaaa;"';} ?>><center><?php echo $vorrat_antrieb[$i-1]; ?></center></td>
+                    <td <?php if ($vorrat_antrieb[$i-1]==0) { echo 'style="color:#aaaaaa;"';} ?>><center><?php echo $vorrat_antrieb[$i-1]; ?></center></td>
                     <?php
                     if (($cantox>=$kosten[0][$i-1]) and ($t_antrieb>=$i+$j) and ($min1>=$kosten[1][$i-1]) and ($min2>=$kosten[2][$i-1]) and ($min3>=$kosten[3][$i-1])) {
                         ?>
