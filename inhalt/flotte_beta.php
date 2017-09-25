@@ -793,6 +793,7 @@ if ($fuid==4) {
                     $status=$array["status"];
                     $partei_a=$array["partei_a"];
                     $partei_b=$array["partei_b"];
+                    $optionen=$array["optionen"];
                     $beziehung[$partei_a][$partei_b]['status']=$status;
                     $beziehung[$partei_b][$partei_a]['status']=$status;
                     $beziehung[$partei_a][$partei_b]['optionen']=$optionen;

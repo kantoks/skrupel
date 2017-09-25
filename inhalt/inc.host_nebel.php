@@ -53,7 +53,7 @@ while ($array = mysql_fetch_array($zeiger)) {
         );
         $scanhash[$besitzer.'_'.$x_pos.'_'.$y_pos] = $scanner_r;
         for ($f=1;$f<=10;$f++) {
-            if (($beziehung[$besitzer][$f]['status']==4) or ($beziehung[$besitzer][$f]['status']==5) or (($sicht_spionage[$besitzer][$f]==1) && $module[0])) {
+            if (($beziehung[$besitzer][$f]['status']==4) or ($beziehung[$besitzer][$f]['status']==5) or ((isset($sicht_spionage[$besitzer][$f]) && $sicht_spionage[$besitzer][$f]==1) && $module[0])) {
                 mysql_query("INSERT INTO $skrupel_scan (spiel,besitzer,x,y) values ($spiel,$f,$x_pos,$y_pos)");
                 $scans[] = array(
                     'besitzer' => $f,
@@ -84,7 +84,7 @@ while ($array = mysql_fetch_array($zeiger)) {
             );
             $scanhash[$owner.'_'.$x_pos.'_'.$y_pos] = $scanner_r;
             for ($f=1;$f<=10;$f++) {
-                if (($beziehung[$owner][$f]['status']==4) or ($beziehung[$owner][$f]['status']==5) or (($sicht_spionage[$owner][$f]==1) && $module[0])) {
+                if (($beziehung[$owner][$f]['status']==4) or ($beziehung[$owner][$f]['status']==5) or ((isset($sicht_spionage[$owner][$f]) && $sicht_spionage[$owner][$f]==1) && $module[0])) {
                     mysql_query("INSERT INTO $skrupel_scan (spiel,besitzer,x,y) values ($spiel,$f,$x_pos,$y_pos)");
                     $scans[] = array(
                         'besitzer' => $f,
@@ -120,7 +120,7 @@ while ($array = mysql_fetch_array($zeiger)) {
         }
         for ($f=1;$f<=10;$f++) {
             $scanhashindex = $f.'_'.$kox.'_'.$koy;
-            if (($beziehung[$besitzer][$f]['status']==4) or ($beziehung[$besitzer][$f]['status']==5) or ($beziehung[$f][$besitzer]['status']==4) or ($beziehung[$f][$besitzer]['status']==5) or (($sicht_spionage[$besitzer][$f]==1) && $module[0])) {
+            if (($beziehung[$besitzer][$f]['status']==4) or ($beziehung[$besitzer][$f]['status']==5) or ($beziehung[$f][$besitzer]['status']==4) or ($beziehung[$f][$besitzer]['status']==5) or ((isset($sicht_spionage[$besitzer][$f]) && $sicht_spionage[$besitzer][$f]==1) && $module[0])) {
                 if (!array_key_exists($scanhashindex, $scanhash) or $scanner_r>$scanhash[$scanhashindex]) {
                     mysql_query("INSERT INTO $skrupel_scan (spiel,besitzer,x,y) values ($spiel,$f,$kox,$koy)");
                     $scans[] = array(
