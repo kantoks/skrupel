@@ -16,6 +16,10 @@ if (@intval(substr($spieler_optionen,15,1))==1) {
 }
 
 if ($fuid==1) {
+    $useragent = getEnv("HTTP_USER_AGENT");
+    $linux=preg_match("=linux=i", $useragent);
+    $plus=0;
+    if ($linux) { $plus=1; }
     $gox = int_get('gox');
     $goy = int_get('goy');
     $sprung='';
