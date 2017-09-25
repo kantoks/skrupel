@@ -53,7 +53,7 @@ while ($array = mysql_fetch_array($zeiger)) {
         );
         $scanhash[$besitzer.'_'.$x_pos.'_'.$y_pos] = $scanner_r;
         for ($f=1;$f<=10;$f++) {
-            if (($beziehung[$besitzer][$f]['status']==4) or ($beziehung[$besitzer][$f]['status']==5) or ((isset($sicht_spionage[$besitzer][$f]) && $sicht_spionage[$besitzer][$f]==1) && $module[0])) {
+            if ((isset($beziehung[$besitzer][$f]['status']) && (($beziehung[$besitzer][$f]['status']==4) or ($beziehung[$besitzer][$f]['status']==5))) or ((isset($sicht_spionage[$besitzer][$f]) && $sicht_spionage[$besitzer][$f]==1) && $module[0])) {
                 mysql_query("INSERT INTO $skrupel_scan (spiel,besitzer,x,y) values ($spiel,$f,$x_pos,$y_pos)");
                 $scans[] = array(
                     'besitzer' => $f,
@@ -213,7 +213,7 @@ for($i=1;$i<11;$i++){
 if ($module[4]==1) {
     $test = array();
     for($n=1;$n<11;$n++){
-        if ($spieler_id_c[$n]>=1) {
+        if (isset($spieler_id_c[$n]) && $spieler_id_c[$n]>=1) {
             for ($m=1;$m<11;$m++){
                 if (($spieler_id_c[$m]>=1) and ($n<>$m)) {
                     if ((!$begegnung[$n][$m]) and (!$test[$n][$m])) {

@@ -980,23 +980,27 @@ while (!feof ($fp)) {
 $daten_verzeichnis="../daten/";
 $handle=opendir("$daten_verzeichnis");
 while ($rasses=readdir($handle)) {
-   if ((substr($rasses,0,1)<>'.') and (substr($rasses,0,7)<>'bilder_') and (substr($rasses,strlen($rasses)-4,4)<>'.txt')) {
-$daten="";
-$attribute="";
-$file=$daten_verzeichnis.$rasses.'/daten.txt';
-$fp = @fopen("$file","r");
-if ($fp) {
-$zaehler2=0;
-while (!feof ($fp)) {
-    $buffer = @fgets($fp, 4096);
-    $daten[$zaehler2]=$buffer;
-    $zaehler2++;
+    if ((substr($rasses,0,1)<>'.') and (substr($rasses,0,7)<>'bilder_') and (substr($rasses,strlen($rasses)-4,4)<>'.txt')) {
+        if (trim($rasses)=='unknown') { } else {
+            $daten="";
+            $attribute="";
+            $file=$daten_verzeichnis.$rasses.'/daten.txt';
+            $fp = @fopen("$file","r");
+            if ($fp) {
+                $zaehler2=0;
+                while (!feof ($fp)) {
+                    $buffer = @fgets($fp, 4096);
+                    $daten[$zaehler2]=$buffer;
+                    $zaehler2++;
+                }
+                @fclose($fp);
+            }
+            $attribute=explode(":",$daten[3]);
+            $r_eigenschaften[$rasses]['temperatur']=$attribute[0];
+            $r_eigenschaften[$rasses]['planet']=$attribute[1];
+        }
+    }
 }
-@fclose($fp); }
-$attribute=explode(":",$daten[3]);
-$r_eigenschaften[$rasses]['temperatur']=$attribute[0];
-$r_eigenschaften[$rasses]['planet']=$attribute[1];
-}}
 ////////////////////////////////////////////////////FAVPLANETEN ENDE
 ///////////////////////////////////////////////ERLAUBTE BEREICHE
 $file='../daten/bilder_galaxien/'.$struktur.'.txt';
@@ -1024,8 +1028,8 @@ for ($i=0;$i<$sternendichte;$i++) {
   while ($oke==1) {
     $x=rand(50,$umfang-51);
     $y=rand(50,$umfang-51);
-    $test_x=round($x*50/$umfang);
-    $test_y=round($y*50/$umfang);
+    $test_x=(int)round($x*50/$umfang);
+    $test_y=(int)round($y*50/$umfang);
     if ($raum[$test_y][$test_x]==1) { $oke=2; }
   }
   //echo $raum[$test_y][$test_x].":".$test_x.":".$test_y."<br>";
@@ -1161,8 +1165,8 @@ if ($startposition==2) {
         while ($oke==1) {
             $position[$ker]['x']=rand(2,97);
             $position[$ker]['y']=rand(2,97);
-            $test_x=round($position[$ker]['x']/2);
-            $test_y=round($position[$ker]['y']/2);
+            $test_x=(int)round($position[$ker]['x']/2);
+            $test_y=(int)round($position[$ker]['y']/2);
             if ($raum[$test_y][$test_x]==1) {
                 $oke=2;
             }
