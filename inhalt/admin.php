@@ -1171,13 +1171,13 @@ if ($fuid==14) {
 if ($fuid==15) {
     include ("inc.header.php");
     if ($spieler==$spieler_admin) {
-        $module[0] = int_post('modul_0');
+        $module[0] = int_post('modul_0')?int_post('modul_0'):0;
         $module[1] = 0;
-        $module[2] = int_post('modul_2');
-        $module[3] = int_post('modul_3');
-        $module[4] = int_post('modul_4');
-        $module[5] = int_post('modul_5');
-        $module[6] = int_post('modul_6');
+        $module[2] = int_post('modul_2')?int_post('modul_2'):0;
+        $module[3] = int_post('modul_3')?int_post('modul_3'):0;
+        $module[4] = int_post('modul_4')?int_post('modul_4'):0;
+        $module[5] = int_post('modul_5')?int_post('modul_5'):0;
+        $module[6] = int_post('modul_6')?int_post('modul_6'):0;
         $module_neu = @implode(":", $module);
         @mysql_query("UPDATE $skrupel_spiele SET module='$module_neu' WHERE id=$spiel");
         ?>
