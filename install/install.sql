@@ -612,7 +612,7 @@ CREATE TABLE `{skrupel_db.user}` (
 	    stat_monate int(11) NOT NULL default '0',
 	    bildpfad varchar(255) NOT NULL default '',
 	    avatar varchar(255) NOT NULL default '',
-	    sprache varchar(255) NOT NULL default '$language',
+	    sprache varchar(255) NOT NULL default '',
 	    PRIMARY KEY (id)
 ) ENGINE=MyISAM;
 
