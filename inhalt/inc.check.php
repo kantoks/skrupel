@@ -28,7 +28,7 @@ if ($datensaetze==1) {
         $module = @explode(':', $array2['module']);
         $module = array_pad($module, 5, 0);
         if ($phase==1) {
-            if ((preg_match ("/kommunikation_exch/i",$SCRIPT_NAME)) or (preg_match ("/kommunikation_exch/i",$SCRIPT_FILENAME))) {
+            if ((preg_match ("/kommunikation_exch/i",$_SERVER['SCRIPT_NAME'])) or (preg_match ("/kommunikation_exch/i",$_SERVER['SCRIPT_FILENAME']))) {
                 header("Location: kommunikation_exch.php?fu=7");exit;
             } else {
                 header("Location: runde_ende.php?fu=1&spiel=$spiel&sprache=".$spieler_sprache);exit;
@@ -112,14 +112,14 @@ if ($datensaetze==1) {
         $piraten_min=$array2['piraten_min'];
         $piraten_max=$array2['piraten_max'];
     } else {
-        if ((preg_match ("/kommunikation_exch/i",$SCRIPT_NAME)) or (preg_match ("/kommunikation_exch/i",$SCRIPT_FILENAME))) {
+        if ((preg_match ("/kommunikation_exch/i",$_SERVER['SCRIPT_NAME'])) or (preg_match ("/kommunikation_exch/i",$_SERVER['SCRIPT_FILENAME']))) {
             header("Location: kommunikation_exch.php?fu=7"); exit;
         } else {
             header("Location: ../index.php?sprache=".$spieler_sprache); exit;
         }
     }
 } else {
-    if ((preg_match ("/kommunikation_exch/i",$SCRIPT_NAME)) or (preg_match ("/kommunikation_exch/i",$SCRIPT_FILENAME))) {
+    if ((preg_match ("/kommunikation_exch/i",$_SERVER['SCRIPT_NAME'])) or (preg_match ("/kommunikation_exch/i",$_SERVER['SCRIPT_FILENAME']))) {
         header("Location: kommunikation_exch.php?fu=7"); exit;
     } else {
         header("Location: ../index.php"); exit;
