@@ -107,6 +107,7 @@ if ($fuid==3) {
             $ok = @mysql_data_seek($zeiger,$i);
             $array = @mysql_fetch_array($zeiger);
             $status=$array["status"];
+            $optionen=$array["optionen"];
             $partei_a=$array["partei_a"];
             $partei_b=$array["partei_b"];
             $beziehung[$partei_a][$partei_b]['status']=$status;
