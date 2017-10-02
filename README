@@ -1,5 +1,5 @@
 Skrupel - Tribute Compilation V0.974
-----------------------------------
+------------------------------------
 
 Copyright (C) 2010 Bernd Kantoks
 
@@ -25,6 +25,7 @@ Copyright (C) 2010 Bernd Kantoks
 Dieses Zip enthält neben Skrupel V0.974 auch als einzige Rasse das
 Orion Konglomerat V1.2. Weitere Rassen finden sich zum Download
 im Skrupelportal unter http://www.skrupel.de
+-> oder unter https://github.com/skrupel (Mirror)
 
 
 Gruss Bernd Kantoks (bernd@kantoks.de)
@@ -55,11 +56,13 @@ Dann werden alle Dateien auf den Webserver geladen. Sobald das
 gemacht ist, ruft man mit dem Webbrowser die Datei /install.php
 auf, um den Vorgang abzuschliessen. Danach ist Skrupel spielbereit!
 
+
 OnlineHilfe
 -----------
 
 Ein Wiki rund um Skrupel mit allen Anleitungen und jedmöglicher Hilfe
-findet sich unter http://www.skrupel.de
+findet sich im Skrupelportal unter http://www.skrupel.de
+-> oder unter https://github.com/kantoks/skrupel/wiki (Mirror)
 
 
 Das erste Spiel starten
