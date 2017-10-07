@@ -1,4 +1,5 @@
 <?php
+require_once ('mysql.php'); // THIS IS ONLY A TEMPORARY WORKAROUND
 /*
 :noTabs=false:indentSize=4:tabSize=4:folding=explicit:collapseFolds=1:
 */
