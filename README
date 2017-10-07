@@ -33,8 +33,6 @@ Gruss Bernd Kantoks (bernd@kantoks.de)
 Installation
 ------------
 
-Hinweis: Skrupel läuft derzeit nicht mit PHP Version 7 oder höher!
-
 Als erstes benennt man die Datei inc.conf_example.php in inc.conf.php um.
 Als nächstes öffnet man die Datei mit einem Editor (Rechtsklick auf
 die Datei, öffnen mit, Editor), und erkundigt sich nach den MySQL-
