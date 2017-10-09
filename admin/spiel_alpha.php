@@ -982,7 +982,7 @@ $handle=opendir("$daten_verzeichnis");
 while ($rasses=readdir($handle)) {
     if ((substr($rasses,0,1)<>'.') and (substr($rasses,0,7)<>'bilder_') and (substr($rasses,strlen($rasses)-4,4)<>'.txt')) {
         if (trim($rasses)=='unknown') { } else {
-            $daten="";
+            $daten=array();
             $attribute="";
             $file=$daten_verzeichnis.$rasses.'/daten.txt';
             $fp = @fopen("$file","r");
