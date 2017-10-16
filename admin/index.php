@@ -153,14 +153,14 @@ window.top.location.href="index.php";
 }
 //-->
 function check() {
-  if(document.formular.login_f.value == "")  {
+  if(document.formular.loginname.value == "")  {
       alert("<?php echo html_entity_decode($lang['admin']['index']['bittenamen'])?>");
-        document.formular.login_f.focus();
+        document.formular.loginname.focus();
         return false;
    }
-  if(document.formular.passwort_f.value == "")  {
+  if(document.formular.loginpass.value == "")  {
     alert("<?php echo html_entity_decode($lang['admin']['index']['bittepasswort'])?>");
-        document.formular.passwort_f.focus();
+        document.formular.loginpass.focus();
         return false;
    }
   return true;
