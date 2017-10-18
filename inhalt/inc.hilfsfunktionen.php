@@ -103,7 +103,7 @@ function zufallstring($size = 20, $url = ONLY_LETTERS)
     $pool = 'abcdefghijklmnopqrstuvwxyz';
     $pool .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     if ($url & WITH_SPECIAL_CHARACTERS) {
-        $pool .= ',.-;:_#+*~!ยง$%&/()=?';
+        $pool .= ',.-;:_#+*~!$%&/()=?';
     }
     if ($url & WITH_NUMBERS) {
         $pool .= '0123456789';
