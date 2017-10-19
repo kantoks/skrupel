@@ -4,35 +4,44 @@ require_once 'mysql.php'; // THIS IS ONLY A TEMPORARY WORKAROUND
 :noTabs=false:indentSize=4:tabSize=4:folding=explicit:collapseFolds=1:
 */
 
-function neuigkeit($art, $icon, $spieler_id, $inhalt) {
-    global $db,$skrupel_neuigkeiten,$spiel;
+function neuigkeit($art, $icon, $spieler_id, $inhalt)
+{
+    global $db, $skrupel_neuigkeiten, $spiel;
     $datum = time();
-    $zeiger_temp = @mysql_query("INSERT INTO $skrupel_neuigkeiten (datum,art,icon,inhalt,spieler_id,spiel_id,sicher) values ('$datum',$art,'$icon','$inhalt',$spieler_id,$spiel,1);");
+
+    return @mysql_query("INSERT INTO $skrupel_neuigkeiten (datum,art,icon,inhalt,spieler_id,spiel_id,sicher) values ('$datum',$art,'$icon','$inhalt',$spieler_id,$spiel,1);");
 }
 
-function nick($userid) {
-    global $db,$skrupel_user,$spiel;
+function nick($userid)
+{
+    global $db, $skrupel_user, $spiel;
+
     $zeiger3 = @mysql_query("SELECT nick,id FROM $skrupel_user WHERE id=$userid");
     $array3 = @mysql_fetch_array($zeiger3);
 
     return $array3['nick'];
 }
 
-function int_post($key) {
-    if(isset($_POST[$key]) && is_numeric($_POST[$key])) {
+function int_post($key)
+{
+    if (isset($_POST[$key]) && is_numeric($_POST[$key])) {
         return intval($_POST[$key]);
     }
 
     return false;
 }
-function int_get($key) {
-    if(isset($_GET[$key]) && is_numeric($_GET[$key])) {
+
+function int_get($key)
+{
+    if (isset($_GET[$key]) && is_numeric($_GET[$key])) {
         return intval($_GET[$key]);
     }
 
     return false;
 }
-function str_post($key, $mode) {
+
+function str_post($key, $mode)
+{
     if (isset($_POST[$key]) && !is_array($_POST[$key])) {
         $nl2br = $mode == 'SQLSAFE' && ($key == 'thema' || $key == 'beitrag' || $key == 'offenbarung');
 
@@ -41,7 +50,9 @@ function str_post($key, $mode) {
 
     return false;
 }
-function str_get($key, $mode) {
+
+function str_get($key, $mode)
+{
     if (isset($_GET[$key]) && !is_array($_GET[$key])) {
         $nl2br = $mode == 'SQLSAFE' && ($key == 'thema' || $key == 'beitrag' || $key == 'offenbarung');
 
@@ -50,7 +61,9 @@ function str_get($key, $mode) {
 
     return false;
 }
-function safe_strval($value, $mode, $nl2br = false) {
+
+function safe_strval($value, $mode, $nl2br = false)
+{
     switch ($mode){
         case 'NONE':
             return $value;
@@ -94,7 +107,7 @@ if (!defined('WITH_SPECIAL_CHARACTERS')) { define('WITH_SPECIAL_CHARACTERS', 2);
  * Erzeugt einen Zufallsstring
  *
  * Erzeugt aus Vorgaben einen Zufallsstring
- * @autor finke
+ * @author finke
  * @return string Zufalsstring
  */
 function zufallstring($size = 20, $url = ONLY_LETTERS)
@@ -119,13 +132,13 @@ function zufallstring($size = 20, $url = ONLY_LETTERS)
 }
 
 /**
- * erzeugt einen Passworthash aus password + salt mit sha256
- * Hasht ein Passwort, unter verwendung eines salts. Beim Erstellen eines Hash zur Speicherung leer lassen, beim abgleich muss der Salt aus der DB genommen werden, um identiche ergebnisse zu erhalten
+ * Erzeugt einen Passworthash aus password + salt mit SHA256
+ * Beim Erstellen eines Hash zur Speicherung leer lassen, beim Abgleich muss der Salt aus der DB genommen werden, um identiche Ergebnisse zu erhalten.
  *
  * @author finke
  * @param string $passwd Zu hashendes Passwort
  * @param string $salt der zum hashen verwendet werden soll
- * @return string Passwort hash und salt durch ein : getrennt; Achtung: immer nur nach dem ersten : trennen. Im Hash selber kann keines vorkommen, im Salt schon. BSP: explode(':',cryptPasswd('Mein Passwort'), 2);
+ * @return string Passwort hash und salt durch ein ":" getrennt; Achtung: immer nur nach dem ersten ":" trennen. Im Hash selber kann keines vorkommen,im Salt schon. Z.B.: explode(':',cryptPasswd('Mein Passwort'), 2);
  */
 function cryptPasswd($passwd, $salt = '')
 {
