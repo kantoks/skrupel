@@ -1,4 +1,6 @@
 <?php
+include_once 'inc.common.php';
+
 function sektor($x, $y) {
     $sektor_x = round(($x/250)+0.5);
     $sektor_y = round(($y/250)+0.5);
@@ -308,44 +310,4 @@ function beam_s_s($id_a_p,$id_b_p,$was_p,$wieviel_p)
 {
     return beam_das($id_a_p,"s",$id_b_p,"s",$was_p,$wieviel_p);
 }
-/*function rannum() {
-    mt_srand((double)microtime()*1000000);
-    $num = mt_rand(48,122);
-    return $num;
-}
-function genchr() {
-    do {
-        $num = rrannum();
-    } while ( ( $num > 57 && $num < 65 ) || ( $num > 90 && $num < 97 ) );
-    return chr($num);
-}
-function rzufallstring() {
-    $a = rgenchr();$e = rgenchr();$i = rgenchr();$m = rgenchr();$q = rgenchr();
-    $b = rgenchr();$f = rgenchr();$j = rgenchr();$n = rgenchr();$r = rgenchr();
-    $c = rgenchr();$g = rgenchr();$k = rgenchr();$o = rgenchr();$s = rgenchr();
-    $d = rgenchr();$h = rgenchr();$l = rgenchr();$p = rgenchr();$t = rgenchr();
-    $salt = "$a$b$c$d$e$f$g$h$i$j$k$l$m$n$o$p$q$r$s$t";
-    return $salt;
-}
-*/
-if (!defined('ONLY_LETTERS')) { define('ONLY_LETTERS',0); }
-if (!defined('WITH_NUMBERS')) { define('WITH_NUMBERS', 1); }
-if (!defined('WITH_SPECIAL_CHARACTERS')) { define('WITH_SPECIAL_CHARACTERS', 2); }
-if (! function_exists("zufallstring")){
-function zufallstring($size = 20, $url = ONLY_LETTERS){
-  mt_srand();
-  $pool = 'abcdefghijklmnopqrstuvwxyz';
-  $pool .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  if($url & WITH_SPECIAL_CHARACTERS){
-    $pool .= ',.-;:_#+*~!§$%&/()=?';
-  }
-  if($url & WITH_NUMBERS){
-    $pool .='0123456789';
-  }
-  $pool_size = strlen($pool);
-  $salt ='';
-  for($i = 0;$i<$size; $i++){
-    $salt .= $pool[mt_rand(0, $pool_size - 1)];
-  }
-  return $salt; 
-} }
+
