@@ -5,7 +5,7 @@ CREATE TABLE `{skrupel_db.scan}` (
     x int(11) NOT NULL,
     y int(11) NOT NULL,
     PRIMARY KEY (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE `{skrupel_db.anomalien}` (
     id int(11) NOT NULL auto_increment,
@@ -26,7 +26,7 @@ CREATE TABLE `{skrupel_db.anomalien}` (
     sicht_9 tinyint(4) NOT NULL default '0',
     sicht_10 tinyint(4) NOT NULL default '0',
     PRIMARY KEY  (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE `{skrupel_db.chat}` (
     id int(11) NOT NULL auto_increment,
@@ -38,7 +38,7 @@ CREATE TABLE `{skrupel_db.chat}` (
     farbe varchar(7) NOT NULL default '',
     PRIMARY KEY  (id),
     UNIQUE KEY id (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE `{skrupel_db.forum_beitrag}` (
     id int(11) NOT NULL auto_increment,
@@ -50,7 +50,7 @@ CREATE TABLE `{skrupel_db.forum_beitrag}` (
     spielerid tinyint(4) NOT NULL default '0',
     spiel int(11) NOT NULL default '0',
     PRIMARY KEY  (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE `{skrupel_db.forum_thema}` (
     id int(11) NOT NULL auto_increment,
@@ -62,7 +62,7 @@ CREATE TABLE `{skrupel_db.forum_thema}` (
     letzter varchar(10) NOT NULL default '',
     spiel int(11) NOT NULL default '0',
     PRIMARY KEY  (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE `{skrupel_db.huellen}` (
     id int(11) NOT NULL auto_increment,
@@ -85,7 +85,7 @@ CREATE TABLE `{skrupel_db.huellen}` (
     spiel int(11) NOT NULL default '0',
     PRIMARY KEY  (id),
     UNIQUE KEY id (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE `{skrupel_db.info}` (
     version varchar(15) NOT NULL default '',
@@ -96,7 +96,7 @@ CREATE TABLE `{skrupel_db.info}` (
     stat_spiele int(11) NOT NULL default '0',
     extend VARCHAR(255) NOT NULL default '',
     serial VARCHAR(20) NOT NULL
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 INSERT INTO `{skrupel_db.info}` VALUES ('{version}',0,0,0,'http://',0,'','{serial}');
 
@@ -127,7 +127,7 @@ CREATE TABLE `{skrupel_db.kampf}` (
     crew_2 text NOT NULL,
     PRIMARY KEY  (id),
     UNIQUE KEY id (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE `{skrupel_db.nebel}` (
     id int(11) NOT NULL auto_increment,
@@ -138,7 +138,7 @@ CREATE TABLE `{skrupel_db.nebel}` (
     x_e int(11) NOT NULL default '0',
     y_e int(11) NOT NULL default '0',
     PRIMARY KEY  (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE `{skrupel_db.neuigkeiten}` (
     id int(11) NOT NULL auto_increment,
@@ -151,7 +151,7 @@ CREATE TABLE `{skrupel_db.neuigkeiten}` (
     sicher tinyint(4) NOT NULL default '0',
     PRIMARY KEY  (id),
     UNIQUE KEY id (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE `{skrupel_db.planeten}` (
     id int(11) NOT NULL auto_increment,
@@ -243,7 +243,7 @@ CREATE TABLE `{skrupel_db.planeten}` (
     sicht_9_beta tinyint(4) NOT NULL default '0',
     sicht_10_beta tinyint(4) NOT NULL default '0',
     UNIQUE KEY id (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE `{skrupel_db.politik}` (
     id int(11) NOT NULL auto_increment,
@@ -253,7 +253,7 @@ CREATE TABLE `{skrupel_db.politik}` (
     optionen tinyint(4) NOT NULL default '0',
     spiel int(11) NOT NULL default '0',
     PRIMARY KEY  (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE `{skrupel_db.politik_anfrage}` (
     id int(11) NOT NULL auto_increment,
@@ -263,7 +263,7 @@ CREATE TABLE `{skrupel_db.politik_anfrage}` (
     zeit tinyint(4) NOT NULL default '0',
     spiel int(11) NOT NULL default '0',
     PRIMARY KEY  (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE `{skrupel_db.schiffe}` (
     id int(11) NOT NULL auto_increment,
@@ -360,7 +360,7 @@ CREATE TABLE `{skrupel_db.schiffe}` (
     sicht_10_beta tinyint(4) NOT NULL default '0',
     temp_verfolgt INT DEFAULT '0' NOT NULL ,
     UNIQUE KEY id (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE `{skrupel_db.spiele}` (
     id int(11) NOT NULL auto_increment,
@@ -504,7 +504,7 @@ CREATE TABLE `{skrupel_db.spiele}` (
     spieler_9_hash CHAR(20) NOT NULL,
     spieler_10_hash CHAR(20) NOT NULL,
     UNIQUE KEY id (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE `{skrupel_db.sternenbasen}` (
     id int(11) NOT NULL auto_increment,
@@ -589,7 +589,7 @@ CREATE TABLE `{skrupel_db.sternenbasen}` (
     sicht_10 tinyint(4) NOT NULL default '0',
     PRIMARY KEY  (id),
     UNIQUE KEY id (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE `{skrupel_db.user}` (
 	    id int(11) NOT NULL auto_increment,
@@ -614,7 +614,7 @@ CREATE TABLE `{skrupel_db.user}` (
 	    avatar varchar(255) NOT NULL default '',
 	    sprache varchar(255) NOT NULL default '',
 	    PRIMARY KEY (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE `{skrupel_db.konplaene}` (
     id int(11) NOT NULL auto_increment,
@@ -626,7 +626,7 @@ CREATE TABLE `{skrupel_db.konplaene}` (
     techlevel tinyint(4) NOT NULL default '0',
     sonstiges text NOT NULL,
     PRIMARY KEY  (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE `{skrupel_db.ordner}` (
     id int(11) NOT NULL auto_increment,
@@ -635,7 +635,7 @@ CREATE TABLE `{skrupel_db.ordner}` (
     spiel int(11) NOT NULL default '0',
     icon tinyint(4) NOT NULL,
     PRIMARY KEY  (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
 CREATE TABLE `{skrupel_db.begegnung}` (
     id INT NOT NULL AUTO_INCREMENT,
@@ -643,5 +643,5 @@ CREATE TABLE `{skrupel_db.begegnung}` (
     partei_b TINYINT NOT NULL,
     spiel INT NOT NULL,
     PRIMARY KEY (id)
-) ENGINE=MyISAM;
+) ENGINE=InnoDB;
 
