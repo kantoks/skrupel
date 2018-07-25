@@ -44,14 +44,14 @@ if ($fuid==1) {
                                                     <?php
                                                     $i=0;
                                                     $sprachnummer=0;///Standard Deutsch falls alle Stricke reissen
-                                                    while($sprach_daten[0][$i]){
+                                                    while(isset($sprach_daten[0][$i])){
                                                         if ($spieler_sprache==$sprach_daten[0][$i]){
                                                             $sprachnummer=$i;
                                                         }
                                                         $i++;
                                                     }
                                                     $i=0;
-                                                    while($sprach_daten[0][$i]){
+                                                    while(isset($sprach_daten[0][$i])){
                                                         ?>
                                                         <option value="<?php echo $sprach_daten[0][$i]?>" <?php if ($i==$sprachnummer) { echo 'selected'; } ?>><?php echo ($sprach_daten[1][$sprachnummer][$i])?$sprach_daten[1][$sprachnummer][$i]:$lang['metaoptionen']['keinedaten']?></option>
                                                         <?php

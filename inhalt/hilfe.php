@@ -37,7 +37,6 @@ if ($fuid>=1) {
                     //////////////////////////////////////////////////////////////////////////
             
                     if ($fuid==1) {
-                        echo $lang['hilfe'][$von]['ueberschrift']
                         ?>
                         <table border="0" cellspacing="0" cellpadding="2" width="100%">
                             <?php

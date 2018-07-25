@@ -473,7 +473,7 @@ if ($fuid==5) {
         <center>
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><img src="<?php echo $bildpfad?>/osysteme/<?php echo $oid?>.gif" border="0" width="61" height="64" title="<?php echo $osys_daten[$oid][0]?>"></td>
+                    <td><img src="<?php echo $bildpfad?>/osysteme/<?php echo $oid?>.gif" border="0" width="61" height="64" title="<?php echo $lang['orbitalesysteme']['name'][$oid]?>"></td>
                     <td style="color:#aaaaaa;"><?php echo $lang['orbitalesysteme']['lang'][$oid]?></td>
                 </tr>
             </table>
@@ -663,8 +663,8 @@ if ($fuid==7) {
         }
         @fclose($fp);
     }
-    $verbieten=explode(":",$daten[6]);
-    $erlauben=explode(":",$daten[7]);
+    $verbieten=explode(":",trim(isset($daten[6])?$daten[6]:""));
+    $erlauben=explode(":",trim(isset($daten[7])?$daten[7]:""));
     $file='../daten/orbitale_systeme.txt';
     $fp = @fopen("$file","r");
     if ($fp) {

@@ -216,7 +216,7 @@ if ($module[4]==1) {
         if (isset($spieler_id_c[$n]) && $spieler_id_c[$n]>=1) {
             for ($m=1;$m<11;$m++){
                 if (($spieler_id_c[$m]>=1) and ($n<>$m)) {
-                    if ((!$begegnung[$n][$m]) and (!$test[$n][$m])) {
+                    if ((!isset($begegnung[$n][$m])) and (!isset($test[$n][$m]))) {
                         $test[$n][$m] = 1;
                         $spalte='sicht_'.$n;
                         $totals=0;
