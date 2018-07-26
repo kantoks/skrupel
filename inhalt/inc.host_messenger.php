@@ -23,33 +23,35 @@ if ($fuu==1) {
     }
 }
 if (intval($_GET["fu"])==2) {
-    include ("../inc.conf.php");
-    $sname=$_GET["sname"];
-    $jab=$_GET["jab"];
-    $hash=$_GET["hash"];
-    $msg=str_replace('{1}',$sname,$lang['hostmessenger'][$spielersprache[intval($_GET["k"])]][0]);
-    ignore_user_abort(true);
-    $url="http://".$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
-    $url=substr($url,0,strlen($url)-30);
-    $msg.="\n\n".$url.'/index.php?hash='.$hash;
-    // class.jabber.php einbinden
-    require_once "classes/class.jabber.php";
-    // Ein neues JABBER Objekt erstellen, mit den gewuenschten Zugangsdaten.
-    $jabber = new Jabber();
-    // Servername fuer den Account
-    $jabber->server = $jabber_server;
-    // Username fuer den Account
-    $jabber->username = $jabber_botname;
-    // Klartext-Passwort fuer den Account
-    $jabber->password = $jabber_passwort;
-    // Die Ressource klassifiziert lediglich einen Account, ist also nur ein Hilfsmerkmal
-    $jabber->resource = 'skrupelNotificationBot';
-    // Logging fuer Problelaeufe
-    $jabber->enable_logging = true;
-    // Der Empfaenger fuer meine Nachrichten
-    $jabber->to = $jab;
-    // Jabber-Verbindung herstellen
-    $jabber->Connect();
-    $jabber->SendAuth();
-    $jabber->SendMessage($jabber->to, "normal", NULL, array("body" => $msg));
+    if (isset($_GET["sname"]) && isset($_GET["jab"]) && isset($_GET["hash"])) {
+        include ("../inc.conf.php");
+        $sname=$_GET["sname"];
+        $jab=$_GET["jab"];
+        $hash=$_GET["hash"];
+        $msg=str_replace('{1}',$sname,$lang['hostmessenger'][$spielersprache[intval($_GET["k"])]][0]);
+        ignore_user_abort(true);
+        $url="http://".$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
+        $url=substr($url,0,strlen($url)-30);
+        $msg.="\n\n".$url.'/index.php?hash='.$hash;
+        // class.jabber.php einbinden
+        require_once "classes/class.jabber.php";
+        // Ein neues JABBER Objekt erstellen, mit den gewuenschten Zugangsdaten.
+        $jabber = new Jabber();
+        // Servername fuer den Account
+        $jabber->server = $jabber_server;
+        // Username fuer den Account
+        $jabber->username = $jabber_botname;
+        // Klartext-Passwort fuer den Account
+        $jabber->password = $jabber_passwort;
+        // Die Ressource klassifiziert lediglich einen Account, ist also nur ein Hilfsmerkmal
+        $jabber->resource = 'skrupelNotificationBot';
+        // Logging fuer Problelaeufe
+        $jabber->enable_logging = true;
+        // Der Empfaenger fuer meine Nachrichten
+        $jabber->to = $jab;
+        // Jabber-Verbindung herstellen
+        $jabber->Connect();
+        $jabber->SendAuth();
+        $jabber->SendMessage($jabber->to, "normal", NULL, array("body" => $msg));
+    }
 }
