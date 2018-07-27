@@ -86,7 +86,7 @@ if ($fuid==2) {
         $attribute=explode(":",$daten[2]);
         $attribute2=explode(":",$daten[4]);
         $verbieten=explode(":",trim($daten[6]));
-        $erlauben=explode(":",trim($daten[7]));    
+        $erlauben=explode(":",trim($daten[7]));
         if (0 < (intval($verbieten[0]))) {} else { $verbieten = array(); }
         if (0 < (intval($erlauben[0]))) {} else { $erlauben = array(); }
         $beschreibung="";
@@ -101,9 +101,10 @@ if ($fuid==2) {
             @fclose($fp);
         }
         if ($attribute2[0]>=1) {
-            $assrasse=$lang['metarassen']['art'][(int)$attribute2[1]];
             if ($attribute2[1]==0) {
                 $assrasse=$lang['metarassen']['alle'];
+            } else {
+                $assrasse=$lang['metarassen']['art'][(int)$attribute2[1]];
             }
         } else {
             $assrasse=$lang['metarassen']['keine'];

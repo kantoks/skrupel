@@ -1,5 +1,6 @@
 <?php
 require_once 'mysql.php'; // THIS IS ONLY A TEMPORARY WORKAROUND
+include_once 'inc.common.php';
 /*
 :noTabs=false:indentSize=4:tabSize=4:folding=explicit:collapseFolds=1:
 */
@@ -98,37 +99,6 @@ function safe_strval($value, $mode, $nl2br = false)
     }
 
     return false;
-}
-
-if (!defined('ONLY_LETTERS')) { define('ONLY_LETTERS', 0); }
-if (!defined('WITH_NUMBERS')) { define('WITH_NUMBERS', 1); }
-if (!defined('WITH_SPECIAL_CHARACTERS')) { define('WITH_SPECIAL_CHARACTERS', 2); }
-/**
- * Erzeugt einen Zufallsstring
- *
- * Erzeugt aus Vorgaben einen Zufallsstring
- * @author finke
- * @return string Zufalsstring
- */
-function zufallstring($size = 20, $url = ONLY_LETTERS)
-{
-    mt_srand();
-    $pool = 'abcdefghijklmnopqrstuvwxyz';
-    $pool .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    if ($url & WITH_SPECIAL_CHARACTERS) {
-        $pool .= ',.-;:_#+*~!$%&/()=?';
-    }
-    if ($url & WITH_NUMBERS) {
-        $pool .= '0123456789';
-    }
-    $pool = str_shuffle($pool);
-    $pool_size = strlen($pool);
-    $salt = '';
-    for ($i = 0; $i < $size; $i++) {
-        $salt .= $pool[mt_rand(0, $pool_size - 1)];
-    }
-
-    return $salt;
 }
 
 /**

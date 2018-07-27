@@ -222,7 +222,7 @@ if ($fuid==3) {
                                     $zahl=0;
                                     $array_spieler=array('',$spieler_1,$spieler_2,$spieler_3,$spieler_4,$spieler_5,$spieler_6,$spieler_7,$spieler_8,$spieler_9,$spieler_10);
                                     for($i=1;$i<11;$i++){
-                                        if (($module[4]==0) or ($begegnung[$i]==1)) {
+                                        if (($module[4]==0) or (isset($begegnung[$i]))) {
                                             if (($array_spieler[$i]>=1) and ($i<>$spieler)) {
                                                 $zeiger = @mysql_query("SELECT * FROM $skrupel_user where id=$array_spieler[$i]");
                                                 $array = @mysql_fetch_array($zeiger);

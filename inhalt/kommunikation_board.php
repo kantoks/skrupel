@@ -341,7 +341,7 @@ if ($fuid==1) {
                 </td>
                 <td class="forummittel"><center><nobr>&nbsp;<?php echo $themaanzahl; ?>&nbsp;</nobr></center></td>
                 <td class="forumhell"><center><nobr>&nbsp;<?php echo $beitraganzahl; ?>&nbsp;</nobr></center></td>
-                <td class="forummittel"><nobr>&nbsp;<?php echo $letzterv; ?>&nbsp;</nobr></td>
+                <td class="forummittel"><nobr>&nbsp;<?php echo $letzter; ?>&nbsp;</nobr></td>
             </tr>
             <tr>
                 <td class="forummittel"><img src="../bilder/empty.gif" border="0" width="25" height="20"></td>

@@ -1,6 +1,6 @@
 <?php
 require_once ('../inc.conf.php'); 
- require_once ('inc.hilfsfunktionen.php');
+require_once ('inc.hilfsfunktionen.php');
 $langfile_1 = 'admin';
 $fuid = int_get('fu');
 
@@ -185,7 +185,7 @@ if ($fuid==2) {
     ?>
   <script language=JavaScript>
     link('uebersicht_uebersicht.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');
-    window.location='uebersicht.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>');
+    window.location='uebersicht.php?fu=1&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>';
   </script>
     <?php
     include ("inc.footer.php");
@@ -210,7 +210,7 @@ if ($fuid==3) {
       $zaehler=0;
       while ($file=readdir($handle)) {
         if((substr($file,0,1)<>'.') and (substr($file,0,7)<>'bilder_') and (substr($file,strlen($file)-4,4)<>'.txt')){
-          /*/ neuer code /*/ if($file == "unknown") { continue; }
+          if($file == "unknown") { continue; }
           $datei='../daten/'.$file.'/daten.txt';
           $fp = @fopen("$datei","r");
           if ($fp) {
@@ -1140,22 +1140,22 @@ if ($fuid==14) {
                         <td><form name="formular" method="post" action="admin.php?fu=15&uid=<?php echo $uid; ?>&sid=<?php echo $sid; ?>"></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" name="modul_0" value="1"<?php echo $checked[$module[0]];?>></td><td><?php echo $lang['admin']['sus']?></td>
+                        <td><input type="checkbox" name="modul_0" value="1"<?php echo $checked[$module[0] == 1];?>></td><td><?php echo $lang['admin']['sus']?></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" name="modul_2" value="1"<?php echo $checked[$module[2]];?>></td><td><?php echo $lang['admin']['minenfeld']?></td>
+                        <td><input type="checkbox" name="modul_2" value="1"<?php echo $checked[$module[2] == 1];?>></td><td><?php echo $lang['admin']['minenfeld']?></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" name="modul_3" value="1"<?php echo $checked[$module[3]];?>></td><td><?php echo $lang['admin']['takka']?></td>
+                        <td><input type="checkbox" name="modul_3" value="1"<?php echo $checked[$module[3] == 1];?>></td><td><?php echo $lang['admin']['takka']?></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" name="modul_4" value="1"<?php echo $checked[$module[4]];?>></td><td><?php echo $lang['admin']['wysiwyg']?></td>
+                        <td><input type="checkbox" name="modul_4" value="1"<?php echo $checked[$module[4] == 1];?>></td><td><?php echo $lang['admin']['wysiwyg']?></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" name="modul_5" value="1"<?php echo $checked[$module[5]];?>></td><td><?php echo $lang['admin']['forsch']?></td>
+                        <td><input type="checkbox" name="modul_5" value="1"<?php echo $checked[$module[5] == 1];?>></td><td><?php echo $lang['admin']['forsch']?></td>
                     </tr>
                     <tr>
-                        <td><input type="checkbox" name="modul_6" value="1"<?php echo $checked[$module[6]];?>></td><td><?php echo $lang['admin']['held']?></td>
+                        <td><input type="checkbox" name="modul_6" value="1"<?php echo $checked[$module[6] == 1];?>></td><td><?php echo $lang['admin']['held']?></td>
                     </tr>                    
                     <tr>
                         <td colspan="2"><center><input type="submit" name="bla" value="<?php echo $lang['admin']['esichern']?>" style="width:250px;"></center></td>
