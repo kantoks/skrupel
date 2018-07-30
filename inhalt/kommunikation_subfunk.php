@@ -184,40 +184,20 @@ if ($fuid==2) {
         $bbcode=preg_replace("/\[\/i\]/i","</i>",$bbcode);
         $bbcode=preg_replace("/\[u\]/i","<u>",$bbcode);
         $bbcode=preg_replace("/\[\/u\]/i","</u>",$bbcode);
-        $searcharray = array(
-            "/(\[)(url)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/url\])/esiU",
-            "/(\[)(url)(])(.*)(\[\/url\])/esiU",
-            "/(\[)(email)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/email\])/esiU",
-            "/(\[)(email)(])(.*)(\[\/email\])/esiU"
-        );
-        $replacearray = array(
-            "checkurl('\\5', '\\7')",
-            "checkurl('\\4')",
-            "checkmail('\\5', '\\7')",
-            "checkmail('\\4')"
-        );
-        $bbcode=preg_replace($searcharray, $replacearray, $bbcode);
-        $searcharray = array(
-            "/(\[)(font)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/font\])/esiU",
-            "/(\[)(font)(])(.*)(\[\/font\])/esiU",
-            "/(\[)(color)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/color\])/esiU",
-            "/(\[)(color)(])(.*)(\[\/color\])/esiU"
-        );
-        $replacearray = array(
-            "checkfont('\\5', '\\7')",
-            "checkfont('\\4')",
-            "checkcolor('\\5', '\\7')",
-            "checkcolor('\\4')"
-        );
-        $bbcode=preg_replace($searcharray, $replacearray, $bbcode);
-        $searcharray = array(
-            "/(\[)(size)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/size\])/esiU",
-            "/(\[)(size)(])(.*)(\[\/size\])/esiU" );
-        $replacearray = array(
-            "checksize('\\5', '\\7')",
-            "checksize('\\4')"
-        );
-        $bbcode=preg_replace($searcharray, $replacearray, $bbcode);
+
+        $bbcode=preg_replace_callback("/(\[)(url)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/url\])/siU",		function($m) { return checkurl($m[5], $m[7]); }, $bbcode);
+        $bbcode=preg_replace_callback("/(\[)(url)(])(.*)(\[\/url\])/siU",								function($m) { return checkurl($m[4]); }, $bbcode);
+        $bbcode=preg_replace_callback("/(\[)(email)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/email\])/siU",	function($m) { return checkmail($m[5], $m[7]); }, $bbcode);
+        $bbcode=preg_replace_callback("/(\[)(email)(])(.*)(\[\/email\])/siU",							function($m) { return checkmail($m[4]); }, $bbcode);
+
+        $bbcode=preg_replace_callback("/(\[)(font)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/font\])/siU",		function($m) { return checkfont($m[5], $m[7]); }, $bbcode);
+        $bbcode=preg_replace_callback("/(\[)(font)(])(.*)(\[\/font\])/siU",								function($m) { return checkfont($m[4]); }, $bbcode);
+        $bbcode=preg_replace_callback("/(\[)(color)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/color\])/siU",	function($m) { return checkcolor($m[5], $m[7]); }, $bbcode);
+        $bbcode=preg_replace_callback("/(\[)(color)(])(.*)(\[\/color\])/siU",							function($m) { return checkcolor($m[4]); }, $bbcode);
+
+        $bbcode=preg_replace_callback("/(\[)(size)(=)(['\"]?)([^\"']*)(\\4])(.*)(\[\/size\])/siU",		function($m) { return checksize($m[5], $m[7]); }, $bbcode);
+        $bbcode=preg_replace_callback("/(\[)(size)(])(.*)(\[\/size\])/siU",								function($m) { return checksize($m[4]); }, $bbcode);
+
         $bbcode=preg_replace("/\\[img\\]([^\\[]*)\\[\/img\\]/i","<img src=\"\\1\" border=0>",$bbcode);
         $bbcode2=$bbcode;
         return $bbcode2;
